@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פורטפוליו — איך מרגישה בדידות בתוך סביבה תוססת | Zielinski &amp; Rozen</title>
+<meta name="description" content="ראיון עם קורין אברהם — אוצרת תערוכת ״בדידות בתוך סביבה תוססת״ בגלריית זילינסקי רוזן בכיכר המדינה. פורטפוליו, ינואר 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;--bg-grey:#EEF0EF;--ink:#1B1B1B;--copy-grey:#6B7280;
+  --caption:#989898;--icon-grey:#707070;--placeholder:#FAFAFA;--link:#2D3BD5;
+  --max:1440px;--col:600px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;--col-pad:420px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+.heb .lat{font-family:var(--cop);font-weight:300}
+.heb .lat-l{font-family:var(--cop);font-weight:300;text-transform:uppercase}
+
+/* nav/footer styles in ../../components/site-chrome.css */
+
+.article{background:var(--white);display:flex;flex-direction:column}
+.article-head{padding:32px var(--col-pad) 0;display:flex;flex-direction:column;align-items:center;gap:16px}
+.meta-line{display:flex;align-items:center;justify-content:center;gap:10px}
+.meta-line .tag,.meta-line .src{font-family:var(--heb);font-weight:300;font-size:18px;color:var(--ink);direction:rtl;width:120px;text-align:center}
+.meta-line .tag{display:flex;justify-content:flex-end;padding-left:10px}
+.meta-line .src{text-align:right}
+.meta-line .sep{font-family:var(--heb);font-weight:300;font-size:16px;color:var(--ink);direction:rtl}
+
+.article-title{font-family:var(--heb);font-weight:400;font-size:48px;line-height:1.18;color:var(--ink);text-align:center;direction:rtl;padding:0 16px;width:100%}
+.article-subtitle{font-family:var(--heb);font-weight:400;font-size:18px;line-height:1.5;color:var(--ink);text-align:center;direction:rtl;padding:0 16px;width:100%}
+
+.article-meta-bar{padding:0 10px 24px;display:flex;flex-direction:column;align-items:center;gap:24px}
+.byline{display:flex;align-items:center;gap:8px;font-family:var(--heb);font-weight:300;font-size:16px;color:var(--ink);direction:rtl}
+.byline .dot{width:1px;height:1px;border-radius:100px;background:var(--icon-grey);box-shadow:0 0 0 1px var(--icon-grey)}
+.byline .item{min-width:120px;text-align:center}
+.actions{display:flex;align-items:center;justify-content:space-between;width:96px;padding:8px 16px;border:1px solid var(--icon-grey);border-radius:100px}
+.actions svg{width:16px;height:16px;color:var(--ink)}
+.actions .vsep{width:1px;height:16px;background:var(--icon-grey)}
+
+.article-figure{padding:16px var(--col-pad);display:flex;justify-content:center}
+.article-figure .frame{width:100%;max-width:var(--col);display:flex;flex-direction:column;gap:10px}
+.article-figure .img{width:100%;aspect-ratio:600/909.62;background:var(--placeholder);overflow:hidden}
+.article-figure .img.fit img{width:100%;height:100%;object-fit:contain}
+.article-figure .img.cover img{width:100%;height:100%;object-fit:cover}
+.article-figure .cap{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.5;color:var(--caption);text-align:right;direction:rtl;width:331px;align-self:flex-end}
+
+.body-block{padding:16px var(--col-pad);display:flex;flex-direction:column;align-items:center}
+.body-block .col{width:100%;max-width:var(--col);display:flex;flex-direction:column;gap:16px;padding:16px 0}
+.body-section-h{font-family:var(--heb);font-weight:400;font-size:28px;line-height:1.3;color:var(--ink);direction:rtl;text-align:right}
+.qa-q{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.7;color:var(--ink);direction:rtl;text-align:right}
+.qa-q .who{font-family:var(--heb);font-weight:400}
+.qa-a{font-family:var(--heb);font-weight:400;font-size:18px;line-height:1.7;color:var(--ink);direction:rtl;text-align:right}
+.qa-a .who{font-weight:400}
+
+/* pull quote (mobile: dedicated styled block; desktop: same content embedded inline) */
+.pull-quote{padding:8px var(--col-pad);display:flex;justify-content:center}
+.pull-quote .col{width:100%;max-width:var(--col);font-family:var(--heb);font-weight:400;font-size:20px;line-height:1.55;color:var(--ink);direction:rtl;text-align:right;border-right:2px solid var(--ink);padding:8px 16px 8px 0}
+
+.divider-row{padding:24px var(--col-pad) 16px;display:flex;justify-content:flex-end}
+.divider-row .line{width:72px;height:1px;background:#EFEFEF}
+
+.readmore-row{padding:16px var(--col-pad) 48px;display:flex;justify-content:flex-end}
+.readmore{display:inline-flex;align-items:center;gap:6px;font-family:var(--heb);font-weight:300;font-size:16px;color:var(--caption);direction:rtl}
+.readmore svg{width:16px;height:16px}
+
+
+@media (max-width:768px){
+  :root{--pad-x:16px;--col-pad:0px}
+
+  .article-head{padding:32px 0 0}
+  .meta-line .tag,.meta-line .src{font-size:16px}
+  .article-title{font-size:36px;line-height:1.15}
+  .article-subtitle{font-size:16px;line-height:1.5}
+  .byline{font-size:14px}
+
+  .article-figure{padding:16px}
+  .article-figure .img{aspect-ratio:358/542.74}
+  .article-figure .cap{width:100%}
+
+  .body-block{padding:16px}
+  .body-section-h{font-size:24px}
+  .qa-q,.qa-a{font-size:16px;line-height:1.7}
+  .pull-quote{padding:8px 16px}
+  .pull-quote .col{font-size:18px}
+
+  .divider-row{padding:24px 16px 16px}
+  .readmore-row{padding:16px}
+}
+
+/* artist-link injected: every artist mention in copy/captions/figures links to its page */
+a.artist-link{color:inherit;text-decoration:underline;text-decoration-color:rgba(27,27,27,.25);text-underline-offset:3px;transition:text-decoration-color .2s,opacity .2s}
+a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
+a.artist-figure-link{display:block;color:inherit;text-decoration:none}
+a.artist-figure-link:hover img{filter:brightness(.96)}
+a.artist-figure-link img{transition:filter .25s}
+</style>
+</head>
+<body>
+
+<site-header></site-header>
+
+<article class="article heb">
+
+  <header class="article-head">
+    <div class="meta-line">
+      <span class="tag">אמנות</span>
+      <span class="sep">|</span>
+      <span class="src">פורטפוליו</span>
+    </div>
+    <h1 class="article-title">איך מרגישה בדידות<br>בתוך סביבה תוססת: <span class="lat">תערוכה חדשה</span><br>בגלריית זילינסקי רוזן</h1>
+    <p class="article-subtitle">מותג הבשמים זילינסקי רוזן פתח גלריה חדשה<br>בכיכר המדינה, עם תערוכה שאצרה קורין אברהם על ״הבדידות שנובעת<br>מעודף גירויים, מסכות, קולות, רעשים והסחות״ — בהשראת בושם שרקח<br>ארז זילינסקי, המייסד והבשם של החברה</p>
+    <div class="article-meta-bar">
+      <div class="byline">
+        <span class="item">&nbsp;19 בינואר 2026</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="item">יובל סער</span>
+      </div>
+      <div class="actions" role="toolbar" aria-label="article actions">
+        <button type="button" data-share-btn aria-label="שתף"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="2"/><circle cx="18" cy="19" r="2"/><circle cx="6" cy="12" r="2"/><path d="M8 11l8-5M8 13l8 5"/></svg></button>
+        <span class="vsep" aria-hidden="true"></span>
+        <button type="button" data-bookmark-toggle aria-label="שמור" aria-pressed="false"
+          data-item-id="press-1"
+          data-item-title="פורטפוליו — איך מרגישה בדידות בתוך סביבה תוססת"
+          data-item-date="2026-01-19">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M4 2h8v12l-4-3-4 3V2z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero — Gal Polk crystals -->
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img fit"><a href="../artists/gal-polk.html" class="artist-img-link" aria-label="לדף האומן"><img src="../../images/press/press-1/00-hero-gal-polk.png" alt="גל פולק בתערוכה ״בדידות בתוך סביבה תוססת״"></a></div>
+      <figcaption class="cap"><a class="artist-link" href="../artists/gal-polk.html">גל פולק</a> בתערוכה ״בדידות בתוך סביבה תוססת״. צילומים: מ״ל</figcaption>
+    </div>
+  </figure>
+
+  <!-- Q&A intro -->
+  <section class="body-block">
+    <div class="col">
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;הי קורין, ערב טוב. מה שלומך בימים אלו?</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;הי יובל, אני טוב, בעיקר מתרגשת. מה שלומך?</p>
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;גם, לא רע בכלל בסך הכל, הרבה דברים מלהיבים על הפרק, אבל לא נגיד גלריה חדשה כמו הגלריה שלשמה התכנסנו –&nbsp;גלריית זילינסקי רוזן והשקת תערוכה ראשונה</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;עכשיו אני מתרגשת יותר…</p>
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;בצדק. נדמה לי שצריך לפתוח במקרה הזה שני טאבים לפני שנדבר על הגלריה והתערוכה, ולהתחיל בזה שקודם תספרי על עצמך בכמה מילים ואז על זילינסקי רוזן</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;חחחח יש פה אוקסימורון, לספר על עצמי ועל זילינסקי רוזן בכמה מילים, אבל אגייס את מיטב כישורי כדי לצלוח<br>את המשימה</p>
+    </div>
+  </section>
+
+  <!-- Image strip 1: 5 artist works -->
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><a href="../artists/eitan-goldson.html" class="artist-img-link" aria-label="לדף האומן"><img src="../../images/press/press-1/01-eitan-goldson.png" alt="איתן גולדסון והנריקה רוטנברג"></a></div>
+      <figcaption class="cap"><a class="artist-link" href="../artists/eitan-goldson.html">איתן גולדסון והנריקה רוטנברג</a></figcaption>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><a href="../artists/zohar-shtrit.html" class="artist-img-link" aria-label="לדף האומן"><img src="../../images/press/press-1/02-zohar-shtrit.png" alt="זוהר שטרית"></a></div>
+      <figcaption class="cap"><a class="artist-link" href="../artists/zohar-shtrit.html">זוהר שטרית</a></figcaption>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><a href="../artists/zohar-ron.html" class="artist-img-link" aria-label="לדף האומן"><img src="../../images/press/press-1/03-zohar-ron.png" alt="זוהר רון"></a></div>
+      <figcaption class="cap"><a class="artist-link" href="../artists/zohar-ron.html">זוהר רון</a></figcaption>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><a href="../artists/hila-loterstein.html" class="artist-img-link" aria-label="לדף האומן"><img src="../../images/press/press-1/04-hila-loterstein.png" alt="הילה לוטרשטיין — צילום: רז בן ארי"></a></div>
+      <figcaption class="cap"><a class="artist-link" href="../artists/hila-loterstein.html">הילה לוטרשטיין</a>. צילום: רז בן ארי</figcaption>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><a href="../artists/adi-duak.html" class="artist-img-link" aria-label="לדף האומן"><img src="../../images/press/press-1/05-adi-duek.png" alt="עדי דואק"></a></div>
+      <figcaption class="cap"><a class="artist-link" href="../artists/adi-duak.html">עדי דואק</a></figcaption>
+    </div>
+  </figure>
+
+  <!-- Q&A 2: Korin's career -->
+  <section class="body-block">
+    <div class="col">
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;הקריירה המקצועית שלי החלה בגדול כעורכת דין, הייתי ליטגטורית בתחום האזרחי מסחרי, יעוד שדי ישב עליי מהרגע שהתחלתי לדבר. לא היתה הרבה התלבטות מה ללמוד במקרה שלי… לאחר מכן פצחתי בקריירה למשך כשמונה שנים, אבל היה חסר לי משהו בין כל ההתפלמסות, אווירת החליפות המנוכרת והפלורסנטים המדכאים, והחלטתי להאמין בחזון שדגדג לי בקצות האצבעות, לפתוח בלוג שיעסוק בכל התשוקות שלי ובעיקר תיירות, אופנה ולייף סטייל.<br>כולם חשבו שהשתגעתי אבל זה היה הצעד המשמעותי שעשיתי בלהאמין בעצמי על אף כל הקולות, שבלשון המעטה לא תמכו במהלך הזה.<br><br>תוך מספר חודשים כמה חברות בחו״ל זיהו משהו בסגנון שלי שמאוד דיבר אליהן, ומפה הדרך פשוט נסללה לשיתופי פעולה ופרויקטים שפתחו בפניי דרך מאוד מעניינת, לפני ובתחילת דרכו של האינסטגרם. ההצלחה שלי היתה בעיקר בינלאומית ואיפשרה לי להפיק תכנים בשיתוף עם חברות מוכרות ומוערכות. בהמשך פיתחתי עוד אפיקים והתחלתי לייעץ כקריאייטיב דירקטור לחברות שונות</p>
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;מגניב. איך נוצר הקשר עם זילינסקי רוזן?</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;לפני שנה וחצי, בקליק שהיה ממש מיידי עם המייסד והבשם של זילינסקי רוזן, ארז, התחלתי לעבוד יחד איתו על הקריאייטיב בחברה. ארז הוא אדם מאוד מיוחד וסופר יצירתי ובעל חזון יחודי, לעיתים הוא מקדים את זמנו. במשך כל התקופה שעבדנו על רעיונות ותכנים, הוא כל שבועיים היה אומר לי שהוא חייב לפתוח גלריות לאמנות, כי זה ממש משלים חלק מהיצירה שלו מחד, וגם כי הוא ממש רוצה לתמוך באמניות ואמנים ישראלים ולחשוף אותם לעולם.<br><br>מאחר שהוא האמין והתעקש לעשות זאת ללא מטרת רווח,<br>די ניסיתי להוריד אותו מהרעיון, אבל הוא התעקש, עד שפשוט זה קרה, לפני חודשיים וחצי. הוא נתן לי משימה לפתוח את החנויות שעמדו ריקות בכיכר המדינה תוך חודש כגלריה לאמנות, ולאצור את התערוכה. מפה לשם אנחנו מדברים עכשיו על תערוכה עם 11 אמנים וסיפור מרגש שעומדת ופתוחה לקהל הרחב כבר שבועיים. ממש מרגש</p>
+    </div>
+  </section>
+
+  <!-- Erez portrait (mobile-source content, included on all viewports) -->
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/press-1/06-erez.png" alt="ארז זלינסקי רוזן"></div>
+      <figcaption class="cap">ארז זלינסקי רוזן/באדיבות ארז זלינסקי רוזן</figcaption>
+    </div>
+  </figure>
+
+  <!-- Korin portrait (mobile-source) -->
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/press-1/07-korin.png" alt="קורין אברהם — אוצרת התערוכה"></div>
+      <figcaption class="cap">קורין אברהם. צילום: אלי בוחבוט</figcaption>
+    </div>
+  </figure>
+
+  <!-- Pull quote (mobile-source) -->
+  <aside class="pull-quote">
+    <div class="col">עלתה לי מחשבה של בדידות של תיירת בעיר הומה אדם. זיקקתי את זה לתחושה אחת – מה קורה לנו כשאנחנו מרגישים בדידות, לא על עצם העובדה שאנחנו לבד, אלא מה קורה בפנים כשמסביב הכל רועש</div>
+  </aside>
+
+  <div class="divider-row"><span class="line" aria-hidden="true"></span></div>
+
+  <!-- Q&A 2.5 (mobile-source: about the brand) -->
+  <section class="body-block">
+    <div class="col">
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;נייס. רגע לפני התערוכה מילה על זילינסקי רוזן? לא כולם מכירים</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;כן בהחלט, זה מותג ישראלי שמאחוריו עומדים ארז ולאה רוזן. ארז הוא הבשם והמייסד והרוח החיה, ולאה היא המנכ״לית ומנהלת את כל האופרציה בצורה מעוררת השראה. מדובר במותג רוקחות בשמים מאוד ייחודי, שהתחיל כחנות קטנה בשוק הפשפשים ביפו, וכיום מונה כ־500 נקודות מכירה רק ברוסיה, לצד מאות נקודות מכירה ברחבי העולם וכ־100 חנויות בעולם.<br><br>מה שמדהים היה לי לגלות היא הפשטות והאכפתיות של הזוג רוזן בניהול החברה, וההחלטות החברתיות והפטריוטיות שהם לוקחים, כמו לייצר בארץ גם כשזה פחות משתלם ולפרנס משפחות ישראליות, וגם עכשיו לדוגמה להקים גלריות לאמנות מתוך רצון לתמוך באמניות ואמנים ישראלים, ללא מטרת רווח ובלי שום סוג של עמלה, בהשקעה מאוד גדולה.</p>
+    </div>
+  </section>
+
+  <div class="divider-row"><span class="line" aria-hidden="true"></span></div>
+
+  <!-- Section 3: בלי בשמים ובלי קופה -->
+  <section class="body-block">
+    <div class="col">
+      <h2 class="body-section-h">בלי בשמים ובלי קופה</h2>
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;מאיפה התחלת? יש רצון לפתוח גלריה ולתמוך באמנות, עד כמה התוכן צריך להיות קשור לבישום? לריח? לרוח המותג? הייתה בקשה מסוימת? מה את יכולה לספר על התהליך?</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;בוודאי, אבל זה מאוד קצר, שום ניסיון לקשור את האמנות או התערוכה לבשמים, אם כבר התהליך והאמנות הם אלה שנתנו לארז השראה ליצור בושם נוסף לאחרונה. בגלריה אין בשמים או מוצרים אחרים מהמותג למכירה, אין אפילו קופה, התשלום הוא מול האמנים והם מקבלים את כולו</p>
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;איך המשכת מפה, מה בחרת להציג בתערוכה הראשונה תחת איזו תמה</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;מרגע שארז אמר לי <span class="lat-l">go</span>, ישבתי וחשבתי והרהרתי, אבל בתוך תוכי ידעתי שזה פשוט יגיע, קיוויתי שמספיק מהר כדי שאוכל לעמוד בלו״ז הבלתי אפשרי של שיפוץ חנויות, מציאת רעיון ואיתור אמנים בחודש בערך, אבל האמנתי בתהליך והתמסרתי לשחרור כדי שיהיה מדויק.<br><br>ואז לילה אחד התחלתי לשוטט בפייסבוק בכל מיני חשבונות שקשורים למותג זלינסקי רוזן, בעמוד של המותג, בעמוד של ארז… לאחר כשעה וחצי נתקלתי בראיון מאוד קליל ואפילו על הדרך, שארז ערך לפני כעשור, אולי יותר. הוא סיפר שם שרקח בושם חדש בהשראת שיר ששמע בבית קפה בשוק הפשפשים, <span class="lat-l">alone in barcelone.</span><br>משהו שם תפס אותי: חיפשתי את השיר, ניסיתי לדמיין מה עומד שם מאחורי המילים, החוויה, ועלתה לי מחשבה של בדידות של תיירת בעיר הומה אדם. הבדידות הייתה משהו שהיא פשוט הביאה איתה לעיר, בבחינת <span class="lat-l">you are taking yourself everywhere you go.</span> צללתי עם המחשבה הזאת לחדרים נוספים, לבדידות שנובעת מעודף גירויים, מסכות, קולות, רעשים והסחות שמטשטשים את הקול הפנימי שלנו. הרגשתי ממש את הדמות עומדת שם באמצע הרחוב, בהשתהות שמאפשרת לה התפכחות על התחושות והרגשות שלה.<br>זיקקתי את זה לתחושה אחת – מה קורה לנו כשאנחנו מרגישים בדידות, לא על עצם העובדה שאנחנו לבד, אלא מה קורה בפנים כשמסביב הכל רועש</p>
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;ועם זה פנית לאמנים? איך בחרת את האמנים/עבודות?</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;לא היה לי טקסט אחיד שפניתי איתו, ניסיתי לחקור קצת ולהבין מה הזוויות שאני רוצה להציג. חלק הגיעו אליי בדרכים מקובלות כשפירסמתי קול קורא, וחלק פשוט הגיעו אליי בדרכי הגורל. הבחירה נעשתה באופן שאצליח לקבץ מכלול שיראה זוויות וסוגים שונים של תחושת הבדידות, ושל הסביבות התוססות, כי כל אחד חווה את החוויה מהמקום שלו והיה לי חשוב להביא מגוון חוויות</p>
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;תני 2-3 דוגמאות לעבודות?</p>
+    </div>
+  </section>
+
+  <!-- Image strip 2: 3 artist works -->
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/press-1/08-holi-kadosh.png" alt="טל ״הולי״ קדוש — צילום: עומרי אמסלם"></div>
+      <figcaption class="cap">טל (הולי) קדוש. צילום: עומרי אמסלם</figcaption>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><a href="../artists/tal-nehoray.html" class="artist-img-link" aria-label="לדף האומן"><img src="../../images/press/press-1/09-tal-nehorai.png" alt="טל נהוראי"></a></div>
+      <figcaption class="cap"><a class="artist-link" href="../artists/tal-nehoray.html">טל נהוראי</a></figcaption>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><a href="../artists/gal-polk.html" class="artist-img-link" aria-label="לדף האומן"><img src="../../images/press/press-1/10-gal-polk.png" alt="גל פולק"></a></div>
+      <figcaption class="cap"><a class="artist-link" href="../artists/gal-polk.html">גל פולק</a></figcaption>
+    </div>
+  </figure>
+
+  <!-- Q&A 4: examples + plans + final -->
+  <section class="body-block">
+    <div class="col">
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;אתחיל עם אמנית הקרמיקה <a class="artist-link" href="../artists/tal-nehoray.html">טל נהוראי</a>. בחרנו ממגוון העבודות שלה את ערכת הבדידות שכוללת פריטים וסמלים של נחמה ורגש: גלולת אושר, בקבוק חימום, והתחרות המתמדת בין הלב למוח.<br>דוגמה נוספת הן היצירות המגוונות של טל קדוש, שק אגרוף המעוטר במסכות וברכות שנכתבו בשפת סתרים. השק מדמה את המסע הפנימי שלנו והחבטות עם הדפוסים הפנימיים שלנו, אך התזכורת שלהם על גבי השק מזמינה אותנו לא רק להיאבק בהם אלא לראות אותם כשליחים של התודעה, שמבקשת ריפוי.&nbsp;<br>יוצרת נוספת שעוסקת באמנות של שיבוץ קריסטלים היא <a class="artist-link" href="../artists/gal-polk.html">גל פולק</a>, שמציגה מספר עבודות בנושא קללות, ג׳אנק פוד, שלט לחדר בכי וכו׳, שנותנים הצצה לזעם והבריחה שלנו מתחושת הבדידות</p>
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;מה התכנית הלאה? כל כמה זמן מתוכננת להיפתח תערוכה חדשה? כמה תערוכות בשנה?</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;אנחנו מכוונים לכחמש תערוכות בשנה, ויש המון תוכניות שכבר קורמות עור וגידים (עדיין לא יכולה לחשוף אבל מבטיחה לעדכן), הרבה דברים מרגשים. ארז צורך את הדופמינים שלו מהעולמות שהוא בונה סביב מותג הבישום ועכשיו סביב מחלקת האמנות בחברה</p>
+      <p class="qa-q"><span class="who">יובל:</span>&nbsp;יפה. מה עוד? משהו חשוב נוסף להגיד שלא אמרת לפני שניפרד?</p>
+      <p class="qa-a"><span class="who">קורין:</span>&nbsp;אני יכולה לדבר על התערוכה והגלריה שלושה ימים רצופים, אבל נשאיר את זה ככה. אשמח להזמין אותך ואת הקוראים לבוא להתרשם</p>
+    </div>
+  </section>
+
+  <div class="divider-row"><span class="line" aria-hidden="true"></span></div>
+
+  <!-- Exhibition details -->
+  <section class="body-block">
+    <div class="col">
+      <h2 class="body-section-h">בדידות בתוך סביבה תוססת</h2>
+      <p class="qa-q">אוצרת: קורין אברהם<br>גלריה זילינסקי רוזן, ז׳בוטינסקי 131, כיכר המדינה, תל אביב<br>בהשתתפות: <a class="artist-link" href="../artists/zohar-ron.html">זוהר רון</a>, טל ״הולי״ קדוש, <a class="artist-link" href="../artists/tal-nehoray.html">טל נהוראי</a>, <a class="artist-link" href="../artists/eitan-goldson.html">איתן גולדסון</a>, קוסטה מגרקיס, <a class="artist-link" href="../artists/hila-loterstein.html">הילה לוטרשטיין</a>, <a class="artist-link" href="../artists/gal-polk.html">גל פולק</a>, מאיה נחום לוי, <a class="artist-link" href="../artists/adi-duak.html">עדי דואק</a>, רז רונן, <a class="artist-link" href="../artists/zohar-shtrit.html">זוהר שטרית</a>, <span class="lat">LA RAZ PORTA</span><br>נעילה: 28.2</p>
+    </div>
+  </section>
+
+  <!-- Image strip 3: gallery interior + 4 detail shots -->
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/press-1/11-gallery-1.png" alt="גלריה זילינסקי רוזן — צילום: נטלי זיגל"></div>
+      <figcaption class="cap">גלריה זילינסקי רוזן. צילומים: נטלי זיגל</figcaption>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/press-1/12-gallery-2.png" alt="פרט מהגלריה"></div>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/press-1/13-gallery-3.png" alt="פרט מהגלריה"></div>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/press-1/14-gallery-4.png" alt="פרט מהגלריה"></div>
+    </div>
+  </figure>
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/press-1/15-gallery-5.png" alt="פרט מהגלריה"></div>
+    </div>
+  </figure>
+
+  <div class="divider-row"><span class="line" aria-hidden="true"></span></div>
+  <div class="readmore-row">
+    <a class="readmore" href="#"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M8 3v9M4 9l4 4 4-4"/></svg><span>לכתבה המלאה</span></a>
+  </div>
+
+</article>
+
+<site-footer></site-footer>
+
+<!-- Site chrome: shared header + footer (single source of truth) -->
+<script src="../../components/site-chrome.js" defer></script>
+
+<script src="../../components/picture-upgrade.js" defer></script>
+</body>
+</html>

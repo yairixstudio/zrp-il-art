@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>כתובה — מיצג חי | Zielinski &amp; Rozen Art Galleries</title>
+<meta name="description" content="כתובה — מיצג חי של זוהר רון, גלריית כיכר המדינה, 25 פברואר 2026, 19:00-21:30. אירוע מתוך תערוכת ׳בדידות בתוך סביבה תוססת׳.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../components/triptych-gallery.css">
+<style>
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;--bg-grey:#EEF0EF;--ink:#1B1B1B;--copy-grey:#6B7280;
+  --artist:#828282;--icon-grey:#707070;
+  --slide-active:#515151;--divider:#D8D8D8;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:clip;max-width:100vw}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+.heb .lat{font-family:var(--cop);font-weight:300;text-transform:uppercase}
+
+/* ===== EVENT PAGE — KTUBA ===== */
+.event{display:flex;flex-direction:column;background:var(--white)}
+
+/* === HERO BAND (grey) — two-column on desktop === */
+.event-hero{background:var(--bg-grey);padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
+.event-hero .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
+.event-hero .text-col{flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:32px;padding:0 16px}
+
+/* Title group: heavy "live art performance / by zohar ron" line, then meta row */
+.event-hero .h-title{font-family:var(--cop);font-weight:400;font-size:80px;line-height:72px;text-align:right;color:var(--ink);direction:ltr}
+.event-hero .h-title-row{display:flex;flex-direction:row-reverse;justify-content:flex-end;align-items:center;gap:4px;padding:0 16px}
+.event-hero .h-meta{display:flex;flex-direction:column;gap:8px;align-items:center;padding:0 10px 8px}
+.event-hero .h-meta .row-1,.event-hero .h-meta .row-2{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.event-hero .h-meta .gallery{font-family:var(--heb);font-weight:400;font-size:28px;color:var(--ink);direction:rtl}
+.event-hero .h-meta .date,.event-hero .h-meta .time{font-family:var(--heb);font-weight:300;font-size:28px;color:var(--ink);direction:rtl}
+.event-hero .h-meta .dot{width:6px;height:6px;background:var(--icon-grey);border-radius:50%;display:inline-block}
+
+/* Body paragraphs (poem + description) */
+.event-hero .h-body{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.45;text-align:center;color:var(--ink);direction:rtl;max-width:560px;align-self:center;padding:16px 0}
+.event-hero .h-body p+p{margin-top:16px}
+
+/* === Hero card (right column) — fixed 492x744 with overlays === */
+.event-hero .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
+.event-hero .card{position:relative;width:492px;height:744px;overflow:hidden;background:#000}
+.event-hero .card>img{width:100%;height:100%;object-fit:cover;display:block}
+.event-hero .card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);pointer-events:none;opacity:.55}
+.event-hero .card .wm{position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);font-family:var(--cop);font-weight:300;font-size:13px;letter-spacing:.32em;color:#fff;white-space:nowrap;z-index:2;text-align:center}
+.event-hero .card .wm .b{font-weight:700;font-size:16px;display:block;letter-spacing:.22em}
+.event-hero .card .center-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:301px;display:flex;flex-direction:column;align-items:center;gap:16px;color:#fff;z-index:2}
+.event-hero .card .center-text .en{font-family:var(--cop);font-weight:700;font-size:36px;line-height:1.1;text-align:center}
+.event-hero .card .center-text .he{font-family:var(--heb);font-weight:400;font-size:24px;line-height:1.2;text-align:center;direction:rtl}
+.event-hero .card .vol{position:absolute;left:50%;bottom:48px;transform:translateX(-50%);width:301px;text-align:center;font-family:var(--cop);font-weight:300;font-size:16px;color:#fff;z-index:2;letter-spacing:.1em}
+
+/* === SLIDESHOW BAND === */
+.event-slideshow{padding:64px var(--pad-x);background:var(--white);display:flex;justify-content:center}
+.event-slideshow .tri{--tri-max-w:1248px;--tri-aspect:none;--tri-bg:transparent;width:100%}
+.event-slideshow .tri-frame{height:841px;aspect-ratio:auto;max-width:1248px}
+.event-slideshow .tri-slide.is-center{width:481px;height:841px}
+.event-slideshow .tri-slide.is-prev,.event-slideshow .tri-slide.is-next{width:302px;height:528px;opacity:.6}
+.event-slideshow .tri-slide.is-prev{left:calc(50% - 392px)}
+.event-slideshow .tri-slide.is-next{left:calc(50% + 392px)}
+.event-slideshow .tri-slide.is-hidden{width:481px;height:841px}
+
+/* === ARTISTS STRIP === */
+.event-artists{padding:32px var(--pad-x);display:flex;justify-content:center}
+.event-artists .inner{display:flex;flex-direction:column;gap:16px;width:100%;max-width:var(--max)}
+.event-artists .head{display:flex;justify-content:space-between;align-items:center}
+.event-artists .head .label{font-family:var(--cop);font-weight:300;font-size:28px;color:var(--ink);text-align:left;letter-spacing:.02em}
+.event-artists .head .label .upper{text-transform:uppercase}
+.event-artists .head .line{flex:1;height:1px;background:var(--divider);margin-left:24px}
+.event-artists .strip{display:flex;flex-direction:row;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.event-artists .strip::-webkit-scrollbar{height:6px}
+.event-artists .strip::-webkit-scrollbar-thumb{background:var(--divider);border-radius:0}
+.event-artists .card{flex:0 0 178px;display:flex;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start;text-align:center}
+.event-artists .card .img{width:178px;height:148px;overflow:hidden;background:#f3f1ee;position:relative}
+.event-artists .card .img img{width:100%;height:100%;object-fit:cover;transition:filter .25s}
+.event-artists .card .img.empty{display:flex;align-items:center;justify-content:center;color:var(--artist);font-family:var(--cop);font-size:12px;letter-spacing:.1em;background:#eaeaea}
+.event-artists .card .name{font-family:var(--cop);font-weight:300;font-size:18px;line-height:1.0;color:var(--artist);text-align:center;letter-spacing:.04em}
+a.artist-card{color:inherit;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 178px;scroll-snap-align:start;text-align:center}
+a.artist-card:hover .img img{filter:brightness(.92)}
+a.artist-card:hover .name{color:var(--ink)}
+
+/* === RESPONSIVE === */
+@media (max-width:1100px){
+  :root{--pad-x:48px}
+  .event-hero .img-col{flex-basis:380px}
+  .event-hero .card{width:380px;height:580px}
+  .event-hero .h-title{font-size:56px;line-height:1.0}
+  .event-slideshow .tri-frame{height:560px}
+  .event-slideshow .tri-slide.is-center{width:360px;height:560px}
+  .event-slideshow .tri-slide.is-prev,.event-slideshow .tri-slide.is-next{width:220px;height:380px}
+  .event-slideshow .tri-slide.is-prev{left:calc(50% - 290px)}
+  .event-slideshow .tri-slide.is-next{left:calc(50% + 290px)}
+}
+
+@media (max-width:768px){
+  :root{--pad-x:16px}
+
+  /* Hero: single column — image card on top (taller), title + meta below */
+  .event-hero{padding:0;background:var(--white)}
+  .event-hero .row{flex-direction:column;gap:0}
+  .event-hero .img-col{flex:0 0 auto;width:100%;justify-content:center}
+  .event-hero .card{width:100%;max-width:390px;height:520px;margin:0 auto}
+  .event-hero .card .wm{top:30.5%;font-size:10px}
+  .event-hero .card .wm .b{font-size:14px}
+  .event-hero .card .center-text{top:39%;width:266px;gap:16px}
+  .event-hero .card .center-text .en{font-size:36px}
+  .event-hero .card .center-text .he{font-size:24px}
+  .event-hero .card .vol{bottom:60px;font-size:16px}
+  .event-hero .text-col{padding:32px 16px 0;gap:16px}
+  .event-hero .h-title-row{padding:0 16px}
+  .event-hero .h-title{font-size:24px;line-height:1.1;direction:rtl;text-align:center;width:100%}
+  .event-hero .h-meta .gallery,.event-hero .h-meta .date,.event-hero .h-meta .time{font-size:14px}
+  .event-hero .h-meta .dot{width:4px;height:4px}
+  .event-hero .h-body{padding:16px;max-width:none;font-size:16px;line-height:1.25}
+
+  /* Slideshow: keep peek-main-peek but smaller; peeks bleed off-screen on purpose */
+  .event-slideshow{padding:16px 0;justify-content:flex-start}
+  .event-slideshow .tri{--tri-max-w:none;width:100%}
+  .event-slideshow .tri-frame{height:443px;max-width:none;width:100%}
+  .event-slideshow .tri-slide.is-center{width:216px;height:378px}
+  .event-slideshow .tri-slide.is-prev,.event-slideshow .tri-slide.is-next{width:117px;height:204px;opacity:.6}
+  .event-slideshow .tri-slide.is-prev{left:calc(50% - 145px)}
+  .event-slideshow .tri-slide.is-next{left:calc(50% + 145px)}
+
+  /* Artists strip: tighter cards, horizontal scroll */
+  .event-artists{padding:16px}
+  .event-artists .head .label{font-size:14px}
+  .event-artists .head .line{margin-left:16px}
+  .event-artists .strip{gap:4px;margin:0 -16px;padding:0 16px 16px}
+  .event-artists .card,a.artist-card{flex-basis:100px}
+  .event-artists .card .img{width:100px;height:90px}
+  .event-artists .card .name{font-size:13px}
+}
+
+@media (max-width:400px){
+  .event-hero .h-title{font-size:22px}
+  .event-hero .card .center-text .en{font-size:28px}
+  .event-hero .card .center-text .he{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<site-header></site-header>
+
+<main class="event">
+
+  <!-- HERO BAND (grey) — title + meta + ktuba poem on left, image card on right -->
+  <section class="event-hero">
+    <div class="row">
+
+      <!-- Right column (visually) — image card. Comes second in source for mobile order. -->
+      <div class="img-col">
+        <div class="card" aria-label="כתובה — מיצג חי">
+          <img src="../../images/events/ktuba/hero.png" alt="כתובה — מיצג חי של זוהר רון">
+          <div class="wm">
+            <span class="b">ZIELINSKI</span>
+            <span>&amp; ROZEN</span>
+          </div>
+          <div class="center-text">
+            <div class="en">live art performance</div>
+            <div class="he heb">בדידות בתוך בסביבה תוססת</div>
+          </div>
+          <div class="vol">EXHIBITION VOLUME 1</div>
+        </div>
+      </div>
+
+      <!-- Left column (visually) — title, meta, ktuba poem, description -->
+      <div class="text-col">
+        <h1 class="h-title-row">
+          <span class="h-title">live art performance<br>by <a href="../artists/zohar-ron.html" class="artist-link" style="text-decoration:underline;text-decoration-color:rgba(27,27,27,.25);text-underline-offset:4px">zohar ron</a></span>
+        </h1>
+
+        <div class="h-meta">
+          <div class="row-1"><span class="gallery heb">גלריית כיכר המדינה</span></div>
+          <div class="row-2">
+            <span class="date heb"><bdi>25 פברואר 2026</bdi></span>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="time"><bdi>19:00-21:30</bdi></span>
+          </div>
+        </div>
+
+        <div class="h-body heb">
+          <p>כּתּוּבּה<br>
+          רְגָשׁוֹת, מַחֲשָׁבוֹת נִכְתָּבוֹת לְמִלִּים, מָחוֹל שֶׁל שִׁירִים<br>
+          מְשִׁיחַת מִכְחוֹל יּוֹצֶרֶת תְנוּעָה, בֵּין חֲלוֹם לְשִׁירָה<br>
+          'אַבְּרָא כְּדַבָּרָא'<br>
+          חֹפֶשׁ הַמַּחֲשָׁבָה, בָּאנוּ בַּבְּרִית הַמִּלָּה, זָכָר וּנְקֵבָה<br>
+          יַחַד בֶּאֱמוּנָה בְּאַהֲבָה<br>
+          לִרְדֹּף שָׁלוֹם לְהַאֲמִין בְּטוֹב, לִבְחֹר בְּאַחְדוּת<br>
+          לְתַקֵּן וְלִבְרֹא מְצִיאוּת</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SLIDESHOW — peek/main/peek with 7 dots (3 real images, 4 reserved) -->
+  <section class="event-slideshow" aria-label="גלריית צילומים — מיצג כתובה">
+    <div class="tri" data-tri-loop="true">
+      <div class="tri-frame">
+        <img class="tri-slide" src="../../images/events/ktuba/slide-02.png" alt="מיצג כתובה — צילום מרכזי" draggable="false">
+        <img class="tri-slide" src="../../images/events/ktuba/slide-03.png" alt="מיצג כתובה — צילום 3" draggable="false" loading="lazy">
+        <img class="tri-slide" src="../../images/events/ktuba/slide-01.png" alt="מיצג כתובה — צילום 1" draggable="false" loading="lazy">
+      </div>
+      <div class="tri-dots" role="tablist" aria-label="gallery navigation">
+        <button type="button" class="tri-dot" aria-label="slide 1" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot" aria-label="slide 2" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot" aria-label="slide 3" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot is-on" aria-label="slide 4" role="tab" aria-selected="true"></button>
+        <button type="button" class="tri-dot" aria-label="slide 5" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot" aria-label="slide 6" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot" aria-label="slide 7" role="tab" aria-selected="false"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESCRIPTION (post-slideshow) -->
+  <section class="event-hero" style="background:var(--white);padding:0 var(--pad-x) 32px">
+    <div class="row">
+      <div class="text-col" style="padding:0 16px">
+        <div class="h-body heb" style="padding:0">
+          <p>מְיַצֵּג חַי שֶׁל כְּתִיבַת שִׁירָה סְפּוֹנְטָנִית עַל גּוּף עֵירֹם,<br>
+          קָלִיגְרַפְיָה עִבְרִית שֶׁהוֹפֶכֶת לְטֶקֶס חַי,<br>
+          מִלִּים נִמְשָׁכוֹת עַל הָעוֹר כְּבִטּוּי שֶׁל אַהֲבָה וְיֹפִי.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTISTS — rendered from data/events.json (with inline fallback). -->
+  <section class="event-artists" aria-label="האומנים בתערוכה">
+    <div class="inner">
+      <div class="head">
+        <div class="label">
+          <span>art exhibition, at</span> <span class="upper">the art gallery by erez zielinski rozen</span>
+        </div>
+        <div class="line" aria-hidden="true"></div>
+      </div>
+      <div class="strip" id="artist-strip" role="list">
+        <!-- rendered by JS below -->
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<site-footer></site-footer>
+
+<!-- Inline fallback (for file:// where fetch is blocked). MUST mirror data/events.json::ktuba.artists -->
+<script type="application/json" id="fallback-ktuba-artists">
+[
+  {"name_en":"zohar ron","slug":"zohar-ron","image":"../../images/events/ktuba/artists/zohar-ron.png"},
+  {"name_en":"eitan goldson","slug":"eitan-goldson","image":"../../images/events/ktuba/artists/eitan-goldson.png"},
+  {"name_en":"holy kadosh","slug":null,"image":"../../images/events/ktuba/artists/holy-kadosh.png"},
+  {"name_en":"costa magarakis","slug":null,"image":null},
+  {"name_en":"tal nehoray","slug":"tal-nehoray","image":"../../images/events/ktuba/artists/tal-nehoray.png"},
+  {"name_en":"hila loterstein","slug":"hila-loterstein","image":"../../images/events/ktuba/artists/hila-loterstein.png"},
+  {"name_en":"gal pollak","slug":"gal-polk","image":"../../images/events/ktuba/artists/gal-polk.png"},
+  {"name_en":"maya nachum levy","slug":null,"image":"../../images/events/ktuba/artists/maya-nachum-levy.png"},
+  {"name_en":"adi duek","slug":"adi-duak","image":"../../images/events/ktuba/artists/adi-duak.png"},
+  {"name_en":"la raz porta","slug":null,"image":"../../images/events/ktuba/artists/la-raz-porta.png"},
+  {"name_en":"zohar shitrit","slug":"zohar-shtrit","image":"../../images/events/ktuba/artists/zohar-shtrit.png"}
+]
+</script>
+
+<script src="../../components/site-chrome.js" defer></script>
+<script src="../../components/triptych-gallery.js" defer></script>
+<script>
+(function(){
+  function loadArtists(){
+    var tag = document.getElementById('fallback-ktuba-artists');
+    var list = [];
+    try { list = JSON.parse(tag.textContent); } catch(e){}
+    var strip = document.getElementById('artist-strip');
+    if(!strip || !list.length) return;
+    var html = list.map(function(a){
+      var img = a.image
+        ? '<div class="img"><img src="'+a.image+'" alt="'+a.name_en+'"></div>'
+        : '<div class="img empty">'+a.name_en+'</div>';
+      var name = '<div class="name">'+a.name_en.split(' ').join('<br>')+'</div>';
+      if(a.slug){
+        return '<a class="artist-card" href="../artists/'+a.slug+'.html" aria-label="'+a.name_en+'">'+img+name+'</a>';
+      }
+      return '<div class="card" role="listitem">'+img+name+'</div>';
+    }).join('');
+    strip.innerHTML = html;
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', loadArtists);
+  } else { loadArtists(); }
+})();
+</script>
+
+<script src="../../components/picture-upgrade.js" defer></script>
+</body>
+</html>

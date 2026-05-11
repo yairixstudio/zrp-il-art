@@ -1,0 +1,83 @@
+{
+  "$schema": "./_schema/events.schema.json",
+  "events": [
+    {
+      "id": "ktuba",
+      "slug": "ktuba",
+      "title_he": "כתובה — מיצג חי",
+      "title_en": "live art performance by zohar ron",
+      "subtitle_he": "בדידות בתוך בסביבה תוססת",
+      "exhibition_id": "loneliness",
+      "exhibition_volume": 1,
+      "date": "2026-02-25",
+      "date_he": "25 פברואר 2026",
+      "time_start": "19:00",
+      "time_end": "21:30",
+      "gallery_id": "medina",
+      "gallery_label_he": "גלריית כיכר המדינה",
+      "cover_image": "images/events/ktuba/hero.png",
+      "poem_he": [
+        "כּתּוּבּה",
+        "רְגָשׁוֹת, מַחֲשָׁבוֹת נִכְתָּבוֹת לְמִלִּים, מָחוֹל שֶׁל שִׁירִים",
+        "מְשִׁיחַת מִכְחוֹל יּוֹצֶרֶת תְנוּעָה, בֵּין חֲלוֹם לְשִׁירָה",
+        "'אַבְּרָא כְּדַבָּרָא'",
+        "חֹפֶשׁ הַמַּחֲשָׁבָה, בָּאנוּ בַּבְּרִית הַמִּלָּה, זָכָר וּנְקֵבָה",
+        "יַחַד בֶּאֱמוּנָה בְּאַהֲבָה",
+        "לִרְדֹּף שָׁלוֹם לְהַאֲמִין בְּטוֹב, לִבְחֹר בְּאַחְדוּת",
+        "לְתַקֵּן וְלִבְרֹא מְצִיאוּת"
+      ],
+      "description_he": [
+        "מְיַצֵּג חַי שֶׁל כְּתִיבַת שִׁירָה סְפּוֹנְטָנִית עַל גּוּף עֵירֹם,",
+        "קָלִיגְרַפְיָה עִבְרִית שֶׁהוֹפֶכֶת לְטֶקֶס חַי,",
+        "מִלִּים נִמְשָׁכוֹת עַל הָעוֹר כְּבִטּוּי שֶׁל אַהֲבָה וְיֹפִי."
+      ],
+      "gallery_images": [
+        {"src": "images/events/ktuba/slide-01.png", "alt": "מיצג כתובה — צילום 1"},
+        {"src": "images/events/ktuba/slide-02.png", "alt": "מיצג כתובה — צילום 2"},
+        {"src": "images/events/ktuba/slide-03.png", "alt": "מיצג כתובה — צילום 3"}
+      ],
+      "artists": [
+        {"name_en": "zohar ron",          "slug": "zohar-ron",        "image": "images/events/ktuba/artists/zohar-ron.png"},
+        {"name_en": "eitan goldson",      "slug": "eitan-goldson",    "image": "images/events/ktuba/artists/eitan-goldson.png"},
+        {"name_en": "holy kadosh",        "slug": null,                "image": "images/events/ktuba/artists/holy-kadosh.png"},
+        {"name_en": "costa magarakis",    "slug": null,                "image": null},
+        {"name_en": "tal nehoray",        "slug": "tal-nehoray",      "image": "images/events/ktuba/artists/tal-nehoray.png"},
+        {"name_en": "hila loterstein",    "slug": "hila-loterstein",  "image": "images/events/ktuba/artists/hila-loterstein.png"},
+        {"name_en": "gal pollak",         "slug": "gal-polk",         "image": "images/events/ktuba/artists/gal-polk.png"},
+        {"name_en": "maya nachum levy",   "slug": null,                "image": "images/events/ktuba/artists/maya-nachum-levy.png"},
+        {"name_en": "adi duek",           "slug": "adi-duak",         "image": "images/events/ktuba/artists/adi-duak.png"},
+        {"name_en": "la raz porta",       "slug": null,                "image": "images/events/ktuba/artists/la-raz-porta.png"},
+        {"name_en": "zohar shitrit",      "slug": "zohar-shtrit",     "image": "images/events/ktuba/artists/zohar-shtrit.png"}
+      ],
+      "route": "pages/events/ktuba.html",
+      "homepage_visible": true,
+      "figma_node_desktop": "119:1651",
+      "figma_node_mobile": "119:1509",
+      "figma_file": "XhGH289YTRcW811wrufRJz"
+    },
+    {
+      "id": "loneliness",
+      "slug": "loneliness",
+      "title_he": "אירוע הפתיחה — בדידות בתוך סביבה תוססת",
+      "title_en": "Opening — Loneliness in a Bubbling Environment",
+      "exhibition_id": "loneliness",
+      "exhibition_volume": 1,
+      "date": "2026-01-19",
+      "time_start": "19:00",
+      "time_end": "21:30",
+      "gallery_id": "medina",
+      "gallery_label_he": "גלריית כיכר המדינה",
+      "cover_image": "images/events/loneliness/hero.png",
+      "description_he": "בדידות אינה תמיד שקט. לעיתים היא מתרחשת דווקא במקומות הרועשים ביותר — בתוך שפע, צבע, תנועה, דימויים ואנשים. זו בדידות שאינה נובעת מהיעדר, אלא מעודף. התערוכה ״בדידות בתוך סביבה תוססת״ מבקשת להתבונן ברגע שבו אדם נמצא בלב ההמולה ועדיין מרגיש לבד.",
+      "artists_he": [
+        "זוהר רון", "טל נהוראי", "טל קדוש - הולי קדוש",
+        "קוסטה מגרקיס", "איתן גולדסון", "מיה נחום לוי", "גל פולק",
+        "הילה לוטרשטיין", "עדי דואק", "לה רז פורטה", "זוהר שטרית"
+      ],
+      "route": "pages/events/loneliness.html",
+      "homepage_visible": true,
+      "figma_node_desktop": "1213:1873",
+      "figma_node_mobile": "1213:2099"
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Call — Zielinski & Rozen Art Galleries</title>
+<link rel="stylesheet" href="../components/artwork-lightbox.css">
+<link rel="stylesheet" href="../components/stacked-gallery.css">
+<style>
+/* ===== LOCAL FONTS ===== */
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --bg-trigger:#FAFAFA;       /* opencall-only: emotional-triggers bg on mobile */
+  --ink:#1B1B1B;
+  --grey-mid:#808080;
+  --copy-grey:#6B7280;
+  --status-grey:#989898;       /* opencall-only: 'submission closed' badge */
+  --divider:#D6D6D6;
+  --divider-mobile:#EFEFEF;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+/* GLOBAL CASING — English UPPERCASE; Hebrew exempt. */
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+.lat,.lat *{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate}
+.mono{font-family:var(--cop);font-weight:300}
+
+.only-mobile{display:none}
+.only-desktop{display:block}
+
+/* Mobile stacked gallery sizing defaults (kept outside media query so
+   dimensions stay correct in responsive emulators too). */
+.oc-mobile-gallery .stacked-gallery{
+  --sg-stage-h: 620px;
+  --sg-main-w: 300px;  --sg-main-h: 533px;
+  --sg-main-x: calc((100% - 300px) / 2);   --sg-main-y: 44px;
+  --sg-peek-w: 150px;  --sg-peek-h: 267px;
+  --sg-peek-x: -58px;  --sg-peek-y: 177px;
+  --sg-peek-opacity: .6;
+}
+.oc-mobile-gallery .sg-item .deco{position:absolute;left:50%;top:50%;width:56px;height:56px;border-radius:50%;background:rgba(217,217,217,.4);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);pointer-events:none}
+.oc-mobile-gallery .sg-item .deco::before{content:"";display:block;width:0;height:0;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent rgba(27,27,27,.8);margin-left:3px}
+.oc-mobile-gallery .sg-item.is-peek .deco{width:36px;height:36px}
+.oc-mobile-gallery .sg-item.is-peek .deco::before{border-width:7px 0 7px 12px;margin-left:2px}
+
+/* ===== NAV/FOOTER moved to ../components/site-chrome.css ===== */
+
+/* ============================================================
+   OPENCALL HERO — desktop (gray bg + side image)
+   ============================================================ */
+.oc-hero{background:var(--bg-grey);padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
+.oc-hero .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
+.oc-hero .text-col{flex:1;display:flex;flex-direction:column;gap:16px;padding:0 16px;direction:rtl}
+.oc-hero .status-row{display:flex;justify-content:flex-start;align-items:center;gap:16px;flex-wrap:wrap}
+.oc-hero .badge{display:inline-flex;align-items:center;gap:10px;padding:4px 8px;border:1px solid var(--ink);min-height:30px;font-family:var(--heb);font-weight:300;font-size:18px}
+.oc-hero .badge.status{border-color:var(--status-grey);color:var(--status-grey);font-family:var(--cop);letter-spacing:.04em}
+.oc-hero .heb .badge.status{font-family:var(--heb)}
+.oc-hero .title{font-family:var(--cop);font-weight:400;font-size:24px;text-align:right;direction:rtl;color:var(--ink);line-height:1.3}
+.oc-hero .title .heb{font-family:var(--heb);font-weight:400}
+.oc-hero .descblock{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.oc-hero .desc{width:100%;max-width:560px;font-family:var(--heb);font-weight:400;font-size:18px;line-height:1.38;text-align:right;direction:rtl;color:var(--ink)}
+.oc-hero .desc p{margin:0 0 14px;font-weight:300}
+.oc-hero .desc p.regular{font-weight:400}
+.oc-hero .desc p:last-child{margin-bottom:0}
+.oc-hero .divider{width:72px;height:1px;background:var(--divider);margin:0;align-self:flex-start}
+
+.oc-hero .block{display:flex;flex-direction:column;align-items:flex-start;gap:16px;width:100%;max-width:560px}
+.oc-hero .block .text{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.38;text-align:right;direction:rtl;color:var(--ink);width:100%}
+.oc-hero .block .text strong{font-weight:400}
+.oc-hero .block .text p.regular{font-weight:400;margin-bottom:12px}
+.oc-hero .block .text ul{list-style:none;padding:0;margin:8px 0}
+.oc-hero .block .text ul li{padding-right:12px;position:relative}
+.oc-hero .block .text ul li::before{content:"·";position:absolute;right:0;color:var(--ink)}
+.oc-hero .block .text .triggers{display:block;column-count:1;font-size:18px;line-height:1.45}
+.oc-hero .block .text .triggers .sep{color:var(--grey-mid);padding:0 4px}
+.oc-hero .block .text .email{font-family:var(--cop);font-weight:400;text-transform:uppercase;letter-spacing:.02em}
+.oc-hero .block .text .deadline-val{font-family:var(--cop);font-weight:300;text-transform:none;letter-spacing:.02em;direction:ltr;display:inline-block}
+.oc-hero .block .text .note{display:block;margin-top:8px;font-weight:300;color:var(--grey-mid);font-size:16px}
+
+.oc-hero .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
+.oc-hero .img-frame{position:relative;width:492px;height:744px;overflow:hidden}
+.oc-hero .img-frame img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.oc-hero .img-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0) 60%);pointer-events:none}
+
+/* ============================================================
+   GALLERY IMAGES (the-peeler only)
+   ============================================================ */
+.oc-gallery{background:var(--white);padding:64px var(--pad-x);display:flex;justify-content:flex-end;gap:48px}
+.oc-gallery .frame{width:492px;height:744px;overflow:hidden;position:relative;cursor:zoom-in}
+.oc-gallery .frame img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.oc-gallery .frame:hover img{transform:scale(1.04)}
+/* Play button overlay — matches Figma 119:2495 (Image Decorative Element):
+   72px translucent-grey circle (#D9D9D9 @ 40%) with centered ▶ triangle in ink @ 80%.
+   margin-left:4px optically centers the right-pointing triangle in the circle. */
+.oc-gallery .frame .deco{position:absolute;left:50%;top:50%;width:72px;height:72px;border-radius:50%;background:rgba(217,217,217,.4);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);pointer-events:none;transition:background .25s,transform .25s}
+.oc-gallery .frame:hover .deco{background:rgba(217,217,217,.6);transform:translate(-50%,-50%) scale(1.06)}
+.oc-gallery .frame .deco::before{content:"";display:block;width:0;height:0;border-style:solid;border-width:13px 0 13px 22px;border-color:transparent transparent transparent rgba(27,27,27,.8);margin-left:4px}
+
+
+/* ============================================================
+   TABLET (≤1100px)
+   ============================================================ */
+@media (max-width:1100px){
+  :root{--pad-x:48px}
+  .oc-hero .img-col{flex-basis:380px}
+  .oc-hero .img-frame{width:380px;height:560px}
+  .oc-gallery .frame{width:340px;height:520px}
+}
+
+/* ============================================================
+   MOBILE (≤768px) — different section order + full-width banner
+   ============================================================ */
+@media (max-width:768px){
+  :root{--pad-x:16px}
+  .only-desktop{display:none !important}
+  .only-mobile{display:block}
+
+  /* HERO: banner on top → info section → blocks stacked */
+  .oc-hero{padding:0;background:var(--white);display:block}
+  .oc-hero .row{flex-direction:column;gap:0;width:100%}
+  .oc-hero .img-col{flex:0 0 auto;width:100%;justify-content:center;order:-1}
+  .oc-hero .img-frame{width:100%;max-width:100%;height:auto;aspect-ratio:492/744}
+  .oc-hero .img-frame::before{display:none}
+  .oc-hero .img-frame::after{display:none}
+
+  .oc-hero .text-col{padding:24px 16px 16px;gap:16px;align-items:flex-start;width:100%}
+  .oc-hero .badge{font-size:16px}
+  .oc-hero .title{font-size:clamp(18px,4.8vw,24px);text-align:right;width:100%;white-space:nowrap}
+  .oc-hero .desc{font-size:16px;max-width:100%;line-height:1.35}
+  .oc-hero .desc p{margin-bottom:8px}
+  .oc-hero .block{max-width:none;width:100%;padding:16px;background:var(--white)}
+  .oc-hero .block.triggers-block{background:var(--bg-trigger);width:calc(100% + 32px);margin:0 -16px;padding:16px}
+  .oc-hero .block .text{font-size:16px;line-height:1.35}
+  .oc-hero .block .text .triggers{font-size:14px;line-height:1.4}
+  .oc-hero .divider{display:none}
+  .oc-hero .text-col > .divider-mobile{height:1px;background:var(--divider-mobile);width:calc(100% + 32px);margin:0 -16px}
+
+  /* GALLERY on mobile uses the shared stacked-gallery component.
+     Set its CSS vars to the opencall-specific dimensions per Figma. */
+  .oc-mobile-gallery{
+    padding:24px 16px;
+    background:var(--white);
+  }
+
+}
+
+.loading{padding:120px 24px;text-align:center;font-family:var(--cop);font-weight:300;color:var(--grey-mid);letter-spacing:.08em}
+
+/* artist-link injected: every artist mention in copy/captions/figures links to its page */
+a.artist-link{color:inherit;text-decoration:underline;text-decoration-color:rgba(27,27,27,.25);text-underline-offset:3px;transition:text-decoration-color .2s,opacity .2s}
+a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
+a.artist-figure-link{display:block;color:inherit;text-decoration:none}
+a.artist-figure-link:hover img{filter:brightness(.96)}
+a.artist-figure-link img{transition:filter .25s}
+</style>
+</head>
+<body>
+
+<site-header></site-header>
+
+<main id="page">
+  <div class="loading">loading…</div>
+</main>
+
+<!-- Inline JSON fallback (file:// support). Keep in sync with data/opencalls.json + data/site.json. -->
+<script type="application/json" id="fallback-site">{"footer":{"newsletter":{"title":"Stay Informed","placeholder":"Email Address","cta":"SUBSCRIBE"},"links_he":[{"label":"יצירת קשר","href":"/contact"},{"label":"הצהרת נגישות","href":"/accessibility"},{"label":"גלריית כיכר המדינה","href":"/galleries/medina"},{"label":"גלריית כיכר דיזינגוף","href":"/galleries/dizengoff"},{"label":"גלריית שוק הפשפשים","href":"/galleries/flea-market"}],"copyright":"© 2026 THE art GALLERY ZiELINSKI & ROZEN ALL RIGHTS RESERVED."}}</script>
+<script type="application/json" id="fallback-opencalls">{"opencalls":[{"id":"the-peeler","slug":"the-peeler","title_html":"<span class=\"heb\">הקולפן</span> | <span class=\"lat\">exhibition volume 2</span>","title_en":"the peeler","status":"archived","submission_status_he":"ההגשה נגמרה","gallery_id":"medina","gallery_label_he":"גלריית כיכר המדינה","deadline":"2026-04-23","deadline_he":"23/4/2026","hero_image":"images/opencalls/the-peeler/hero.png","description_he":[{"weight":"regular","lines":["הנושא: בחירה במעורר רגש אחד מתוך רשימה נתונה,","וכניסה אליו דרך זיכרון אישי."]},{"weight":"light","lines":["האמן מתבקש ליצור עבודה חדשה שנוגעת במעורר רגש ובזיכרון, ובאפשרות לכתוב את אותו זיכרון מחדש:","  · לא בהכרח לשנות את מה שקרה","  · אלא לאפשר לו לקבל צורה אחרת דרך המפגש איתו"]},{"weight":"light","lines":["לצד כל עבודה יוצג בושם אחד, שיתכתב עם הרגש ויוסיף שכבה נוספת של חוויה."]}],"emotional_triggers":{"title_he":"הקולפן — רשימת מעוררי רגש לבחירה","items":["קנאה מתחת לפני השטח","נטישה","אובדן שליטה","אובססיה","נשארתי למרות שידעתי","אני מרגיש/ה שקופ/ה","קנאה שאני מתבייש/ת בה","התאהבתי בפנטזיה","התאמתי את עצמי כדי שישארו","מגע שלא הרגיש במקום","משיכה שלא הייתה טובה לי","לא לשחרר","פחד להישאר לבד","רציתי יותר ממה שנתנו לי","אין לי על מה להישען","ריחוק מגונן","צורך באישור","מחכה להודעה","פחד מקרבה","בהמתנה","געגוע שלא נפתר","לא בחרו בי","טיפוס מרצה"]},"submission_instructions_he":{"intro_html":"יש לשלוח קובץ <span class=\"lat\">PDF</span> אחד הכולל:","items":["שם האמן","שם היצירה","פרטי התקשרות","יש לבחור ולציין מעורר רגש אחד שנבחר מתוך הרשימה","העבודה צריכה להיות חדשה ולא הוצגה בעבר","יש להגיש סקיצה / הצעה ראשונית","תיאור קצר של היצירה בהתייחס לנושא התערוכה","ניתן להגיש בכל מדיום: ציור, צילום, וידאו, פיסול, טקסט, מיצב, סאונד, שירה, עבודות משולבות"]},"contact":{"label_he":"את המייל יש לשלוח לאוצרת:","email":"korinalove5@gmail.com","deadline_label_he":"מועד אחרון להגשה:","note_he":"*שימו לב הגשות שלא יעמדו בתנאי הפורמט לא ייענו."},"gallery_images":[{"image":"images/opencalls/the-peeler/gallery-01.png"},{"image":"images/opencalls/the-peeler/gallery-02.png"}]},{"id":"how-many","slug":"how-many","title_html":"<span class=\"lat\">how many partners have you had?</span>","title_en":"how many partners have you had?","status":"archived","submission_status_he":"ההגשה נגמרה","gallery_id":"dizengoff","gallery_label_he":"גלריית כיכר דיזינגוף","deadline":"2026-02-17","deadline_he":"17/2/2026","hero_image":"images/opencalls/how-many/hero.png","description_he":[{"weight":"regular","lines":["התערוכה תעסוק בשאלות של:","אינטימיות, חוויה אישית, זיכרון, גוף, קרבה וחשיפה.","לא כוידוי, אלא כמרחב פתוח לפרשנות,","מבט ביקורתי חברתי או אישי, רגשי, המושג ״שותפים״,","על יחסים, ועל מה שנשאר ביניהם."]},{"weight":"light","lines":["אנו מזמינים אמניות ואמנים","להגיש הצעות ליצירות קיימות או חדשות"]},{"weight":"light","lines":["מכל מדיום:","ציור, צילום, וידאו, פיסול, טקסט,","מיצב, סאונד או עבודות משולבות."]}],"emotional_triggers":null,"submission_instructions_he":{"intro_html":"יש לשלוח קובץ <span class=\"lat\">PDF</span> אחד הכולל:","items":["שם האמן, שם היצירה, פרטי התקשרות","והתייחסות מפורשת של היצירה לנושא התערוכה — כפי שהציף אצל האמן","הצעות לעבודות חדשות יתקבלו עם פירוט וסקיצה ראשונית"],"outro_he":"כל בקשה תיבחן בהתאם לקריטריונים מקצועיים, וברלוונטיות לנושא התערוכה."},"contact":{"label_he":"את המייל יש לשלוח לאוצרת:","email":"korinalove5@gmail.com","deadline_label_he":"מועד אחרון להגשה:","note_he":"*שימו לב הגשות שלא יעמדו בתנאי הפורמט לא ייענו."},"gallery_images":null}]}</script>
+
+<script>
+(async function(){
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('id') || params.get('slug') || 'the-peeler';
+
+  async function loadJson(path, embeddedId){
+    try{
+      const r = await fetch(path, {cache:'no-store'});
+      if(r.ok) return await r.json();
+    }catch(_){/* file:// */}
+    const el = document.getElementById(embeddedId);
+    if(el && el.textContent.trim()) return JSON.parse(el.textContent);
+    throw new Error('cannot load ' + path);
+  }
+
+  let site, data;
+  try{
+    [site, data] = await Promise.all([
+      loadJson('../data/site.json', 'fallback-site'),
+      loadJson('../data/opencalls.json', 'fallback-opencalls')
+    ]);
+  }catch(e){
+    document.getElementById('page').innerHTML = '<div class="loading">failed to load — serve via HTTP (e.g. <code>python3 -m http.server</code>).</div>';
+    return;
+  }
+
+  const oc = data.opencalls.find(x => x.slug === slug || x.id === slug);
+  if(!oc){
+    document.getElementById('page').innerHTML = '<div class="loading">opencall not found: ' + slug + '</div>';
+    return;
+  }
+  document.title = (oc.title_en || 'Open Call') + ' — Zielinski & Rozen';
+
+  function paraHtml(paras){
+    if(!Array.isArray(paras)) return '';
+    return paras.map(p => {
+      const cls = p.weight || 'light';
+      const lines = (p.lines || []).map(escapeHtml);
+      return `<p class="${cls}">${lines.join('<br>')}</p>`;
+    }).join('');
+  }
+  function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+  function instructionsHtml(o){
+    if(!o) return '';
+    let html = '';
+    if(o.intro_html) html += `<p class="regular">${o.intro_html}</p>`;
+    if(Array.isArray(o.items) && o.items.length){
+      html += `<ul>${o.items.map(it => `<li>${escapeHtml(it)}</li>`).join('')}</ul>`;
+    }
+    if(o.outro_he) html += `<p>${escapeHtml(o.outro_he)}</p>`;
+    return html;
+  }
+
+  function triggersHtml(t){
+    if(!t) return '';
+    const items = (t.items || []).map(escapeHtml);
+    return `
+      <p class="regular">${escapeHtml(t.title_he || '')}</p>
+      <div class="triggers">${items.join(' <span class="sep">|</span> ')}</div>`;
+  }
+
+  function contactHtml(c, deadlineHe){
+    if(!c) return '';
+    const email = escapeHtml(c.email || '');
+    return `
+      <p>${escapeHtml(c.label_he || '')}<br>
+      <a class="email" href="mailto:${email}">${email}</a></p>
+      <p>${escapeHtml(c.deadline_label_he || '')} <span class="deadline-val">${escapeHtml(deadlineHe || '')}</span></p>
+      ${c.note_he ? `<p class="note">${escapeHtml(c.note_he)}</p>` : ''}`;
+  }
+
+  const ctx = {
+    title_html: oc.title_html || oc.title_en || '',
+    title_en: oc.title_en || oc.id || '',
+    gallery_label_he: oc.gallery_label_he || '',
+    submission_status_he: oc.submission_status_he || '',
+    hero_image: '../' + oc.hero_image,
+    desc_html: paraHtml(oc.description_he),
+    triggers_html: triggersHtml(oc.emotional_triggers),
+    instructions_html: instructionsHtml(oc.submission_instructions_he),
+    contact_html: contactHtml(oc.contact, oc.deadline_he),
+    has_triggers: !!oc.emotional_triggers,
+    has_gallery: Array.isArray(oc.gallery_images) && oc.gallery_images.length > 0,
+    gallery_images: oc.gallery_images || []
+  };
+
+  // Build HTML
+  const heroBlocks = [];
+  heroBlocks.push(`<div class="divider"></div><div class="divider-mobile"></div>`);
+  if(ctx.has_triggers){
+    heroBlocks.push(`<div class="block triggers-block"><div class="text">${ctx.triggers_html}</div></div>`);
+    heroBlocks.push(`<div class="divider"></div><div class="divider-mobile"></div>`);
+  }
+  heroBlocks.push(`<div class="block"><div class="text">${ctx.instructions_html}</div></div>`);
+  heroBlocks.push(`<div class="divider"></div><div class="divider-mobile"></div>`);
+  heroBlocks.push(`<div class="block"><div class="text">${ctx.contact_html}</div></div>`);
+
+  // Gallery rendering:
+  //   Desktop = side-by-side flex; each frame opens the shared artwork-lightbox.
+  //   Mobile  = stacked-gallery component (lightbox mode) — 3D peek+main.
+  const galleryImgs = ctx.gallery_images.map(g => '../' + g.image);
+  const galleryDesktopHtml = ctx.has_gallery ? `
+    <section class="oc-gallery only-desktop" data-artwork-gallery="opencall-${escapeHtml(slug)}">
+      ${galleryImgs.map((src, i) => `
+        <div class="frame" data-artwork-src="${escapeHtml(src)}" data-artwork-title="${escapeHtml(ctx.title_en)} — ${String(i+1).padStart(2,'0')}" tabindex="0" role="button" aria-label="open image ${i+1}"><img src="${escapeHtml(src)}" alt=""><span class="deco"></span></div>
+      `).join('')}
+    </section>` : '';
+  const galleryMobileHtml = ctx.has_gallery ? `
+    <section class="oc-mobile-gallery only-mobile">
+      <div class="stacked-gallery sg-mode-lightbox" data-artwork-gallery="opencall-${escapeHtml(slug)}-mobile">
+        <div class="sg-stack">
+          ${galleryImgs.map((src, i) => `
+            <div class="sg-item ${i === 0 ? 'is-main' : 'is-peek'}"
+                 data-artwork-src="${escapeHtml(src)}"
+                 data-artwork-title="${escapeHtml(ctx.title_en)} — ${String(i+1).padStart(2,'0')}"
+                 aria-label="open image ${i+1}"><img src="${escapeHtml(src)}" alt=""><span class="deco"></span></div>
+          `).join('')}
+        </div>
+      </div>
+    </section>` : '';
+  const galleryHtml = galleryDesktopHtml + galleryMobileHtml;
+
+  const footerLinks = site.footer.links_he || [];
+  const metaLinks = footerLinks.slice(0,2);
+  const galleryLinks = footerLinks.slice(2);
+  function rowHtml(links){
+    return `<div class="footer-row">${links.map(l => `<a href="${escapeHtml(l.href||'#')}">${escapeHtml(l.label||'')}</a>`).join('')}</div>`;
+  }
+
+  document.getElementById('page').innerHTML = `
+    <section class="oc-hero">
+      <div class="row">
+        <div class="text-col heb">
+          <div class="status-row">
+            <span class="badge status">${escapeHtml(ctx.submission_status_he)}</span>
+            <span class="badge gallery">${escapeHtml(ctx.gallery_label_he)}</span>
+          </div>
+          <h1 class="title">${ctx.title_html}</h1>
+          <div class="descblock">
+            <div class="desc">${ctx.desc_html}</div>
+          </div>
+          ${heroBlocks.join('')}
+        </div>
+        <div class="img-col">
+          <div class="img-frame"><img src="${ctx.hero_image}" alt=""></div>
+        </div>
+      </div>
+    </section>
+    ${galleryHtml}
+    <site-footer></site-footer>`;
+
+  // Wire up shared components against the freshly-rendered DOM.
+  // - artwork-lightbox.js delegates clicks via document, so just re-scan focusables.
+  // - stacked-gallery.js needs an explicit refresh since DOMContentLoaded already fired.
+  if (window.ArtworkLightbox && window.ArtworkLightbox.refreshFocusable) window.ArtworkLightbox.refreshFocusable();
+  if (window.StackedGallery && window.StackedGallery.refresh) window.StackedGallery.refresh();
+})();
+</script>
+
+<!-- Shared components -->
+<script src="../components/site-chrome.js" defer></script>
+<script src="../components/artwork-lightbox.js" defer></script>
+<script src="../components/stacked-gallery.js" defer></script>
+
+<script src="../components/picture-upgrade.js" defer></script>
+</body>
+</html>

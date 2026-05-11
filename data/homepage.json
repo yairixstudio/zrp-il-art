@@ -1,0 +1,60 @@
+{
+  "$schema": "./_schema/homepage.schema.json",
+  "hero": {
+    "title_line_1": "THE ART GALLERIES",
+    "title_line_2": "ZIELINSKI & ROZEN",
+    "image": "images/homepage/hero.png",
+    "description_he": "ארז זילינסקי־רוזן, קודם כול אמן.\nעולם הבישום עבורו הוא קנבס בלתי נראה שנבנה משכבות של רגש וזיכרון."
+  },
+  "mobile_cta": {
+    "_note": "Mobile only — Figma section #3",
+    "label_he": "קול קורא",
+    "info": [
+      { "label": "online" },
+      { "label": "23.4.2026" },
+      { "label": "tel aviv" }
+    ],
+    "linked_opencall_id": null
+  },
+  "open_call_section": {
+    "_note": "Desktop primary — 'the open call' grid with two cards",
+    "header_en": "the open call",
+    "header_he_mobile": "קול קורא",
+    "card_ids": ["the-peeler", "how-many"]
+  },
+  "exhibitions_now": {
+    "_note": "Mobile only — Figma 'exhibitions/now' with 2 current/upcoming cards + artists row",
+    "title_b": "exhibitions",
+    "title_l": "now",
+    "exhibition_ids": ["how-many", "loneliness"],
+    "artists_label": "our artists",
+    "artist_ids": ["zohar-ron", "eitan-goldson", "tanya-shin", "nir-giorgio-levin"]
+  },
+  "exhibitions_archive": {
+    "title_b": "exhibitions",
+    "title_l": "archive",
+    "active_gallery_id": "medina",
+    "thumbs_ref": "exhibitions.archive_thumbnails"
+  },
+  "art_works_words": ["the", "art", "works"],
+  "art_works_words_mobile": ["the", "ART", "works"],
+  "social_section": {
+    "title_lines": ["follow us", "on instagram"],
+    "feed_ref": "instagram.posts"
+  },
+  "galleries_section": {
+    "title_b": "the galleries",
+    "title_l": "tel aviv",
+    "gallery_ids": ["medina", "dizengoff", "flea-market"]
+  },
+  "press_section": {
+    "title_b": "press",
+    "title_l": "& events",
+    "item_ids": [
+      "portfolio-loneliness",
+      "walla-medina",
+      "event-loneliness-3",
+      "event-loneliness-4"
+    ]
+  }
+}

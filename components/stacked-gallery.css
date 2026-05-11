@@ -1,0 +1,153 @@
+/* ============================================================
+   STACKED GALLERY — 3D peek-and-main multistate component
+   See CLAUDE.md §15.
+
+   Visual: one "main" item (large, in frame) + one "peek" item
+   (smaller, bleeding off the left edge). On swap, the two trade places
+   with a smooth transition.
+
+   Modes (set as class on root):
+     .sg-mode-swap     — peek click → swap; main click → follow href (default <a>)
+     .sg-mode-lightbox — both items open the shared artwork-lightbox
+                          (delegate via data-artwork-src on .sg-item)
+     .sg-mode-static   — purely visual, no interaction
+
+   Sizes/positions are controlled by CSS custom properties — override per page:
+     --sg-stage-h, --sg-main-{w,h,x,y,z}, --sg-peek-{w,h,x,y,z,opacity}
+   Defaults match the homepage Figma (landing::144:38).
+
+   Optional info bar:
+     <div class="sg-info">
+       <span data-info="status"></span>
+       <span data-info="date"></span>
+       <span data-info="location"></span>
+     </div>
+   Each `data-info="X"` span is populated from the active main item's
+   `data-info-X` attribute (any field name works).
+
+   Media: each .sg-item may contain <img>, <video>, or both.
+   Videos auto-play when main and pause when peek (component JS).
+   ============================================================ */
+
+.stacked-gallery{
+  /* defaults match homepage mobile-cta Figma */
+  --sg-stage-h: 380.05px;
+  --sg-stage-bg: transparent;
+
+  --sg-main-w: 234.58px;
+  --sg-main-h: 292.05px;
+  --sg-main-x: 62px;
+  --sg-main-y: 44px;
+  --sg-main-z: 2;
+
+  --sg-peek-w: 147.91px;
+  --sg-peek-h: 184.15px;
+  --sg-peek-x: -117px;
+  --sg-peek-y: 97.95px;
+  --sg-peek-z: 1;
+  --sg-peek-opacity: 1;
+
+  --sg-transition-dur: .55s;
+  --sg-transition-ease: cubic-bezier(.4,0,.2,1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.stacked-gallery .sg-stack{
+  position: relative;
+  width: 100%;
+  height: var(--sg-stage-h);
+  background: var(--sg-stage-bg);
+  overflow: hidden;
+  user-select: none;
+}
+
+.stacked-gallery .sg-item{
+  position: absolute;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    left   var(--sg-transition-dur) var(--sg-transition-ease),
+    top    var(--sg-transition-dur) var(--sg-transition-ease),
+    width  var(--sg-transition-dur) var(--sg-transition-ease),
+    height var(--sg-transition-dur) var(--sg-transition-ease),
+    opacity .3s;
+}
+
+.stacked-gallery .sg-item img,
+.stacked-gallery .sg-item video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none; /* clicks go to the parent <a>/<button> */
+}
+
+/* MAIN (right, large) */
+.stacked-gallery .sg-item.is-main{
+  left:   var(--sg-main-x);
+  top:    var(--sg-main-y);
+  width:  var(--sg-main-w);
+  height: var(--sg-main-h);
+  z-index: var(--sg-main-z);
+  opacity: 1;
+}
+
+/* PEEK (left bleed, smaller) */
+.stacked-gallery .sg-item.is-peek{
+  left:   var(--sg-peek-x);
+  top:    var(--sg-peek-y);
+  width:  var(--sg-peek-w);
+  height: var(--sg-peek-h);
+  z-index: var(--sg-peek-z);
+  opacity: var(--sg-peek-opacity);
+}
+.stacked-gallery .sg-item.is-peek img,
+.stacked-gallery .sg-item.is-peek video{
+  object-position: right center;
+}
+.stacked-gallery .sg-item.is-peek::after{
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,0) 60%);
+  pointer-events: none;
+}
+
+/* mode: lightbox — zoom-in cursor hint */
+.stacked-gallery.sg-mode-lightbox .sg-item{cursor: zoom-in}
+/* mode: static — no cursor change, no transitions feel needed but keep for consistency */
+.stacked-gallery.sg-mode-static .sg-item{cursor: default}
+
+/* INFO BAR (optional) */
+.stacked-gallery .sg-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: "Copperplate","Times New Roman", serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #1B1B1B;
+  transition: opacity .25s;
+}
+.stacked-gallery .sg-info > span{
+  width: 80px;
+  font-family: inherit;
+}
+.stacked-gallery .sg-info > span:first-child{text-align: left}
+.stacked-gallery .sg-info > span:nth-child(2){text-align: center}
+.stacked-gallery .sg-info > span:last-child{text-align: right}
+.stacked-gallery .sg-info.is-changing{opacity: .35}
+
+/* a11y focus ring on peek (since main click goes through <a>) */
+.stacked-gallery .sg-item:focus-visible{
+  outline: 2px solid #1B1B1B;
+  outline-offset: 2px;
+}

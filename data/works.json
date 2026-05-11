@@ -1,0 +1,36 @@
+{
+  "$schema": "./_schema/works.schema.json",
+  "_note": "Inventory of art works. Currently only the 4 homepage tiles + 'more' CTA. Full works page (1213:2615 / 1213:2725) will populate this.",
+  "works": [
+    {
+      "id": "tile-the",
+      "title": "the",
+      "homepage_word": "the",
+      "image": "images/works/tile-the.png",
+      "artist_id": null
+    },
+    {
+      "id": "tile-art",
+      "title": "art",
+      "homepage_word": "art",
+      "homepage_word_mobile": "ART",
+      "image": "images/works/tile-art.png",
+      "artist_id": null
+    },
+    {
+      "id": "tile-works",
+      "title": "works",
+      "homepage_word": "works",
+      "image": "images/works/tile-works.png",
+      "artist_id": null
+    },
+    {
+      "id": "tile-more",
+      "title": "more",
+      "homepage_word": "more",
+      "is_cta": true,
+      "image": "images/works/tile-more.png",
+      "href": "/works"
+    }
+  ]
+}

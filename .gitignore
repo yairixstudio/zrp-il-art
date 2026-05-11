@@ -1,0 +1,18 @@
+# original (uncompressed) media — kept locally only
+_originals/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor / IDE
+.idea/
+.vscode/
+
+# Claude Code local config (do not publish)
+.claude/
+
+# Logs / scratch
+*.log
+.tmp/
+tmp/

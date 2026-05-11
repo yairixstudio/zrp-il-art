@@ -1,0 +1,88 @@
+/* ============================================================
+   TRIPTYCH GALLERY — "coverflow" 3-up carousel (1 main + 2 peeks).
+   Pattern: large center image flanked by two smaller, dimmed side
+   peeks (prev/next). Click a peek to rotate; bar-style dots below.
+   Markup contract:
+     .tri[ data-tri-loop="true|false" ]
+       .tri-frame
+         .tri-slide ×N (<img>)
+       .tri-dots
+         button.tri-dot ×N
+   Tokens are tunable per page via CSS vars on `.tri` (see §16ב in CLAUDE.md).
+   ============================================================ */
+
+.tri{
+  --tri-max-w: 880px;
+  --tri-aspect: 11/6;
+  --tri-center-w: 42%;
+  --tri-center-h: 100%;
+  --tri-peek-w: 28%;
+  --tri-peek-h: 72%;
+  --tri-peek-left: 13%;
+  --tri-peek-right: 87%;
+  --tri-peek-opacity: .45;
+  --tri-peek-opacity-hover: .75;
+  --tri-bg: transparent;
+  --tri-dot-w: 32px;
+  --tri-dot-h: 2px;
+  --tri-dot-gap: 8px;
+  --tri-dot-color: #D8D8D8;
+  --tri-dot-active: #515151;
+  --tri-dot-hover: #808080;
+  --tri-transition: .55s cubic-bezier(.4,0,.2,1);
+
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+}
+
+.tri-frame{
+  position:relative;
+  width:100%;
+  max-width:var(--tri-max-w);
+  aspect-ratio:var(--tri-aspect);
+  overflow:hidden;
+  background:var(--tri-bg);
+  touch-action:pan-y;
+  user-select:none;-webkit-user-select:none;
+}
+
+.tri-slide{
+  position:absolute;top:50%;
+  object-fit:cover;display:block;background:#f3f1ee;
+  transform:translate(-50%,-50%);
+  transition:left var(--tri-transition),width var(--tri-transition),height var(--tri-transition),opacity .55s ease,transform var(--tri-transition);
+  will-change:left,width,height,opacity,transform;
+  cursor:pointer;-webkit-user-drag:none;user-drag:none;
+}
+.tri-slide.is-center{left:50%;width:var(--tri-center-w);height:var(--tri-center-h);opacity:1;z-index:3;cursor:default}
+.tri-slide.is-prev{left:var(--tri-peek-left);width:var(--tri-peek-w);height:var(--tri-peek-h);opacity:var(--tri-peek-opacity);z-index:2}
+.tri-slide.is-next{left:var(--tri-peek-right);width:var(--tri-peek-w);height:var(--tri-peek-h);opacity:var(--tri-peek-opacity);z-index:2}
+.tri-slide.is-prev:hover,.tri-slide.is-next:hover{opacity:var(--tri-peek-opacity-hover)}
+.tri-slide.is-hidden{left:50%;width:var(--tri-center-w);height:var(--tri-center-h);opacity:0;z-index:0;pointer-events:none;transform:translate(-50%,-50%) scale(.85)}
+
+.tri-dots{display:flex;gap:var(--tri-dot-gap);justify-content:center;align-items:center;padding:0;margin:0}
+.tri-dot{width:var(--tri-dot-w);height:var(--tri-dot-h);background:var(--tri-dot-color);border:0;padding:0;cursor:pointer;transition:background .2s;border-radius:0}
+.tri-dot.is-on{background:var(--tri-dot-active)}
+.tri-dot:hover{background:var(--tri-dot-hover)}
+
+/* Caption — injected by JS when any slide has data-caption */
+.tri-caption{font-family:var(--heb,"FbEzmel","Arial Hebrew",serif);font-weight:400;font-size:16px;color:var(--ink,#1B1B1B);direction:rtl;text-align:center;line-height:1.4;min-height:1.4em}
+.tri-caption a{color:inherit;text-decoration:underline;text-decoration-color:rgba(27,27,27,.25);text-underline-offset:3px;transition:text-decoration-color .2s,opacity .2s}
+.tri-caption a:hover{text-decoration-color:currentColor;opacity:.75}
+.tri-slide.is-center[data-artist-href]{cursor:pointer}
+
+@media (max-width:1100px){
+  .tri{--tri-max-w:720px}
+}
+@media (max-width:768px){
+  .tri{
+    --tri-aspect: 6/5;
+    --tri-center-w: 54%;
+    --tri-peek-w: 28%;
+    --tri-peek-left: 5%;
+    --tri-peek-right: 95%;
+    --tri-dot-w: 24px;
+    --tri-dot-gap: 6px;
+    gap:14px;
+  }
+  .tri-caption{font-size:14px}
+}

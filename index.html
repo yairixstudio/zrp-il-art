@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zielinski & Rozen — The Art Galleries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="components/artwork-lightbox.css">
+<link rel="stylesheet" href="components/stacked-gallery.css">
+<style>
+/* ===== LOCAL FONTS ===== */
+@font-face{
+  font-family:"Copperplate";
+  src:url("פונטים/Copperplate-Light.ttf") format("truetype");
+  font-weight:300;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"Copperplate";
+  src:url("פונטים/Copperplate.otf") format("opentype");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"Copperplate";
+  src:url("פונטים/CopperplateCC-Bold.otf") format("opentype");
+  font-weight:700;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"Copperplate";
+  src:url("פונטים/CopperplateCC-Heavy.otf") format("opentype");
+  font-weight:900;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"FbEzmel";
+  src:url("פונטים/FbEzmel-Light.otf") format("opentype");
+  font-weight:300;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"FbEzmel";
+  src:url("פונטים/FbEzmel-Regular.otf") format("opentype");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --ink:#1B1B1B;
+  --grey-mid:#808080;
+  --copy-grey:#6B7280;
+  --sep:#EFEFEF;
+  --artist:#828282;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:clip;max-width:100vw}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+.heb{font-family:var(--heb);direction:rtl;unicode-bidi:embed;text-transform:none}
+
+/* GLOBAL CASING RULE — all English text renders UPPERCASE (project-wide).
+   Hebrew is exempt (FbEzmel font / .heb / dir=rtl). */
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none}
+
+/* show/hide helpers */
+.only-mobile{display:none}
+.only-desktop{display:block}
+
+/* ===== NAV/FOOTER moved to components/site-chrome.css ===== */
+
+/* ===== HERO — Figma landing::144:343 (desktop) / 144:24 (mobile) ===== */
+.hero{
+  display:flex;flex-direction:column;align-items:stretch;
+  padding:clamp(120px,18vh,240px) var(--pad-x) 64px;
+  gap:64px;
+  background:var(--white);
+  max-width:1440px;margin:0 auto;
+}
+.hero-titles{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.05;order:0}
+.hero-titles h1{font-family:var(--cop);font-weight:700;font-size:clamp(40px,5vw,64px);letter-spacing:.04em;line-height:1.05}
+.hero-titles h2{font-family:var(--cop);font-weight:300;font-size:clamp(40px,5vw,64px);letter-spacing:.04em;line-height:1.05}
+
+.hero-foot{display:contents}
+.hero-foot .scroll-prompt{display:none}
+
+.hero-desc{
+  font-family:var(--heb);font-weight:400;font-size:clamp(16px,1.4vw,18px);line-height:1.5;
+  text-align:center;direction:rtl;
+  max-width:480px;margin:0 auto;
+  padding:48px 0;
+  order:1;align-self:center;
+}
+
+.hero-image{display:flex;justify-content:center;align-items:center;order:2}
+.hero-image .img-frame{
+  position:relative;
+  width:min(600px,100%);
+  aspect-ratio:600/498;
+  overflow:hidden;
+}
+.hero-image .img-frame img{width:100%;height:100%;object-fit:cover;display:block}
+
+.scroll-prompt svg{width:16px;height:16px;display:block}
+
+/* ===== ANNOUNCEMENT BAR ===== */
+.announce{background:var(--ink);color:var(--white);padding:32px 16px;text-align:center;font-family:var(--cop);font-weight:400;font-size:20px;letter-spacing:.03em;line-height:1.5}
+
+/* ===== SECTION HEADERS ===== */
+.section-header{font-family:var(--cop);font-size:36px;font-weight:400;letter-spacing:.02em;line-height:1.1}
+.section-header .b{font-weight:700;display:block}
+.section-header .l{font-weight:300;display:block}
+
+/* ===== MOBILE-ONLY: קול קורא CTA — multistate gallery (per Figma 144:38) ===== */
+.mobile-cta{display:none;flex-direction:column;gap:24px;padding:32px 16px;background:var(--white)}
+.mobile-cta .cta-head{display:flex;flex-direction:column;align-items:center;gap:16px}
+.mobile-cta .cta-head .label{
+  font-family:var(--heb);font-weight:300;font-size:24px;
+  direction:rtl;text-align:left;color:var(--ink);
+}
+.mobile-cta .cta-head .sep{height:1px;background:var(--sep);width:100%}
+
+/* Mobile-CTA stacked gallery uses the shared component (components/stacked-gallery.{css,js}).
+   Override: center main horizontally and anchor peek to it, so on wider viewports
+   (~520-768px tablets) the main stays centered instead of stuck at left:62px.
+   Math preserves the Figma composition at 390px (sub-px diff) and scales upward. */
+.mobile-cta .stacked-gallery{
+  --sg-main-x: calc((100% - var(--sg-main-w)) / 2);
+  --sg-peek-x: calc((100% - var(--sg-main-w)) / 2 - var(--sg-peek-w) - 31.09px);
+}
+
+/* ===== OPEN CALL (desktop — Figma 144:355) ===== */
+.opencall{display:flex;flex-direction:column;align-items:center;gap:24px;padding:64px var(--pad-x);background:var(--white)}
+.opencall .section-header{display:flex;justify-content:center;align-self:stretch;text-align:left}
+.opencall-grid{display:flex;gap:64px;justify-content:center;flex-wrap:wrap}
+.opencall-card{display:flex;flex-direction:column;gap:16px;max-width:100%}
+.opencall-card.size-a{width:290px}
+.opencall-card.size-b{width:288px}
+.opencall-card .img{width:100%;height:502px;overflow:hidden;background:#f3f1ee}
+.opencall-card .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.opencall-card:hover .img img{transform:scale(1.03)}
+.opencall-card .info{display:grid;grid-template-columns:1fr 1fr 1fr;padding:0 16px;font-family:var(--cop);font-weight:300;font-size:14px;color:var(--ink)}
+.opencall-card.size-b .info .date{font-size:16px}
+.opencall-card .info .status{text-align:left}
+.opencall-card .info .date{text-align:center}
+.opencall-card .info .location{text-align:right}
+
+/* ===== EXHIBITIONS / NOW (mobile-only per Figma) ===== */
+.ex-now{display:none;padding:32px 16px;flex-direction:column;gap:128px}
+.ex-now .titles{line-height:.95}
+.ex-now .titles{max-width:100%}
+.ex-now .titles .b{font-family:var(--cop);font-weight:700;font-size:44px;display:block;white-space:nowrap;letter-spacing:-.01em}
+.ex-now .titles .l{font-family:var(--cop);font-weight:300;font-size:70px;display:block;margin-top:-6px;white-space:nowrap;letter-spacing:-.01em}
+.ex-now .content{display:flex;flex-direction:column;gap:32px}
+.ex-now .cards{display:flex;gap:4px}
+.ex-now .card-link{flex:1;min-width:0;display:block;color:inherit;text-decoration:none}
+.ex-now .card-link .card{display:flex;flex-direction:column;gap:8px}
+.ex-now .card{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ex-now .card-link .card .img img{transition:transform .6s ease}
+.ex-now .card-link:hover .card .img img{transform:scale(1.04)}
+.ex-now .card .gname{font-family:var(--heb);font-weight:300;font-size:14px;direction:rtl;text-align:left;padding:0}
+.ex-now .card .img{position:relative;width:100%;aspect-ratio:174/214;overflow:hidden;background:#222}
+.ex-now .card .img img{width:100%;height:100%;object-fit:cover}
+.ex-now .card .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(102,102,102,0) 38%,rgba(102,102,102,0) 52%,rgba(0,0,0,.75) 100%);pointer-events:none}
+.ex-now .card .ovr{position:absolute;inset:8px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;z-index:1;pointer-events:none}
+.ex-now .card .ovr-titles{display:flex;flex-direction:column;gap:2px}
+.ex-now .card .stat{font-family:var(--cop);font-weight:700;font-size:11px;letter-spacing:.04em}
+.ex-now .card .ttl-en{font-family:var(--cop);font-weight:300;font-size:9px;line-height:1.25}
+.ex-now .card .ttl-he{font-family:var(--heb);font-weight:300;font-size:9px;direction:rtl;text-align:left;line-height:1.25}
+.ex-now .artists-bar{display:flex;justify-content:space-between;align-items:center;padding:0}
+.ex-now .artists-bar .lbl{font-family:var(--cop);font-weight:300;font-size:20px;direction:rtl;text-align:right}
+.ex-now .artists-bar svg{width:16px;height:16px}
+.ex-now .artists-list{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:6px;scrollbar-width:none;padding-right:16px;margin-top:-20px}
+.ex-now .artists-list::-webkit-scrollbar{display:none}
+.ex-now .artist{flex:0 0 96px;display:flex;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start}
+.ex-now .artist img,.ex-now .artist .portrait-placeholder{width:96px;height:80px;object-fit:cover;background:#e8e8e8;display:block}
+.ex-now .artist .nm{font-family:var(--cop);font-weight:300;font-size:11px;line-height:1.15;text-align:center;color:var(--artist);white-space:pre-line}
+
+/* ===== EXHIBITIONS ARCHIVE ===== */
+.exhibitions{padding:48px var(--pad-x) 96px;display:flex;flex-direction:column;gap:40px;align-items:center;background:var(--white)}
+.exhibitions-titles{text-align:center;line-height:1.05}
+.exhibitions-titles .b,.exhibitions-titles .l{font-family:var(--cop);font-size:36px;display:block}
+.exhibitions-titles .b{font-weight:700}
+.exhibitions-titles .l{font-weight:300}
+.past-list{display:flex;flex-direction:column;gap:40px;align-items:center;width:100%}
+.past-tabs{display:flex;justify-content:center;gap:24px;font-family:var(--heb);font-size:28px;direction:rtl;flex-wrap:wrap}
+.past-tabs button{background:none;border:0;padding:0 0 2px;margin:0;font:inherit;color:inherit;cursor:pointer;font-weight:300;transition:color .2s ease,border-color .2s ease;border-bottom:.5px solid transparent}
+.past-tabs button.inactive{color:var(--grey-mid)}
+.past-tabs button.active{color:var(--ink);border-bottom-color:var(--ink)}
+.past-tabs button:hover{color:var(--ink)}
+.past-tabs button:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+.past-thumbs{display:flex;gap:16px;justify-content:center;width:100%}
+.past-thumb{width:158px;display:flex;flex-direction:column;gap:6px;flex-shrink:0;cursor:pointer}
+.past-thumb .num{font-family:var(--cop);font-weight:400;font-size:18.99px;text-align:right;padding-right:12.66px}
+.past-thumb img{width:100%;height:191.52px;object-fit:cover;transition:transform .6s ease}
+.past-thumb:hover img{transform:scale(1.04)}
+.past-thumb:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+
+/* ===== ART WORKS ===== */
+.artworks{display:flex;flex-direction:column;background:var(--white)}
+.aw-row{display:flex;gap:48px;padding:32px var(--pad-x);align-items:center;justify-content:center}
+.aw-img{width:600px;height:600px;flex-shrink:0;overflow:hidden;background:#f3f1ee}
+.aw-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.aw-img:hover img{transform:scale(1.04)}
+.aw-text{width:596px;height:596px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.aw-text .word{font-family:var(--cop);font-weight:700;font-size:80px;line-height:1;color:var(--ink);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.aw-text .more{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:8px;font-family:var(--cop);font-weight:300;font-size:80px;line-height:1;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.aw-text .more:hover{opacity:.7}
+.aw-text .more svg{width:32px;height:32px}
+/* desktop: lowercase 'art' */
+.aw-text .word.art-text::before{content:"art"}
+/* mobile: uppercase 'ART' (per Figma mobile) */
+
+/* ===== INSTAGRAM (Figma XhGH:144:431) — title left, arrows top-right, infinite-loop carousel ===== */
+.social{padding:34px var(--pad-x);display:flex;flex-direction:column;gap:16px;background:var(--white);--ig-cols:6}
+.social-title{font-family:var(--cop);font-weight:700;font-size:36px;line-height:1.1;width:350px;text-align:left}
+.ig-nav{display:flex;justify-content:flex-end;align-items:center;gap:2px}
+.ig-nav button{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;padding:0;color:var(--ink);border:0;background:none;cursor:pointer;transition:opacity .2s}
+.ig-nav button:hover{opacity:.55}
+.ig-nav button:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.ig-nav svg{width:24px;height:16px;display:block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ig-viewport{overflow:hidden;width:100%}
+.ig-track{display:flex;gap:4px;will-change:transform;touch-action:pan-y}
+.ig-item{flex:0 0 calc((100% - (var(--ig-cols) - 1) * 4px) / var(--ig-cols));aspect-ratio:158/192;overflow:hidden;background:#f3f1ee;display:block}
+.ig-item img{width:100%;height:100%;object-fit:cover;transition:opacity .2s}
+.ig-item:hover img{opacity:.85}
+
+/* ===== GALLERIES ===== */
+.galleries{padding:34px var(--pad-x);display:flex;flex-direction:column;gap:24px;background:var(--white)}
+.galleries-title{width:358px;line-height:1.05}
+.galleries-title .b{font-family:var(--cop);font-weight:700;font-size:36px;display:block}
+.galleries-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
+.gallery-cards{display:flex;gap:8px}
+.gallery-card{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
+.gallery-card .img{position:relative;width:100%;height:497.78px;overflow:hidden;background:#f3f1ee}
+.gallery-card .img img{width:100%;height:100%;object-fit:cover}
+.gallery-card .img.dim::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,.55);pointer-events:none}
+.gallery-card .img.dim .coming{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--cop);font-size:24px;letter-spacing:.04em;z-index:1}
+.gallery-card .info{display:flex;flex-direction:column;gap:8px;text-align:right;direction:rtl;font-family:var(--heb);padding:0 8px}
+.gallery-card .name{font-size:28px;font-weight:400}
+.gallery-card .addr{font-size:18px;font-weight:400}
+.gallery-card .hours{display:flex;flex-direction:column;gap:4px;font-size:16px;font-weight:300;color:var(--ink)}
+
+/* ===== PRESS & EVENTS ===== */
+.press{padding:32px var(--pad-x) 48px;display:flex;flex-direction:column;gap:24px;background:var(--white)}
+.press-title{line-height:1.05}
+.press-title .b{font-family:var(--cop);font-weight:700;font-size:36px;display:block}
+.press-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
+.press-rows{display:flex;flex-direction:column;gap:48px}
+.press-row{display:flex;gap:48px}
+.press-card{flex:1;display:flex;gap:16px;align-items:stretch;min-width:0;direction:rtl;color:inherit;text-decoration:none;transition:opacity .2s}
+.press-card:hover{opacity:.75}
+.press-card .img img{transition:transform .6s}
+.press-card:hover .img img{transform:scale(1.04)}
+.press-card .info{flex:1;display:flex;flex-direction:column;justify-content:space-between;text-align:right;min-width:0;padding:8px 0;gap:8px}
+.press-card .tag{align-self:flex-start;background:var(--bg-grey);padding:4px 8px;font-family:var(--heb);font-size:14px;font-weight:300;display:inline-block}
+.press-card .tag.en{font-family:var(--cop);font-weight:300;direction:ltr}
+.press-card .desc{font-family:var(--heb);font-size:16px;font-weight:400;line-height:1.4;text-align:right}
+.press-card .date{font-family:var(--cop);font-size:14px;font-weight:300;text-align:right;direction:ltr;align-self:flex-start}
+.press-card .img{flex:1;overflow:hidden;background:#f3f1ee;min-height:160px}
+.press-card .img img{width:100%;height:100%;object-fit:cover;min-height:160px}
+
+/* ===== FOOTER moved to components/site-chrome.css ===== */
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤1100px)
+   ============================================================ */
+@media (max-width:1100px){
+  :root{--pad-x:48px}
+  .hero{padding:clamp(80px,14vh,160px) var(--pad-x) 48px;gap:48px}
+  .hero-titles h1,.hero-titles h2{font-size:clamp(40px,5.5vw,56px)}
+  .hero-desc{padding:32px 0}
+  .hero-image .img-frame{width:min(560px,100%)}
+  .aw-img,.aw-text{width:50%;height:auto;aspect-ratio:1/1}
+  .aw-text .word{left:50%;top:50%;transform:translate(-50%,-50%);font-size:60px}
+  .aw-text .more{left:50%;top:50%;transform:translate(-50%,-50%);font-size:60px}
+  .gallery-card .img{height:380px}
+  .opencall-card{width:280px}
+  .opencall-card .img{height:420px}
+  .social{--ig-cols:4}
+  .past-thumb{width:140px}
+  .past-thumb img{height:170px}
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤768px)
+   ============================================================ */
+@media (max-width:768px){
+  :root{--pad-x:16px}
+
+  .only-desktop{display:none !important}
+  .only-mobile{display:block}
+
+  /* HERO — mobile (Figma 144:24) */
+  .hero{
+    padding:32px 16px;
+    gap:24px;
+    align-items:stretch;
+  }
+  .hero-titles{align-items:flex-start;text-align:left;line-height:1.05;order:1}
+  .hero-titles h1,.hero-titles h2{font-size:36px;letter-spacing:.02em}
+
+  .hero-image{order:2;width:100%;display:block}
+  .hero-image .img-frame{
+    width:100%;
+    height:297px;
+    aspect-ratio:auto;
+  }
+
+  .hero-foot{
+    display:flex;flex-direction:column;gap:120px;
+    order:3;width:100%;
+  }
+  .hero-foot .scroll-prompt{
+    display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+    font-family:var(--cop);font-weight:300;font-size:16px;color:var(--ink);
+  }
+
+  .hero-desc{
+    text-align:right;direction:rtl;
+    font-family:var(--heb);font-weight:400;
+    font-size:16px;line-height:1.5;
+    max-width:none;
+    padding:0;margin:0;
+    align-self:stretch;
+  }
+  .hero-desc .d-only{display:none}
+
+  /* ANNOUNCEMENT */
+  .announce{font-size:13px;letter-spacing:.01em;padding:20px 16px}
+
+  /* MOBILE-ONLY קול קורא (multistate) */
+  .mobile-cta{display:flex}
+
+  /* OPEN CALL */
+  .opencall{padding:24px 16px;align-items:stretch;gap:16px}
+  .opencall .section-header{font-size:24px;text-align:right;direction:rtl;font-family:var(--heb);font-weight:300}
+  .opencall-grid{gap:8px;flex-wrap:nowrap}
+  .opencall-card{width:calc(50% - 4px);gap:8px}
+  .opencall-card .img{height:auto;aspect-ratio:177/256}
+  .opencall-card .info{font-size:11px;padding:0 4px;letter-spacing:.02em}
+
+  /* MOBILE-ONLY exhibitions/now */
+  .ex-now{display:flex}
+
+  /* EXHIBITIONS ARCHIVE */
+  .exhibitions{padding:32px 16px;gap:32px;align-items:stretch}
+  .exhibitions-titles{text-align:left;line-height:.95;max-width:100%}
+  .exhibitions-titles .b{font-size:44px;white-space:nowrap;letter-spacing:-.01em}
+  .exhibitions-titles .l{font-size:70px;margin-top:-6px;white-space:nowrap;letter-spacing:-.01em}
+  .past-tabs{justify-content:flex-end;font-size:16px;gap:16px;flex-wrap:wrap}
+  .past-thumbs{overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;gap:8px;scroll-snap-type:x mandatory;padding-bottom:4px;margin:0 -16px;padding-left:16px;padding-right:16px}
+  .past-thumbs::-webkit-scrollbar{display:none}
+  .past-thumb{width:100px;flex-shrink:0;scroll-snap-align:start}
+  .past-thumb .num{font-size:12px;padding-right:8px}
+  .past-thumb img{height:120px}
+
+  /* ART WORKS — 2x2 grid; mobile ART = uppercase per Figma */
+  .artworks{padding:32px 16px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;align-content:start}
+  .aw-row{display:contents}
+  .aw-img{width:100%;height:auto;aspect-ratio:1/1;padding:0;margin:0}
+  .aw-row:nth-child(1) .aw-img{grid-column:1;grid-row:1}
+  .aw-row:nth-child(2) .aw-img{grid-column:2;grid-row:2}
+  .aw-row:nth-child(3) .aw-img{grid-column:1;grid-row:3}
+  .aw-row:nth-child(4) .aw-img{grid-column:2;grid-row:4}
+  .aw-text{width:100%;height:auto;aspect-ratio:1/1;position:relative}
+  .aw-row:nth-child(1) .aw-text{grid-column:2;grid-row:1}
+  .aw-row:nth-child(2) .aw-text{grid-column:1;grid-row:2}
+  .aw-row:nth-child(3) .aw-text{grid-column:2;grid-row:3}
+  .aw-row:nth-child(4) .aw-text{grid-column:1;grid-row:4}
+  .aw-text .word,.aw-text .more{position:absolute;font-size:36px;left:50%;top:50%;transform:translate(-50%,-50%);padding:0;line-height:1;font-family:var(--cop)}
+  .aw-text .more svg{width:24px;height:24px}
+  .aw-text .word.art-mobile-up{font-weight:700}
+  /* Show "ART" uppercase on mobile only (per Figma mobile design) */
+  .aw-text .word.art{visibility:hidden}
+  .aw-text .word.art::after{content:"ART";visibility:visible;position:absolute;left:0;top:0;font-weight:700}
+
+  /* INSTAGRAM — carousel keeps controlled translate; mobile shows ~2.5 peek-cards */
+  .social{padding:32px 16px;gap:16px;--ig-cols:2.5}
+  .social-title{font-size:36px;width:auto;line-height:1.05}
+  .ig-nav svg{width:22px;height:14px}
+
+  /* GALLERIES — mobile row layout, RTL */
+  .galleries{padding:32px 16px;gap:24px}
+  .galleries-title{width:auto;line-height:1.05}
+  .gallery-cards{flex-direction:column;gap:16px}
+  .gallery-card{flex-direction:row-reverse;gap:16px;align-items:stretch}
+  .gallery-card .img{width:174px;height:210px;flex-shrink:0}
+  .gallery-card .img.dim .coming{font-size:13px;letter-spacing:.04em}
+  .gallery-card .info{flex:1;justify-content:flex-end;padding:0;gap:6px}
+  .gallery-card .name{font-size:22px}
+  .gallery-card .addr{font-size:16px}
+  .gallery-card .hours{font-size:14px}
+
+  /* PRESS & EVENTS */
+  .press{padding:32px 16px}
+  .press-rows{gap:24px}
+  .press-row{flex-direction:column;gap:24px}
+  .press-card{direction:rtl}
+  .press-card .img{flex:0 0 40%;max-width:40%;min-height:108px}
+  .press-card .img img{height:100%;min-height:108px;max-height:160px}
+  .press-card .desc{font-size:14px}
+
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL MOBILE (≤400px)
+   ============================================================ */
+@media (max-width:400px){
+  .announce{font-size:12px;letter-spacing:.005em}
+  .hero-titles h1,.hero-titles h2{font-size:30px}
+  /* exhibitions/ex-now titles use clamp() — auto-scale to viewport, no fixed override needed */
+  .social{--ig-cols:2}
+  .social-title{font-size:30px}
+  .galleries-title .b,.galleries-title .l,
+  .press-title .b,.press-title .l{font-size:30px}
+  .aw-text .word,.aw-text .more{font-size:28px}
+  .gallery-card .img{width:140px;height:170px}
+  .gallery-card .name{font-size:18px}
+  .ex-now .card .stat{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<site-header></site-header>
+
+<!-- HERO — Figma landing::144:343 (desktop) / 144:24 (mobile) -->
+<section class="hero">
+  <div class="hero-titles">
+    <h1>THE ART GALLERIES</h1>
+    <h2>ZIELINSKI &amp; ROZEN</h2>
+  </div>
+  <div class="hero-image">
+    <div class="img-frame">
+      <img src="images/homepage/hero-landscape.png" alt="Erez Zielinski Rozen">
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="scroll-prompt" aria-hidden="true">
+      <span>SCROLL</span>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 2v12M3 9l5 5 5-5"/></svg>
+    </div>
+    <p class="hero-desc">ארז זילינסקי־רוזן, קודם כול אמן. <br class="d-only">עולם הבישום עבורו הוא קנבס בלתי נראה שנבנה משכבות של רגש וזיכרון.</p>
+  </div>
+</section>
+
+<!-- ANNOUNCEMENT -->
+<div class="announce">coming soon our europe galleries</div>
+
+<!-- MOBILE-ONLY: קול קורא — multistate stacked gallery (Figma landing::144:38).
+     Uses the shared stacked-gallery component in `swap` mode:
+     tap the peek (left) to swap it to main; tap the main to navigate. -->
+<section class="mobile-cta" id="mobile-cta">
+  <div class="cta-head">
+    <div class="label heb">קול קורא</div>
+    <div class="sep"></div>
+  </div>
+  <div class="stacked-gallery sg-mode-swap" data-active="the-peeler">
+    <div class="sg-stack">
+      <a class="sg-item is-main"
+         href="pages/opencall.html?id=the-peeler"
+         data-id="the-peeler"
+         data-info-status="online"
+         data-info-date="23.4.2026"
+         data-info-location="tel aviv"
+         aria-label="open call: the peeler">
+        <img src="images/opencalls/the-peeler-card.png" alt="the peeler — open call">
+      </a>
+      <a class="sg-item is-peek"
+         href="pages/opencall.html?id=how-many"
+         data-id="how-many"
+         data-info-status="online"
+         data-info-date="17.2.2026"
+         data-info-location="tel aviv"
+         aria-label="open call: how many partners have you had?">
+        <img src="images/opencalls/how-many-card.png" alt="how many partners — open call">
+      </a>
+    </div>
+    <div class="sg-info">
+      <span data-info="status"></span>
+      <span data-info="date"></span>
+      <span data-info="location"></span>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN CALL (desktop primary — Figma landing::144:355) -->
+<section class="opencall only-desktop" id="opencall">
+  <h2 class="section-header">the open call</h2>
+  <div class="opencall-grid">
+    <a class="opencall-card size-a" href="pages/opencall.html?id=the-peeler">
+      <div class="img"><img src="images/opencalls/the-peeler-card.png" alt=""></div>
+      <div class="info"><span class="status">archived</span><span class="date">23.4.2026</span><span class="location">tel aviv</span></div>
+    </a>
+    <a class="opencall-card size-b" href="pages/opencall.html?id=how-many">
+      <div class="img"><img src="images/opencalls/how-many-card.png" alt=""></div>
+      <div class="info"><span class="status">archived</span><span class="date">17.2.2026</span><span class="location">tel aviv</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- MOBILE-ONLY: exhibitions / now (current exhibitions + artists) -->
+<section class="ex-now">
+  <div class="titles">
+    <span class="b">exhibitions</span>
+    <span class="l">now</span>
+  </div>
+  <div class="content">
+    <div class="cards">
+      <a class="card-link" href="pages/exhibition.html?id=how-many">
+        <article class="card">
+          <div class="gname">גלריית כיכר דיזינגוף</div>
+          <div class="img">
+            <img src="images/galleries/dizengoff/hero.png" alt="">
+            <div class="ovr">
+              <div class="stat">upcoming</div>
+              <div class="ovr-titles">
+                <div class="ttl-en">how many partners<br>have you had?</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </a>
+      <a class="card-link" href="pages/exhibition.html?id=loneliness">
+        <article class="card">
+          <div class="gname">גלריית כיכר המדינה</div>
+          <div class="img">
+            <img src="images/galleries/medina/hero.png" alt="">
+            <div class="ovr">
+              <div class="stat">current</div>
+              <div class="ovr-titles">
+                <div class="ttl-en">exhibition volume 1</div>
+                <div class="ttl-he">בדידות בסביבה תוססת</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </a>
+    </div>
+    <div class="artists-bar">
+      <span class="lbl">our artists</span>
+      <a href="pages/artists/alon.html" aria-label="all artists"><svg width="16" height="16" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.926778 11.0004L0 10.0736L8.73379 1.33128H0.793662V0H11.0004V10.2067H9.6691V2.2666L0.926778 11.0004Z" fill="#1A1C1C"/></svg></a>
+    </div>
+    <div class="artists-list">
+      <a class="artist" href="pages/artists/zohar-ron.html"><img src="images/artists/zohar-ron/portrait.png" alt="זוהר רון"><div class="nm">zohar
+ron</div></a>
+      <a class="artist" href="pages/artists/eitan-goldson.html"><img src="images/artists/eitan-goldson/portrait.png" alt="איתן גולדסון"><div class="nm">eitan
+goldson</div></a>
+      <a class="artist" href="pages/artists/tanya-shin.html"><img src="images/artists/tanya-shin/portrait-v2.png" alt="טניה שין"><div class="nm">tanya
+shin</div></a>
+      <a class="artist" href="pages/artists/nir-giorgio-levin.html"><img src="images/artists/nir-giorgio-levin/portrait-v2.png" alt="ניר ג׳ורג׳יו לוין"><div class="nm">nir giorgio
+levin</div></a>
+      <a class="artist" href="pages/artists/elsa-ars-brush.html"><img src="images/artists/elsa-ars-brush/portrait.png" alt="אלסה ארס ברוש"><div class="nm">elsa
+ars brush</div></a>
+      <a class="artist" href="pages/artists/gal-polk.html"><img src="images/artists/gal-polk/portrait.png" alt="גל פולק"><div class="nm">gal
+polk</div></a>
+      <a class="artist" href="pages/artists/zohar-shtrit.html"><div class="portrait-placeholder"></div><div class="nm">zohar
+shtrit</div></a>
+      <a class="artist" href="pages/artists/hila-loterstein.html"><div class="portrait-placeholder"></div><div class="nm">hila
+loterstein</div></a>
+      <a class="artist" href="pages/artists/sami-david.html"><img src="images/artists/sami-david/portrait.png" alt="סמי דוד"><div class="nm">sami
+david</div></a>
+      <a class="artist" href="pages/artists/risa-oz.html"><img src="images/artists/risa-oz/portrait.png" alt="ריסה עוז"><div class="nm">risa
+oz</div></a>
+      <a class="artist" href="pages/artists/zohar-ron-dan-ben-ari.html"><div class="portrait-placeholder"></div><div class="nm">zohar ron
+dan ben ari</div></a>
+      <a class="artist" href="pages/artists/adi-duak.html"><div class="portrait-placeholder"></div><div class="nm">adi
+duak</div></a>
+      <a class="artist" href="pages/artists/alon.html"><img src="images/artists/alon/portrait.png" alt="אלון מנג׳וך"><div class="nm">alon
+manjuch</div></a>
+      <a class="artist" href="pages/artists/noemi-safir.html"><img src="images/artists/noemi-safir/portrait.png" alt="נועמי ספיר"><div class="nm">noemi
+safir</div></a>
+      <a class="artist" href="pages/artists/yarden-amir.html"><img src="images/artists/yarden-amir/portrait.png" alt="ירדן אמיר"><div class="nm">yarden
+amir</div></a>
+      <a class="artist" href="pages/artists/anat-wegier.html"><img src="images/artists/anat-wegier/portrait.png" alt="ענת ויז׳ייה"><div class="nm">anat
+wegier</div></a>
+      <a class="artist" href="pages/artists/liel-salman.html"><img src="images/artists/liel-salman/portrait.png" alt="ליאל סלמן"><div class="nm">liel
+salman</div></a>
+      <a class="artist" href="pages/artists/tal-nehoray.html"><img src="images/artists/tal-nehoray/portrait.png" alt="טל נהוראי"><div class="nm">tal
+nehoray</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- EXHIBITIONS ARCHIVE -->
+<section class="exhibitions" id="exhibitions">
+  <div class="exhibitions-titles">
+    <span class="b">exhibitions</span>
+    <span class="l">archive</span>
+  </div>
+  <div class="past-list">
+    <div class="past-tabs" role="tablist" aria-label="exhibitions archive by gallery">
+      <button type="button" class="inactive" role="tab" data-tab="dizengoff" aria-selected="false">גלריית כיכר דיזינגוף</button>
+      <button type="button" class="active"   role="tab" data-tab="medina"    aria-selected="true">גלריית כיכר המדינה</button>
+    </div>
+    <div class="past-thumbs" data-artwork-gallery="exhibitions-archive" role="tabpanel"></div>
+  </div>
+</section>
+
+<!-- ART WORKS -->
+<section class="artworks" id="artworks">
+  <div class="aw-row">
+    <div class="aw-img"><img src="images/works/tile-the.png" alt=""></div>
+    <div class="aw-text"><span class="word the">the</span></div>
+  </div>
+  <div class="aw-row">
+    <div class="aw-text"><span class="word art">art</span></div>
+    <div class="aw-img"><img src="images/works/tile-art.png" alt=""></div>
+  </div>
+  <div class="aw-row">
+    <div class="aw-img"><img src="images/works/tile-works.png" alt=""></div>
+    <div class="aw-text"><span class="word works">works</span></div>
+  </div>
+  <div class="aw-row">
+    <div class="aw-text">
+      <a href="pages/works.html" class="more">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 8l-8 8 8 8"/></svg>
+        more
+      </a>
+    </div>
+    <div class="aw-img"><a href="pages/works.html"><img src="images/works/tile-more.png" alt=""></a></div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="social">
+  <h2 class="social-title">follow us<br>on instagram</h2>
+  <div class="ig-nav" role="group" aria-label="instagram navigation">
+    <button type="button" class="ig-prev" aria-label="previous"><svg viewBox="0 0 24 16"><path d="M22 8H2M2 8l6-6M2 8l6 6"/></svg></button>
+    <button type="button" class="ig-next" aria-label="next"><svg viewBox="0 0 24 16"><path d="M2 8h20M22 8l-6-6M22 8l-6 6"/></svg></button>
+  </div>
+  <div class="ig-viewport">
+    <div class="ig-track" id="igTrack">
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/1.png" alt=""></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/2.png" alt=""></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/3.png" alt=""></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/4.png" alt=""></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/5.png" alt=""></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/6.png" alt=""></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/7.png" alt=""></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/8.png" alt=""></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/9.png" alt=""></a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERIES -->
+<section class="galleries" id="galleries">
+  <div class="galleries-title">
+    <span class="b">the galleries</span>
+    <span class="l">tel aviv</span>
+  </div>
+  <div class="gallery-cards">
+    <article class="gallery-card">
+      <div class="img"><img src="images/galleries/medina/hero.png" alt=""></div>
+      <div class="info">
+        <div class="name">גלריית כיכר המדינה</div>
+        <div class="addr">ז'בוטינסקי 131, תל אביב</div>
+        <div class="hours">
+          <span>א'-ה' 10:00-19:00</span>
+          <span>ו' 10:00-14:00</span>
+          <span>שבת סגור</span>
+        </div>
+      </div>
+    </article>
+    <article class="gallery-card">
+      <div class="img dim"><img src="images/galleries/dizengoff/hero.png" alt=""><span class="coming">coming soon</span></div>
+      <div class="info">
+        <div class="name">גלריית כיכר דיזינגוף</div>
+        <div class="addr">כיכר דיזינגוף, תל אביב</div>
+      </div>
+    </article>
+    <article class="gallery-card">
+      <div class="img dim"><img src="images/galleries/flea-market/hero.png" alt=""><span class="coming">coming soon</span></div>
+      <div class="info">
+        <div class="name">גלריית שוק הפשפשים</div>
+        <div class="addr">שוק הפשפשים, תל אביב</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PRESS & EVENTS -->
+<section class="press" id="press">
+  <div class="press-title">
+    <span class="b">press</span>
+    <span class="l">&amp; events</span>
+  </div>
+  <div class="press-rows">
+    <div class="press-row">
+      <a class="press-card" href="pages/press/press-1.html">
+        <div class="info">
+          <span class="tag">מגזין פורטפוליו</span>
+          <p class="desc">איך מרגישה בדידות בתוך סביבה תוססת: תערוכה חדשה בגלריית זילינסקי רוזן</p>
+          <span class="date">19.1.2026</span>
+        </div>
+        <div class="img"><img src="images/press/portfolio-cover.png" alt=""></div>
+      </a>
+      <a class="press-card" href="pages/press/walla.html">
+        <div class="info">
+          <span class="tag">וואלה | תרבות</span>
+          <p class="desc">מותג הבישום פתח גלריה בכיכר המדינה: 100% מהרווחים הולכים לאמנים</p>
+          <span class="date">5.1.2026</span>
+        </div>
+        <div class="img"><img src="images/press/walla-cover.png" alt=""></div>
+      </a>
+    </div>
+    <div class="press-row">
+      <a class="press-card" href="pages/events/loneliness.html">
+        <div class="info">
+          <span class="tag en">gallery event</span>
+          <p class="desc">בדידות בתוך סביבה תוססת</p>
+          <span class="date">25.2.2026</span>
+        </div>
+        <div class="img"><img src="images/events/event-3-cover.png" alt=""></div>
+      </a>
+      <a class="press-card" href="pages/events/loneliness.html">
+        <div class="info">
+          <span class="tag en">gallery event</span>
+          <p class="desc">בדידות בתוך סביבה תוססת</p>
+          <span class="date">19.1.2026</span>
+        </div>
+        <div class="img"><img src="images/events/event-4-cover.png" alt=""></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<site-footer></site-footer>
+
+<!-- ============================================================
+     EXHIBITIONS ARCHIVE — tab toggle + lightbox wiring
+     Data source: data/exhibitions.json :: archive_thumbnails
+     Inline fallback below covers file:// usage (fetch may be blocked).
+     IMPORTANT: when updating exhibitions.json::archive_thumbnails,
+     also update the inline fallback (until a build step exists).
+     ============================================================ -->
+<script type="application/json" id="fallback-archive">
+{
+  "tabs": [
+    {
+      "gallery_id": "dizengoff",
+      "label_he": "גלריית כיכר דיזינגוף",
+      "active": false,
+      "thumbs": [
+        { "n": "01", "image": "images/exhibitions/how-many/artists/01-zohar-ron.png",         "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 01" },
+        { "n": "02", "image": "images/exhibitions/how-many/artists/02-dan-ben-ari.png",       "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 02" },
+        { "n": "03", "image": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.png", "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 03" },
+        { "n": "04", "image": "images/exhibitions/how-many/artists/13-gal-pollak.png",        "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 04" }
+      ]
+    },
+    {
+      "gallery_id": "medina",
+      "label_he": "גלריית כיכר המדינה",
+      "active": true,
+      "thumbs": [
+        { "n": "01", "image": "images/exhibitions/archive/thumb-01.png", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 01" },
+        { "n": "02", "image": "images/exhibitions/archive/thumb-02.png", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 02" },
+        { "n": "03", "image": "images/exhibitions/archive/thumb-03.png", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 03" },
+        { "n": "04", "image": "images/exhibitions/archive/thumb-04.png", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 04" }
+      ]
+    }
+  ]
+}
+</script>
+<script>
+(function(){
+  var thumbsEl = document.querySelector('.past-thumbs');
+  var tabsEl   = document.querySelector('.past-tabs');
+  if (!thumbsEl || !tabsEl) return;
+
+  var data = null;
+  var byGallery = {};
+
+  function loadData(){
+    return fetch('data/exhibitions.json')
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(j){ return j && j.archive_thumbnails; })
+      .catch(function(){
+        var node = document.getElementById('fallback-archive');
+        try { return node ? JSON.parse(node.textContent) : null; }
+        catch(e){ return null; }
+      });
+  }
+
+  function renderThumbs(galleryId){
+    var tab = byGallery[galleryId];
+    if (!tab) return;
+    var html = tab.thumbs.map(function(t){
+      var title = (t.title_he || '').replace(/"/g,'&quot;');
+      // CTA inside lightbox → exhibition page (pages/exhibitions/<slug>.html).
+      // Those pages are still pending (see CLAUDE.md sitemap) — link is forward-looking.
+      var link = t.exhibition_id ? 'pages/exhibitions/'+t.exhibition_id+'.html' : '';
+      return '<div class="past-thumb" '+
+                'data-artwork-src="'+t.image+'" '+
+                'data-artwork-title="'+title+'" '+
+                'data-artwork-exhibition="'+(t.exhibition_id||'')+'" '+
+                (link  ? 'data-artwork-link="'+link+'" data-artwork-link-label="מעבר לתערוכה" ' : '')+
+                'tabindex="0" role="button" aria-label="'+title+'">'+
+               '<span class="num">'+t.n+'</span>'+
+               '<img src="'+t.image+'" alt="'+title+'">'+
+             '</div>';
+    }).join('');
+    thumbsEl.innerHTML = html;
+    if (window.ArtworkLightbox && window.ArtworkLightbox.refreshFocusable){
+      window.ArtworkLightbox.refreshFocusable();
+    }
+  }
+
+  function setActive(galleryId){
+    var btns = tabsEl.querySelectorAll('button[data-tab]');
+    Array.prototype.forEach.call(btns, function(b){
+      var on = b.getAttribute('data-tab') === galleryId;
+      b.classList.toggle('active', on);
+      b.classList.toggle('inactive', !on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    renderThumbs(galleryId);
+  }
+
+  tabsEl.addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-tab]');
+    if (!btn) return;
+    setActive(btn.getAttribute('data-tab'));
+  });
+
+  loadData().then(function(d){
+    if (!d || !d.tabs) return;
+    data = d;
+    d.tabs.forEach(function(t){ byGallery[t.gallery_id] = t; });
+    var initial = (d.tabs.filter(function(t){ return t.active; })[0] || d.tabs[0]).gallery_id;
+    setActive(initial);
+  });
+})();
+</script>
+
+<!-- Artwork Lightbox component (shared) — see CLAUDE.md §15 -->
+<script src="components/artwork-lightbox.js" defer></script>
+
+<!-- Site chrome: shared header + footer (single source of truth) -->
+<script src="components/site-chrome.js" defer></script>
+
+<!-- Stacked gallery component (homepage mobile-cta uses sg-mode-swap) -->
+<script src="components/stacked-gallery.js" defer></script>
+
+<!-- Instagram carousel — infinite loop, arrow nav, touch swipe (Figma XhGH:144:431) -->
+<script>
+(function(){
+  var track = document.getElementById('igTrack');
+  if(!track) return;
+  var prevBtn = document.querySelector('.ig-prev');
+  var nextBtn = document.querySelector('.ig-next');
+  if(!prevBtn || !nextBtn) return;
+
+  var originals = Array.prototype.slice.call(track.children);
+  var N = originals.length;
+  if(N === 0) return;
+
+  // Clone full set before and after — 3× total. Start index = N (first real item).
+  for (var i = 0; i < N; i++) track.appendChild(originals[i].cloneNode(true));
+  for (var j = N - 1; j >= 0; j--) track.insertBefore(originals[j].cloneNode(true), track.firstChild);
+
+  var idx = N;        // current logical index into the cloned track
+  var animating = false;
+
+  function step(){
+    var first = track.children[0];
+    if(!first) return 0;
+    var styles = getComputedStyle(track);
+    var gap = parseFloat(styles.columnGap || styles.gap || '4') || 4;
+    return first.getBoundingClientRect().width + gap;
+  }
+  function apply(animate){
+    track.style.transition = animate ? 'transform .45s cubic-bezier(.4,0,.2,1)' : 'none';
+    track.style.transform = 'translate3d(' + (-idx * step()) + 'px,0,0)';
+  }
+
+  // Initial layout — wait one frame so images measure correctly
+  requestAnimationFrame(function(){ apply(false); });
+
+  track.addEventListener('transitionend', function(){
+    animating = false;
+    // Snap-back when we drift into a clone region — no animation, user doesn't notice.
+    if (idx >= 2 * N) { idx -= N; apply(false); }
+    else if (idx < N) { idx += N; apply(false); }
+  });
+
+  function next(){ if(animating) return; animating = true; idx++; apply(true); }
+  function prev(){ if(animating) return; animating = true; idx--; apply(true); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // Keyboard arrows when section in viewport
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    var rect = track.getBoundingClientRect();
+    if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+    if(document.activeElement === prevBtn || document.activeElement === nextBtn || document.activeElement === track){
+      if(e.key === 'ArrowRight') next(); else prev();
+    }
+  });
+
+  // Touch swipe
+  var startX = 0, dragging = false;
+  track.addEventListener('touchstart', function(e){
+    startX = e.touches[0].clientX; dragging = true;
+  }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    if(!dragging) return;
+    dragging = false;
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 30) { if (dx < 0) next(); else prev(); }
+  });
+
+  // Recompute transform on resize (item width can change with --ig-cols breakpoint)
+  var rt;
+  window.addEventListener('resize', function(){
+    clearTimeout(rt);
+    rt = setTimeout(function(){ apply(false); }, 80);
+  });
+})();
+</script>
+
+<script src="components/picture-upgrade.js" defer></script>
+</body>
+</html>

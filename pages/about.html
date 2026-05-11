@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Zielinski & Rozen Art Galleries</title>
+<link rel="stylesheet" href="../components/triptych-gallery.css">
+<style>
+/* ===== LOCAL FONTS ===== */
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --ink:#1B1B1B;
+  --grey-mid:#808080;
+  --copy-grey:#6B7280;
+  --sep:#EFEFEF;
+  --divider:#D8D8D8;     /* about page only — vertical quote-block divider */
+  --slide-active:#515151; /* about page only — active slideshow segment */
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+/* GLOBAL CASING RULE — all English text renders UPPERCASE (project-wide).
+   Hebrew is exempt. See CLAUDE.md §9. */
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+
+.only-mobile{display:none}
+.only-desktop{display:block}
+
+/* ===== NAV/FOOTER moved to ../components/site-chrome.css ===== */
+
+/* ===== ABOUT — DESKTOP ===== */
+.about{display:flex;flex-direction:column}
+
+/* SECTION 1 — Hero (image + title + intro) */
+.about-hero{padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
+.about-hero .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
+.about-hero .img-col{flex:0 0 492px;display:flex;justify-content:flex-end;position:relative}
+.about-hero .img-frame{position:relative;width:492px;height:744px}
+.about-hero .img-frame img{width:100%;height:100%;object-fit:cover}
+.about-hero .img-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);pointer-events:none;opacity:.55}
+.about-hero .name-overlay{position:absolute;right:0;top:597px;width:auto;display:flex;flex-direction:column;align-items:flex-end;color:#fff;font-family:var(--cop);font-weight:700;font-size:40px;letter-spacing:.22em;text-align:right;line-height:1.025;z-index:1}
+.about-hero .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;gap:32px;padding:0 16px}
+.about-hero h1{font-family:var(--cop);font-weight:400;font-size:80px;line-height:72px;text-align:center;color:var(--ink)}
+.about-hero .intro-he{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.55;text-align:center;direction:rtl;color:var(--ink)}
+
+/* SECTION 2 — Erez portraits coverflow carousel.
+   משתמש בקומפוננטה המשותפת components/triptych-gallery.{css,js} (ראה §16ב ב-CLAUDE.md).
+   ה-wrapper כאן רק נותן padding/background; ה-classes הפעילות (.tri/.tri-frame/.tri-slide/.tri-dot)
+   מטופלות בקומפוננטה. */
+.about-tri{padding:64px var(--pad-x);background:var(--white)}
+
+/* SECTION 3 — Biography (Hebrew) with vertical EREZ sidebar */
+.about-bio{padding:48px var(--pad-x);display:flex;justify-content:center}
+.about-bio .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max);direction:rtl}
+.about-bio .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:32px;padding:0 16px;direction:rtl}
+/* bio-block = Figma Frame 296 (row 438.08px wide).
+   - direction:ltr (NOT rtl) so paras sits on the LEFT and vsig on the RIGHT (rightmost edge — vsig is the "spine" of the section, opposite the image).
+   - align-items:flex-start is critical: stretch would couple vsig wrapper height to paras height, and JS letter-spacing growth would feed back into paras, creating an infinite-grow loop. flex-start decouples them. */
+.about-bio .bio-block{display:flex;flex-direction:row;gap:19.578947px;align-items:flex-start;width:438.08px;max-width:100%;direction:ltr}
+.about-bio .paras{display:flex;flex-direction:column;gap:19.578947px;flex:1;min-width:0;font-family:var(--heb);font-weight:300;font-size:22px;line-height:1.0;color:var(--ink);text-align:right;direction:rtl}
+.about-bio .paras p{font-weight:300}
+.about-bio .paras .lead{font-weight:400}
+.about-bio .paras .quote{font-style:normal}
+.about-bio .vsig{flex:0 0 30.59px;display:flex;align-items:center;justify-content:center;padding:6.118421px 0}
+/* vsig span: vertical text — letter-spacing is set dynamically by JS to match paragraphs column height exactly. The .58em desktop value is a fallback for no-JS. */
+.about-bio .vsig span{writing-mode:vertical-rl;transform:rotate(0deg);font-family:var(--cop);font-weight:400;font-size:14px;letter-spacing:2em;color:var(--ink);white-space:nowrap;display:inline-block}
+.about-bio .img-col{flex:0 0 492px;display:flex;justify-content:flex-end;order:-1}
+.about-bio .img-col .img-frame{width:506px;height:739px;overflow:hidden;margin-left:-7px}
+.about-bio .img-col img{width:100%;height:100%;object-fit:cover;object-position:center}
+
+/* SECTION 4 — Gray quote band */
+.about-quote-grey{padding:48px var(--pad-x);background:var(--bg-grey);display:flex;justify-content:center}
+.about-quote-grey .row{display:flex;gap:16px;justify-content:flex-end;align-items:stretch;width:100%;max-width:var(--max);direction:rtl}
+.about-quote-grey .qtext{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.6;text-align:right;direction:rtl;color:var(--ink);max-width:980px}
+.about-quote-grey .qspacer{width:1px;background:var(--divider);align-self:stretch}
+
+/* SECTION 5 — English pull-quote with portrait */
+.about-en{padding:88px var(--pad-x);display:flex;justify-content:center}
+.about-en .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
+.about-en .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
+.about-en .img-col .img-frame{width:492px;height:744px;overflow:hidden}
+.about-en .img-col img{width:100%;height:100%;object-fit:cover}
+.about-en .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:0 16px;text-align:center;font-family:var(--cop);color:var(--ink)}
+.about-en .qmark{font-family:var(--cop);font-weight:700;font-size:40px;line-height:1}
+.about-en .qbody{font-family:var(--cop);font-weight:300;font-size:13px;line-height:1.2}
+.about-en .qbody .b{font-weight:700;font-size:12px}
+
+/* SECTION 6 — Closing image with big logotype on left */
+.about-close{padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
+.about-close .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
+.about-close .text-col{flex:1;display:flex;align-items:center;justify-content:center;padding:0 16px}
+.about-close .stamp{font-family:var(--cop);font-weight:400;font-size:64px;line-height:1.05;letter-spacing:.04em;color:var(--ink);text-align:center}
+.about-close .stamp .b{font-weight:700;display:block}
+.about-close .stamp .l{font-weight:300;display:block}
+.about-close .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
+.about-close .img-col .img-frame{width:492px;height:744px;overflow:hidden}
+.about-close .img-col img{width:100%;height:100%;object-fit:cover;object-position:center}
+
+/* ===== FOOTER styles in ../components/site-chrome.css ===== */
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤1100px)
+   ============================================================ */
+@media (max-width:1100px){
+  :root{--pad-x:48px}
+  .about-hero .img-col{flex-basis:380px}
+  .about-hero .img-frame{width:380px;height:560px}
+  .about-hero .name-overlay{right:0;left:auto;top:430px;width:auto;font-size:32px}
+  .about-hero h1{font-size:60px;line-height:60px}
+  .about-bio .img-col,.about-en .img-col,.about-close .img-col{flex-basis:380px}
+  .about-bio .img-col .img-frame{width:380px;height:560px}
+  .about-en .img-col .img-frame,.about-close .img-col .img-frame{width:380px;height:560px}
+  /* Bio text-col: shrink font + gaps so total column height ≈ image (560px) instead of 700px */
+  .about-bio .bio-block{gap:14px}
+  .about-bio .paras{font-size:18px;gap:14px}
+  .about-tri{padding:48px var(--pad-x)}
+  .about-close .stamp{font-size:48px}
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤768px)
+   ============================================================ */
+@media (max-width:768px){
+  :root{--pad-x:16px}
+  .only-desktop{display:none !important}
+  .only-mobile{display:block}
+
+  /* MOBILE ABOUT — single column, ordered per Figma mobile blueprint */
+  .about{padding:0}
+
+  /* Section A — hero with name overlay */
+  .about-hero{padding:24px 16px 0}
+  .about-hero .row{flex-direction:column;gap:16px}
+  .about-hero .img-col{flex:0 0 auto;width:100%;justify-content:flex-start;order:1}
+  .about-hero .img-frame{width:100%;aspect-ratio:358/448}
+  .about-hero .name-overlay{left:auto;right:16px;top:auto;bottom:24px;width:auto;text-align:right;font-size:40px;line-height:1.025}
+  .about-hero .text-col{padding:8px 0;gap:8px;order:2}
+  .about-hero h1{font-size:24px;line-height:1.1;text-align:right;font-family:var(--cop);font-weight:400}
+  .about-hero .intro-he{font-size:16px;text-align:right;line-height:1.55}
+
+  /* Section B — coverflow carousel (mobile: smaller peeks, slightly taller frame) */
+  .about-tri{padding:24px 16px}
+  /* mobile triptych adjustments delivered via the component's own media query */
+
+  /* Section C — biographical text + vertical signature column */
+  .about-bio{padding:16px 16px}
+  .about-bio .row{flex-direction:column;gap:16px}
+  .about-bio .text-col{flex-direction:row;align-items:flex-start;padding:0;gap:16px;flex:0 0 auto;order:1}
+  .about-bio .bio-block{width:100%;gap:16px}
+  .about-bio .paras{font-size:16px;max-width:none;flex:1}
+  .about-bio .vsig{flex:0 0 25px;padding:5px 0}
+  .about-bio .vsig span{font-size:12px;letter-spacing:2em}
+  .about-bio .img-col{flex:0 0 auto;width:100%;order:2}
+  .about-bio .img-col .img-frame{width:100%;height:443px;margin:0;display:flex;align-items:center;justify-content:center}
+  .about-bio .img-col img{width:60%;height:100%}
+
+  /* Section D — gray quote band */
+  .about-quote-grey{padding:24px 16px;background:var(--white)}
+  .about-quote-grey .row{flex-direction:row;gap:16px;align-items:stretch;justify-content:flex-end}
+  .about-quote-grey .qtext{font-size:16px;max-width:none;flex:1}
+  .about-quote-grey .qspacer{width:1px;order:-1}
+
+  /* Section E — closing big stretched image */
+  .about-close{padding:0 16px 32px;order:initial}
+  .about-close .row{flex-direction:column;gap:16px}
+  .about-close .text-col{order:2;padding:8px 0;display:none}
+  .about-close .stamp{font-size:32px}
+  .about-close .img-col{order:1;width:100%;flex:0 0 auto}
+  .about-close .img-col .img-frame{width:100%;height:566px}
+
+  /* Section F — Erez portrait + English quote (mobile order: image, then quote) */
+  .about-en{padding:48px 16px}
+  .about-en .row{flex-direction:column;gap:16px}
+  .about-en .img-col{order:1;flex:0 0 auto;width:100%}
+  .about-en .img-col .img-frame{width:100%;height:447.44px}
+  .about-en .text-col{order:2;padding:8px 24px;gap:8px}
+  .about-en .qmark{font-size:32px}
+  .about-en .qbody{font-size:13px;line-height:1.2}
+
+}
+
+@media (max-width:400px){
+  .about-hero h1{font-size:22px}
+  .about-hero .name-overlay{font-size:32px}
+  .about-bio .paras,.about-quote-grey .qtext{font-size:15px}
+  .about-close .stamp{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<site-header></site-header>
+
+<main class="about">
+
+  <!-- SECTION 1 — Hero with name overlay + title + intro paragraph -->
+  <section class="about-hero">
+    <div class="row">
+      <div class="img-col">
+        <div class="img-frame">
+          <img src="../images/about/erez-hero.png" alt="Erez Zielinski Rozen">
+          <div class="name-overlay">
+            <span>erez</span>
+            <span>zielinski</span>
+            <span>rozen</span>
+          </div>
+        </div>
+      </div>
+      <div class="text-col">
+        <h1>Make you feel like Art</h1>
+        <p class="intro-he">אומנות שוברת מוסכמות ויצירה חדשה היא חלק בלתי נפרד מהמותג זילינסקי רוזן.<br>הצורך בהתפתחות תמידית, מחשבה שונה ויציאה מהקופסא הוא חלק הכרחי בהתפתחות האנושית<br>ולכן חשוב לנו לעודד ולתמוך באמנים ואומניות צעירים המביאים בשורה חדשה, כמו הבשמים שלנו.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — Erez portraits coverflow carousel.
+       משתמש בקומפוננטה components/triptych-gallery.{css,js} (ראה §16ב ב-CLAUDE.md). -->
+  <section class="about-tri" aria-label="ארז זילינסקי–רוזן — תמונות">
+    <div class="tri">
+      <div class="tri-frame">
+        <img class="tri-slide" src="../images/about/tri-center.png"   alt="ארז זילינסקי–רוזן" draggable="false">
+        <img class="tri-slide" src="../images/about/erez-hero.png"    alt="ארז זילינסקי–רוזן" draggable="false" loading="lazy">
+        <img class="tri-slide" src="../images/about/erez-bio.png"     alt="ארז זילינסקי–רוזן" draggable="false" loading="lazy">
+        <img class="tri-slide" src="../images/about/erez-quote.png"   alt="ארז זילינסקי–רוזן" draggable="false" loading="lazy">
+        <img class="tri-slide" src="../images/about/erez-closing.png" alt="ארז זילינסקי–רוזן" draggable="false" loading="lazy">
+        <img class="tri-slide" src="../images/about/tri-left.png"     alt="ארז זילינסקי–רוזן" draggable="false" loading="lazy">
+        <img class="tri-slide" src="../images/about/tri-right.png"    alt="ארז זילינסקי–רוזן" draggable="false" loading="lazy">
+      </div>
+      <div class="tri-dots" role="tablist" aria-label="gallery navigation">
+        <button type="button" class="tri-dot is-on" aria-label="slide 1" role="tab" aria-selected="true"></button>
+        <button type="button" class="tri-dot" aria-label="slide 2" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot" aria-label="slide 3" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot" aria-label="slide 4" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot" aria-label="slide 5" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot" aria-label="slide 6" role="tab" aria-selected="false"></button>
+        <button type="button" class="tri-dot" aria-label="slide 7" role="tab" aria-selected="false"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — Biographical text + vertical signature + portrait -->
+  <section class="about-bio">
+    <div class="row">
+      <div class="text-col">
+        <div class="bio-block">
+        <div class="paras">
+          <p><span class="lead">ארז ‬זילינסקי–רוזן</span> ‬הוא ‬קודם ‬כול ‬אמן.<br>
+          לפני ‬שהוא ‬רוקח, ‬לפני ‬שהוא ‬יזם — ‬הוא ‬יוצר.<br>
+          עולם ‬הבישום ‬עבורו ‬הוא ‬קנבס ‬בלתי ‬נראה ‬שנבנה ‬משכבות ‬של ‬רגש ‬וזיכרון.<br>
+          הוא ‬עובד ‬מתוך ‬אינטואיציה ‬טהורה — ‬ממצב ‬רוח, ‬מחוויות, ‬מהחיים ‬עצמם. כל ‬בושם ‬שהוא ‬יוצר ‬הוא ‬יצירת ‬אמנות, ‬עם ‬סיפור ‬, ‬עם ‬צבע, ‬<br>
+          עם ‬פעימה.</p>
+
+          <p>בדיוק ‬כמו ‬שהבשמים ‬נולדים ‬מתוך ‬דיאלוג ‬של ‬רגש ‬וחומר, ‬כך ‬גם ‬הגלריות ‬של ‬ארז ‬הן ‬מקום ‬שבו ‬האמנות ‬מתרחשת, ‬זזה ‬ומתפתחת ‬,<br>
+          באופן ‬שממשיך ‬את ‬מהות ‬המותג ‬: ‬ריח ‬כיצירה, ‬יצירה ‬כבית.</p>
+
+          <p>הגלריות ‬פועלות ‬ללא ‬מטרות ‬רווח — ‬כל ‬ההכנסות ‬ממכירת ‬היצירות ‬בתערוכה ‬מועברות ‬ישירות ‬לאמניות ‬ולאמנים.<br>
+          הגלריות ‬פועלות ‬מתוך ‬מטרה ‬מוצהרת ‬לייצר ‬חשיפה משמעותית ‬לאמנות ‬ישראלית ‬עכשווית ‬ולאפשר ‬מפגש ישיר ‬ובלתי ‬אמצעי ‬בין ‬<br>
+          יוצרים ‬לקהל.</p>
+
+          <p>הקשר ‬של ‬ארז ‬לאמנות ‬אינו ‬רק ‬השראה:<br>
+          <span class="quote">"אמנות ‬היא ‬חלק ‬בלתי ‬נפרד ‬מהמותג, ‬<br>
+          היא ‬שוברת ‬מוסכמות, ‬מרחיבה ‬גבולות ‬<br>
+          ומאפשרת ‬חופש. ‬<br>
+          אותו ‬החופש ‬שמוביל ‬אותי ‬בבישום, ‬הוביל ‬אותי ‬לפתוח ‬את ‬הגלריות ‬החדשות — ‬מרחבים ‬שמכילים ‬יצירה ‬חיה ‬ונושמת, ‬אמנים, ‬פרשנות ‬אישית, ‬ומפגש ‬בין ‬ניחוח ‬ליצירה ‬חזותית."</span></p>
+        </div>
+        <div class="vsig"><span>EREZ ZIELINSKI ROZEN</span></div>
+        </div><!-- /.bio-block -->
+      </div>
+      <div class="img-col">
+        <div class="img-frame"><img src="../images/about/erez-bio.png" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 — Gray quote band -->
+  <section class="about-quote-grey">
+    <div class="row">
+      <p class="qtext">רוקחות בשמים היא עבורי כמו לצייר על קנבס ריק,<br>
+      כמו לכתוב סיפור מרתק או להלחין סימפוניה סוחפת.<br>
+      כל בושם הוא יצירת אומנות בפני עצמה, שילוב עוצמתי של ניחוחות המעוררים רגשות, זיכרונות ותחושות.<br>
+      זו אמנות שבה חומרי הגלם הם המילים, והניחוח הוא הסיפור. כמו בכל יצירת אומנות, גם לבושם יש סגנונות שונים, וכל אחד תופס אותנו ומפרש אותנו בצורה ייחודית.<br><br>
+      אני לא יכול להשאיר אדיש לבושם. כמו שיר של אדית פיאף, הוא סוחף אותי, מעורר בי רגשות, אסוציאציות וזיכרונות.</p>
+      <div class="qspacer"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 — English pull-quote with portrait -->
+  <section class="about-en">
+    <div class="row">
+      <div class="img-col">
+        <div class="img-frame"><img src="../images/about/erez-quote.png" alt=""></div>
+      </div>
+      <div class="text-col">
+        <div class="qmark">“</div>
+        <div class="qbody">
+          I want the perfume<br>
+          to affect you to the depths<br>
+          of your soul,<br>
+          to speak about the personality,<br>
+          to reflect its uniqueness.<br>
+          The scent can tell a lot.
+          <br><br>
+          who we are, how we feel,<br>
+          how we think, how we behave.<br>
+          It also reveals those facets<br>
+          that we, perhaps,<br>
+          did not notice in ourselves before.<br>
+          Every ingredient and<br>
+          every moment counts…
+        </div>
+        <div class="qmark">”</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 — Closing image with stamp -->
+  <section class="about-close">
+    <div class="row">
+      <div class="text-col">
+        <div class="stamp">
+          <span class="b">ZIELINSKI</span>
+          <span class="l">&amp; ROZEN</span>
+        </div>
+      </div>
+      <div class="img-col">
+        <div class="img-frame"><img src="../images/about/erez-closing.png" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<site-footer></site-footer>
+
+<!-- Site chrome: shared header + footer (single source of truth) -->
+<script src="../components/site-chrome.js" defer></script>
+<!-- Erez portraits coverflow carousel (Section 2) — shared component. -->
+<script src="../components/triptych-gallery.js" defer></script>
+
+<!-- Vertical signature auto-fit: stretch letter-spacing so rotated text length === paragraphs height.
+     The layout uses align-items:flex-start on .bio-block so growing the vsig wrapper does NOT
+     stretch the paras column; this breaks the feedback loop that was causing runaway growth. -->
+<script>
+(function(){
+  var updating = false;        // guard so ResizeObserver doesn't re-fire mid-update
+  var lastLs = new WeakMap();  // remember last setting per span to skip redundant work
+  var ro = null;
+
+  function fitVsig(section){
+    var paras = section.querySelector('.paras');
+    var vsig = section.querySelector('.vsig');
+    if(!paras || !vsig) return;
+    var span = vsig.querySelector('span');
+    if(!span) return;
+
+    var padStyles = getComputedStyle(vsig);
+    var pad = parseFloat(padStyles.paddingTop) + parseFloat(padStyles.paddingBottom);
+    var parasH = paras.getBoundingClientRect().height;
+    if(parasH <= 0) return;
+    var target = parasH - pad;
+    if(target <= 0) return;
+
+    // Measure base text length at letter-spacing:0
+    var prev = lastLs.get(span);
+    span.style.letterSpacing = '0px';
+    var base = span.getBoundingClientRect().height;
+    var chars = span.textContent.length;
+    if(chars <= 1){ if(prev !== undefined) span.style.letterSpacing = prev+'px'; return; }
+
+    var ls = (target - base) / (chars - 1);
+    if(ls < 8) ls = 8;         // minimum — always show some spacing
+    if(ls > 400) ls = 400;     // safety cap
+    if(prev !== undefined && Math.abs(prev - ls) < 0.25){
+      span.style.letterSpacing = prev+'px'; // restore — don't leave at 0px
+      return;
+    }
+    lastLs.set(span, ls);
+    span.style.letterSpacing = ls + 'px';
+  }
+
+  function fitAll(){
+    if(updating) return;
+    updating = true;
+    document.querySelectorAll('.about-bio').forEach(fitVsig);
+    // release the guard on the next frame so the observer's echo doesn't re-trigger us
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ updating = false; });
+    });
+  }
+
+  function schedule(){
+    if(schedule._t) clearTimeout(schedule._t);
+    schedule._t = setTimeout(fitAll, 60);
+  }
+
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(fitAll);
+  }
+  window.addEventListener('load', fitAll);
+  window.addEventListener('resize', schedule);
+
+  if('ResizeObserver' in window){
+    ro = new ResizeObserver(function(){ if(!updating) schedule(); });
+    document.querySelectorAll('.about-bio .paras').forEach(function(el){ ro.observe(el); });
+  }
+})();
+</script>
+
+<script src="../components/picture-upgrade.js" defer></script>
+</body>
+</html>

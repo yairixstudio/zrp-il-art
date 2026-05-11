@@ -1,0 +1,43 @@
+{
+  "$schema": "./_schema/site.schema.json",
+  "brand": {
+    "name_en": "ZIELINSKI & ROZEN",
+    "name_he": "זילינסקי & רוזן",
+    "tagline_en": "THE ART GALLERIES",
+    "founder": "Erez Zielinski-Rozen",
+    "logo": "images/brand/logo.svg"
+  },
+  "nav": [
+    { "key": "opencall",    "label_en": "open call",       "href": "/opencall" },
+    { "key": "exhibitions", "label_en": "exhibitions",     "href": "/exhibitions" },
+    { "key": "works",       "label_en": "the art works",   "href": "/works" },
+    { "key": "galleries",   "label_en": "the galleries",   "href": "/galleries" },
+    { "key": "about",       "label_en": "about",           "href": "/about" },
+    { "key": "press",       "label_en": "press & events",  "href": "/press" }
+  ],
+  "footer": {
+    "newsletter": {
+      "title": "Stay Informed",
+      "placeholder": "Email Address",
+      "cta": "SUBSCRIBE"
+    },
+    "links_he": [
+      { "label": "יצירת קשר",        "href": "/contact" },
+      { "label": "הצהרת נגישות",     "href": "/accessibility" },
+      { "label": "גלריית כיכר המדינה",  "href": "/galleries/medina" },
+      { "label": "גלריית כיכר דיזינגוף", "href": "/galleries/dizengoff" },
+      { "label": "גלריית שוק הפשפשים",  "href": "/galleries/flea-market" }
+    ],
+    "social": [
+      { "platform": "instagram", "url": "https://instagram.com/zielinski_rozen" },
+      { "platform": "facebook",  "url": "#" },
+      { "platform": "youtube",   "url": "#" },
+      { "platform": "tiktok",    "url": "#" }
+    ],
+    "copyright": "© 2026 THE art GALLERY ZiELINSKI & ROZEN ALL RIGHTS RESERVED."
+  },
+  "announcement": "coming soon our europe galleries",
+  "contact": {
+    "instagram_handle": "@zielinski_rozen"
+  }
+}

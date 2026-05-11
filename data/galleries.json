@@ -1,0 +1,52 @@
+{
+  "$schema": "./_schema/galleries.schema.json",
+  "galleries": [
+    {
+      "id": "medina",
+      "slug": "medina",
+      "name_he": "גלריית כיכר המדינה",
+      "name_en": "Kikar Hamedina Gallery",
+      "address_he": "ז'בוטינסקי 131, תל אביב",
+      "address_en": "Jabotinsky 131, Tel Aviv",
+      "city": "tel aviv",
+      "status": "open",
+      "hours": [
+        { "days_he": "א'-ה'",   "days_en": "Sun-Thu",  "time": "10:00-19:00" },
+        { "days_he": "ו'",       "days_en": "Fri",      "time": "10:00-14:00" },
+        { "days_he": "שבת סגור", "days_en": "Sat closed", "time": null }
+      ],
+      "image_hero": "images/galleries/medina/hero.png",
+      "figma_node_desktop": null,
+      "figma_node_mobile": null
+    },
+    {
+      "id": "dizengoff",
+      "slug": "dizengoff",
+      "name_he": "גלריית כיכר דיזינגוף",
+      "name_en": "Kikar Dizengoff Gallery",
+      "address_he": "כיכר דיזינגוף, תל אביב",
+      "address_en": "Dizengoff Square, Tel Aviv",
+      "city": "tel aviv",
+      "status": "coming-soon",
+      "hours": [],
+      "image_hero": "images/galleries/dizengoff/hero.png",
+      "figma_node_desktop": "1213:2725",
+      "figma_node_mobile": null
+    },
+    {
+      "id": "flea-market",
+      "slug": "flea-market",
+      "name_he": "גלריית שוק הפשפשים",
+      "name_en": "Flea Market Gallery",
+      "address_he": "שוק הפשפשים, תל אביב",
+      "address_en": "Flea Market, Tel Aviv (Jaffa)",
+      "city": "tel aviv",
+      "status": "coming-soon",
+      "hours": [],
+      "image_hero": "images/galleries/flea-market/hero.png",
+      "note": "Hero image is currently a placeholder reusing dizengoff image — needs unique photo.",
+      "figma_node_desktop": null,
+      "figma_node_mobile": null
+    }
+  ]
+}

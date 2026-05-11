@@ -1,0 +1,107 @@
+/* ============================================================
+   IMAGE GALLERY — reusable swipe-able carousel.
+   Usage:
+     <link rel="stylesheet" href="<path-to>/components/gallery.css">
+     <script src="<path-to>/components/gallery.js" defer></script>
+     <image-gallery aria-label="...">
+       <img src="..." alt="">
+       <img src="..." alt="">
+     </image-gallery>
+
+   Component fills its parent (width:100%, height:100%). The parent
+   controls dimensions / aspect-ratio.
+   Optional attributes:
+     data-fit="cover"   (default) — object-fit: cover on slides
+     data-fit="contain"            — object-fit: contain (letterbox)
+     data-loop="false"             — disable loop at edges
+     data-arrows="false"           — hide arrow buttons on desktop
+     data-dots="false"             — hide dot pagination
+   ============================================================ */
+
+image-gallery{
+  position:relative;display:block;
+  width:100%;height:100%;
+  background:var(--placeholder,#FAFAFA);
+  overflow:hidden;
+  user-select:none;
+  -webkit-user-select:none;
+}
+image-gallery .gal-viewport{
+  position:relative;width:100%;height:100%;overflow:hidden;
+  touch-action:pan-y;
+  cursor:grab;
+}
+image-gallery .gal-viewport.is-dragging{cursor:grabbing}
+image-gallery .gal-track{
+  display:flex;width:100%;height:100%;
+  transition:transform .35s cubic-bezier(.4,0,.2,1);
+  will-change:transform;
+}
+image-gallery .gal-track.no-anim{transition:none}
+image-gallery .gal-slide{
+  flex:0 0 100%;width:100%;height:100%;overflow:hidden;
+}
+image-gallery .gal-slide img{
+  width:100%;height:100%;object-fit:cover;
+  -webkit-user-drag:none;user-drag:none;
+  pointer-events:none;
+  display:block;
+}
+image-gallery[data-fit="contain"] .gal-slide img{
+  object-fit:contain;background:var(--placeholder,#FAFAFA);
+}
+
+/* Arrows — always visible (subtle by default, fuller on hover) */
+image-gallery .gal-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(27,27,27,.45);color:#fff;border:0;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-family:var(--cop,serif);font-size:24px;line-height:1;
+  transition:background .2s,opacity .2s,transform .2s;z-index:2;
+  opacity:.9;padding:0;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+image-gallery .gal-arrow:hover{background:rgba(27,27,27,.85);opacity:1}
+image-gallery .gal-arrow:active{transform:translateY(-50%) scale(.94)}
+image-gallery .gal-arrow:disabled{opacity:.25;cursor:default;pointer-events:none}
+image-gallery .gal-arrow.prev{left:12px}
+image-gallery .gal-arrow.next{right:12px}
+image-gallery .gal-arrow svg{width:18px;height:18px}
+
+/* Dots */
+image-gallery .gal-dots{
+  position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
+  display:flex;gap:8px;z-index:2;
+  background:transparent;padding:0;margin:0;
+}
+image-gallery .gal-dot{
+  width:32px;height:2px;background:rgba(255,255,255,.4);
+  border:0;padding:0;cursor:pointer;
+  transition:background .2s;
+  border-radius:0;
+}
+image-gallery .gal-dot.is-on{background:#fff}
+image-gallery .gal-dot:hover{background:rgba(255,255,255,.85)}
+
+image-gallery[data-arrows="false"] .gal-arrow,
+image-gallery[data-dots="false"] .gal-dots{display:none}
+
+/* Counter (e.g. "3 / 8") — opt-in via data-counter="true" */
+image-gallery[data-counter="true"] .gal-counter{
+  position:absolute;top:16px;right:16px;
+  font-family:var(--cop,serif);font-weight:300;font-size:12px;
+  letter-spacing:.1em;color:#fff;background:rgba(27,27,27,.55);
+  padding:4px 10px;z-index:2;text-transform:uppercase;
+}
+image-gallery:not([data-counter="true"]) .gal-counter{display:none}
+
+/* Touch / mobile tweaks — arrows stay visible but a bit smaller */
+@media (max-width:768px){
+  image-gallery .gal-arrow{width:34px;height:34px}
+  image-gallery .gal-arrow svg{width:16px;height:16px}
+  image-gallery .gal-arrow.prev{left:8px}
+  image-gallery .gal-arrow.next{right:8px}
+  image-gallery .gal-dots{bottom:14px;gap:6px}
+  image-gallery .gal-dot{width:24px}
+}

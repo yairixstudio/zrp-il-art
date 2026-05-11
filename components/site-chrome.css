@@ -1,0 +1,201 @@
+/* ============================================================
+   SITE CHROME — shared header (.nav) + footer (.footer) styles.
+   This file is the single source of truth for these regions.
+   Loaded automatically by components/site-chrome.js.
+   ============================================================ */
+
+/* Offset anchor navigation so the sticky header doesn't cover the target.
+   53/52px = header min-height, 24px = breathing room. */
+html{scroll-padding-top:77px;overflow-x:hidden}
+body{overflow-x:hidden;max-width:100vw}
+@media (max-width:768px){html{scroll-padding-top:76px}}
+
+/* ===== GLOBAL: English-in-Hebrew islands (CLAUDE.md §9.2) =====
+   Wrap any Latin/numeric run that appears INSIDE a Hebrew (.heb / [dir="rtl"]) container
+   with <span class="lat">…</span>. This restores Copperplate + uppercase + LTR isolation
+   so it doesn't inherit the Hebrew font/direction. Loaded site-wide via site-chrome.css. */
+.lat,.lat *{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate}
+
+/* ===== NAV =====
+   Layout (LTR, all on one line, right-cluster pinned to right edge):
+     [logo (left)]  ........auto-gap........  [nav-right: bookmark | nav-links | hamburger]
+   - nav-right uses margin-left:auto, so it always hugs the right edge.
+   - Inside nav-right: bookmark is position:absolute, anchored LEFT of nav-right (i.e. to the
+     LEFT of nav-links on desktop, to the LEFT of hamburger on mobile). nav-links is the
+     rightmost VISIBLE element on desktop; on ≤1024px nav-links goes to a fixed off-canvas
+     drawer and the hamburger replaces it as the rightmost visible element.
+   - nav-links uses nowrap + tight clamped gap so it never breaks into two rows. */
+.nav{background:var(--bg-grey);padding:8px 32px;min-height:53px;display:flex;align-items:center;position:sticky;top:0;z-index:100;width:100%;box-sizing:border-box}
+.nav-inner{display:flex;align-items:center;width:100%;max-width:var(--max);margin:0 auto;gap:clamp(16px,2.4vw,32px);flex-wrap:nowrap;min-width:0}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--cop);flex-shrink:1;min-width:0}
+.logo .mark{font-size:14px;font-weight:700;letter-spacing:.22em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo .logo-svg{display:none}
+.nav-links{display:flex;align-items:center;gap:clamp(12px,1.5vw,20px);list-style:none;flex-wrap:nowrap;min-width:0}
+.nav-links a{font-family:var(--cop);font-weight:300;font-size:14px;color:var(--ink);letter-spacing:.04em;transition:opacity .2s;white-space:nowrap}
+.nav-links a:hover{opacity:.6}
+.nav-links a.active{font-weight:500;opacity:1}
+.hamburger{display:none;width:24px;height:24px;padding:0;background:transparent;border:0;cursor:pointer;position:relative;z-index:101}
+.hamburger .hamburger-figma{display:none;width:24px;height:24px}
+.hamburger .hamburger-bars{display:flex;flex-direction:column;justify-content:space-between;width:24px;height:18px}
+.hamburger .hamburger-bars span{display:block;height:1.5px;background:var(--ink);transition:transform .3s ease,opacity .25s ease;transform-origin:center}
+.nav.is-open .hamburger .hamburger-bars span:nth-child(1){transform:translateY(8.25px) rotate(45deg)}
+.nav.is-open .hamburger .hamburger-bars span:nth-child(2){opacity:0}
+.nav.is-open .hamburger .hamburger-bars span:nth-child(3){transform:translateY(-8.25px) rotate(-45deg)}
+body.menu-open{overflow:hidden}
+
+/* ===== FOOTER =====
+   Mirrors Figma desktop (119:2504) and mobile (119:2610).
+   Desktop layout: [newsletter 300px] [flex column, right-aligned]
+     row 1: meta links  →  row 2: gallery links  →  copyright (right-aligned)  →  social icons row
+   Mobile layout: newsletter on top, centered copyright below (no links, no icons). */
+.footer{background:var(--ink);color:var(--white);padding:48px var(--pad-x);display:flex;justify-content:space-between;gap:64px;align-items:flex-start}
+
+/* Left column — newsletter */
+.newsletter{width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:17px}
+.newsletter h3{font-family:var(--cop);font-weight:400;font-size:24px;line-height:32px;letter-spacing:.04em}
+.newsletter form{display:flex;flex-direction:column;gap:12px}
+/* Textarea avoids native email-input clipping with Copperplate while staying single-line. */
+.newsletter textarea.newsletter-email{background:transparent;border:0;border-bottom:1px solid #fff;border-radius:0;height:47px;padding:14px 0 9px;color:#fff;font-family:var(--cop);font-size:14px;line-height:20px;letter-spacing:.02em;outline:0;width:100%;box-sizing:border-box;display:block;resize:none;overflow:hidden;white-space:nowrap;text-transform:uppercase;caret-color:#fff;-webkit-appearance:none;appearance:none}
+.newsletter textarea.newsletter-email::placeholder{color:#fff;opacity:.85}
+.newsletter button{padding:16px 0;border:1px solid #fff;background:var(--ink);color:#fff;font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.1em;line-height:16px;width:100%;transition:background .2s,color .2s}
+.newsletter button:hover{background:#fff;color:var(--ink)}
+
+/* Right column — links, copyright, icons (each on its own row, all right-aligned).
+   NOTE: column itself stays LTR so `align-items:flex-end` pins children to the RIGHT.
+   RTL is applied only to .footer-row (where Hebrew children need right-to-left flow). */
+.footer-right{display:flex;flex-direction:column;align-items:flex-end;gap:20px;font-family:var(--heb);min-width:0}
+.footer-menu{display:flex;flex-direction:column;gap:20px;align-items:stretch;width:min(100%,860px);direction:rtl;text-align:right}
+.footer-row{display:flex;justify-content:flex-start;align-items:center;gap:clamp(18px,2.2vw,40px);flex-wrap:nowrap;direction:rtl;width:100%;text-align:right}
+.footer-row a{font-family:var(--heb);font-size:clamp(16px,1.35vw,20px);line-height:1.1;font-weight:400;color:#fff;transition:opacity .2s;white-space:nowrap;flex:0 1 auto}
+.footer-row a:hover{opacity:.7}
+
+/* Desktop copyright — its own row inside .footer-right, right-aligned (Figma: Margin frame with padding-top 16px) */
+.footer-copy{font-family:var(--cop);font-weight:300;font-size:11px;line-height:16px;letter-spacing:.04em;color:var(--copy-grey);direction:ltr;text-align:right;text-transform:uppercase;padding-top:16px}
+
+/* Social icons — own row, 4 icons aligned right, gap 36 per Figma */
+.footer-icons{display:flex;gap:36px;align-items:center;direction:ltr}
+.footer-icons a{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;color:#fff;transition:opacity .2s}
+.footer-icons a:hover{opacity:.7}
+.footer-icons svg{width:24px;height:24px;fill:currentColor}
+
+/* Mobile-only centered copyright — sibling of .footer-right; shown only on ≤768px */
+.footer-copy--mobile{display:none}
+
+/* ===== RESPONSIVE — NAV switches to hamburger drawer at ≤1024px =====
+   This is intentionally HIGHER than the page-content mobile breakpoint (768px):
+   between 769-1024px the page body still uses desktop padding/grid, but the nav
+   can't fit 6 menu items in a single line on this width, so we hide them in the
+   drawer instead of letting them wrap. */
+@media (max-width:1024px){
+  .hamburger{display:flex;align-items:center;justify-content:center;order:-1}
+  .hamburger .hamburger-bars{display:none}
+  .hamburger .hamburger-figma{display:block}
+  .logo .mark{display:none}
+  .logo .logo-svg{display:block;width:177px;height:37px}
+  .logo{margin-left:auto;margin-right:0;flex-shrink:0}
+  .nav-inner{justify-content:space-between}
+  .nav-right{position:static;margin-left:0;gap:0;width:0;overflow:visible}
+  /* When drawer is open, hide the hamburger — the dedicated X inside the drawer
+     replaces it (avoid two close affordances overlapping). */
+  .nav.is-open .hamburger{opacity:0;pointer-events:none}
+  .nav-links{position:fixed;inset:0;background:var(--bg-grey);flex-direction:column;justify-content:center;align-items:center;gap:32px;padding:80px 24px 32px;transform:translateX(100%);transition:transform .35s ease;z-index:99;visibility:hidden}
+  .nav.is-open .nav-links{transform:translateX(0);visibility:visible}
+  .nav-links a{font-size:24px;letter-spacing:.06em}
+
+  /* Dedicated close X — bare glyph, top-right of the open drawer */
+  .nav-close-item{position:absolute;top:12px;right:12px;list-style:none}
+  .nav-close{background:transparent;border:0;padding:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--ink);cursor:pointer;transition:opacity .2s}
+  .nav-close:hover{opacity:.6}
+  .nav-close:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+  .nav-close svg{width:22px;height:22px}
+}
+
+/* On wider screens (desktop nav inline), the close item is hidden so the
+   presentational <li> doesn't add a stray gap inside the inline list. */
+@media (min-width:1025px){
+  .nav-close-item{display:none}
+}
+
+/* ===== RESPONSIVE — MOBILE content rules (≤768px) =====
+   Per Figma mobile (119:2610): newsletter + centered copyright only.
+   Hide links rows, desktop copyright, and social icons. */
+@media (max-width:768px){
+  .nav{padding:8px 16px;min-height:52px}
+  .nav-inner{justify-content:space-between}
+  .logo{margin-left:auto;margin-right:0;flex-shrink:0}
+  .logo .mark{display:none}
+  .logo .logo-svg{display:block;width:177px;height:37px}
+  .hamburger .hamburger-bars{display:none}
+  .hamburger .hamburger-figma{display:block}
+  .nav-right{position:static;margin-left:0;gap:0;width:0;overflow:visible}
+
+  .footer{flex-direction:column;padding:0;gap:0;align-items:stretch}
+  .newsletter{width:100%;padding:24px;gap:15px}
+  .footer-right{display:none}
+  .footer-copy--mobile{display:block;font-family:var(--cop);font-weight:300;font-size:11px;line-height:16.5px;letter-spacing:.04em;color:var(--copy-grey);text-transform:uppercase;text-align:center;padding:40px 24px 24px;max-width:226px;margin:0 auto}
+}
+
+/* ============================================================
+   HEADER BOOKMARK + MODAL + SHARE TOAST
+   (Used by share/bookmark feature on press + event pages.)
+   ============================================================ */
+
+/* Wrapper for the right-side cluster (bookmark + hamburger).
+   margin-left:auto pushes it to the far right of nav-inner so .nav-links can hug the left. */
+.nav-right{position:relative;display:flex;align-items:center;gap:16px;margin-left:auto;flex-shrink:0}
+
+/* Bookmark icon: absolutely positioned so its show/hide doesn't reflow other elements.
+   Desktop → sits to the LEFT of nav-links (which is the first visible child of .nav-right).
+   Mobile  → nav-links becomes an off-flow drawer, so bookmark sits just LEFT of hamburger.
+   Style: outline-only icon (no fill), bare count number (no badge background). */
+.hd-bookmark{position:absolute;right:100%;top:50%;transform:translateY(-50%);margin-right:16px;display:none;align-items:center;justify-content:center;width:22px;height:22px;background:transparent;border:0;cursor:pointer;color:var(--ink);transition:opacity .2s;flex-shrink:0;padding:0}
+.hd-bookmark.has-items{display:flex}
+.hd-bookmark:hover{opacity:.65}
+.hd-bookmark svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1;stroke-linejoin:round;stroke-linecap:round}
+.hd-bookmark .hd-bookmark-count{position:absolute;top:-5px;right:-7px;min-width:auto;height:auto;padding:0;border-radius:0;background:transparent;color:var(--ink);font-family:var(--cop);font-size:9px;line-height:1;letter-spacing:0;font-weight:400;text-align:center;text-transform:none}
+
+.bookmark-modal{position:absolute;top:calc(100% + 12px);right:0;width:320px;max-height:60vh;background:#fff;border:1px solid var(--ink);box-shadow:0 8px 32px rgba(0,0,0,.12);z-index:200;display:flex;flex-direction:column;font-family:var(--cop);direction:ltr;overflow:hidden}
+.bookmark-modal[hidden]{display:none}
+.bookmark-modal .bm-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #EFEFEF}
+.bookmark-modal .bm-head h3{font-family:var(--cop);font-weight:700;font-size:13px;letter-spacing:.18em;color:var(--ink)}
+.bookmark-modal [data-bookmark-close]{font-family:var(--cop);font-size:22px;line-height:1;width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
+.bookmark-modal ul{list-style:none;overflow-y:auto;max-height:50vh;margin:0;padding:0}
+.bookmark-modal li{border-bottom:1px solid #EFEFEF}
+.bookmark-modal li:last-child{border-bottom:0}
+.bookmark-modal li a{display:flex;align-items:center;gap:8px;padding:12px 16px;color:var(--ink);direction:rtl;text-decoration:none}
+.bookmark-modal li a:hover{background:var(--bg-grey)}
+.bookmark-modal .bm-title{font-family:var(--heb);font-weight:400;font-size:14px;line-height:1.3;flex:1;text-transform:none;color:var(--ink)}
+.bookmark-modal .bm-remove{background:transparent;border:0;width:28px;height:28px;color:var(--copy-grey,#6B7280);font-size:18px;cursor:pointer;line-height:1;flex-shrink:0;font-family:var(--cop)}
+.bookmark-modal .bm-remove:hover{color:var(--ink)}
+.bookmark-modal .bm-empty{padding:24px 16px;text-align:center;font-family:var(--heb);font-size:14px;color:var(--copy-grey,#6B7280);direction:rtl;text-transform:none}
+
+.share-status{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;font-family:var(--cop);font-size:12px;letter-spacing:.08em;opacity:0;pointer-events:none;transition:opacity .25s;z-index:201;text-transform:uppercase}
+.share-status.show{opacity:.95}
+
+/* Optional saved-state for any [data-bookmark-toggle] button on a page */
+[data-bookmark-toggle].is-saved{background:var(--ink);color:#fff}
+[data-bookmark-toggle].is-saved svg{fill:currentColor}
+
+@media (max-width:1024px){
+  /* Once nav-links is in the drawer, .nav-right effectively contains only the hamburger.
+     Bookmark (position:absolute; right:100%) sits just LEFT of the hamburger. */
+  .hd-bookmark{margin-right:14px;width:20px;height:20px}
+  .hd-bookmark svg{width:15px;height:15px;stroke-width:1}
+  .hd-bookmark .hd-bookmark-count{font-size:8.5px;top:-4px;right:-6px}
+  .bookmark-modal{position:fixed;top:60px;right:8px;left:8px;width:auto;max-height:70vh}
+}
+@media (max-width:768px){
+  .bookmark-modal{top:52px}
+}
+
+/* ===== VERY NARROW SCREENS (≤400px) — shrink logo so the header bg covers the
+   full viewport and content stops getting clipped to half-width. */
+@media (max-width:400px){
+  .nav{padding:8px 12px;min-height:48px}
+  .logo .mark{font-size:12px;letter-spacing:.16em}
+  .nav-inner{gap:12px}
+}
+@media (max-width:240px){
+  .logo .mark{font-size:11px;letter-spacing:.1em}
+  .nav{padding:8px 8px}
+}

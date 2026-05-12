@@ -281,8 +281,8 @@ body{text-transform:uppercase}
 .press-card .tag.en{font-family:var(--cop);font-weight:300;direction:ltr}
 .press-card .desc{font-family:var(--heb);font-size:16px;font-weight:400;line-height:1.4;text-align:right}
 .press-card .date{font-family:var(--cop);font-size:14px;font-weight:300;text-align:right;direction:ltr;align-self:flex-start}
-.press-card .img{flex:1;overflow:hidden;background:#f3f1ee;min-height:160px}
-.press-card .img img{width:100%;height:100%;object-fit:cover;min-height:160px}
+.press-card .img{flex:0 0 171px;width:171px;height:108px;overflow:hidden;background:#f3f1ee;order:-1}
+.press-card .img img{width:100%;height:100%;object-fit:cover}
 
 /* ===== FOOTER moved to components/site-chrome.css ===== */
 
@@ -408,22 +408,26 @@ body{text-transform:uppercase}
   .galleries{padding:32px 16px;gap:24px}
   .galleries-title{width:auto;line-height:1.05}
   .gallery-cards{flex-direction:column;gap:16px}
-  .gallery-card{flex-direction:row-reverse;gap:16px;align-items:stretch}
-  .gallery-card .img{width:174px;height:210px;flex-shrink:0}
+  .gallery-card{flex-direction:row;gap:16px;align-items:flex-start}
+  .gallery-card .left-col{display:flex;flex-direction:column;gap:8px;flex-shrink:0;width:174px}
+  .gallery-card .left-col .img{width:174px;height:210px}
+  .gallery-card .left-col .details{display:flex;flex-direction:column;gap:4px;padding:0 8px;direction:rtl;text-align:right}
   .gallery-card .img.dim .coming{font-size:13px;letter-spacing:.04em}
-  .gallery-card .info{flex:1;justify-content:flex-end;padding:0;gap:6px}
+  .gallery-card .info{flex:1;display:flex;align-items:center;justify-content:center;padding:0}
   .gallery-card .name{font-size:22px}
-  .gallery-card .addr{font-size:16px}
-  .gallery-card .hours{font-size:14px}
+  .gallery-card .addr{font-size:16px;font-family:var(--heb);font-weight:400}
+  .gallery-card .hours{font-size:14px;font-family:var(--heb);font-weight:300;display:flex;flex-direction:column;gap:4px}
 
   /* X OUR ARTISTS — Figma 228:101 */
-  .x-artists{padding:32px 0;gap:24px}
+  .x-artists{padding:32px 0;gap:40px}
   .x-artists-title{padding:0 16px}
   .x-artists-title .b,.x-artists-title .l{font-size:36px}
   .x-artists-grid{display:none}
   .x-artists-tri{display:flex}
-  .x-artists .tri{--tri-max-w:none;--tri-aspect:auto;--tri-center-w:56%;--tri-peek-w:35%;--tri-peek-left:-20%;--tri-peek-right:120%;--tri-peek-opacity:.6;--tri-peek-opacity-hover:.85;--tri-bg:#fff;width:100%}
+  .x-artists-tri{padding:0 16px}
+  .x-artists .tri{--tri-max-w:none;--tri-aspect:auto;--tri-center-w:56%;--tri-peek-w:28%;--tri-peek-h:75%;--tri-peek-left:1%;--tri-peek-right:99%;--tri-peek-opacity:.6;--tri-peek-opacity-hover:.85;--tri-bg:#fff;width:100%}
   .x-artists .tri-frame{aspect-ratio:auto;height:420px;max-width:none}
+  .x-artists .tri-dots{display:none}
   .x-artists .tri-caption{font-family:var(--cop);font-weight:300;font-size:16px;color:#989898;direction:ltr;text-align:center}
 
   /* PRESS & EVENTS */
@@ -431,8 +435,6 @@ body{text-transform:uppercase}
   .press-rows{gap:24px}
   .press-row{flex-direction:column;gap:24px}
   .press-card{direction:rtl}
-  .press-card .img{flex:0 0 40%;max-width:40%;min-height:108px}
-  .press-card .img img{height:100%;min-height:108px;max-height:160px}
   .press-card .desc{font-size:14px}
 
 }
@@ -547,7 +549,7 @@ body{text-transform:uppercase}
         <article class="card">
           <div class="gname">גלריית כיכר דיזינגוף</div>
           <div class="img">
-            <img src="images/galleries/dizengoff/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy">
+            <img src="images/exhibitions/how-many-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
             <div class="ovr">
               <div class="stat">upcoming</div>
               <div class="ovr-titles">
@@ -561,7 +563,7 @@ body{text-transform:uppercase}
         <article class="card">
           <div class="gname">גלריית כיכר המדינה</div>
           <div class="img">
-            <img src="images/galleries/medina/hero.webp" width="2896" height="3861" alt="" decoding="async" loading="lazy">
+            <img src="images/exhibitions/loneliness-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
             <div class="ovr">
               <div class="stat">current</div>
               <div class="ovr-titles">
@@ -688,30 +690,32 @@ nehoray</div></a>
   </div>
   <div class="gallery-cards">
     <article class="gallery-card">
-      <div class="img"><img src="images/galleries/medina/hero.webp" width="2896" height="3861" alt="" decoding="async" loading="lazy"></div>
-      <div class="info">
-        <div class="name">גלריית כיכר המדינה</div>
-        <div class="addr">ז'בוטינסקי 131, תל אביב</div>
-        <div class="hours">
-          <span>א'-ה' 10:00-19:00</span>
-          <span>ו' 10:00-14:00</span>
-          <span>שבת סגור</span>
+      <div class="left-col">
+        <div class="img"><picture><source media="(max-width:768px)" srcset="images/galleries/medina/figma-mobile.webp"><img src="images/galleries/medina/hero.webp" width="2896" height="3861" alt="" decoding="async" loading="lazy"></picture></div>
+        <div class="details">
+          <div class="addr">ז'בוטינסקי 131, תל אביב</div>
+          <div class="hours">
+            <span>א'-ה' 10:00-19:00</span>
+            <span>ו' 10:00-14:00</span>
+            <span>שבת סגור</span>
+          </div>
         </div>
       </div>
+      <div class="info"><div class="name">גלריית כיכר המדינה</div></div>
     </article>
     <article class="gallery-card">
-      <div class="img dim"><img src="images/galleries/dizengoff/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"><span class="coming">coming soon</span></div>
-      <div class="info">
-        <div class="name">גלריית כיכר דיזינגוף</div>
-        <div class="addr">כיכר דיזינגוף, תל אביב</div>
+      <div class="left-col">
+        <div class="img dim"><picture><source media="(max-width:768px)" srcset="images/galleries/dizengoff/figma-mobile.webp"><img src="images/galleries/dizengoff/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></picture><span class="coming">coming soon</span></div>
+        <div class="details"><div class="addr">כיכר דיזינגוף, תל אביב</div></div>
       </div>
+      <div class="info"><div class="name">גלריית כיכר דיזינגוף</div></div>
     </article>
     <article class="gallery-card">
-      <div class="img dim"><img src="images/galleries/flea-market/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"><span class="coming">coming soon</span></div>
-      <div class="info">
-        <div class="name">גלריית שוק הפשפשים</div>
-        <div class="addr">שוק הפשפשים, תל אביב</div>
+      <div class="left-col">
+        <div class="img dim"><picture><source media="(max-width:768px)" srcset="images/galleries/flea-market/figma-mobile.webp"><img src="images/galleries/flea-market/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></picture><span class="coming">coming soon</span></div>
+        <div class="details"><div class="addr">שוק הפשפשים, תל אביב</div></div>
       </div>
+      <div class="info"><div class="name">גלריית שוק הפשפשים</div></div>
     </article>
   </div>
 </section>
@@ -727,29 +731,29 @@ nehoray</div></a>
   <div class="x-artists-grid only-desktop">
     <div class="x-artists-row">
       <a class="x-artists-card" href="pages/artists/nir-giorgio-levin.html">
-        <div class="img"><img src="images/homepage/x-our-artists/work-1.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-1.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">nir giorgio levin</div>
       </a>
       <a class="x-artists-card" href="pages/artists/gal-polk.html">
-        <div class="img"><img src="images/homepage/x-our-artists/work-2.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-2.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">gal pollak</div>
       </a>
       <a class="x-artists-card" href="pages/artists/gal-polk.html">
-        <div class="img"><img src="images/homepage/x-our-artists/work-3.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-3.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">gal pollak</div>
       </a>
     </div>
     <div class="x-artists-row">
       <div class="x-artists-card">
-        <div class="img"><img src="images/homepage/x-our-artists/work-4.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-4.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
       </div>
       <div class="x-artists-card">
-        <div class="img"><img src="images/homepage/x-our-artists/work-5.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-5.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
       </div>
       <div class="x-artists-card">
-        <div class="img"><img src="images/homepage/x-our-artists/work-6.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-6.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
       </div>
     </div>
@@ -758,12 +762,12 @@ nehoray</div></a>
   <div class="x-artists-tri only-mobile">
     <div class="tri" data-tri-loop="true">
       <div class="tri-frame">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-1.png" alt="" data-caption="nir giorgio levin" data-artist-href="pages/artists/nir-giorgio-levin.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.png" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-3.png" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.png" alt="" data-caption="maya nachum levy">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.png" alt="" data-caption="maya nachum levy">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.png" alt="" data-caption="maya nachum levy">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-1.webp" alt="" data-caption="nir giorgio levin" data-artist-href="pages/artists/nir-giorgio-levin.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-3.webp" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="maya nachum levy">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="maya nachum levy">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="maya nachum levy">
       </div>
       <div class="tri-dots" role="tablist">
         <button class="tri-dot is-on" type="button" aria-label="1"></button>
@@ -811,13 +815,23 @@ nehoray</div></a>
         </div>
         <div class="img"><img src="images/events/event-3-cover.webp" width="1280" height="1600" alt="" decoding="async" loading="lazy"></div>
       </a>
-      <a class="press-card" href="pages/events/loneliness.html">
+      <a class="press-card" href="pages/events/ktuba.html">
         <div class="info">
           <span class="tag en">gallery event</span>
-          <p class="desc">בדידות בתוך סביבה תוססת</p>
-          <span class="date">19.1.2026</span>
+          <p class="desc">כתובה — מיצג חי של זוהר רון</p>
+          <span class="date">25.2.2026</span>
         </div>
-        <div class="img"><img src="images/events/event-4-cover.webp" width="1435" height="1600" alt="" decoding="async" loading="lazy"></div>
+        <div class="img"><img src="images/events/ktuba/hero.webp" width="492" height="744" alt="" decoding="async" loading="lazy"></div>
+      </a>
+    </div>
+    <div class="press-row">
+      <a class="press-card" href="pages/press/time-out.html">
+        <div class="info">
+          <span class="tag en">time out</span>
+          <p class="desc">גלריית זילינסקי רוזן: המקום החדש לאמנות בכיכר המדינה</p>
+          <span class="date">12.1.2026</span>
+        </div>
+        <div class="img"><img src="images/press/time-out/hero.webp" width="462" height="626" alt="" decoding="async" loading="lazy"></div>
       </a>
     </div>
   </div>
@@ -940,6 +954,7 @@ nehoray</div></a>
 
 <!-- Stacked gallery component (homepage mobile-cta uses sg-mode-swap) -->
 <script src="components/stacked-gallery.js" defer></script>
+<script src="components/triptych-gallery.js" defer></script>
 
 <!-- Instagram carousel — infinite loop, arrow nav, touch swipe (Figma XhGH:144:431) -->
 <script>

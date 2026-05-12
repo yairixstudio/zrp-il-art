@@ -6,7 +6,7 @@
       "id": "tile-the",
       "title": "the",
       "homepage_word": "the",
-      "image": "images/works/tile-the.png",
+      "image": "images/works/tile-the.webp",
       "artist_id": null
     },
     {
@@ -14,14 +14,14 @@
       "title": "art",
       "homepage_word": "art",
       "homepage_word_mobile": "ART",
-      "image": "images/works/tile-art.png",
+      "image": "images/works/tile-art.webp",
       "artist_id": null
     },
     {
       "id": "tile-works",
       "title": "works",
       "homepage_word": "works",
-      "image": "images/works/tile-works.png",
+      "image": "images/works/tile-works.webp",
       "artist_id": null
     },
     {
@@ -29,7 +29,7 @@
       "title": "more",
       "homepage_word": "more",
       "is_cta": true,
-      "image": "images/works/tile-more.png",
+      "image": "images/works/tile-more.webp",
       "href": "/works"
     }
   ]

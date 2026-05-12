@@ -15,8 +15,8 @@
       "deadline": "2026-04-23",
       "deadline_he": "23/4/2026",
       "city": "tel aviv",
-      "hero_image": "images/opencalls/the-peeler/hero.png",
-      "card_image": "images/opencalls/the-peeler-card.png",
+      "hero_image": "images/opencalls/the-peeler/hero.webp",
+      "card_image": "images/opencalls/the-peeler-card.webp",
       "description_he": [
         { "weight": "regular", "lines": ["הנושא: בחירה במעורר רגש אחד מתוך רשימה נתונה,", "וכניסה אליו דרך זיכרון אישי."] },
         { "weight": "light", "lines": ["האמן מתבקש ליצור עבודה חדשה שנוגעת במעורר רגש ובזיכרון, ובאפשרות לכתוב את אותו זיכרון מחדש:", "  · לא בהכרח לשנות את מה שקרה", "  · אלא לאפשר לו לקבל צורה אחרת דרך המפגש איתו"] },
@@ -52,8 +52,8 @@
         "note_he": "*שימו לב הגשות שלא יעמדו בתנאי הפורמט לא ייענו."
       },
       "gallery_images": [
-        { "image": "images/opencalls/the-peeler/gallery-01.png" },
-        { "image": "images/opencalls/the-peeler/gallery-02.png" }
+        { "image": "images/opencalls/the-peeler/gallery-01.webp" },
+        { "image": "images/opencalls/the-peeler/gallery-02.webp" }
       ],
       "figma_node_desktop": "1213:2417",
       "figma_node_mobile": "1213:2518"
@@ -71,8 +71,8 @@
       "deadline": "2026-02-17",
       "deadline_he": "17/2/2026",
       "city": "tel aviv",
-      "hero_image": "images/opencalls/how-many/hero.png",
-      "card_image": "images/opencalls/how-many-card.png",
+      "hero_image": "images/opencalls/how-many/hero.webp",
+      "card_image": "images/opencalls/how-many-card.webp",
       "description_he": [
         { "weight": "regular", "lines": ["התערוכה תעסוק בשאלות של:", "אינטימיות, חוויה אישית, זיכרון, גוף, קרבה וחשיפה.", "לא כוידוי, אלא כמרחב פתוח לפרשנות,", "מבט ביקורתי חברתי או אישי, רגשי, המושג ״שותפים״,", "על יחסים, ועל מה שנשאר ביניהם."] },
         { "weight": "light", "lines": ["אנו מזמינים אמניות ואמנים", "להגיש הצעות ליצירות קיימות או חדשות"] },

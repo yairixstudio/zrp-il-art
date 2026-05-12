@@ -3,14 +3,14 @@
   "_note": "Static feed snapshot from Figma. Real implementation will pull from Instagram Graph API.",
   "handle": "@zielinski_rozen",
   "posts": [
-    { "id": "ig-1", "image": "images/instagram/1.png", "url": null },
-    { "id": "ig-2", "image": "images/instagram/2.png", "url": null },
-    { "id": "ig-3", "image": "images/instagram/3.png", "url": null },
-    { "id": "ig-4", "image": "images/instagram/4.png", "url": null },
-    { "id": "ig-5", "image": "images/instagram/5.png", "url": null },
-    { "id": "ig-6", "image": "images/instagram/6.png", "url": null },
-    { "id": "ig-7", "image": "images/instagram/7.png", "url": null },
-    { "id": "ig-8", "image": "images/instagram/8.png", "url": null },
-    { "id": "ig-9", "image": "images/instagram/9.png", "url": null }
+    { "id": "ig-1", "image": "images/instagram/1.webp", "url": null },
+    { "id": "ig-2", "image": "images/instagram/2.webp", "url": null },
+    { "id": "ig-3", "image": "images/instagram/3.webp", "url": null },
+    { "id": "ig-4", "image": "images/instagram/4.webp", "url": null },
+    { "id": "ig-5", "image": "images/instagram/5.webp", "url": null },
+    { "id": "ig-6", "image": "images/instagram/6.webp", "url": null },
+    { "id": "ig-7", "image": "images/instagram/7.webp", "url": null },
+    { "id": "ig-8", "image": "images/instagram/8.webp", "url": null },
+    { "id": "ig-9", "image": "images/instagram/9.webp", "url": null }
   ]
 }

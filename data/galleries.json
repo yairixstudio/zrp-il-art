@@ -15,7 +15,7 @@
         { "days_he": "ו'",       "days_en": "Fri",      "time": "10:00-14:00" },
         { "days_he": "שבת סגור", "days_en": "Sat closed", "time": null }
       ],
-      "image_hero": "images/galleries/medina/hero.png",
+      "image_hero": "images/galleries/medina/hero.webp",
       "figma_node_desktop": null,
       "figma_node_mobile": null
     },
@@ -29,7 +29,7 @@
       "city": "tel aviv",
       "status": "coming-soon",
       "hours": [],
-      "image_hero": "images/galleries/dizengoff/hero.png",
+      "image_hero": "images/galleries/dizengoff/hero.webp",
       "figma_node_desktop": "1213:2725",
       "figma_node_mobile": null
     },
@@ -43,7 +43,7 @@
       "city": "tel aviv",
       "status": "coming-soon",
       "hours": [],
-      "image_hero": "images/galleries/flea-market/hero.png",
+      "image_hero": "images/galleries/flea-market/hero.webp",
       "note": "Hero image is currently a placeholder reusing dizengoff image — needs unique photo.",
       "figma_node_desktop": null,
       "figma_node_mobile": null

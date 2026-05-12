@@ -8,11 +8,9 @@
 <link rel="preload" href="פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="components/site-boot.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="components/artwork-lightbox.css">
 <link rel="stylesheet" href="components/stacked-gallery.css">
+<link rel="stylesheet" href="components/triptych-gallery.css">
 <style>
 /* ===== LOCAL FONTS ===== */
 @font-face{
@@ -250,6 +248,23 @@ body{text-transform:uppercase}
 .gallery-card .addr{font-size:18px;font-weight:400}
 .gallery-card .hours{display:flex;flex-direction:column;gap:4px;font-size:16px;font-weight:300;color:var(--ink)}
 
+/* ===== X OUR ARTISTS — Figma landing::228:67 (desktop) / 228:101 (mobile) =====
+   Desktop: 2×3 grid of artwork cards (image + artist name).
+   Mobile : reuses triptych-gallery component (coverflow). */
+.x-artists{padding:48px var(--pad-x);display:flex;flex-direction:column;gap:48px;background:var(--white)}
+.x-artists-title{display:flex;flex-direction:column;line-height:1.05}
+.x-artists-title .b{font-family:var(--cop);font-weight:700;font-size:36px}
+.x-artists-title .l{font-family:var(--cop);font-weight:300;font-size:36px}
+.x-artists-grid{display:flex;flex-direction:column;gap:48px}
+.x-artists-row{display:flex;gap:32px;align-self:stretch}
+.x-artists-card{flex:1;display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0;color:inherit;text-decoration:none;transition:opacity .2s}
+.x-artists-card:hover{opacity:.8}
+.x-artists-card .img{width:100%;height:478.38px;overflow:hidden;background:#f3f1ee}
+.x-artists-card .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.x-artists-card:hover .img img{transform:scale(1.03)}
+.x-artists-card .name{font-family:var(--cop);font-weight:400;font-size:16px;text-align:center;color:var(--ink)}
+.x-artists-tri{display:none}
+
 /* ===== PRESS & EVENTS ===== */
 .press{padding:32px var(--pad-x) 48px;display:flex;flex-direction:column;gap:24px;background:var(--white)}
 .press-title{line-height:1.05}
@@ -401,6 +416,16 @@ body{text-transform:uppercase}
   .gallery-card .addr{font-size:16px}
   .gallery-card .hours{font-size:14px}
 
+  /* X OUR ARTISTS — Figma 228:101 */
+  .x-artists{padding:32px 0;gap:24px}
+  .x-artists-title{padding:0 16px}
+  .x-artists-title .b,.x-artists-title .l{font-size:36px}
+  .x-artists-grid{display:none}
+  .x-artists-tri{display:flex}
+  .x-artists .tri{--tri-max-w:none;--tri-aspect:auto;--tri-center-w:56%;--tri-peek-w:35%;--tri-peek-left:-20%;--tri-peek-right:120%;--tri-peek-opacity:.6;--tri-peek-opacity-hover:.85;--tri-bg:#fff;width:100%}
+  .x-artists .tri-frame{aspect-ratio:auto;height:420px;max-width:none}
+  .x-artists .tri-caption{font-family:var(--cop);font-weight:300;font-size:16px;color:#989898;direction:ltr;text-align:center}
+
   /* PRESS & EVENTS */
   .press{padding:32px 16px}
   .press-rows{gap:24px}
@@ -443,7 +468,7 @@ body{text-transform:uppercase}
   </div>
   <div class="hero-image">
     <div class="img-frame">
-      <img src="images/homepage/hero-landscape.png" alt="Erez Zielinski Rozen">
+      <img src="images/homepage/hero-landscape.webp" width="1320" height="1095" alt="Erez Zielinski Rozen" decoding="async" fetchpriority="high">
     </div>
   </div>
   <div class="hero-foot">
@@ -475,7 +500,7 @@ body{text-transform:uppercase}
          data-info-date="23.4.2026"
          data-info-location="tel aviv"
          aria-label="open call: the peeler">
-        <img src="images/opencalls/the-peeler-card.png" alt="the peeler — open call">
+        <img src="images/opencalls/the-peeler-card.webp" width="1281" height="1600" alt="the peeler — open call" decoding="async" loading="lazy">
       </a>
       <a class="sg-item is-peek"
          href="pages/opencall.html?id=how-many"
@@ -484,7 +509,7 @@ body{text-transform:uppercase}
          data-info-date="17.2.2026"
          data-info-location="tel aviv"
          aria-label="open call: how many partners have you had?">
-        <img src="images/opencalls/how-many-card.png" alt="how many partners — open call">
+        <img src="images/opencalls/how-many-card.webp" width="1280" height="1600" alt="how many partners — open call" decoding="async" loading="lazy">
       </a>
     </div>
     <div class="sg-info">
@@ -500,11 +525,11 @@ body{text-transform:uppercase}
   <h2 class="section-header">the open call</h2>
   <div class="opencall-grid">
     <a class="opencall-card size-a" href="pages/opencall.html?id=the-peeler">
-      <div class="img"><img src="images/opencalls/the-peeler-card.png" alt=""></div>
+      <div class="img"><img src="images/opencalls/the-peeler-card.webp" width="1281" height="1600" alt="" decoding="async" loading="lazy"></div>
       <div class="info"><span class="status">archived</span><span class="date">23.4.2026</span><span class="location">tel aviv</span></div>
     </a>
     <a class="opencall-card size-b" href="pages/opencall.html?id=how-many">
-      <div class="img"><img src="images/opencalls/how-many-card.png" alt=""></div>
+      <div class="img"><img src="images/opencalls/how-many-card.webp" width="1280" height="1600" alt="" decoding="async" loading="lazy"></div>
       <div class="info"><span class="status">archived</span><span class="date">17.2.2026</span><span class="location">tel aviv</span></div>
     </a>
   </div>
@@ -522,7 +547,7 @@ body{text-transform:uppercase}
         <article class="card">
           <div class="gname">גלריית כיכר דיזינגוף</div>
           <div class="img">
-            <img src="images/galleries/dizengoff/hero.png" alt="">
+            <img src="images/galleries/dizengoff/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy">
             <div class="ovr">
               <div class="stat">upcoming</div>
               <div class="ovr-titles">
@@ -536,7 +561,7 @@ body{text-transform:uppercase}
         <article class="card">
           <div class="gname">גלריית כיכר המדינה</div>
           <div class="img">
-            <img src="images/galleries/medina/hero.png" alt="">
+            <img src="images/galleries/medina/hero.webp" width="2896" height="3861" alt="" decoding="async" loading="lazy">
             <div class="ovr">
               <div class="stat">current</div>
               <div class="ovr-titles">
@@ -553,41 +578,41 @@ body{text-transform:uppercase}
       <a href="pages/artists/alon.html" aria-label="all artists"><svg width="16" height="16" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.926778 11.0004L0 10.0736L8.73379 1.33128H0.793662V0H11.0004V10.2067H9.6691V2.2666L0.926778 11.0004Z" fill="#1A1C1C"/></svg></a>
     </div>
     <div class="artists-list">
-      <a class="artist" href="pages/artists/zohar-ron.html"><img src="images/artists/zohar-ron/portrait.png" alt="זוהר רון"><div class="nm">zohar
+      <a class="artist" href="pages/artists/zohar-ron.html"><img src="images/artists/zohar-ron/portrait.webp" width="690" height="1044" alt="זוהר רון" decoding="async" loading="lazy"><div class="nm">zohar
 ron</div></a>
-      <a class="artist" href="pages/artists/eitan-goldson.html"><img src="images/artists/eitan-goldson/portrait.png" alt="איתן גולדסון"><div class="nm">eitan
+      <a class="artist" href="pages/artists/eitan-goldson.html"><img src="images/artists/eitan-goldson/portrait.webp" width="690" height="1044" alt="איתן גולדסון" decoding="async" loading="lazy"><div class="nm">eitan
 goldson</div></a>
-      <a class="artist" href="pages/artists/tanya-shin.html"><img src="images/artists/tanya-shin/portrait-v2.png" alt="טניה שין"><div class="nm">tanya
+      <a class="artist" href="pages/artists/tanya-shin.html"><img src="images/artists/tanya-shin/portrait-v2.webp" width="1160" height="2062" alt="טניה שין" decoding="async" loading="lazy"><div class="nm">tanya
 shin</div></a>
-      <a class="artist" href="pages/artists/nir-giorgio-levin.html"><img src="images/artists/nir-giorgio-levin/portrait-v2.png" alt="ניר ג׳ורג׳יו לוין"><div class="nm">nir giorgio
+      <a class="artist" href="pages/artists/nir-giorgio-levin.html"><img src="images/artists/nir-giorgio-levin/portrait-v2.webp" width="2000" height="2097" alt="ניר ג׳ורג׳יו לוין" decoding="async" loading="lazy"><div class="nm">nir giorgio
 levin</div></a>
-      <a class="artist" href="pages/artists/elsa-ars-brush.html"><img src="images/artists/elsa-ars-brush/portrait.png" alt="אלסה ארס ברוש"><div class="nm">elsa
+      <a class="artist" href="pages/artists/elsa-ars-brush.html"><img src="images/artists/elsa-ars-brush/portrait.webp" width="4032" height="3024" alt="אלסה ארס ברוש" decoding="async" loading="lazy"><div class="nm">elsa
 ars brush</div></a>
-      <a class="artist" href="pages/artists/gal-polk.html"><img src="images/artists/gal-polk/portrait.png" alt="גל פולק"><div class="nm">gal
+      <a class="artist" href="pages/artists/gal-polk.html"><img src="images/artists/gal-polk/portrait.webp" width="1736" height="3088" alt="גל פולק" decoding="async" loading="lazy"><div class="nm">gal
 polk</div></a>
       <a class="artist" href="pages/artists/zohar-shtrit.html"><div class="portrait-placeholder"></div><div class="nm">zohar
 shtrit</div></a>
       <a class="artist" href="pages/artists/hila-loterstein.html"><div class="portrait-placeholder"></div><div class="nm">hila
 loterstein</div></a>
-      <a class="artist" href="pages/artists/sami-david.html"><img src="images/artists/sami-david/portrait.png" alt="סמי דוד"><div class="nm">sami
+      <a class="artist" href="pages/artists/sami-david.html"><img src="images/artists/sami-david/portrait.webp" width="1152" height="2048" alt="סמי דוד" decoding="async" loading="lazy"><div class="nm">sami
 david</div></a>
-      <a class="artist" href="pages/artists/risa-oz.html"><img src="images/artists/risa-oz/portrait.png" alt="ריסה עוז"><div class="nm">risa
+      <a class="artist" href="pages/artists/risa-oz.html"><img src="images/artists/risa-oz/portrait.webp" width="842" height="1072" alt="ריסה עוז" decoding="async" loading="lazy"><div class="nm">risa
 oz</div></a>
       <a class="artist" href="pages/artists/zohar-ron-dan-ben-ari.html"><div class="portrait-placeholder"></div><div class="nm">zohar ron
 dan ben ari</div></a>
       <a class="artist" href="pages/artists/adi-duak.html"><div class="portrait-placeholder"></div><div class="nm">adi
 duak</div></a>
-      <a class="artist" href="pages/artists/alon.html"><img src="images/artists/alon/portrait.png" alt="אלון מנג׳וך"><div class="nm">alon
+      <a class="artist" href="pages/artists/alon.html"><img src="images/artists/alon/portrait.webp" width="1060" height="1600" alt="אלון מנג׳וך" decoding="async" loading="lazy"><div class="nm">alon
 manjuch</div></a>
-      <a class="artist" href="pages/artists/noemi-safir.html"><img src="images/artists/noemi-safir/portrait.png" alt="נועמי ספיר"><div class="nm">noemi
+      <a class="artist" href="pages/artists/noemi-safir.html"><img src="images/artists/noemi-safir/portrait.webp" width="1461" height="1656" alt="נועמי ספיר" decoding="async" loading="lazy"><div class="nm">noemi
 safir</div></a>
-      <a class="artist" href="pages/artists/yarden-amir.html"><img src="images/artists/yarden-amir/portrait.png" alt="ירדן אמיר"><div class="nm">yarden
+      <a class="artist" href="pages/artists/yarden-amir.html"><img src="images/artists/yarden-amir/portrait.webp" width="2732" height="4096" alt="ירדן אמיר" decoding="async" loading="lazy"><div class="nm">yarden
 amir</div></a>
-      <a class="artist" href="pages/artists/anat-wegier.html"><img src="images/artists/anat-wegier/portrait.png" alt="ענת ויז׳ייה"><div class="nm">anat
+      <a class="artist" href="pages/artists/anat-wegier.html"><img src="images/artists/anat-wegier/portrait.webp" width="580" height="998" alt="ענת ויז׳ייה" decoding="async" loading="lazy"><div class="nm">anat
 wegier</div></a>
-      <a class="artist" href="pages/artists/liel-salman.html"><img src="images/artists/liel-salman/portrait.png" alt="ליאל סלמן"><div class="nm">liel
+      <a class="artist" href="pages/artists/liel-salman.html"><img src="images/artists/liel-salman/portrait.webp" width="3000" height="4000" alt="ליאל סלמן" decoding="async" loading="lazy"><div class="nm">liel
 salman</div></a>
-      <a class="artist" href="pages/artists/tal-nehoray.html"><img src="images/artists/tal-nehoray/portrait.png" alt="טל נהוראי"><div class="nm">tal
+      <a class="artist" href="pages/artists/tal-nehoray.html"><img src="images/artists/tal-nehoray/portrait.webp" width="3072" height="4096" alt="טל נהוראי" decoding="async" loading="lazy"><div class="nm">tal
 nehoray</div></a>
     </div>
   </div>
@@ -611,15 +636,15 @@ nehoray</div></a>
 <!-- ART WORKS -->
 <section class="artworks" id="artworks">
   <div class="aw-row">
-    <div class="aw-img"><img src="images/works/tile-the.png" alt=""></div>
+    <div class="aw-img"><img src="images/works/tile-the.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></div>
     <div class="aw-text"><span class="word the">the</span></div>
   </div>
   <div class="aw-row">
     <div class="aw-text"><span class="word art">art</span></div>
-    <div class="aw-img"><img src="images/works/tile-art.png" alt=""></div>
+    <div class="aw-img"><img src="images/works/tile-art.webp" width="3024" height="4032" alt="" decoding="async" loading="lazy"></div>
   </div>
   <div class="aw-row">
-    <div class="aw-img"><img src="images/works/tile-works.png" alt=""></div>
+    <div class="aw-img"><img src="images/works/tile-works.webp" width="3072" height="4096" alt="" decoding="async" loading="lazy"></div>
     <div class="aw-text"><span class="word works">works</span></div>
   </div>
   <div class="aw-row">
@@ -629,7 +654,7 @@ nehoray</div></a>
         more
       </a>
     </div>
-    <div class="aw-img"><a href="pages/works.html"><img src="images/works/tile-more.png" alt=""></a></div>
+    <div class="aw-img"><a href="pages/works.html"><img src="images/works/tile-more.webp" width="3024" height="4032" alt="" decoding="async" loading="lazy"></a></div>
   </div>
 </section>
 
@@ -642,15 +667,15 @@ nehoray</div></a>
   </div>
   <div class="ig-viewport">
     <div class="ig-track" id="igTrack">
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/1.png" alt=""></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/2.png" alt=""></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/3.png" alt=""></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/4.png" alt=""></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/5.png" alt=""></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/6.png" alt=""></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/7.png" alt=""></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/8.png" alt=""></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/9.png" alt=""></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/1.webp" width="2306" height="4096" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/2.webp" width="1440" height="1920" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/3.webp" width="1440" height="1920" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/4.webp" width="1080" height="1350" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/5.webp" width="1080" height="1350" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/6.webp" width="2306" height="4096" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/7.webp" width="1440" height="1919" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/8.webp" width="1440" height="1801" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/9.webp" width="1440" height="1920" alt="" decoding="async" loading="lazy"></a>
     </div>
   </div>
 </section>
@@ -663,7 +688,7 @@ nehoray</div></a>
   </div>
   <div class="gallery-cards">
     <article class="gallery-card">
-      <div class="img"><img src="images/galleries/medina/hero.png" alt=""></div>
+      <div class="img"><img src="images/galleries/medina/hero.webp" width="2896" height="3861" alt="" decoding="async" loading="lazy"></div>
       <div class="info">
         <div class="name">גלריית כיכר המדינה</div>
         <div class="addr">ז'בוטינסקי 131, תל אביב</div>
@@ -675,19 +700,80 @@ nehoray</div></a>
       </div>
     </article>
     <article class="gallery-card">
-      <div class="img dim"><img src="images/galleries/dizengoff/hero.png" alt=""><span class="coming">coming soon</span></div>
+      <div class="img dim"><img src="images/galleries/dizengoff/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"><span class="coming">coming soon</span></div>
       <div class="info">
         <div class="name">גלריית כיכר דיזינגוף</div>
         <div class="addr">כיכר דיזינגוף, תל אביב</div>
       </div>
     </article>
     <article class="gallery-card">
-      <div class="img dim"><img src="images/galleries/flea-market/hero.png" alt=""><span class="coming">coming soon</span></div>
+      <div class="img dim"><img src="images/galleries/flea-market/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"><span class="coming">coming soon</span></div>
       <div class="info">
         <div class="name">גלריית שוק הפשפשים</div>
         <div class="addr">שוק הפשפשים, תל אביב</div>
       </div>
     </article>
+  </div>
+</section>
+
+<!-- X OUR ARTISTS — Figma landing::228:67 (desktop) / 228:101 (mobile).
+     Data source: data/homepage.json :: x_our_artists -->
+<section class="x-artists" id="x-our-artists">
+  <div class="x-artists-title">
+    <span class="b">zielinski rozen</span>
+    <span class="l">x our artists</span>
+  </div>
+  <!-- DESKTOP — 2×3 grid -->
+  <div class="x-artists-grid only-desktop">
+    <div class="x-artists-row">
+      <a class="x-artists-card" href="pages/artists/nir-giorgio-levin.html">
+        <div class="img"><img src="images/homepage/x-our-artists/work-1.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">nir giorgio levin</div>
+      </a>
+      <a class="x-artists-card" href="pages/artists/gal-polk.html">
+        <div class="img"><img src="images/homepage/x-our-artists/work-2.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">gal pollak</div>
+      </a>
+      <a class="x-artists-card" href="pages/artists/gal-polk.html">
+        <div class="img"><img src="images/homepage/x-our-artists/work-3.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">gal pollak</div>
+      </a>
+    </div>
+    <div class="x-artists-row">
+      <div class="x-artists-card">
+        <div class="img"><img src="images/homepage/x-our-artists/work-4.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">maya nachum levy</div>
+      </div>
+      <div class="x-artists-card">
+        <div class="img"><img src="images/homepage/x-our-artists/work-5.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">maya nachum levy</div>
+      </div>
+      <div class="x-artists-card">
+        <div class="img"><img src="images/homepage/x-our-artists/work-6.png" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">maya nachum levy</div>
+      </div>
+    </div>
+  </div>
+  <!-- MOBILE — triptych coverflow (shared component) -->
+  <div class="x-artists-tri only-mobile">
+    <div class="tri" data-tri-loop="true">
+      <div class="tri-frame">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-1.png" alt="" data-caption="nir giorgio levin" data-artist-href="pages/artists/nir-giorgio-levin.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.png" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-3.png" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.png" alt="" data-caption="maya nachum levy">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.png" alt="" data-caption="maya nachum levy">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.png" alt="" data-caption="maya nachum levy">
+      </div>
+      <div class="tri-dots" role="tablist">
+        <button class="tri-dot is-on" type="button" aria-label="1"></button>
+        <button class="tri-dot" type="button" aria-label="2"></button>
+        <button class="tri-dot" type="button" aria-label="3"></button>
+        <button class="tri-dot" type="button" aria-label="4"></button>
+        <button class="tri-dot" type="button" aria-label="5"></button>
+        <button class="tri-dot" type="button" aria-label="6"></button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -705,7 +791,7 @@ nehoray</div></a>
           <p class="desc">איך מרגישה בדידות בתוך סביבה תוססת: תערוכה חדשה בגלריית זילינסקי רוזן</p>
           <span class="date">19.1.2026</span>
         </div>
-        <div class="img"><img src="images/press/portfolio-cover.png" alt=""></div>
+        <div class="img"><img src="images/press/portfolio-cover.webp" width="1280" height="540" alt="" decoding="async" loading="lazy"></div>
       </a>
       <a class="press-card" href="pages/press/walla.html">
         <div class="info">
@@ -713,7 +799,7 @@ nehoray</div></a>
           <p class="desc">מותג הבישום פתח גלריה בכיכר המדינה: 100% מהרווחים הולכים לאמנים</p>
           <span class="date">5.1.2026</span>
         </div>
-        <div class="img"><img src="images/press/walla-cover.png" alt=""></div>
+        <div class="img"><img src="images/press/walla-cover.webp" width="462" height="626" alt="" decoding="async" loading="lazy"></div>
       </a>
     </div>
     <div class="press-row">
@@ -723,7 +809,7 @@ nehoray</div></a>
           <p class="desc">בדידות בתוך סביבה תוססת</p>
           <span class="date">25.2.2026</span>
         </div>
-        <div class="img"><img src="images/events/event-3-cover.png" alt=""></div>
+        <div class="img"><img src="images/events/event-3-cover.webp" width="1280" height="1600" alt="" decoding="async" loading="lazy"></div>
       </a>
       <a class="press-card" href="pages/events/loneliness.html">
         <div class="info">
@@ -731,7 +817,7 @@ nehoray</div></a>
           <p class="desc">בדידות בתוך סביבה תוססת</p>
           <span class="date">19.1.2026</span>
         </div>
-        <div class="img"><img src="images/events/event-4-cover.png" alt=""></div>
+        <div class="img"><img src="images/events/event-4-cover.webp" width="1435" height="1600" alt="" decoding="async" loading="lazy"></div>
       </a>
     </div>
   </div>
@@ -755,10 +841,10 @@ nehoray</div></a>
       "label_he": "גלריית כיכר דיזינגוף",
       "active": false,
       "thumbs": [
-        { "n": "01", "image": "images/exhibitions/how-many/artists/01-zohar-ron.png",         "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 01" },
-        { "n": "02", "image": "images/exhibitions/how-many/artists/02-dan-ben-ari.png",       "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 02" },
-        { "n": "03", "image": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.png", "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 03" },
-        { "n": "04", "image": "images/exhibitions/how-many/artists/13-gal-pollak.png",        "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 04" }
+        { "n": "01", "image": "images/exhibitions/how-many/artists/01-zohar-ron.webp",         "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 01" },
+        { "n": "02", "image": "images/exhibitions/how-many/artists/02-dan-ben-ari.webp",       "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 02" },
+        { "n": "03", "image": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.webp", "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 03" },
+        { "n": "04", "image": "images/exhibitions/how-many/artists/13-gal-pollak.webp",        "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 04" }
       ]
     },
     {
@@ -766,10 +852,10 @@ nehoray</div></a>
       "label_he": "גלריית כיכר המדינה",
       "active": true,
       "thumbs": [
-        { "n": "01", "image": "images/exhibitions/archive/thumb-01.png", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 01" },
-        { "n": "02", "image": "images/exhibitions/archive/thumb-02.png", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 02" },
-        { "n": "03", "image": "images/exhibitions/archive/thumb-03.png", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 03" },
-        { "n": "04", "image": "images/exhibitions/archive/thumb-04.png", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 04" }
+        { "n": "01", "image": "images/exhibitions/archive/thumb-01.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 01" },
+        { "n": "02", "image": "images/exhibitions/archive/thumb-02.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 02" },
+        { "n": "03", "image": "images/exhibitions/archive/thumb-03.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 03" },
+        { "n": "04", "image": "images/exhibitions/archive/thumb-04.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 04" }
       ]
     }
   ]
@@ -810,7 +896,7 @@ nehoray</div></a>
                 (link  ? 'data-artwork-link="'+link+'" data-artwork-link-label="מעבר לתערוכה" ' : '')+
                 'tabindex="0" role="button" aria-label="'+title+'">'+
                '<span class="num">'+t.n+'</span>'+
-               '<img src="'+t.image+'" alt="'+title+'">'+
+               '<img src="'+t.image+'" alt="'+title+'" decoding="async" loading="lazy">'+
              '</div>';
     }).join('');
     thumbsEl.innerHTML = html;

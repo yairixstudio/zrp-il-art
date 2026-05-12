@@ -149,7 +149,7 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 6. **לפני HTML — עדכן JSONs.** הוסף entity חדש לקובץ המתאים.
 7. בנה HTML יחיד עם CSS מוטמע. Pattern: `font-face → tokens → sections → media queries → casing block (conventions.md §5)`.
 8. הוסף לינק לדף ב-nav של כל הדפים הקיימים (אין partial loader — copy-paste; כשמעל 8 דפים, ראה `docs/todo.md`).
-9. **לפני סיום:** עבור על `docs/artist-linking.md §7` (בדיקת anchors) וודא `text-transform`/font compliance (`conventions.md §5`).
+9. **לפני סיום:** עבור על `docs/artist-linking.md §7` (בדיקת anchors), וודא `text-transform`/font compliance (`conventions.md §5`), והרץ perf checklist (§8.11): כל `<img>` עם `src="*.webp"` + `width`/`height` + `loading="lazy" decoding="async"` (חוץ מה-LCP שמקבל `fetchpriority="high"`).
 10. עדכן: §4 sitemap status, §6 אם הוספת שדה, `docs/lessons.md §4` אם יש לקח חדש.
 
 **שיתוף קבצים:** לפני edit ל-`index.html`, `data/site.json`, `CLAUDE.md`, או כל קובץ shared — **Re-Read קודם**. סוכנים מקבילים יוצרים race conditions.
@@ -159,16 +159,21 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 ## 8. כללי-זהב (אסור לשבור) 🔴
 
 1. **לא משכפלים תוכן** מ-JSON ל-HTML. שדה חסר → תוסיף ל-JSON.
-2. **לא Google Fonts** כתחליף לפונטים מקומיים.
+2. **לא Google Fonts** כתחליף לפונטים מקומיים. **גם לא Inter/sans-serif כברירת מחדל** — אם צריך גופן ללא-Copperplate, להוריד מקומית.
 3. **🔴 כל אנגלית = Copperplate UPPERCASE** — כולל אימיילים, handles, URLs, שמות אומנים, caption. הפרה = bug. פרטים ב-`docs/conventions.md §5`.
 4. **לא Figma node IDs ב-CSS/HTML.** רק ב-JSONs (כ-meta) וכאן.
 5. **לא לשנות slugs** של entities שכבר קיימים.
 6. **לא לעגל pixel values** מהפיגמה.
-7. **לא לדרוס תמונות קיימות** — `portrait-v2.png` אם הצילום שונה.
+7. **לא לדרוס תמונות קיימות** — `portrait-v2.webp` אם הצילום שונה. (מקור גולמי ב-`_originals/`, gitignored; ב-`images/` רק WebP+AVIF.)
 8. **Re-Read לפני edit** של קובץ shared (`index.html`, `data/site.json`, `CLAUDE.md`).
 9. **🔴 כל אזכור של אומן חייב להיות קישור** לדף האומן (`pages/artists/<slug>.html`). פרטים ב-`docs/artist-linking.md` — **קרא לפני סיום משימה**.
 10. **לא לבנות קומפוננטה שכבר קיימת** (lightbox, gallery, carousel). `docs/components.md` הוא ה-source of truth.
-11. **כן** לעדכן את הקובץ הזה כש-state משתנה (sitemap, golden rules, contracts).
+11. **🔴 Perf checklist לכל `<img>`:**
+    - `src="...webp"` (לא `.png`. `picture-upgrade.js` מוסיף source ל-AVIF אוטומטית.)
+    - `width="N" height="N"` (מהפיקסלים האמיתיים, מונע CLS).
+    - `loading="lazy" decoding="async"` — חוץ מה-img הראשון בדף.
+    - ה-img הראשון בדף = ה-LCP, מקבל `fetchpriority="high"` במקום `loading="lazy"`.
+12. **כן** לעדכן את הקובץ הזה כש-state משתנה (sitemap, golden rules, contracts).
 
 ---
 

@@ -9,9 +9,6 @@
 <link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="../components/site-boot.css">
 <meta name="description" content="The Art Works — featured artists at Zielinski & Rozen Galleries">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../components/artwork-lightbox.css">
 <link rel="stylesheet" href="../components/triptych-gallery.css">
 <style>
@@ -164,11 +161,11 @@ body{text-transform:uppercase}
   /* --- GRID (desktop) --- */
   var grid=document.getElementById('works-grid');
   grid.innerHTML=items.map(function(w){
-    var src=base+w.img+'.png';
+    var src=base+w.img+'.webp';
     var href='artists/'+w.slug+'.html';
     return '<article class="card'+(w.fit?' fit':'')+'">'+
       '<div class="img" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'" data-artwork-link-label="לדף האומן">'+
-        '<img src="'+src+'" alt="'+w.name_he+'">'+
+        '<img src="'+src+'" alt="'+w.name_he+'" decoding="async" fetchpriority="high">'+
       '</div>'+
       '<a class="name" href="'+href+'">'+w.name_he+'</a>'+
     '</article>';
@@ -177,9 +174,9 @@ body{text-transform:uppercase}
   /* --- CAROUSEL (mobile) --- */
   var car=document.getElementById('works-carousel');
   var slides=items.map(function(w,i){
-    var src=base+w.img+'.png';
+    var src=base+w.img+'.webp';
     var href='artists/'+w.slug+'.html';
-    return '<img class="tri-slide" src="'+src+'" alt="'+w.name_he+'" draggable="false"'+(i?' loading="lazy"':'')+' data-caption="'+w.name_he+'" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'" data-artwork-link-label="לדף האומן">';
+    return '<img class="tri-slide" src="'+src+'" alt="'+w.name_he+'" draggable="false"'+(i?' loading="lazy"':'')+' data-caption="'+w.name_he+'" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'" data-artwork-link-label="לדף האומן" decoding="async">';
   }).join('');
   var dots=items.map(function(_,i){
     return '<button type="button" class="tri-dot'+(i===0?' is-on':'')+'" role="tab" aria-selected="'+(i===0)+'">';

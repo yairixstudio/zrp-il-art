@@ -11,7 +11,7 @@
       "title_en": null,
       "url": null,
       "date": "2026-01-19",
-      "cover_image": "images/press/portfolio-cover.png",
+      "cover_image": "images/press/portfolio-cover.webp",
       "exhibition_id": "loneliness",
       "homepage_visible": true,
       "_alias": "press-1"
@@ -28,7 +28,7 @@
       "url": null,
       "date": "2026-01-05",
       "author_he": "עמית סלונים",
-      "cover_image": "images/press/walla-cover.png",
+      "cover_image": "images/press/walla-cover.webp",
       "exhibition_id": null,
       "gallery_id": "medina",
       "homepage_visible": true,
@@ -49,7 +49,7 @@
       "url": null,
       "date": "2026-01-19",
       "author_he": "יובל סער",
-      "cover_image": "images/press/press-1/00-hero-gal-polk.png",
+      "cover_image": "images/press/press-1/00-hero-gal-polk.webp",
       "exhibition_id": "loneliness",
       "homepage_visible": true,
       "route": "pages/press/press-1.html",
@@ -69,7 +69,7 @@
       "url": null,
       "date": "2025-12-31",
       "author_he": "רעות ברנע",
-      "cover_image": "images/press/time-out/hero.png",
+      "cover_image": "images/press/time-out/hero.webp",
       "exhibition_id": "loneliness",
       "homepage_visible": true,
       "route": "pages/press/time-out.html",
@@ -84,7 +84,7 @@
       "tag_en": "gallery event",
       "title_he": "בדידות בתוך סביבה תוססת",
       "date": "2026-02-25",
-      "cover_image": "images/events/event-3-cover.png",
+      "cover_image": "images/events/event-3-cover.webp",
       "exhibition_id": "loneliness",
       "homepage_visible": true
     },
@@ -94,7 +94,7 @@
       "tag_en": "gallery event",
       "title_he": "בדידות בתוך סביבה תוססת",
       "date": "2026-01-19",
-      "cover_image": "images/events/event-4-cover.png",
+      "cover_image": "images/events/event-4-cover.webp",
       "exhibition_id": "loneliness",
       "homepage_visible": true
     }

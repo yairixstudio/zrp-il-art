@@ -1,10 +1,19 @@
 /* ============================================================
-   PICTURE UPGRADE — auto-wrap <img src="*.png"> into <picture>
-   with AVIF + WebP sources at the same path. Original PNGs are
-   removed from the deployed images/ dir (kept locally in
-   _originals/, gitignored). Modern browsers fetch AVIF first,
-   then WebP, then the <img> src (also WebP).
-   Works for static markup and for elements injected dynamically
+   PICTURE UPGRADE — wrap <img src="*.webp|*.png"> into a <picture>
+   element with an AVIF <source>. Original PNGs are NOT deployed
+   (kept in _originals/, gitignored); only WebP + AVIF ship.
+
+   Authoring convention (preferred for performance — no JS hop):
+     <img src="path/file.webp" ...>
+   The script adds an AVIF source pointing to path/file.avif so
+   modern browsers fetch AVIF, falling back to the WebP <img>.
+
+   Legacy markup (`src="*.png"`) is still supported: the script
+   rewrites src to .webp AND adds AVIF + WebP sources. New markup
+   should use .webp directly so the browser can start the fetch
+   before this script runs.
+
+   Works for static markup AND for elements injected dynamically
    from JSON via JS — a MutationObserver picks them up.
    ============================================================ */
 (function () {
@@ -12,29 +21,37 @@
   if (window.__picUpgradeInit) return;
   window.__picUpgradeInit = true;
 
+  // Match .webp OR .png at end of src (with optional query string).
+  // Capture: 1=base path, 2=ext, 3=query.
+  var RE = /^(.*)\.(webp|png)(\?.*)?$/i;
+
   function makePicture(img) {
     if (!img || img.tagName !== 'IMG') return;
     if (img.dataset.picDone === '1') return;
-    // already inside <picture>? leave alone but mark.
     if (img.parentNode && img.parentNode.tagName === 'PICTURE') {
       img.dataset.picDone = '1';
       return;
     }
     var src = img.getAttribute('src') || '';
-    var m = src.match(/^(.*)\.png(\?.*)?$/i);
+    var m = src.match(RE);
     if (!m) { img.dataset.picDone = '1'; return; }
     var base = m[1];
-    var q = m[2] || '';
+    var ext = m[2].toLowerCase();
+    var q = m[3] || '';
     var avif = base + '.avif' + q;
     var webp = base + '.webp' + q;
 
     var pic = document.createElement('picture');
     var sA = document.createElement('source');
     sA.srcset = avif; sA.type = 'image/avif';
-    var sW = document.createElement('source');
-    sW.srcset = webp; sW.type = 'image/webp';
     pic.appendChild(sA);
-    pic.appendChild(sW);
+
+    // Legacy PNG src → also need an explicit WebP <source> AND rewrite img src.
+    if (ext === 'png') {
+      var sW = document.createElement('source');
+      sW.srcset = webp; sW.type = 'image/webp';
+      pic.appendChild(sW);
+    }
 
     var parent = img.parentNode;
     if (!parent) { img.dataset.picDone = '1'; return; }
@@ -42,7 +59,7 @@
     // copy srcset if present (responsive cases) — replace .png with .webp
     var ss = img.getAttribute('srcset');
     if (ss) img.setAttribute('srcset', ss.replace(/\.png\b/gi, '.webp'));
-    img.setAttribute('src', webp);
+    if (ext === 'png') img.setAttribute('src', webp);
     pic.appendChild(img);
     img.dataset.picDone = '1';
   }
@@ -59,16 +76,13 @@
     var mo = new MutationObserver(function (muts) {
       for (var i = 0; i < muts.length; i++) {
         var m = muts[i];
-        // src attribute changed on an existing <img>?
         if (m.type === 'attributes' && m.target && m.target.tagName === 'IMG') {
-          // src changed — rebuild picture wrapper
           var img = m.target;
-          // if already wrapped, update sibling <source> srcsets
           if (img.parentNode && img.parentNode.tagName === 'PICTURE') {
             var src = img.getAttribute('src') || '';
-            var mm = src.match(/^(.*)\.png(\?.*)?$/i);
+            var mm = src.match(RE);
             if (mm) {
-              var base = mm[1], q = mm[2] || '';
+              var base = mm[1], ext = mm[2].toLowerCase(), q = mm[3] || '';
               var avif = base + '.avif' + q, webp = base + '.webp' + q;
               var sources = img.parentNode.querySelectorAll('source');
               for (var s = 0; s < sources.length; s++) {
@@ -76,16 +90,14 @@
                 if (t === 'image/avif') sources[s].srcset = avif;
                 else if (t === 'image/webp') sources[s].srcset = webp;
               }
-              img.setAttribute('src', webp);
+              if (ext === 'png') img.setAttribute('src', webp);
             }
           } else {
-            // not yet wrapped — wrap now
             img.dataset.picDone = '';
             makePicture(img);
           }
           continue;
         }
-        // new nodes added?
         var added = m.addedNodes;
         for (var j = 0; j < added.length; j++) {
           var n = added[j];

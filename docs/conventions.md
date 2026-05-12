@@ -6,24 +6,44 @@
 
 ## 1. Asset Conventions
 
-| תוכן | תיקייה | שמות | הערות |
-|---|---|---|---|
-| Hero של דף | `images/<category>/<slug>/` | `hero.png` | |
-| Portrait של אומן | `images/artists/<slug>/` | `portrait.png` | square. **אל תדרוס** — שמור `portrait-v2.png` אם הצילום שונה. |
-| Works של אומן | `images/artists/<slug>/works/` | `01.png`... | ממוספר |
-| Works grid | `images/works/grid/` | `<artist-slug>.png` | flat |
-| Gallery interior | `images/galleries/<slug>/` | `interior-01.png`... | |
-| Exhibition stills | `images/exhibitions/<slug>/gallery/` | `01.png`... | |
-| Press cover | `images/press/` | `<slug>-cover.png` | flat |
-| Press inline | `images/press/<slug>/` | `00-hero-*.png`, `01-*.png`... | subfolder לכתבות long-form. **walla/press-1/time-out כבר קיימים — `ls` קודם.** |
-| Event cover | `images/events/` | `<slug>-cover.png` | flat — homepage thumb only |
-| Event page images | `images/events/<slug>/` | `hero.png`, `invite-*.png`, `atmosphere.png`, `opening-*.png` | **קיים:** `images/events/loneliness/` (22). אל תוריד מחדש. |
-| Open call | `images/opencalls/<slug>/` | `hero.png`, `gallery-01.png`... | subfolder per slug |
-| Instagram | `images/instagram/` | `1.png`-`9.png` | |
+**פורמטים בשרת:** רק **`.webp`** ו-**`.avif`** ב-`images/`. המקור הגולמי (`.png` עם שקיפות, `.jpg` של צילומים) חי ב-`_originals/` שמוסתר ב-`.gitignore`. הצמד `{name}.webp` + `{name}.avif` נוצר מ-`_originals/{name}.png` באמצעות convert pipeline (לא checked-in). דפים מצביעים תמיד ל-`.webp`; `components/picture-upgrade.js` מוסיף `<source type="image/avif">` ב-runtime.
 
-**Logo:** `images/brand/logo.svg` (TODO). **איקונים:** inline SVG ב-HTML.
+| תוכן | תיקייה | שמות בשרת | הערות |
+|---|---|---|---|
+| Hero של דף | `images/<category>/<slug>/` | `hero.webp` + `hero.avif` | |
+| Portrait של אומן | `images/artists/<slug>/` | `portrait.webp` + `portrait.avif` | square. **אל תדרוס** — שמור `portrait-v2.{webp,avif}` אם הצילום שונה. |
+| Works של אומן | `images/artists/<slug>/works/` | `01.{webp,avif}`... | ממוספר |
+| Works grid | `images/works/grid/` | `<artist-slug>.{webp,avif}` | flat |
+| Gallery interior | `images/galleries/<slug>/` | `interior-01.{webp,avif}`... | |
+| Exhibition stills | `images/exhibitions/<slug>/gallery/` | `01.{webp,avif}`... | |
+| Press cover | `images/press/` | `<slug>-cover.{webp,avif}` | flat |
+| Press inline | `images/press/<slug>/` | `00-hero-*.{webp,avif}`, `01-*.{webp,avif}`... | subfolder לכתבות long-form. **walla/press-1/time-out כבר קיימים — `ls` קודם.** |
+| Event cover | `images/events/` | `<slug>-cover.{webp,avif}` | flat — homepage thumb only |
+| Event page images | `images/events/<slug>/` | `hero.{webp,avif}`, `invite-*.{webp,avif}`, `atmosphere.{webp,avif}`, `opening-*.{webp,avif}` | **קיים:** `images/events/loneliness/` (22). אל תוריד מחדש. |
+| Open call | `images/opencalls/<slug>/` | `hero.{webp,avif}`, `gallery-01.{webp,avif}`... | subfolder per slug |
+| Instagram | `images/instagram/` | `1.{webp,avif}`-`9.{webp,avif}` | |
+
+**Logo:** `images/brand/logo.svg`. **איקונים:** inline SVG ב-HTML. **וידאו:** `.mp4` H.264 + `-movflags +faststart`, **`-an`** (אין אודיו ברוב הוידאו דקורטיבי), CRF 28-30, fps≤24, רוחב≤1080.
 
 **לפני כל הורדה — `ls images/<category>/<slug>/` קודם.** רוב התמונות הקיימות מ-press/about/events כבר במקום.
+
+### 1.1 Perf checklist ל-`<img>` (חובה, ראה CLAUDE.md §8.11)
+
+```html
+<!-- LCP (img ראשון בדף) -->
+<img src="path/file.webp" alt="…" width="1200" height="800" fetchpriority="high" decoding="async">
+
+<!-- כל שאר ה-imgs -->
+<img src="path/file.webp" alt="…" width="800" height="600" loading="lazy" decoding="async">
+```
+
+- `src` תמיד `.webp` (לא `.png` — הקובץ לא קיים בשרת).
+- `width`/`height` = הפיקסלים האמיתיים של הקובץ. `sips -g pixelWidth -g pixelHeight <path>` ב-macOS.
+- `decoding="async"` לכל img (אין חיסרון).
+- `loading="lazy"` לכל img חוץ מה-LCP.
+- ה-LCP מקבל `fetchpriority="high"`.
+
+ל-imgs שנבנים ב-JS (carousels, dynamic grids) — אותו checklist מיושם ב-JS template.
 
 ---
 

@@ -16,38 +16,38 @@
       "gallery_label_he": "גלריית כיכר המדינה",
       "start_date": null,
       "end_date": null,
-      "hero_image": "images/exhibitions/loneliness/hero.png",
+      "hero_image": "images/exhibitions/loneliness/hero.webp",
       "gallery_images": [
         {
-          "src": "images/exhibitions/loneliness/hero.png",
+          "src": "images/exhibitions/loneliness/hero.webp",
           "alt": "בדידות בתוך סביבה תוססת — תמונת מפתח"
         },
         {
-          "src": "images/events/loneliness/invite-01.png",
+          "src": "images/events/loneliness/invite-01.webp",
           "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"
         },
         {
-          "src": "images/events/loneliness/invite-02.png",
+          "src": "images/events/loneliness/invite-02.webp",
           "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"
         },
         {
-          "src": "images/events/loneliness/invite-03.png",
+          "src": "images/events/loneliness/invite-03.webp",
           "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"
         },
         {
-          "src": "images/events/loneliness/atmosphere.png",
+          "src": "images/events/loneliness/atmosphere.webp",
           "alt": "אווירה בגלריה — כיכר המדינה"
         },
         {
-          "src": "images/events/loneliness/second-01.png",
+          "src": "images/events/loneliness/second-01.webp",
           "alt": "מתוך התערוכה"
         },
         {
-          "src": "images/events/loneliness/second-02.png",
+          "src": "images/events/loneliness/second-02.webp",
           "alt": "מתוך התערוכה"
         },
         {
-          "src": "images/events/loneliness/second-03.png",
+          "src": "images/events/loneliness/second-03.webp",
           "alt": "מתוך התערוכה"
         }
       ],
@@ -125,53 +125,53 @@
       "artists": [
         {
           "name_en": "zohar ron",
-          "thumb": "images/exhibitions/loneliness/artists/01-zohar-ron.png",
+          "thumb": "images/exhibitions/loneliness/artists/01-zohar-ron.webp",
           "slug": "zohar-ron"
         },
         {
           "name_en": "eitan goldson",
-          "thumb": "images/exhibitions/loneliness/artists/02-eitan-goldson.png",
+          "thumb": "images/exhibitions/loneliness/artists/02-eitan-goldson.webp",
           "slug": "eitan-goldson"
         },
         {
           "name_en": "holy kadosh",
-          "thumb": "images/exhibitions/loneliness/artists/03-holy-kadosh.png"
+          "thumb": "images/exhibitions/loneliness/artists/03-holy-kadosh.webp"
         },
         {
           "name_en": "costa magarakis",
-          "thumb": "images/exhibitions/loneliness/artists/04-costa-magarakis.png"
+          "thumb": "images/exhibitions/loneliness/artists/04-costa-magarakis.webp"
         },
         {
           "name_en": "tal nehoray",
-          "thumb": "images/exhibitions/loneliness/artists/05-tal-nehoray.png",
+          "thumb": "images/exhibitions/loneliness/artists/05-tal-nehoray.webp",
           "slug": "tal-nehoray"
         },
         {
           "name_en": "hila loterstein",
-          "thumb": "images/exhibitions/loneliness/artists/06-hila-loterstein.png",
+          "thumb": "images/exhibitions/loneliness/artists/06-hila-loterstein.webp",
           "slug": "hila-loterstein"
         },
         {
           "name_en": "gal pollak",
-          "thumb": "images/exhibitions/loneliness/artists/07-gal-pollak.png",
+          "thumb": "images/exhibitions/loneliness/artists/07-gal-pollak.webp",
           "slug": "gal-polk"
         },
         {
           "name_en": "maya nachum levy",
-          "thumb": "images/exhibitions/loneliness/artists/08-maya-nachum-levy.png"
+          "thumb": "images/exhibitions/loneliness/artists/08-maya-nachum-levy.webp"
         },
         {
           "name_en": "adi duek",
-          "thumb": "images/exhibitions/loneliness/artists/09-adi-duek.png",
+          "thumb": "images/exhibitions/loneliness/artists/09-adi-duek.webp",
           "slug": "adi-duak"
         },
         {
           "name_en": "la raz porta",
-          "thumb": "images/exhibitions/loneliness/artists/10-la-raz-porta.png"
+          "thumb": "images/exhibitions/loneliness/artists/10-la-raz-porta.webp"
         },
         {
           "name_en": "zohar shitrit",
-          "thumb": "images/exhibitions/loneliness/artists/11-zohar-shitrit.png",
+          "thumb": "images/exhibitions/loneliness/artists/11-zohar-shitrit.webp",
           "slug": "zohar-shtrit"
         }
       ],
@@ -192,10 +192,10 @@
       "gallery_label_he": "גלריית כיכר דיזינגוף",
       "start_date": null,
       "end_date": null,
-      "hero_image": "images/exhibitions/how-many/hero.png",
+      "hero_image": "images/exhibitions/how-many/hero.webp",
       "gallery_images": [
         {
-          "src": "images/exhibitions/how-many/hero.png",
+          "src": "images/exhibitions/how-many/hero.webp",
           "alt": "כמה שותפים היו לך? — תמונת מפתח"
         }
       ],
@@ -271,77 +271,77 @@
       "artists": [
         {
           "name_en": "zohar ron",
-          "thumb": "images/exhibitions/how-many/artists/01-zohar-ron.png",
+          "thumb": "images/exhibitions/how-many/artists/01-zohar-ron.webp",
           "slug": "zohar-ron"
         },
         {
           "name_en": "dan ben-ary",
-          "thumb": "images/exhibitions/how-many/artists/02-dan-ben-ari.png",
+          "thumb": "images/exhibitions/how-many/artists/02-dan-ben-ari.webp",
           "slug": "zohar-ron-dan-ben-ari"
         },
         {
           "name_en": "alon manjoch",
-          "thumb": "images/exhibitions/how-many/artists/03-alon-manjoch.png",
+          "thumb": "images/exhibitions/how-many/artists/03-alon-manjoch.webp",
           "slug": "alon"
         },
         {
           "name_en": "risa brooke oze",
-          "thumb": "images/exhibitions/how-many/artists/04-risa-brooke-oze.png",
+          "thumb": "images/exhibitions/how-many/artists/04-risa-brooke-oze.webp",
           "slug": "risa-oz"
         },
         {
           "name_en": "noemi safir",
-          "thumb": "images/exhibitions/how-many/artists/05-noemi-safir.png",
+          "thumb": "images/exhibitions/how-many/artists/05-noemi-safir.webp",
           "slug": "noemi-safir"
         },
         {
           "name_en": "yarden amir",
-          "thumb": "images/exhibitions/how-many/artists/06-yarden-amir.png",
+          "thumb": "images/exhibitions/how-many/artists/06-yarden-amir.webp",
           "slug": "yarden-amir"
         },
         {
           "name_en": "nir giorgio levin",
-          "thumb": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.png",
+          "thumb": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.webp",
           "slug": "nir-giorgio-levin"
         },
         {
           "name_en": "anat wegier",
-          "thumb": "images/exhibitions/how-many/artists/08-anat-wegier.png",
+          "thumb": "images/exhibitions/how-many/artists/08-anat-wegier.webp",
           "slug": "anat-wegier"
         },
         {
           "name_en": "elsa ers brosh",
-          "thumb": "images/exhibitions/how-many/artists/09-elsa-ers-brosh.png",
+          "thumb": "images/exhibitions/how-many/artists/09-elsa-ers-brosh.webp",
           "slug": "elsa-ars-brush"
         },
         {
           "name_en": "liel salman noam",
-          "thumb": "images/exhibitions/how-many/artists/10-liel-salman-noam.png",
+          "thumb": "images/exhibitions/how-many/artists/10-liel-salman-noam.webp",
           "slug": "liel-salman"
         },
         {
           "name_en": "tal nehoray",
-          "thumb": "images/exhibitions/how-many/artists/11-tal-nehoray.png",
+          "thumb": "images/exhibitions/how-many/artists/11-tal-nehoray.webp",
           "slug": "tal-nehoray"
         },
         {
           "name_en": "tanya shin",
-          "thumb": "images/exhibitions/how-many/artists/12-tanya-shin.png",
+          "thumb": "images/exhibitions/how-many/artists/12-tanya-shin.webp",
           "slug": "tanya-shin"
         },
         {
           "name_en": "gal pollak",
-          "thumb": "images/exhibitions/how-many/artists/13-gal-pollak.png",
+          "thumb": "images/exhibitions/how-many/artists/13-gal-pollak.webp",
           "slug": "gal-polk"
         },
         {
           "name_en": "samy david",
-          "thumb": "images/exhibitions/how-many/artists/14-samy-david.png",
+          "thumb": "images/exhibitions/how-many/artists/14-samy-david.webp",
           "slug": "sami-david"
         },
         {
           "name_en": "racheli reuven",
-          "thumb": "images/exhibitions/how-many/artists/15-racheli-reuven.png"
+          "thumb": "images/exhibitions/how-many/artists/15-racheli-reuven.webp"
         }
       ],
       "figma_node_desktop": "119:435",
@@ -361,25 +361,25 @@
         "thumbs": [
           {
             "n": "01",
-            "image": "images/exhibitions/how-many/artists/01-zohar-ron.png",
+            "image": "images/exhibitions/how-many/artists/01-zohar-ron.webp",
             "exhibition_id": "how-many",
             "title_he": "How Many Partners Have You Had? — 01"
           },
           {
             "n": "02",
-            "image": "images/exhibitions/how-many/artists/02-dan-ben-ari.png",
+            "image": "images/exhibitions/how-many/artists/02-dan-ben-ari.webp",
             "exhibition_id": "how-many",
             "title_he": "How Many Partners Have You Had? — 02"
           },
           {
             "n": "03",
-            "image": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.png",
+            "image": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.webp",
             "exhibition_id": "how-many",
             "title_he": "How Many Partners Have You Had? — 03"
           },
           {
             "n": "04",
-            "image": "images/exhibitions/how-many/artists/13-gal-pollak.png",
+            "image": "images/exhibitions/how-many/artists/13-gal-pollak.webp",
             "exhibition_id": "how-many",
             "title_he": "How Many Partners Have You Had? — 04"
           }
@@ -393,25 +393,25 @@
         "thumbs": [
           {
             "n": "01",
-            "image": "images/exhibitions/archive/thumb-01.png",
+            "image": "images/exhibitions/archive/thumb-01.webp",
             "exhibition_id": "loneliness",
             "title_he": "בדידות בתוך סביבה תוססת — 01"
           },
           {
             "n": "02",
-            "image": "images/exhibitions/archive/thumb-02.png",
+            "image": "images/exhibitions/archive/thumb-02.webp",
             "exhibition_id": "loneliness",
             "title_he": "בדידות בתוך סביבה תוססת — 02"
           },
           {
             "n": "03",
-            "image": "images/exhibitions/archive/thumb-03.png",
+            "image": "images/exhibitions/archive/thumb-03.webp",
             "exhibition_id": "loneliness",
             "title_he": "בדידות בתוך סביבה תוססת — 03"
           },
           {
             "n": "04",
-            "image": "images/exhibitions/archive/thumb-04.png",
+            "image": "images/exhibitions/archive/thumb-04.webp",
             "exhibition_id": "loneliness",
             "title_he": "בדידות בתוך סביבה תוססת — 04"
           }

@@ -9,9 +9,6 @@
 <link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="../../components/site-boot.css">
 <meta name="description" content="כתובה — מיצג חי של זוהר רון, גלריית כיכר המדינה, 25 פברואר 2026, 19:00-21:30. אירוע מתוך תערוכת ׳בדידות בתוך סביבה תוססת׳.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../components/triptych-gallery.css">
 <style>
 @font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
@@ -217,8 +214,8 @@ a.artist-card:hover .name{color:var(--ink)}
       <!-- Right column (visually) — image card -->
       <div class="img-col">
         <div class="card" aria-label="כתובה — מיצג חי">
-          <img src="../../images/events/ktuba/hero.png" alt="כתובה — מיצג חי של זוהר רון">
-          <img class="wm" src="../../images/events/ktuba/watermark.svg" alt="" aria-hidden="true">
+          <img src="../../images/events/ktuba/hero.webp" width="3024" height="4032" alt="כתובה — מיצג חי של זוהר רון" decoding="async" fetchpriority="high">
+          <img class="wm" src="../../images/events/ktuba/watermark.svg" width="100" height="29" alt="" aria-hidden="true" decoding="async" loading="lazy">
           <div class="center-text">
             <div class="en">live art performance</div>
             <div class="he heb">בדידות בתוך בסביבה תוססת</div>
@@ -234,9 +231,9 @@ a.artist-card:hover .name{color:var(--ink)}
   <section class="event-slideshow" aria-label="גלריית צילומים — מיצג כתובה">
     <div class="tri" data-tri-loop="true">
       <div class="tri-frame">
-        <img class="tri-slide" src="../../images/events/ktuba/slide-02.png" alt="מיצג כתובה — צילום מרכזי" draggable="false">
-        <img class="tri-slide" src="../../images/events/ktuba/slide-03.png" alt="מיצג כתובה — צילום 3" draggable="false" loading="lazy">
-        <img class="tri-slide" src="../../images/events/ktuba/slide-01.png" alt="מיצג כתובה — צילום 1" draggable="false" loading="lazy">
+        <img class="tri-slide" src="../../images/events/ktuba/slide-02.webp" width="2268" height="4032" alt="מיצג כתובה — צילום מרכזי" draggable="false" decoding="async" loading="lazy">
+        <img class="tri-slide" src="../../images/events/ktuba/slide-03.webp" width="2066" height="3672" alt="מיצג כתובה — צילום 3" draggable="false" loading="lazy" decoding="async">
+        <img class="tri-slide" src="../../images/events/ktuba/slide-01.webp" width="2304" height="4096" alt="מיצג כתובה — צילום 1" draggable="false" loading="lazy" decoding="async">
       </div>
       <div class="tri-dots" role="tablist" aria-label="gallery navigation">
         <button type="button" class="tri-dot" aria-label="slide 1" role="tab" aria-selected="false"></button>
@@ -272,17 +269,17 @@ a.artist-card:hover .name{color:var(--ink)}
 <!-- Inline fallback (for file:// where fetch is blocked). MUST mirror data/events.json::ktuba.artists -->
 <script type="application/json" id="fallback-ktuba-artists">
 [
-  {"name_en":"zohar ron","slug":"zohar-ron","image":"../../images/events/ktuba/artists/zohar-ron.png"},
-  {"name_en":"eitan goldson","slug":"eitan-goldson","image":"../../images/events/ktuba/artists/eitan-goldson.png"},
-  {"name_en":"holy kadosh","slug":null,"image":"../../images/events/ktuba/artists/holy-kadosh.png"},
+  {"name_en":"zohar ron","slug":"zohar-ron","image":"../../images/events/ktuba/artists/zohar-ron.webp"},
+  {"name_en":"eitan goldson","slug":"eitan-goldson","image":"../../images/events/ktuba/artists/eitan-goldson.webp"},
+  {"name_en":"holy kadosh","slug":null,"image":"../../images/events/ktuba/artists/holy-kadosh.webp"},
   {"name_en":"costa magarakis","slug":null,"image":null},
-  {"name_en":"tal nehoray","slug":"tal-nehoray","image":"../../images/events/ktuba/artists/tal-nehoray.png"},
-  {"name_en":"hila loterstein","slug":"hila-loterstein","image":"../../images/events/ktuba/artists/hila-loterstein.png"},
-  {"name_en":"gal pollak","slug":"gal-polk","image":"../../images/events/ktuba/artists/gal-polk.png"},
-  {"name_en":"maya nachum levy","slug":null,"image":"../../images/events/ktuba/artists/maya-nachum-levy.png"},
-  {"name_en":"adi duek","slug":"adi-duak","image":"../../images/events/ktuba/artists/adi-duak.png"},
-  {"name_en":"la raz porta","slug":null,"image":"../../images/events/ktuba/artists/la-raz-porta.png"},
-  {"name_en":"zohar shitrit","slug":"zohar-shtrit","image":"../../images/events/ktuba/artists/zohar-shtrit.png"}
+  {"name_en":"tal nehoray","slug":"tal-nehoray","image":"../../images/events/ktuba/artists/tal-nehoray.webp"},
+  {"name_en":"hila loterstein","slug":"hila-loterstein","image":"../../images/events/ktuba/artists/hila-loterstein.webp"},
+  {"name_en":"gal pollak","slug":"gal-polk","image":"../../images/events/ktuba/artists/gal-polk.webp"},
+  {"name_en":"maya nachum levy","slug":null,"image":"../../images/events/ktuba/artists/maya-nachum-levy.webp"},
+  {"name_en":"adi duek","slug":"adi-duak","image":"../../images/events/ktuba/artists/adi-duak.webp"},
+  {"name_en":"la raz porta","slug":null,"image":"../../images/events/ktuba/artists/la-raz-porta.webp"},
+  {"name_en":"zohar shitrit","slug":"zohar-shtrit","image":"../../images/events/ktuba/artists/zohar-shtrit.webp"}
 ]
 </script>
 
@@ -298,7 +295,7 @@ a.artist-card:hover .name{color:var(--ink)}
     if(!strip || !list.length) return;
     var html = list.map(function(a){
       var img = a.image
-        ? '<div class="img"><img src="'+a.image+'" alt="'+a.name_en+'"></div>'
+        ? '<div class="img"><img src="'+a.image+'" alt="'+a.name_en+'" decoding="async" loading="lazy"></div>'
         : '<div class="img empty">'+a.name_en+'</div>';
       var name = '<div class="name">'+a.name_en.split(' ').join('<br>')+'</div>';
       if(a.slug){

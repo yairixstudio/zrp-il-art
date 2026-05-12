@@ -64,7 +64,7 @@ body.menu-open{overflow:hidden}
 /* Textarea avoids native email-input clipping with Copperplate while staying single-line. */
 .newsletter textarea.newsletter-email{background:transparent;border:0;border-bottom:1px solid #fff;border-radius:0;height:47px;padding:14px 0 9px;color:#fff;font-family:var(--cop);font-size:14px;line-height:20px;letter-spacing:.02em;outline:0;width:100%;box-sizing:border-box;display:block;resize:none;overflow:hidden;white-space:nowrap;text-transform:uppercase;caret-color:#fff;-webkit-appearance:none;appearance:none}
 .newsletter textarea.newsletter-email::placeholder{color:#fff;opacity:.85}
-.newsletter button{padding:16px 0;border:1px solid #fff;background:var(--ink);color:#fff;font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.1em;line-height:16px;width:100%;transition:background .2s,color .2s}
+.newsletter button{padding:16px 0;border:1px solid #fff;background:var(--ink);color:#fff;font-family:var(--cop);font-weight:400;font-size:12px;letter-spacing:.1em;line-height:16px;width:100%;transition:background .2s,color .2s;text-transform:uppercase}
 .newsletter button:hover{background:#fff;color:var(--ink)}
 
 /* Right column — links, copyright, icons (each on its own row, all right-aligned).

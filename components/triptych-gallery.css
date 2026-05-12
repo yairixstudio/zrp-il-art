@@ -59,13 +59,13 @@
 .tri-slide.is-prev:hover,.tri-slide.is-next:hover{opacity:var(--tri-peek-opacity-hover)}
 .tri-slide.is-hidden{left:50%;width:var(--tri-center-w);height:var(--tri-center-h);opacity:0;z-index:0;pointer-events:none;transform:translate(-50%,-50%) scale(.85)}
 
-.tri-dots{display:flex;gap:var(--tri-dot-gap);justify-content:center;align-items:center;padding:0;margin:0}
+.tri-dots{display:flex;gap:var(--tri-dot-gap);justify-content:center;align-items:center;padding:0;margin:0;max-width:200px;align-self:center;order:2}
 .tri-dot{width:var(--tri-dot-w);height:var(--tri-dot-h);background:var(--tri-dot-color);border:0;padding:0;cursor:pointer;transition:background .2s;border-radius:0}
 .tri-dot.is-on{background:var(--tri-dot-active)}
 .tri-dot:hover{background:var(--tri-dot-hover)}
 
 /* Caption — injected by JS when any slide has data-caption */
-.tri-caption{font-family:var(--heb,"FbEzmel","Arial Hebrew",serif);font-weight:400;font-size:16px;color:var(--ink,#1B1B1B);direction:rtl;text-align:center;line-height:1.4;min-height:1.4em}
+.tri-caption{font-family:var(--heb,"FbEzmel","Arial Hebrew",serif);font-weight:400;font-size:16px;color:var(--ink,#1B1B1B);direction:rtl;text-align:center;line-height:1.4;min-height:1.4em;order:1}
 .tri-caption a{color:inherit;text-decoration:underline;text-decoration-color:rgba(27,27,27,.25);text-underline-offset:3px;transition:text-decoration-color .2s,opacity .2s}
 .tri-caption a:hover{text-decoration-color:currentColor;opacity:.75}
 .tri-slide.is-center[data-artist-href]{cursor:pointer}

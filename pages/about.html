@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — Zielinski & Rozen Art Galleries</title>
+<link rel="preload" href="../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../components/site-boot.css">
 <link rel="stylesheet" href="../components/triptych-gallery.css">
 <style>
 /* ===== LOCAL FONTS ===== */
@@ -65,6 +69,7 @@ body{text-transform:uppercase}
    ה-wrapper כאן רק נותן padding/background; ה-classes הפעילות (.tri/.tri-frame/.tri-slide/.tri-dot)
    מטופלות בקומפוננטה. */
 .about-tri{padding:64px var(--pad-x);background:var(--white)}
+.about-tri .tri{--tri-peek-left:7%;--tri-peek-right:93%}
 
 /* SECTION 3 — Biography (Hebrew) with vertical EREZ sidebar */
 .about-bio{padding:48px var(--pad-x);display:flex;justify-content:center}
@@ -157,7 +162,7 @@ body{text-transform:uppercase}
 
   /* Section B — coverflow carousel (mobile: smaller peeks, slightly taller frame) */
   .about-tri{padding:24px 16px}
-  /* mobile triptych adjustments delivered via the component's own media query */
+  .about-tri .tri{--tri-peek-left:1%;--tri-peek-right:99%}
 
   /* Section C — biographical text + vertical signature column */
   .about-bio{padding:16px 16px}

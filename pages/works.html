@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Art Works — Zielinski &amp; Rozen</title>
+<link rel="preload" href="../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../components/site-boot.css">
 <meta name="description" content="The Art Works — featured artists at Zielinski & Rozen Galleries">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,11 +59,8 @@ body{text-transform:uppercase}
 .hero-side{margin-left:auto;font-family:var(--heb);font-weight:300;font-size:18px;color:var(--ink);direction:rtl;text-align:right;max-width:360px;line-height:1.55;align-self:flex-end;padding-bottom:8px}
 
 /* ===== ARTWORK GRID ===== */
-.grid{padding:48px var(--pad-x);display:flex;flex-direction:column;gap:48px;background:var(--white)}
-.grid-row{display:flex;gap:32px;align-items:stretch}
-.grid-row.row-end{justify-content:flex-end}
-.card{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
-.grid-row.row-end .card{flex:0 0 394.67px}
+.grid{padding:48px var(--pad-x);display:grid;grid-template-columns:repeat(3,1fr);gap:48px 32px;background:var(--white)}
+.card{display:flex;flex-direction:column;gap:16px;min-width:0}
 .card .img{position:relative;width:100%;height:478.38px;overflow:hidden;background:#f3f1ee}
 .card .img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
 .card:hover .img img{transform:scale(1.04)}
@@ -83,7 +84,6 @@ body{text-transform:uppercase}
   :root{--pad-x:48px}
   .hero h1,.hero h2{font-size:60px}
   .card .img{height:380px}
-  .grid-row.row-end .card{flex:0 0 calc((100% - 64px)/3)}
 }
 
 /* ============================================================
@@ -100,14 +100,14 @@ body{text-transform:uppercase}
 
   /* GRID → hide; carousel takes over */
   .grid{display:none}
-  .works-carousel{display:block;padding:24px 0 32px}
+  .works-carousel{display:block;padding:24px 16px 32px}
   .works-carousel .tri{
     --tri-aspect: 3/4;
     --tri-center-w: 58%;
     --tri-peek-w: 28%;
     --tri-peek-h: 75%;
-    --tri-peek-left: 4%;
-    --tri-peek-right: 96%;
+    --tri-peek-left: 0%;
+    --tri-peek-right: 100%;
   }
   /* LIGHTBOX */
 }
@@ -133,136 +133,63 @@ body{text-transform:uppercase}
       <h1>THE ART</h1>
       <h2>works</h2>
     </div>
-    <p class="hero-side">אומנים נבחרים שמייצגים את החזון של זילינסקי &amp; רוזן — סלקציה משולבת של ציור, פיסול ומיצב.</p>
   </div>
 </section>
 
-<!-- ARTWORK GRID — 4 rows × 3 cards (last row right-aligned per Figma) -->
-<section class="grid" data-artwork-gallery>
+<!-- Grid (desktop) + Carousel (mobile) — both rendered from single data source -->
+<section class="grid" data-artwork-gallery id="works-grid"></section>
+<section class="works-carousel" data-artwork-gallery id="works-carousel"></section>
 
-  <!-- Row 1 -->
-  <div class="grid-row">
-    <article class="card fit">
-      <a class="img" href="artists/eitan-goldson.html" aria-label="לדף האומן איתן גולדסון והנריקה רוטנברג">
-        <img src="../images/works/grid/eitan-goldson-henrika.png" alt="איתן גולדסון והנריקה רוטנברג">
-      </a>
-      <a class="name" href="artists/eitan-goldson.html">איתן גולדסון והנריקה רוטנברג</a>
-    </article>
-    <article class="card">
-      <a class="img" href="artists/elsa-ars-brush.html" aria-label="לדף האומן אלסה ארס ברוש">
-        <img src="../images/works/grid/elsa-ars-brush.png" alt="אלסה ארס ברוש">
-      </a>
-      <a class="name" href="artists/elsa-ars-brush.html">אלסה ארס ברוש</a>
-    </article>
-    <article class="card">
-      <a class="img" href="artists/gal-polk.html" aria-label="לדף האומן גל פולק">
-        <img src="../images/works/grid/gal-polk.png" alt="גל פולק">
-      </a>
-      <a class="name" href="artists/gal-polk.html">גל פולק</a>
-    </article>
-  </div>
+<script type="application/json" id="works-data">
+[
+  {"img":"eitan-goldson-henrika","name_he":"איתן גולדסון והנריקה רוטנברג","name_en":"eitan goldson","slug":"eitan-goldson","fit":true},
+  {"img":"elsa-ars-brush","name_he":"אלסה ארס ברוש","name_en":"elsa ars brush","slug":"elsa-ars-brush"},
+  {"img":"gal-polk","name_he":"גל פולק","name_en":"gal polk","slug":"gal-polk"},
+  {"img":"tanya-shin","name_he":"טניה שין","name_en":"tanya shin","slug":"tanya-shin"},
+  {"img":"zohar-shtrit","name_he":"זוהר שטרית","name_en":"zohar shitrit","slug":"zohar-shtrit","fit":true},
+  {"img":"hila-loterstein","name_he":"הילה לוטרשטיין","name_en":"hila loterstein","slug":"hila-loterstein"},
+  {"img":"nir-giorgio-levin","name_he":"ניר ג׳ורג׳יו לוין","name_en":"nir giorgio levin","slug":"nir-giorgio-levin"},
+  {"img":"sami-david","name_he":"סמי דוד","name_en":"sami david","slug":"sami-david"},
+  {"img":"zohar-ron","name_he":"זוהר רון","name_en":"zohar ron","slug":"zohar-ron","fit":true},
+  {"img":"risa-oz","name_he":"ריסה עוז","name_en":"risa oz","slug":"risa-oz"},
+  {"img":"zohar-ron-dan-ben-ari","name_he":"זוהר רון | דן בן ארי","name_en":"zohar ron | dan ben ari","slug":"zohar-ron-dan-ben-ari"},
+  {"img":"adi-duak","name_he":"עדי דואק","name_en":"adi duek","slug":"adi-duak"}
+]
+</script>
+<script>
+(function(){
+  var items=JSON.parse(document.getElementById('works-data').textContent);
+  var base='../images/works/grid/';
 
-  <!-- Row 2 -->
-  <div class="grid-row">
-    <article class="card">
-      <a class="img" href="artists/tanya-shin.html" aria-label="לדף האומן טניה שין">
-        <img src="../images/works/grid/tanya-shin.png" alt="טניה שין">
-      </a>
-      <a class="name" href="artists/tanya-shin.html">טניה שין</a>
-    </article>
-    <article class="card fit">
-      <a class="img" href="artists/zohar-shtrit.html" aria-label="לדף האומן זוהר שטרית">
-        <img src="../images/works/grid/zohar-shtrit.png" alt="זוהר שטרית">
-      </a>
-      <a class="name" href="artists/zohar-shtrit.html">זוהר שטרית</a>
-    </article>
-    <article class="card">
-      <a class="img" href="artists/hila-loterstein.html" aria-label="לדף האומן הילה לוטרשטיין">
-        <img src="../images/works/grid/hila-loterstein.png" alt="הילה לוטרשטיין">
-      </a>
-      <a class="name" href="artists/hila-loterstein.html">הילה לוטרשטיין</a>
-    </article>
-  </div>
+  /* --- GRID (desktop) --- */
+  var grid=document.getElementById('works-grid');
+  grid.innerHTML=items.map(function(w){
+    var src=base+w.img+'.png';
+    var href='artists/'+w.slug+'.html';
+    return '<article class="card'+(w.fit?' fit':'')+'">'+
+      '<div class="img" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'" data-artwork-link-label="לדף האומן">'+
+        '<img src="'+src+'" alt="'+w.name_he+'">'+
+      '</div>'+
+      '<a class="name" href="'+href+'">'+w.name_he+'</a>'+
+    '</article>';
+  }).join('');
 
-  <!-- Row 3 -->
-  <div class="grid-row">
-    <article class="card">
-      <a class="img" href="artists/nir-giorgio-levin.html" aria-label="לדף האומן ניר ג׳ורג׳יו לוין">
-        <img src="../images/works/grid/nir-giorgio-levin.png" alt="ניר ג׳ורג׳יו לוין">
-      </a>
-      <a class="name" href="artists/nir-giorgio-levin.html">ניר ג׳ורג׳יו לוין</a>
-    </article>
-    <article class="card">
-      <a class="img" href="artists/sami-david.html" aria-label="לדף האומן סמי דוד">
-        <img src="../images/works/grid/sami-david.png" alt="סמי דוד">
-      </a>
-      <a class="name" href="artists/sami-david.html">סמי דוד</a>
-    </article>
-    <article class="card fit">
-      <a class="img" href="artists/zohar-ron.html" aria-label="לדף האומן זוהר רון">
-        <img src="../images/works/grid/zohar-ron.png" alt="זוהר רון">
-      </a>
-      <a class="name" href="artists/zohar-ron.html">זוהר רון</a>
-    </article>
-  </div>
+  /* --- CAROUSEL (mobile) --- */
+  var car=document.getElementById('works-carousel');
+  var slides=items.map(function(w,i){
+    var src=base+w.img+'.png';
+    var href='artists/'+w.slug+'.html';
+    return '<img class="tri-slide" src="'+src+'" alt="'+w.name_he+'" draggable="false"'+(i?' loading="lazy"':'')+' data-caption="'+w.name_he+'" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'" data-artwork-link-label="לדף האומן">';
+  }).join('');
+  var dots=items.map(function(_,i){
+    return '<button type="button" class="tri-dot'+(i===0?' is-on':'')+'" role="tab" aria-selected="'+(i===0)+'">';
+  }).join('');
+  car.innerHTML='<div class="tri" data-tri-loop="true"><div class="tri-frame">'+slides+'</div><div class="tri-dots" role="tablist" aria-label="gallery navigation">'+dots+'</div></div>';
 
-  <!-- Row 4 — right-aligned (justify-end), narrower fixed-width cards -->
-  <div class="grid-row row-end">
-    <article class="card">
-      <a class="img" href="artists/risa-oz.html" aria-label="לדף האומן ריסה עוז">
-        <img src="../images/works/grid/risa-oz.png" alt="ריסה עוז">
-      </a>
-      <a class="name" href="artists/risa-oz.html">ריסה עוז</a>
-    </article>
-    <article class="card">
-      <a class="img" href="artists/zohar-ron-dan-ben-ari.html" aria-label="לדף האומן זוהר רון | דן בן ארי">
-        <img src="../images/works/grid/zohar-ron-dan-ben-ari.png" alt="זוהר רון | דן בן ארי">
-      </a>
-      <a class="name" href="artists/zohar-ron-dan-ben-ari.html">זוהר רון | דן בן ארי</a>
-    </article>
-    <article class="card">
-      <a class="img" href="artists/adi-duak.html" aria-label="לדף האומן עדי דואק">
-        <img src="../images/works/grid/adi-duak.png" alt="עדי דואק">
-      </a>
-      <a class="name" href="artists/adi-duak.html">עדי דואק</a>
-    </article>
-  </div>
-
-</section>
-
-<!-- WORKS CAROUSEL — visible on mobile only; replaces the desktop grid -->
-<section class="works-carousel">
-  <div class="tri" data-tri-loop="true">
-    <div class="tri-frame">
-      <img class="tri-slide" src="../images/works/grid/eitan-goldson-henrika.png" alt="איתן גולדסון והנריקה רוטנברג" draggable="false" data-caption="איתן גולדסון והנריקה רוטנברג" data-artist-href="artists/eitan-goldson.html">
-      <img class="tri-slide" src="../images/works/grid/elsa-ars-brush.png" alt="אלסה ארס ברוש" draggable="false" loading="lazy" data-caption="אלסה ארס ברוש" data-artist-href="artists/elsa-ars-brush.html">
-      <img class="tri-slide" src="../images/works/grid/gal-polk.png" alt="גל פולק" draggable="false" loading="lazy" data-caption="גל פולק" data-artist-href="artists/gal-polk.html">
-      <img class="tri-slide" src="../images/works/grid/tanya-shin.png" alt="טניה שין" draggable="false" loading="lazy" data-caption="טניה שין" data-artist-href="artists/tanya-shin.html">
-      <img class="tri-slide" src="../images/works/grid/zohar-shtrit.png" alt="זוהר שטרית" draggable="false" loading="lazy" data-caption="זוהר שטרית" data-artist-href="artists/zohar-shtrit.html">
-      <img class="tri-slide" src="../images/works/grid/hila-loterstein.png" alt="הילה לוטרשטיין" draggable="false" loading="lazy" data-caption="הילה לוטרשטיין" data-artist-href="artists/hila-loterstein.html">
-      <img class="tri-slide" src="../images/works/grid/nir-giorgio-levin.png" alt="ניר ג׳ורג׳יו לוין" draggable="false" loading="lazy" data-caption="ניר ג׳ורג׳יו לוין" data-artist-href="artists/nir-giorgio-levin.html">
-      <img class="tri-slide" src="../images/works/grid/sami-david.png" alt="סמי דוד" draggable="false" loading="lazy" data-caption="סמי דוד" data-artist-href="artists/sami-david.html">
-      <img class="tri-slide" src="../images/works/grid/zohar-ron.png" alt="זוהר רון" draggable="false" loading="lazy" data-caption="זוהר רון" data-artist-href="artists/zohar-ron.html">
-      <img class="tri-slide" src="../images/works/grid/risa-oz.png" alt="ריסה עוז" draggable="false" loading="lazy" data-caption="ריסה עוז" data-artist-href="artists/risa-oz.html">
-      <img class="tri-slide" src="../images/works/grid/zohar-ron-dan-ben-ari.png" alt="זוהר רון | דן בן ארי" draggable="false" loading="lazy" data-caption="זוהר רון | דן בן ארי" data-artist-href="artists/zohar-ron-dan-ben-ari.html">
-      <img class="tri-slide" src="../images/works/grid/adi-duak.png" alt="עדי דואק" draggable="false" loading="lazy" data-caption="עדי דואק" data-artist-href="artists/adi-duak.html">
-    </div>
-    <div class="tri-dots" role="tablist" aria-label="gallery navigation">
-      <button type="button" class="tri-dot is-on" role="tab" aria-selected="true"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-      <button type="button" class="tri-dot" role="tab" aria-selected="false"></button>
-    </div>
-  </div>
-</section>
+  if(window.TriptychGallery) TriptychGallery.refresh();
+  if(window.ArtworkLightbox) ArtworkLightbox.refreshFocusable();
+})();
+</script>
 
 <!-- LIGHTBOX: shared component, see components/artwork-lightbox.{css,js} -->
 

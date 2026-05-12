@@ -99,8 +99,6 @@
       stack.addEventListener('click', function(e){
         var peek = e.target.closest('.sg-item.is-peek');
         if (peek){ e.preventDefault(); swap(); }
-        // main: <a> default navigation; if it's a button or has data-artwork-* the
-        // artwork-lightbox delegate will handle it.
       });
       stack.addEventListener('keydown', function(e){
         if (e.key !== 'Enter' && e.key !== ' ') return;
@@ -108,6 +106,26 @@
         var peek = ae && ae.closest && ae.closest('.sg-item.is-peek');
         if (peek){ e.preventDefault(); swap(); }
       });
+
+      // Swipe left/right to swap (touch + pointer)
+      var startX = 0, startY = 0, swiping = false;
+      stack.addEventListener('pointerdown', function(e){
+        startX = e.clientX; startY = e.clientY; swiping = true;
+      });
+      stack.addEventListener('pointermove', function(e){
+        if (!swiping) return;
+        if (Math.abs(e.clientX - startX) > Math.abs(e.clientY - startY) * 1.2){
+          e.preventDefault();
+        }
+      });
+      stack.addEventListener('pointerup', function(e){
+        if (!swiping) return;
+        swiping = false;
+        var dx = e.clientX - startX;
+        if (Math.abs(dx) > 30) swap();
+      });
+      stack.addEventListener('pointercancel', function(){ swiping = false; });
+      stack.style.touchAction = 'pan-y';
     }
     // lightbox/static: no swap binding; clicks (if any) are handled by
     // artwork-lightbox.js delegation on document.

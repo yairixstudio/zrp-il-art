@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Time Out — דה פיינל קאונטדאון: 18 תערוכות לחגוג בהן | Zielinski &amp; Rozen</title>
+<link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../../components/site-boot.css">
 <meta name="description" content="דה פיינל קאונטדאון: 18 תערוכות לחגוג בהן סופ״ש ראשון של 2026 — Time Out על תערוכת הפתיחה של גלריית זילינסקי-רוזן בכיכר המדינה.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,20 +48,20 @@ body{text-transform:uppercase}
 
 /* meta header (tag | source) */
 .article-head{padding:32px var(--col-pad) 0;display:flex;flex-direction:column;align-items:center;gap:16px}
-.meta-line{display:flex;align-items:center;justify-content:center;gap:10px}
-.meta-line .tag,.meta-line .src{font-family:var(--heb);font-weight:300;font-size:18px;color:var(--ink);direction:rtl;width:120px;text-align:center}
-.meta-line .tag{display:flex;justify-content:flex-end;padding-left:10px}
+.meta-line{display:flex;align-items:center;justify-content:center;gap:4px}
+.meta-line .tag,.meta-line .src{font-family:var(--heb);font-weight:300;font-size:18px;color:var(--ink);direction:rtl}
+.meta-line .tag{display:flex;justify-content:flex-end}
 .meta-line .src{font-family:var(--cop);font-weight:300;text-align:right;padding-right:0}
 .meta-line .sep{font-family:var(--heb);font-weight:300;font-size:16px;color:var(--ink);width:auto;direction:rtl}
 
 .article-title{font-family:var(--heb);font-weight:400;font-size:48px;line-height:1.18;color:var(--ink);text-align:center;direction:rtl;padding:0 16px;width:100%}
 .article-title .lat{font-family:var(--cop);font-weight:300}
-.article-subtitle{font-family:var(--heb);font-weight:400;font-size:18px;line-height:1.5;color:var(--ink);text-align:center;direction:rtl;padding:0 16px;width:100%}
+.article-subtitle{font-family:var(--heb);font-weight:400;font-size:18px;line-height:1.15;color:var(--ink);text-align:center;direction:rtl;padding:0 16px;width:100%}
 
 .article-meta-bar{padding:0 10px 24px;display:flex;flex-direction:column;align-items:center;gap:24px}
 .byline{display:flex;align-items:center;gap:8px;font-family:var(--heb);font-weight:300;font-size:16px;color:var(--ink);direction:rtl}
-.byline .dot{width:1px;height:1px;border-radius:100px;background:var(--icon-grey);box-shadow:0 0 0 1px var(--icon-grey)}
-.byline .item{min-width:120px;text-align:center}
+.byline .dot{width:3px;height:3px;border-radius:50%;background:var(--icon-grey);flex-shrink:0}
+.byline .item{text-align:center}
 .actions{display:flex;align-items:center;justify-content:space-between;width:96px;padding:8px 16px;border:1px solid var(--icon-grey);border-radius:100px}
 .actions svg{width:16px;height:16px;color:var(--ink)}
 .actions .vsep{width:1px;height:16px;background:var(--icon-grey)}
@@ -68,13 +72,13 @@ body{text-transform:uppercase}
 .article-figure .img{width:100%;aspect-ratio:600/909.62;background:var(--placeholder);overflow:hidden}
 .article-figure .img.fit img{width:100%;height:100%;object-fit:contain}
 .article-figure .img.cover img{width:100%;height:100%;object-fit:cover}
-.article-figure .cap{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.5;color:var(--caption);text-align:right;direction:rtl;width:331px;align-self:flex-end}
+.article-figure .cap{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.25;color:var(--caption);text-align:right;direction:rtl;width:331px;align-self:flex-end}
 
 /* body section (notes / location detail) */
 .body-block{padding:16px var(--col-pad);display:flex;flex-direction:column;align-items:center}
 .body-block .col{width:100%;max-width:var(--col);display:flex;flex-direction:column;gap:24px;padding:16px 0}
 .body-section-h{font-family:var(--heb);font-weight:400;font-size:24px;line-height:1.4;color:var(--ink);direction:rtl;text-align:right}
-.body-text{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.7;color:var(--ink);direction:rtl;text-align:right}
+.body-text{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.4;color:var(--ink);direction:rtl;text-align:right}
 .body-text .lat{font-family:var(--cop);font-weight:300}
 
 /* divider */
@@ -82,9 +86,9 @@ body{text-transform:uppercase}
 .divider-row .line{width:72px;height:1px;background:#EFEFEF}
 
 /* read more */
-.readmore-row{padding:16px var(--col-pad) 48px;display:flex;justify-content:flex-end}
-.readmore{display:inline-flex;align-items:center;gap:6px;font-family:var(--heb);font-weight:300;font-size:16px;color:var(--caption);direction:rtl}
-.readmore svg{width:16px;height:16px;transform:rotate(0)}
+.readmore-row{padding:16px var(--col-pad) 48px;display:flex;justify-content:flex-end;margin-bottom:64px}
+.readmore{display:inline-flex;align-items:center;gap:6px;font-family:var(--heb);font-weight:300;font-size:16px;color:var(--caption);direction:rtl;flex-direction:row-reverse}
+.readmore svg{width:16px;height:16px}
 
 /* ===== MOBILE (≤768px) ===== */
 @media (max-width:768px){
@@ -94,7 +98,7 @@ body{text-transform:uppercase}
   .article-head{padding:32px 0 0}
   .meta-line .tag,.meta-line .src{font-size:16px}
   .article-title{font-size:36px;line-height:1.15}
-  .article-subtitle{font-size:16px;line-height:1.5}
+  .article-subtitle{font-size:16px;line-height:1.15}
   .byline{font-size:14px}
 
   .article-figure{padding:16px}
@@ -103,7 +107,7 @@ body{text-transform:uppercase}
 
   .body-block{padding:16px}
   .body-section-h{font-size:24px}
-  .body-text{font-size:16px;line-height:1.7}
+  .body-text{font-size:16px;line-height:1.4}
 
   .divider-row{padding:24px 16px 16px}
   .readmore-row{padding:16px}
@@ -141,9 +145,7 @@ a.artist-figure-link img{transition:filter .25s}
         <span class="item">רעות ברנע</span>
       </div>
       <div class="actions" role="toolbar" aria-label="article actions">
-        <button type="button" data-share-btn aria-label="שתף">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="2"/><circle cx="18" cy="19" r="2"/><circle cx="6" cy="12" r="2"/><path d="M8 11l8-5M8 13l8 5"/></svg>
-        </button>
+        <button type="button" data-share-btn aria-label="שתף"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M28.88 30a1 1 0 0 1-.88-.5A15.19 15.19 0 0 0 15 22v6a1 1 0 0 1-.62.92 1 1 0 0 1-1.09-.21l-12-12a1 1 0 0 1 0-1.42l12-12a1 1 0 0 1 1.09-.21A1 1 0 0 1 15 4v6.11a17.19 17.19 0 0 1 15 17 16.34 16.34 0 0 1-.13 2 1 1 0 0 1-.79.86ZM14.5 20A17.62 17.62 0 0 1 28 26 15.31 15.31 0 0 0 13.91 12 1 1 0 0 1 13 11V6.41L3.41 16 13 25.59V21a1 1 0 0 1 1-1h.54Z"/></svg></button>
         <span class="vsep" aria-hidden="true"></span>
         <button type="button" data-bookmark-toggle aria-label="שמור" aria-pressed="false"
           data-item-id="time-out"
@@ -175,8 +177,8 @@ a.artist-figure-link img{transition:filter .25s}
 
   <!-- Read more -->
   <div class="readmore-row">
-    <a class="readmore" href="#">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M8 3v9M4 9l4 4 4-4"/></svg>
+    <a class="readmore" href="https://timeout.co.il/%D7%AA%D7%A2%D7%A8%D7%95%D7%9B%D7%95%D7%AA-%D7%9E%D7%95%D7%9E%D7%9C%D7%A6%D7%95%D7%AA-3112/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M12 12L4 4M4 4h6M4 4v6"/></svg>
       <span>לכתבה המלאה</span>
     </a>
   </div>

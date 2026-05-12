@@ -1,0 +1,71 @@
+/* ============================================================
+   SITE BOOT — smooth page loads & transitions.
+   Loaded EARLY in <head> on every page, before any page CSS.
+
+   Goals:
+   1. Hide body until fonts + chrome + (optional) async data are ready,
+      then fade in. Eliminates FOUT and "single column" flashes.
+   2. Reserve vertical space for <site-header> / <site-footer> until
+      site-chrome.js hydrates them. Prevents content jumping down when
+      the nav suddenly appears.
+   3. Cross-document View Transitions for soft fades between pages
+      (Chromium/Safari TP). Browsers without support get the body
+      fade-in only.
+   ============================================================ */
+
+/* ---- Initial paint: hide body, match expected background ---- */
+html{background:#FFFFFF}
+body{opacity:0;transition:opacity .35s ease-out}
+body.is-ready{opacity:1}
+
+/* Safety net: if JS fails or stalls, reveal after 1.8s anyway.
+   Uses animation so it doesn't fight the .is-ready transition. */
+@keyframes _zr-boot-failsafe{to{opacity:1}}
+body{animation:_zr-boot-failsafe 0s linear 1.8s forwards}
+
+/* Respect user preference: no fade, just show. */
+@media (prefers-reduced-motion: reduce){
+  body{opacity:1;transition:none;animation:none}
+}
+
+/* ---- Skeleton placeholders for chrome (before JS hydration) ----
+   site-chrome.js defines these custom elements and injects markup
+   inside connectedCallback. Until then, :not(:defined) holds the
+   layout open so content doesn't jump when the nav/footer appear. */
+site-header:not(:defined){
+  display:block;
+  height:53px;
+  background:#EEF0EF;             /* matches .nav background */
+  position:sticky;top:0;z-index:100;
+}
+site-footer:not(:defined){
+  display:block;
+  min-height:320px;
+  background:#1B1B1B;             /* matches .footer background */
+}
+@media (max-width:1024px){
+  site-header:not(:defined){height:52px}
+  site-footer:not(:defined){min-height:280px}
+}
+@media (max-width:768px){
+  site-header:not(:defined){height:52px}
+  site-footer:not(:defined){min-height:240px}
+}
+@media (max-width:400px){
+  site-header:not(:defined){height:48px}
+}
+
+/* ---- Cross-document View Transitions ----
+   Same-origin nav fades old page out, new page in. Chromium 126+,
+   Safari Technology Preview. Browsers ignoring this rule still get
+   the body fade-in. */
+@view-transition{ navigation:auto }
+::view-transition-old(root),
+::view-transition-new(root){
+  animation-duration:.32s;
+  animation-timing-function:ease-out;
+}
+@media (prefers-reduced-motion: reduce){
+  ::view-transition-old(root),
+  ::view-transition-new(root){animation:none !important}
+}

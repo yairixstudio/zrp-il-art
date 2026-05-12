@@ -38,6 +38,7 @@
         '<div class="nav-inner">' +
           '<button class="hamburger" aria-label="menu" aria-expanded="false" aria-controls="primary-nav">' +
             '<svg class="hamburger-figma" viewBox="0 0 24 24" fill="#1B1B1B" aria-hidden="true"><path d="M3 4H21V6H3V4ZM3 11H15V13H3V11ZM3 18H21V20H3V18Z"/></svg>' +
+            '<svg class="hamburger-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="#1B1B1B" stroke-width="1.5" fill="none"/></svg>' +
             '<span class="hamburger-bars"><span></span><span></span><span></span></span>' +
           '</button>' +
           '<a href="' + abs('index.html') + '" class="logo" aria-label="home" data-nav="home">' +
@@ -62,8 +63,9 @@
               '<li><a href="' + abs('pages/about.html') + '" data-nav="about">about</a></li>' +
               '<li><a href="' + abs('index.html') + '#press" data-nav="press">press &amp; events</a></li>' +
             '</ul>' +
+            '<div class="bm-backdrop" data-bookmark-backdrop hidden></div>' +
             '<aside class="bookmark-modal" data-bookmark-modal hidden role="dialog" aria-label="saved posts">' +
-              '<div class="bm-head"><h3>SAVED</h3><button data-bookmark-close type="button" aria-label="close">×</button></div>' +
+              '<div class="bm-head"><h3>MY LIST</h3><button data-bookmark-close type="button" aria-label="close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>' +
               '<ul data-bookmark-list></ul>' +
               '<div class="bm-empty" data-bookmark-empty>אין פוסטים שמורים עדיין</div>' +
             '</aside>' +
@@ -103,10 +105,8 @@
           '</nav>' +
           '<p class="footer-copy">© 2026 THE art GALLERY<br>ZiELINSKI &amp; ROZEN ALL RIGHTS RESERVED.</p>' +
           '<div class="footer-icons">' +
-            '<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>' +
-            '<a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7H8v-2.9h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5v1.8h2.6l-.4 2.9h-2.2v7A10 10 0 0022 12z"/></svg></a>' +
-            '<a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.6s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.4 4 12 4 12 4s-4.4 0-7.8.3c-.4.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.7 9.5.7 11.4v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.4 0 7.8-.3c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-1.8C23.2 9.5 23 7.6 23 7.6zM9.5 15.4V8.7l5.8 3.4-5.8 3.3z"/></svg></a>' +
-            '<a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.7a4.8 4.8 0 01-2.8-1 4.8 4.8 0 01-1.9-3.4h-3.3v13.4a2.9 2.9 0 11-2.1-2.8V9.5a6.2 6.2 0 105.4 6.2V9.4a8.1 8.1 0 004.7 1.5V7.6a4.8 4.8 0 010-.9z"/></svg></a>' +
+            '<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41a4.07 4.07 0 011.51.98c.46.46.77.93.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44a4.07 4.07 0 01-.98 1.51 4.07 4.07 0 01-1.51.98c-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.07 4.07 0 01-1.51-.98 4.07 4.07 0 01-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44a4.07 4.07 0 01.98-1.51 4.07 4.07 0 011.51-.98c.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.77 5.77 0 00-2.13 1.38A5.77 5.77 0 00.63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.47 1.38 2.13a5.77 5.77 0 002.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.77 5.77 0 002.13-1.38 5.77 5.77 0 001.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.77 5.77 0 00-1.38-2.13A5.77 5.77 0 0019.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0z" fill="currentColor"/><path d="M12 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8z" fill="currentColor"/><circle cx="18.41" cy="5.59" r="1.44" fill="currentColor"/></svg></a>' +
+            '<a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12a12 12 0 10-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.92-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38A12 12 0 0024 12z"/></svg></a>' +
           '</div>' +
         '</div>' +
         '<p class="footer-copy footer-copy--mobile">© 2026 THE art GALLERY ZiELINSKI &amp; ROZEN ALL RIGHTS RESERVED.</p>' +
@@ -239,7 +239,8 @@
     if (countEl) countEl.textContent = n;
     // If no items, also force-close any open modal
     var modal = document.querySelector('[data-bookmark-modal]');
-    if (n === 0 && modal) modal.hidden = true;
+    var backdrop = document.querySelector('[data-bookmark-backdrop]');
+    if (n === 0) { if (modal) modal.hidden = true; if (backdrop) backdrop.hidden = true; }
   }
 
   function refreshToggle() {
@@ -272,7 +273,7 @@
       rm.className = 'bm-remove';
       rm.type = 'button';
       rm.setAttribute('aria-label', 'remove');
-      rm.textContent = '×';
+      rm.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" stroke="none"><path d="M6 3h12v18l-6-4-6 4V3z"/></svg>';
       rm.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -293,18 +294,22 @@
     var hdBtn = root.querySelector('[data-bookmark-open]');
     var modal = root.querySelector('[data-bookmark-modal]');
     var closeBtn = root.querySelector('[data-bookmark-close]');
+    var backdrop = root.querySelector('[data-bookmark-backdrop]');
+    function showModal() { modal.hidden = false; if (backdrop) backdrop.hidden = false; }
+    function hideModal() { modal.hidden = true; if (backdrop) backdrop.hidden = true; }
     if (hdBtn && modal) {
       hdBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         renderList();
-        modal.hidden = !modal.hidden;
+        if (modal.hidden) showModal(); else hideModal();
       });
-      if (closeBtn) closeBtn.addEventListener('click', function () { modal.hidden = true; });
+      if (closeBtn) closeBtn.addEventListener('click', hideModal);
+      if (backdrop) backdrop.addEventListener('click', hideModal);
       document.addEventListener('click', function (e) {
-        if (!modal.hidden && !modal.contains(e.target) && !hdBtn.contains(e.target)) modal.hidden = true;
+        if (!modal.hidden && !modal.contains(e.target) && !hdBtn.contains(e.target)) hideModal();
       });
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') modal.hidden = true;
+        if (e.key === 'Escape') hideModal();
       });
     }
     // Page-level toggle button (lives outside the chrome — query whole document)
@@ -382,4 +387,66 @@
 
   customElements.define('site-header', SiteHeader);
   customElements.define('site-footer', SiteFooter);
+
+  // ---- Boot sequencer ----------------------------------------
+  // Wait for: chrome hydration + web fonts + optional dynamic data,
+  // then reveal body. Safety timeouts cap every wait.
+  function chromeReady() {
+    return new Promise(function (resolve) {
+      function check() {
+        var h = document.querySelector('site-header');
+        var f = document.querySelector('site-footer');
+        var hOk = !h || h.dataset.rendered === '1';
+        var fOk = !f || f.dataset.rendered === '1';
+        if (hOk && fOk) return resolve();
+        requestAnimationFrame(check);
+      }
+      check();
+    });
+  }
+  function fontsReady() {
+    if (document.fonts && document.fonts.ready) return document.fonts.ready;
+    return Promise.resolve();
+  }
+  function dataReady() {
+    return new Promise(function (resolve) {
+      if (!document.body.classList.contains('is-loading-data')) return resolve();
+      var obs = new MutationObserver(function () {
+        if (!document.body.classList.contains('is-loading-data')) {
+          obs.disconnect();
+          resolve();
+        }
+      });
+      obs.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
+  function withTimeout(p, ms) {
+    return Promise.race([p, new Promise(function (r) { setTimeout(r, ms); })]);
+  }
+  function reveal() {
+    if (document.body.classList.contains('is-ready')) return;
+    // Two RAFs: let freshly-rendered content lay out before opacity flips.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        document.body.classList.add('is-ready');
+      });
+    });
+  }
+  function startBoot() {
+    var ceiling = new Promise(function (r) { setTimeout(r, 1500); });
+    Promise.race([
+      Promise.all([
+        withTimeout(chromeReady(), 1200),
+        withTimeout(fontsReady(), 1200),
+        withTimeout(dataReady(), 1200)
+      ]),
+      ceiling
+    ]).then(reveal);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startBoot);
+  } else {
+    startBoot();
+  }
+  window.SiteBoot = { reveal: reveal };
 })();

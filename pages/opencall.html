@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open Call — Zielinski & Rozen Art Galleries</title>
+<link rel="preload" href="../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../components/site-boot.css">
 <link rel="stylesheet" href="../components/artwork-lightbox.css">
 <link rel="stylesheet" href="../components/stacked-gallery.css">
 <style>
@@ -172,7 +176,7 @@ a.artist-figure-link:hover img{filter:brightness(.96)}
 a.artist-figure-link img{transition:filter .25s}
 </style>
 </head>
-<body>
+<body class="is-loading-data">
 
 <site-header></site-header>
 
@@ -207,12 +211,14 @@ a.artist-figure-link img{transition:filter .25s}
     ]);
   }catch(e){
     document.getElementById('page').innerHTML = '<div class="loading">failed to load — serve via HTTP (e.g. <code>python3 -m http.server</code>).</div>';
+    document.body.classList.remove('is-loading-data');
     return;
   }
 
   const oc = data.opencalls.find(x => x.slug === slug || x.id === slug);
   if(!oc){
     document.getElementById('page').innerHTML = '<div class="loading">opencall not found: ' + slug + '</div>';
+    document.body.classList.remove('is-loading-data');
     return;
   }
   document.title = (oc.title_en || 'Open Call') + ' — Zielinski & Rozen';
@@ -341,6 +347,7 @@ a.artist-figure-link img{transition:filter .25s}
   // - stacked-gallery.js needs an explicit refresh since DOMContentLoaded already fired.
   if (window.ArtworkLightbox && window.ArtworkLightbox.refreshFocusable) window.ArtworkLightbox.refreshFocusable();
   if (window.StackedGallery && window.StackedGallery.refresh) window.StackedGallery.refresh();
+  document.body.classList.remove('is-loading-data');
 })();
 </script>
 

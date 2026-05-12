@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>כתובה — מיצג חי | Zielinski &amp; Rozen Art Galleries</title>
+<link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../../components/site-boot.css">
 <meta name="description" content="כתובה — מיצג חי של זוהר רון, גלריית כיכר המדינה, 25 פברואר 2026, 19:00-21:30. אירוע מתוך תערוכת ׳בדידות בתוך סביבה תוססת׳.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,35 +43,42 @@ body{text-transform:uppercase}
 /* ===== EVENT PAGE — KTUBA ===== */
 .event{display:flex;flex-direction:column;background:var(--white)}
 
-/* === HERO BAND (grey) — two-column on desktop === */
+/* === HERO BAND (grey) — two-column on desktop, mirrors Figma 119:1677 === */
 .event-hero{background:var(--bg-grey);padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
 .event-hero .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
-.event-hero .text-col{flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:32px;padding:0 16px}
+.event-hero .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;gap:32px;padding:0 16px}
 
-/* Title group: heavy "live art performance / by zohar ron" line, then meta row */
-.event-hero .h-title{font-family:var(--cop);font-weight:400;font-size:80px;line-height:72px;text-align:right;color:var(--ink);direction:ltr}
-.event-hero .h-title-row{display:flex;flex-direction:row-reverse;justify-content:flex-end;align-items:center;gap:4px;padding:0 16px}
+/* Title + meta block — column gap 32 (Figma Frame 241/119:1680) */
+.event-hero .h-title-block{display:flex;flex-direction:column;gap:32px}
+
+/* Title: 80/72 Copperplate Regular 400, CENTER (Figma 119:1683) */
+.event-hero .h-title{font-family:var(--cop);font-weight:400;font-size:64px;line-height:76px;text-align:center;color:var(--ink);direction:ltr;padding:0 16px}
+.event-hero .h-title .artist-link{text-decoration:none;color:inherit}
+
+/* Meta: gallery row + date·time row, both centered (Figma Frame 243/119:1685) */
 .event-hero .h-meta{display:flex;flex-direction:column;gap:8px;align-items:center;padding:0 10px 8px}
-.event-hero .h-meta .row-1,.event-hero .h-meta .row-2{display:flex;align-items:center;gap:10px;justify-content:flex-end}
-.event-hero .h-meta .gallery{font-family:var(--heb);font-weight:400;font-size:28px;color:var(--ink);direction:rtl}
-.event-hero .h-meta .date,.event-hero .h-meta .time{font-family:var(--heb);font-weight:300;font-size:28px;color:var(--ink);direction:rtl}
+.event-hero .h-meta .row-1,.event-hero .h-meta .row-2{display:flex;align-items:center;gap:8px;justify-content:center}
+.event-hero .h-meta .gallery{font-family:var(--heb);font-weight:400;font-size:22px;color:var(--ink);direction:rtl}
+.event-hero .h-meta .date,.event-hero .h-meta .time{font-family:var(--heb);font-weight:300;font-size:22px;color:var(--ink);direction:rtl}
 .event-hero .h-meta .dot{width:6px;height:6px;background:var(--icon-grey);border-radius:50%;display:inline-block}
 
-/* Body paragraphs (poem + description) */
-.event-hero .h-body{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.45;text-align:center;color:var(--ink);direction:rtl;max-width:560px;align-self:center;padding:16px 0}
+/* Body — single block (poem + description), 358px wide, FbEzmel Light 18/20 CENTER (Figma 119:1702) */
+.event-hero .h-body{font-family:var(--heb);font-weight:300;font-size:16px;line-height:19px;text-align:center;color:var(--ink);direction:rtl;width:358px;max-width:100%;align-self:center;padding:16px 0}
 .event-hero .h-body p+p{margin-top:16px}
 
 /* === Hero card (right column) — fixed 492x744 with overlays === */
 .event-hero .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
 .event-hero .card{position:relative;width:492px;height:744px;overflow:hidden;background:#000}
 .event-hero .card>img{width:100%;height:100%;object-fit:cover;display:block}
-.event-hero .card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);pointer-events:none;opacity:.55}
-.event-hero .card .wm{position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);font-family:var(--cop);font-weight:300;font-size:13px;letter-spacing:.32em;color:#fff;white-space:nowrap;z-index:2;text-align:center}
-.event-hero .card .wm .b{font-weight:700;font-size:16px;display:block;letter-spacing:.22em}
-.event-hero .card .center-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:301px;display:flex;flex-direction:column;align-items:center;gap:16px;color:#fff;z-index:2}
+.event-hero .card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);pointer-events:none}
+/* Watermark SVG — Figma 119:1712: top 293/744 (39.4%), width 99.46 (SVG paths fill white) */
+.event-hero .card .wm{position:absolute;left:50%;top:39.4%;transform:translateX(-50%);width:99.46px;height:auto;z-index:2;display:block}
+/* Center text — Figma Frame 224/119:1708: top 335.69/744 (45.1%), width 301 */
+.event-hero .card .center-text{position:absolute;left:50%;top:45.1%;transform:translateX(-50%);width:301px;display:flex;flex-direction:column;align-items:center;gap:24px;color:#fff;z-index:2}
 .event-hero .card .center-text .en{font-family:var(--cop);font-weight:700;font-size:36px;line-height:1.1;text-align:center}
-.event-hero .card .center-text .he{font-family:var(--heb);font-weight:400;font-size:24px;line-height:1.2;text-align:center;direction:rtl}
-.event-hero .card .vol{position:absolute;left:50%;bottom:48px;transform:translateX(-50%);width:301px;text-align:center;font-family:var(--cop);font-weight:300;font-size:16px;color:#fff;z-index:2;letter-spacing:.1em}
+.event-hero .card .center-text .he{font-family:var(--heb);font-weight:400;font-size:24px;line-height:1.2;text-align:center;direction:rtl;width:266px}
+/* Volume label — Figma Frame 233/119:1706: top 658/744 (88.4%), width 301 */
+.event-hero .card .vol{position:absolute;left:50%;top:88.4%;transform:translateX(-50%);width:301px;text-align:center;font-family:var(--cop);font-weight:300;font-size:16px;color:#fff;z-index:2;letter-spacing:.04em}
 
 /* === SLIDESHOW BAND === */
 .event-slideshow{padding:64px var(--pad-x);background:var(--white);display:flex;justify-content:center}
@@ -75,8 +86,8 @@ body{text-transform:uppercase}
 .event-slideshow .tri-frame{height:841px;aspect-ratio:auto;max-width:1248px}
 .event-slideshow .tri-slide.is-center{width:481px;height:841px}
 .event-slideshow .tri-slide.is-prev,.event-slideshow .tri-slide.is-next{width:302px;height:528px;opacity:.6}
-.event-slideshow .tri-slide.is-prev{left:calc(50% - 392px)}
-.event-slideshow .tri-slide.is-next{left:calc(50% + 392px)}
+.event-slideshow .tri-slide.is-prev{left:calc(50% - 428px)}
+.event-slideshow .tri-slide.is-next{left:calc(50% + 428px)}
 .event-slideshow .tri-slide.is-hidden{width:481px;height:841px}
 
 /* === ARTISTS STRIP === */
@@ -89,12 +100,11 @@ body{text-transform:uppercase}
 .event-artists .strip{display:flex;flex-direction:row;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
 .event-artists .strip::-webkit-scrollbar{height:6px}
 .event-artists .strip::-webkit-scrollbar-thumb{background:var(--divider);border-radius:0}
-.event-artists .card{flex:0 0 178px;display:flex;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start;text-align:center}
-.event-artists .card .img{width:178px;height:148px;overflow:hidden;background:#f3f1ee;position:relative}
-.event-artists .card .img img{width:100%;height:100%;object-fit:cover;transition:filter .25s}
-.event-artists .card .img.empty{display:flex;align-items:center;justify-content:center;color:var(--artist);font-family:var(--cop);font-size:12px;letter-spacing:.1em;background:#eaeaea}
-.event-artists .card .name{font-family:var(--cop);font-weight:300;font-size:18px;line-height:1.0;color:var(--artist);text-align:center;letter-spacing:.04em}
-a.artist-card{color:inherit;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 178px;scroll-snap-align:start;text-align:center}
+.event-artists .strip>.card,.event-artists .strip>a.artist-card{flex:0 0 178px;display:flex;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start;text-align:center;color:inherit;text-decoration:none}
+.event-artists .strip .img{width:178px;height:148px;overflow:hidden;background:#f3f1ee;position:relative}
+.event-artists .strip .img img{width:100%;height:100%;object-fit:cover;transition:filter .25s}
+.event-artists .strip .img.empty{display:flex;align-items:center;justify-content:center;color:var(--artist);font-family:var(--cop);font-size:12px;letter-spacing:.1em;background:#eaeaea}
+.event-artists .strip .name{font-family:var(--cop);font-weight:300;font-size:18px;line-height:1.0;color:var(--artist);text-align:center;letter-spacing:.04em}
 a.artist-card:hover .img img{filter:brightness(.92)}
 a.artist-card:hover .name{color:var(--ink)}
 
@@ -103,52 +113,57 @@ a.artist-card:hover .name{color:var(--ink)}
   :root{--pad-x:48px}
   .event-hero .img-col{flex-basis:380px}
   .event-hero .card{width:380px;height:580px}
-  .event-hero .h-title{font-size:56px;line-height:1.0}
+  .event-hero .h-title{font-size:48px;line-height:1.0}
   .event-slideshow .tri-frame{height:560px}
   .event-slideshow .tri-slide.is-center{width:360px;height:560px}
   .event-slideshow .tri-slide.is-prev,.event-slideshow .tri-slide.is-next{width:220px;height:380px}
-  .event-slideshow .tri-slide.is-prev{left:calc(50% - 290px)}
-  .event-slideshow .tri-slide.is-next{left:calc(50% + 290px)}
+  .event-slideshow .tri-slide.is-prev{left:calc(50% - 326px)}
+  .event-slideshow .tri-slide.is-next{left:calc(50% + 326px)}
 }
 
 @media (max-width:768px){
   :root{--pad-x:16px}
 
-  /* Hero: single column — image card on top (taller), title + meta below */
+  /* Hero (Figma mobile Frame 254/119:1530): card 390x520 with flat dark overlay,
+     then title + meta + body BELOW. */
   .event-hero{padding:0;background:var(--white)}
   .event-hero .row{flex-direction:column;gap:0}
-  .event-hero .img-col{flex:0 0 auto;width:100%;justify-content:center}
+  .event-hero .img-col{flex:0 0 auto;width:100%;justify-content:center;order:-1}
   .event-hero .card{width:100%;max-width:390px;height:520px;margin:0 auto}
-  .event-hero .card .wm{top:30.5%;font-size:10px}
-  .event-hero .card .wm .b{font-size:14px}
-  .event-hero .card .center-text{top:39%;width:266px;gap:16px}
+  /* Mobile overlay is FLAT rgba(27,27,27,.3) (Figma fill_YQY65I), not the gradient */
+  .event-hero .card::after{background:rgba(27,27,27,.3)}
+  /* Watermark: Figma y=159/520 (30.6%), width 99.46 */
+  .event-hero .card .wm{top:30.6%;width:99.46px}
+  /* Center text: Figma y=201.69/520 (38.8%), width 301, he row width 266 */
+  .event-hero .card .center-text{top:38.8%;width:301px;gap:16px}
   .event-hero .card .center-text .en{font-size:36px}
-  .event-hero .card .center-text .he{font-size:24px}
-  .event-hero .card .vol{bottom:60px;font-size:16px}
+  .event-hero .card .center-text .he{font-size:24px;width:266px}
+  /* Vol: Figma y=430/520 (82.7%), width 301 */
+  .event-hero .card .vol{top:82.7%;width:301px;font-size:16px}
   .event-hero .text-col{padding:32px 16px 0;gap:16px}
-  .event-hero .h-title-row{padding:0 16px}
-  .event-hero .h-title{font-size:24px;line-height:1.1;direction:rtl;text-align:center;width:100%}
+  .event-hero .h-title{font-size:24px;line-height:1.1;direction:rtl;text-align:center;width:100%;padding:0 16px}
+  .event-hero .h-title-block{gap:16px}
   .event-hero .h-meta .gallery,.event-hero .h-meta .date,.event-hero .h-meta .time{font-size:14px}
   .event-hero .h-meta .dot{width:4px;height:4px}
-  .event-hero .h-body{padding:16px;max-width:none;font-size:16px;line-height:1.25}
+  .event-hero .h-body{padding:16px;width:auto;max-width:none;font-size:16px;line-height:1.25}
 
   /* Slideshow: keep peek-main-peek but smaller; peeks bleed off-screen on purpose */
-  .event-slideshow{padding:16px 0;justify-content:flex-start}
+  .event-slideshow{padding:16px;justify-content:flex-start}
   .event-slideshow .tri{--tri-max-w:none;width:100%}
   .event-slideshow .tri-frame{height:443px;max-width:none;width:100%}
   .event-slideshow .tri-slide.is-center{width:216px;height:378px}
   .event-slideshow .tri-slide.is-prev,.event-slideshow .tri-slide.is-next{width:117px;height:204px;opacity:.6}
-  .event-slideshow .tri-slide.is-prev{left:calc(50% - 145px)}
-  .event-slideshow .tri-slide.is-next{left:calc(50% + 145px)}
+  .event-slideshow .tri-slide.is-prev{left:calc(50% - 194px)}
+  .event-slideshow .tri-slide.is-next{left:calc(50% + 194px)}
 
   /* Artists strip: tighter cards, horizontal scroll */
   .event-artists{padding:16px}
   .event-artists .head .label{font-size:14px}
   .event-artists .head .line{margin-left:16px}
-  .event-artists .strip{gap:4px;margin:0 -16px;padding:0 16px 16px}
-  .event-artists .card,a.artist-card{flex-basis:100px}
-  .event-artists .card .img{width:100px;height:90px}
-  .event-artists .card .name{font-size:13px}
+  .event-artists .strip{gap:4px;padding:0 0 16px}
+  .event-artists .strip>.card,.event-artists .strip>a.artist-card{flex-basis:100px}
+  .event-artists .strip .img{width:100px;height:83px}
+  .event-artists .strip .name{font-size:13px}
 }
 
 @media (max-width:400px){
@@ -164,38 +179,23 @@ a.artist-card:hover .name{color:var(--ink)}
 
 <main class="event">
 
-  <!-- HERO BAND (grey) — title + meta + ktuba poem on left, image card on right -->
+  <!-- HERO BAND (grey) — title + meta + ktuba poem + description on left, image card on right.
+       Mirrors Figma 119:1677 (desktop) and 119:1530 (mobile hero card). -->
   <section class="event-hero">
     <div class="row">
 
-      <!-- Right column (visually) — image card. Comes second in source for mobile order. -->
-      <div class="img-col">
-        <div class="card" aria-label="כתובה — מיצג חי">
-          <img src="../../images/events/ktuba/hero.png" alt="כתובה — מיצג חי של זוהר רון">
-          <div class="wm">
-            <span class="b">ZIELINSKI</span>
-            <span>&amp; ROZEN</span>
-          </div>
-          <div class="center-text">
-            <div class="en">live art performance</div>
-            <div class="he heb">בדידות בתוך בסביבה תוססת</div>
-          </div>
-          <div class="vol">EXHIBITION VOLUME 1</div>
-        </div>
-      </div>
-
-      <!-- Left column (visually) — title, meta, ktuba poem, description -->
+      <!-- Left column (visually) — title, meta, ktuba poem + description -->
       <div class="text-col">
-        <h1 class="h-title-row">
-          <span class="h-title">live art performance<br>by <a href="../artists/zohar-ron.html" class="artist-link" style="text-decoration:underline;text-decoration-color:rgba(27,27,27,.25);text-underline-offset:4px">zohar ron</a></span>
-        </h1>
+        <div class="h-title-block">
+          <h1 class="h-title">live art performance<br>by <a href="../artists/zohar-ron.html" class="artist-link">zohar ron</a></h1>
 
-        <div class="h-meta">
-          <div class="row-1"><span class="gallery heb">גלריית כיכר המדינה</span></div>
-          <div class="row-2">
-            <span class="date heb"><bdi>25 פברואר 2026</bdi></span>
-            <span class="dot" aria-hidden="true"></span>
-            <span class="time"><bdi>19:00-21:30</bdi></span>
+          <div class="h-meta">
+            <div class="row-1"><span class="gallery heb">גלריית כיכר המדינה</span></div>
+            <div class="row-2">
+              <span class="date heb"><bdi>25 פברואר 2026</bdi></span>
+              <span class="dot" aria-hidden="true"></span>
+              <span class="time"><bdi>19:00-21:30</bdi></span>
+            </div>
           </div>
         </div>
 
@@ -207,7 +207,23 @@ a.artist-card:hover .name{color:var(--ink)}
           חֹפֶשׁ הַמַּחֲשָׁבָה, בָּאנוּ בַּבְּרִית הַמִּלָּה, זָכָר וּנְקֵבָה<br>
           יַחַד בֶּאֱמוּנָה בְּאַהֲבָה<br>
           לִרְדֹּף שָׁלוֹם לְהַאֲמִין בְּטוֹב, לִבְחֹר בְּאַחְדוּת<br>
-          לְתַקֵּן וְלִבְרֹא מְצִיאוּת</p>
+          לְתַקֵּן וְלִבְרֹא מְצִיאוּת<br>
+          מְיַצֵּג חַי שֶׁל כְּתִיבַת שִׁירָה סְפּוֹנְטָנִית עַל גּוּף עֵירֹם,<br>
+          קָלִיגְרַפְיָה עִבְרִית שֶׁהוֹפֶכֶת לְטֶקֶס חַי,<br>
+          מִלִּים נִמְשָׁכוֹת עַל הָעוֹר כְּבִטּוּי שֶׁל אַהֲבָה וְיֹפִי.</p>
+        </div>
+      </div>
+
+      <!-- Right column (visually) — image card -->
+      <div class="img-col">
+        <div class="card" aria-label="כתובה — מיצג חי">
+          <img src="../../images/events/ktuba/hero.png" alt="כתובה — מיצג חי של זוהר רון">
+          <img class="wm" src="../../images/events/ktuba/watermark.svg" alt="" aria-hidden="true">
+          <div class="center-text">
+            <div class="en">live art performance</div>
+            <div class="he heb">בדידות בתוך בסביבה תוססת</div>
+          </div>
+          <div class="vol">EXHIBITION VOLUME 1</div>
         </div>
       </div>
 
@@ -230,19 +246,6 @@ a.artist-card:hover .name{color:var(--ink)}
         <button type="button" class="tri-dot" aria-label="slide 5" role="tab" aria-selected="false"></button>
         <button type="button" class="tri-dot" aria-label="slide 6" role="tab" aria-selected="false"></button>
         <button type="button" class="tri-dot" aria-label="slide 7" role="tab" aria-selected="false"></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESCRIPTION (post-slideshow) -->
-  <section class="event-hero" style="background:var(--white);padding:0 var(--pad-x) 32px">
-    <div class="row">
-      <div class="text-col" style="padding:0 16px">
-        <div class="h-body heb" style="padding:0">
-          <p>מְיַצֵּג חַי שֶׁל כְּתִיבַת שִׁירָה סְפּוֹנְטָנִית עַל גּוּף עֵירֹם,<br>
-          קָלִיגְרַפְיָה עִבְרִית שֶׁהוֹפֶכֶת לְטֶקֶס חַי,<br>
-          מִלִּים נִמְשָׁכוֹת עַל הָעוֹר כְּבִטּוּי שֶׁל אַהֲבָה וְיֹפִי.</p>
-        </div>
       </div>
     </div>
   </section>

@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Artist — Zielinski &amp; Rozen</title>
+<link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../../components/site-boot.css">
 <meta name="description" content="Artist page at Zielinski & Rozen Galleries">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -160,7 +164,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
 }
 </style>
 </head>
-<body>
+<body class="is-loading-data">
 
 <!-- NAV -->
 <site-header></site-header>
@@ -346,6 +350,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
     if (window.ArtworkLightbox && window.ArtworkLightbox.refreshFocusable){
       window.ArtworkLightbox.refreshFocusable();
     }
+    document.body.classList.remove('is-loading-data');
   }
 
   function renderError(msg){
@@ -355,6 +360,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
         '<p class="sub" dir="rtl">'+escapeHtml(msg||"")+'</p>'+
         '<p class="sub" style="margin-top:24px"><a href="../works.html" style="text-decoration:underline">←&nbsp;the art works</a></p>'+
       '</section>';
+    document.body.classList.remove('is-loading-data');
   }
 
   var slug=getSlug();

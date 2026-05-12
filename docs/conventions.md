@@ -1,0 +1,151 @@
+# conventions.md — Assets, Tokens, RTL, Casing, Responsive
+
+> **קרא את הקובץ הזה כש:** אתה כותב CSS חדש, נוגע ב-typography/colors, מסדר טקסט עברי/אנגלי, מטפל ב-`text-transform`, מוסיף תמונה חדשה לפרויקט, או בונה responsive layout. אם אתה רק מעדכן JSON או טקסט — לא חובה.
+
+---
+
+## 1. Asset Conventions
+
+| תוכן | תיקייה | שמות | הערות |
+|---|---|---|---|
+| Hero של דף | `images/<category>/<slug>/` | `hero.png` | |
+| Portrait של אומן | `images/artists/<slug>/` | `portrait.png` | square. **אל תדרוס** — שמור `portrait-v2.png` אם הצילום שונה. |
+| Works של אומן | `images/artists/<slug>/works/` | `01.png`... | ממוספר |
+| Works grid | `images/works/grid/` | `<artist-slug>.png` | flat |
+| Gallery interior | `images/galleries/<slug>/` | `interior-01.png`... | |
+| Exhibition stills | `images/exhibitions/<slug>/gallery/` | `01.png`... | |
+| Press cover | `images/press/` | `<slug>-cover.png` | flat |
+| Press inline | `images/press/<slug>/` | `00-hero-*.png`, `01-*.png`... | subfolder לכתבות long-form. **walla/press-1/time-out כבר קיימים — `ls` קודם.** |
+| Event cover | `images/events/` | `<slug>-cover.png` | flat — homepage thumb only |
+| Event page images | `images/events/<slug>/` | `hero.png`, `invite-*.png`, `atmosphere.png`, `opening-*.png` | **קיים:** `images/events/loneliness/` (22). אל תוריד מחדש. |
+| Open call | `images/opencalls/<slug>/` | `hero.png`, `gallery-01.png`... | subfolder per slug |
+| Instagram | `images/instagram/` | `1.png`-`9.png` | |
+
+**Logo:** `images/brand/logo.svg` (TODO). **איקונים:** inline SVG ב-HTML.
+
+**לפני כל הורדה — `ls images/<category>/<slug>/` קודם.** רוב התמונות הקיימות מ-press/about/events כבר במקום.
+
+---
+
+## 2. Naming & Slugs
+
+- **slug = id = שם תיקייה** (kebab-case, ASCII).
+- אומנים: `firstname-lastname` בלי תארים (`nir-giorgio-levin`).
+- תערוכות: שם מקוצר באנגלית (`loneliness`, `how-many`).
+- גלריות: `medina`, `dizengoff`, `flea-market`.
+- מאמרים: `<source>-<topic>`.
+
+**שינוי slug בדיעבד אסור** אחרי פרסום. alias ב-JSON אם חייב.
+
+---
+
+## 3. Design Tokens (אסור לשנות)
+
+### 3.1 צבעים
+
+```css
+--white:#FFFFFF; --ink:#1B1B1B; --bg-grey:#EEF0EF;
+--grey-mid:#808080; --artist:#828282; --copy-grey:#6B7280;
+--sep:#EFEFEF; --divider:#D8D8D8;  /* about, artist bio split */
+--slide-active:#515151;             /* triptych dots */
+--link:#2D3BD5;                     /* press inline links */
+/* Overlays */
+rgba(27,27,27,0.55)   /* gallery 'coming soon' desktop */
+rgba(27,27,27,0.6)    /* mobile coming-soon */
+linear-gradient(180deg, rgba(102,102,102,0) 0%, rgba(0,0,0,0.8) 81%)
+```
+
+### 3.2 פונטים
+
+- **Copperplate** (`./פונטים/Copperplate*.{otf,ttf}`) — אנגלית. 300/400/700/900.
+- **FbEzmel** (`./פונטים/FbEzmel-*.otf`) — עברית. 300/400.
+- **Inter** (Google) — רק לכפתור `SUBSCRIBE` (12px, ls 10%, 400).
+
+תמיד `@font-face` בקובץ. **אסור Google substitutes** (Cormorant/Frank Ruhl).
+
+### 3.3 Spacing / Layout
+
+- Desktop max-width **1440px**, padding **96px**.
+- Tablet (≤1100): 48px.
+- Mobile (≤768): 16px.
+- Small mobile (≤400): 16px + font scale.
+- **Border-radius: 0** בכל מקום. **אין shadows.**
+
+### 3.4 Typography scales
+
+| Element | Desktop | Mobile | Font | Weight |
+|---|---|---|---|---|
+| Hero title | 64 | 36 | Copperplate | 700/300 |
+| Section bold (b) | 36 | 36-58 | Copperplate | 700 |
+| Section light (l) | 36 | 36-91 | Copperplate | 300 |
+| Body Hebrew | 18 | 16 | FbEzmel | 300/400 |
+| Nav links | 14 | (hamburger) | Copperplate | 300 |
+| Press desc | 16 | 14 | FbEzmel | 400 |
+| Press tag | 14 | 14 | FbEzmel/Copperplate | 300 |
+| Date inline | 14 | 14 | Copperplate | 300 |
+| Newsletter title | 24/32 | 20/28 | Copperplate | 400 |
+| SUBSCRIBE | 12/16 ls10% | same | Inter | 400 |
+| Copyright | 11/16 | 11/16.5 | Copperplate | 300 |
+| Big artwork word | 80 | 36 | Copperplate | 700 |
+
+**אל תעגל ערכים לא-עגולים** מ-Figma (`497.78`, `191.52`, `18.99`, `121.52`, `12.66`, `6.33`...).
+
+---
+
+## 4. RTL (עברית)
+
+- `dir="rtl"` או `direction:rtl` **+** `text-align:right`. רק אחד מהם לא מספיק.
+- ב-flex container עם RTL children: לעיתים `align-items:flex-end` הוא מה שמיישר (text-align לא מצביע).
+- תאריכים/מספרים/מילים-לועזיות בתוך עברית: `<bdi>` או div עם `direction:ltr`.
+- `\n` ו-`\L` ממחרוזות Figma → `<br>`.
+
+---
+
+## 5. Casing & Font — ⚠️ כלל גלובלי קריטי
+
+**כל אנגלית באתר = Copperplate באותיות גדולות (UPPERCASE).** ללא חריגות. גובר על `textCase` ב-Figma, על איך שהמעצב כתב, ועל כל סוורס-סטרינג ב-JSON/HTML.
+
+זה כולל גם: **כתובות מייל**, **handles** (`@user`), **URLs מוצגות**, **מספרי דגם**, **שמות אומנים באנגלית**, **תגיות**, **תאריכי לעז (`Volume 1`)**, **caption של תמונה**, וכו'. אם זה אנגלית — זה Copperplate UPPER.
+
+**מימוש (חובה בכל קובץ HTML חדש):**
+```css
+body{ font-family: var(--cop); text-transform: uppercase; }
+.heb, .heb *, [dir="rtl"], [dir="rtl"] *{ text-transform: none; font-family: var(--heb); }
+```
+
+**אסור (כל אחד מאלה הוא bug, גם אם המעצב ביקש):**
+- `text-transform: lowercase` או `capitalize` על אלמנט שמכיל אנגלית.
+- `text-transform: none` על אלמנט עם אנגלית (מבטל את ה-body default).
+- פונט אנגלי שאינו Copperplate (Solway, Inter, Times, system serif...). היחיד שמותר חוץ מ-Copperplate: **Inter בלבד לכפתור SUBSCRIBE**.
+- `font-family: var(--heb)` על אלמנט שמכיל אנגלית טהורה.
+- `.heb` עוטף עם אנגלית בתוך — האנגלית **חייבת** `<span class="lat">` שמחזיר Copperplate+uppercase.
+
+**מותר:**
+- `text-transform: none` על אלמנט עם **מספרים בלבד** (תאריכים, שעות, מספרי דגם).
+- שמות קבצים, paths, slugs, IDs ב-JSON — lowercase תמיד (לא טקסט שמוצג).
+- source strings ב-JSON/HTML יכולים להישאר Title Case לקריאות — ה-CSS משנה רינדור.
+- **עברית פטורה** (אין uppercase/lowercase).
+
+**בדיקה לסוכן (מצפים לפלט ריק):**
+```bash
+grep -rn "text-transform[: ]*\(lowercase\|capitalize\)" --include="*.html" --include="*.css" .
+grep -rn "font-family.*\(Solway\|Times New Roman[^,]\|serif$\)" --include="*.html" --include="*.css" . | grep -v "var(--cop)\|var(--heb)"
+```
+
+---
+
+## 6. Responsive Breakpoints
+
+```css
+/* Default: 1440px desktop */
+@media (max-width: 1100px) { /* tablet */ }
+@media (max-width: 768px)  { /* mobile */ }
+@media (max-width: 400px)  { /* small mobile */ }
+```
+
+**מובייל ≠ דסקטופ מצומצם.** המעצב מוסיף sections ייחודיים, מסדר אחרת, או משנה overlay. תמיד בדוק **שני frames** לפני CSS.
+
+**Mobile horizontal-scroll מ-titles גדולים** (לקח 2026-05-11):
+- `html{overflow-x:clip}` + `body{overflow-x:clip;max-width:100vw}` (`overflow-x:hidden` רק על body לא תמיד מספיק).
+- `font-size:clamp(min, vw-value, max)` במקום fixed-px ל-text ≥48px. ה-`vw-value` ≈ `figma_px / figma_viewport × 100`.
+- `white-space:nowrap` למילים שאסור שיתפצלו + `max-width:100%;overflow:hidden` על הקונטיינר.

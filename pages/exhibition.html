@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exhibition — Zielinski & Rozen Art Galleries</title>
+<link rel="preload" href="../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../components/site-boot.css">
 <link rel="stylesheet" href="../components/gallery.css">
 <style>
 /* ===== LOCAL FONTS ===== */
@@ -157,7 +161,7 @@ a.card.is-linked:hover .pic img{filter:brightness(.96)}
 a.card.is-linked .pic img{transition:filter .25s}
 </style>
 </head>
-<body>
+<body class="is-loading-data">
 
 <site-header></site-header>
 
@@ -236,11 +240,13 @@ a.card.is-linked .pic img{transition:filter .25s}
     ]);
   }catch(e){
     document.getElementById('page').innerHTML = '<div class="loading">failed to load — serve via http (e.g. <code>python3 -m http.server</code>) or refresh fallbacks.</div>';
+    document.body.classList.remove('is-loading-data');
     return;
   }
   const ex = data.exhibitions.find(e => e.slug === slug || e.id === slug);
   if(!ex){
     document.getElementById('page').innerHTML = '<div class="loading">exhibition not found</div>';
+    document.body.classList.remove('is-loading-data');
     return;
   }
 
@@ -342,6 +348,7 @@ a.card.is-linked .pic img{transition:filter .25s}
   const page = document.getElementById('page');
   page.innerHTML = '';
   page.appendChild(tpl);
+  document.body.classList.remove('is-loading-data');
 })();
 </script>
 

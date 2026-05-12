@@ -135,11 +135,13 @@
         },
         {
           "name_en": "holy kadosh",
-          "thumb": "images/exhibitions/loneliness/artists/03-holy-kadosh.webp"
+          "thumb": "images/exhibitions/loneliness/artists/03-holy-kadosh.webp",
+          "slug": "holy-kadosh"
         },
         {
           "name_en": "costa magarakis",
-          "thumb": "images/exhibitions/loneliness/artists/04-costa-magarakis.webp"
+          "thumb": "images/exhibitions/loneliness/artists/04-costa-magarakis.webp",
+          "slug": "costa-magarakis"
         },
         {
           "name_en": "tal nehoray",
@@ -158,7 +160,8 @@
         },
         {
           "name_en": "maya nachum levy",
-          "thumb": "images/exhibitions/loneliness/artists/08-maya-nachum-levy.webp"
+          "thumb": "images/exhibitions/loneliness/artists/08-maya-nachum-levy.webp",
+          "slug": "maya-nachum-levy"
         },
         {
           "name_en": "adi duek",
@@ -167,7 +170,8 @@
         },
         {
           "name_en": "la raz porta",
-          "thumb": "images/exhibitions/loneliness/artists/10-la-raz-porta.webp"
+          "thumb": "images/exhibitions/loneliness/artists/10-la-raz-porta.webp",
+          "slug": "la-raz-porta"
         },
         {
           "name_en": "zohar shitrit",

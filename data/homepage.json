@@ -10,9 +10,15 @@
     "_note": "Mobile only — Figma section #3",
     "label_he": "קול קורא",
     "info": [
-      { "label": "online" },
-      { "label": "23.4.2026" },
-      { "label": "tel aviv" }
+      {
+        "label": "online"
+      },
+      {
+        "label": "23.4.2026"
+      },
+      {
+        "label": "tel aviv"
+      }
     ],
     "linked_opencall_id": null
   },
@@ -20,15 +26,26 @@
     "_note": "Desktop primary — 'the open call' grid with two cards",
     "header_en": "the open call",
     "header_he_mobile": "קול קורא",
-    "card_ids": ["the-peeler", "how-many"]
+    "card_ids": [
+      "the-peeler",
+      "how-many"
+    ]
   },
   "exhibitions_now": {
     "_note": "Mobile only — Figma 'exhibitions/now' with 2 current/upcoming cards + artists row",
     "title_b": "exhibitions",
     "title_l": "now",
-    "exhibition_ids": ["how-many", "loneliness"],
+    "exhibition_ids": [
+      "how-many",
+      "loneliness"
+    ],
     "artists_label": "our artists",
-    "artist_ids": ["zohar-ron", "eitan-goldson", "tanya-shin", "nir-giorgio-levin"]
+    "artist_ids": [
+      "zohar-ron",
+      "eitan-goldson",
+      "tanya-shin",
+      "nir-giorgio-levin"
+    ]
   },
   "exhibitions_archive": {
     "title_b": "exhibitions",
@@ -36,28 +53,67 @@
     "active_gallery_id": "medina",
     "thumbs_ref": "exhibitions.archive_thumbnails"
   },
-  "art_works_words": ["the", "art", "works"],
-  "art_works_words_mobile": ["the", "ART", "works"],
+  "art_works_words": [
+    "the",
+    "art",
+    "works"
+  ],
+  "art_works_words_mobile": [
+    "the",
+    "ART",
+    "works"
+  ],
   "social_section": {
-    "title_lines": ["follow us", "on instagram"],
+    "title_lines": [
+      "follow us",
+      "on instagram"
+    ],
     "feed_ref": "instagram.posts"
   },
   "galleries_section": {
     "title_b": "the galleries",
     "title_l": "tel aviv",
-    "gallery_ids": ["medina", "dizengoff", "flea-market"]
+    "gallery_ids": [
+      "medina",
+      "dizengoff",
+      "flea-market"
+    ]
   },
   "x_our_artists": {
     "_note": "Above press section — 'Zielinski Rozen × our artists' featured grid. Desktop: 2×3 grid. Mobile: triptych coverflow showing items 1–3. Captions verbatim from Figma 228:67/228:101; unlinked when no artist page exists.",
     "title_b": "Zielinski Rozen",
     "title_l": "x our artists",
     "items": [
-      { "name_en": "nir giorgio levin", "image": "images/homepage/x-our-artists/work-1.webp", "slug": "nir-giorgio-levin" },
-      { "name_en": "gal pollak",        "image": "images/homepage/x-our-artists/work-2.webp", "slug": "gal-polk" },
-      { "name_en": "gal pollak",        "image": "images/homepage/x-our-artists/work-3.webp", "slug": "gal-polk" },
-      { "name_en": "maya nachum levy",  "image": "images/homepage/x-our-artists/work-4.webp", "slug": null },
-      { "name_en": "maya nachum levy",  "image": "images/homepage/x-our-artists/work-5.webp", "slug": null },
-      { "name_en": "maya nachum levy",  "image": "images/homepage/x-our-artists/work-6.webp", "slug": null }
+      {
+        "name_en": "nir giorgio levin",
+        "image": "images/homepage/x-our-artists/work-1.webp",
+        "slug": "nir-giorgio-levin"
+      },
+      {
+        "name_en": "gal pollak",
+        "image": "images/homepage/x-our-artists/work-2.webp",
+        "slug": "gal-polk"
+      },
+      {
+        "name_en": "gal pollak",
+        "image": "images/homepage/x-our-artists/work-3.webp",
+        "slug": "gal-polk"
+      },
+      {
+        "name_en": "maya nachum levy",
+        "image": "images/homepage/x-our-artists/work-4.webp",
+        "slug": "maya-nachum-levy"
+      },
+      {
+        "name_en": "maya nachum levy",
+        "image": "images/homepage/x-our-artists/work-5.webp",
+        "slug": "maya-nachum-levy"
+      },
+      {
+        "name_en": "maya nachum levy",
+        "image": "images/homepage/x-our-artists/work-6.webp",
+        "slug": "maya-nachum-levy"
+      }
     ],
     "figma_node_desktop": "228:67",
     "figma_node_mobile": "228:101"

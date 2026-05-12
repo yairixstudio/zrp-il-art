@@ -110,8 +110,13 @@ body{text-transform:uppercase}
 
 .scroll-prompt svg{width:16px;height:16px;display:block}
 
-/* ===== ANNOUNCEMENT BAR ===== */
-.announce{background:var(--ink);color:var(--white);padding:32px 16px;text-align:center;font-family:var(--cop);font-weight:400;font-size:20px;letter-spacing:.03em;line-height:1.5}
+/* ===== ANNOUNCEMENT BAR — marquee ===== */
+.announce{background:var(--ink);color:var(--white);padding:32px 0;font-family:var(--cop);font-weight:400;font-size:20px;letter-spacing:.03em;line-height:1.5;overflow:hidden;direction:ltr;--announce-duration:40s;--announce-gap:96px}
+.announce-track{display:flex;width:max-content;flex-wrap:nowrap;animation:announce-scroll var(--announce-duration) linear infinite;will-change:transform}
+.announce:hover .announce-track{animation-play-state:paused}
+.announce-item{flex:0 0 auto;padding-right:var(--announce-gap);white-space:nowrap}
+@keyframes announce-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.announce{text-align:center;padding:32px 16px}.announce-track{animation:none;width:100%;justify-content:center}.announce-item:not(:first-child){display:none}.announce-item{padding-right:0}}
 
 /* ===== SECTION HEADERS ===== */
 .section-header{font-family:var(--cop);font-size:36px;font-weight:400;letter-spacing:.02em;line-height:1.1}
@@ -250,15 +255,20 @@ body{text-transform:uppercase}
 .galleries-title{width:358px;line-height:1.05}
 .galleries-title .b{font-family:var(--cop);font-weight:700;font-size:36px;display:block}
 .galleries-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
-.gallery-cards{display:flex;gap:8px}
-.gallery-card{flex:1;display:flex;flex-direction:column;gap:16px;min-width:0}
-.gallery-card .img{position:relative;width:100%;height:497.78px;overflow:hidden;background:#f3f1ee}
-.gallery-card .img img{width:100%;height:100%;object-fit:cover}
-.gallery-card .img.dim::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,.55);pointer-events:none}
-.gallery-card .img.dim .coming{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--cop);font-size:24px;letter-spacing:.04em;z-index:1}
-.gallery-card .info{display:flex;flex-direction:column;gap:8px;text-align:right;direction:rtl;font-family:var(--heb);padding:0 8px}
-.gallery-card .name{font-size:28px;font-weight:400}
-.gallery-card .addr{font-size:18px;font-weight:400}
+.gallery-cards{display:flex;gap:8px;align-items:stretch}
+/* Desktop: 3-row grid \u2014 image (top) \u2192 name \u2192 details (addr+hours, right-aligned) */
+.gallery-card{flex:1;display:grid;grid-template-columns:1fr;grid-template-rows:auto auto auto;grid-template-areas:"img" "name" "details";gap:8px;min-width:0;align-content:start}
+.gallery-card > .info{grid-area:name;display:flex;flex-direction:column;gap:4px;font-family:var(--heb);direction:rtl;text-align:right;padding:0 8px}
+.gallery-card > .img{grid-area:img;position:relative;width:100%;height:497.78px;overflow:hidden;background:#f3f1ee}
+.gallery-card > .img img{width:100%;height:100%;object-fit:cover}
+.gallery-card > .img.dim::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,.55);pointer-events:none}
+.gallery-card > .img.dim.dim--green::after{background:#2b4c39}
+.gallery-card > .img.dim .coming{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--cop);font-size:24px;letter-spacing:.04em;z-index:1}
+.gallery-card > .details{grid-area:details;display:flex;flex-direction:column;gap:4px;font-family:var(--heb);direction:rtl;text-align:right;padding:0 8px}
+.gallery-card .name{font-size:28px;font-weight:400;line-height:1.1}
+.gallery-card .sub-en{font-family:var(--cop);font-weight:300;font-size:16px;text-transform:lowercase;direction:ltr;text-align:right;color:var(--ink);line-height:1.25;margin-top:8px}
+.gallery-card .sub-en-loc{font-family:var(--cop);font-weight:300;font-size:16px;text-transform:lowercase;direction:ltr;text-align:right;color:var(--ink);line-height:1.25;margin-top:16px}
+.gallery-card .addr{font-size:18px;font-weight:400;white-space:nowrap}
 .gallery-card .hours{display:flex;flex-direction:column;gap:4px;font-size:16px;font-weight:300;color:var(--ink)}
 
 /* ===== X OUR ARTISTS — Figma landing::228:67 (desktop) / 228:101 (mobile) =====
@@ -285,7 +295,7 @@ body{text-transform:uppercase}
 .press-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
 .press-rows{display:flex;flex-direction:column;gap:48px}
 .press-row{display:flex;gap:48px}
-.press-card{flex:1;display:flex;gap:16px;align-items:stretch;min-width:0;direction:rtl;color:inherit;text-decoration:none;transition:opacity .2s}
+.press-card{flex:0 1 calc(50% - 24px);min-width:0;display:flex;gap:16px;align-items:stretch;direction:rtl;color:inherit;text-decoration:none;transition:opacity .2s}
 .press-card:hover{opacity:.75}
 .press-card .img img{transition:transform .6s}
 .press-card:hover .img img{transform:scale(1.04)}
@@ -311,7 +321,7 @@ body{text-transform:uppercase}
   .aw-img,.aw-text{width:50%;height:auto;aspect-ratio:1/1}
   .aw-text .word{left:50%;top:50%;transform:translate(-50%,-50%);font-size:60px}
   .aw-text .more{left:50%;top:50%;transform:translate(-50%,-50%);font-size:60px}
-  .gallery-card .img{height:380px}
+  .gallery-card > .img{height:380px}
   .opencall-card{width:280px}
   .opencall-card .img{height:420px}
   .social{--ig-cols:4}
@@ -364,7 +374,7 @@ body{text-transform:uppercase}
   .hero-desc .d-only{display:none}
 
   /* ANNOUNCEMENT */
-  .announce{font-size:13px;letter-spacing:.01em;padding:20px 16px}
+  .announce{font-size:13px;letter-spacing:.01em;padding:20px 0;--announce-duration:25s;--announce-gap:48px}
 
   /* MOBILE-ONLY קול קורא (multistate) */
   .mobile-cta{display:flex}
@@ -421,13 +431,14 @@ body{text-transform:uppercase}
   .galleries{padding:32px 16px;gap:24px}
   .galleries-title{width:auto;line-height:1.05}
   .gallery-cards{flex-direction:column;gap:16px}
-  .gallery-card{flex-direction:row;gap:16px;align-items:flex-start}
-  .gallery-card .left-col{display:flex;flex-direction:column;gap:8px;flex-shrink:0;width:174px}
-  .gallery-card .left-col .img{width:174px;height:210px}
-  .gallery-card .left-col .details{display:flex;flex-direction:column;gap:4px;padding:0 8px;direction:rtl;text-align:right}
-  .gallery-card .img.dim .coming{font-size:13px;letter-spacing:.04em}
-  .gallery-card .info{flex:1;display:flex;align-items:center;justify-content:center;padding:0}
+  /* Mobile: image on the LEFT (with details below), name on the RIGHT aligned to top */
+  .gallery-card{display:grid;grid-template-columns:174px 1fr;grid-template-rows:auto auto;grid-template-areas:"img name" "details name";column-gap:16px;row-gap:8px;align-items:start}
+  .gallery-card > .img{width:174px;height:210px}
+  .gallery-card > .info{align-self:start;justify-self:end;padding:0;gap:8px}
+  .gallery-card > .details{padding:0 8px}
+  .gallery-card > .img.dim .coming{font-size:13px;letter-spacing:.04em}
   .gallery-card .name{font-size:22px}
+  .gallery-card .sub-en{font-size:13px;margin-top:8px}
   .gallery-card .addr{font-size:16px;font-family:var(--heb);font-weight:400}
   .gallery-card .hours{font-size:14px;font-family:var(--heb);font-weight:300;display:flex;flex-direction:column;gap:4px}
 
@@ -447,7 +458,7 @@ body{text-transform:uppercase}
   .press{padding:32px 16px}
   .press-rows{gap:24px}
   .press-row{flex-direction:column;gap:24px}
-  .press-card{direction:rtl}
+  .press-card{flex:1 1 auto;direction:rtl}
   .press-card .desc{font-size:14px}
 
 }
@@ -464,7 +475,8 @@ body{text-transform:uppercase}
   .galleries-title .b,.galleries-title .l,
   .press-title .b,.press-title .l{font-size:30px}
   .aw-text .word,.aw-text .more{font-size:28px}
-  .gallery-card .img{width:140px;height:170px}
+  .gallery-card{grid-template-columns:140px 1fr}
+  .gallery-card > .img{width:140px;height:170px}
   .gallery-card .name{font-size:18px}
   .ex-now .card .stat{font-size:16px}
 }
@@ -496,7 +508,16 @@ body{text-transform:uppercase}
 </section>
 
 <!-- ANNOUNCEMENT -->
-<div class="announce">coming soon our europe galleries</div>
+<div class="announce" role="marquee" aria-label="coming soon our europe galleries">
+  <div class="announce-track" aria-hidden="true">
+    <span class="announce-item">coming soon our europe galleries</span>
+    <span class="announce-item">coming soon our europe galleries</span>
+    <span class="announce-item">coming soon our europe galleries</span>
+    <span class="announce-item">coming soon our europe galleries</span>
+    <span class="announce-item">coming soon our europe galleries</span>
+    <span class="announce-item">coming soon our europe galleries</span>
+  </div>
+</div>
 
 <!-- MOBILE-ONLY: קול קורא — multistate stacked gallery (Figma landing::144:38).
      Uses the shared stacked-gallery component in `swap` mode:
@@ -703,32 +724,30 @@ nehoray</div></a>
   </div>
   <div class="gallery-cards">
     <article class="gallery-card">
-      <div class="left-col">
-        <div class="img"><picture><source media="(max-width:768px)" srcset="images/galleries/medina/figma-mobile.webp"><img src="images/galleries/medina/hero.webp" width="2896" height="3861" alt="" decoding="async" loading="lazy"></picture></div>
-        <div class="details">
-          <div class="addr">ז'בוטינסקי 131, תל אביב</div>
-          <div class="hours">
-            <span>א'-ה' 10:00-19:00</span>
-            <span>ו' 10:00-14:00</span>
-            <span>שבת סגור</span>
-          </div>
+      <div class="info"><div class="name">גלריית כיכר המדינה</div></div>
+      <div class="img"><picture><source media="(max-width:768px)" srcset="images/galleries/medina/figma-mobile.webp"><img src="images/galleries/medina/hero.webp" width="2896" height="3861" alt="" decoding="async" loading="lazy"></picture></div>
+      <div class="details">
+        <div class="addr">ז'בוטינסקי 131, תל אביב</div>
+        <div class="hours">
+          <span>א'-ה' 10:00-19:00</span>
+          <span>ו' 10:00-14:00</span>
+          <span>שבת סגור</span>
         </div>
       </div>
-      <div class="info"><div class="name">גלריית כיכר המדינה</div></div>
     </article>
     <article class="gallery-card">
-      <div class="left-col">
-        <div class="img dim"><picture><source media="(max-width:768px)" srcset="images/galleries/dizengoff/figma-mobile.webp"><img src="images/galleries/dizengoff/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></picture><span class="coming">coming soon</span></div>
-        <div class="details"><div class="addr">כיכר דיזינגוף, תל אביב</div></div>
-      </div>
       <div class="info"><div class="name">גלריית כיכר דיזינגוף</div></div>
+      <div class="img dim"><picture><source media="(max-width:768px)" srcset="images/galleries/dizengoff/figma-mobile.webp"><img src="images/galleries/dizengoff/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></picture><span class="coming">coming soon</span></div>
+      <div class="details"><div class="addr">כיכר דיזינגוף, תל אביב</div></div>
     </article>
-    <article class="gallery-card">
-      <div class="left-col">
-        <div class="img dim"><picture><source media="(max-width:768px)" srcset="images/galleries/flea-market/figma-mobile.webp"><img src="images/galleries/flea-market/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></picture><span class="coming">coming soon</span></div>
-        <div class="details"><div class="addr">שוק הפשפשים, תל אביב</div></div>
+    <article class="gallery-card gallery-card--flea">
+      <div class="info">
+        <div class="name">גלריית יפו, שוק הפשפשים</div>
+        <div class="addr">שוק הפשפשים, יפו</div>
+        <div class="sub-en">in store gallery by erez zielinski rozen</div>
+        <div class="sub-en-loc">jaffa market</div>
       </div>
-      <div class="info"><div class="name">גלריית שוק הפשפשים</div></div>
+      <div class="img dim dim--green"><picture><source media="(max-width:768px)" srcset="images/galleries/flea-market/figma-mobile.webp"><img src="images/galleries/flea-market/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></picture><span class="coming">coming soon</span></div>
     </article>
   </div>
 </section>
@@ -757,18 +776,18 @@ nehoray</div></a>
       </a>
     </div>
     <div class="x-artists-row">
-      <div class="x-artists-card">
+      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
         <div class="img"><img src="images/homepage/x-our-artists/work-4.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
-      </div>
-      <div class="x-artists-card">
+      </a>
+      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
         <div class="img"><img src="images/homepage/x-our-artists/work-5.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
-      </div>
-      <div class="x-artists-card">
+      </a>
+      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
         <div class="img"><img src="images/homepage/x-our-artists/work-6.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
-      </div>
+      </a>
     </div>
   </div>
   <!-- MOBILE — triptych coverflow (shared component) -->
@@ -778,9 +797,9 @@ nehoray</div></a>
         <img class="tri-slide" src="images/homepage/x-our-artists/work-1.webp" alt="" data-caption="nir giorgio levin" data-artist-href="pages/artists/nir-giorgio-levin.html">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-3.webp" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="maya nachum levy">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="maya nachum levy">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="maya nachum levy">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
       </div>
       <div class="tri-dots" role="tablist">
         <button class="tri-dot is-on" type="button" aria-label="1"></button>

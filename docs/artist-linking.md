@@ -14,16 +14,19 @@
 
 ## 1. על מי חל הכלל?
 
-על כל אומן שיש לו רשומה ב-`data/artists.json` עם `slug` קיים. נכון ל-2026-05-11 יש 18 אומנים רשומים:
+על כל אומן שיש לו רשומה ב-`data/artists.json` עם `slug` קיים. נכון ל-2026-05-12 יש 22 אומנים רשומים:
 
 ```
 zohar-ron, eitan-goldson, tanya-shin, nir-giorgio-levin, elsa-ars-brush,
 gal-polk, zohar-shtrit, hila-loterstein, sami-david, risa-oz,
 zohar-ron-dan-ben-ari, adi-duak, alon, noemi-safir, yarden-amir,
-anat-wegier, liel-salman, tal-nehoray
+anat-wegier, liel-salman, tal-nehoray,
+holy-kadosh, costa-magarakis, maya-nachum-levy, la-raz-porta
 ```
 
-**אומנים שאינם רשומים** (אורחים בתערוכות אבל אין להם דף — `holy kadosh`, `costa magarakis`, `maya nachum levy`, `la raz porta`, `dan ben-ari` בנפרד, `racheli reuven`, `raz ronen`): להשאיר כטקסט רגיל. **אל תקשר ל-`/artists/<slug>.html` שלא קיים.**
+**אומנים שאינם רשומים** (אורחים בתערוכות אבל אין להם דף — `dan ben-ari` בנפרד, `racheli reuven`, `raz ronen`): להשאיר כטקסט רגיל. **אל תקשר ל-`/artists/<slug>.html` שלא קיים.**
+
+> **2026-05-12 update:** 4 אומנים שלא היו רשומים (`holy-kadosh`, `costa-magarakis`, `maya-nachum-levy`, `la-raz-porta`) קיבלו עכשיו דפים מלאים מתוך Figma `artist-pages-lonely` (`XhGH289YTRcW811wrufRJz::235:874`) ולכן הם כעת חובה לקישור.
 
 ---
 

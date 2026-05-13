@@ -120,7 +120,7 @@ for p in pathlib.Path('.').rglob('*.html'):
 ## 8. חריגים יחידים
 
 - שם אומן בתוך עצם דף האומן (`pages/artists/<slug>.html`) — לא מקשר לעצמו.
-- אומן שאינו רשום (`holy kadosh` וכו') — להשאיר טקסט.
+- אומן שאינו רשום (`racheli reuven`, `raz ronen`, `dan ben-ari` בנפרד) — להשאיר טקסט.
 - שם הבעלים/founder (`ארז זילינסקי רוזן`) → `pages/about.html`, לא `/artists/`.
 
 ---

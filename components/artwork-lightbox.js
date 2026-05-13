@@ -44,7 +44,42 @@
   // --- build DOM ---
   // Hebrew regex used to switch CTA font / direction
   var HEB_RE = /[֐-׿]/;
-  var root, figure, imgWrap, imgEl, altEl, ctaEl, captionEl, titleEl, artistEl, prevBtn, nextBtn, closeBtn;
+  var root, figure, imgWrap, imgEl, videoEl, altEl, ctaEl, captionEl, titleEl, artistEl, prevBtn, nextBtn, closeBtn;
+  function escapeHtml(s){
+    if(s==null) return '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  var LATIN_RUN=/[A-Za-z][A-Za-z0-9@&'’._?!:,;()/" -]*[A-Za-z0-9?!)]|[A-Za-z]/g;
+  function restoreLatSpans(s){
+    return escapeHtml(s).replace(
+      /&lt;span class=&quot;lat&quot;&gt;([\s\S]*?)&lt;\/span&gt;/g,
+      '<span class="lat">$1</span>'
+    );
+  }
+  function mixedHtml(s){
+    return restoreLatSpans(s).split(/(<span class="lat">[\s\S]*?<\/span>)/g).map(function(part){
+      if(/^<span class="lat">/.test(part)) return part;
+      var entities=[];
+      var safePart=part.replace(/&(?:[a-zA-Z]+|#\d+|#x[0-9A-Fa-f]+);/g,function(entity){
+        var token="\x00"+entities.length+"\x00";
+        entities.push(entity);
+        return token;
+      });
+      return safePart.replace(LATIN_RUN,function(match){
+        return '<span class="lat">'+match+'</span>';
+      }).replace(/\x00(\d+)\x00/g,function(_,idx){return entities[Number(idx)];});
+    }).join('');
+  }
+  function pauseOtherVideos(activeVideo){
+    Array.prototype.forEach.call(document.querySelectorAll('video'), function(vid){
+      if (vid === activeVideo) return;
+      try { vid.pause(); } catch(_){}
+      var item = vid.closest && vid.closest('.sg-item.is-inline-playing');
+      if (item) item.classList.remove('is-inline-playing');
+    });
+  }
   function build(){
     root = document.createElement('div');
     root.className = 'alb';
@@ -68,6 +103,7 @@
               '<source class="alb-webp" type="image/webp">'+
               '<img alt="" draggable="false">'+
             '</picture>'+
+            '<video class="alb-video" controls playsinline preload="metadata" hidden></video>'+
             '<p class="alb-alt"></p>'+
             '<a class="alb-cta" href="#" target="_self" rel="noopener"></a>'+
           '</div>'+
@@ -85,6 +121,7 @@
     figure   = root.querySelector('.alb-figure');
     imgWrap  = root.querySelector('.alb-imgwrap');
     imgEl    = root.querySelector('.alb-figure img');
+    videoEl  = root.querySelector('.alb-figure video');
     altEl    = root.querySelector('.alb-alt');
     ctaEl    = root.querySelector('.alb-cta');
     captionEl= root.querySelector('.alb-caption');
@@ -101,6 +138,7 @@
     // the image finishes loading OR the viewport changes — keeps the CTA
     // button width == image width.
     imgEl.addEventListener('load', fitWrapperToImage);
+    videoEl.addEventListener('loadedmetadata', fitWrapperToImage);
     window.addEventListener('resize', fitWrapperToImage);
     // Backdrop click intentionally does NOT close — close only via X button or Escape.
     document.addEventListener('keydown', onKey);
@@ -110,9 +148,11 @@
   // Match the wrapper width to the image's *rendered* width (post-aspect/maxH
   // constraint) so [alt + CTA + caption] line up with the visible image edges.
   function fitWrapperToImage(){
-    if (!imgWrap || !imgEl) return;
+    if (!imgWrap) return;
     requestAnimationFrame(function(){
-      var w = imgEl.getBoundingClientRect().width;
+      var active = (videoEl && !videoEl.hidden) ? videoEl : imgEl;
+      if (!active) return;
+      var w = active.getBoundingClientRect().width;
       if (w > 0) imgWrap.style.width = Math.round(w) + 'px';
     });
   }
@@ -132,10 +172,15 @@
   }
 
   // --- caption rendering: split artist into first / last for mobile bold/light ---
+  // Hebrew letters proper (alef-tav + finals); excludes punctuation like ״ ׳.
+  // Routes title/caption text to the right font in CSS (.is-he → FbEzmel, .is-en → Copperplate).
+  var HEB_LETTERS = /[א-ת]/;
   function setCaption(work, srcEl){
     var title = (work && work.title) || srcEl.dataset.artworkTitle || srcEl.alt || '';
     var artist= (work && work.artist) || srcEl.dataset.artworkArtist || '';
-    titleEl.textContent = title;
+    titleEl.innerHTML = mixedHtml(title);
+    titleEl.classList.toggle('is-he', HEB_LETTERS.test(title));
+    titleEl.classList.toggle('is-en', !HEB_LETTERS.test(title));
 
     // artist: split last word as "last" (bold/light contrast on mobile)
     artistEl.innerHTML = '';
@@ -154,8 +199,39 @@
   }
 
   function setImage(srcEl, work){
-    var src = (work && work.image) || srcEl.dataset.artworkSrc || srcEl.currentSrc || srcEl.src;
+    var videoSrc = srcEl.dataset.artworkVideo || (work && work.video) || '';
     var alt = srcEl.alt || (work && work.title) || '';
+    var picture = root.querySelector('.alb-figure picture');
+
+    if (videoSrc){
+      // VIDEO mode — show <video> with click-to-play (controls), hide <picture>.
+      var poster = srcEl.dataset.artworkPoster || (work && work.poster) || srcEl.dataset.artworkSrc || '';
+      pauseOtherVideos(videoEl);
+      if (picture) picture.hidden = true;
+      videoEl.hidden = false;
+      videoEl.pause();
+      if (poster) videoEl.poster = poster; else videoEl.removeAttribute('poster');
+      // Only set src when changed, to avoid re-fetch on same-item nav.
+      if (videoEl.getAttribute('src') !== videoSrc){
+        videoEl.src = videoSrc;
+        videoEl.load();
+      }
+      root.classList.add('is-video');
+      fitWrapperToImage();
+      return;
+    }
+
+    // IMAGE mode
+    if (videoEl){
+      videoEl.pause();
+      videoEl.removeAttribute('src');
+      videoEl.load();
+      videoEl.hidden = true;
+    }
+    if (picture) picture.hidden = false;
+    root.classList.remove('is-video');
+
+    var src = (work && work.image) || srcEl.dataset.artworkSrc || srcEl.currentSrc || srcEl.src;
     // If src is a .png path, point <picture> sources at .avif/.webp siblings.
     var m = (src || '').match(/^(.*)\.png(\?.*)?$/i);
     var avifSrc = root.querySelector('.alb-avif');
@@ -181,7 +257,9 @@
     // ALT
     var altText = srcEl.dataset.artworkAlt || (work && work.alt) || '';
     if (altText){
-      altEl.textContent = altText;
+      altEl.innerHTML = mixedHtml(altText);
+      altEl.classList.toggle('is-he', HEB_LETTERS.test(altText));
+      altEl.classList.toggle('is-en', !HEB_LETTERS.test(altText));
       root.classList.add('has-alt');
     } else {
       altEl.textContent = '';
@@ -210,7 +288,11 @@
   // --- preload neighbors ---
   function preload(i){
     var el = currentList[i]; if (!el) return;
-    var src = el.dataset.artworkSrc || el.currentSrc || el.src || '';
+    // For video items, only the poster is worth preloading; the mp4 itself
+    // is fetched on demand once the user navigates to it.
+    var poster = el.dataset.artworkPoster;
+    var src = poster || el.dataset.artworkSrc || el.currentSrc || el.src || '';
+    if (!src || /\.(mp4|webm|mov)(\?|$)/i.test(src)) return;
     // browser will pick best from <picture>, but plain new Image() can't —
     // preload the webp variant since that's what will display in worst case.
     var pre = new Image();
@@ -254,6 +336,7 @@
   }
   function close(){
     if (!root) return;
+    if (videoEl){ try { videoEl.pause(); } catch(_){} }
     root.classList.remove('is-open');
     document.body.classList.remove('alb-lock');
     if (lastFocus && lastFocus.focus) lastFocus.focus();

@@ -34,7 +34,8 @@ body.alb-lock{overflow:hidden}
   display:flex;flex-direction:column;align-items:stretch;gap:12px;
   max-width:100%;
 }
-.alb-figure img{
+.alb-figure img,
+.alb-figure .alb-video{
   max-width:80vw;
   max-height:calc(100vh - 240px);
   width:auto;height:auto;
@@ -43,15 +44,16 @@ body.alb-lock{overflow:hidden}
   user-select:none;-webkit-user-drag:none;
   background:#FFFFFF;
 }
-/* alt-text caption shown below image when [data-artwork-alt] is present on source */
+.alb-figure .alb-video[hidden]{display:none}
+/* alt-text caption shown below image when [data-artwork-alt] is present on source.
+   Font/direction switch via JS-applied .is-he / .is-en class. */
 .alb-alt{
   display:none;
-  font-family:"FbEzmel","Arial Hebrew","David Libre",serif;
   font-weight:300;font-size:14px;line-height:1.45;
-  color:#1B1B1B;text-align:right;direction:rtl;
-  text-transform:none;letter-spacing:normal;
-  padding:0 2px;
+  color:#1B1B1B;letter-spacing:normal;padding:0 2px;
 }
+.alb-alt.is-he{font-family:"FbEzmel","Arial Hebrew","David Libre",serif;text-align:right;direction:rtl;text-transform:none}
+.alb-alt.is-en{font-family:"Copperplate","Times New Roman",serif;text-align:left;direction:ltr;text-transform:uppercase}
 .alb.has-alt .alb-alt{display:block}
 /* CTA — square, white bg, black border; width fills the image-wrapper (= image rendered width) */
 .alb-cta{
@@ -108,8 +110,12 @@ body.alb-lock{overflow:hidden}
   gap:2px;padding:12px 24px 24px;
   color:#1B1B1B;text-align:center;
 }
-.alb-caption .alb-title{font-family:"FbEzmel","Arial Hebrew","David Libre",serif;font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:none}
-.alb-caption .alb-artist{font-weight:300;font-size:11px;letter-spacing:.08em;display:flex;gap:4px;line-height:1.2}
+/* title font is language-aware: Hebrew → FbEzmel, English → Copperplate (UPPER). JS toggles .is-he / .is-en. */
+.alb-caption .alb-title{font-weight:400;font-size:11px;letter-spacing:.08em}
+.alb-caption .alb-title.is-he{font-family:"FbEzmel","Arial Hebrew","David Libre",serif;text-transform:none;direction:rtl}
+.alb-caption .alb-title.is-en{font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase;direction:ltr}
+.alb-caption .alb-title .lat,.alb-alt .lat{font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.08em}
+.alb-caption .alb-artist{font-weight:300;font-size:11px;letter-spacing:.08em;display:flex;gap:4px;line-height:1.2;font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase}
 .alb-caption .alb-artist .first,
 .alb-caption .alb-artist .last{font-weight:300;font-size:11px;letter-spacing:.08em}
 .alb.no-caption .alb-caption{display:none}
@@ -129,7 +135,8 @@ body.alb-lock{overflow:hidden}
     background:#FFFFFF;
     align-items:center;
   }
-  .alb-figure img{
+  .alb-figure img,
+  .alb-figure .alb-video{
     width:auto;height:auto;
     max-width:70vw;max-height:calc(100vh - 200px);
     object-fit:contain;
@@ -171,10 +178,13 @@ body.alb-lock{overflow:hidden}
     color:#1B1B1B;text-align:center;
     pointer-events:auto;
   }
-  .alb-caption .alb-title{font-family:"FbEzmel","Arial Hebrew","David Libre",serif;font-weight:400;font-size:10px;letter-spacing:.06em;text-align:center;text-transform:none}
+  .alb-caption .alb-title{font-weight:400;font-size:10px;letter-spacing:.06em;text-align:center}
+  .alb-caption .alb-title.is-he{font-family:"FbEzmel","Arial Hebrew","David Libre",serif;text-transform:none;direction:rtl}
+  .alb-caption .alb-title.is-en{font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase;direction:ltr}
   .alb-caption .alb-artist{
     flex-direction:row;gap:4px;
     font-weight:300;font-size:10px;letter-spacing:.06em;line-height:1.2;
+    font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase;
   }
   .alb-caption .alb-artist .first,
   .alb-caption .alb-artist .last{font-size:10px;font-weight:300}

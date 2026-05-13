@@ -23,7 +23,7 @@
   --max:1440px;--col:600px;
   --cop:"Copperplate","Times New Roman",serif;
   --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
-  --pad-x:96px;--col-pad:420px;
+  --pad-x:96px;--col-pad:max(16px, calc((100vw - var(--col))/2));
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}

@@ -42,8 +42,8 @@
     {
       "id": "eitan-goldson",
       "slug": "eitan-goldson",
-      "name_en": "eitan goldson and henrika rotenberg",
-      "name_he": "איתן גולדסון והנריקה רוטנברג",
+      "name_en": "eitan goldson",
+      "name_he": "איתן גולדסון",
       "portrait": "images/artists/eitan-goldson/portrait.webp",
       "work_image": "images/works/grid/eitan-goldson-henrika.webp",
       "instagram_handle": "@eitan_g",
@@ -54,7 +54,7 @@
           "id": "eitan-souls-1",
           "title": "״תשע נשמות | SOULS NINE״",
           "image": "images/artists/eitan-goldson/work-01.webp",
-          "medium": "mix media — photo print on canvas, oil, acrylic and coffee"
+          "medium": "mix media — photo print on a canvas and painting with oil, acrylic and coffee"
         },
         {
           "id": "eitan-souls-2",

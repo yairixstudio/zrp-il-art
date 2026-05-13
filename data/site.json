@@ -22,15 +22,16 @@
       "cta": "SUBSCRIBE"
     },
     "links_he": [
-      { "label": "יצירת קשר",        "href": "/contact" },
-      { "label": "הצהרת נגישות",     "href": "/accessibility" },
+      { "label": "יצירת קשר",        "href": "/pages/contact.html" },
+      { "label": "הצהרת נגישות",     "href": "/pages/accessibility.html" },
+      { "label": "מדיניות פרטיות",   "href": "/pages/privacy.html" },
       { "label": "גלריית כיכר המדינה",  "href": "/galleries/medina" },
       { "label": "גלריית כיכר דיזינגוף", "href": "/galleries/dizengoff" },
       { "label": "גלריית שוק הפשפשים",  "href": "/galleries/flea-market" }
     ],
     "social": [
-      { "platform": "instagram", "url": "https://instagram.com/zielinski_rozen" },
-      { "platform": "facebook",  "url": "#" },
+      { "platform": "instagram", "url": "https://www.instagram.com/erezzielinskirozen/" },
+      { "platform": "facebook",  "url": "https://web.facebook.com/ZielinskiRozen/" },
       { "platform": "youtube",   "url": "#" },
       { "platform": "tiktok",    "url": "#" }
     ],
@@ -38,6 +39,6 @@
   },
   "announcement": "coming soon our europe galleries",
   "contact": {
-    "instagram_handle": "@zielinski_rozen"
+    "instagram_handle": "@erezzielinskirozen"
   }
 }

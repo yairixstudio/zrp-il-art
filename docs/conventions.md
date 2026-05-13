@@ -152,6 +152,33 @@ grep -rn "text-transform[: ]*\(lowercase\|capitalize\)" --include="*.html" --inc
 grep -rn "font-family.*\(Solway\|Times New Roman[^,]\|serif$\)" --include="*.html" --include="*.css" . | grep -v "var(--cop)\|var(--heb)"
 ```
 
+### 5.1 Lang-aware rendering ל-JSON-driven text (חובה)
+
+**הבעיה:** עברית fonts (FbEzmel) ללא Latin glyphs. כשמזריקים מ-JSON טקסט אנגלי לאלמנט מבוסס `var(--heb)` → האנגלית נופלת ל-serif fallback של המערכת (David Libre / Times) ו"נראית בלי פונט". אותו דבר ההפך — אנגלית-בלבד בכלי שמסומן `var(--cop)` עם טקסט עברי תקבל גליפים כפויים.
+
+**הכלל:** לכל אלמנט שמרנדר ערכים מ-JSON שעלולים להיות עברית **או** אנגלית (titles, names, descriptions, captions, alt-text, bookmark titles) — תזהה את השפה בזמן render והחל class מתאים.
+
+**הדפוס:**
+```js
+// Hebrew letters proper (alef-tav + finals); excludes punctuation like ״ ׳.
+var HEB_LETTERS = /[א-ת]/;
+function langClass(s){ return HEB_LETTERS.test(s||"") ? "is-he" : "is-en"; }
+// בעת הרינדור:
+'<div class="title '+langClass(w.title)+'">'+escapeHtml(w.title)+'</div>'
+```
+
+```css
+.title{font-size:16px;color:var(--ink);text-align:center}
+.title.is-he{font-family:var(--heb);direction:rtl;text-transform:none}
+.title.is-en{font-family:var(--cop);direction:ltr;text-transform:uppercase;letter-spacing:.04em}
+```
+
+**מימושים קיימים:** `pages/artists/artist.html` (`.work .title/.sub`), `components/artwork-lightbox.{js,css}` (`.alb-title`, `.alb-alt`), `components/site-chrome.{js,css}` (`.bm-title`). אם נדבק אתר רנדר חדש מ-JSON עם content שעלול להיות אנגלית — השתמש באותו דפוס.
+
+**גרשיים עבריים `״` `׳`** (U+05F4 / U+05F3) — לא letters. כותרת `״DON'T LOSE YOUR HEAD״` תזוהה כ-`is-en` והעטיפה הגרפית תישמר. זה הנכון: התוכן הוא אנגלי.
+
+**Inline `<span class="lat">` בתוך JSON titles** (לקטעי לועזית בכותרת עברית): renderer של artist.html יודע לעבור דרך `escapeHtml` ולשמר את ה-tag הזה בלבד (`titleHtml()` helper). אם מוסיפים render חדש שמקבל ערך שעלול להכיל `<span class="lat">` — תעתיק את ה-helper.
+
 ---
 
 ## 6. Responsive Breakpoints

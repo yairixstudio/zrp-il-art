@@ -361,31 +361,31 @@
         "label_en": "dizengoff square gallery",
         "active": false,
         "_placeholder": true,
-        "_placeholder_note": "Dizengoff is not open yet — no real archive photos exist. Showing 4 how-many artist thumbs as a preview set until real archive photos arrive. Swap when available.",
+        "_placeholder_note": "Dizengoff is not open yet — no real archive photos exist. Showing 4 random loneliness artist works as a preview set until real archive photos arrive. Swap when available.",
         "thumbs": [
           {
             "n": "01",
-            "image": "images/exhibitions/how-many/artists/01-zohar-ron.webp",
-            "exhibition_id": "how-many",
-            "title_he": "How Many Partners Have You Had? — 01"
+            "image": "images/artists/eitan-goldson/work-01.webp",
+            "exhibition_id": "loneliness",
+            "title_he": "בדידות בתוך סביבה תוססת — eitan goldson"
           },
           {
             "n": "02",
-            "image": "images/exhibitions/how-many/artists/02-dan-ben-ari.webp",
-            "exhibition_id": "how-many",
-            "title_he": "How Many Partners Have You Had? — 02"
+            "image": "images/artists/tal-nehoray/work-02.webp",
+            "exhibition_id": "loneliness",
+            "title_he": "בדידות בתוך סביבה תוססת — tal nehoray"
           },
           {
             "n": "03",
-            "image": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.webp",
-            "exhibition_id": "how-many",
-            "title_he": "How Many Partners Have You Had? — 03"
+            "image": "images/artists/maya-nachum-levy/work-03.webp",
+            "exhibition_id": "loneliness",
+            "title_he": "בדידות בתוך סביבה תוססת — maya nachum levy"
           },
           {
             "n": "04",
-            "image": "images/exhibitions/how-many/artists/13-gal-pollak.webp",
-            "exhibition_id": "how-many",
-            "title_he": "How Many Partners Have You Had? — 04"
+            "image": "images/artists/zohar-shtrit/work-01.webp",
+            "exhibition_id": "loneliness",
+            "title_he": "בדידות בתוך סביבה תוססת — zohar shitrit"
           }
         ]
       },

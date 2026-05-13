@@ -8,6 +8,7 @@ _originals/
 # Editor / IDE
 .idea/
 .vscode/
+.cursor/
 
 # Claude Code local config (do not publish)
 .claude/

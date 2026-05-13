@@ -90,8 +90,9 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 | `/opencall` | Index | — | — | ⏳ |
 | `/opencall/the-peeler` | Single | `Zn3N...::1213:2417` | `Zn3N...::1213:2518` | ✅ |
 | `/opencall/how-many` | Single | `Zn3N...::1213:2340` | `Zn3N...::1213:2263` | ✅ |
-| `/contact` | Form | — | — | ⏳ |
-| `/accessibility` | Statement | — | — | ⏳ |
+| `/contact` | Form | — | — | ✅ `pages/contact.html` |
+| `/accessibility` | Statement | — | — | ✅ `pages/accessibility.html` |
+| `/privacy` | Privacy policy | — | — | ✅ `pages/privacy.html` |
 
 **סטטי (shell):** brand, nav, footer, newsletter copy, copyright, palette + typography. ב-`data/site.json` או CSS.
 **דינמי (JSON):** galleries, artists, exhibitions, events, press, opencalls, works, instagram, homepage curation, announcement.

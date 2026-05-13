@@ -21,6 +21,33 @@
   function abs(path) {
     return new URL(path, ROOT).href;
   }
+  function escapeHtml(s) {
+    if (s == null) return '';
+    return String(s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  const LATIN_RUN = /[A-Za-z][A-Za-z0-9@&'’._?!:,;()/" -]*[A-Za-z0-9?!)]|[A-Za-z]/g;
+  function restoreLatSpans(s) {
+    return escapeHtml(s).replace(
+      /&lt;span class=&quot;lat&quot;&gt;([\s\S]*?)&lt;\/span&gt;/g,
+      '<span class="lat">$1</span>'
+    );
+  }
+  function mixedHtml(s) {
+    return restoreLatSpans(s).split(/(<span class="lat">[\s\S]*?<\/span>)/g).map(function (part) {
+      if (/^<span class="lat">/.test(part)) return part;
+      const entities = [];
+      const safePart = part.replace(/&(?:[a-zA-Z]+|#\d+|#x[0-9A-Fa-f]+);/g, function (entity) {
+        const token = '\x00' + entities.length + '\x00';
+        entities.push(entity);
+        return token;
+      });
+      return safePart.replace(LATIN_RUN, function (match) {
+        return '<span class="lat">' + match + '</span>';
+      }).replace(/\x00(\d+)\x00/g, function (_, idx) { return entities[Number(idx)]; });
+    }).join('');
+  }
 
   // ---- Inject shared stylesheet (idempotent) -----------------
   if (!document.querySelector('link[data-site-chrome-css]')) {
@@ -86,16 +113,22 @@
       '<footer class="footer">' +
         '<div class="newsletter">' +
           '<h3>Stay Informed</h3>' +
-          '<form onsubmit="event.preventDefault()">' +
+          '<form onsubmit="event.preventDefault()" novalidate>' +
             '<textarea class="newsletter-email" name="email" rows="1" inputmode="email" autocomplete="email" placeholder="Email Address" aria-label="Email Address" spellcheck="false"></textarea>' +
+            '<label class="newsletter-consent">' +
+              '<input type="checkbox" class="newsletter-consent-cb" name="consent" required aria-required="true">' +
+              '<span class="newsletter-consent-text">קראתי ואני מסכים/ה ל<a href="' + abs('pages/privacy.html') + '">מדיניות הפרטיות</a></span>' +
+            '</label>' +
             '<button type="submit">SUBSCRIBE</button>' +
+            '<p class="newsletter-status" data-newsletter-status role="status" aria-live="polite"></p>' +
           '</form>' +
         '</div>' +
         '<div class="footer-right">' +
           '<nav class="footer-menu" aria-label="footer links">' +
             '<div class="footer-row">' +
-              '<a href="#">יצירת קשר</a>' +
-              '<a href="#">הצהרת נגישות</a>' +
+              '<a href="' + abs('pages/contact.html') + '">יצירת קשר</a>' +
+              '<a href="' + abs('pages/accessibility.html') + '">הצהרת נגישות</a>' +
+              '<a href="' + abs('pages/privacy.html') + '">מדיניות פרטיות</a>' +
             '</div>' +
             '<div class="footer-row">' +
               '<a href="' + abs('index.html') + '#galleries">גלריית כיכר המדינה</a>' +
@@ -105,8 +138,8 @@
           '</nav>' +
           '<p class="footer-copy">© 2026 THE art GALLERY<br>ZiELINSKI &amp; ROZEN ALL RIGHTS RESERVED.</p>' +
           '<div class="footer-icons">' +
-            '<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41a4.07 4.07 0 011.51.98c.46.46.77.93.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44a4.07 4.07 0 01-.98 1.51 4.07 4.07 0 01-1.51.98c-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.07 4.07 0 01-1.51-.98 4.07 4.07 0 01-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44a4.07 4.07 0 01.98-1.51 4.07 4.07 0 011.51-.98c.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.77 5.77 0 00-2.13 1.38A5.77 5.77 0 00.63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.47 1.38 2.13a5.77 5.77 0 002.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.77 5.77 0 002.13-1.38 5.77 5.77 0 001.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.77 5.77 0 00-1.38-2.13A5.77 5.77 0 0019.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0z" fill="currentColor"/><path d="M12 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8z" fill="currentColor"/><circle cx="18.41" cy="5.59" r="1.44" fill="currentColor"/></svg></a>' +
-            '<a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12a12 12 0 10-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.92-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38A12 12 0 0024 12z"/></svg></a>' +
+            '<a href="https://www.instagram.com/erezzielinskirozen/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41a4.07 4.07 0 011.51.98c.46.46.77.93.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44a4.07 4.07 0 01-.98 1.51 4.07 4.07 0 01-1.51.98c-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.07 4.07 0 01-1.51-.98 4.07 4.07 0 01-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44a4.07 4.07 0 01.98-1.51 4.07 4.07 0 011.51-.98c.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.77 5.77 0 00-2.13 1.38A5.77 5.77 0 00.63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.47 1.38 2.13a5.77 5.77 0 002.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.77 5.77 0 002.13-1.38 5.77 5.77 0 001.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.77 5.77 0 00-1.38-2.13A5.77 5.77 0 0019.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0z" fill="currentColor"/><path d="M12 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8z" fill="currentColor"/><circle cx="18.41" cy="5.59" r="1.44" fill="currentColor"/></svg></a>' +
+            '<a href="https://web.facebook.com/ZielinskiRozen/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12a12 12 0 10-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.92-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38A12 12 0 0024 12z"/></svg></a>' +
           '</div>' +
         '</div>' +
         '<p class="footer-copy footer-copy--mobile">© 2026 THE art GALLERY ZiELINSKI &amp; ROZEN ALL RIGHTS RESERVED.</p>' +
@@ -120,13 +153,20 @@
     const btn = nav && nav.querySelector('.hamburger');
     const links = nav && nav.querySelector('.nav-links');
     const closeBtn = nav && nav.querySelector('.nav-close');
+    const openCallLink = nav && nav.querySelector('a[data-nav="opencall"]');
     if (!nav || !btn || !links) return;
+
+    function syncOpenCallHref() {
+      if (!openCallLink) return;
+      openCallLink.href = abs('index.html') + (window.innerWidth <= 768 ? '#mobile-cta' : '#opencall');
+    }
 
     function setOpen(open) {
       nav.classList.toggle('is-open', open);
       document.body.classList.toggle('menu-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
+    syncOpenCallHref();
     btn.addEventListener('click', function () {
       setOpen(!nav.classList.contains('is-open'));
     });
@@ -144,6 +184,7 @@
       if (e.key === 'Escape') setOpen(false);
     });
     window.addEventListener('resize', function () {
+      syncOpenCallHref();
       if (window.innerWidth > 768) setOpen(false);
     });
   }
@@ -175,7 +216,34 @@
     }
     if (!key) return;
     const link = root.querySelector('.nav-links a[data-nav="' + key + '"]');
-    if (link) link.classList.add('active');
+    if (link) {
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+    }
+  }
+
+  // ---- A11y: site-wide skip link + main landmark id ----------
+  // Injects a "skip to content" link as the first child of <body> (off-screen
+  // until focused, so visually nothing changes). Targets the page's <main> —
+  // creates an id on it if missing. If no <main> exists, falls back to the
+  // first <section> or to the first sibling AFTER the site-header.
+  function ensureSkipLink() {
+    // If page already provides a skip link, don't add another.
+    if (document.querySelector('.skip-link')) return;
+    // Resolve target element
+    var target = document.querySelector('main');
+    if (!target) {
+      // Fallback: first <section> or <article> after the header
+      target = document.querySelector('site-header ~ section, site-header ~ article, site-header ~ div');
+    }
+    if (target && !target.id) target.id = 'main';
+    if (target) target.setAttribute('tabindex', target.getAttribute('tabindex') || '-1');
+    var a = document.createElement('a');
+    a.className = 'skip-link';
+    a.setAttribute('data-zr-skip', '');
+    a.href = '#' + (target ? target.id || 'main' : 'main');
+    a.textContent = 'SKIP TO CONTENT';
+    document.body.insertBefore(a, document.body.firstChild);
   }
 
   // ---- Bookmark + Share (page-level + header) ----------------
@@ -266,8 +334,11 @@
       var a = document.createElement('a');
       a.href = it.url;
       var t = document.createElement('span');
-      t.className = 'bm-title';
-      t.textContent = it.title || it.id;
+      var titleText = it.title || it.id;
+      // Hebrew letters (alef-tav, excl. punctuation) → FbEzmel; otherwise → Copperplate UPPER.
+      var isHe = /[א-ת]/.test(titleText || '');
+      t.className = 'bm-title ' + (isHe ? 'is-he' : 'is-en');
+      t.innerHTML = mixedHtml(titleText);
       a.appendChild(t);
       var rm = document.createElement('button');
       rm.className = 'bm-remove';
@@ -352,6 +423,9 @@
 
   function wireNewsletter(root) {
     var field = root.querySelector('.newsletter-email');
+    var form = root.querySelector('.newsletter form');
+    var consentBox = root.querySelector('.newsletter-consent-cb');
+    var statusEl = root.querySelector('[data-newsletter-status]');
     if (!field) return;
     field.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') {
@@ -362,6 +436,30 @@
     field.addEventListener('input', function () {
       field.value = field.value.replace(/[\r\n]+/g, ' ');
     });
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!statusEl) return;
+        statusEl.classList.remove('is-ok', 'is-err');
+        var email = (field.value || '').trim();
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          statusEl.textContent = 'יש להזין כתובת דוא"ל תקינה.';
+          statusEl.classList.add('is-err');
+          field.focus();
+          return;
+        }
+        if (consentBox && !consentBox.checked) {
+          statusEl.textContent = 'יש לאשר את מדיניות הפרטיות.';
+          statusEl.classList.add('is-err');
+          consentBox.focus();
+          return;
+        }
+        statusEl.textContent = 'תודה — נרשמת לרשימת התפוצה.';
+        statusEl.classList.add('is-ok');
+        field.value = '';
+        if (consentBox) consentBox.checked = false;
+      });
+    }
   }
 
   // ---- Custom elements ---------------------------------------
@@ -373,6 +471,7 @@
       wireHamburger(this);
       markActive(this);
       wireBookmark(this);
+      ensureSkipLink();
     }
   }
 

@@ -72,23 +72,25 @@ body{text-transform:uppercase}
 .about-tri .tri{--tri-peek-left:7%;--tri-peek-right:93%}
 
 /* SECTION 3 — Biography (Hebrew) with vertical EREZ sidebar */
-.about-bio{padding:48px var(--pad-x);display:flex;justify-content:center}
-.about-bio .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max);direction:rtl}
-.about-bio .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:32px;padding:0 16px;direction:rtl}
+.about-bio{padding:48px var(--pad-x);display:flex;justify-content:center;width:100%;box-sizing:border-box}
+.about-bio .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max);min-width:0;direction:rtl}
+.about-bio .text-col{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:32px;padding:0 16px;direction:rtl}
 /* bio-block = Figma Frame 296 (row 438.08px wide).
    - direction:ltr (NOT rtl) so paras sits on the LEFT and vsig on the RIGHT (rightmost edge — vsig is the "spine" of the section, opposite the image).
    - align-items:flex-start is critical: stretch would couple vsig wrapper height to paras height, and JS letter-spacing growth would feed back into paras, creating an infinite-grow loop. flex-start decouples them. */
-.about-bio .bio-block{display:flex;flex-direction:row;gap:19.578947px;align-items:flex-start;width:438.08px;max-width:100%;direction:ltr}
-.about-bio .paras{display:flex;flex-direction:column;gap:19.578947px;flex:1;min-width:0;font-family:var(--heb);font-weight:300;font-size:22px;line-height:1.0;color:var(--ink);text-align:right;direction:rtl}
+.about-bio .bio-block{display:flex;flex-direction:row;gap:19.578947px;align-items:flex-start;width:100%;max-width:438.08px;min-width:0;direction:ltr}
+.about-bio .paras{display:flex;flex-direction:column;gap:19.578947px;flex:1;min-width:0;font-family:var(--heb);font-weight:300;font-size:22px;line-height:1.0;color:var(--ink);text-align:right;direction:rtl;overflow-wrap:break-word;word-break:normal}
 .about-bio .paras p{font-weight:300}
 .about-bio .paras .lead{font-weight:400}
 .about-bio .paras .quote{font-style:normal}
 .about-bio .vsig{flex:0 0 30.59px;display:flex;align-items:center;justify-content:center;padding:6.118421px 0}
 /* vsig span: vertical text — letter-spacing is set dynamically by JS to match paragraphs column height exactly. The .58em desktop value is a fallback for no-JS. */
 .about-bio .vsig span{writing-mode:vertical-rl;transform:rotate(0deg);font-family:var(--cop);font-weight:400;font-size:14px;letter-spacing:2em;color:var(--ink);white-space:nowrap;display:inline-block}
-.about-bio .img-col{flex:0 0 492px;display:flex;justify-content:flex-end;order:-1}
-.about-bio .img-col .img-frame{width:506px;height:739px;overflow:hidden;margin-left:-7px}
-.about-bio .img-col img{width:100%;height:100%;object-fit:cover;object-position:center}
+/* img-col hugs the portrait: explicit height + Figma aspect-ratio derives width (avoids slack when <picture>/<img>% chain mis-resolves vs global img rules). about-en/about-close stay fixed widths. */
+.about-bio .img-col{flex:0 0 auto;width:fit-content;max-width:100%;display:flex;flex-direction:row;justify-content:flex-start;align-items:stretch;align-self:flex-start;order:-1}
+.about-bio .img-col .img-frame{width:auto;height:739px;aspect-ratio:422.285714/739;max-width:100%;flex-shrink:0;overflow:hidden;margin:0}
+.about-bio .img-col picture{display:block;width:100%;height:100%;margin:0;line-height:0}
+.about-bio .img-col img{display:block;width:100%;height:100%;max-width:none;margin:0;object-fit:cover;object-position:center}
 
 /* SECTION 4 — Gray quote band */
 .about-quote-grey{padding:48px var(--pad-x);background:var(--bg-grey);display:flex;justify-content:center}
@@ -129,8 +131,9 @@ body{text-transform:uppercase}
   .about-hero .img-frame{width:380px;height:560px}
   .about-hero .name-overlay{right:0;left:auto;top:430px;width:auto;font-size:32px}
   .about-hero h1{font-size:60px;line-height:60px}
-  .about-bio .img-col,.about-en .img-col,.about-close .img-col{flex-basis:380px}
-  .about-bio .img-col .img-frame{width:380px;height:560px}
+  .about-en .img-col,.about-close .img-col{flex-basis:380px;width:380px}
+  .about-bio .img-col{flex-basis:auto;width:fit-content;max-width:100%}
+  .about-bio .img-col .img-frame{height:560px;aspect-ratio:380/560;width:auto;max-width:100%}
   .about-en .img-col .img-frame,.about-close .img-col .img-frame{width:380px;height:560px}
   /* Bio text-col: shrink font + gaps so total column height ≈ image (560px) instead of 700px */
   .about-bio .bio-block{gap:14px}
@@ -173,8 +176,9 @@ body{text-transform:uppercase}
   .about-bio .vsig{flex:0 0 25px;padding:5px 0}
   .about-bio .vsig span{font-size:12px;letter-spacing:2em}
   .about-bio .img-col{flex:0 0 auto;width:100%;order:2}
-  .about-bio .img-col .img-frame{width:100%;height:443px;margin:0;display:flex;align-items:center;justify-content:center}
-  .about-bio .img-col img{width:60%;height:100%}
+  .about-bio .img-col .img-frame{width:100%;height:378px;margin:0;display:flex;align-items:center;justify-content:center}
+  .about-bio .img-col picture{width:216px;height:378px;display:block}
+  .about-bio .img-col img{width:216px;height:378px;object-fit:cover}
 
   /* Section D — gray quote band */
   .about-quote-grey{padding:24px 16px;background:var(--white)}
@@ -374,6 +378,17 @@ body{text-transform:uppercase}
     var paras = section.querySelector('.paras');
     var vsig = section.querySelector('.vsig');
     if(!paras || !vsig) return;
+    var imgFrame = section.querySelector('.img-frame');
+    if(imgFrame && window.matchMedia('(min-width:769px)').matches){
+      var imgH = paras.getBoundingClientRect().height;
+      if(imgH > 0){
+        imgFrame.style.height = imgH + 'px';
+        imgFrame.style.width = (imgH * 216 / 378) + 'px';
+      }
+    } else if(imgFrame){
+      imgFrame.style.height = '';
+      imgFrame.style.width = '';
+    }
     var span = vsig.querySelector('span');
     if(!span) return;
 

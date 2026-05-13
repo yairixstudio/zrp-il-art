@@ -91,9 +91,10 @@ body{text-transform:uppercase}
 .ex-artists .strip::-webkit-scrollbar-thumb{background:var(--bg-grey)}
 .ex-artists .card{flex:0 0 178px;display:flex;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start;cursor:pointer}
 .ex-artists .card .pic{width:178px;height:148px;overflow:hidden;background:var(--bg-grey)}
+.ex-artists .card .pic picture{display:block;width:100%;height:100%}
 .ex-artists .card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .ex-artists .card:hover .pic img{transform:scale(1.04)}
-.ex-artists .card .name{font-family:var(--cop);font-weight:300;font-size:18px;line-height:18px;text-align:center;color:var(--artist);text-transform:uppercase;white-space:pre-line}
+.ex-artists .card .name{font-family:var(--cop);font-weight:300;font-size:18px;line-height:18px;text-align:center;color:var(--artist);text-transform:uppercase;white-space:pre-line;word-break:normal;overflow-wrap:normal;hyphens:none;text-wrap:balance}
 
 
 /* ============================================================
@@ -149,14 +150,14 @@ body{text-transform:uppercase}
   .ex-artists .head .label{font-size:20px}
   .ex-artists .card{flex:0 0 96px}
   .ex-artists .card .pic{width:96px;height:80px}
-  .ex-artists .card .name{font-size:16px}
+  .ex-artists .card .name{font-size:13px;line-height:14px}
 
 }
 
 /* loading state */
 .loading{padding:120px 24px;text-align:center;font-family:var(--cop);font-weight:300;color:var(--grey-mid);letter-spacing:.08em}
 
-a.card.is-linked{cursor:pointer;display:block;color:inherit;text-decoration:none}
+a.card.is-linked{cursor:pointer;display:flex;color:inherit;text-decoration:none}
 a.card.is-linked:hover .pic img{filter:brightness(.96)}
 a.card.is-linked .pic img{transition:filter .25s}
 </style>

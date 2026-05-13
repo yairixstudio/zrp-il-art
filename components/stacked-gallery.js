@@ -32,9 +32,37 @@
     return Array.prototype.slice.call(stack.querySelectorAll('.sg-item'));
   }
 
+  function pauseInlineItem(item){
+    if (!item) return;
+    var vid = item.querySelector('video.sg-inline-video');
+    if (vid && !vid.paused){
+      try { vid.pause(); } catch(_){}
+    }
+    item.classList.remove('is-inline-playing');
+  }
+
+  function pauseInlineVideosExcept(activeVideo){
+    Array.prototype.forEach.call(document.querySelectorAll('.sg-item.is-inline-playing'), function(item){
+      var vid = item.querySelector('video.sg-inline-video');
+      if (vid !== activeVideo) pauseInlineItem(item);
+    });
+  }
+
+  function stopAllOtherVideos(activeVideo){
+    Array.prototype.forEach.call(document.querySelectorAll('video'), function(vid){
+      if (vid === activeVideo) return;
+      if (!vid.paused){
+        try { vid.pause(); } catch(_){}
+      }
+      var item = vid.closest && vid.closest('.sg-item.is-inline-playing');
+      if (item) item.classList.remove('is-inline-playing');
+    });
+  }
+
   function syncVideo(stack){
     items(stack).forEach(function(el){
-      var vid = el.querySelector('video');
+      // Inline user-play videos (e.g. opencall mobile) — not ambient stack playback.
+      var vid = el.querySelector('video:not(.sg-inline-video)');
       if (!vid) return;
       if (el.classList.contains('is-main')){
         try {
@@ -76,11 +104,12 @@
     var mode  = modeOf(root);
     var busy  = false;
 
-    function swap(){
+    function swap(after){
       if (busy) return;
       var all = items(stack);
       if (all.length !== 2) return;
       busy = true;
+      all.forEach(pauseInlineItem);
       all.forEach(function(el){
         el.classList.toggle('is-main');
         el.classList.toggle('is-peek');
@@ -92,7 +121,37 @@
         updateInfoFrom(info, newMain);
         syncVideo(stack);
       }
-      setTimeout(function(){ busy = false; }, 600);
+      setTimeout(function(){
+        busy = false;
+        if (typeof after === 'function') after(newMain);
+      }, 600);
+    }
+
+    function playInlineVideo(item){
+      if (!item) return;
+      var video = item.querySelector('video.sg-inline-video');
+      if (!video) return;
+      var src = item.getAttribute('data-artwork-video');
+      if (src && video.getAttribute('src') !== src){
+        video.src = src;
+        video.load();
+      }
+      stopAllOtherVideos(video);
+      pauseInlineVideosExcept(video);
+      item.classList.add('is-inline-playing');
+      try {
+        var p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(function(){});
+      } catch(_){}
+    }
+
+    function activateItem(item, after){
+      if (!item) return;
+      if (item.classList.contains('is-main')){
+        if (typeof after === 'function') after(item);
+        return;
+      }
+      if (item.classList.contains('is-peek')) swap(after);
     }
 
     if (mode === 'swap'){
@@ -127,8 +186,41 @@
       stack.addEventListener('pointercancel', function(){ swiping = false; });
       stack.style.touchAction = 'pan-y';
     }
-    // lightbox/static: no swap binding; clicks (if any) are handled by
-    // artwork-lightbox.js delegation on document.
+    // lightbox/static: non-video clicks (if any) are handled by artwork-lightbox.js delegation.
+    // Inline videos still need center-before-play behavior.
+
+    stack.addEventListener('click', function(e){
+      var item = e.target.closest('.sg-item[data-artwork-video]');
+      if (!item || !stack.contains(item)) return;
+      if (!item.hasAttribute('data-artwork-skip')) return;
+      var video = item.querySelector('video.sg-inline-video');
+      if (!video) return;
+      if (item.classList.contains('is-inline-playing') && (e.target === video || video.contains(e.target))){
+        return;
+      }
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      activateItem(item, playInlineVideo);
+    }, true);
+
+    Array.prototype.forEach.call(stack.querySelectorAll('video.sg-inline-video'), function(video){
+      if (video.__sgInlineBound) return;
+      video.__sgInlineBound = true;
+      video.addEventListener('play', function(){
+        var item = video.closest('.sg-item');
+        stopAllOtherVideos(video);
+        pauseInlineVideosExcept(video);
+        if (item) item.classList.add('is-inline-playing');
+      });
+      video.addEventListener('pause', function(){
+        var item = video.closest('.sg-item');
+        if (item) item.classList.remove('is-inline-playing');
+      });
+      video.addEventListener('ended', function(){
+        var item = video.closest('.sg-item');
+        if (item) item.classList.remove('is-inline-playing');
+      });
+    });
 
     // Initial state
     var firstMain = stack.querySelector('.sg-item.is-main');
@@ -144,8 +236,15 @@
   if (document.readyState !== 'loading') bindAll();
   else document.addEventListener('DOMContentLoaded', bindAll);
 
+  document.addEventListener('play', function(e){
+    var active = e.target;
+    if (!active || active.tagName !== 'VIDEO') return;
+    stopAllOtherVideos(active);
+  }, true);
+
   window.StackedGallery = {
     refresh: bindAll,
-    init:    bindInstance
+    init:    bindInstance,
+    pauseInlineVideosExcept: pauseInlineVideosExcept
   };
 })();

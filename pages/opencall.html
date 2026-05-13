@@ -64,6 +64,12 @@ body{text-transform:uppercase}
 .oc-mobile-gallery .sg-item .deco::before{content:"";display:block;width:0;height:0;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent rgba(27,27,27,.8);margin-left:3px}
 .oc-mobile-gallery .sg-item.is-peek .deco{width:36px;height:36px}
 .oc-mobile-gallery .sg-item.is-peek .deco::before{border-width:7px 0 7px 12px;margin-left:2px}
+/* Mobile gallery: play video inline in the same card (no lightbox). */
+.oc-mobile-gallery .sg-media{position:relative;width:100%;height:100%;overflow:hidden}
+.oc-mobile-gallery .sg-item:not(.is-inline-playing) .sg-inline-video{display:none !important}
+.oc-mobile-gallery .sg-item.is-inline-playing .sg-media > :not(.sg-inline-video){display:none !important}
+.oc-mobile-gallery .sg-item .sg-inline-video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:auto;-webkit-user-drag:none;user-select:none}
+.oc-mobile-gallery .sg-item.is-inline-playing .deco{display:none}
 
 /* ===== NAV/FOOTER moved to ../components/site-chrome.css ===== */
 
@@ -111,6 +117,11 @@ body{text-transform:uppercase}
 .oc-gallery .frame{width:492px;height:744px;overflow:hidden;position:relative;cursor:zoom-in}
 .oc-gallery .frame img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
 .oc-gallery .frame:hover img{transform:scale(1.04)}
+.oc-gallery .frame .oc-inline-video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:auto}
+.oc-gallery .frame:not(.is-inline-playing) .oc-inline-video{display:none !important}
+.oc-gallery .frame.is-inline-playing > picture,
+.oc-gallery .frame.is-inline-playing > img,
+.oc-gallery .frame.is-inline-playing .deco{display:none !important}
 /* Play button overlay — matches Figma 119:2495 (Image Decorative Element):
    72px translucent-grey circle (#D9D9D9 @ 40%) with centered ▶ triangle in ink @ 80%.
    margin-left:4px optically centers the right-pointing triangle in the circle. */
@@ -186,7 +197,7 @@ a.artist-figure-link img{transition:filter .25s}
 
 <!-- Inline JSON fallback (file:// support). Keep in sync with data/opencalls.json + data/site.json. -->
 <script type="application/json" id="fallback-site">{"footer":{"newsletter":{"title":"Stay Informed","placeholder":"Email Address","cta":"SUBSCRIBE"},"links_he":[{"label":"יצירת קשר","href":"/contact"},{"label":"הצהרת נגישות","href":"/accessibility"},{"label":"גלריית כיכר המדינה","href":"/galleries/medina"},{"label":"גלריית כיכר דיזינגוף","href":"/galleries/dizengoff"},{"label":"גלריית שוק הפשפשים","href":"/galleries/flea-market"}],"copyright":"© 2026 THE art GALLERY ZiELINSKI & ROZEN ALL RIGHTS RESERVED."}}</script>
-<script type="application/json" id="fallback-opencalls">{"opencalls":[{"id":"the-peeler","slug":"the-peeler","title_html":"<span class=\"heb\">הקולפן</span> | <span class=\"lat\">exhibition volume 2</span>","title_en":"the peeler","status":"archived","submission_status_he":"ההגשה נגמרה","gallery_id":"medina","gallery_label_he":"גלריית כיכר המדינה","deadline":"2026-04-23","deadline_he":"23/4/2026","hero_image":"images/opencalls/the-peeler/hero.webp","description_he":[{"weight":"regular","lines":["הנושא: בחירה במעורר רגש אחד מתוך רשימה נתונה,","וכניסה אליו דרך זיכרון אישי."]},{"weight":"light","lines":["האמן מתבקש ליצור עבודה חדשה שנוגעת במעורר רגש ובזיכרון, ובאפשרות לכתוב את אותו זיכרון מחדש:","  · לא בהכרח לשנות את מה שקרה","  · אלא לאפשר לו לקבל צורה אחרת דרך המפגש איתו"]},{"weight":"light","lines":["לצד כל עבודה יוצג בושם אחד, שיתכתב עם הרגש ויוסיף שכבה נוספת של חוויה."]}],"emotional_triggers":{"title_he":"הקולפן — רשימת מעוררי רגש לבחירה","items":["קנאה מתחת לפני השטח","נטישה","אובדן שליטה","אובססיה","נשארתי למרות שידעתי","אני מרגיש/ה שקופ/ה","קנאה שאני מתבייש/ת בה","התאהבתי בפנטזיה","התאמתי את עצמי כדי שישארו","מגע שלא הרגיש במקום","משיכה שלא הייתה טובה לי","לא לשחרר","פחד להישאר לבד","רציתי יותר ממה שנתנו לי","אין לי על מה להישען","ריחוק מגונן","צורך באישור","מחכה להודעה","פחד מקרבה","בהמתנה","געגוע שלא נפתר","לא בחרו בי","טיפוס מרצה"]},"submission_instructions_he":{"intro_html":"יש לשלוח קובץ <span class=\"lat\">PDF</span> אחד הכולל:","items":["שם האמן","שם היצירה","פרטי התקשרות","יש לבחור ולציין מעורר רגש אחד שנבחר מתוך הרשימה","העבודה צריכה להיות חדשה ולא הוצגה בעבר","יש להגיש סקיצה / הצעה ראשונית","תיאור קצר של היצירה בהתייחס לנושא התערוכה","ניתן להגיש בכל מדיום: ציור, צילום, וידאו, פיסול, טקסט, מיצב, סאונד, שירה, עבודות משולבות"]},"contact":{"label_he":"את המייל יש לשלוח לאוצרת:","email":"korinalove5@gmail.com","deadline_label_he":"מועד אחרון להגשה:","note_he":"*שימו לב הגשות שלא יעמדו בתנאי הפורמט לא ייענו."},"gallery_images":[{"image":"images/opencalls/the-peeler/gallery-01.webp"},{"image":"images/opencalls/the-peeler/gallery-02.webp"}]},{"id":"how-many","slug":"how-many","title_html":"<span class=\"lat\">how many partners have you had?</span>","title_en":"how many partners have you had?","status":"archived","submission_status_he":"ההגשה נגמרה","gallery_id":"dizengoff","gallery_label_he":"גלריית כיכר דיזינגוף","deadline":"2026-02-17","deadline_he":"17/2/2026","hero_image":"images/opencalls/how-many/hero.webp","description_he":[{"weight":"regular","lines":["התערוכה תעסוק בשאלות של:","אינטימיות, חוויה אישית, זיכרון, גוף, קרבה וחשיפה.","לא כוידוי, אלא כמרחב פתוח לפרשנות,","מבט ביקורתי חברתי או אישי, רגשי, המושג ״שותפים״,","על יחסים, ועל מה שנשאר ביניהם."]},{"weight":"light","lines":["אנו מזמינים אמניות ואמנים","להגיש הצעות ליצירות קיימות או חדשות"]},{"weight":"light","lines":["מכל מדיום:","ציור, צילום, וידאו, פיסול, טקסט,","מיצב, סאונד או עבודות משולבות."]}],"emotional_triggers":null,"submission_instructions_he":{"intro_html":"יש לשלוח קובץ <span class=\"lat\">PDF</span> אחד הכולל:","items":["שם האמן, שם היצירה, פרטי התקשרות","והתייחסות מפורשת של היצירה לנושא התערוכה — כפי שהציף אצל האמן","הצעות לעבודות חדשות יתקבלו עם פירוט וסקיצה ראשונית"],"outro_he":"כל בקשה תיבחן בהתאם לקריטריונים מקצועיים, וברלוונטיות לנושא התערוכה."},"contact":{"label_he":"את המייל יש לשלוח לאוצרת:","email":"korinalove5@gmail.com","deadline_label_he":"מועד אחרון להגשה:","note_he":"*שימו לב הגשות שלא יעמדו בתנאי הפורמט לא ייענו."},"gallery_images":null}]}</script>
+<script type="application/json" id="fallback-opencalls">{"opencalls":[{"id":"the-peeler","slug":"the-peeler","title_html":"<span class=\"heb\">הקולפן</span> | <span class=\"lat\">exhibition volume 2</span>","title_en":"the peeler","status":"archived","submission_status_he":"ההגשה נגמרה","gallery_id":"medina","gallery_label_he":"גלריית כיכר המדינה","deadline":"2026-04-23","deadline_he":"23/4/2026","hero_image":"images/opencalls/the-peeler/hero.webp","description_he":[{"weight":"regular","lines":["הנושא: בחירה במעורר רגש אחד מתוך רשימה נתונה,","וכניסה אליו דרך זיכרון אישי."]},{"weight":"light","lines":["האמן מתבקש ליצור עבודה חדשה שנוגעת במעורר רגש ובזיכרון, ובאפשרות לכתוב את אותו זיכרון מחדש:","  · לא בהכרח לשנות את מה שקרה","  · אלא לאפשר לו לקבל צורה אחרת דרך המפגש איתו"]},{"weight":"light","lines":["לצד כל עבודה יוצג בושם אחד, שיתכתב עם הרגש ויוסיף שכבה נוספת של חוויה."]}],"emotional_triggers":{"title_he":"הקולפן — רשימת מעוררי רגש לבחירה","items":["קנאה מתחת לפני השטח","נטישה","אובדן שליטה","אובססיה","נשארתי למרות שידעתי","אני מרגיש/ה שקופ/ה","קנאה שאני מתבייש/ת בה","התאהבתי בפנטזיה","התאמתי את עצמי כדי שישארו","מגע שלא הרגיש במקום","משיכה שלא הייתה טובה לי","לא לשחרר","פחד להישאר לבד","רציתי יותר ממה שנתנו לי","אין לי על מה להישען","ריחוק מגונן","צורך באישור","מחכה להודעה","פחד מקרבה","בהמתנה","געגוע שלא נפתר","לא בחרו בי","טיפוס מרצה"]},"submission_instructions_he":{"intro_html":"יש לשלוח קובץ <span class=\"lat\">PDF</span> אחד הכולל:","items":["שם האמן","שם היצירה","פרטי התקשרות","יש לבחור ולציין מעורר רגש אחד שנבחר מתוך הרשימה","העבודה צריכה להיות חדשה ולא הוצגה בעבר","יש להגיש סקיצה / הצעה ראשונית","תיאור קצר של היצירה בהתייחס לנושא התערוכה","ניתן להגיש בכל מדיום: ציור, צילום, וידאו, פיסול, טקסט, מיצב, סאונד, שירה, עבודות משולבות"]},"contact":{"label_he":"את המייל יש לשלוח לאוצרת:","email":"korinalove5@gmail.com","deadline_label_he":"מועד אחרון להגשה:","note_he":"*שימו לב הגשות שלא יעמדו בתנאי הפורמט לא ייענו."},"gallery_images":[{"image":"images/opencalls/the-peeler/gallery-01.webp","video":"images/opencalls/the-peeler/gallery-01.mp4","poster":"images/opencalls/the-peeler/gallery-01-poster.webp"},{"image":"images/opencalls/the-peeler/gallery-02.webp","video":"images/opencalls/the-peeler/gallery-02.mp4","poster":"images/opencalls/the-peeler/gallery-02-poster.webp"}]},{"id":"how-many","slug":"how-many","title_html":"<span class=\"lat\">how many partners have you had?</span>","title_en":"how many partners have you had?","status":"archived","submission_status_he":"ההגשה נגמרה","gallery_id":"dizengoff","gallery_label_he":"גלריית כיכר דיזינגוף","deadline":"2026-02-17","deadline_he":"17/2/2026","hero_image":"images/opencalls/how-many/hero.webp","description_he":[{"weight":"regular","lines":["התערוכה תעסוק בשאלות של:","אינטימיות, חוויה אישית, זיכרון, גוף, קרבה וחשיפה.","לא כוידוי, אלא כמרחב פתוח לפרשנות,","מבט ביקורתי חברתי או אישי, רגשי, המושג ״שותפים״,","על יחסים, ועל מה שנשאר ביניהם."]},{"weight":"light","lines":["אנו מזמינים אמניות ואמנים","להגיש הצעות ליצירות קיימות או חדשות"]},{"weight":"light","lines":["מכל מדיום:","ציור, צילום, וידאו, פיסול, טקסט,","מיצב, סאונד או עבודות משולבות."]}],"emotional_triggers":null,"submission_instructions_he":{"intro_html":"יש לשלוח קובץ <span class=\"lat\">PDF</span> אחד הכולל:","items":["שם האמן, שם היצירה, פרטי התקשרות","והתייחסות מפורשת של היצירה לנושא התערוכה — כפי שהציף אצל האמן","הצעות לעבודות חדשות יתקבלו עם פירוט וסקיצה ראשונית"],"outro_he":"כל בקשה תיבחן בהתאם לקריטריונים מקצועיים, וברלוונטיות לנושא התערוכה."},"contact":{"label_he":"את המייל יש לשלוח לאוצרת:","email":"korinalove5@gmail.com","deadline_label_he":"מועד אחרון להגשה:","note_he":"*שימו לב הגשות שלא יעמדו בתנאי הפורמט לא ייענו."},"gallery_images":null}]}</script>
 
 <script>
 (async function(){
@@ -289,24 +300,54 @@ a.artist-figure-link img{transition:filter .25s}
   heroBlocks.push(`<div class="block"><div class="text">${ctx.contact_html}</div></div>`);
 
   // Gallery rendering:
-  //   Desktop = side-by-side flex; each frame opens the shared artwork-lightbox.
-  //   Mobile  = stacked-gallery component (lightbox mode) — 3D peek+main.
-  const galleryImgs = ctx.gallery_images.map(g => '../' + g.image);
-  const galleryDesktopHtml = ctx.has_gallery ? `
+  //   Desktop = side-by-side flex; video frames play inline in-card, images open lightbox.
+  //   Mobile  = stacked-gallery component — 3D peek+main.
+  //   Video items: play inline in-card via stacked-gallery.js; images still use lightbox.
+  const galleryItems = (ctx.gallery_images || []).map(g => {
+    const image = g && g.image ? '../' + g.image : '';
+    const video = g && g.video ? '../' + g.video : '';
+    const poster = g && g.poster ? '../' + g.poster : '';
+    const thumb = image || poster || '';
+    // Keep only renderable entries (at least one visual source exists).
+    if (!thumb && !video) return null;
+    return {
+      thumb: thumb || poster,
+      video,
+      poster: poster || thumb,
+      isVideo: !!video
+    };
+  }).filter(Boolean);
+  const hasRenderableGallery = galleryItems.length > 0;
+  const itemAttrs = (it, i) => {
+    const label = it.isVideo ? 'play video' : 'open image';
+    const title = `${ctx.title_en} — ${String(i+1).padStart(2,'0')}`;
+    return `data-artwork-src="${escapeHtml(it.thumb)}"`
+      + (it.isVideo ? ` data-artwork-video="${escapeHtml(it.video)}" data-artwork-poster="${escapeHtml(it.poster)}"` : '')
+      + ` data-artwork-title="${escapeHtml(title)}" aria-label="${label} ${i+1}"`;
+  };
+  const galleryDesktopHtml = hasRenderableGallery ? `
     <section class="oc-gallery only-desktop" data-artwork-gallery="opencall-${escapeHtml(slug)}">
-      ${galleryImgs.map((src, i) => `
-        <div class="frame" data-artwork-src="${escapeHtml(src)}" data-artwork-title="${escapeHtml(ctx.title_en)} — ${String(i+1).padStart(2,'0')}" tabindex="0" role="button" aria-label="open image ${i+1}"><img src="${escapeHtml(src)}" alt="" decoding="async" fetchpriority="high"><span class="deco"></span></div>
+      ${galleryItems.map((it, i) => `
+        <div class="frame" ${itemAttrs(it, i)}${it.isVideo ? ' data-artwork-skip=""' : ''} tabindex="0" role="button">
+          <img src="${escapeHtml(it.thumb)}" alt="" decoding="async" loading="lazy">
+          ${it.isVideo ? `<video class="oc-inline-video" playsinline controls preload="none" poster="${escapeHtml(it.poster)}"></video>` : ''}
+          <span class="deco"></span>
+        </div>
       `).join('')}
     </section>` : '';
-  const galleryMobileHtml = ctx.has_gallery ? `
+  const galleryMobileHtml = hasRenderableGallery ? `
     <section class="oc-mobile-gallery only-mobile">
       <div class="stacked-gallery sg-mode-lightbox" data-artwork-gallery="opencall-${escapeHtml(slug)}-mobile">
         <div class="sg-stack">
-          ${galleryImgs.map((src, i) => `
+          ${galleryItems.map((it, i) => `
             <div class="sg-item ${i === 0 ? 'is-main' : 'is-peek'}"
-                 data-artwork-src="${escapeHtml(src)}"
-                 data-artwork-title="${escapeHtml(ctx.title_en)} — ${String(i+1).padStart(2,'0')}"
-                 aria-label="open image ${i+1}"><img src="${escapeHtml(src)}" alt="" decoding="async" loading="lazy"><span class="deco"></span></div>
+                 ${itemAttrs(it, i)}${it.isVideo ? ' data-artwork-skip=""' : ''}>
+              <div class="sg-media">
+                <img src="${escapeHtml(it.thumb)}" alt="" decoding="async" loading="lazy">
+                ${it.isVideo ? `<video class="sg-inline-video" playsinline controls preload="none" poster="${escapeHtml(it.poster)}"></video>` : ''}
+              </div>
+              <span class="deco"></span>
+            </div>
           `).join('')}
         </div>
       </div>
@@ -347,6 +388,73 @@ a.artist-figure-link img{transition:filter .25s}
   // - stacked-gallery.js needs an explicit refresh since DOMContentLoaded already fired.
   if (window.ArtworkLightbox && window.ArtworkLightbox.refreshFocusable) window.ArtworkLightbox.refreshFocusable();
   if (window.StackedGallery && window.StackedGallery.refresh) window.StackedGallery.refresh();
+
+  // Desktop open-call gallery: video frames play inline, not in the lightbox.
+  (function wireOcDesktopInlineVideo(root){
+    if (!root || root.dataset.ocDesktopInlineVideoWired) return;
+    root.dataset.ocDesktopInlineVideoWired = '1';
+
+    function pauseOthers(activeVideo){
+      document.querySelectorAll('video').forEach(function(vid){
+        if (vid === activeVideo) return;
+        try { vid.pause(); } catch(_){}
+      });
+      document.querySelectorAll('.is-inline-playing').forEach(function(el){
+        if (!activeVideo || !el.contains(activeVideo)) el.classList.remove('is-inline-playing');
+      });
+    }
+
+    function playFrame(frame){
+      var video = frame.querySelector('video.oc-inline-video');
+      if (!video) return;
+      var src = frame.getAttribute('data-artwork-video');
+      if (src && video.getAttribute('src') !== src){
+        video.src = src;
+        video.load();
+      }
+      pauseOthers(video);
+      frame.classList.add('is-inline-playing');
+      try {
+        var p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(function(){});
+      } catch(_){}
+    }
+
+    root.addEventListener('click', function(e){
+      var frame = e.target.closest('.oc-gallery .frame[data-artwork-video]');
+      if (!frame) return;
+      var video = frame.querySelector('video.oc-inline-video');
+      if (frame.classList.contains('is-inline-playing') && video && (e.target === video || video.contains(e.target))) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      playFrame(frame);
+    }, true);
+
+    root.addEventListener('keydown', function(e){
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var frame = e.target.closest('.oc-gallery .frame[data-artwork-video]');
+      if (!frame) return;
+      e.preventDefault();
+      playFrame(frame);
+    });
+
+    root.querySelectorAll('.oc-gallery video.oc-inline-video').forEach(function(video){
+      video.addEventListener('play', function(){
+        pauseOthers(video);
+        var frame = video.closest('.oc-gallery .frame');
+        if (frame) frame.classList.add('is-inline-playing');
+      });
+      video.addEventListener('pause', function(){
+        var frame = video.closest('.oc-gallery .frame');
+        if (frame) frame.classList.remove('is-inline-playing');
+      });
+      video.addEventListener('ended', function(){
+        var frame = video.closest('.oc-gallery .frame');
+        if (frame) frame.classList.remove('is-inline-playing');
+      });
+    });
+  })(document.getElementById('page'));
+
   document.body.classList.remove('is-loading-data');
 })();
 </script>

@@ -52,8 +52,16 @@
         "note_he": "*שימו לב הגשות שלא יעמדו בתנאי הפורמט לא ייענו."
       },
       "gallery_images": [
-        { "image": "images/opencalls/the-peeler/gallery-01.webp" },
-        { "image": "images/opencalls/the-peeler/gallery-02.webp" }
+        {
+          "image": "images/opencalls/the-peeler/gallery-01.webp",
+          "video": "images/opencalls/the-peeler/gallery-01.mp4",
+          "poster": "images/opencalls/the-peeler/gallery-01-poster.webp"
+        },
+        {
+          "image": "images/opencalls/the-peeler/gallery-02.webp",
+          "video": "images/opencalls/the-peeler/gallery-02.mp4",
+          "poster": "images/opencalls/the-peeler/gallery-02-poster.webp"
+        }
       ],
       "figma_node_desktop": "1213:2417",
       "figma_node_mobile": "1213:2518"

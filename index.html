@@ -173,22 +173,22 @@ body{text-transform:uppercase}
 .ex-now .card{display:flex;flex-direction:column;gap:8px;min-width:0}
 .ex-now .card-link .card .img img{transition:transform .6s ease}
 .ex-now .card-link:hover .card .img img{transform:scale(1.04)}
-/* Gallery name — Figma 237:937: FbEzmel Light 14, RIGHT-aligned, padding-right 8 */
-.ex-now .card .gname{font-family:var(--heb);font-weight:400;font-size:14px;direction:rtl;text-align:right;color:var(--ink);padding:0 8px 0 0}
+/* Gallery name — mobile: FbEzmel 14, flush left, no padding (section .ex-now is mobile-only) */
+.ex-now .card .gname{font-family:var(--heb);font-weight:400;font-size:14px;direction:rtl;text-align:left;color:var(--ink);padding:0}
 /* Image — Figma 237:939: height 214.55, width fill */
 .ex-now .card .img{position:relative;width:100%;height:214.55px;overflow:hidden;background:#222}
 .ex-now .card .img img{width:100%;height:100%;object-fit:cover}
 /* Gradient overlay — Figma fill_X5U9KP: 180deg, transparent 0% → rgba(0,0,0,.8) 81% */
 .ex-now .card .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(102,102,102,0) 0%,rgba(0,0,0,.8) 81%);pointer-events:none}
-/* Overlay text — Figma 237:940/237:943: padding 8 18 8 8, status at TOP, title at BOTTOM */
-.ex-now .card .ovr{position:absolute;top:8px;right:18px;bottom:8px;left:8px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;z-index:1;pointer-events:none}
+/* Overlay text — Figma 237:940/237:943: padding 8 18 8 8, status at TOP, title at BOTTOM. pointer-events:auto so overlay text is inspectable/selectable (was none → hits passed to img). */
+.ex-now .card .ovr{position:absolute;top:8px;right:18px;bottom:8px;left:8px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;z-index:1;pointer-events:auto}
 .ex-now .card .ovr-titles{display:flex;flex-direction:column;gap:2px}
 /* Status — Figma style_ED4UAC: Copperplate Bold 700, 20px, LEFT, white */
 .ex-now .card .stat{font-family:var(--cop);font-weight:700;font-size:20px;line-height:1.1;text-align:left;letter-spacing:.02em}
 /* English title — Figma style_UYCX05: Copperplate Light 300, 14px, LEFT */
 .ex-now .card .ttl-en{font-family:var(--cop);font-weight:300;font-size:14px;line-height:1.25;text-align:left}
 /* Hebrew title — Figma style_ZJFT5P: FbEzmel Light 400, 14px (LEFT in Figma, but RTL is RIGHT) */
-.ex-now .card .ttl-he{font-family:var(--heb);font-weight:400;font-size:14px;direction:rtl;text-align:right;line-height:1.25}
+.ex-now .card .ttl-he{font-family:var(--heb);font-weight:400;font-size:14px;direction:rtl;text-align:left;line-height:1.25}
 .ex-now .artists-bar{display:flex;justify-content:space-between;align-items:center;padding:0}
 .ex-now .artists-bar .lbl{font-family:var(--cop);font-weight:300;font-size:20px;direction:rtl;text-align:right}
 .ex-now .artists-bar svg{width:16px;height:16px}
@@ -255,7 +255,7 @@ body{text-transform:uppercase}
 .galleries-title{width:358px;line-height:1.05}
 .galleries-title .b{font-family:var(--cop);font-weight:700;font-size:36px;display:block}
 .galleries-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
-.gallery-cards{display:flex;gap:8px;align-items:stretch}
+.gallery-cards{display:flex;gap:24px;align-items:stretch}
 /* Desktop: 3-row grid \u2014 image (top) \u2192 name \u2192 details (addr+hours, right-aligned) */
 .gallery-card{flex:1;display:grid;grid-template-columns:1fr;grid-template-rows:auto auto auto;grid-template-areas:"img" "name" "details";gap:8px;min-width:0;align-content:start}
 .gallery-card > .info{grid-area:name;display:flex;flex-direction:column;gap:4px;font-family:var(--heb);direction:rtl;text-align:right;padding:0 8px}
@@ -266,8 +266,8 @@ body{text-transform:uppercase}
 .gallery-card > .img.dim .coming{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--cop);font-size:24px;letter-spacing:.04em;z-index:1}
 .gallery-card > .details{grid-area:details;display:flex;flex-direction:column;gap:4px;font-family:var(--heb);direction:rtl;text-align:right;padding:0 8px}
 .gallery-card .name{font-size:28px;font-weight:400;line-height:1.1}
-.gallery-card .sub-en{font-family:var(--cop);font-weight:300;font-size:16px;text-transform:lowercase;direction:ltr;text-align:right;color:var(--ink);line-height:1.25;margin-top:8px}
-.gallery-card .sub-en-loc{font-family:var(--cop);font-weight:300;font-size:16px;text-transform:lowercase;direction:ltr;text-align:right;color:var(--ink);line-height:1.25;margin-top:16px}
+.gallery-card .sub-en{font-family:var(--cop);font-weight:300;font-size:14px;direction:ltr;text-align:right;color:var(--ink);line-height:1.25;margin-top:8px}
+.gallery-card .sub-en-loc{font-family:var(--cop);font-weight:300;font-size:14px;direction:ltr;text-align:right;color:var(--ink);line-height:1.25;margin-top:11px}
 .gallery-card .addr{font-size:18px;font-weight:400;white-space:nowrap}
 .gallery-card .hours{display:flex;flex-direction:column;gap:4px;font-size:16px;font-weight:300;color:var(--ink)}
 
@@ -295,6 +295,7 @@ body{text-transform:uppercase}
 .press-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
 .press-rows{display:flex;flex-direction:column;gap:48px}
 .press-row{display:flex;gap:48px}
+.press-row.press-row--right{justify-content:flex-end}
 .press-card{flex:0 1 calc(50% - 24px);min-width:0;display:flex;gap:16px;align-items:stretch;direction:rtl;color:inherit;text-decoration:none;transition:opacity .2s}
 .press-card:hover{opacity:.75}
 .press-card .img img{transition:transform .6s}
@@ -304,7 +305,7 @@ body{text-transform:uppercase}
 .press-card .tag.en{font-family:var(--cop);font-weight:300;direction:ltr}
 .press-card .desc{font-family:var(--heb);font-size:16px;font-weight:400;line-height:1.4;text-align:right}
 .press-card .date{font-family:var(--cop);font-size:14px;font-weight:300;text-align:right;direction:ltr;align-self:flex-start}
-.press-card .img{flex:0 0 171px;width:171px;height:108px;overflow:hidden;background:#f3f1ee;order:-1}
+.press-card .img{flex:0 0 178px;width:178px;height:112px;overflow:hidden;background:#f3f1ee;order:-1}
 .press-card .img img{width:100%;height:100%;object-fit:cover}
 
 /* ===== FOOTER moved to components/site-chrome.css ===== */
@@ -397,9 +398,10 @@ body{text-transform:uppercase}
   .exhibitions-titles .l{font-size:70px;margin-top:-6px;white-space:nowrap;letter-spacing:-.01em}
   .past-tabs{justify-content:flex-end;font-size:16px;gap:16px;flex-wrap:wrap}
   .past-thumbs{overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;gap:8px;scroll-snap-type:x mandatory;padding-bottom:4px;margin:0 -16px;padding-left:16px;padding-right:16px}
+  .past-thumbs.past-thumbs--centered{justify-content:center}
   .past-thumbs::-webkit-scrollbar{display:none}
   .past-thumb{width:100px;flex-shrink:0;scroll-snap-align:start}
-  .past-thumb .num{font-size:12px;padding-right:8px}
+  .past-thumb .num{font-size:12px;line-height:1.25;direction:ltr;text-align:left;padding-left:0;padding-right:0;padding-bottom:2px}
   .past-thumb img{height:120px}
 
   /* ART WORKS — 2x2 grid; mobile ART = uppercase per Figma */
@@ -430,7 +432,7 @@ body{text-transform:uppercase}
   /* GALLERIES — mobile row layout, RTL */
   .galleries{padding:32px 16px;gap:24px}
   .galleries-title{width:auto;line-height:1.05}
-  .gallery-cards{flex-direction:column;gap:16px}
+  .gallery-cards{flex-direction:column;gap:40px}
   /* Mobile: image on the LEFT (with details below), name on the RIGHT aligned to top */
   .gallery-card{display:grid;grid-template-columns:174px 1fr;grid-template-rows:auto auto;grid-template-areas:"img name" "details name";column-gap:16px;row-gap:8px;align-items:start}
   .gallery-card > .img{width:174px;height:210px}
@@ -438,8 +440,11 @@ body{text-transform:uppercase}
   .gallery-card > .details{padding:0 8px}
   .gallery-card > .img.dim .coming{font-size:13px;letter-spacing:.04em}
   .gallery-card .name{font-size:22px}
-  .gallery-card .sub-en{font-size:13px;margin-top:8px}
+  .gallery-card .sub-en,.gallery-card .sub-en-loc{font-size:14px;line-height:1.25}
+  .gallery-card .sub-en{margin-top:8px}
+  .gallery-card .sub-en-loc{margin-top:11px}
   .gallery-card .addr{font-size:16px;font-family:var(--heb);font-weight:400}
+  .gallery-card--flea .addr{display:none}
   .gallery-card .hours{font-size:14px;font-family:var(--heb);font-weight:300;display:flex;flex-direction:column;gap:4px}
 
   /* X OUR ARTISTS — Figma 228:101 */
@@ -626,17 +631,17 @@ levin</div></a>
 ars brush</div></a>
       <a class="artist" href="pages/artists/gal-polk.html"><img src="images/artists/gal-polk/portrait.webp" width="1736" height="3088" alt="גל פולק" decoding="async" loading="lazy"><div class="nm">gal
 polk</div></a>
-      <a class="artist" href="pages/artists/zohar-shtrit.html"><div class="portrait-placeholder"></div><div class="nm">zohar
+      <a class="artist" href="pages/artists/zohar-shtrit.html"><img src="images/artists/zohar-shtrit/portrait.webp" width="690" height="1044" alt="זוהר שטרית" decoding="async" loading="lazy"><div class="nm">zohar
 shtrit</div></a>
-      <a class="artist" href="pages/artists/hila-loterstein.html"><div class="portrait-placeholder"></div><div class="nm">hila
+      <a class="artist" href="pages/artists/hila-loterstein.html"><img src="images/artists/hila-loterstein/portrait.webp" width="690" height="690" alt="הילה לוטרשטיין" decoding="async" loading="lazy"><div class="nm">hila
 loterstein</div></a>
       <a class="artist" href="pages/artists/sami-david.html"><img src="images/artists/sami-david/portrait.webp" width="1152" height="2048" alt="סמי דוד" decoding="async" loading="lazy"><div class="nm">sami
 david</div></a>
       <a class="artist" href="pages/artists/risa-oz.html"><img src="images/artists/risa-oz/portrait.webp" width="842" height="1072" alt="ריסה עוז" decoding="async" loading="lazy"><div class="nm">risa
 oz</div></a>
-      <a class="artist" href="pages/artists/zohar-ron-dan-ben-ari.html"><div class="portrait-placeholder"></div><div class="nm">zohar ron
+      <a class="artist" href="pages/artists/zohar-ron-dan-ben-ari.html"><img src="images/artists/zohar-ron-dan-ben-ari/hero-left.webp" width="2093" height="1717" alt="זוהר רון | דן בן ארי" decoding="async" loading="lazy"><div class="nm">zohar ron
 dan ben ari</div></a>
-      <a class="artist" href="pages/artists/adi-duak.html"><div class="portrait-placeholder"></div><div class="nm">adi
+      <a class="artist" href="pages/artists/adi-duak.html"><img src="images/artists/adi-duak/portrait.webp" width="690" height="1044" alt="עדי דואק" decoding="async" loading="lazy"><div class="nm">adi
 duak</div></a>
       <a class="artist" href="pages/artists/alon.html"><img src="images/artists/alon/portrait.webp" width="1060" height="1600" alt="אלון מנג׳וך" decoding="async" loading="lazy"><div class="nm">alon
 manjuch</div></a>
@@ -690,7 +695,7 @@ nehoray</div></a>
         more
       </a>
     </div>
-    <div class="aw-img"><a href="pages/works.html"><img src="images/works/tile-more.webp" width="3024" height="4032" alt="" decoding="async" loading="lazy"></a></div>
+    <div class="aw-img"><img src="images/works/tile-more.webp" width="3024" height="4032" alt="" decoding="async" loading="lazy"></div>
   </div>
 </section>
 
@@ -703,15 +708,15 @@ nehoray</div></a>
   </div>
   <div class="ig-viewport">
     <div class="ig-track" id="igTrack">
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/1.webp" width="2306" height="4096" alt="" decoding="async" loading="lazy"></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/2.webp" width="1440" height="1920" alt="" decoding="async" loading="lazy"></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/3.webp" width="1440" height="1920" alt="" decoding="async" loading="lazy"></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/4.webp" width="1080" height="1350" alt="" decoding="async" loading="lazy"></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/5.webp" width="1080" height="1350" alt="" decoding="async" loading="lazy"></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/6.webp" width="2306" height="4096" alt="" decoding="async" loading="lazy"></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/7.webp" width="1440" height="1919" alt="" decoding="async" loading="lazy"></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/8.webp" width="1440" height="1801" alt="" decoding="async" loading="lazy"></a>
-      <a class="ig-item" href="https://instagram.com/zielinski_rozen" target="_blank" rel="noopener"><img src="images/instagram/9.webp" width="1440" height="1920" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://www.instagram.com/erezzielinskirozen/" target="_blank" rel="noopener"><img src="images/instagram/1.webp" width="2306" height="4096" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://www.instagram.com/zielinskiandrozen_official/" target="_blank" rel="noopener"><img src="images/instagram/2.webp" width="1440" height="1920" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://www.instagram.com/erezzielinskirozen/" target="_blank" rel="noopener"><img src="images/instagram/3.webp" width="1440" height="1920" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://www.instagram.com/zielinskiandrozen_official/" target="_blank" rel="noopener"><img src="images/instagram/4.webp" width="1080" height="1350" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://www.instagram.com/zielinskiandrozen_official/" target="_blank" rel="noopener"><img src="images/instagram/5.webp" width="1080" height="1350" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://www.instagram.com/erezzielinskirozen/" target="_blank" rel="noopener"><img src="images/instagram/6.webp" width="2306" height="4096" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://www.instagram.com/zielinskiandrozen_official/" target="_blank" rel="noopener"><img src="images/instagram/7.webp" width="1440" height="1919" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://www.instagram.com/erezzielinskirozen/" target="_blank" rel="noopener"><img src="images/instagram/8.webp" width="1440" height="1801" alt="" decoding="async" loading="lazy"></a>
+      <a class="ig-item" href="https://www.instagram.com/zielinskiandrozen_official/" target="_blank" rel="noopener"><img src="images/instagram/9.webp" width="1440" height="1920" alt="" decoding="async" loading="lazy"></a>
     </div>
   </div>
 </section>
@@ -752,23 +757,23 @@ nehoray</div></a>
   </div>
 </section>
 
-<!-- X OUR ARTISTS — Figma landing::228:67 (desktop) / 228:101 (mobile).
+<!-- X OUR ARTISTS — Figma landing::248:21 (desktop+mobile).
      Data source: data/homepage.json :: x_our_artists -->
 <section class="x-artists" id="x-our-artists">
   <div class="x-artists-title">
     <span class="b">zielinski rozen</span>
     <span class="l">x our artists</span>
   </div>
-  <!-- DESKTOP — 2×3 grid -->
+  <!-- DESKTOP — 3×3 grid -->
   <div class="x-artists-grid only-desktop">
     <div class="x-artists-row">
       <a class="x-artists-card" href="pages/artists/nir-giorgio-levin.html">
         <div class="img"><img src="images/homepage/x-our-artists/work-1.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">nir giorgio levin</div>
       </a>
-      <a class="x-artists-card" href="pages/artists/gal-polk.html">
+      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
         <div class="img"><img src="images/homepage/x-our-artists/work-2.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">gal pollak</div>
+        <div class="name">maya nachum levy</div>
       </a>
       <a class="x-artists-card" href="pages/artists/gal-polk.html">
         <div class="img"><img src="images/homepage/x-our-artists/work-3.webp" alt="" loading="lazy" decoding="async"></div>
@@ -784,9 +789,23 @@ nehoray</div></a>
         <div class="img"><img src="images/homepage/x-our-artists/work-5.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
       </a>
-      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
+      <a class="x-artists-card" href="pages/artists/tanya-shin.html">
         <div class="img"><img src="images/homepage/x-our-artists/work-6.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">tanya shin</div>
+      </a>
+    </div>
+    <div class="x-artists-row">
+      <a class="x-artists-card" href="pages/artists/yarden-amir.html">
+        <div class="img"><img src="images/homepage/x-our-artists/work-7.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">yarden amir</div>
+      </a>
+      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
+        <div class="img"><img src="images/homepage/x-our-artists/work-8.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
+      </a>
+      <a class="x-artists-card" href="pages/artists/alon.html">
+        <div class="img"><img src="images/homepage/x-our-artists/work-9.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">alon manjoch</div>
       </a>
     </div>
   </div>
@@ -795,11 +814,14 @@ nehoray</div></a>
     <div class="tri" data-tri-loop="true">
       <div class="tri-frame">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-1.webp" alt="" data-caption="nir giorgio levin" data-artist-href="pages/artists/nir-giorgio-levin.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-3.webp" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="tanya shin" data-artist-href="pages/artists/tanya-shin.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-7.webp" alt="" data-caption="yarden amir" data-artist-href="pages/artists/yarden-amir.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-8.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-9.webp" alt="" data-caption="alon manjoch" data-artist-href="pages/artists/alon.html">
       </div>
       <div class="tri-dots" role="tablist">
         <button class="tri-dot is-on" type="button" aria-label="1"></button>
@@ -808,6 +830,9 @@ nehoray</div></a>
         <button class="tri-dot" type="button" aria-label="4"></button>
         <button class="tri-dot" type="button" aria-label="5"></button>
         <button class="tri-dot" type="button" aria-label="6"></button>
+        <button class="tri-dot" type="button" aria-label="7"></button>
+        <button class="tri-dot" type="button" aria-label="8"></button>
+        <button class="tri-dot" type="button" aria-label="9"></button>
       </div>
     </div>
   </div>
@@ -827,7 +852,7 @@ nehoray</div></a>
           <p class="desc">איך מרגישה בדידות בתוך סביבה תוססת: תערוכה חדשה בגלריית זילינסקי רוזן</p>
           <span class="date">19.1.2026</span>
         </div>
-        <div class="img"><img src="images/press/portfolio-cover.webp" width="1280" height="540" alt="" decoding="async" loading="lazy"></div>
+        <div class="img"><img src="images/press/press-1/00-home-card.webp" width="171" height="108" alt="" decoding="async" loading="lazy"></div>
       </a>
       <a class="press-card" href="pages/press/walla.html">
         <div class="info">
@@ -856,7 +881,7 @@ nehoray</div></a>
         <div class="img"><img src="images/events/ktuba/hero.webp" width="492" height="744" alt="" decoding="async" loading="lazy"></div>
       </a>
     </div>
-    <div class="press-row">
+    <div class="press-row press-row--right">
       <a class="press-card" href="pages/press/time-out.html">
         <div class="info">
           <span class="tag en">time out</span>
@@ -887,10 +912,10 @@ nehoray</div></a>
       "label_he": "גלריית כיכר דיזינגוף",
       "active": false,
       "thumbs": [
-        { "n": "01", "image": "images/exhibitions/how-many/artists/01-zohar-ron.webp",         "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 01" },
-        { "n": "02", "image": "images/exhibitions/how-many/artists/02-dan-ben-ari.webp",       "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 02" },
-        { "n": "03", "image": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.webp", "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 03" },
-        { "n": "04", "image": "images/exhibitions/how-many/artists/13-gal-pollak.webp",        "exhibition_id": "how-many", "title_he": "How Many Partners Have You Had? — 04" }
+        { "n": "01", "image": "images/artists/eitan-goldson/work-01.webp",    "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — eitan goldson" },
+        { "n": "02", "image": "images/artists/tal-nehoray/work-02.webp",      "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — tal nehoray" },
+        { "n": "03", "image": "images/artists/maya-nachum-levy/work-03.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — maya nachum levy" },
+        { "n": "04", "image": "images/artists/zohar-shtrit/work-01.webp",     "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — zohar shitrit" }
       ]
     },
     {
@@ -932,9 +957,8 @@ nehoray</div></a>
     if (!tab) return;
     var html = tab.thumbs.map(function(t){
       var title = (t.title_he || '').replace(/"/g,'&quot;');
-      // CTA inside lightbox → exhibition page (pages/exhibitions/<slug>.html).
-      // Those pages are still pending (see CLAUDE.md sitemap) — link is forward-looking.
-      var link = t.exhibition_id ? 'pages/exhibitions/'+t.exhibition_id+'.html' : '';
+      // CTA inside lightbox → shared exhibition page with ?id=<slug> query.
+      var link = t.exhibition_id ? 'pages/exhibition.html?id='+t.exhibition_id : '';
       return '<div class="past-thumb" '+
                 'data-artwork-src="'+t.image+'" '+
                 'data-artwork-title="'+title+'" '+
@@ -946,9 +970,21 @@ nehoray</div></a>
              '</div>';
     }).join('');
     thumbsEl.innerHTML = html;
+    updateThumbsLayout();
     if (window.ArtworkLightbox && window.ArtworkLightbox.refreshFocusable){
       window.ArtworkLightbox.refreshFocusable();
     }
+  }
+
+  function updateThumbsLayout(){
+    // On wider phones, center the row only when all thumbs fit without horizontal scroll.
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (!isMobile){
+      thumbsEl.classList.remove('past-thumbs--centered');
+      return;
+    }
+    var hasOverflow = thumbsEl.scrollWidth - thumbsEl.clientWidth > 1;
+    thumbsEl.classList.toggle('past-thumbs--centered', !hasOverflow);
   }
 
   function setActive(galleryId){
@@ -974,6 +1010,10 @@ nehoray</div></a>
     d.tabs.forEach(function(t){ byGallery[t.gallery_id] = t; });
     var initial = (d.tabs.filter(function(t){ return t.active; })[0] || d.tabs[0]).gallery_id;
     setActive(initial);
+  });
+
+  window.addEventListener('resize', function(){
+    updateThumbsLayout();
   });
 })();
 </script>

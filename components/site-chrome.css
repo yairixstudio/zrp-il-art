@@ -67,6 +67,33 @@ body.menu-open{overflow:hidden}
 .newsletter button{padding:16px 0;border:1px solid #fff;background:var(--ink);color:#fff;font-family:var(--cop);font-weight:400;font-size:12px;letter-spacing:.1em;line-height:16px;width:100%;transition:background .2s,color .2s;text-transform:uppercase}
 .newsletter button:hover{background:#fff;color:var(--ink)}
 
+/* Privacy consent (newsletter): single checkbox + Hebrew line + privacy link.
+   Sits BETWEEN the email input and the SUBSCRIBE button. Stays inside the existing
+   300px column; uses footer's dark bg, white text/border. */
+.newsletter-consent{display:flex;flex-direction:row-reverse;align-items:flex-start;gap:8px;direction:rtl;cursor:pointer;margin-top:-4px}
+.newsletter-consent input[type="checkbox"]{flex-shrink:0;width:14px;height:14px;margin:2px 0 0;accent-color:#fff;cursor:pointer;background:transparent;border:1px solid #fff}
+.newsletter-consent-text{font-family:var(--heb);font-weight:300;font-size:12px;line-height:1.45;color:#fff;text-transform:none;text-align:right}
+.newsletter-consent-text a{color:#fff;text-decoration:underline;text-underline-offset:2px}
+.newsletter-consent-text a:hover{opacity:.75}
+.newsletter-status{font-family:var(--heb);font-weight:300;font-size:11px;line-height:1.4;color:#fff;text-transform:none;text-align:right;direction:rtl;min-height:0}
+.newsletter-status:empty{display:none}
+.newsletter-status.is-ok{color:#9ad9b6}
+.newsletter-status.is-err{color:#f3a6a6}
+
+/* ===== INVISIBLE A11Y POLISH (site-wide) =====
+   - :focus-visible — keyboard-only focus outline (no effect for mouse users).
+   - .skip-link — off-screen until focused; first stop on Tab.
+   - .sr-only — visually hidden, available to screen readers (for landmark labels). */
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:2px}
+/* Footer/nav are dark — use white outline so it remains visible there */
+.nav :focus-visible,.footer :focus-visible{outline-color:#fff;outline-offset:2px}
+
+.skip-link{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;background:var(--ink);color:#fff;padding:8px 14px;font-family:var(--cop);font-size:12px;letter-spacing:.1em;z-index:9999;text-transform:uppercase}
+.skip-link:focus,.skip-link:focus-visible{left:8px;top:8px;width:auto;height:auto;overflow:visible;outline:2px solid #fff;outline-offset:2px}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
 /* Right column — links, copyright, icons (each on its own row, all right-aligned).
    NOTE: column itself stays LTR so `align-items:flex-end` pins children to the RIGHT.
    RTL is applied only to .footer-row (where Hebrew children need right-to-left flow). */
@@ -166,7 +193,11 @@ body.menu-open{overflow:hidden}
 .bookmark-modal li:last-child{border-bottom:0}
 .bookmark-modal li a{display:flex;align-items:center;gap:12px;padding:16px 24px;color:var(--ink);direction:rtl;text-decoration:none;transition:background .2s}
 .bookmark-modal li a:hover{background:rgba(27,27,27,.04)}
-.bookmark-modal .bm-title{font-family:var(--heb);font-weight:400;font-size:15px;line-height:1.3;flex:1;text-transform:none;color:var(--ink)}
+/* lang-aware: site-chrome.js toggles .is-he / .is-en based on saved title content */
+.bookmark-modal .bm-title{font-weight:400;font-size:15px;line-height:1.3;flex:1;color:var(--ink)}
+.bookmark-modal .bm-title.is-he{font-family:var(--heb);text-transform:none;direction:rtl}
+.bookmark-modal .bm-title.is-en{font-family:var(--cop);text-transform:uppercase;direction:ltr;letter-spacing:.04em}
+.bookmark-modal .bm-title .lat{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.04em}
 .bookmark-modal .bm-remove{background:transparent;border:0;width:28px;height:28px;color:rgba(27,27,27,.35);cursor:pointer;line-height:1;flex-shrink:0;transition:color .2s;display:flex;align-items:center;justify-content:center;padding:0}
 .bookmark-modal .bm-remove:hover{color:var(--ink)}
 .bookmark-modal .bm-empty{padding:32px 24px;text-align:center;font-family:var(--heb);font-size:15px;color:var(--grey-mid,#808080);direction:rtl;text-transform:none}

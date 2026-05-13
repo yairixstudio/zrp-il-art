@@ -67,12 +67,32 @@ body.menu-open{overflow:hidden}
 .newsletter button{padding:16px 0;border:1px solid #fff;background:var(--ink);color:#fff;font-family:var(--cop);font-weight:400;font-size:12px;letter-spacing:.1em;line-height:16px;width:100%;transition:background .2s,color .2s;text-transform:uppercase}
 .newsletter button:hover{background:#fff;color:var(--ink)}
 
-/* Privacy consent (newsletter): single checkbox + Hebrew line + privacy link.
-   Sits BETWEEN the email input and the SUBSCRIBE button. Stays inside the existing
-   300px column; uses footer's dark bg, white text/border. */
-.newsletter-consent{display:flex;flex-direction:row-reverse;align-items:flex-start;gap:8px;direction:rtl;cursor:pointer;margin-top:-4px}
-.newsletter-consent input[type="checkbox"]{flex-shrink:0;width:14px;height:14px;margin:2px 0 0;accent-color:#fff;cursor:pointer;background:transparent;border:1px solid #fff}
+/* Privacy consent (newsletter): below SUBSCRIBE; required; checkbox = outline only (no fill). */
+.newsletter-consent{display:flex;flex-direction:row;align-items:flex-start;gap:8px;direction:rtl;cursor:pointer;margin:0;width:100%;justify-content:flex-start}
+.newsletter-consent input[type="checkbox"]{
+  flex-shrink:0;
+  width:15px;
+  height:15px;
+  margin:2px 0 0;
+  cursor:pointer;
+  box-sizing:border-box;
+  appearance:none;
+  -webkit-appearance:none;
+  background:transparent;
+  border:1px solid #fff;
+  border-radius:1px;
+  vertical-align:top;
+}
+.newsletter-consent input[type="checkbox"]:checked{
+  background-color:transparent;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:50% 55%;
+  background-size:10px 8px;
+}
+.newsletter-consent input[type="checkbox"]:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .newsletter-consent-text{font-family:var(--heb);font-weight:300;font-size:12px;line-height:1.45;color:#fff;text-transform:none;text-align:right}
+.newsletter-consent-req{font-size:10px;font-weight:400;opacity:.9;white-space:nowrap}
 .newsletter-consent-text a{color:#fff;text-decoration:underline;text-underline-offset:2px}
 .newsletter-consent-text a:hover{opacity:.75}
 .newsletter-status{font-family:var(--heb);font-weight:300;font-size:11px;line-height:1.4;color:#fff;text-transform:none;text-align:right;direction:rtl;min-height:0}
@@ -112,8 +132,10 @@ body.menu-open{overflow:hidden}
 .footer-icons a:hover{opacity:.7}
 .footer-icons svg{width:24px;height:24px;fill:currentColor}
 
-/* Mobile-only centered copyright — sibling of .footer-right; shown only on ≤768px */
-.footer-copy--mobile{display:none}
+/* Mobile-only supplementary block — mirrors desktop footer links + social; hidden ≥769px */
+.footer-mobile-extra{display:none}
+
+/* Mobile-only centered copyright — lives inside .footer-mobile-extra below links/icons */
 
 /* ===== RESPONSIVE — NAV switches to hamburger drawer at ≤1024px =====
    This is intentionally HIGHER than the page-content mobile breakpoint (768px):
@@ -152,15 +174,26 @@ body.menu-open{overflow:hidden}
 }
 
 /* ===== RESPONSIVE — MOBILE content rules (≤768px) =====
-   Per Figma mobile (119:2610): newsletter + centered copyright only.
-   Hide links rows, desktop copyright, and social icons. */
+   Per Figma mobile (119:2610): newsletter → tiny link rows + compact social → copyright */
 @media (max-width:768px){
   .nav{padding:8px 16px;min-height:52px}
 
   .footer{flex-direction:column;padding:0;gap:0;align-items:stretch}
   .newsletter{width:100%;padding:24px;gap:15px}
   .footer-right{display:none}
-  .footer-copy--mobile{display:block;font-family:var(--cop);font-weight:300;font-size:11px;line-height:16.5px;letter-spacing:.04em;color:var(--copy-grey);text-transform:uppercase;text-align:center;padding:40px 24px 24px;max-width:226px;margin:0 auto}
+
+  .footer-mobile-extra{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;padding:28px 20px 24px;box-sizing:border-box}
+  .footer-mobile-mini{display:flex;flex-direction:column;align-items:center;gap:7px;width:100%;max-width:340px;margin:0 auto;direction:rtl}
+  .footer-mobile-row{display:flex;flex-flow:row wrap;justify-content:center;align-items:center;column-gap:10px;row-gap:5px;width:100%;direction:rtl;text-align:center}
+  .footer-mobile-row a{font-family:var(--heb);font-weight:400;font-size:11px;line-height:1.25;color:#fff;text-decoration:none;text-transform:none;opacity:.93;white-space:normal;max-width:100%}
+  .footer-mobile-row a:hover{opacity:.72}
+  .footer-icons--mobile{display:flex;flex-direction:row;justify-content:center;align-items:center;gap:26px;margin-top:4px}
+  .footer-icons--mobile a{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;color:#fff}
+  .footer-icons--mobile a:hover{opacity:.72}
+  .footer-icons--mobile svg{width:19px;height:19px;display:block}
+
+  .footer-copy--mobile{font-family:var(--cop);font-weight:300;font-size:11px;line-height:16.5px;letter-spacing:.04em;color:var(--copy-grey);text-transform:uppercase;text-align:center;margin:12px auto 0;max-width:min(340px,calc(100vw - 40px));padding:0}
+
 }
 
 /* ============================================================

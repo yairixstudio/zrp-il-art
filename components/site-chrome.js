@@ -107,19 +107,23 @@
   //   Desktop: newsletter (300px col, left) | footer-right (column, right):
   //     Frame 180 (meta links row) → Frame 181 (gallery links row) →
   //     Margin (copyright, right-aligned) → Frame 184 (4 social icons row, gap 36)
-  //   Mobile: newsletter + centered copyright only (no links, no icons).
+  //   Mobile: newsletter → compact mirrored links/galleries/social → copyright.
   function footerHTML() {
+    var igFb =
+      '<a href="https://www.instagram.com/erezzielinskirozen/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41a4.07 4.07 0 011.51.98c.46.46.77.93.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44a4.07 4.07 0 01-.98 1.51 4.07 4.07 0 01-1.51.98c-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.07 4.07 0 01-1.51-.98 4.07 4.07 0 01-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44a4.07 4.07 0 01.98-1.51 4.07 4.07 0 011.51-.98c.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.77 5.77 0 00-2.13 1.38A5.77 5.77 0 00.63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.47 1.38 2.13a5.77 5.77 0 002.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.77 5.77 0 002.13-1.38 5.77 5.77 0 001.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.77 5.77 0 00-1.38-2.13A5.77 5.77 0 0019.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0z" fill="currentColor"/><path d="M12 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8z" fill="currentColor"/><circle cx="18.41" cy="5.59" r="1.44" fill="currentColor"/></svg></a>' +
+      '<a href="https://web.facebook.com/ZielinskiRozen/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12a12 12 0 10-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.92-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38A12 12 0 0024 12z"/></svg></a>';
+
     return (
       '<footer class="footer">' +
         '<div class="newsletter">' +
           '<h3>Stay Informed</h3>' +
           '<form onsubmit="event.preventDefault()" novalidate>' +
             '<textarea class="newsletter-email" name="email" rows="1" inputmode="email" autocomplete="email" placeholder="Email Address" aria-label="Email Address" spellcheck="false"></textarea>' +
-            '<label class="newsletter-consent">' +
-              '<input type="checkbox" class="newsletter-consent-cb" name="consent" required aria-required="true">' +
-              '<span class="newsletter-consent-text">קראתי ואני מסכים/ה ל<a href="' + abs('pages/privacy.html') + '">מדיניות הפרטיות</a></span>' +
-            '</label>' +
             '<button type="submit">SUBSCRIBE</button>' +
+            '<label class="newsletter-consent">' +
+              '<input type="checkbox" class="newsletter-consent-cb" name="consent" id="newsletter-consent-cb" required aria-required="true">' +
+              '<span class="newsletter-consent-text">קראתי ואני מסכים/ה ל<a href="' + abs('pages/privacy.html') + '">מדיניות הפרטיות</a> <span class="newsletter-consent-req">(חובה)</span></span>' +
+            '</label>' +
             '<p class="newsletter-status" data-newsletter-status role="status" aria-live="polite"></p>' +
           '</form>' +
         '</div>' +
@@ -137,12 +141,26 @@
             '</div>' +
           '</nav>' +
           '<p class="footer-copy">© 2026 THE art GALLERY<br>ZiELINSKI &amp; ROZEN ALL RIGHTS RESERVED.</p>' +
-          '<div class="footer-icons">' +
-            '<a href="https://www.instagram.com/erezzielinskirozen/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41a4.07 4.07 0 011.51.98c.46.46.77.93.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44a4.07 4.07 0 01-.98 1.51 4.07 4.07 0 01-1.51.98c-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.07 4.07 0 01-1.51-.98 4.07 4.07 0 01-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44a4.07 4.07 0 01.98-1.51 4.07 4.07 0 011.51-.98c.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.77 5.77 0 00-2.13 1.38A5.77 5.77 0 00.63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.47 1.38 2.13a5.77 5.77 0 002.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.77 5.77 0 002.13-1.38 5.77 5.77 0 001.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.77 5.77 0 00-1.38-2.13A5.77 5.77 0 0019.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0z" fill="currentColor"/><path d="M12 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8z" fill="currentColor"/><circle cx="18.41" cy="5.59" r="1.44" fill="currentColor"/></svg></a>' +
-            '<a href="https://web.facebook.com/ZielinskiRozen/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12a12 12 0 10-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.23 2.68.23v2.95h-1.51c-1.49 0-1.95.92-1.95 1.87V12h3.33l-.53 3.47h-2.8v8.38A12 12 0 0024 12z"/></svg></a>' +
+          '<div class="footer-icons">' + igFb +
           '</div>' +
         '</div>' +
-        '<p class="footer-copy footer-copy--mobile">© 2026 THE art GALLERY ZiELINSKI &amp; ROZEN ALL RIGHTS RESERVED.</p>' +
+        '<div class="footer-mobile-extra">' +
+          '<nav class="footer-mobile-mini" aria-label="footer links mobile">' +
+            '<div class="footer-mobile-row">' +
+              '<a href="' + abs('pages/contact.html') + '">יצירת קשר</a>' +
+              '<a href="' + abs('pages/privacy.html') + '">מדיניות פרטיות</a>' +
+              '<a href="' + abs('pages/accessibility.html') + '">הצהרת נגישות</a>' +
+            '</div>' +
+            '<div class="footer-mobile-row">' +
+              '<a href="' + abs('index.html') + '#galleries">גלריית כיכר המדינה</a>' +
+              '<a href="' + abs('index.html') + '#galleries">גלריית כיכר דיזינגוף</a>' +
+              '<a href="' + abs('index.html') + '#galleries">גלריית שוק הפשפשים</a>' +
+            '</div>' +
+          '</nav>' +
+          '<div class="footer-icons footer-icons--mobile">' + igFb +
+          '</div>' +
+          '<p class="footer-copy footer-copy--mobile">© 2026 THE art GALLERY ZiELINSKI &amp; ROZEN ALL RIGHTS RESERVED.</p>' +
+        '</div>' +
       '</footer>'
     );
   }

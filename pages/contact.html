@@ -48,7 +48,14 @@ body{text-transform:uppercase}
 /* Two-column row: form (right) + info (left). On RTL container, flex naturally flows R→L. */
 .contact .row{display:flex;gap:64px;align-items:flex-start;direction:rtl}
 .contact .form-col{flex:1 1 480px;min-width:0;direction:rtl}
-.contact .info-col{flex:0 1 320px;min-width:0;display:flex;flex-direction:column;gap:36px;direction:rtl}
+.contact .info-col{flex:0 1 300px;min-width:0;display:flex;flex-direction:column;gap:0;direction:rtl;background:var(--bg-grey);padding:28px 24px}
+.contact .info-block{padding:22px 0;border-bottom:1px solid rgba(27,27,27,.08)}
+.contact .info-block:first-child{padding-top:0}
+.contact .info-block:last-child{border-bottom:0;padding-bottom:0}
+.contact .info-head{display:flex;flex-direction:row;align-items:baseline;justify-content:flex-end;gap:12px;margin-bottom:12px;flex-wrap:wrap;direction:rtl}
+.contact .info-block > h3.info-head{margin:0;padding:0;border:0;font:inherit}
+.contact .info-head-he{font-family:var(--heb);font-weight:400;font-size:15px;line-height:1.25;color:var(--ink);text-transform:none;letter-spacing:0;text-align:right}
+.contact .info-head-en{font-family:var(--cop);font-weight:400;font-size:10px;line-height:1.2;letter-spacing:.18em;color:var(--grey-mid);direction:ltr;unicode-bidi:isolate;text-transform:uppercase;white-space:nowrap}
 
 /* Form */
 .contact form{display:flex;flex-direction:column;gap:22px}
@@ -84,13 +91,16 @@ body{text-transform:uppercase}
 .contact .form-status.is-ok{color:#0b6b3a}
 .contact .form-status.is-err{color:#9b1c1c}
 
-/* Info column */
-.contact .info-block h3{font-family:var(--cop);font-weight:400;font-size:14px;letter-spacing:.16em;color:var(--grey-mid);text-align:right;direction:ltr;margin-bottom:12px}
+/* Info column body */
 .contact .info-block p,
-.contact .info-block a{font-family:var(--heb);font-weight:300;font-size:17px;line-height:1.6;color:var(--ink);text-transform:none;text-align:right;direction:rtl;display:block}
-.contact .info-block a.inline{text-decoration:underline;text-underline-offset:3px}
-.contact .info-block .lat{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.04em}
-.contact .info-block ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.contact .info-block li,
+.contact .info-block a{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.52;color:var(--ink);text-transform:none;text-align:right;direction:rtl}
+.contact .info-block p{display:block;margin:0}
+.contact .info-block a.inline{text-decoration:underline;text-underline-offset:3px;display:inline;font-family:inherit}
+.contact .info-block .lat{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.06em;font-weight:400}
+.contact .info-block ul{list-style:none;display:flex;flex-direction:column;gap:18px;margin:0;padding:0}
+.contact .info-block li strong{font-family:var(--heb);font-weight:400;font-size:15px;display:block;text-align:right;margin-bottom:6px;line-height:1.3}
+.contact .info-block li em{font-style:normal;font-family:var(--heb);font-weight:300;font-size:14px;opacity:.88}
 
 /* ===== FOCUS / SKIP LINK ===== */
 :focus{outline:none}
@@ -105,7 +115,8 @@ body{text-transform:uppercase}
   .contact h1{font-size:34px}
   .contact .lede{font-size:16px;line-height:1.55}
   .contact .row{flex-direction:column;gap:40px}
-  .contact .info-col{flex:0 0 auto}
+  .contact .info-col{flex:0 0 auto;width:100%;max-width:100%;padding:24px 20px;border-radius:2px}
+  .contact .info-block{padding:18px 0}
 }
 </style>
 </head>
@@ -155,24 +166,20 @@ body{text-transform:uppercase}
       <!-- Info column -->
       <aside class="info-col" aria-label="פרטי קשר נוספים">
         <div class="info-block">
-          <h3>EMAIL</h3>
-          <p><a class="inline" href="mailto:info@zielinski-rozen.com"><span class="lat">info@zielinski-rozen.com</span></a></p>
-        </div>
-        <div class="info-block">
-          <h3>INSTAGRAM</h3>
+          <h3 class="info-head"><span class="info-head-he">אינסטגרם</span><span class="info-head-en" lang="en">INSTAGRAM</span></h3>
           <p><a class="inline" href="https://instagram.com/zielinski_rozen" rel="noopener" target="_blank"><span class="lat">@zielinski_rozen</span></a></p>
         </div>
         <div class="info-block">
-          <h3>GALLERIES</h3>
+          <h3 class="info-head"><span class="info-head-he">גלריות</span><span class="info-head-en" lang="en">GALLERIES</span></h3>
           <ul>
-            <li><strong>גלריית כיכר המדינה</strong><br>ז'בוטינסקי 131, תל אביב</li>
-            <li><strong>גלריית כיכר דיזינגוף</strong><br>תל אביב <em>(בקרוב)</em></li>
-            <li><strong>גלריית שוק הפשפשים</strong><br>יפו <em>(בקרוב)</em></li>
+            <li><strong>גלריית כיכר המדינה</strong><br>זʼבוטינסקי 131, תל אביב</li>
+            <li><strong>גלריית כיכר דיזינגוף</strong><br>תל אביב · <em>בקרוב</em></li>
+            <li><strong>גלריית שוק הפשפשים</strong><br>יפו · <em>בקרוב</em></li>
           </ul>
         </div>
         <div class="info-block">
-          <h3>HOURS</h3>
-          <p>א'–ה' &nbsp; 10:00–19:00<br>ו' &nbsp; 10:00–14:00<br>שבת — סגור</p>
+          <h3 class="info-head"><span class="info-head-he">שעות פתיחה</span><span class="info-head-en" lang="en">HOURS</span></h3>
+          <p>א׳–ה׳ · 10:00–19:00<br>ו׳ · 10:00–14:00<br>שבת — סגור</p>
         </div>
       </aside>
     </div>

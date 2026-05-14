@@ -5,7 +5,7 @@
     "name_he": "זילינסקי & רוזן",
     "tagline_en": "THE ART GALLERIES",
     "founder": "Erez Zielinski-Rozen",
-    "logo": "images/brand/logo.svg"
+    "logo": "images/header:footer:general/logo.svg"
   },
   "nav": [
     { "key": "opencall",    "label_en": "open call",       "href": "/opencall" },

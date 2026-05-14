@@ -69,8 +69,7 @@
             '<span class="hamburger-bars"><span></span><span></span><span></span></span>' +
           '</button>' +
           '<a href="' + abs('index.html') + '" class="logo" aria-label="home" data-nav="home">' +
-            '<img class="logo-svg" src="' + abs('images/brand/logo.svg') + '" alt="Zielinski &amp; Rozen" width="177" height="37">' +
-            '<span class="mark">ZIELINSKI&nbsp;&amp;&nbsp;ROZEN</span>' +
+            '<img class="logo-svg" src="' + abs('images/header:footer:general/logo.svg') + '" alt="Zielinski &amp; Rozen" width="177" height="37" decoding="async">' +
           '</a>' +
           '<div class="nav-right">' +
             '<button class="hd-bookmark" type="button" data-bookmark-open aria-label="saved posts" aria-haspopup="dialog">' +

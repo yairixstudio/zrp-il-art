@@ -129,13 +129,13 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 | `site.json` | brand, nav, footer, announcement, social — **גלובלי בכל דף** |
 | `galleries.json` | id, slug, name_he/en, address_he/en, status (`open\|coming-soon\|closed`), hours[], image_hero |
 | `artists.json` | id, slug, name_he/en, portrait, bio_he/en, works[] (objects: `{id,title,image,year?,medium?}` inline, לא ref ל-works.json), instagram_handle, hero_images[], figma_artist_page_desktop/mobile, homepage_featured |
-| `exhibitions.json` | id, slug, title_en, subtitle_he, status (`current\|upcoming\|archived`), gallery_id, start/end_date, hero_image, thumbnails[], description_he/en (paragraphs: `[{weight, lines:[...]}]`), artist_ids[], `gallery_images[]`, `archive_thumbnails`, figma_node_* |
+| `exhibitions.json` | id, slug, title_en, subtitle_he, status (`current\|upcoming\|archived`), gallery_id, start/end_date, hero_image, thumbnails[], description_he/en (paragraphs: `[{weight, lines:[...]}]`), artist_ids[], `gallery_images[]`, `artists[]` (פריט: `name_en`, `thumb`, `slug` אופציונלי, `artist_page_slug` אופציונלי = קישור הכרטיס לדף אומן אחר — לשיתופי פעולה), `archive_thumbnails`, `hero_overlay_en_only` (אופציונלי: `true` = אוברליי תמונת גיבור רק `title_en`, בלי פס volume / כותרת עברית על התמונה), figma_node_* |
 | `events.json` | id, slug, title_he/en, date, gallery_id, cover_image, description_he, figma_node_*, figma_file |
 | `press.json` | type (`press\|event`), tag_he/en, source_he/en, subtitle_he, author_he, route, cover_image, date, homepage_visible, figma_article_*. **כתבות long-form: גוף נשאר ב-HTML, רק meta ב-JSON.** |
-| `opencalls.json` | id, slug, title_en, status (`open\|archived`), deadline, city, hero_image, **אופציונליים:** `emotional_triggers[]`, `gallery_images[]` |
+| `opencalls.json` | id, slug, title_en, status (`open\|archived`), deadline, city, hero_image, **אופציונליים:** `emotional_triggers` (`title_he`, `items[]`, אופציונלית `lines[]` לשבירת שורות כמו ב-Figma), `gallery_images[]` |
 | `works.json` | id, title, image, artist_id, + homepage flags. **מעוקף לדפי אומן** — work data inline ב-`artists.json`. |
 | `instagram.json` | snapshot זמני |
-| `homepage.json` | composition layer — `*_id`/`*_ids` לפריטים מ-JSONs אחרים |
+| `homepage.json` | composition layer — `*_id`/`*_ids` לפריטים מ-JSONs אחרים; בלוקים כמו `x_our_artists`, `tribe_teaser` (כותרת/קרדיטים/גלריה מעל press) |
 
 ---
 

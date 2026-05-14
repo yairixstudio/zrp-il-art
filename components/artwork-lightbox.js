@@ -51,6 +51,10 @@
       .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
       .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
+  function escapeAttr(s){
+    if(s==null) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
   var LATIN_RUN=/[A-Za-z][A-Za-z0-9@&'’._?!:,;()/" -]*[A-Za-z0-9?!)]|[A-Za-z]/g;
   function restoreLatSpans(s){
     return escapeHtml(s).replace(
@@ -178,23 +182,50 @@
   function setCaption(work, srcEl){
     var title = (work && work.title) || srcEl.dataset.artworkTitle || srcEl.alt || '';
     var artist= (work && work.artist) || srcEl.dataset.artworkArtist || '';
-    titleEl.innerHTML = mixedHtml(title);
+    var href  = srcEl.dataset.artworkLink || '';
+    var linkInCaption = !!(href && String(artist).trim());
+    var line2 = (srcEl.dataset.artworkHeLine2 || '').trim();
+
+    titleEl.innerHTML = linkInCaption
+      ? ('<a class="alb-caption-link alb-caption-link--title" href="'+escapeAttr(href)+'">' + mixedHtml(title) + '</a>')
+      : mixedHtml(title);
     titleEl.classList.toggle('is-he', HEB_LETTERS.test(title));
     titleEl.classList.toggle('is-en', !HEB_LETTERS.test(title));
 
-    // artist: split last word as "last" (bold/light contrast on mobile)
     artistEl.innerHTML = '';
+    artistEl.classList.toggle('has-he-line2', !!line2);
     if (!artist){ root.classList.add('no-caption'); return; }
     root.classList.remove('no-caption');
+
     var parts = artist.trim().split(/\s+/);
-    if (parts.length === 1){
+    if (linkInCaption){
+      var a = document.createElement('a');
+      a.className = 'alb-caption-link alb-caption-link--artist';
+      a.setAttribute('href', href);
+      if (parts.length === 1){
+        a.textContent = artist;
+      } else {
+        var lastA = parts.pop();
+        var firstA = parts.join(' ');
+        var f = document.createElement('span'); f.className='first'; f.textContent=firstA;
+        var l = document.createElement('span'); l.className='last';  l.textContent=lastA;
+        a.appendChild(f); a.appendChild(l);
+      }
+      artistEl.appendChild(a);
+    } else if (parts.length === 1){
       artistEl.textContent = artist;
     } else {
       var last = parts.pop();
       var first = parts.join(' ');
-      var f = document.createElement('span'); f.className='first'; f.textContent=first;
-      var l = document.createElement('span'); l.className='last';  l.textContent=last;
-      artistEl.appendChild(f); artistEl.appendChild(l);
+      var f2 = document.createElement('span'); f2.className='first'; f2.textContent=first;
+      var l2 = document.createElement('span'); l2.className='last';  l2.textContent=last;
+      artistEl.appendChild(f2); artistEl.appendChild(l2);
+    }
+    if (line2){
+      var sub = document.createElement('span');
+      sub.className = 'alb-artist-heline2';
+      sub.textContent = line2;
+      artistEl.appendChild(sub);
     }
   }
 
@@ -251,8 +282,10 @@
 
   // --- alt-text + CTA rendering (both optional per source element) ---
   // alt:  data-artwork-alt="..."         → renders below the image when present.
-  // cta:  data-artwork-link="/path"      → renders a square button below.
+  // cta:  data-artwork-link="/path"      → renders a square button below (when no data-artwork-artist).
+  //        If data-artwork-artist is set with the same link → artist/title names in caption are linked; no CTA.
   //       data-artwork-link-label="..."  → button text (default: "מעבר ליצירה").
+  // he-line2: data-artwork-he-line2="..." → optional second Hebrew line under artist (e.g. collaborator).
   function setExtras(srcEl, work){
     // ALT
     var altText = srcEl.dataset.artworkAlt || (work && work.alt) || '';
@@ -266,10 +299,12 @@
       root.classList.remove('has-alt');
     }
 
-    // CTA
+    // CTA — skipped when link pairs with data-artwork-artist (caption links replace "לדף האומן" pattern)
     var href  = srcEl.dataset.artworkLink || (work && work.link) || '';
     var label = srcEl.dataset.artworkLinkLabel || (work && work.link_label) || '';
-    if (href){
+    var artistForCta = (work && work.artist) || srcEl.dataset.artworkArtist || '';
+    var skipCta = !!(href && String(artistForCta).trim());
+    if (href && !skipCta){
       if (!label) label = 'מעבר ליצירה';
       ctaEl.textContent = label;
       ctaEl.setAttribute('href', href);
@@ -278,6 +313,7 @@
     } else {
       ctaEl.removeAttribute('href');
       ctaEl.textContent = '';
+      ctaEl.classList.remove('is-hebrew');
       root.classList.remove('has-cta');
     }
 
@@ -351,8 +387,9 @@
     else if (e.key === 'Tab')        { trapFocus(e); }
   }
   function trapFocus(e){
+    var capLinks = Array.prototype.slice.call(root.querySelectorAll('.alb-caption a[href]'));
     var ctaActive = root.classList.contains('has-cta') ? ctaEl : null;
-    var focusable = [closeBtn, prevBtn, nextBtn, ctaActive].filter(function(el){
+    var focusable = [closeBtn, prevBtn, nextBtn].concat(capLinks).concat(ctaActive ? [ctaActive] : []).filter(function(el){
       return el && el.offsetParent !== null;
     });
     if (!focusable.length) return;

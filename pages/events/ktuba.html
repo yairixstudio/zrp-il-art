@@ -293,9 +293,18 @@ a.artist-card:hover .name{color:var(--ink)}
     try { list = JSON.parse(tag.textContent); } catch(e){}
     var strip = document.getElementById('artist-strip');
     if(!strip || !list.length) return;
+    // Face-centered focal points per artist — mirrors FOCAL_POINTS in pages/artists/artist.html
+    var _ARTIST_FOCAL = {
+      'alon':'58% 40%','anat-wegier':'center 20%','eitan-goldson':'center 15%',
+      'elsa-ars-brush':'50% 28%','gal-polk':'center 20%','liel-salman':'center 15%',
+      'nir-giorgio-levin':'center 28%','noemi-safir':'center 18%','risa-oz':'center 28%',
+      'sami-david':'center 25%','tal-nehoray':'center 28%','tanya-shin':'center 22%',
+      'yarden-amir':'center 18%','zohar-ron':'center 25%','zohar-ron-dan-ben-ari':'center 35%'
+    };
     var html = list.map(function(a){
+      var focal = (a.slug && _ARTIST_FOCAL[a.slug]) || 'center 25%';
       var img = a.image
-        ? '<div class="img"><img src="'+a.image+'" alt="'+a.name_en+'" decoding="async" loading="lazy"></div>'
+        ? '<div class="img"><img src="'+a.image+'" alt="'+a.name_en+'" decoding="async" loading="lazy" style="object-position:'+focal+'"></div>'
         : '<div class="img empty">'+a.name_en+'</div>';
       var name = '<div class="name">'+a.name_en.split(' ').join('<br>')+'</div>';
       if(a.slug){

@@ -92,11 +92,11 @@ body{text-transform:uppercase}
 .about-bio .img-col picture{display:block;width:100%;height:100%;margin:0;line-height:0}
 .about-bio .img-col img{display:block;width:100%;height:100%;max-width:none;margin:0;object-fit:cover;object-position:center}
 
-/* SECTION 4 — Gray quote band */
-.about-quote-grey{padding:48px var(--pad-x);background:var(--bg-grey);display:flex;justify-content:center}
-.about-quote-grey .row{display:flex;gap:16px;justify-content:flex-end;align-items:stretch;width:100%;max-width:var(--max);direction:rtl}
-.about-quote-grey .qtext{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.6;text-align:right;direction:rtl;color:var(--ink);max-width:980px}
-.about-quote-grey .qspacer{width:1px;background:var(--divider);align-self:stretch}
+/* SECTION 4 — Gray quote band (height hugs content; desktop pad 48 vert / 96 horiz; 16px between text + divider) */
+.about-quote-grey{padding:48px 96px;background:var(--bg-grey);display:flex;justify-content:center;width:100%;box-sizing:border-box}
+.about-quote-grey .row{display:flex;gap:16px;justify-content:flex-end;align-items:stretch;width:100%;max-width:var(--max);direction:ltr}
+.about-quote-grey .qtext{font-family:var(--heb);font-weight:300;font-size:14px;line-height:1.34;text-align:right;direction:rtl;color:var(--ink);max-width:980px;margin:0}
+.about-quote-grey .qspacer{width:1px;flex-shrink:0;background:var(--divider);align-self:stretch}
 
 /* SECTION 5 — English pull-quote with portrait */
 .about-en{padding:88px var(--pad-x);display:flex;justify-content:center}
@@ -140,6 +140,7 @@ body{text-transform:uppercase}
   .about-bio .paras{font-size:18px;gap:14px}
   .about-tri{padding:48px var(--pad-x)}
   .about-close .stamp{font-size:48px}
+  .about-quote-grey{padding:48px var(--pad-x)}
 }
 
 /* ============================================================
@@ -183,8 +184,8 @@ body{text-transform:uppercase}
   /* Section D — gray quote band */
   .about-quote-grey{padding:24px 16px;background:var(--white)}
   .about-quote-grey .row{flex-direction:row;gap:16px;align-items:stretch;justify-content:flex-end}
-  .about-quote-grey .qtext{font-size:16px;max-width:none;flex:1}
-  .about-quote-grey .qspacer{width:1px;order:-1}
+  .about-quote-grey .qtext{font-size:16px;line-height:1.34;max-width:none;flex:1}
+  .about-quote-grey .qspacer{width:1px;flex-shrink:0}
 
   /* Section E — closing big stretched image */
   .about-close{padding:0 16px 32px;order:initial}
@@ -208,7 +209,8 @@ body{text-transform:uppercase}
 @media (max-width:400px){
   .about-hero h1{font-size:22px}
   .about-hero .name-overlay{font-size:32px}
-  .about-bio .paras,.about-quote-grey .qtext{font-size:15px}
+  .about-bio .paras{font-size:15px}
+  .about-quote-grey .qtext{font-size:13px}
   .about-close .stamp{font-size:26px}
 }
 </style>

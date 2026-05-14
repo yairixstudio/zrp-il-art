@@ -185,6 +185,7 @@
     {
       "id": "how-many",
       "slug": "how-many",
+      "hero_overlay_en_only": true,
       "label_en": "EXHIBITION",
       "volume_en": "VOLUME 2",
       "title_he": "כמה שותפים היו לך?",
@@ -276,7 +277,8 @@
         {
           "name_en": "zohar ron",
           "thumb": "images/exhibitions/how-many/artists/01-zohar-ron.webp",
-          "slug": "zohar-ron"
+          "slug": "zohar-ron",
+          "artist_page_slug": "zohar-ron-dan-ben-ari"
         },
         {
           "name_en": "dan ben-ary",

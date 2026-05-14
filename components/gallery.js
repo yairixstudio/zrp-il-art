@@ -10,7 +10,7 @@
 
    Attributes:
      data-fit="cover|contain"   (default cover)
-     data-loop="true|false"     (default true)
+     data-loop="true|false"     (default true; seamless wrap when true & 2+ slides)
      data-arrows="true|false"   (default true)
      data-dots="true|false"     (default true)
      data-counter="true|false"  (default false)
@@ -57,6 +57,14 @@
       const dots    = this.dataset.dots    !== 'false';
       const counter = this.dataset.counter === 'true';
 
+      if (this._ro) {
+        this._ro.disconnect();
+        this._ro = null;
+      }
+      if (this._track && this._infinite && this._boundTransitionEnd) {
+        this._track.removeEventListener('transitionend', this._boundTransitionEnd);
+      }
+
       this.innerHTML = '';
 
       const viewport = document.createElement('div');
@@ -76,14 +84,33 @@
         slide.appendChild(img);
         track.appendChild(slide);
       });
+
+      // Seamless loop: [clone last] + reals + [clone first] — avoids animating across the whole strip.
+      const nReal = sourceImgs.length;
+      const infinite = loop && nReal > 1;
+      this._infinite = infinite;
+      if (infinite) {
+        const firstSlide = track.firstElementChild;
+        const lastSlide = track.lastElementChild;
+        track.insertBefore(lastSlide.cloneNode(true), firstSlide);
+        track.appendChild(firstSlide.cloneNode(true));
+      }
+
       viewport.appendChild(track);
       this.appendChild(viewport);
 
       this._track = track;
       this._viewport = viewport;
-      this._n = sourceImgs.length;
+      this._n = nReal;
       this._idx = 0;
+      /** Track index for translateX (includes clone slides when `_infinite`). */
+      this._pos = infinite ? 1 : 0;
       this._loop = loop;
+
+      if (infinite) {
+        this._boundTransitionEnd = (e) => this._onTransitionEnd(e);
+        this._track.addEventListener('transitionend', this._boundTransitionEnd);
+      }
 
       if (this._n > 1) {
         if (arrows) {
@@ -181,7 +208,7 @@
       vp.addEventListener('pointermove', (e) => {
         if (!isDown) return;
         deltaX = e.clientX - startX;
-        const offset = -this._idx * w + deltaX;
+        const offset = -this._pos * w + deltaX;
         track.style.transform = 'translateX(' + offset + 'px)';
       });
 
@@ -205,6 +232,34 @@
 
     goTo(i) {
       if (!this._n) return;
+
+      if (this._infinite) {
+        i = ((i % this._n) + this._n) % this._n;
+        if (this._pos === this._n + 1 && i === 0) {
+          this._snapCloneEnd();
+          return;
+        }
+        if (this._pos === 0 && i === this._n - 1) {
+          this._snapCloneStart();
+          return;
+        }
+        if (i === this._idx && this._pos === i + 1) {
+          this._render();
+          return;
+        }
+        let target = i + 1;
+        if (this._pos === this._n && i === 0) target = this._n + 1;
+        else if (this._pos === 1 && i === this._n - 1) target = 0;
+        const prevIdx = this._idx;
+        this._idx = i;
+        this._pos = target;
+        this._render();
+        if (prevIdx !== this._idx) {
+          this.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: i }, bubbles: true }));
+        }
+        return;
+      }
+
       if (this._loop) {
         i = ((i % this._n) + this._n) % this._n;
       } else {
@@ -216,11 +271,82 @@
         return;
       }
       this._idx = i;
+      this._pos = i;
       this._render();
       this.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: i }, bubbles: true }));
     }
-    next() { this.goTo(this._idx + 1); }
-    prev() { this.goTo(this._idx - 1); }
+
+    next() {
+      if (!this._n) return;
+      if (this._infinite) {
+        if (this._idx < this._n - 1) {
+          this.goTo(this._idx + 1);
+        } else {
+          const prevIdx = this._idx;
+          this._idx = 0;
+          this._pos = this._n + 1;
+          this._render();
+          if (prevIdx !== this._idx) {
+            this.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: 0 }, bubbles: true }));
+          }
+        }
+        return;
+      }
+      this.goTo(this._idx + 1);
+    }
+
+    prev() {
+      if (!this._n) return;
+      if (this._infinite) {
+        if (this._idx > 0) {
+          this.goTo(this._idx - 1);
+        } else {
+          const prevIdx = this._idx;
+          this._idx = this._n - 1;
+          this._pos = 0;
+          this._render();
+          if (prevIdx !== this._idx) {
+            this.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: this._idx }, bubbles: true }));
+          }
+        }
+        return;
+      }
+      this.goTo(this._idx - 1);
+    }
+
+    _snapCloneEnd() {
+      this._pos = 1;
+      this._idx = 0;
+      this._finalizeSnapNoAnim();
+    }
+
+    _snapCloneStart() {
+      this._pos = this._n;
+      this._idx = this._n - 1;
+      this._finalizeSnapNoAnim();
+    }
+
+    _finalizeSnapNoAnim() {
+      if (!this._track || !this._viewport) return;
+      const w = this._viewport.clientWidth || 1;
+      this._track.classList.add('no-anim');
+      this._track.style.transform = 'translateX(' + (-this._pos * w) + 'px)';
+      // eslint-disable-next-line no-unused-expressions
+      this._track.offsetWidth;
+      requestAnimationFrame(() => this._track.classList.remove('no-anim'));
+    }
+
+    _onTransitionEnd(e) {
+      if (!this._infinite || e.target !== this._track) return;
+      if (e.propertyName !== 'transform') return;
+      if (this._pos === this._n + 1) {
+        this._pos = 1;
+        this._finalizeSnapNoAnim();
+      } else if (this._pos === 0) {
+        this._pos = this._n;
+        this._finalizeSnapNoAnim();
+      }
+    }
 
     _render(forceNoAnim) {
       if (!this._track || !this._viewport) return;
@@ -231,7 +357,7 @@
         // eslint-disable-next-line no-unused-expressions
         this._track.offsetWidth;
       }
-      this._track.style.transform = 'translateX(' + (-this._idx * w) + 'px)';
+      this._track.style.transform = 'translateX(' + (-this._pos * w) + 'px)';
       if (forceNoAnim) {
         // restore anim on next frame
         requestAnimationFrame(() => this._track.classList.remove('no-anim'));
@@ -254,6 +380,9 @@
 
     disconnectedCallback() {
       if (this._ro) { this._ro.disconnect(); this._ro = null; }
+      if (this._track && this._infinite && this._boundTransitionEnd) {
+        this._track.removeEventListener('transitionend', this._boundTransitionEnd);
+      }
     }
   }
 

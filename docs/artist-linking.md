@@ -79,7 +79,7 @@ a.artist-img-link:hover img{filter:brightness(.96)}
 | `pages/about.html` | `artists/alon.html` |
 | `pages/press/walla.html` | `../artists/alon.html` |
 | `pages/events/loneliness.html` | `../artists/alon.html` |
-| `pages/exhibition.html` (rendered) | `../artists/alon.html` |
+| `pages/exhibition.html` (rendered) | `artists/alon.html` (לא `../artists/` — זה יוצא לשורש האתר ו-404) |
 | בתוך `pages/artists/X.html` (לאומן אחר) | `Y.html` |
 
 ---

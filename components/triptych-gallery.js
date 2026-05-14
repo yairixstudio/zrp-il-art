@@ -43,11 +43,28 @@
       if(captionEl){
         var cs = slides[idx];
         var cap = cs.dataset.caption || '';
+        var cap2 = cs.dataset.captionLine2 || '';
         var href = cs.dataset.captionHref;
+        while(captionEl.firstChild) captionEl.removeChild(captionEl.firstChild);
         if(href && cap){
-          captionEl.innerHTML = '<a href="' + href + '">' + cap + '</a>';
-        } else {
-          captionEl.textContent = cap;
+          var a = document.createElement('a');
+          a.href = href;
+          a.appendChild(document.createTextNode(cap));
+          captionEl.appendChild(a);
+          if(cap2){
+            var s2 = document.createElement('span');
+            s2.className = 'tri-caption-line2';
+            s2.appendChild(document.createTextNode(cap2));
+            captionEl.appendChild(s2);
+          }
+        } else if(cap || cap2){
+          if(cap) captionEl.appendChild(document.createTextNode(cap));
+          if(cap2){
+            var s2b = document.createElement('span');
+            s2b.className = 'tri-caption-line2';
+            s2b.appendChild(document.createTextNode(cap2));
+            captionEl.appendChild(s2b);
+          }
         }
       }
       section.dispatchEvent(new CustomEvent('tri:change', {detail:{index:idx,count:count}}));

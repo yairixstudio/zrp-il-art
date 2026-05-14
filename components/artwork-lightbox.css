@@ -118,6 +118,34 @@ body.alb-lock{overflow:hidden}
 .alb-caption .alb-artist{font-weight:300;font-size:11px;letter-spacing:.08em;display:flex;gap:4px;line-height:1.2;font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase}
 .alb-caption .alb-artist .first,
 .alb-caption .alb-artist .last{font-weight:300;font-size:11px;letter-spacing:.08em}
+.alb-caption a.alb-caption-link{
+  color:inherit;
+  text-decoration:underline;
+  text-decoration-color:rgba(27,27,27,.25);
+  text-underline-offset:2px;
+  cursor:pointer;
+  transition:text-decoration-color .2s,opacity .2s;
+}
+.alb-caption a.alb-caption-link:hover{text-decoration-color:currentColor;opacity:.85}
+.alb-caption .alb-title.is-he .alb-caption-link--title{
+  font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;
+  text-transform:none;direction:inherit;
+}
+.alb-caption .alb-artist.has-he-line2{
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+.alb-caption .alb-artist.has-he-line2 .alb-caption-link--artist{
+  display:flex;
+  flex-direction:row;
+  gap:4px;
+}
+.alb-caption .alb-artist-heline2{
+  font-family:"FbEzmel","Arial Hebrew","David Libre",serif;
+  font-weight:300;font-size:11px;letter-spacing:.06em;line-height:1.25;
+  text-transform:none;direction:rtl;
+}
 .alb.no-caption .alb-caption{display:none}
 
 /* ===== MOBILE ===== */
@@ -188,6 +216,11 @@ body.alb-lock{overflow:hidden}
   }
   .alb-caption .alb-artist .first,
   .alb-caption .alb-artist .last{font-size:10px;font-weight:300}
+  .alb-caption .alb-artist.has-he-line2{
+    flex-direction:column;
+    gap:3px;
+  }
+  .alb-caption .alb-artist-heline2{font-size:10px}
 }
 
 /* ===== TABLET fallback ===== */

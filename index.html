@@ -79,7 +79,9 @@ body{text-transform:uppercase}
 /* ===== HERO — Figma landing::144:343 (desktop) / 144:24 (mobile) ===== */
 .hero{
   display:flex;flex-direction:column;align-items:stretch;
-  padding:clamp(120px,18vh,240px) var(--pad-x) 64px;
+  /* Figma landing hero: 1192px tall @ 1440px viewport; scales with min(viewport,1440) */
+  min-height:calc(min(100vw,1440px) * 1192 / 1440);
+  padding:240px var(--pad-x) 64px;
   gap:64px;
   background:var(--white);
   max-width:1440px;margin:0 auto;
@@ -92,10 +94,10 @@ body{text-transform:uppercase}
 .hero-foot .scroll-prompt{display:none}
 
 .hero-desc{
-  font-family:var(--heb);font-weight:400;font-size:clamp(16px,1.4vw,18px);line-height:1.5;
+  font-family:var(--heb);font-weight:300;font-size:clamp(16px,1.4vw,18px);line-height:1.5;
   text-align:center;direction:rtl;
   max-width:480px;margin:0 auto;
-  padding:48px 0;
+  padding:0;
   order:1;align-self:center;
 }
 
@@ -106,6 +108,11 @@ body{text-transform:uppercase}
   aspect-ratio:600/498;
   overflow:hidden;
 }
+.hero-image .img-frame > a.hero-image-link{
+  position:absolute;inset:0;display:block;text-decoration:none;color:inherit;cursor:pointer;
+}
+.hero-image .img-frame > a.hero-image-link:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.hero-image .img-frame > a.hero-image-link picture{display:block;width:100%;height:100%}
 .hero-image .img-frame img{width:100%;height:100%;object-fit:cover;display:block}
 
 .scroll-prompt svg{width:16px;height:16px;display:block}
@@ -157,46 +164,69 @@ body{text-transform:uppercase}
 .opencall-card .info .date{text-align:center}
 .opencall-card .info .location{text-align:right}
 
-/* ===== EXHIBITIONS / NOW (mobile-only per Figma) ===== */
-.ex-now{display:none;padding:32px 16px;flex-direction:column;gap:128px}
-.ex-now .titles{line-height:.95}
-.ex-now .titles{max-width:100%}
-.ex-now .titles .b{font-family:var(--cop);font-weight:700;font-size:44px;display:block;white-space:nowrap;letter-spacing:-.01em}
-.ex-now .titles .l{font-family:var(--cop);font-weight:300;font-size:70px;display:block;margin-top:-6px;white-space:nowrap;letter-spacing:-.01em}
-.ex-now .content{display:flex;flex-direction:column;gap:32px}
-/* Cards row — Figma 237:935: row gap 4. Card 1 fixed 177; card 2 fills remaining. */
-.ex-now .cards{display:flex;gap:4px;align-items:stretch}
-.ex-now .card-link{display:block;color:inherit;text-decoration:none;min-width:0}
-.ex-now .card-link:first-child{flex:0 0 177px}
-.ex-now .card-link:nth-child(2){flex:1}
-.ex-now .card-link .card{display:flex;flex-direction:column;gap:8px}
-.ex-now .card{display:flex;flex-direction:column;gap:8px;min-width:0}
-.ex-now .card-link .card .img img{transition:transform .6s ease}
-.ex-now .card-link:hover .card .img img{transform:scale(1.04)}
-/* Gallery name — mobile: FbEzmel 14, flush left, no padding (section .ex-now is mobile-only) */
-.ex-now .card .gname{font-family:var(--heb);font-weight:400;font-size:14px;direction:rtl;text-align:left;color:var(--ink);padding:0}
-/* Image — Figma 237:939: height 214.55, width fill */
-.ex-now .card .img{position:relative;width:100%;height:214.55px;overflow:hidden;background:#222}
-.ex-now .card .img img{width:100%;height:100%;object-fit:cover}
-/* Gradient overlay — Figma fill_X5U9KP: 180deg, transparent 0% → rgba(0,0,0,.8) 81% */
-.ex-now .card .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(102,102,102,0) 0%,rgba(0,0,0,.8) 81%);pointer-events:none}
-/* Overlay text — Figma 237:940/237:943: padding 8 18 8 8, status at TOP, title at BOTTOM. pointer-events:auto so overlay text is inspectable/selectable (was none → hits passed to img). */
-.ex-now .card .ovr{position:absolute;top:8px;right:18px;bottom:8px;left:8px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;z-index:1;pointer-events:auto}
+/* ===== EXHIBITIONS / NOW — Figma landing::237:1285 (desktop) / 237:935 (mobile) ===== */
+.ex-now{
+  display:flex;flex-direction:column;align-items:center;gap:24px;
+  padding:64px var(--pad-x);background:var(--white);
+  width:100%;max-width:var(--max);margin:0 auto;
+}
+.ex-now-head{display:flex;flex-direction:column;align-items:stretch;gap:64px;width:100%}
+.ex-now-tail{
+  display:flex;flex-direction:column;align-items:stretch;gap:16px;
+  width:100%;max-width:1248px;margin:0 auto;padding-top:32px;
+}
+.ex-now .titles{text-align:center;line-height:1.05;max-width:100%}
+.ex-now .titles .b{font-family:var(--cop);font-weight:700;font-size:36px;display:block;white-space:nowrap;letter-spacing:.02em}
+.ex-now .titles .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block;white-space:nowrap;letter-spacing:.02em}
+/* Cards row — desktop Figma 237:1290 gap 8, equal columns; mobile 237:935 gap 4, narrow + flex */
+.ex-now .cards{display:flex;gap:8px;align-items:stretch;width:100%}
+.ex-now .card-link{display:block;color:inherit;text-decoration:none;min-width:0;flex:1 1 0}
+.ex-now .card-link .card{display:flex;flex-direction:column;gap:18px}
+.ex-now .card{display:flex;flex-direction:column;gap:18px;min-width:0}
+.ex-now .card-link .card .img .ex-now-photo{transition:transform .6s ease}
+.ex-now .card-link:hover .card .img .ex-now-photo{transform:scale(1.04)}
+/* Gallery name — desktop Figma 237:1293: FbEzmel Light 36px, text-right, pr 8 */
+.ex-now .card .gname{font-family:var(--heb);font-weight:300;font-size:36px;direction:rtl;text-align:right;color:var(--ink);padding:0 8px 0 0;line-height:1.1}
+/* Image stack — desktop Figma 237:1294 h 693, p 16 overlay; mobile 237:939 h 214.55 */
+.ex-now .card .img{position:relative;width:100%;height:693px;overflow:hidden;background:#222}
+.ex-now .card .ex-now-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ex-now .card .ex-now-photo--mob{display:none}
+/* Gradient — same spec mobile/desktop */
+.ex-now .card .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(102,102,102,0) 0%,rgba(0,0,0,.8) 81%);pointer-events:none;z-index:0}
+/* Overlay — desktop Figma p 16; mobile 8 18 8 8 */
+.ex-now .card .ovr{position:absolute;top:16px;right:16px;bottom:16px;left:16px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;z-index:1;pointer-events:auto}
 .ex-now .card .ovr-titles{display:flex;flex-direction:column;gap:2px}
-/* Status — Figma style_ED4UAC: Copperplate Bold 700, 20px, LEFT, white */
-.ex-now .card .stat{font-family:var(--cop);font-weight:700;font-size:20px;line-height:1.1;text-align:left;letter-spacing:.02em}
-/* English title — Figma style_UYCX05: Copperplate Light 300, 14px, LEFT */
-.ex-now .card .ttl-en{font-family:var(--cop);font-weight:300;font-size:14px;line-height:1.25;text-align:left}
-/* Hebrew title — Figma style_ZJFT5P: FbEzmel Light 400, 14px (LEFT in Figma, but RTL is RIGHT) */
-.ex-now .card .ttl-he{font-family:var(--heb);font-weight:400;font-size:14px;direction:rtl;text-align:left;line-height:1.25}
+/* Desktop overlay type — Figma 237:1297 / 237:1300 / 237:1310 */
+.ex-now .card .stat{font-family:var(--cop);font-weight:700;font-size:36px;line-height:1.1;text-align:left;letter-spacing:.02em}
+.ex-now .card .ttl-en{font-family:var(--cop);font-weight:300;font-size:36px;line-height:1.08;text-align:left;letter-spacing:.035em}
+.ex-now .card .ttl-en--stack{display:flex;flex-direction:column;align-items:flex-start;gap:4px;line-height:1.05}
+.ex-now .card .ttl-en--stack .ttl-en-row1{white-space:nowrap}
+.ex-now .card .ttl-en--stack .ttl-en-row2{letter-spacing:.025em;opacity:.96;white-space:normal}
+.ex-now .card .ttl-he{font-family:var(--heb);font-weight:300;font-size:36px;direction:rtl;text-align:left;line-height:1.15;text-transform:none}
 .ex-now .artists-bar{display:flex;justify-content:space-between;align-items:center;padding:0}
-.ex-now .artists-bar .lbl{font-family:var(--cop);font-weight:300;font-size:20px;direction:rtl;text-align:right}
-.ex-now .artists-bar svg{width:16px;height:16px}
-.ex-now .artists-list{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:6px;scrollbar-width:none;padding-right:16px;margin-top:-20px}
+.ex-now .artists-bar .lbl{font-family:var(--cop);font-weight:300;font-size:28px;direction:rtl;text-align:right}
+.ex-now .artists-bar svg{width:11px;height:11px;flex-shrink:0}
+.ex-now .artists-list{display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:6px;scrollbar-width:none;width:100%}
 .ex-now .artists-list::-webkit-scrollbar{display:none}
-.ex-now .artist{flex:0 0 96px;display:flex;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start}
-.ex-now .artist img,.ex-now .artist .portrait-placeholder{width:96px;height:80px;object-fit:cover;background:#e8e8e8;display:block}
-.ex-now .artist .nm{font-family:var(--cop);font-weight:300;font-size:11px;line-height:1.15;text-align:center;color:var(--artist);white-space:pre-line}
+.ex-now .artist{flex:0 0 178px;display:flex;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start}
+.ex-now .artist img,.ex-now .artist .portrait-placeholder{width:178px;height:148px;object-fit:cover;background:#e8e8e8;display:block;object-position:center 25%}
+.ex-now .artist .nm{font-family:var(--cop);font-weight:300;font-size:18px;line-height:18px;text-align:center;color:var(--artist);white-space:pre-line}
+/* Face-centered focal points per artist — mirrors FOCAL_POINTS in pages/artists/artist.html */
+.ex-now .artist[href$="/alon.html"] img{object-position:58% 40%}
+.ex-now .artist[href$="/anat-wegier.html"] img{object-position:center 20%}
+.ex-now .artist[href$="/eitan-goldson.html"] img{object-position:center 15%}
+.ex-now .artist[href$="/elsa-ars-brush.html"] img{object-position:50% 28%}
+.ex-now .artist[href$="/gal-polk.html"] img{object-position:center 20%}
+.ex-now .artist[href$="/liel-salman.html"] img{object-position:center 15%}
+.ex-now .artist[href$="/nir-giorgio-levin.html"] img{object-position:center 28%}
+.ex-now .artist[href$="/noemi-safir.html"] img{object-position:center 18%}
+.ex-now .artist[href$="/risa-oz.html"] img{object-position:center 28%}
+.ex-now .artist[href$="/sami-david.html"] img{object-position:center 25%}
+.ex-now .artist[href$="/tal-nehoray.html"] img{object-position:center 28%}
+.ex-now .artist[href$="/tanya-shin.html"] img{object-position:center 22%}
+.ex-now .artist[href$="/yarden-amir.html"] img{object-position:center 18%}
+.ex-now .artist[href$="/zohar-ron.html"] img{object-position:center 25%}
+.ex-now .artist[href$="/zohar-ron-dan-ben-ari.html"] img{object-position:center 35%}
 
 /* ===== EXHIBITIONS ARCHIVE ===== */
 .exhibitions{padding:48px var(--pad-x) 96px;display:flex;flex-direction:column;gap:40px;align-items:center;background:var(--white);width:100%;max-width:var(--max);margin:0 auto}
@@ -235,7 +265,9 @@ body{text-transform:uppercase}
 
 /* ===== INSTAGRAM (Figma XhGH:144:431) — title left, arrows top-right, infinite-loop carousel ===== */
 .social{padding:34px var(--pad-x);display:flex;flex-direction:column;gap:16px;background:var(--white);--ig-cols:6}
-.social-title{font-family:var(--cop);font-weight:700;font-size:36px;line-height:1.1;width:350px;text-align:left}
+.social-title{width:350px;line-height:1.05;text-align:left;font-family:var(--cop)}
+.social-title .b{font-weight:700;font-size:36px;display:block;line-height:1.1}
+.social-title .l{font-weight:300;font-size:36px;display:block;line-height:1.1}
 .ig-nav{display:flex;justify-content:flex-end;align-items:center;gap:2px}
 .ig-nav button{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;padding:0;color:var(--ink);border:0;background:none;cursor:pointer;transition:opacity .2s}
 .ig-nav button:hover{opacity:.55}
@@ -255,12 +287,14 @@ body{text-transform:uppercase}
 .galleries-title{width:358px;line-height:1.05}
 .galleries-title .b{font-family:var(--cop);font-weight:700;font-size:36px;display:block}
 .galleries-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
-.gallery-cards{display:flex;gap:24px;align-items:stretch}
-/* Desktop: 3-row grid \u2014 image (top) \u2192 name \u2192 details (addr+hours, right-aligned) */
-.gallery-card{flex:1;display:grid;grid-template-columns:1fr;grid-template-rows:auto auto auto;grid-template-areas:"img" "name" "details";gap:8px;min-width:0;align-content:start}
+/* Figma landing::237:1453 — row gap 8px; card column ~410.667px; image 410.667×497.778, aspect 33/40 (132/160) */
+.gallery-cards{display:flex;gap:8px;align-items:stretch;justify-content:center}
+/* Desktop: 3-row grid — image (top) → name → details (addr+hours, right-aligned) */
+.gallery-card{flex:0 0 calc((100% - 16px) / 3);display:grid;grid-template-columns:1fr;grid-template-rows:auto auto auto;grid-template-areas:"img" "name" "details";gap:8px;min-width:0;max-width:410.667px;align-content:start}
 .gallery-card > .info{grid-area:name;display:flex;flex-direction:column;gap:4px;font-family:var(--heb);direction:rtl;text-align:right;padding:0 8px}
-.gallery-card > .img{grid-area:img;position:relative;width:100%;height:497.78px;overflow:hidden;background:#f3f1ee}
-.gallery-card > .img img{width:100%;height:100%;object-fit:cover}
+.gallery-card > .img{grid-area:img;position:relative;width:100%;aspect-ratio:33/40;height:auto;overflow:hidden;background:#f3f1ee}
+.gallery-card > .img picture{display:block;width:100%;height:100%}
+.gallery-card > .img img{width:100%;height:100%;object-fit:cover;display:block;position:relative}
 .gallery-card > .img.dim::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,.55);pointer-events:none}
 .gallery-card > .img.dim.dim--green::after{background:#2b4c39}
 .gallery-card > .img.dim .coming{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--cop);font-size:24px;letter-spacing:.04em;z-index:1}
@@ -288,9 +322,35 @@ body{text-transform:uppercase}
 .x-artists-card .name{font-family:var(--cop);font-weight:400;font-size:16px;text-align:center;color:var(--ink)}
 .x-artists-tri{display:none}
 
+/* ===== TRIBE TEASER (loneliness × the tribe) — Figma 250:87 desktop / 250:243 mobile; data: homepage.json :: tribe_teaser ===== */
+.tribe-teaser{padding:48px var(--pad-x);background:var(--white);display:flex;flex-direction:column;align-items:center;gap:40px;max-width:1440px;margin:0 auto;min-width:0;box-sizing:border-box}
+.tribe-teaser-head{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.05;gap:8px;color:inherit;text-decoration:none;max-width:1248px}
+.tribe-teaser-head .b{font-family:var(--cop);font-weight:700;font-size:36px;letter-spacing:.02em;line-height:1.24}
+.tribe-teaser-head .l{font-family:var(--cop);font-weight:300;font-size:36px;letter-spacing:.02em}
+.tribe-teaser-credits{display:none;flex-direction:column;align-items:center;gap:16px;width:100%;box-sizing:border-box}
+.tribe-teaser-credits .tribe-credit-row{
+  display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:16px;width:100%;
+}
+.tribe-teaser-credits .tribe-credit-row a{
+  font-family:var(--cop);font-weight:300;font-size:16px;line-height:1;color:inherit;text-decoration:none;
+  white-space:nowrap;flex-shrink:0;
+}
+.tribe-teaser-credits .tribe-credit-row a:hover{opacity:.75}
+.tribe-teaser-credits .tribe-credit-row .tribe-sep{
+  font-family:var(--heb);font-weight:300;font-size:16px;line-height:1;color:var(--ink);
+  flex-shrink:0;white-space:nowrap;padding:0;
+}
+.tribe-teaser-gallery{display:none;width:100%;min-width:0;max-width:100%}
+.tribe-gallery-track{display:flex;gap:4px;width:max-content;justify-content:center}
+.tribe-gallery-track a{flex:0 0 auto;width:100.25px;text-decoration:none;color:inherit;display:block}
+.tribe-gallery-track a .tribe-thumb-wrap{aspect-ratio:132/160;width:100%;overflow:hidden;background:#f3f1ee}
+.tribe-gallery-track a img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.tribe-gallery-track a:hover img{transform:scale(1.03)}
+.tribe-teaser-gallery-wrap{display:flex;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;max-width:100%;min-width:0;box-sizing:border-box;scrollbar-width:thin}
+
 /* ===== PRESS & EVENTS ===== */
 .press{padding:32px var(--pad-x) 48px;display:flex;flex-direction:column;gap:24px;background:var(--white)}
-.press-title{line-height:1.05}
+.press-title{display:flex;flex-direction:column;gap:3px;line-height:1.05}
 .press-title .b{font-family:var(--cop);font-weight:700;font-size:36px;display:block}
 .press-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
 .press-rows{display:flex;flex-direction:column;gap:48px}
@@ -300,9 +360,9 @@ body{text-transform:uppercase}
 .press-card:hover{opacity:.75}
 .press-card .img img{transition:transform .6s}
 .press-card:hover .img img{transform:scale(1.04)}
-.press-card .info{flex:1;display:flex;flex-direction:column;justify-content:space-between;text-align:right;min-width:0;padding:8px 0;gap:8px}
+.press-card .info{flex:1;display:flex;flex-direction:column;justify-content:space-between;text-align:right;min-width:0;padding:0 0 8px;gap:8px}
 .press-card .tag{align-self:flex-start;background:var(--bg-grey);padding:4px 8px;font-family:var(--heb);font-size:14px;font-weight:300;display:inline-block}
-.press-card .tag.en{font-family:var(--cop);font-weight:300;direction:ltr}
+.press-card .tag.en{font-family:var(--cop);font-weight:300;direction:ltr;white-space:nowrap;font-size:11px;line-height:1.15;padding:3px 7px}
 .press-card .desc{font-family:var(--heb);font-size:16px;font-weight:400;line-height:1.4;text-align:right}
 .press-card .date{font-family:var(--cop);font-size:14px;font-weight:300;text-align:right;direction:ltr;align-self:flex-start}
 .press-card .img{flex:0 0 178px;width:178px;height:112px;overflow:hidden;background:#f3f1ee;order:-1}
@@ -315,14 +375,17 @@ body{text-transform:uppercase}
    ============================================================ */
 @media (max-width:1100px){
   :root{--pad-x:48px}
-  .hero{padding:clamp(80px,14vh,160px) var(--pad-x) 48px;gap:48px}
+  .hero{
+    min-height:calc(min(100vw,1440px) * 1192 / 1440);
+    padding:calc(min(100vw,1440px) * 240 / 1440) var(--pad-x) calc(min(100vw,1440px) * 64 / 1440);
+    gap:64px;
+  }
   .hero-titles h1,.hero-titles h2{font-size:clamp(40px,5.5vw,56px)}
-  .hero-desc{padding:32px 0}
+  .hero-desc{padding:0}
   .hero-image .img-frame{width:min(560px,100%)}
   .aw-img,.aw-text{width:50%;height:auto;aspect-ratio:1/1}
   .aw-text .word{left:50%;top:50%;transform:translate(-50%,-50%);font-size:60px}
   .aw-text .more{left:50%;top:50%;transform:translate(-50%,-50%);font-size:60px}
-  .gallery-card > .img{height:380px}
   .opencall-card{width:280px}
   .opencall-card .img{height:420px}
   .social{--ig-cols:4}
@@ -339,16 +402,17 @@ body{text-transform:uppercase}
   .only-desktop{display:none !important}
   .only-mobile{display:block}
 
-  /* HERO — mobile (Figma 144:24) */
+  /* HERO — mobile (Figma 144:24): 24px titles→image, 24px image→scroll; 120px scroll→desc */
   .hero{
+    min-height:0;
     padding:32px 16px;
-    gap:24px;
+    gap:0;
     align-items:stretch;
   }
   .hero-titles{align-items:flex-start;text-align:left;line-height:1.05;order:1}
-  .hero-titles h1,.hero-titles h2{font-size:36px;letter-spacing:.02em}
+  .hero-titles h1,.hero-titles h2{font-size:36px;letter-spacing:.02em;line-height:37px}
 
-  .hero-image{order:2;width:100%;display:block}
+  .hero-image{order:2;width:100%;display:block;margin-top:24px}
   .hero-image .img-frame{
     width:100%;
     height:297px;
@@ -356,8 +420,9 @@ body{text-transform:uppercase}
   }
 
   .hero-foot{
-    display:flex;flex-direction:column;gap:120px;
+    display:flex;flex-direction:column;gap:0;
     order:3;width:100%;
+    margin-top:24px;
   }
   .hero-foot .scroll-prompt{
     display:flex;flex-direction:column;align-items:flex-end;gap:8px;
@@ -366,10 +431,10 @@ body{text-transform:uppercase}
 
   .hero-desc{
     text-align:right;direction:rtl;
-    font-family:var(--heb);font-weight:400;
+    font-family:var(--heb);font-weight:300;
     font-size:16px;line-height:1.5;
     max-width:none;
-    padding:0;margin:0;
+    padding:0;margin:120px 0 0;
     align-self:stretch;
   }
   .hero-desc .d-only{display:none}
@@ -388,11 +453,34 @@ body{text-transform:uppercase}
   .opencall-card .img{height:auto;aspect-ratio:177/256}
   .opencall-card .info{font-size:11px;padding:0 4px;letter-spacing:.02em}
 
-  /* MOBILE-ONLY exhibitions/now */
-  .ex-now{display:flex}
+  /* exhibitions/now — mobile Figma 237:935 */
+  .ex-now{padding:32px 16px;gap:32px;align-items:stretch}
+  .ex-now-head{gap:128px;align-items:stretch}
+  .ex-now-tail{padding-top:0;gap:16px;max-width:none}
+  .ex-now .titles{line-height:.95;text-align:left;align-self:stretch;max-width:100%;overflow-x:clip}
+  .ex-now .titles .b{font-size:44px;letter-spacing:-.01em}
+  .ex-now .titles .l{font-size:70px;margin-top:-6px;letter-spacing:-.01em}
+  .ex-now .cards{gap:4px}
+  .ex-now .card-link:first-child{flex:0 0 177px}
+  .ex-now .card-link:nth-child(2){flex:1}
+  .ex-now .card-link .card,.ex-now .card{gap:8px}
+  .ex-now .card .gname{font-weight:400;font-size:14px;text-align:left;padding:0}
+  .ex-now .card .img{height:214.55px}
+  .ex-now .card .ex-now-photo--desk{display:none}
+  .ex-now .card .ex-now-photo--mob{display:block}
+  .ex-now .card .ovr{top:8px;right:18px;bottom:8px;left:8px}
+  .ex-now .card .stat{font-size:20px}
+  .ex-now .card .ttl-en{font-size:13px;line-height:1.2;letter-spacing:.02em}
+  .ex-now .card .ttl-he{font-weight:300;font-size:14px;line-height:1.25}
+  .ex-now .artists-bar .lbl{font-size:20px}
+  .ex-now .artists-bar svg{width:16px;height:16px}
+  .ex-now .artists-list{padding-right:16px;margin-top:0}
+  .ex-now .artist{flex:0 0 96px;gap:8px}
+  .ex-now .artist img,.ex-now .artist .portrait-placeholder{width:96px;height:80px}
+  .ex-now .artist .nm{font-size:11px;line-height:18px}
 
   /* EXHIBITIONS ARCHIVE */
-  .exhibitions{padding:32px 16px;gap:32px;align-items:stretch}
+  .exhibitions{padding:32px 16px;gap:128px;align-items:stretch}
   .exhibitions-titles{text-align:left;line-height:.95;max-width:100%}
   .exhibitions-titles .b{font-size:44px;white-space:nowrap;letter-spacing:-.01em}
   .exhibitions-titles .l{font-size:70px;margin-top:-6px;white-space:nowrap;letter-spacing:-.01em}
@@ -426,7 +514,7 @@ body{text-transform:uppercase}
 
   /* INSTAGRAM — carousel keeps controlled translate; mobile shows ~2.5 peek-cards */
   .social{padding:32px 16px;gap:16px;--ig-cols:2.5}
-  .social-title{font-size:36px;width:auto;line-height:1.05}
+  .social-title{width:auto;line-height:1.05}
   .ig-nav svg{width:22px;height:14px}
 
   /* GALLERIES — mobile row layout, RTL */
@@ -434,8 +522,10 @@ body{text-transform:uppercase}
   .galleries-title{width:auto;line-height:1.05}
   .gallery-cards{flex-direction:column;gap:40px}
   /* Mobile: image on the LEFT (with details below), name on the RIGHT aligned to top */
-  .gallery-card{display:grid;grid-template-columns:174px 1fr;grid-template-rows:auto auto;grid-template-areas:"img name" "details name";column-gap:16px;row-gap:8px;align-items:start}
-  .gallery-card > .img{width:174px;height:210px}
+  .gallery-card{flex:1 1 auto;max-width:none;display:grid;grid-template-columns:174px 1fr;grid-template-rows:auto auto;grid-template-areas:"img name" "details name";column-gap:16px;row-gap:8px;align-items:start}
+  .gallery-card > .img{width:174px;height:210px;aspect-ratio:auto}
+  .gallery-card > .img picture{position:static;height:100%}
+  .gallery-card > .img img{position:static;width:100%;height:100%;left:auto;top:auto;object-fit:cover}
   .gallery-card > .info{align-self:start;justify-self:end;padding:0;gap:8px}
   .gallery-card > .details{padding:0 8px}
   .gallery-card > .img.dim .coming{font-size:13px;letter-spacing:.04em}
@@ -459,6 +549,52 @@ body{text-transform:uppercase}
   .x-artists .tri-dots{display:none}
   .x-artists .tri-caption{font-family:var(--cop);font-weight:300;font-size:16px;color:#989898;direction:ltr;text-align:center}
 
+  /* TRIBE TEASER — Figma 250:243; narrow screens: keep inside padded column, scale thumbs + credits */
+  .tribe-teaser{padding:32px clamp(12px, 4.2vw, 16px);align-items:stretch;gap:40px;overflow-x:clip}
+  .tribe-teaser-head{max-width:100%;min-width:0;box-sizing:border-box;padding:0 2px}
+  .tribe-teaser-credits{
+    display:flex;
+    max-width:100%;
+    min-width:0;
+    padding:0 2px;
+    box-sizing:border-box;
+    container-type:inline-size;
+    container-name:tt-credits;
+  }
+  .tribe-teaser-credits .tribe-credit-row{
+    flex-wrap:wrap;
+    justify-content:center;
+    row-gap:6px;
+    column-gap:10px;
+    max-width:100%;
+    min-width:0;
+  }
+  .tribe-teaser-credits .tribe-credit-row a,
+  .tribe-teaser-credits .tribe-credit-row .tribe-sep{
+    font-size:clamp(8px, 3.65vw, 16px);
+  }
+  @supports (font-size: 1cqw){
+    .tribe-teaser-credits .tribe-credit-row a,
+    .tribe-teaser-credits .tribe-credit-row .tribe-sep{
+      font-size:clamp(8px, 4.1cqw, 16px);
+    }
+  }
+  .tribe-teaser-credits .tribe-credit-row a{white-space:normal;text-align:center;word-break:break-word}
+  .tribe-teaser-credits .tribe-credit-row .tribe-sep{white-space:normal}
+  .tribe-teaser-gallery{display:block}
+  .tribe-teaser-gallery-wrap{
+    margin:0;
+    padding:0;
+    width:100%;
+    max-width:100%;
+  }
+  .tribe-gallery-track{justify-content:flex-start;width:max-content;max-width:none}
+  /* Scale thumbs with viewport (Figma 100.25px @390); horizontal scroll when row wider than column */
+  .tribe-gallery-track a{
+    flex:0 0 auto;
+    width:clamp(64px, 24vw, 100.25px);
+  }
+
   /* PRESS & EVENTS */
   .press{padding:32px 16px}
   .press-rows{gap:24px}
@@ -473,21 +609,23 @@ body{text-transform:uppercase}
    ============================================================ */
 @media (max-width:400px){
   .announce{font-size:12px;letter-spacing:.005em}
-  .hero-titles h1,.hero-titles h2{font-size:30px}
+  .hero-titles h1,.hero-titles h2{font-size:30px;line-height:37px}
   /* exhibitions/ex-now titles use clamp() — auto-scale to viewport, no fixed override needed */
   .social{--ig-cols:2}
-  .social-title{font-size:30px}
+  .social-title .b,.social-title .l{font-size:30px}
   .galleries-title .b,.galleries-title .l,
+  .tribe-teaser-head .b,.tribe-teaser-head .l,
   .press-title .b,.press-title .l{font-size:30px}
   .aw-text .word,.aw-text .more{font-size:28px}
   .gallery-card{grid-template-columns:140px 1fr}
   .gallery-card > .img{width:140px;height:170px}
   .gallery-card .name{font-size:18px}
   .ex-now .card .stat{font-size:16px}
+  .tribe-gallery-track a{width:clamp(60px, 22vw, 100.25px)}
 }
 </style>
 </head>
-<body>
+<body class="page-home">
 
 <!-- NAV -->
 <site-header></site-header>
@@ -500,7 +638,9 @@ body{text-transform:uppercase}
   </div>
   <div class="hero-image">
     <div class="img-frame">
-      <img src="images/homepage/hero-landscape.webp" width="1320" height="1095" alt="Erez Zielinski Rozen" decoding="async" fetchpriority="high">
+      <a class="hero-image-link" href="pages/about.html" data-nav="about" aria-label="about — biography of erez zielinski rozen">
+        <img src="images/homepage/hero-landscape.webp" width="1320" height="1095" alt="Erez Zielinski Rozen" decoding="async" fetchpriority="high">
+      </a>
     </div>
   </div>
   <div class="hero-foot">
@@ -576,23 +716,24 @@ body{text-transform:uppercase}
   </div>
 </section>
 
-<!-- MOBILE-ONLY: exhibitions / now (current exhibitions + artists) -->
-<section class="ex-now">
-  <div class="titles">
-    <span class="b">exhibitions</span>
-    <span class="l">now</span>
-  </div>
-  <div class="content">
+<!-- EXHIBITIONS / NOW — Figma landing::237:1285 (desktop) / 237:935 (mobile) -->
+<section class="ex-now" id="exhibitions-now">
+  <div class="ex-now-head">
+    <div class="titles">
+      <span class="b">exhibitions</span>
+      <span class="l">now</span>
+    </div>
     <div class="cards">
       <a class="card-link" href="pages/exhibition.html?id=how-many">
         <article class="card">
           <div class="gname">גלריית כיכר דיזינגוף</div>
           <div class="img">
-            <img src="images/exhibitions/how-many-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
+            <img class="ex-now-photo ex-now-photo--mob" src="images/exhibitions/how-many-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
+            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/how-many/hero.webp" width="1068" height="1600" alt="" decoding="async" loading="lazy">
             <div class="ovr">
               <div class="stat">upcoming</div>
               <div class="ovr-titles">
-                <div class="ttl-en">how many partners<br>have you had?</div>
+                <div class="ttl-en ttl-en--stack"><span class="ttl-en-row1">how many partners</span><span class="ttl-en-row2">have you had?</span></div>
               </div>
             </div>
           </div>
@@ -602,7 +743,8 @@ body{text-transform:uppercase}
         <article class="card">
           <div class="gname">גלריית כיכר המדינה</div>
           <div class="img">
-            <img src="images/exhibitions/loneliness-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
+            <img class="ex-now-photo ex-now-photo--mob" src="images/exhibitions/loneliness-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
+            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/loneliness/hero.webp" width="690" height="1044" alt="" decoding="async" loading="lazy">
             <div class="ovr">
               <div class="stat">current</div>
               <div class="ovr-titles">
@@ -614,6 +756,8 @@ body{text-transform:uppercase}
         </article>
       </a>
     </div>
+  </div>
+  <div class="ex-now-tail">
     <div class="artists-bar">
       <span class="lbl">our artists</span>
       <a href="pages/artists/alon.html" aria-label="all artists"><svg width="16" height="16" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.926778 11.0004L0 10.0736L8.73379 1.33128H0.793662V0H11.0004V10.2067H9.6691V2.2666L0.926778 11.0004Z" fill="#1A1C1C"/></svg></a>
@@ -701,7 +845,10 @@ nehoray</div></a>
 
 <!-- INSTAGRAM -->
 <section class="social">
-  <h2 class="social-title">follow us<br>on instagram</h2>
+  <h2 class="social-title">
+    <span class="b">follow us</span>
+    <span class="l">on instagram</span>
+  </h2>
   <div class="ig-nav" role="group" aria-label="instagram navigation">
     <button type="button" class="ig-prev" aria-label="previous"><svg viewBox="0 0 24 16"><path d="M22 8H2M2 8l6-6M2 8l6 6"/></svg></button>
     <button type="button" class="ig-next" aria-label="next"><svg viewBox="0 0 24 16"><path d="M2 8h20M22 8l-6-6M22 8l-6 6"/></svg></button>
@@ -730,7 +877,7 @@ nehoray</div></a>
   <div class="gallery-cards">
     <article class="gallery-card">
       <div class="info"><div class="name">גלריית כיכר המדינה</div></div>
-      <div class="img"><picture><source media="(max-width:768px)" srcset="images/galleries/medina/figma-mobile.webp"><img src="images/galleries/medina/hero.webp" width="2896" height="3861" alt="" decoding="async" loading="lazy"></picture></div>
+      <div class="img"><picture><img src="images/galleries/medina/hero.webp" width="411" height="498" alt="" decoding="async" loading="lazy"></picture></div>
       <div class="details">
         <div class="addr">ז'בוטינסקי 131, תל אביב</div>
         <div class="hours">
@@ -742,7 +889,7 @@ nehoray</div></a>
     </article>
     <article class="gallery-card">
       <div class="info"><div class="name">גלריית כיכר דיזינגוף</div></div>
-      <div class="img dim"><picture><source media="(max-width:768px)" srcset="images/galleries/dizengoff/figma-mobile.webp"><img src="images/galleries/dizengoff/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></picture><span class="coming">coming soon</span></div>
+      <div class="img"><picture><img src="images/galleries/dizengoff/hero.webp" width="411" height="498" alt="" decoding="async" loading="lazy"></picture></div>
       <div class="details"><div class="addr">כיכר דיזינגוף, תל אביב</div></div>
     </article>
     <article class="gallery-card gallery-card--flea">
@@ -752,7 +899,7 @@ nehoray</div></a>
         <div class="sub-en">in store gallery by erez zielinski rozen</div>
         <div class="sub-en-loc">jaffa market</div>
       </div>
-      <div class="img dim dim--green"><picture><source media="(max-width:768px)" srcset="images/galleries/flea-market/figma-mobile.webp"><img src="images/galleries/flea-market/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></picture><span class="coming">coming soon</span></div>
+      <div class="img dim dim--green"><picture><img src="images/galleries/flea-market/hero.webp" width="1200" height="1600" alt="" decoding="async" loading="lazy"></picture><span class="coming">coming soon</span></div>
     </article>
   </div>
 </section>
@@ -833,6 +980,46 @@ nehoray</div></a>
         <button class="tri-dot" type="button" aria-label="7"></button>
         <button class="tri-dot" type="button" aria-label="8"></button>
         <button class="tri-dot" type="button" aria-label="9"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LONELINESS × THE TRIBE — Figma 250:87 (desktop title) / 250:243 (mobile + credits + gallery). Data: data/homepage.json :: tribe_teaser -->
+<section class="tribe-teaser" id="tribe-teaser" aria-label="loneliness in a bubbling environment, x the tribe">
+  <a class="tribe-teaser-head" href="pages/exhibition.html?id=loneliness">
+    <span class="b">loneliness<br>in a bubbling environment</span>
+    <span class="l">x the tribe</span>
+  </a>
+  <div class="tribe-teaser-credits only-mobile">
+    <div class="tribe-credit-row">
+      <a href="pages/artists/maya-nachum-levy.html">maya nachum levy</a>
+      <span class="tribe-sep heb" aria-hidden="true">|</span>
+      <a href="pages/artists/holy-kadosh.html">tal holy kadosh</a>
+    </div>
+    <div class="tribe-credit-row">
+      <a href="pages/artists/zohar-ron.html">zohar ron</a>
+      <span class="tribe-sep heb" aria-hidden="true">|</span>
+      <a href="pages/artists/tal-nehoray.html">tal nehoray</a>
+      <span class="tribe-sep heb" aria-hidden="true">|</span>
+      <a href="pages/artists/gal-polk.html">gal pollak</a>
+    </div>
+  </div>
+  <div class="tribe-teaser-gallery only-mobile">
+    <div class="tribe-teaser-gallery-wrap">
+      <div class="tribe-gallery-track">
+        <a href="pages/exhibition.html?id=loneliness" aria-label="loneliness in a bubbling environment — image 1">
+          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-1.webp" width="1075" height="1600" alt="" decoding="async" loading="lazy"></div>
+        </a>
+        <a href="pages/exhibition.html?id=loneliness" aria-label="loneliness in a bubbling environment — image 2">
+          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-2.webp" width="694" height="1040" alt="" decoding="async" loading="lazy"></div>
+        </a>
+        <a href="pages/exhibition.html?id=loneliness" aria-label="loneliness in a bubbling environment — image 3">
+          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-3.webp" width="1275" height="1600" alt="" decoding="async" loading="lazy"></div>
+        </a>
+        <a href="pages/exhibition.html?id=loneliness" aria-label="loneliness in a bubbling environment — image 4">
+          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-4.webp" width="1536" height="2048" alt="" decoding="async" loading="lazy"></div>
+        </a>
       </div>
     </div>
   </div>

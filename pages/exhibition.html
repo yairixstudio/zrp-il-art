@@ -7,6 +7,7 @@
 <link rel="preload" href="../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../פונטים/Solway-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../components/site-boot.css">
 <link rel="stylesheet" href="../components/gallery.css">
 <style>
@@ -17,6 +18,8 @@
 @font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
 @font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Solway";src:url("../פונטים/Solway-Light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Solway";src:url("../פונטים/Solway-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
 
 :root{
   --white:#FFFFFF;
@@ -29,6 +32,7 @@
   --max:1440px;
   --cop:"Copperplate","Times New Roman",serif;
   --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --exo-title-en:"Solway","Copperplate","Times New Roman",serif;
   --pad-x:96px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -76,7 +80,11 @@ body{text-transform:uppercase}
 .ex-hero .overlay .title-bar .lbl{font-family:var(--cop);font-weight:300;font-size:26px;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
 .ex-hero .overlay .title-bar .dot{display:block;width:6px;height:6px;border-radius:300px;background:#fff;flex-shrink:0}
 .ex-hero .overlay .title-he{font-family:var(--heb);font-weight:400;font-size:29px;text-align:center;direction:rtl;line-height:1.1}
-.ex-hero .overlay .title-en{font-family:var(--cop);font-weight:300;font-size:17px;text-align:center;line-height:1.3;letter-spacing:.04em}
+.ex-hero .overlay .title-en{font-family:var(--exo-title-en);font-weight:300;font-size:17px;text-align:center;line-height:1.3;letter-spacing:.04em}
+.ex-hero.ex-hero--overlay-en-only .overlay .title-bar,
+.ex-hero.ex-hero--overlay-en-only .overlay .title-he{display:none !important}
+.ex-hero .img-frame:not(.is-hero-slide-0) .overlay{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s linear .2s}
+.ex-hero .img-frame.is-hero-slide-0 .overlay{opacity:1;visibility:visible;pointer-events:none;transition:opacity .2s ease,visibility 0s linear 0s}
 
 /* ============================================================
    ARTISTS BAND — horizontally scrollable on all sizes
@@ -120,7 +128,8 @@ body{text-transform:uppercase}
   /* HERO becomes vertical: banner image full-width on top, then info section, then artists */
   .ex-hero{padding:0;background:var(--white);display:block}
   .ex-hero .row{flex-direction:column;gap:0;width:100%}
-  .ex-hero .img-col{flex:0 0 auto;width:100%;justify-content:center}
+  .ex-hero .text-col{order:2}
+  .ex-hero .img-col{flex:0 0 auto;width:100%;justify-content:center;order:1}
   .ex-hero .img-frame{width:100%;max-width:100%;height:520px}
   /* Mobile darken layer on top of gallery slides, below arrows/dots/overlay. */
   .ex-hero .img-frame::before{content:"";position:absolute;inset:0;background:rgba(27,27,27,0.4);z-index:1;pointer-events:none}
@@ -162,7 +171,7 @@ a.card.is-linked:hover .pic img{filter:brightness(.96)}
 a.card.is-linked .pic img{transition:filter .25s}
 </style>
 </head>
-<body class="is-loading-data">
+<body class="is-loading-data page-exhibition">
 
 <site-header></site-header>
 
@@ -183,7 +192,7 @@ a.card.is-linked .pic img{transition:filter .25s}
       </div>
     </div>
     <div class="img-col">
-      <div class="img-frame">
+      <div class="img-frame is-hero-slide-0">
         <image-gallery data-fit="cover" aria-label="exhibition gallery" data-bind-gallery></image-gallery>
         <div class="overlay">
           <div class="title-bar">
@@ -214,7 +223,7 @@ a.card.is-linked .pic img{transition:filter .25s}
 
 <!-- Embedded fallbacks for file:// usage. Keep in sync with /data/*.json (or run a local HTTP server and the fetch() above will be the source of truth). -->
 <script type="application/json" id="fallback-site">{"brand":{"name_en":"ZIELINSKI & ROZEN"},"footer":{"newsletter":{"title":"Stay Informed","placeholder":"Email Address","cta":"SUBSCRIBE"},"links_he":[{"label":"יצירת קשר","href":"/contact"},{"label":"הצהרת נגישות","href":"/accessibility"},{"label":"גלריית כיכר המדינה","href":"/galleries/medina"},{"label":"גלריית כיכר דיזינגוף","href":"/galleries/dizengoff"},{"label":"גלריית שוק הפשפשים","href":"/galleries/flea-market"}],"copyright":"© 2026 THE art GALLERY ZiELINSKI & ROZEN ALL RIGHTS RESERVED."}}</script>
-<script type="application/json" id="fallback-exhibitions">{"exhibitions": [{"id": "loneliness", "slug": "loneliness", "label_en": "EXHIBITION", "volume_en": "VOLUME 1", "title_he": "בדידות בתוך בסביבה תוססת", "title_en": "Loneliness in a bubbling environment", "status": "current", "status_label_en": "current", "gallery_id": "medina", "gallery_label_he": "גלריית כיכר המדינה", "hero_image": "images/exhibitions/loneliness/hero.webp", "gallery_images": [{"src": "images/exhibitions/loneliness/hero.webp", "alt": "בדידות בתוך סביבה תוססת — תמונת מפתח"}, {"src": "images/events/loneliness/invite-01.webp", "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"}, {"src": "images/events/loneliness/invite-02.webp", "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"}, {"src": "images/events/loneliness/invite-03.webp", "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"}, {"src": "images/events/loneliness/atmosphere.webp", "alt": "אווירה בגלריה — כיכר המדינה"}, {"src": "images/events/loneliness/second-01.webp", "alt": "מתוך התערוכה"}, {"src": "images/events/loneliness/second-02.webp", "alt": "מתוך התערוכה"}, {"src": "images/events/loneliness/second-03.webp", "alt": "מתוך התערוכה"}], "description_he": [{"weight": "regular", "lines": ["בדידות אינה תמיד שקט."]}, {"weight": "light", "lines": ["לעיתים היא מתרחשת דווקא במקומות הרועשים ביותר — בתוך שפע, צבע, תנועה, דימויים ואנשים.", "זו בדידות שאינה נובעת מהיעדר, אלא מעודף."]}, {"weight": "light", "lines": ["מעודף גירויים, מעודף מסכות, מעודף קולות שמטשטשים את הקול הפנימי."]}, {"weight": "light", "lines": ["התערוכה בדידות בתוך סביבה תוססת מבקשת להתבונן ברגע הזה:", "הרגע שבו אדם נמצא בלב ההמולה — ועדיין", "מרגיש לבד. לא כקריסה, אלא כמצב תודעתי.", "כהשהיה. כהתפכחות."]}, {"weight": "light", "lines": ["העבודות המוצגות בתערוכה נעות בין גוף לשפה, בין חומר לרגש, בין פיתוי לנחמה, בין משחקיות לפצע."]}, {"weight": "light", "lines": ["יש בהן צבע, ברק, הומור, פנטזיה ועושר חזותי — אך מתחת לפני השטח מתקיים שקט אחר:", "שאלות על זהות, על שייכות, על הצורך במגע, על כמיהה לנחמה בעולם שמציע אינסוף הסחות."]}, {"weight": "light", "lines": ["האמנים והאמניות שנאספו כאן מציעים נקודות מבט שונות על אותה חוויה אנושית:", "גוף שנוכח אך לא נענה, דימוי שמושך את העין אך מסתיר ריק, אובייקט שמבטיח הקלה אך חושף חוסר, יצור היברידי שחי בתוך עולם צבעוני אך מתקיים בבועה פנימית משלו."]}, {"weight": "light", "lines": ["הבדידות בתערוכה הזו אינה דרמטית ואינה מבקשת רחמים. היא עדינה, לעיתים כמעט יפה.", "כזו שמתקיימת בתוך תנועה, בתוך אור, בתוך חיים ומזמינה את הצופה לעצור, להרגיש, ולזהות בה אולי משהו מוכר מעצמו."]}, {"weight": "light", "lines": ["זו אינה תערוכה על להיות לבד."]}, {"weight": "regular", "lines": ["זו תערוכה על מה שקורה בפנים,", "כשמסביב הכל רועש."]}], "artists": [{"name_en": "zohar ron", "thumb": "images/exhibitions/loneliness/artists/01-zohar-ron.webp", "slug": "zohar-ron"}, {"name_en": "eitan goldson", "thumb": "images/exhibitions/loneliness/artists/02-eitan-goldson.webp", "slug": "eitan-goldson"}, {"name_en": "tal holy kadosh", "thumb": "images/exhibitions/loneliness/artists/03-holy-kadosh.webp", "slug": "holy-kadosh"}, {"name_en": "costa magarakis", "thumb": "images/exhibitions/loneliness/artists/04-costa-magarakis.webp", "slug": "costa-magarakis"}, {"name_en": "tal nehoray", "thumb": "images/exhibitions/loneliness/artists/05-tal-nehoray.webp", "slug": "tal-nehoray"}, {"name_en": "hila loterstein", "thumb": "images/exhibitions/loneliness/artists/06-hila-loterstein.webp", "slug": "hila-loterstein"}, {"name_en": "gal pollak", "thumb": "images/exhibitions/loneliness/artists/07-gal-pollak.webp", "slug": "gal-polk"}, {"name_en": "maya nachum levy", "thumb": "images/exhibitions/loneliness/artists/08-maya-nachum-levy.webp", "slug": "maya-nachum-levy"}, {"name_en": "adi duek", "thumb": "images/exhibitions/loneliness/artists/09-adi-duek.webp", "slug": "adi-duak"}, {"name_en": "la raz porta", "thumb": "images/exhibitions/loneliness/artists/10-la-raz-porta.webp", "slug": "la-raz-porta"}, {"name_en": "zohar shitrit", "thumb": "images/exhibitions/loneliness/artists/11-zohar-shitrit.webp", "slug": "zohar-shtrit"}]}, {"id": "how-many", "slug": "how-many", "label_en": "EXHIBITION", "volume_en": "VOLUME 2", "title_he": "כמה שותפים היו לך?", "title_en": "How many partners have you had?", "status": "current", "status_label_en": "current", "gallery_id": "dizengoff", "gallery_label_he": "גלריית כיכר דיזינגוף", "hero_image": "images/exhibitions/how-many/hero.webp", "gallery_images": [{"src": "images/exhibitions/how-many/hero.webp", "alt": "כמה שותפים היו לך? — תמונת מפתח"}], "description_he": [{"weight": "heading-en", "lines": ["HOW MANY PARTNERS", "HAVE YOU HAD?"]}, {"weight": "light", "lines": ["השאלה הזאת נשמעת פשוטה.", "כמעט טכנית.", "אבל היא לא באמת שואלת על מספר.", "היא פותחת מרחב.", "מרחב שבו זיכרונות, תחושות ודפוסים מתקיימים בו זמנית,", "בלי היררכיה ובלי סדר ברור.", "מרחב שבו מה שנשאר אינו עובדה,", "אלא רישום בגוף."]}, {"weight": "light", "lines": ["לא תמיד ברור מה שייך למי. מה התחיל איפה.", "ומה בכלל ניתן להפרדה.", "ובתוך כל זה, יש גם רגעים שאינם ניתנים להסבר.", "משיכה שממשיכה להתקיים גם כשההיגיון כבר ביטל אותה,", "דלתות שנדפקות שוב, למרות שהן סגורות,", "רגעים שבהם חרדה מתחפשת לאהבה,", "וכאב מוכר מרגיש כמו בית."]}, {"weight": "light", "lines": ["בתוך המרחב הזה, העבודות בתערוכה אינן מנסות לענות.", "הן מציעות מבט על יחסים לא דרך סיפור,", "אלא דרך מה שמצטבר.", "מחוות קטנות, חזרות ושאריות.", "רגעים שבהם מגע הוא גם קרבה וגם ספק.", "רגעים שבהם אינטימיות מתקרבת ונעצרת באותו הזמן.", "רגעים שלא מתיישבים לכדי נרטיב אחד."]}, {"weight": "light", "lines": ["לאורך הדרך, החיפוש מופנה שוב ושוב החוצה.", "אל האחר, אל המפגש, אל מה שיכול למלא או להחזיר.", "ורק ברגעים נדירים של כנות, כמעט בלתי נסבלת,", "מתבהר שהשאלה מעולם לא הייתה שם.", "השאלה “כמה” מתפרקת כאן,", "ובמקומה נשאלת שאלה אחרת,", "לא מנוסחת עד הסוף, שנוכחת בגוף יותר משהיא נאמרת."]}, {"weight": "regular", "lines": ["לא מה קרה, אלא מה נשאר.", "מה חוזר, מה נמשך מעבר למפגש עצמו.", "ומה מתגלה, לאט, לאט, כאשר מפסיקים לחפש בחוץ,", "ונשארים מול מה שכבר נמצא בפנים."]}], "artists": [{"name_en": "zohar ron", "thumb": "images/exhibitions/how-many/artists/01-zohar-ron.webp", "slug": "zohar-ron"}, {"name_en": "dan ben-ary", "thumb": "images/exhibitions/how-many/artists/02-dan-ben-ari.webp", "slug": "zohar-ron-dan-ben-ari"}, {"name_en": "alon manjoch", "thumb": "images/exhibitions/how-many/artists/03-alon-manjoch.webp", "slug": "alon"}, {"name_en": "risa brooke oze", "thumb": "images/exhibitions/how-many/artists/04-risa-brooke-oze.webp", "slug": "risa-oz"}, {"name_en": "noemi safir", "thumb": "images/exhibitions/how-many/artists/05-noemi-safir.webp", "slug": "noemi-safir"}, {"name_en": "yarden amir", "thumb": "images/exhibitions/how-many/artists/06-yarden-amir.webp", "slug": "yarden-amir"}, {"name_en": "nir giorgio levin", "thumb": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.webp", "slug": "nir-giorgio-levin"}, {"name_en": "anat wegier", "thumb": "images/exhibitions/how-many/artists/08-anat-wegier.webp", "slug": "anat-wegier"}, {"name_en": "elsa ers brosh", "thumb": "images/exhibitions/how-many/artists/09-elsa-ers-brosh.webp", "slug": "elsa-ars-brush"}, {"name_en": "liel salman noam", "thumb": "images/exhibitions/how-many/artists/10-liel-salman-noam.webp", "slug": "liel-salman"}, {"name_en": "tal nehoray", "thumb": "images/exhibitions/how-many/artists/11-tal-nehoray.webp", "slug": "tal-nehoray"}, {"name_en": "tanya shin", "thumb": "images/exhibitions/how-many/artists/12-tanya-shin.webp", "slug": "tanya-shin"}, {"name_en": "gal pollak", "thumb": "images/exhibitions/how-many/artists/13-gal-pollak.webp", "slug": "gal-polk"}, {"name_en": "samy david", "thumb": "images/exhibitions/how-many/artists/14-samy-david.webp", "slug": "sami-david"}, {"name_en": "racheli reuven", "thumb": "images/exhibitions/how-many/artists/15-racheli-reuven.webp"}]}]}</script>
+<script type="application/json" id="fallback-exhibitions">{"exhibitions": [{"id": "loneliness", "slug": "loneliness", "label_en": "EXHIBITION", "volume_en": "VOLUME 1", "title_he": "בדידות בתוך בסביבה תוססת", "title_en": "Loneliness in a bubbling environment", "status": "current", "status_label_en": "current", "gallery_id": "medina", "gallery_label_he": "גלריית כיכר המדינה", "hero_image": "images/exhibitions/loneliness/hero.webp", "gallery_images": [{"src": "images/exhibitions/loneliness/hero.webp", "alt": "בדידות בתוך סביבה תוססת — תמונת מפתח"}, {"src": "images/events/loneliness/invite-01.webp", "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"}, {"src": "images/events/loneliness/invite-02.webp", "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"}, {"src": "images/events/loneliness/invite-03.webp", "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"}, {"src": "images/events/loneliness/atmosphere.webp", "alt": "אווירה בגלריה — כיכר המדינה"}, {"src": "images/events/loneliness/second-01.webp", "alt": "מתוך התערוכה"}, {"src": "images/events/loneliness/second-02.webp", "alt": "מתוך התערוכה"}, {"src": "images/events/loneliness/second-03.webp", "alt": "מתוך התערוכה"}], "description_he": [{"weight": "regular", "lines": ["בדידות אינה תמיד שקט."]}, {"weight": "light", "lines": ["לעיתים היא מתרחשת דווקא במקומות הרועשים ביותר — בתוך שפע, צבע, תנועה, דימויים ואנשים.", "זו בדידות שאינה נובעת מהיעדר, אלא מעודף."]}, {"weight": "light", "lines": ["מעודף גירויים, מעודף מסכות, מעודף קולות שמטשטשים את הקול הפנימי."]}, {"weight": "light", "lines": ["התערוכה בדידות בתוך סביבה תוססת מבקשת להתבונן ברגע הזה:", "הרגע שבו אדם נמצא בלב ההמולה — ועדיין", "מרגיש לבד. לא כקריסה, אלא כמצב תודעתי.", "כהשהיה. כהתפכחות."]}, {"weight": "light", "lines": ["העבודות המוצגות בתערוכה נעות בין גוף לשפה, בין חומר לרגש, בין פיתוי לנחמה, בין משחקיות לפצע."]}, {"weight": "light", "lines": ["יש בהן צבע, ברק, הומור, פנטזיה ועושר חזותי — אך מתחת לפני השטח מתקיים שקט אחר:", "שאלות על זהות, על שייכות, על הצורך במגע, על כמיהה לנחמה בעולם שמציע אינסוף הסחות."]}, {"weight": "light", "lines": ["האמנים והאמניות שנאספו כאן מציעים נקודות מבט שונות על אותה חוויה אנושית:", "גוף שנוכח אך לא נענה, דימוי שמושך את העין אך מסתיר ריק, אובייקט שמבטיח הקלה אך חושף חוסר, יצור היברידי שחי בתוך עולם צבעוני אך מתקיים בבועה פנימית משלו."]}, {"weight": "light", "lines": ["הבדידות בתערוכה הזו אינה דרמטית ואינה מבקשת רחמים. היא עדינה, לעיתים כמעט יפה.", "כזו שמתקיימת בתוך תנועה, בתוך אור, בתוך חיים ומזמינה את הצופה לעצור, להרגיש, ולזהות בה אולי משהו מוכר מעצמו."]}, {"weight": "light", "lines": ["זו אינה תערוכה על להיות לבד."]}, {"weight": "regular", "lines": ["זו תערוכה על מה שקורה בפנים,", "כשמסביב הכל רועש."]}], "artists": [{"name_en": "zohar ron", "thumb": "images/exhibitions/loneliness/artists/01-zohar-ron.webp", "slug": "zohar-ron"}, {"name_en": "eitan goldson", "thumb": "images/exhibitions/loneliness/artists/02-eitan-goldson.webp", "slug": "eitan-goldson"}, {"name_en": "tal holy kadosh", "thumb": "images/exhibitions/loneliness/artists/03-holy-kadosh.webp", "slug": "holy-kadosh"}, {"name_en": "costa magarakis", "thumb": "images/exhibitions/loneliness/artists/04-costa-magarakis.webp", "slug": "costa-magarakis"}, {"name_en": "tal nehoray", "thumb": "images/exhibitions/loneliness/artists/05-tal-nehoray.webp", "slug": "tal-nehoray"}, {"name_en": "hila loterstein", "thumb": "images/exhibitions/loneliness/artists/06-hila-loterstein.webp", "slug": "hila-loterstein"}, {"name_en": "gal pollak", "thumb": "images/exhibitions/loneliness/artists/07-gal-pollak.webp", "slug": "gal-polk"}, {"name_en": "maya nachum levy", "thumb": "images/exhibitions/loneliness/artists/08-maya-nachum-levy.webp", "slug": "maya-nachum-levy"}, {"name_en": "adi duek", "thumb": "images/exhibitions/loneliness/artists/09-adi-duek.webp", "slug": "adi-duak"}, {"name_en": "la raz porta", "thumb": "images/exhibitions/loneliness/artists/10-la-raz-porta.webp", "slug": "la-raz-porta"}, {"name_en": "zohar shitrit", "thumb": "images/exhibitions/loneliness/artists/11-zohar-shitrit.webp", "slug": "zohar-shtrit"}]}, {"id": "how-many", "slug": "how-many", "hero_overlay_en_only": true, "label_en": "EXHIBITION", "volume_en": "VOLUME 2", "title_he": "כמה שותפים היו לך?", "title_en": "How many partners have you had?", "status": "current", "status_label_en": "current", "gallery_id": "dizengoff", "gallery_label_he": "גלריית כיכר דיזינגוף", "hero_image": "images/exhibitions/how-many/hero.webp", "gallery_images": [{"src": "images/exhibitions/how-many/hero.webp", "alt": "כמה שותפים היו לך? — תמונת מפתח"}], "description_he": [{"weight": "heading-en", "lines": ["HOW MANY PARTNERS", "HAVE YOU HAD?"]}, {"weight": "light", "lines": ["השאלה הזאת נשמעת פשוטה.", "כמעט טכנית.", "אבל היא לא באמת שואלת על מספר.", "היא פותחת מרחב.", "מרחב שבו זיכרונות, תחושות ודפוסים מתקיימים בו זמנית,", "בלי היררכיה ובלי סדר ברור.", "מרחב שבו מה שנשאר אינו עובדה,", "אלא רישום בגוף."]}, {"weight": "light", "lines": ["לא תמיד ברור מה שייך למי. מה התחיל איפה.", "ומה בכלל ניתן להפרדה.", "ובתוך כל זה, יש גם רגעים שאינם ניתנים להסבר.", "משיכה שממשיכה להתקיים גם כשההיגיון כבר ביטל אותה,", "דלתות שנדפקות שוב, למרות שהן סגורות,", "רגעים שבהם חרדה מתחפשת לאהבה,", "וכאב מוכר מרגיש כמו בית."]}, {"weight": "light", "lines": ["בתוך המרחב הזה, העבודות בתערוכה אינן מנסות לענות.", "הן מציעות מבט על יחסים לא דרך סיפור,", "אלא דרך מה שמצטבר.", "מחוות קטנות, חזרות ושאריות.", "רגעים שבהם מגע הוא גם קרבה וגם ספק.", "רגעים שבהם אינטימיות מתקרבת ונעצרת באותו הזמן.", "רגעים שלא מתיישבים לכדי נרטיב אחד."]}, {"weight": "light", "lines": ["לאורך הדרך, החיפוש מופנה שוב ושוב החוצה.", "אל האחר, אל המפגש, אל מה שיכול למלא או להחזיר.", "ורק ברגעים נדירים של כנות, כמעט בלתי נסבלת,", "מתבהר שהשאלה מעולם לא הייתה שם.", "השאלה “כמה” מתפרקת כאן,", "ובמקומה נשאלת שאלה אחרת,", "לא מנוסחת עד הסוף, שנוכחת בגוף יותר משהיא נאמרת."]}, {"weight": "regular", "lines": ["לא מה קרה, אלא מה נשאר.", "מה חוזר, מה נמשך מעבר למפגש עצמו.", "ומה מתגלה, לאט, לאט, כאשר מפסיקים לחפש בחוץ,", "ונשארים מול מה שכבר נמצא בפנים."]}], "artists": [{"name_en": "zohar ron", "thumb": "images/exhibitions/how-many/artists/01-zohar-ron.webp", "slug": "zohar-ron", "artist_page_slug": "zohar-ron-dan-ben-ari"}, {"name_en": "dan ben-ary", "thumb": "images/exhibitions/how-many/artists/02-dan-ben-ari.webp", "slug": "zohar-ron-dan-ben-ari"}, {"name_en": "alon manjoch", "thumb": "images/exhibitions/how-many/artists/03-alon-manjoch.webp", "slug": "alon"}, {"name_en": "risa brooke oze", "thumb": "images/exhibitions/how-many/artists/04-risa-brooke-oze.webp", "slug": "risa-oz"}, {"name_en": "noemi safir", "thumb": "images/exhibitions/how-many/artists/05-noemi-safir.webp", "slug": "noemi-safir"}, {"name_en": "yarden amir", "thumb": "images/exhibitions/how-many/artists/06-yarden-amir.webp", "slug": "yarden-amir"}, {"name_en": "nir giorgio levin", "thumb": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.webp", "slug": "nir-giorgio-levin"}, {"name_en": "anat wegier", "thumb": "images/exhibitions/how-many/artists/08-anat-wegier.webp", "slug": "anat-wegier"}, {"name_en": "elsa ers brosh", "thumb": "images/exhibitions/how-many/artists/09-elsa-ers-brosh.webp", "slug": "elsa-ars-brush"}, {"name_en": "liel salman noam", "thumb": "images/exhibitions/how-many/artists/10-liel-salman-noam.webp", "slug": "liel-salman"}, {"name_en": "tal nehoray", "thumb": "images/exhibitions/how-many/artists/11-tal-nehoray.webp", "slug": "tal-nehoray"}, {"name_en": "tanya shin", "thumb": "images/exhibitions/how-many/artists/12-tanya-shin.webp", "slug": "tanya-shin"}, {"name_en": "gal pollak", "thumb": "images/exhibitions/how-many/artists/13-gal-pollak.webp", "slug": "gal-polk"}, {"name_en": "samy david", "thumb": "images/exhibitions/how-many/artists/14-samy-david.webp", "slug": "sami-david"}, {"name_en": "racheli reuven", "thumb": "images/exhibitions/how-many/artists/15-racheli-reuven.webp"}]}]}</script>
 
 <script>
 (async function(){
@@ -318,18 +327,28 @@ a.card.is-linked .pic img{transition:filter .25s}
   // Artists strip — each card links to its artist page when slug is known
   const strip = tpl.querySelector('[data-bind-artists]');
   const _ARTIST_SLUGS = {"zohar ron":"zohar-ron", "eitan goldson":"eitan-goldson", "eitan goldson and henrika rotenberg":"eitan-goldson", "tanya shin":"tanya-shin", "nir giorgio levin":"nir-giorgio-levin", "elsa ers brosh":"elsa-ars-brush", "elsa ars brush":"elsa-ars-brush", "gal pollak":"gal-polk", "gal polk":"gal-polk", "zohar shtrit":"zohar-shtrit", "zohar shitrit":"zohar-shtrit", "hila loterstein":"hila-loterstein", "sami david":"sami-david", "samy david":"sami-david", "risa brooke oze":"risa-oz", "risa oz":"risa-oz", "adi duak":"adi-duak", "adi duek":"adi-duak", "alon manjoch":"alon", "noemi safir":"noemi-safir", "yarden amir":"yarden-amir", "anat wegier":"anat-wegier", "anat wrgier":"anat-wegier", "liel salman":"liel-salman", "liel salman noam":"liel-salman", "tal nehoray":"tal-nehoray", "tal nehorai":"tal-nehoray"};
+  // Face-centered focal points per artist — mirrors FOCAL_POINTS in pages/artists/artist.html
+  const _ARTIST_FOCAL = {
+    'alon':'58% 40%','anat-wegier':'center 20%','eitan-goldson':'center 15%',
+    'elsa-ars-brush':'50% 28%','gal-polk':'center 20%','liel-salman':'center 15%',
+    'nir-giorgio-levin':'center 28%','noemi-safir':'center 18%','risa-oz':'center 28%',
+    'sami-david':'center 25%','tal-nehoray':'center 28%','tanya-shin':'center 22%',
+    'yarden-amir':'center 18%','zohar-ron':'center 25%','zohar-ron-dan-ben-ari':'center 35%'
+  };
   (ex.artists || []).forEach(a => {
     const nameDisplay = (a.name_en || '').replace(/\\n/g,'\n').replace(/\\L/g,'\n');
     const lookup = (a.slug || _ARTIST_SLUGS[(a.name_en||'').toLowerCase().trim()] || null);
-    const linkable = !!lookup;
+    const hrefSlug = (a.artist_page_slug || lookup);
+    const linkable = !!hrefSlug;
     const wrap = document.createElement(linkable ? 'a' : 'div');
     wrap.className = 'card' + (linkable ? ' is-linked' : '');
     if (linkable) {
-      wrap.href = '../artists/' + lookup + '.html';
+      wrap.href = 'artists/' + hrefSlug + '.html';
       wrap.setAttribute('aria-label', 'לדף האומן ' + nameDisplay);
     }
+    const focal = (lookup && _ARTIST_FOCAL[lookup]) || 'center 25%';
     wrap.innerHTML = `
-      <div class="pic"><img src="../${a.thumb}" alt="" decoding="async" loading="lazy"></div>
+      <div class="pic"><img src="../${a.thumb}" alt="" decoding="async" loading="lazy" style="object-position:${focal}"></div>
       <div class="name">${nameDisplay}</div>
     `;
     strip.appendChild(wrap);
@@ -350,6 +369,29 @@ a.card.is-linked .pic img{transition:filter .25s}
   page.innerHTML = '';
   page.appendChild(tpl);
   document.body.classList.remove('is-loading-data');
+
+  const heroSec = page.querySelector('.ex-hero');
+  const imgFrame = heroSec && heroSec.querySelector('.img-frame');
+  if (ex.hero_overlay_en_only && heroSec) heroSec.classList.add('ex-hero--overlay-en-only');
+
+  function syncHeroSlideOverlay() {
+    if (!imgFrame) return;
+    const gal = imgFrame.querySelector('image-gallery');
+    let idx = 0;
+    if (gal && typeof gal._idx === 'number') idx = gal._idx;
+    imgFrame.classList.toggle('is-hero-slide-0', idx === 0);
+  }
+
+  customElements.whenDefined('image-gallery').then(() => {
+    syncHeroSlideOverlay();
+    const gal = imgFrame && imgFrame.querySelector('image-gallery');
+    if (gal) {
+      gal.addEventListener('gallery:change', (e) => {
+        const i = e.detail && typeof e.detail.index === 'number' ? e.detail.index : 0;
+        imgFrame.classList.toggle('is-hero-slide-0', i === 0);
+      });
+    }
+  });
 })();
 </script>
 

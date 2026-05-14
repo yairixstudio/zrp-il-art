@@ -85,12 +85,12 @@
       "works": [
         {
           "id": "tanya-triangle",
-          "title": "triangle",
+          "title": "\"triangle\"",
           "image": "images/artists/tanya-shin/work-01.webp"
         },
         {
           "id": "tanya-crop1",
-          "title": "crop 1",
+          "title": "\"crop 1\"",
           "image": "images/artists/tanya-shin/work-02.webp"
         }
       ],
@@ -326,6 +326,30 @@
         "images/artists/zohar-ron-dan-ben-ari/hero-left.webp",
         "images/artists/zohar-ron-dan-ben-ari/hero-right.webp"
       ],
+      "hero_image_focus": [
+        "center 28%",
+        "center 22%"
+      ],
+      "hero_collab": {
+        "artists": [
+          {
+            "name_en": [
+              "zohar",
+              "ron"
+            ],
+            "bio_he_short": "אומן חזותי, במאי וצלם המבטא חיבור ויזואלי ורעיוני בין פולחן טקסי לאסתטיקה וחושניות של גוף ותנועה, כחלק מהשפה הויזואלית ביצירותיו.",
+            "instagram": "@ZOHARRON"
+          },
+          {
+            "name_en": [
+              "dan",
+              "ben-ary"
+            ],
+            "bio_he_short": "אסטרטג, מעצב, פילוסוף רחוב ואמן רב־תחומי בחיפוש אחר מניפולציות תת־מודעות חברתיות שמשפיעות על המציאות שבה אנו חיים.",
+            "instagram": "@DANDAN_NUSHA"
+          }
+        ]
+      },
       "work_image": "images/works/grid/zohar-ron-dan-ben-ari.webp",
       "instagram_handle": "@ZOHARRON × @dandan_nusha",
       "bio_he": "פרויקט אמנות חברתי אשר בא לשאול שאלה פשוטה <span class=\"lat\">SEX?</span>\nבפרויקט זה התחלנו את השאלה שלנו עם עשרה זוגות ומזרן.\nרגשות ותקשורת, תת-מודע ותנועה.\nללא מילים, כל זוג סיפור שונה.\n\n\"כמה פרטנרים היו לך?\"\nבמקום לספור, אני מתבונן אל החוויה עצמה. דרך רגעים אינטימיים, היצירה מציעה להתבונן על סקס כמרחב של נוכחות, תקשורת, פגיעוּת ואנושיות. השאלה על מספר הפרטנרים הופכת כאן לפחות רלוונטית; מה שנשאר הוא איכות המפגש, המבט, המגע גוף בגוף והקשר שנוצר ביניהם.\n\nהפרויקט מזמין את הצופה לעבור ממדידה של כמות להקשבה לעומק, מספירה לחוויה של הזדהות או סלידה.",
@@ -342,11 +366,12 @@
           "image": "images/artists/zohar-ron-dan-ben-ari/work-02.webp"
         }
       ],
-      "figma_artist_page_mobile": "1213:3879",
+      "figma_artist_page_mobile": "119:3917",
       "figma_artist_page_desktop": null,
       "homepage_featured": false,
       "works_grid_order": 11,
-      "_note": "collaboration card — links 2 artists; uses dual hero images instead of single portrait"
+      "works_caption_each_image": true,
+      "_note": "collaboration card — links 2 artists; uses dual hero images instead of single portrait; How Many (not loneliness) — keep per-image captions even when titles match"
     },
     {
       "id": "adi-duak",

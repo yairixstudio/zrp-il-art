@@ -31,6 +31,29 @@
 עמוד בית מובייל: Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=144-2&m=dev
 
+### Homepage — "Loneliness × the tribe" (מעל Press)
+
+בלוק כותרת דסקטופ (מעל `#press`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=250-87&m=dev
+
+אותו בלוק מובייל + קרדיטים + גלריית 4 תמונות: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=250-243&m=dev
+
+### Homepage — exhibitions / now (כרטיסי תערוכות + our artists)
+
+דסקטופ (שני עמודות גבוהות + שורת אומנים): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=237-1285&m=dev
+
+### Homepage — שורת הגלריות (3 כרטיסים, gap 8px, crop תמונות)
+
+שורת the galleries בדסקטופ (מדינה · דיזינגוף · שוק): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=237-1453&m=dev
+
+### Homepage — כרטיס גלריית כיכר דיזינגוף (`#galleries`)
+
+כרטיס דיזינגוף (תמונה + שם + כתובת, ללא coming soon): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=237-1465&m=dev
+
 ---
 
 ## 👤 אודות / Biography of Erez (/about)
@@ -146,6 +169,9 @@ opencall the-peeler דסקטופ: Implement this design from Figma.
 
 opencall the-peeler מובייל: Implement this design from Figma.
 @https://www.figma.com/design/Zn3N3mBQkbYER7tTJMbCcz/%D7%92%D7%A8%D7%A4%D7%99%D7%A7%D7%95%D7%AA-%D7%A9%D7%95%D7%A0%D7%95%D7%AA?node-id=1213-2518&m=dev
+
+opencall the-peeler — רשימת מעוררי רגש (שבירת שורות, קובץ landing): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=119-2587&m=dev
 
 ### how-many — כמה שותפים
 

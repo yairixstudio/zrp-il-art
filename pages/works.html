@@ -56,14 +56,15 @@ body{text-transform:uppercase}
 .hero-side{margin-left:auto;font-family:var(--heb);font-weight:300;font-size:18px;color:var(--ink);direction:rtl;text-align:right;max-width:360px;line-height:1.55;align-self:flex-end;padding-bottom:8px}
 
 /* ===== ARTWORK GRID ===== */
-.grid{padding:48px var(--pad-x);display:grid;grid-template-columns:repeat(3,1fr);gap:48px 32px;background:var(--white)}
+.grid{padding:48px var(--pad-x);display:grid;grid-template-columns:repeat(3,1fr);gap:48px 32px;background:#fafafa}
 .card{display:flex;flex-direction:column;gap:16px;min-width:0}
 .card .img{position:relative;width:100%;height:478.38px;overflow:hidden;background:#f3f1ee}
 .card .img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
 .card:hover .img img{transform:scale(1.04)}
 .card .img::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,0);transition:background .3s}
 .card:hover .img::after{background:rgba(27,27,27,.06)}
-.card .name{font-family:var(--heb);font-weight:400;font-size:16px;color:var(--ink);direction:rtl;text-align:right;line-height:1.3;padding:0 4px;display:block;transition:opacity .2s,text-decoration-color .2s;text-decoration:underline transparent;text-underline-offset:3px}
+.card .name{font-family:var(--heb);font-weight:400;font-size:16px;color:var(--ink);direction:rtl;text-align:center;line-height:1.3;padding:0 4px;display:block;transition:opacity .2s,text-decoration-color .2s;text-decoration:underline transparent;text-underline-offset:3px}
+.card a.name .name-line2{display:block;font:inherit;font-weight:300;margin-top:.15em}
 .card a.name:hover{opacity:.65;text-decoration-color:currentColor}
 
 /* fit-vs-cover variants per Figma scaleMode */
@@ -139,7 +140,7 @@ body{text-transform:uppercase}
 
 <script type="application/json" id="works-data">
 [
-  {"img":"eitan-goldson-henrika","name_he":"איתן גולדסון","name_en":"eitan goldson","slug":"eitan-goldson","fit":true},
+  {"img":"eitan-goldson-henrika","name_he":"איתן גולדסון","name_he_line2":"הנריקה רוטנברג","name_en":"eitan goldson","slug":"eitan-goldson","fit":true},
   {"img":"elsa-ars-brush","name_he":"אלסה ארס ברוש","name_en":"elsa ars brush","slug":"elsa-ars-brush"},
   {"img":"gal-polk","name_he":"גל פולק","name_en":"gal polk","slug":"gal-polk"},
   {"img":"tanya-shin","name_he":"טניה שין","name_en":"tanya shin","slug":"tanya-shin"},
@@ -164,10 +165,10 @@ body{text-transform:uppercase}
     var src=base+w.img+'.webp';
     var href='artists/'+w.slug+'.html';
     return '<article class="card'+(w.fit?' fit':'')+'">'+
-      '<div class="img" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'" data-artwork-link-label="לדף האומן">'+
+      '<div class="img" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'"'+(w.name_he_line2?' data-artwork-he-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+'>'+
         '<img src="'+src+'" alt="'+w.name_he+'" decoding="async" fetchpriority="high">'+
       '</div>'+
-      '<a class="name" href="'+href+'">'+w.name_he+'</a>'+
+      '<a class="name" href="'+href+'">'+w.name_he+(w.name_he_line2?'<br><span class="name-line2">'+w.name_he_line2+'</span>':'')+'</a>'+
     '</article>';
   }).join('');
 
@@ -176,7 +177,7 @@ body{text-transform:uppercase}
   var slides=items.map(function(w,i){
     var src=base+w.img+'.webp';
     var href='artists/'+w.slug+'.html';
-    return '<img class="tri-slide" src="'+src+'" alt="'+w.name_he+'" draggable="false"'+(i?' loading="lazy"':'')+' data-caption="'+w.name_he+'" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'" data-artwork-link-label="לדף האומן" decoding="async">';
+    return '<img class="tri-slide" src="'+src+'" alt="'+w.name_he+(w.name_he_line2?' · '+w.name_he_line2:'')+'" draggable="false"'+(i?' loading="lazy"':'')+' data-caption="'+w.name_he+'"'+(w.name_he_line2?' data-caption-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'"'+(w.name_he_line2?' data-artwork-he-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' decoding="async">';
   }).join('');
   var dots=items.map(function(_,i){
     return '<button type="button" class="tri-dot'+(i===0?' is-on':'')+'" role="tab" aria-selected="'+(i===0)+'">';

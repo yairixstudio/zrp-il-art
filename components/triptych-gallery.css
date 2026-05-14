@@ -5,7 +5,7 @@
    Markup contract:
      .tri[ data-tri-loop="true|false" ]
        .tri-frame
-         .tri-slide ×N (<img>)
+         .tri-slide ×N (<img> optional data-caption, data-caption-line2, data-caption-href)
        .tri-dots
          button.tri-dot ×N
    Tokens are tunable per page via CSS vars on `.tri` (see §16ב in CLAUDE.md).
@@ -68,6 +68,7 @@
 .tri-caption{font-family:var(--heb,"FbEzmel","Arial Hebrew",serif);font-weight:400;font-size:16px;color:var(--ink,#1B1B1B);direction:rtl;text-align:center;line-height:1.4;min-height:1.4em;order:1}
 .tri-caption a{color:inherit;text-decoration:underline;text-decoration-color:rgba(27,27,27,.25);text-underline-offset:3px;transition:text-decoration-color .2s,opacity .2s}
 .tri-caption a:hover{text-decoration-color:currentColor;opacity:.75}
+.tri-caption-line2{display:block;font:inherit;font-weight:300;margin-top:.2em}
 .tri-slide.is-center[data-artist-href]{cursor:pointer}
 
 @media (max-width:1100px){

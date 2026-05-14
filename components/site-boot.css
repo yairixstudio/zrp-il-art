@@ -55,6 +55,12 @@ site-footer:not(:defined){
   site-header:not(:defined){height:48px}
 }
 
+@media (min-width:769px){
+  body.page-exhibition site-header:not(:defined){
+    background:#FFFFFF;
+  }
+}
+
 /* ---- Cross-document View Transitions ----
    Same-origin nav fades old page out, new page in. Chromium 126+,
    Safari Technology Preview. Browsers ignoring this rule still get

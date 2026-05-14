@@ -118,6 +118,67 @@
     "figma_node_desktop": "228:67",
     "figma_node_mobile": "228:101"
   },
+  "tribe_teaser": {
+    "_note": "Above #press — Figma landing::250:87 (desktop titles only) + 250:243 (mobile: titles + artist credits + 4-thumb strip).",
+    "exhibition_href": "pages/exhibition.html?id=loneliness",
+    "title_line_1": "loneliness",
+    "title_line_2": "in a bubbling environment",
+    "subtitle": "x the tribe",
+    "credit_rows": [
+      [
+        {
+          "slug": "maya-nachum-levy",
+          "name_en": "maya nachum levy"
+        },
+        {
+          "slug": "holy-kadosh",
+          "name_en": "tal holy kadosh"
+        }
+      ],
+      [
+        {
+          "slug": "zohar-ron",
+          "name_en": "zohar ron"
+        },
+        {
+          "slug": "tal-nehoray",
+          "name_en": "tal nehoray"
+        },
+        {
+          "slug": "gal-polk",
+          "name_en": "gal pollak"
+        }
+      ]
+    ],
+    "gallery_images": [
+      {
+        "src": "images/homepage/tribe-teaser/thumb-1.webp",
+        "width": 1075,
+        "height": 1600,
+        "alt": ""
+      },
+      {
+        "src": "images/homepage/tribe-teaser/thumb-2.webp",
+        "width": 694,
+        "height": 1040,
+        "alt": ""
+      },
+      {
+        "src": "images/homepage/tribe-teaser/thumb-3.webp",
+        "width": 1275,
+        "height": 1600,
+        "alt": ""
+      },
+      {
+        "src": "images/homepage/tribe-teaser/thumb-4.webp",
+        "width": 1536,
+        "height": 2048,
+        "alt": ""
+      }
+    ],
+    "figma_node_desktop": "250:87",
+    "figma_node_mobile": "250:243"
+  },
   "press_section": {
     "title_b": "press",
     "title_l": "& events",

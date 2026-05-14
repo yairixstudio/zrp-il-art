@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found · Zielinski & Rozen</title>
+<meta name="description" content="הדף שחיפשת לא נמצא — Zielinski &amp; Rozen Art Galleries">
+<meta name="robots" content="noindex">
+
+<!-- Absolute paths: served from /404.html at any depth (custom domain) -->
+<link rel="preload" href="/פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="/פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="/components/site-boot.css">
+
+<style>
+@font-face{font-family:"Copperplate";src:url("/פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("/פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("/פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("/פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("/פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("/פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;
+  --ink:#1B1B1B;
+  --grey-mid:#808080;
+  --copy-grey:#6B7280;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;text-transform:uppercase}
+a{color:inherit;text-decoration:none}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:64px 24px}
+.err{display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;max-width:520px}
+.code{font-family:var(--cop);font-weight:900;font-size:180px;line-height:.85;letter-spacing:.04em;color:var(--ink)}
+.title{font-family:var(--cop);font-weight:400;font-size:22px;letter-spacing:.18em;color:var(--ink)}
+.rule{width:48px;height:1px;background:var(--ink);opacity:.65;margin:4px 0}
+.heb-msg{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.4;color:var(--ink);direction:rtl;text-transform:none}
+.links{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:center;margin-top:18px;font-family:var(--cop);font-weight:300;font-size:14px;letter-spacing:.14em}
+.links a{padding:2px 0;border-bottom:1px solid var(--ink);transition:opacity .15s ease}
+.links a:hover{opacity:.55}
+
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+
+@media (max-width:640px){
+  main{padding:48px 20px}
+  .code{font-size:120px}
+  .title{font-size:18px;letter-spacing:.14em}
+  .heb-msg{font-size:16px}
+  .links{font-size:12px;gap:8px 20px}
+}
+</style>
+</head>
+<body>
+
+<site-header></site-header>
+
+<main>
+  <section class="err">
+    <div class="code">404</div>
+    <div class="title">Page Not Found</div>
+    <div class="rule" aria-hidden="true"></div>
+    <p class="heb-msg">הדף שחיפשת לא נמצא.<br>אולי הוא הוסר, או שהקישור שגוי.</p>
+    <nav class="links" aria-label="useful links">
+      <a href="/">Home</a>
+      <a href="/#exhibitions">Exhibitions</a>
+      <a href="/#opencall">Open Call</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </section>
+</main>
+
+<site-footer></site-footer>
+
+<script src="/components/site-chrome.js" defer></script>
+</body></html>

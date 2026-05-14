@@ -105,7 +105,7 @@ body{text-transform:uppercase}
 .hero-image .img-frame{
   position:relative;
   width:min(600px,100%);
-  aspect-ratio:600/498;
+  aspect-ratio:6/5;
   overflow:hidden;
 }
 .hero-image .img-frame > a.hero-image-link{
@@ -196,13 +196,14 @@ body{text-transform:uppercase}
 /* Overlay — desktop Figma p 16; mobile 8 18 8 8 */
 .ex-now .card .ovr{position:absolute;top:16px;right:16px;bottom:16px;left:16px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;z-index:1;pointer-events:auto}
 .ex-now .card .ovr-titles{display:flex;flex-direction:column;gap:2px}
-/* Desktop overlay type — Figma 237:1297 / 237:1300 / 237:1310 */
-.ex-now .card .stat{font-family:var(--cop);font-weight:700;font-size:36px;line-height:1.1;text-align:left;letter-spacing:.02em}
-.ex-now .card .ttl-en{font-family:var(--cop);font-weight:300;font-size:36px;line-height:1.08;text-align:left;letter-spacing:.035em}
+/* Desktop overlay type — Figma 237:1297 / 237:1300 / 237:1310 (36px @1440).
+   clamp(): same max as Figma, scales down on narrower desktop so type stays proportional to the card like mobile. */
+.ex-now .card .stat{font-family:var(--cop);font-weight:700;font-size:clamp(20px,1.35vw + 12px,36px);line-height:1.1;text-align:left;letter-spacing:.02em}
+.ex-now .card .ttl-en{font-family:var(--cop);font-weight:300;font-size:clamp(14px,1.25vw + 10px,36px);line-height:1.08;text-align:left;letter-spacing:.035em}
 .ex-now .card .ttl-en--stack{display:flex;flex-direction:column;align-items:flex-start;gap:4px;line-height:1.05}
 .ex-now .card .ttl-en--stack .ttl-en-row1{white-space:nowrap}
 .ex-now .card .ttl-en--stack .ttl-en-row2{letter-spacing:.025em;opacity:.96;white-space:normal}
-.ex-now .card .ttl-he{font-family:var(--heb);font-weight:300;font-size:36px;direction:rtl;text-align:left;line-height:1.15;text-transform:none}
+.ex-now .card .ttl-he{font-family:var(--heb);font-weight:300;font-size:clamp(14px,1.25vw + 10px,36px);direction:rtl;text-align:left;line-height:1.15;text-transform:none}
 .ex-now .artists-bar{display:flex;justify-content:space-between;align-items:center;padding:0}
 .ex-now .artists-bar .lbl{font-family:var(--cop);font-weight:300;font-size:28px;direction:rtl;text-align:right}
 .ex-now .artists-bar svg{width:11px;height:11px;flex-shrink:0}
@@ -211,22 +212,29 @@ body{text-transform:uppercase}
 .ex-now .artist{flex:0 0 178px;display:flex;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start}
 .ex-now .artist img,.ex-now .artist .portrait-placeholder{width:178px;height:148px;object-fit:cover;background:#e8e8e8;display:block;object-position:center 25%}
 .ex-now .artist .nm{font-family:var(--cop);font-weight:300;font-size:18px;line-height:18px;text-align:center;color:var(--artist);white-space:pre-line}
-/* Face-centered focal points per artist — mirrors FOCAL_POINTS in pages/artists/artist.html */
-.ex-now .artist[href$="/alon.html"] img{object-position:58% 40%}
-.ex-now .artist[href$="/anat-wegier.html"] img{object-position:center 20%}
-.ex-now .artist[href$="/eitan-goldson.html"] img{object-position:center 15%}
-.ex-now .artist[href$="/elsa-ars-brush.html"] img{object-position:50% 28%}
-.ex-now .artist[href$="/gal-polk.html"] img{object-position:center 20%}
-.ex-now .artist[href$="/liel-salman.html"] img{object-position:center 15%}
-.ex-now .artist[href$="/nir-giorgio-levin.html"] img{object-position:center 28%}
-.ex-now .artist[href$="/noemi-safir.html"] img{object-position:center 18%}
-.ex-now .artist[href$="/risa-oz.html"] img{object-position:center 28%}
-.ex-now .artist[href$="/sami-david.html"] img{object-position:center 25%}
-.ex-now .artist[href$="/tal-nehoray.html"] img{object-position:center 28%}
-.ex-now .artist[href$="/tanya-shin.html"] img{object-position:center 22%}
-.ex-now .artist[href$="/yarden-amir.html"] img{object-position:center 18%}
-.ex-now .artist[href$="/zohar-ron.html"] img{object-position:center 25%}
-.ex-now .artist[href$="/zohar-ron-dan-ben-ari.html"] img{object-position:center 35%}
+/* Face-centered focal points per artist. Values are tuned for the 178x148 artist-slider crop. */
+.ex-now .artist[href$="/zohar-ron/"] img{object-position:50% 42%}
+.ex-now .artist[href$="/eitan-goldson/"] img{object-position:50% 18%}
+.ex-now .artist[href$="/tanya-shin/"] img{object-position:50% 30%}
+.ex-now .artist[href$="/nir-giorgio-levin/"] img{object-position:50% 32%}
+.ex-now .artist[href$="/elsa-ars-brush/"] img{object-position:50% 38%}
+.ex-now .artist[href$="/gal-polk/"] img{object-position:50% 20%}
+.ex-now .artist[href$="/zohar-shtrit/"] img{object-position:50% 25%}
+.ex-now .artist[href$="/hila-loterstein/"] img{object-position:50% 28%}
+.ex-now .artist[href$="/sami-david/"] img{object-position:50% 25%}
+.ex-now .artist[href$="/risa-oz/"] img{object-position:50% 35%}
+.ex-now .artist[href$="/zohar-ron-dan-ben-ari/"] img{object-position:50% 35%}
+.ex-now .artist[href$="/adi-duak/"] img{object-position:50% 28%}
+.ex-now .artist[href$="/alon/"] img{object-position:58% 40%}
+.ex-now .artist[href$="/noemi-safir/"] img{object-position:50% 18%}
+.ex-now .artist[href$="/yarden-amir/"] img{object-position:50% 38%}
+.ex-now .artist[href$="/anat-wegier/"] img{object-position:50% 32%}
+.ex-now .artist[href$="/liel-salman/"] img{object-position:50% 32%}
+.ex-now .artist[href$="/tal-nehoray/"] img{object-position:50% 32%}
+.ex-now .artist[href$="/holy-kadosh/"] img{object-position:50% 30%}
+.ex-now .artist[href$="/costa-magarakis/"] img{object-position:58% 35%}
+.ex-now .artist[href$="/maya-nachum-levy/"] img{object-position:50% 25%}
+.ex-now .artist[href$="/la-raz-porta/"] img{object-position:50% 50%}
 
 /* ===== EXHIBITIONS ARCHIVE ===== */
 .exhibitions{padding:48px var(--pad-x) 96px;display:flex;flex-direction:column;gap:40px;align-items:center;background:var(--white);width:100%;max-width:var(--max);margin:0 auto}
@@ -263,8 +271,9 @@ body{text-transform:uppercase}
 .aw-text .word.art-text::before{content:"art"}
 /* mobile: uppercase 'ART' (per Figma mobile) */
 
-/* ===== INSTAGRAM (Figma XhGH:144:431) — title left, arrows top-right, infinite-loop carousel ===== */
-.social{padding:34px var(--pad-x);display:flex;flex-direction:column;gap:16px;background:var(--white);--ig-cols:6}
+/* ===== INSTAGRAM (Figma XhGH:144:431) — title left, arrows top-right, infinite-loop carousel.
+   Visible columns via --ig-cols (fractional = peek): ~8.5 @1440 desktop, ~3.5 @390 mobile. */
+.social{padding:34px var(--pad-x);display:flex;flex-direction:column;gap:16px;background:var(--white);--ig-cols:8.5}
 .social-title{width:350px;line-height:1.05;text-align:left;font-family:var(--cop)}
 .social-title .b{font-weight:700;font-size:36px;display:block;line-height:1.1}
 .social-title .l{font-weight:300;font-size:36px;display:block;line-height:1.1}
@@ -306,18 +315,35 @@ body{text-transform:uppercase}
 .gallery-card .hours{display:flex;flex-direction:column;gap:4px;font-size:16px;font-weight:300;color:var(--ink)}
 
 /* ===== X OUR ARTISTS — Figma landing::228:67 (desktop) / 228:101 (mobile) =====
-   Desktop: 2×3 grid of artwork cards (image + artist name).
-   Mobile : reuses triptych-gallery component (coverflow). */
+   Desktop: fixed 3×3 CSS grid; row wrappers use display:contents. Tracks use 1fr so all
+   columns scale down together (no 2/4 column reflow). Gaps scale with viewport (clamp).
+   Card images: 5:6. Mobile: triptych component. */
 .x-artists{padding:48px var(--pad-x);display:flex;flex-direction:column;gap:48px;background:var(--white)}
 .x-artists-title{display:flex;flex-direction:column;line-height:1.05}
 .x-artists-title .b{font-family:var(--cop);font-weight:700;font-size:36px}
 .x-artists-title .l{font-family:var(--cop);font-weight:300;font-size:36px}
 .x-artists-grid{display:flex;flex-direction:column;gap:48px}
-.x-artists-row{display:flex;gap:32px;align-self:stretch}
-.x-artists-card{flex:1;display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0;color:inherit;text-decoration:none;transition:opacity .2s}
+.x-artists-row{display:flex;gap:32px;align-self:stretch;min-width:0}
+.x-artists-grid.only-desktop{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  column-gap:clamp(12px,2.222vw,32px);
+  row-gap:clamp(24px,3.333vw,48px);
+  width:100%;
+  min-width:0;
+}
+.x-artists-grid.only-desktop .x-artists-row{display:contents}
+.x-artists-card{display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0;color:inherit;text-decoration:none;transition:opacity .2s}
 .x-artists-card:hover{opacity:.8}
-.x-artists-card .img{width:100%;height:478.38px;overflow:hidden;background:#f3f1ee}
-.x-artists-card .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.x-artists-grid.only-desktop .x-artists-card .img{
+  width:100%;
+  aspect-ratio:5/6;
+  height:auto;
+  overflow:hidden;
+  background:#f3f1ee;
+  flex-shrink:0;
+}
+.x-artists-card .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;display:block}
 .x-artists-card:hover .img img{transform:scale(1.03)}
 .x-artists-card .name{font-family:var(--cop);font-weight:400;font-size:16px;text-align:center;color:var(--ink)}
 .x-artists-tri{display:none}
@@ -342,10 +368,15 @@ body{text-transform:uppercase}
 }
 .tribe-teaser-gallery{display:none;width:100%;min-width:0;max-width:100%}
 .tribe-gallery-track{display:flex;gap:4px;width:max-content;justify-content:center}
-.tribe-gallery-track a{flex:0 0 auto;width:100.25px;text-decoration:none;color:inherit;display:block}
-.tribe-gallery-track a .tribe-thumb-wrap{aspect-ratio:132/160;width:100%;overflow:hidden;background:#f3f1ee}
-.tribe-gallery-track a img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
-.tribe-gallery-track a:hover img{transform:scale(1.03)}
+/* Thumbs open artwork-lightbox only — not navigation links (Figma 250:98). */
+.tribe-gallery-track .tribe-thumb-card{
+  flex:0 0 auto;width:100.25px;display:block;cursor:zoom-in;color:inherit;
+  border:0;background:transparent;padding:0;margin:0;text-align:inherit;
+}
+.tribe-gallery-track .tribe-thumb-card:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tribe-gallery-track .tribe-thumb-card .tribe-thumb-wrap{aspect-ratio:132/160;width:100%;overflow:hidden;background:#f3f1ee}
+.tribe-gallery-track .tribe-thumb-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.tribe-gallery-track .tribe-thumb-card:hover img{transform:scale(1.03)}
 .tribe-teaser-gallery-wrap{display:flex;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;max-width:100%;min-width:0;box-sizing:border-box;scrollbar-width:thin}
 
 /* ===== PRESS & EVENTS ===== */
@@ -388,7 +419,6 @@ body{text-transform:uppercase}
   .aw-text .more{left:50%;top:50%;transform:translate(-50%,-50%);font-size:60px}
   .opencall-card{width:280px}
   .opencall-card .img{height:420px}
-  .social{--ig-cols:4}
   .past-thumb{width:140px}
   .past-thumb img{height:170px}
 }
@@ -415,8 +445,7 @@ body{text-transform:uppercase}
   .hero-image{order:2;width:100%;display:block;margin-top:24px}
   .hero-image .img-frame{
     width:100%;
-    height:297px;
-    aspect-ratio:auto;
+    aspect-ratio:6/5;
   }
 
   .hero-foot{
@@ -512,8 +541,8 @@ body{text-transform:uppercase}
   .aw-text .word.art{visibility:hidden}
   .aw-text .word.art::after{content:"ART";visibility:visible;position:absolute;left:0;top:0;font-weight:700}
 
-  /* INSTAGRAM — carousel keeps controlled translate; mobile shows ~2.5 peek-cards */
-  .social{padding:32px 16px;gap:16px;--ig-cols:2.5}
+  /* INSTAGRAM — ~3.5 cards visible @390 (viewport minus --pad-x) */
+  .social{padding:32px 16px;gap:16px;--ig-cols:3.5}
   .social-title{width:auto;line-height:1.05}
   .ig-nav svg{width:22px;height:14px}
 
@@ -533,9 +562,9 @@ body{text-transform:uppercase}
   .gallery-card .sub-en,.gallery-card .sub-en-loc{font-size:14px;line-height:1.25}
   .gallery-card .sub-en{margin-top:8px}
   .gallery-card .sub-en-loc{margin-top:11px}
-  .gallery-card .addr{font-size:16px;font-family:var(--heb);font-weight:400}
+  .gallery-card .addr{font-size:15px;font-family:var(--heb);font-weight:400}
   .gallery-card--flea .addr{display:none}
-  .gallery-card .hours{font-size:14px;font-family:var(--heb);font-weight:300;display:flex;flex-direction:column;gap:4px}
+  .gallery-card .hours{font-size:13px;font-family:var(--heb);font-weight:300;display:flex;flex-direction:column;gap:4px}
 
   /* X OUR ARTISTS — Figma 228:101 */
   .x-artists{padding:32px 0;gap:40px}
@@ -587,12 +616,22 @@ body{text-transform:uppercase}
     padding:0;
     width:100%;
     max-width:100%;
+    container-type:inline-size;
+    container-name:tribe-gal;
   }
-  .tribe-gallery-track{justify-content:flex-start;width:max-content;max-width:none}
-  /* Scale thumbs with viewport (Figma 100.25px @390); horizontal scroll when row wider than column */
-  .tribe-gallery-track a{
+  .tribe-gallery-track{
+    justify-content:flex-start;
+    width:max-content;
+    max-width:none;
+    gap:calc(4 / 390 * 100vw);
+  }
+  .tribe-gallery-track .tribe-thumb-card{
     flex:0 0 auto;
-    width:clamp(64px, 24vw, 100.25px);
+    width:calc(100.25 / 390 * 100vw);
+  }
+  @supports (width:1cqi){
+    .tribe-gallery-track{gap:1.025641026cqi}
+    .tribe-gallery-track .tribe-thumb-card{width:25.641025641cqi}
   }
 
   /* PRESS & EVENTS */
@@ -611,7 +650,6 @@ body{text-transform:uppercase}
   .announce{font-size:12px;letter-spacing:.005em}
   .hero-titles h1,.hero-titles h2{font-size:30px;line-height:37px}
   /* exhibitions/ex-now titles use clamp() — auto-scale to viewport, no fixed override needed */
-  .social{--ig-cols:2}
   .social-title .b,.social-title .l{font-size:30px}
   .galleries-title .b,.galleries-title .l,
   .tribe-teaser-head .b,.tribe-teaser-head .l,
@@ -621,7 +659,6 @@ body{text-transform:uppercase}
   .gallery-card > .img{width:140px;height:170px}
   .gallery-card .name{font-size:18px}
   .ex-now .card .stat{font-size:16px}
-  .tribe-gallery-track a{width:clamp(60px, 22vw, 100.25px)}
 }
 </style>
 </head>
@@ -638,7 +675,7 @@ body{text-transform:uppercase}
   </div>
   <div class="hero-image">
     <div class="img-frame">
-      <a class="hero-image-link" href="pages/about.html" data-nav="about" aria-label="about — biography of erez zielinski rozen">
+      <a class="hero-image-link" href="about/" data-nav="about" aria-label="about — biography of erez zielinski rozen">
         <img src="images/homepage/hero-landscape.webp" width="1320" height="1095" alt="Erez Zielinski Rozen" decoding="async" fetchpriority="high">
       </a>
     </div>
@@ -675,7 +712,7 @@ body{text-transform:uppercase}
   <div class="stacked-gallery sg-mode-swap" data-active="the-peeler">
     <div class="sg-stack">
       <a class="sg-item is-main"
-         href="pages/opencall.html?id=the-peeler"
+         href="opencalls/the-peeler/"
          data-id="the-peeler"
          data-info-status="online"
          data-info-date="23.4.2026"
@@ -684,7 +721,7 @@ body{text-transform:uppercase}
         <img src="images/opencalls/the-peeler-card.webp" width="1281" height="1600" alt="the peeler — open call" decoding="async" loading="lazy">
       </a>
       <a class="sg-item is-peek"
-         href="pages/opencall.html?id=how-many"
+         href="opencalls/how-many/"
          data-id="how-many"
          data-info-status="online"
          data-info-date="17.2.2026"
@@ -705,11 +742,11 @@ body{text-transform:uppercase}
 <section class="opencall only-desktop" id="opencall">
   <h2 class="section-header">the open call</h2>
   <div class="opencall-grid">
-    <a class="opencall-card size-a" href="pages/opencall.html?id=the-peeler">
+    <a class="opencall-card size-a" href="opencalls/the-peeler/">
       <div class="img"><img src="images/opencalls/the-peeler-card.webp" width="1281" height="1600" alt="" decoding="async" loading="lazy"></div>
       <div class="info"><span class="status">archived</span><span class="date">23.4.2026</span><span class="location">tel aviv</span></div>
     </a>
-    <a class="opencall-card size-b" href="pages/opencall.html?id=how-many">
+    <a class="opencall-card size-b" href="opencalls/how-many/">
       <div class="img"><img src="images/opencalls/how-many-card.webp" width="1280" height="1600" alt="" decoding="async" loading="lazy"></div>
       <div class="info"><span class="status">archived</span><span class="date">17.2.2026</span><span class="location">tel aviv</span></div>
     </a>
@@ -724,12 +761,12 @@ body{text-transform:uppercase}
       <span class="l">now</span>
     </div>
     <div class="cards">
-      <a class="card-link" href="pages/exhibition.html?id=how-many">
+      <a class="card-link" href="exhibitions/how-many/">
         <article class="card">
           <div class="gname">גלריית כיכר דיזינגוף</div>
           <div class="img">
             <img class="ex-now-photo ex-now-photo--mob" src="images/exhibitions/how-many-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
-            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/how-many/hero.webp" width="1068" height="1600" alt="" decoding="async" loading="lazy">
+            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/how-many-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
             <div class="ovr">
               <div class="stat">upcoming</div>
               <div class="ovr-titles">
@@ -739,12 +776,12 @@ body{text-transform:uppercase}
           </div>
         </article>
       </a>
-      <a class="card-link" href="pages/exhibition.html?id=loneliness">
+      <a class="card-link" href="exhibitions/loneliness/">
         <article class="card">
           <div class="gname">גלריית כיכר המדינה</div>
           <div class="img">
             <img class="ex-now-photo ex-now-photo--mob" src="images/exhibitions/loneliness-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
-            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/loneliness/hero.webp" width="690" height="1044" alt="" decoding="async" loading="lazy">
+            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/loneliness-mobile.webp" width="177" height="214" alt="" decoding="async" loading="lazy">
             <div class="ovr">
               <div class="stat">current</div>
               <div class="ovr-titles">
@@ -760,45 +797,53 @@ body{text-transform:uppercase}
   <div class="ex-now-tail">
     <div class="artists-bar">
       <span class="lbl">our artists</span>
-      <a href="pages/artists/alon.html" aria-label="all artists"><svg width="16" height="16" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.926778 11.0004L0 10.0736L8.73379 1.33128H0.793662V0H11.0004V10.2067H9.6691V2.2666L0.926778 11.0004Z" fill="#1A1C1C"/></svg></a>
+      <a href="artists/alon/" aria-label="all artists"><svg width="16" height="16" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.926778 11.0004L0 10.0736L8.73379 1.33128H0.793662V0H11.0004V10.2067H9.6691V2.2666L0.926778 11.0004Z" fill="#1A1C1C"/></svg></a>
     </div>
     <div class="artists-list">
-      <a class="artist" href="pages/artists/zohar-ron.html"><img src="images/artists/zohar-ron/portrait.webp" width="690" height="1044" alt="זוהר רון" decoding="async" loading="lazy"><div class="nm">zohar
+      <a class="artist" href="artists/zohar-ron/"><img src="images/artists/zohar-ron/portrait.webp" width="690" height="1044" alt="זוהר רון" decoding="async" loading="lazy"><div class="nm">zohar
 ron</div></a>
-      <a class="artist" href="pages/artists/eitan-goldson.html"><img src="images/artists/eitan-goldson/portrait.webp" width="690" height="1044" alt="איתן גולדסון" decoding="async" loading="lazy"><div class="nm">eitan
+      <a class="artist" href="artists/eitan-goldson/"><img src="images/artists/eitan-goldson/portrait.webp" width="690" height="1044" alt="איתן גולדסון" decoding="async" loading="lazy"><div class="nm">eitan
 goldson</div></a>
-      <a class="artist" href="pages/artists/tanya-shin.html"><img src="images/artists/tanya-shin/portrait-v2.webp" width="1160" height="2062" alt="טניה שין" decoding="async" loading="lazy"><div class="nm">tanya
+      <a class="artist" href="artists/tanya-shin/"><img src="images/artists/tanya-shin/portrait-v2.webp" width="1160" height="2062" alt="טניה שין" decoding="async" loading="lazy"><div class="nm">tanya
 shin</div></a>
-      <a class="artist" href="pages/artists/nir-giorgio-levin.html"><img src="images/artists/nir-giorgio-levin/portrait-v2.webp" width="2000" height="2097" alt="ניר ג׳ורג׳יו לוין" decoding="async" loading="lazy"><div class="nm">nir giorgio
+      <a class="artist" href="artists/nir-giorgio-levin/"><img src="images/artists/nir-giorgio-levin/portrait-v2.webp" width="2000" height="2097" alt="ניר ג׳ורג׳יו לוין" decoding="async" loading="lazy"><div class="nm">nir giorgio
 levin</div></a>
-      <a class="artist" href="pages/artists/elsa-ars-brush.html"><img src="images/artists/elsa-ars-brush/portrait.webp" width="4032" height="3024" alt="אלסה ארס ברוש" decoding="async" loading="lazy"><div class="nm">elsa
+      <a class="artist" href="artists/elsa-ars-brush/"><img src="images/artists/elsa-ars-brush/portrait.webp" width="4032" height="3024" alt="אלסה ארס ברוש" decoding="async" loading="lazy"><div class="nm">elsa
 ars brush</div></a>
-      <a class="artist" href="pages/artists/gal-polk.html"><img src="images/artists/gal-polk/portrait.webp" width="1736" height="3088" alt="גל פולק" decoding="async" loading="lazy"><div class="nm">gal
+      <a class="artist" href="artists/gal-polk/"><img src="images/artists/gal-polk/portrait.webp" width="1736" height="3088" alt="גל פולק" decoding="async" loading="lazy"><div class="nm">gal
 polk</div></a>
-      <a class="artist" href="pages/artists/zohar-shtrit.html"><img src="images/artists/zohar-shtrit/portrait.webp" width="690" height="1044" alt="זוהר שטרית" decoding="async" loading="lazy"><div class="nm">zohar
+      <a class="artist" href="artists/zohar-shtrit/"><img src="images/artists/zohar-shtrit/portrait.webp" width="690" height="1044" alt="זוהר שטרית" decoding="async" loading="lazy"><div class="nm">zohar
 shtrit</div></a>
-      <a class="artist" href="pages/artists/hila-loterstein.html"><img src="images/artists/hila-loterstein/portrait.webp" width="690" height="690" alt="הילה לוטרשטיין" decoding="async" loading="lazy"><div class="nm">hila
+      <a class="artist" href="artists/hila-loterstein/"><img src="images/artists/hila-loterstein/portrait.webp" width="690" height="690" alt="הילה לוטרשטיין" decoding="async" loading="lazy"><div class="nm">hila
 loterstein</div></a>
-      <a class="artist" href="pages/artists/sami-david.html"><img src="images/artists/sami-david/portrait.webp" width="1152" height="2048" alt="סמי דוד" decoding="async" loading="lazy"><div class="nm">sami
+      <a class="artist" href="artists/sami-david/"><img src="images/artists/sami-david/portrait.webp" width="1152" height="2048" alt="סמי דוד" decoding="async" loading="lazy"><div class="nm">sami
 david</div></a>
-      <a class="artist" href="pages/artists/risa-oz.html"><img src="images/artists/risa-oz/portrait.webp" width="842" height="1072" alt="ריסה עוז" decoding="async" loading="lazy"><div class="nm">risa
+      <a class="artist" href="artists/risa-oz/"><img src="images/artists/risa-oz/portrait.webp" width="842" height="1072" alt="ריסה עוז" decoding="async" loading="lazy"><div class="nm">risa
 oz</div></a>
-      <a class="artist" href="pages/artists/zohar-ron-dan-ben-ari.html"><img src="images/artists/zohar-ron-dan-ben-ari/hero-left.webp" width="2093" height="1717" alt="זוהר רון | דן בן ארי" decoding="async" loading="lazy"><div class="nm">zohar ron
+      <a class="artist" href="artists/zohar-ron-dan-ben-ari/"><img src="images/artists/zohar-ron-dan-ben-ari/hero-left.webp" width="2093" height="1717" alt="זוהר רון | דן בן ארי" decoding="async" loading="lazy"><div class="nm">zohar ron
 dan ben ari</div></a>
-      <a class="artist" href="pages/artists/adi-duak.html"><img src="images/artists/adi-duak/portrait.webp" width="690" height="1044" alt="עדי דואק" decoding="async" loading="lazy"><div class="nm">adi
+      <a class="artist" href="artists/adi-duak/"><img src="images/artists/adi-duak/portrait.webp" width="690" height="1044" alt="עדי דואק" decoding="async" loading="lazy"><div class="nm">adi
 duak</div></a>
-      <a class="artist" href="pages/artists/alon.html"><img src="images/artists/alon/portrait.webp" width="1060" height="1600" alt="אלון מנג׳וך" decoding="async" loading="lazy"><div class="nm">alon
+      <a class="artist" href="artists/alon/"><img src="images/artists/alon/portrait.webp" width="1060" height="1600" alt="אלון מנג׳וך" decoding="async" loading="lazy"><div class="nm">alon
 manjuch</div></a>
-      <a class="artist" href="pages/artists/noemi-safir.html"><img src="images/artists/noemi-safir/portrait.webp" width="1461" height="1656" alt="נועמי ספיר" decoding="async" loading="lazy"><div class="nm">noemi
+      <a class="artist" href="artists/noemi-safir/"><img src="images/artists/noemi-safir/portrait.webp" width="1461" height="1656" alt="נועמי ספיר" decoding="async" loading="lazy"><div class="nm">noemi
 safir</div></a>
-      <a class="artist" href="pages/artists/yarden-amir.html"><img src="images/artists/yarden-amir/portrait.webp" width="2732" height="4096" alt="ירדן אמיר" decoding="async" loading="lazy"><div class="nm">yarden
+      <a class="artist" href="artists/yarden-amir/"><img src="images/artists/yarden-amir/portrait.webp" width="2732" height="4096" alt="ירדן אמיר" decoding="async" loading="lazy"><div class="nm">yarden
 amir</div></a>
-      <a class="artist" href="pages/artists/anat-wegier.html"><img src="images/artists/anat-wegier/portrait.webp" width="580" height="998" alt="ענת ויז׳ייה" decoding="async" loading="lazy"><div class="nm">anat
+      <a class="artist" href="artists/anat-wegier/"><img src="images/artists/anat-wegier/portrait.webp" width="580" height="998" alt="ענת ויז׳ייה" decoding="async" loading="lazy"><div class="nm">anat
 wegier</div></a>
-      <a class="artist" href="pages/artists/liel-salman.html"><img src="images/artists/liel-salman/portrait.webp" width="3000" height="4000" alt="ליאל סלמן" decoding="async" loading="lazy"><div class="nm">liel
+      <a class="artist" href="artists/liel-salman/"><img src="images/artists/liel-salman/portrait.webp" width="3000" height="4000" alt="ליאל סלמן" decoding="async" loading="lazy"><div class="nm">liel
 salman</div></a>
-      <a class="artist" href="pages/artists/tal-nehoray.html"><img src="images/artists/tal-nehoray/portrait.webp" width="3072" height="4096" alt="טל נהוראי" decoding="async" loading="lazy"><div class="nm">tal
+      <a class="artist" href="artists/tal-nehoray/"><img src="images/artists/tal-nehoray/portrait.webp" width="3072" height="4096" alt="טל נהוראי" decoding="async" loading="lazy"><div class="nm">tal
 nehoray</div></a>
+      <a class="artist" href="artists/holy-kadosh/"><img src="images/artists/holy-kadosh/portrait.webp" width="690" height="690" alt="טל הולי קדוש" decoding="async" loading="lazy"><div class="nm">tal holy
+kadosh</div></a>
+      <a class="artist" href="artists/costa-magarakis/"><img src="images/artists/costa-magarakis/portrait.webp" width="690" height="690" alt="קוסטה מגרקיס" decoding="async" loading="lazy"><div class="nm">costa
+magarakis</div></a>
+      <a class="artist" href="artists/maya-nachum-levy/"><img src="images/artists/maya-nachum-levy/portrait.webp" width="690" height="1044" alt="מאיה נחום לוי" decoding="async" loading="lazy"><div class="nm">maya nachum
+levy</div></a>
+      <a class="artist" href="artists/la-raz-porta/"><img src="images/artists/la-raz-porta/portrait.webp" width="690" height="1044" alt="לה רז פורטה" decoding="async" loading="lazy"><div class="nm">la raz
+porta</div></a>
     </div>
   </div>
 </section>
@@ -834,7 +879,7 @@ nehoray</div></a>
   </div>
   <div class="aw-row">
     <div class="aw-text">
-      <a href="pages/works.html" class="more">
+      <a href="works/" class="more">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 8l-8 8 8 8"/></svg>
         more
       </a>
@@ -914,43 +959,43 @@ nehoray</div></a>
   <!-- DESKTOP — 3×3 grid -->
   <div class="x-artists-grid only-desktop">
     <div class="x-artists-row">
-      <a class="x-artists-card" href="pages/artists/nir-giorgio-levin.html">
+      <a class="x-artists-card" href="artists/nir-giorgio-levin/">
         <div class="img"><img src="images/homepage/x-our-artists/work-1.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">nir giorgio levin</div>
       </a>
-      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
+      <a class="x-artists-card" href="artists/gal-polk/">
         <div class="img"><img src="images/homepage/x-our-artists/work-2.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">maya nachum levy</div>
+        <div class="name">gal pollak</div>
       </a>
-      <a class="x-artists-card" href="pages/artists/gal-polk.html">
+      <a class="x-artists-card" href="artists/gal-polk/">
         <div class="img"><img src="images/homepage/x-our-artists/work-3.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">gal pollak</div>
       </a>
     </div>
     <div class="x-artists-row">
-      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
+      <a class="x-artists-card" href="artists/gal-polk/">
         <div class="img"><img src="images/homepage/x-our-artists/work-4.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">maya nachum levy</div>
+        <div class="name">gal pollak</div>
       </a>
-      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
+      <a class="x-artists-card" href="artists/maya-nachum-levy/">
         <div class="img"><img src="images/homepage/x-our-artists/work-5.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
       </a>
-      <a class="x-artists-card" href="pages/artists/tanya-shin.html">
+      <a class="x-artists-card" href="artists/tanya-shin/">
         <div class="img"><img src="images/homepage/x-our-artists/work-6.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">tanya shin</div>
       </a>
     </div>
     <div class="x-artists-row">
-      <a class="x-artists-card" href="pages/artists/yarden-amir.html">
+      <a class="x-artists-card" href="artists/yarden-amir/">
         <div class="img"><img src="images/homepage/x-our-artists/work-7.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">yarden amir</div>
       </a>
-      <a class="x-artists-card" href="pages/artists/maya-nachum-levy.html">
+      <a class="x-artists-card" href="artists/maya-nachum-levy/">
         <div class="img"><img src="images/homepage/x-our-artists/work-8.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
       </a>
-      <a class="x-artists-card" href="pages/artists/alon.html">
+      <a class="x-artists-card" href="artists/alon/">
         <div class="img"><img src="images/homepage/x-our-artists/work-9.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">alon manjoch</div>
       </a>
@@ -960,15 +1005,15 @@ nehoray</div></a>
   <div class="x-artists-tri only-mobile">
     <div class="tri" data-tri-loop="true">
       <div class="tri-frame">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-1.webp" alt="" data-caption="nir giorgio levin" data-artist-href="pages/artists/nir-giorgio-levin.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-3.webp" alt="" data-caption="gal pollak"        data-artist-href="pages/artists/gal-polk.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="tanya shin" data-artist-href="pages/artists/tanya-shin.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-7.webp" alt="" data-caption="yarden amir" data-artist-href="pages/artists/yarden-amir.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-8.webp" alt="" data-caption="maya nachum levy" data-artist-href="pages/artists/maya-nachum-levy.html">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-9.webp" alt="" data-caption="alon manjoch" data-artist-href="pages/artists/alon.html">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-1.webp" alt="" data-caption="nir giorgio levin" data-artist-href="artists/nir-giorgio-levin/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-3.webp" alt="" data-caption="gal pollak"        data-artist-href="artists/gal-polk/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="tanya shin" data-artist-href="artists/tanya-shin/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-7.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-8.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-9.webp" alt="" data-caption="alon manjoch" data-artist-href="artists/alon/">
       </div>
       <div class="tri-dots" role="tablist">
         <button class="tri-dot is-on" type="button" aria-label="1"></button>
@@ -987,39 +1032,51 @@ nehoray</div></a>
 
 <!-- LONELINESS × THE TRIBE — Figma 250:87 (desktop title) / 250:243 (mobile + credits + gallery). Data: data/homepage.json :: tribe_teaser -->
 <section class="tribe-teaser" id="tribe-teaser" aria-label="loneliness in a bubbling environment, x the tribe">
-  <a class="tribe-teaser-head" href="pages/exhibition.html?id=loneliness">
+  <a class="tribe-teaser-head" href="exhibitions/loneliness/">
     <span class="b">loneliness<br>in a bubbling environment</span>
     <span class="l">x the tribe</span>
   </a>
   <div class="tribe-teaser-credits only-mobile">
     <div class="tribe-credit-row">
-      <a href="pages/artists/maya-nachum-levy.html">maya nachum levy</a>
+      <a href="artists/maya-nachum-levy/">maya nachum levy</a>
       <span class="tribe-sep heb" aria-hidden="true">|</span>
-      <a href="pages/artists/holy-kadosh.html">tal holy kadosh</a>
+      <a href="artists/holy-kadosh/">tal holy kadosh</a>
     </div>
     <div class="tribe-credit-row">
-      <a href="pages/artists/zohar-ron.html">zohar ron</a>
+      <a href="artists/zohar-ron/">zohar ron</a>
       <span class="tribe-sep heb" aria-hidden="true">|</span>
-      <a href="pages/artists/tal-nehoray.html">tal nehoray</a>
+      <a href="artists/tal-nehoray/">tal nehoray</a>
       <span class="tribe-sep heb" aria-hidden="true">|</span>
-      <a href="pages/artists/gal-polk.html">gal pollak</a>
+      <a href="artists/gal-polk/">gal pollak</a>
     </div>
   </div>
   <div class="tribe-teaser-gallery only-mobile">
     <div class="tribe-teaser-gallery-wrap">
-      <div class="tribe-gallery-track">
-        <a href="pages/exhibition.html?id=loneliness" aria-label="loneliness in a bubbling environment — image 1">
-          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-1.webp" width="1075" height="1600" alt="" decoding="async" loading="lazy"></div>
-        </a>
-        <a href="pages/exhibition.html?id=loneliness" aria-label="loneliness in a bubbling environment — image 2">
-          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-2.webp" width="694" height="1040" alt="" decoding="async" loading="lazy"></div>
-        </a>
-        <a href="pages/exhibition.html?id=loneliness" aria-label="loneliness in a bubbling environment — image 3">
-          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-3.webp" width="1275" height="1600" alt="" decoding="async" loading="lazy"></div>
-        </a>
-        <a href="pages/exhibition.html?id=loneliness" aria-label="loneliness in a bubbling environment — image 4">
-          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-4.webp" width="1536" height="2048" alt="" decoding="async" loading="lazy"></div>
-        </a>
+      <div class="tribe-gallery-track" data-artwork-gallery="tribe-teaser">
+        <div class="tribe-thumb-card" tabindex="0" role="button"
+             data-artwork-src="images/homepage/tribe-teaser/thumb-1.webp"
+             data-artwork-title="בדידות בסביבה תוססת × הקהילה — 1"
+             aria-label="פתיחת תמונה 1 מתוך 4, בדידות בסביבה תוססת × הקהילה">
+          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-1.webp" width="158" height="192" alt="" decoding="async" loading="lazy"></div>
+        </div>
+        <div class="tribe-thumb-card" tabindex="0" role="button"
+             data-artwork-src="images/homepage/tribe-teaser/thumb-2.webp"
+             data-artwork-title="בדידות בסביבה תוססת × הקהילה — 2"
+             aria-label="פתיחת תמונה 2 מתוך 4, בדידות בסביבה תוססת × הקהילה">
+          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-2.webp" width="158" height="192" alt="" decoding="async" loading="lazy"></div>
+        </div>
+        <div class="tribe-thumb-card" tabindex="0" role="button"
+             data-artwork-src="images/homepage/tribe-teaser/thumb-3.webp"
+             data-artwork-title="בדידות בסביבה תוססת × הקהילה — 3"
+             aria-label="פתיחת תמונה 3 מתוך 4, בדידות בסביבה תוססת × הקהילה">
+          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-3.webp" width="158" height="192" alt="" decoding="async" loading="lazy"></div>
+        </div>
+        <div class="tribe-thumb-card" tabindex="0" role="button"
+             data-artwork-src="images/homepage/tribe-teaser/thumb-4.webp"
+             data-artwork-title="בדידות בסביבה תוססת × הקהילה — 4"
+             aria-label="פתיחת תמונה 4 מתוך 4, בדידות בסביבה תוססת × הקהילה">
+          <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-4.webp" width="158" height="192" alt="" decoding="async" loading="lazy"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1033,7 +1090,7 @@ nehoray</div></a>
   </div>
   <div class="press-rows">
     <div class="press-row">
-      <a class="press-card" href="pages/press/press-1.html">
+      <a class="press-card" href="press/press-1/">
         <div class="info">
           <span class="tag">מגזין פורטפוליו</span>
           <p class="desc">איך מרגישה בדידות בתוך סביבה תוססת: תערוכה חדשה בגלריית זילינסקי רוזן</p>
@@ -1041,7 +1098,7 @@ nehoray</div></a>
         </div>
         <div class="img"><img src="images/press/press-1/00-home-card.webp" width="171" height="108" alt="" decoding="async" loading="lazy"></div>
       </a>
-      <a class="press-card" href="pages/press/walla.html">
+      <a class="press-card" href="press/walla/">
         <div class="info">
           <span class="tag">וואלה | תרבות</span>
           <p class="desc">מותג הבישום פתח גלריה בכיכר המדינה: 100% מהרווחים הולכים לאמנים</p>
@@ -1051,7 +1108,7 @@ nehoray</div></a>
       </a>
     </div>
     <div class="press-row">
-      <a class="press-card" href="pages/events/loneliness.html">
+      <a class="press-card" href="events/loneliness/">
         <div class="info">
           <span class="tag en">gallery event</span>
           <p class="desc">בדידות בתוך סביבה תוססת</p>
@@ -1059,7 +1116,7 @@ nehoray</div></a>
         </div>
         <div class="img"><img src="images/events/event-3-cover.webp" width="1435" height="1600" alt="" decoding="async" loading="lazy"></div>
       </a>
-      <a class="press-card" href="pages/events/ktuba.html">
+      <a class="press-card" href="events/ktuba/">
         <div class="info">
           <span class="tag en">gallery event</span>
           <p class="desc">כתובה — מיצג חי של זוהר רון</p>
@@ -1069,7 +1126,7 @@ nehoray</div></a>
       </a>
     </div>
     <div class="press-row press-row--right">
-      <a class="press-card" href="pages/press/time-out.html">
+      <a class="press-card" href="press/time-out/">
         <div class="info">
           <span class="tag en">time out</span>
           <p class="desc">גלריית זילינסקי רוזן: המקום החדש לאמנות בכיכר המדינה</p>
@@ -1099,10 +1156,10 @@ nehoray</div></a>
       "label_he": "גלריית כיכר דיזינגוף",
       "active": false,
       "thumbs": [
-        { "n": "01", "image": "images/artists/eitan-goldson/work-01.webp",    "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — eitan goldson" },
-        { "n": "02", "image": "images/artists/tal-nehoray/work-02.webp",      "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — tal nehoray" },
-        { "n": "03", "image": "images/artists/maya-nachum-levy/work-03.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — maya nachum levy" },
-        { "n": "04", "image": "images/artists/zohar-shtrit/work-01.webp",     "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — zohar shitrit" }
+        { "n": "01", "image": "images/artists/eitan-goldson/work-01.webp",    "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — eitan goldson" },
+        { "n": "02", "image": "images/artists/tal-nehoray/work-02.webp",      "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — tal nehoray" },
+        { "n": "03", "image": "images/artists/maya-nachum-levy/work-03.webp", "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — maya nachum levy" },
+        { "n": "04", "image": "images/artists/zohar-shtrit/work-01.webp",     "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — zohar shitrit" }
       ]
     },
     {
@@ -1144,8 +1201,8 @@ nehoray</div></a>
     if (!tab) return;
     var html = tab.thumbs.map(function(t){
       var title = (t.title_he || '').replace(/"/g,'&quot;');
-      // CTA inside lightbox → shared exhibition page with ?id=<slug> query.
-      var link = t.exhibition_id ? 'pages/exhibition.html?id='+t.exhibition_id : '';
+      // CTA inside lightbox → /exhibitions/<slug>/ (same route as rest of site).
+      var link = t.exhibition_id ? ('exhibitions/'+encodeURIComponent(t.exhibition_id)+'/') : '';
       return '<div class="past-thumb" '+
                 'data-artwork-src="'+t.image+'" '+
                 'data-artwork-title="'+title+'" '+

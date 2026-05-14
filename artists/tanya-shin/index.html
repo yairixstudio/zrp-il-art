@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr" data-slug="tanya-shin">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artist — Zielinski &amp; Rozen</title>
+<link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../../components/site-boot.css">
+<meta name="description" content="Artist page at Zielinski & Rozen Galleries">
+<link rel="stylesheet" href="../../components/artwork-lightbox.css">
+<style>
+/* ===== LOCAL FONTS ===== */
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --ink:#1B1B1B;
+  --grey-mid:#808080;
+  --copy-grey:#6B7280;
+  --sep:#EFEFEF;
+  --artist:#828282;
+  --divider:#D8D8D8;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+/* ===== NAV/FOOTER moved to ../../components/site-chrome.css ===== */
+
+/* ===== HERO (artist) ===== */
+.hero{background:var(--bg-grey,#EEF0EF);padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
+.hero-inner{width:100%;max-width:var(--max);display:flex;align-items:stretch;gap:48px;flex-direction:row}
+.hero-text{flex:1;display:flex;flex-direction:column;align-items:flex-end;gap:32px;padding:0 16px;min-width:0}
+.hero-info{display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:8px;text-align:right}
+.hero-name{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-end;gap:4px;align-self:stretch;text-align:left}
+.hero-name .first{font-family:var(--cop);font-weight:700;font-size:80px;line-height:1;color:var(--ink);letter-spacing:.02em;text-transform:uppercase}
+.hero-name .last{font-family:var(--cop);font-weight:300;font-size:80px;line-height:1;color:var(--ink);letter-spacing:.02em;text-transform:uppercase}
+.hero-handle{font-family:var(--cop);font-weight:300;font-size:28px;color:var(--ink);text-align:right;align-self:flex-end;padding:0 8px;direction:ltr;cursor:pointer}
+.hero-handle:hover,.hero-handle:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.hero-bio{display:flex;flex-direction:column;gap:16px;align-self:stretch}
+.hero-bio .bio-intro-row{display:flex;flex-direction:row;align-items:stretch;gap:16px}
+.hero-bio .intro{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.35;color:var(--ink);direction:rtl;text-align:right;flex:1}
+.hero-bio .divider{width:1px;background:var(--divider);flex-shrink:0}
+.hero-bio .body{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.35;color:var(--ink);direction:rtl;text-align:right;display:flex;flex-direction:column;gap:12px}
+.hero-bio .body p{margin:0}
+.hero-bio .body .en-line{font-family:var(--cop);font-weight:300;text-transform:uppercase;direction:ltr;unicode-bidi:isolate;text-align:right}
+.hero-bio .lat{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.04em}
+.hero-portrait{width:492px;height:492px;flex-shrink:0;background:#222;overflow:hidden;position:relative;align-self:flex-start}
+.hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.hero-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.0) 60%,rgba(0,0,0,.0) 100%);pointer-events:none}
+
+/* dual hero image variant (collab artists) */
+.hero-portrait.dual{display:flex;gap:8px;background:transparent;width:492px;height:492px}
+.hero-portrait.dual .pic{flex:1;height:100%;overflow:hidden;background:#222}
+.hero-portrait.dual .pic img{width:100%;height:100%;object-fit:cover}
+
+/* Collaboration hero (Figma landing mobile 119:3917) — two names + ×, no vertical divider */
+.hero.is-collab .hero-text{gap:16px}
+.hero-collab-meta{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;padding:0 0 8px}
+.hero-collab-block{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%}
+.hero-name.hero-name--collab .first,.hero-name.hero-name--collab .last{font-size:36px;line-height:1;text-align:center}
+.hero-collab-bio{font-family:var(--heb);font-weight:300;font-size:16px;line-height:normal;color:var(--ink);direction:rtl;text-align:center;padding:0 32px;text-transform:none}
+.hero-collab-x{font-family:var(--cop);font-weight:300;font-size:36px;line-height:1;color:var(--ink);text-align:center;margin:0;width:100%}
+
+/* ===== ARTWORKS SECTION ===== */
+.works{padding:32px var(--pad-x);background:var(--white);display:flex;justify-content:center}
+.works-inner{width:100%;max-width:var(--max);display:flex;flex-direction:column;gap:24px}
+.works-head{display:flex;align-items:flex-start;justify-content:flex-start;gap:8px;text-align:left}
+.works-head h2{font-family:var(--cop);font-weight:300;font-size:28px;color:var(--ink);letter-spacing:.02em;text-align:right}
+.works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.work{display:flex;flex-direction:column;align-items:center;min-width:0;gap:12px}
+/* Artwork frame: full image visible (no crop), width fills cell; min height with #FAFAFA letterboxing for wide/short images */
+.work .img{
+  position:relative;width:100%;min-height:433px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:#FAFAFA;cursor:zoom-in;
+}
+.work .img picture{display:block;width:100%;line-height:0}
+.work .img img{
+  width:100%;height:auto;max-width:100%;
+  object-fit:contain;object-position:center;
+  vertical-align:middle;
+}
+.work .img::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,0);transition:background .3s;pointer-events:none}
+.work:hover .img::after{background:rgba(27,27,27,.06)}
+/* per-image caption (below each artwork) */
+.work-meta{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}
+.work-meta .title,.work-meta .sub{font-size:16px;color:var(--ink);text-align:center}
+.work-meta .title{font-weight:400}
+.work-meta .sub{font-weight:300}
+/* lang-aware: Hebrew titles → FbEzmel + RTL; English titles → Copperplate + UPPERCASE */
+.work-meta .title.is-he,.work-meta .sub.is-he{font-family:var(--heb);direction:rtl;text-transform:none}
+.work-meta .title.is-en,.work-meta .sub.is-en{font-family:var(--cop);direction:ltr;text-transform:uppercase;letter-spacing:.04em}
+.work-meta .lat{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.04em}
+
+/* One shared caption above the grid (same title on every work — loneliness-style layouts) */
+.works-shared-meta{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;margin:0 0 8px;text-align:center}
+.works-shared-meta .title,.works-shared-meta .sub{font-size:16px;color:var(--ink)}
+.works-shared-meta .title{font-weight:400}
+.works-shared-meta .sub{font-weight:300}
+.works-shared-meta .title.is-he,.works-shared-meta .sub.is-he{font-family:var(--heb);direction:rtl;text-transform:none}
+.works-shared-meta .title.is-en,.works-shared-meta .sub.is-en{font-family:var(--cop);direction:ltr;text-transform:uppercase;letter-spacing:.04em}
+.works-shared-meta .lat{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.04em}
+
+/* Figma landing::235:348 — bilingual shared title (EN / — / HE, e.g. Costa) */
+.works-shared-meta--duo{gap:8px;margin:0 0 12px}
+.works-shared-meta--duo .works-shared-duo{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;color:var(--ink)}
+.works-shared-meta--duo .works-shared-en{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;line-height:normal}
+.works-shared-meta--duo .works-shared-en-line{font-family:var(--cop);font-weight:400;font-size:24px;letter-spacing:.02em;text-transform:uppercase;direction:ltr;text-align:center;color:var(--ink)}
+.works-shared-meta--duo .works-shared-en-line .lat{font-family:var(--cop);text-transform:uppercase;letter-spacing:.04em}
+.works-shared-meta--duo .works-shared-sep{font-family:var(--cop);font-weight:400;font-size:24px;line-height:1;color:var(--ink)}
+.works-shared-meta--duo .works-shared-he{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;line-height:normal}
+.works-shared-meta--duo .works-shared-he-line{font-family:var(--heb);font-weight:400;font-size:24px;color:var(--ink);direction:rtl;text-align:center;text-transform:none}
+.works-shared-meta--duo .works-shared-he-line .lat{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.04em}
+.works-shared-meta--duo .sub{font-size:16px}
+
+/* single-work centered */
+.works-grid.single{grid-template-columns:1fr;justify-items:center}
+.works-grid.single .work{max-width:736px}
+
+/* ===== "PAGE COMING SOON" — for artists with no figma data ===== */
+.placeholder{padding:96px var(--pad-x);text-align:center;background:var(--bg-grey)}
+.placeholder h1{font-family:var(--cop);font-weight:700;font-size:48px;letter-spacing:.04em;margin-bottom:16px}
+.placeholder .sub{font-family:var(--heb);font-weight:300;font-size:18px;color:var(--grey-mid);direction:rtl}
+.placeholder .work-image{max-width:600px;margin:32px auto 0}
+.placeholder .work-image img{width:100%;height:auto;display:block}
+
+/* lightbox styles imported from components/artwork-lightbox.css (see <link> in head) */
+
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤1100px)
+   ============================================================ */
+@media (max-width:1100px){
+  :root{--pad-x:48px}
+  /* HERO — stack at tablet (row + long Copperplate surnames clipped off-screen before) */
+  .hero{padding:32px 0 0;background:var(--bg-grey)}
+  .hero-inner{flex-direction:column;align-items:stretch;gap:20px;padding:0 var(--pad-x)}
+  .hero-text{order:2;align-items:center;padding:0;gap:20px;min-width:0;width:100%}
+  .hero-portrait,.hero-portrait.dual{
+    order:1;
+    width:min(340px,82vw);
+    height:min(340px,82vw);
+    max-width:100%;
+    align-self:center;
+    flex-shrink:0;
+  }
+  .hero-info{width:100%;max-width:560px;margin:0 auto;align-items:center;padding:8px 12px;box-sizing:border-box}
+  .hero-name{align-items:center;text-align:center;align-self:center;width:100%;max-width:100%}
+  .hero-name .first,.hero-name .last{
+    display:block;
+    width:100%;
+    max-width:100%;
+    text-align:center;
+    box-sizing:border-box;
+    overflow-wrap:break-word;
+    word-wrap:break-word;
+    font-size:clamp(32px,5.5vw,44px);
+    line-height:1.05;
+  }
+  .hero-handle{font-size:clamp(16px,3vw,22px);text-align:center;align-self:center}
+  .hero-bio{
+    flex-direction:column;
+    gap:16px;
+    align-items:stretch;
+    background:var(--white);
+    margin:0 calc(-1 * var(--pad-x));
+    padding:20px var(--pad-x) 0;
+  }
+  .hero-bio .bio-intro-row{background:transparent;padding:0;align-items:flex-start}
+  .hero-bio .body{background:transparent}
+  .hero-bio .bio-intro-row .divider{display:block;width:1px;min-height:0;height:auto;align-self:stretch;background:var(--divider)}
+  .hero-bio .intro,.hero-bio .body{font-size:17px}
+  .hero.is-collab .hero-portrait.dual{width:100%;max-width:420px;height:240px}
+  .hero.is-collab .hero-name.hero-name--collab .first,.hero.is-collab .hero-name.hero-name--collab .last{font-size:36px;line-height:1}
+  .hero.is-collab .hero-handle{font-size:16px}
+  .works-grid{gap:24px}
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤768px)
+   ============================================================ */
+@media (max-width:768px){
+  :root{--pad-x:16px}
+
+  /* HERO — tighter than ≤1100px stack */
+  .hero{padding:24px 0 0}
+  .hero-inner{gap:16px;padding:0 16px}
+  .hero-text{gap:16px}
+  .hero-portrait,.hero-portrait.dual{width:262px;height:262px}
+  .hero-info{max-width:none;padding:8px 12px}
+  .hero-name .first,.hero-name .last{font-size:36px}
+  .hero-handle{font-size:16px}
+  .hero-bio{margin:0 -16px;padding:16px 16px 0}
+  .hero-bio .intro,.hero-bio .body{font-size:16px}
+  .hero.is-collab .hero-portrait.dual{max-width:358px;height:211px;gap:16px}
+
+  /* WORKS */
+  .works{padding:32px 16px}
+  .works-grid{grid-template-columns:1fr;gap:24px}
+  .works-grid.single .work{max-width:100%}
+  .works-head h2{font-size:20px}
+
+  /* LIGHTBOX */
+
+  /* placeholder */
+  .placeholder{padding:48px 16px}
+  .placeholder h1{font-size:32px}
+}
+
+/* ============================================================
+   SMALL MOBILE (≤400px)
+   ============================================================ */
+@media (max-width:400px){
+  .hero-name .first,.hero-name .last{font-size:32px}
+  .hero-portrait,.hero-portrait.dual{width:240px;height:240px}
+  .hero.is-collab .hero-portrait.dual{width:100%;max-width:358px;height:200px}
+}
+
+/* Artist page: white nav from tablet up; wide collab hero only true desktop (>1100) */
+@media (min-width:769px){
+  body .nav{background:var(--white)}
+}
+@media (min-width:1101px){
+  .hero.is-collab .hero-portrait.dual{width:492px;height:492px;max-width:none;gap:8px}
+  .hero.is-collab .hero-name.hero-name--collab .first,.hero.is-collab .hero-name.hero-name--collab .last{font-size:60px;line-height:1}
+  .hero.is-collab .hero-collab-x{font-size:48px}
+  .hero.is-collab .hero-collab-bio{font-size:18px;line-height:1.35;padding:0 32px}
+  .hero.is-collab .hero-handle{font-size:20px}
+}
+</style>
+</head>
+<body class="is-loading-data">
+
+<!-- NAV -->
+<site-header></site-header>
+
+<!-- MAIN CONTENT (rendered by JS from artists.json) -->
+<main id="artist-root">
+  <section class="placeholder" id="loading-state">
+    <h1>loading…</h1>
+    <p class="sub" dir="rtl">טוען נתוני אומן</p>
+  </section>
+</main>
+
+<!-- LIGHTBOX (artwork zoom) -->
+<!-- Artwork Lightbox component (shared) — see CLAUDE.md §15 -->
+
+<!-- FOOTER -->
+<site-footer></site-footer>
+
+<script id="artists-inline">window.__ARTISTS_INLINE__=[{"id":"zohar-ron","slug":"zohar-ron","name_en":"zohar ron","name_he":"זוהר רון","portrait":"images/artists/zohar-ron/portrait-v2.webp","work_image":"images/works/grid/zohar-ron.webp","instagram_handle":"@zoharron","bio_he":"זוהר רון הוא אומן חזותי, במאי וצלם\nהמבטא חיבור ויזואלי ורעיוני בין פולחן טקסי לאסתטיקה ויופי.\nהשימוש באלמנטים מהעולם השבטי מופיעים במרבית עבודותיו כסמל לחיבור לשורש התרבותי ממנו נובעת ההשראה והשפה הויזואלית ביצירותיו.\n\nבסדרה כְּתוּבָּה, זוהר רון פורם את הגבולות שבין שפה, גוף ודימוי, ויוצר מערכת יחסים חדשה ביניהם.\nהכתב העברי מסורת עתיקת יומין של ביטוי פנימי ותפילה מקבל בסדרה זו חיים חדשים כחומר ויזואלי, כמעט פיזי, הנכתב בדיו ומכחול ישירות על גוף חי.\n\nהמילים, שנוצרות מתוך דיאלוג אינטואיטיבי עם המוזה המצולמת, אינן  משמשות כתוספת צורנית או עיטורית, אלא כפעולה טקסית, אינטימית, בעלת ממד כמעט מאגי. הגוף הופך קנבס חי, והטקסט לחש, שכבת תקשורת, הגנה או גילוי.\n\nהצילום לוכד את הרגע שבו נולדת זהות חדשה בין גוף לשפה, בין חוץ לפנים בין זכר לנקבה.\nהשפה העברית שימשה אותנו אלפי שני כשפת קודש לתפילה כוח ליצירת מציאות, מוצגת כאן למופע של תשוקה, כמיהה, רכות ומסתורין.\n\nזוהר מבקש להחזיר את הכוונה למילה, את המשמעות לנראות, את האינטימיות לעשייה האמנותית. במרחב של צריחה ויזואלית, כְּתוּבָּה לוחשת.\n\nבהקשר של נושא התערוכה \"בדידות בסביבה תוססת\", עבודותיו של זוהר מציעות מבט נוסף על בדידות מסוג אחר לא כניתוק, אלא כהשתהות.\nבעולם רווי דימויים, מילים כוונה, ללא עומק, המילה הכתובה ביד על עור חשוף, חוזרת להיות טקס, אמירה, חיבור.","bio_en":null,"works":[{"id":"zohar-qtuba-1","title":"״כְּתוּבָּה | QTUBA״","image":"images/artists/zohar-ron/work-01.webp"},{"id":"zohar-qtuba-2","title":"״כְּתוּבָּה | QTUBA״","image":"images/artists/zohar-ron/work-02.webp"},{"id":"zohar-qtuba-3","title":"״כְּתוּבָּה | QTUBA״","image":"images/artists/zohar-ron/work-03.webp"},{"id":"zohar-qtuba-4","title":"״כְּתוּבָּה | QTUBA״","image":"images/artists/zohar-ron/work-04.webp"}],"figma_artist_page_mobile":"235:2","figma_artist_page_desktop":null,"homepage_featured":true,"works_grid_order":9},{"id":"eitan-goldson","slug":"eitan-goldson","name_en":"eitan goldson","name_he":"איתן גולדסון","portrait":"images/artists/eitan-goldson/portrait.webp","work_image":"images/works/grid/eitan-goldson-henrika.webp","instagram_handle":"@eitan_g","bio_he":"העבודה שלי מגיעה מדו שיח פנימי עמוק שמלווה אותי מאז הילדות בין תרבויות מן העבר מול תרבות ההווה מול פנטזיות על עתיד פוסט אפוקליפטי בו נוצר מיזוג בין מודרניות לפרימיטיביות וטריבאליזם, מפגש בין מיתוס מן העולם למיתוס האישי שלי, עיר מול כבר, חברה מול הלבד. אני מנסה לגשת ליצירות מתוך נקודת מבט של מין אדם קדמון מהעתיד, למזג בין חומרים ישנים לחדשים, ליצור קוקטייל המשלב יותר ממדיום אחד.\n\nמגיל צעיר מתעסק בציור ופיסול בחומרים מגוונים , כיום משלב המון צילום סטילז וגם וידאו וסאונד. ביצירות שלי אני מרגיש מוכרח שתהיה רמה מסוימת של עבודת כפיים וסיזיפיות, חושניות ופראיות, לצד איפוק ותוכן קונספטואלי הטמון בתוך היצירה.\nסממנים חוזרים בעבודות שלי הם איברי גוף, ופיגורות היברידיות - ערבוב של חיות ויצורים מיתיים יחד עם בני אדם, צמחים וסמלים שחלקם מקורם בעולם האמיתי וחלקם המצאה מעולמי הפנימי.\n\n״תשע נשמות״ - מדיה מעורבת - עבודה משותפת עם \nהנריקה רוטנברג. צבעי שמן, אקריליק, גרפיט וקפה על קנבס מודפס בלייזר.\n\nכחלק מהפרוייקט המשותף אני בכל פעם בוחר כמה צילום מתוך ספר האמן של הנריקה ובוחר איזו יצירה להדפיס ובאיזה גודל , ואז מתחיל תהליך חשיבה ארוך, לפעמים שבועות ואף חודשים על כל קנבס, איך ליצור סימביוזה בין\nשתי הנשמות שלי ושל האמן הנריקה, וליצור בכל ציור נשמה אחת משותפת.\nבחרתי כאן לגשת ליצירה עם דגש על המיתוס האומר כי לחתול יש תשע נשמות, תוך התייחסות לחיים המודרניים של היום - כמה הזדמנויות אדם מקבל בחיים כדי להצליח לממש את עצמו ולהגיע להצלחה? כמה גלגולי זהות אנחנו עוברים\nעד שאנחנו \"מוצאים את עצמינו\"? האם הצלחה ועושר מפיגים את קללת הבדידות האנושית בתוך החיים המודרניים? האם חתול או חיית מחמד היא הפתרון לבדידות בעיר הגדולה והסואנת? או להתחפש לחיה מארץ יצורי הפרא ולהעמיד פנים שאתה מלא תשוקה לערב אחד במבנה נטוש ורועש?","bio_en":null,"works":[{"id":"eitan-souls-1","title":"״תשע נשמות | SOULS NINE״","image":"images/artists/eitan-goldson/work-01.webp","medium":"mix media — photo print on a canvas and painting with oil, acrylic and coffee"},{"id":"eitan-souls-2","title":"״תשע נשמות | SOULS NINE״","image":"images/artists/eitan-goldson/work-02.webp"},{"id":"eitan-souls-3","title":"״תשע נשמות | SOULS NINE״","image":"images/artists/eitan-goldson/work-03.webp"}],"figma_artist_page_mobile":"235:73","figma_artist_page_desktop":null,"homepage_featured":true,"works_grid_order":1},{"id":"tanya-shin","slug":"tanya-shin","name_en":"tanya shin","name_he":"טניה שין","portrait":"images/artists/tanya-shin/portrait-v2.webp","work_image":"images/works/grid/tanya-shin.webp","instagram_handle":"@TANYASHIN","bio_he":"טניה שין היא אמנית וצלמת,\nילידת סיביר, חיה בישראל מאז 1999.\n\nהיצירה שלה נובעת מחיפוש אחר חופש פנימי ומהרצון לחשוף רבדים עמוקים של זהות, גוף ותודעה. דרך עבודה מינימליסטית המשלבת צילום ועיבוד דיגיטלי, טניה חוקרת את מה שנמצא מתחת לפני השטח רגש, מתח ואנרגיה אנושית.\n\n<span class=\"lat\">HOW MANY PARTNERS HAVE YOU HAD?</span>\nהעבודות המוצגות בתערוכה זו מתייחסות לשאלה לא כשאלה כמותית בלבד, אלא כמרחב של חוויות מצטברות, מפגשים, זיכרונות והשפעות.\n\nכל מפגש מותיר חותם בגוף ובתודעה, ומשפיע על האופן שבו האדם תופס את עצמו ואת גופו. דרך הדימויים, היא בוחנת כיצד אינטימיות, קרבה וריחוק נרשמים בגוף, וכיצד הם מתורגמים לשפה חזותית.\n\nהעבודות אינן מציעות תשובה חד-משמעית, הן מזמינות את הצופה לשאול לא רק כמה, אלא מה נשאר מכל אחד.","bio_en":null,"works":[{"id":"tanya-triangle","title":"\"triangle\"","image":"images/artists/tanya-shin/work-01.webp"},{"id":"tanya-crop1","title":"\"crop 1\"","image":"images/artists/tanya-shin/work-02.webp"}],"figma_artist_page_mobile":"1213:3673","figma_artist_page_desktop":null,"homepage_featured":true,"works_grid_order":4},{"id":"nir-giorgio-levin","slug":"nir-giorgio-levin","name_en":"nir giorgio levin","name_he":"ניר ג׳ורג׳יו לוין","portrait":"images/artists/nir-giorgio-levin/portrait-v2.webp","work_image":"images/works/grid/nir-giorgio-levin.webp","instagram_handle":"@NIRGIOLEV","bio_he":"היצירה שלו ברובה אוטוביוגרפית, ונעה סביב שאלת זהות שנולדה מתוך חיים עם ריבוי שכבות של מי שגדל בין דתות, מדינות וזהויות.\n\nלוין נולד בברזיל, אומץ וגויר למשפחה ישראלית, וגדל בתל אביב כשהוא נושא בתוכו זהות ברזילאית וישראלית ושאלות על מה מתקיים בין נצרות ליהדות.\nהוא מגדיר את עצמו כאמן ללא מדינה או דת אחת קבועה, נווד של זהות שמתקיים בעולם שבו הוא שייך לשני העולמות ובו בזמן גם לאף אחד מהם. עבודתו אינה מנסה ליישב את המתחים הללו, אלא לחיות בתוכם ולתת להם צורה.\n\nעבור לוין, טקסטיל הוא השפה דרכה הוא בודק את המתח הזה ומנסה לכתוב לעצמו נרטיב חדש.\nעבורו כל עבודה היא מרחב לחקירה של זהותו האישית.\nהוא שואב השראה מאיקונוגרפיה דתית ומפיסול ואמנות קלאסיים, ובוחן אותם מבעד לעדשה קווירית עכשווית. באמצעות שילוב של מוטיבים דתיים, סמלים תרבותיים וחוויות אישיות, הוא משרטט מרחב שבו הוא אינו כבול לדוגמה דתית או לציפיות חברתיות, אלא נשען על חיבור רוחני לכוח עליון חוצה גבולות.\nיצירותיו נוגעות בחיבור ובקרבה אנושית, ובוחנות את הפער שבין החוויה הפרטית לבין המבט החברתי שמבקש להגדיר אותה.\nמתוך בניית שפה חזותית שמפגישה בין המקודש לאינטימי, בין טוהר לאיסור, הוא קורא תיגר על מסגרות קיימות, ומזמין את הצופה למפגש קרוב עם שכבות הסיפור שהעבודה נושאת.","bio_en":null,"works":[{"id":"nir-flesh-marble","title":"\"untitled\" (flesh and marble)","image":"images/artists/nir-giorgio-levin/work-01.webp"},{"id":"nir-eyes-closed","title":"\"untitled\" (with eyes closed, we saw)","image":"images/artists/nir-giorgio-levin/work-02.webp"}],"figma_artist_page_mobile":"1213:4156","figma_artist_page_desktop":null,"homepage_featured":true,"works_grid_order":7},{"id":"elsa-ars-brush","slug":"elsa-ars-brush","name_en":"elsa ers brosh","name_he":"אלסה ארס ברוש","portrait":"images/artists/elsa-ars-brush/portrait.webp","work_image":"images/works/grid/elsa-ars-brush.webp","instagram_handle":"@ELSAJINX","bio_he":"אלסה ארס ברוש, ילידת איסטנבול, היא אמנית עכשווית שיצירתה נעה בין ציור לקולאז', ושואבת מעברה בעולמות האופנה והעיצוב הגרפי.\n\nלאחר לימודים ב-<span class=\"lat\">PARSONS SCHOOL OF DESIGN</span> בפריז ובסורבון <span class=\"lat\">IV</span>, היא פיתחה שפה חזותית המושפעת ממסורות טקסטיל ומהקשר ההיסטורי שלהן לעבודת נשים ולביטוי נשי. עבודתה בוחנת זהות מגדרית, התגלמות גופנית ואת החוויה של להיות אישה המעוצבת על ידי נרטיבים תרבותיים מהמזרח התיכון.\n\nכיום, כשהיא פועלת מתל אביב, היא שואבת השראה מהרב-תרבותיות הרב-שכבתית ומהנפיצות של העיר, ויוצרת עבודות המתנדנדות בין היפר-ריאליזם לעיוות מעודן.\n\nכמה פרטנרים היו לך? השאלה בוטה, כמעט מנהלתית, כאילו ניתן לצמצם אינטימיות לכדי אריתמטיקה. הציורים הללו מתנגדים לצמצום הזה. במקום לספור, ברוש מתחקה אחר מה שנותר.\n\nלאחר פרידה, הגוף ממשיך להושיט יד לעבר מישהו שכבר איננו. העור זוכר; השרירים מתכווצים סביב ההיעדר. מתוך שאילה של מושג \"איבר הרפאים\" (<span class=\"lat\">PHANTOM LIMB</span>) כמצב רגשי, הדמויות שלה לוחצות, אוחזות ומחפשות – ועם זאת, משהו תמיד חסר.\nרסיסי צבע מרחפים כשאריות של מגע, תלויים בין נוכחות לזיכרון. כל פרטנר משאיר אחריו יותר ממספר. הם מותירים מחוות, תחושות, חותמים. האינטימיות הופכת פיזית, וחווטת מחדש את הגוף לכדי ארכיון של הדים מצטברים.","bio_en":null,"works":[{"id":"elsa-within-flesh","title":"\"within the flesh\"","image":"images/artists/elsa-ars-brush/work-01.webp","medium":"acrylics on canvas, 120 x 80 cm"},{"id":"elsa-gossip","title":"\"gossip\"","image":"images/artists/elsa-ars-brush/work-02.webp","medium":"acrylics on canvas, 45 x 30 cm"},{"id":"elsa-intimate","title":"\"an intimate portrait\"","image":"images/artists/elsa-ars-brush/work-03.webp","medium":"acrylics on canvas, 40 x 30 cm"}],"figma_artist_page_mobile":"1213:4287","figma_artist_page_desktop":null,"homepage_featured":false,"works_grid_order":2},{"id":"gal-polk","slug":"gal-polk","name_en":"gal pollak","name_he":"גל פולק","portrait":"images/artists/gal-polk/portrait-v2.webp","work_image":"images/works/grid/gal-polk.webp","instagram_handle":"@GALPOLLAK","bio_he":"גל בוחרת להתמודד עם המחשבות הטורדניות שלה, בעזרת המנטרה ״צעד צעד, אבן אבן״ במלאכת שיבוץ הקריסטלים באופן מדוייק בעבודותיה, היא הופכת חפצים אגביים לבעלי משמעות חדשה ומנצנצת.\n\nהעבודה בוחנת את השאלה - \"כמה פרטנרים היו לך?\"\nלא כמספר, אלא כצלקת או סימן שנשאר על הגוף והנפש.\nהניגוד של הקריסטלים הנוצצים מול הגרזן משקפים גם מורכבות של מערכת יחסים (יופי מול כאב) וגם כל פרטנר הוא חריטה בתוך העץ, משקע שאי אפשר באמת להרפות ממנו, והשאלה \"כמה?\" היא למעשה הניסיון לספור את החריטות/צלקות האלו.\n\nבנוסף, העבודה מרפררת לשיר פופ מוכר משתעשעת עם משחק מילים והמשמעות של אקס כגרזן ואקס בן זוג לשעבר.\nבין הרצון לשכוח לבין לא לרצות לשחרר.\n\nדרך הנצנוץ והדיוק במלאכת השיבוץ, בוחרת גל להתמודד עם המחשבות הטורדניות שלה בהרבה צבע ומשמעותיות חדשות ומתרגמת את העבודה למנטרה של ׳צעד-צעד, אבן-אבן׳.\nבמקבץ העבודות שלה <span class=\"lat\">don't lost your head</span>\nהיא בחרה להראות את הניגודיות הקיימת בבדידות.\n\nבין אם זה התמודדות \"פאסיבית\" של לצלול עמוק אל תוך המסכים והמשחקים כדי למסך את מחשבות טורדניות על בדידות, או בין אכילה רגשית שמציעה נחמה (גם אם קצרה) וחיבוק בצורת ג׳אנק פוד שמרגיש שהרווחת ומגיע לך,\nלנוכח המחשבות.\nלבין התמודדות \"אקטיבית\" בהשראת אן בולין (1507 - 1536) אשתו השניה של מלך אנגליה הנרי השמיני, שבשבילה המלך התגרש מאשתו הראשונה ובצעד חסר תקדים עזב גם את הכנסייה הקתולית עבורה.\nאבל לא כל הנוצץ זהב, ויש שטוענים שנמאס לבולין לשבת ולחכות בארמון לבעלה שבגד בה עם אחרות, ויצאה בעצמה למצוא גבר שיפיג לה את הבדידות. כשהנרי גילה, הארמון האשים את בולין בהיותה מכשפה ובוגדת והיא הוצאה להורג.\nהאות B בזהב עם פנינים בקצה מסמלת את התליון המפורסם של אן בין בכל הציורים ההיסטוריים.","bio_en":null,"works":[{"id":"gal-exs-and-ohs","title":"\"exs and oh's\"","image":"images/artists/gal-polk/work-01.webp"},{"id":"gal-dlyh-1","title":"״DON'T LOSE YOUR HEAD״","image":"images/artists/gal-polk/work-02.webp"},{"id":"gal-dlyh-2","title":"״DON'T LOSE YOUR HEAD״","image":"images/artists/gal-polk/work-03.webp"},{"id":"gal-dlyh-3","title":"״DON'T LOSE YOUR HEAD״","image":"images/artists/gal-polk/work-04.webp"},{"id":"gal-dlyh-4","title":"״DON'T LOSE YOUR HEAD״","image":"images/artists/gal-polk/work-05.webp"},{"id":"gal-dlyh-5","title":"״DON'T LOSE YOUR HEAD״","image":"images/artists/gal-polk/work-06.webp"},{"id":"gal-dlyh-6","title":"״DON'T LOSE YOUR HEAD״","image":"images/artists/gal-polk/work-07.webp"}],"figma_artist_page_mobile":"235:453","figma_artist_page_desktop":null,"homepage_featured":false,"works_grid_order":3},{"id":"zohar-shtrit","slug":"zohar-shtrit","name_en":"zohar shtrit","name_he":"זוהר שטרית","portrait":"images/artists/zohar-shtrit/portrait.webp","work_image":"images/works/grid/zohar-shtrit.webp","instagram_handle":"@zoharshitrit","bio_he":"העבודה מציגה תקריב מטושטש של פני ליצן- דימוי תרבותי המזוהה עם החצנה, תנועה ותגובה מיידית.\n\nבאמצעות טשטוש מכוון וחיתוך, הדימוי מנותק מהקשרו הטבעי, והחיוך חדל מלתפקד כתגובה ברורה. הוא מתקיים כמחווה תלויה, חסרת יעד.\nהטשטוש מבטל זהות, מגדר והבעה כוללת, ומשאיר סימן חזותי טעון:\nאדום בוהק, מוגזם, כזה שנועד להיראות מרחוק.\n\nהאיפור, שבדרך כלל משמש להדגשה ולתקשורת ישירה עם קהל, פועל כאן באופן הפוך — הוא מדגיש דווקא את המרחק ואת חוסר היכולת לקרוא את הרגש באופן חד־משמעי. הדימוי, הפועל לרוב בתוך מרחב רווי אינטראקציה וגירויים, מתקיים כאן מול חלל שקט, ונשאר פעיל גם כאשר אין מי שישיב לו מבט.\n\nהליצן הוא דמות של כוח פרפורמטיבי, בעלת רישיון חברתי לחרוג. עטיית האף האדום או האיפור מעניקה לו לגיטימציה לפעול מחוץ לכללים- לומר את הבלתי־נאמר, להגזים, להיחשף — מתוך ידיעה שהתגובה כלפיו תהיה לרוב סלחנית ואף אוהדת. זהו חוזה לא־כתוב בין הדמות לבין הקהל.\nבעבודה זו, החוזה מושהה. הליצן אינו מופיע בתוך הקשר של הופעה חיה או תגובה מיידית, אלא כלוא ברגע סטטי, חסר תגמול. המסכה קיימת, אך הפונקציה החברתית שלה מתערערת. האיפור נותר כפעולה חד־צדדית, והכוח שהוא מעניק לדמות הופך גם למנגנון של ניתוק.\n\nהעבודה עוסקת במצב שבו תפקוד, הופעה ויכולת למשוך תשומת לב מתקיימים במקביל לתחושת ריחוק.\nהיא בוחנת את המתח שבין ההגנה שהמסכה מספקת לבין המחיר שהיא גובה — טשטוש של הפנים, של הגבולות, ושל האפשרות להיראות ללא תיווך.","bio_en":null,"works":[{"id":"zshtrit-else-inner","title":"״אחר מבפנים | <span class=\"lat\">ELSE INNER</span>״","image":"images/artists/zohar-shtrit/work-01.webp"}],"figma_artist_page_mobile":"235:809","figma_artist_page_desktop":null,"homepage_featured":false,"works_grid_order":5},{"id":"hila-loterstein","slug":"hila-loterstein","name_en":"hila loterstein","name_he":"הילה לוטרשטיין","portrait":"images/artists/hila-loterstein/portrait.webp","work_image":"images/works/grid/hila-loterstein.webp","instagram_handle":"@hilaloterstein","bio_he":"העבודה שלי נובעת מתשוקה לגוף האנושי - לנשימה, למתח, ולרגע שבין תנועה לעצירה. דרך ציור ופיסול אני חוקרת את המפגש שבין כוח לשבריריות, בין כובד לריחוף.\nבעבודות הרשת והבטון אני מעניקה לגוף קיום חדש, שקוף ופגיע, כמו ציור באוויר.\n\nעבודותיו יוצגו בגלריה בכיכר המדינה הגוף בעבודותיי מופיע בשיא נוכחותו, אך תמיד לבדו בתוך חלל נקי, מואר ומעוצב.\nדווקא בתוך סביבה תוססת של אור, צבע ואדריכלות, מתעצמת תחושת הבדידות - בדידות שנולדת מעודף נוכחות שאינה נענית.\n\nהרקדנית הצהובה-\nהבדידות שלה מגיעה משיא של תנועה בתוך חלל שלא מהדהד אותה. היא לבדה.\nמצד אחד בשיאה קופצת, מתעקלת, מתמתחת, מתמסרת לתנועה, אבל: היא לבד בפריים, אין מגע, אין הדהוד אין גוף נוסף מולה. העולם סביבה מואר בצהוב ומעוצב אבל ריק אנושית.\n\nאלה עם כנפיים-\nהפסל מתעד רגע של בדידות נשגבת- אישה ערומה, ופגיעה, מרחפת באוויר ללא עיגון.\nהערום מייצג חשיפה רגשית מוחלטת, בעוד הריחוף מדגיש ניתוק וחוסר שייכות הכנפיים מעניקות חירות, אך זו חירות דו-משמעית: היכולת להתעלות מעלה, מעל הקרקע גם מבודדת אותה מהעולם שתחתיה. הדמות תלויה בין שמיים לארץ, ללא מקום לנוח - מטאפורה לבדידות כמצב קיומי\nשל יופי מלנכולי שבו ייחודיות והתעלות באות במחיר של ניתוק מהעולם.","bio_en":null,"works":[{"id":"hila-bif-1","title":"״BODIES IN FLIGHT״","image":"images/artists/hila-loterstein/work-01.webp"},{"id":"hila-bif-2","title":"״BODIES IN FLIGHT״","image":"images/artists/hila-loterstein/work-02.webp"},{"id":"hila-bif-3","title":"״BODIES IN FLIGHT״","image":"images/artists/hila-loterstein/work-03.webp"}],"figma_artist_page_mobile":"235:370","figma_artist_page_desktop":null,"homepage_featured":false,"works_grid_order":6},{"id":"sami-david","slug":"sami-david","name_en":"samy david","name_he":"סמי דוד","portrait":"images/artists/sami-david/portrait.webp","work_image":"images/works/grid/sami-david.webp","instagram_handle":"@samyd","bio_he":"סמי די, אמן רב־תחומי הפועל כ־30 שנה בשדה הקרמיקה והאמנות העכשווית, ומשלב בין שליטה טכנית למחקר חומרי וקונספטואלי.\n\nעבודתו נעה בין קראפט מסורתי לאמנות פלסטית, תוך אתגור גבולות המדיום ותפקיד האובייקט הקרמי.\n\nגוף העבודות בתערוכה חוקר את מורכבות יחסי הכוחות בין אנשים דרך דימויים סוריאליסטיים של הכלאות בין גוף האדם לאובייקטים.\nהכדים, הנדמים כצומחים מתוך הגוף או קורסים לתוכו, מפרקים את מושג \"כלי הקיבול\" והופכים את הגוף לזירת קונפליקט ופגיעות.\n\nהעבודות מאופיינות בדואליות בין פנים מוגן ומוזהב לבין חוץ חשוף, לצד טכניקת צביעה ייחודית של הזרקת טיפות צבע בשכבות - מטאפורה למאבקי כוח ולהשפעה ההדדית בין אנשים.\n\nהסדרה הוצגה בגלריית ברוורמן בסמוך לאירועי השבעה באוקטובר, מה שהטעין אותה במשמעות נוספת. הפער בין אסתטיקה מהודרת לגוף מפורק מהדהד מציאות כואבת, והעבודות מציעות מבט על פגיעות, שבר וטרנספורמציה נוכח טראומה.","bio_en":null,"works":[{"id":"samy-nova-1","title":"\"nova\"","image":"images/artists/sami-david/work-01.webp"},{"id":"samy-nova-2","title":"\"nova\"","image":"images/artists/sami-david/work-02.webp"}],"figma_artist_page_mobile":"1213:3744","figma_artist_page_desktop":null,"homepage_featured":false,"works_grid_order":8},{"id":"risa-oz","slug":"risa-oz","name_en":"risa brooke oze","name_he":"ריסה עוז","portrait":"images/artists/risa-oz/portrait.webp","work_image":"images/works/grid/risa-oz.webp","instagram_handle":"@risabrookeart","bio_he":"נולדה בניו יורק וכיום פועלת בתל אביב. לאחר תקופת הקורונה חלה תפנית משמעותית בעשייתה, והיא בחרה להתמסר לאמנות באופן מלא.\n\nעבודתה האוטודידקטית מתפתחת מתוך אינטואיציה וחקירה מתמשכת של צבע, צורה ורגש. היא פועלת בשפה מופשטת, הנשענת על תנועה חופשית של צבע ועל שכבות רגשיות מורכבות.\n\n<span class=\"lat\">HOW MANY PARTNERS HAVE YOU HAD?</span>\nהעבודות אינן מציעות תשובה, אלא יוצרות מרחב התבוננות. הן עוסקות במתח שבין קרבה לריחוק, שליטה ואובדן, ובוחנות גבולות של אינטימיות ומגננה.\n\nזה לוכד את אותו רגע אנושי מאוד של:\nאני לא רוצה לחשוב על שום דבר אחר. אני רק רוצה להיות כאן, בתוך זה, איפה ששום דבר אחר לא קיים.\n\nיאללה, עזבו אותי. לא עניינכם. אני בוחרת להיות ברגע.\nזה מה שזה מעורר בי.","bio_en":null,"works":[{"id":"risa-body-language","title":"\"body language\"","image":"images/artists/risa-oz/work-01.webp"}],"figma_artist_page_mobile":"1213:4026","figma_artist_page_desktop":null,"homepage_featured":false,"works_grid_order":10},{"id":"zohar-ron-dan-ben-ari","slug":"zohar-ron-dan-ben-ari","name_en":"zohar ron × dandan nusha","name_he":"זוהר רון | דן בן ארי","portrait":null,"hero_images":["images/artists/zohar-ron-dan-ben-ari/hero-left.webp","images/artists/zohar-ron-dan-ben-ari/hero-right.webp"],"hero_image_focus":["center 28%","center 22%"],"hero_collab":{"artists":[{"name_en":["zohar","ron"],"bio_he_short":"אומן חזותי, במאי וצלם המבטא חיבור ויזואלי ורעיוני בין פולחן טקסי לאסתטיקה וחושניות של גוף ותנועה, כחלק מהשפה הויזואלית ביצירותיו.","instagram":"@ZOHARRON"},{"name_en":["dan","ben-ary"],"bio_he_short":"אסטרטג, מעצב, פילוסוף רחוב ואמן רב־תחומי בחיפוש אחר מניפולציות תת־מודעות חברתיות שמשפיעות על המציאות שבה אנו חיים.","instagram":"@DANDAN_NUSHA"}]},"work_image":"images/works/grid/zohar-ron-dan-ben-ari.webp","instagram_handle":"@ZOHARRON × @dandan_nusha","bio_he":"פרויקט אמנות חברתי אשר בא לשאול שאלה פשוטה <span class=\"lat\">SEX?</span>\nבפרויקט זה התחלנו את השאלה שלנו עם עשרה זוגות ומזרן.\nרגשות ותקשורת, תת-מודע ותנועה.\nללא מילים, כל זוג סיפור שונה.\n\n\"כמה פרטנרים היו לך?\"\nבמקום לספור, אני מתבונן אל החוויה עצמה. דרך רגעים אינטימיים, היצירה מציעה להתבונן על סקס כמרחב של נוכחות, תקשורת, פגיעוּת ואנושיות. השאלה על מספר הפרטנרים הופכת כאן לפחות רלוונטית; מה שנשאר הוא איכות המפגש, המבט, המגע גוף בגוף והקשר שנוצר ביניהם.\n\nהפרויקט מזמין את הצופה לעבור ממדידה של כמות להקשבה לעומק, מספירה לחוויה של הזדהות או סלידה.","bio_en":null,"works":[{"id":"zr-sex-1","title":"\"sex?\"","image":"images/artists/zohar-ron-dan-ben-ari/work-01.webp"},{"id":"zr-sex-2","title":"\"sex?\"","image":"images/artists/zohar-ron-dan-ben-ari/work-02.webp"}],"figma_artist_page_mobile":"119:3917","figma_artist_page_desktop":null,"homepage_featured":false,"works_grid_order":11,"works_caption_each_image":true,"_note":"collaboration card — links 2 artists; uses dual hero images instead of single portrait; How Many (not loneliness) — keep per-image captions even when titles match"},{"id":"adi-duak","slug":"adi-duak","name_en":"adi duak","name_he":"עדי דואק","portrait":"images/artists/adi-duak/portrait.webp","work_image":"images/works/grid/adi-duak.webp","instagram_handle":"@shakuf_art","bio_he":"אמנית מודרנית המתמקדת ביצירה באמצעות אפוקסי מתוך אהבה לצבע, אור ומרקם.\nעבודתי שואבת השראה מהזיכרונות הקטנים ומהרגעים ילדותיים שמלווים אותנו לאורך החיים — רגעים שבהם הצבע והאור היו חלק בלתי נפרד מהחוויה. אני מתרגמת את זיכרונות הילדות והנוסטלגיה ליצירות עכשוויות\nשמחברות בין דיוק מקצועי לבין רגש ועדינות.\n\n״סוכריות הצלה״\nביצירת הסוכריות הנוסטלגיות שלי <span class=\"lat\">Life Savers</span> מתקיים מפגש מרתק בין מתיקות לבין שקט פנימי.\nדרך סוכריות מוגדלות, צבעוניות ומבריקות נחשף עולם שמח מבחוץ אך פגיע ובודד מבפנים.\n\nהיצירות מקבלות עוצמה מהמראה המוכר והיומיומי, אך בשינוי קנה מידה, חומר ומבט- הפער בין הצבע התוסס לבין התחושה שלהיות לבד בתוך ההמולה.\n\nסוכריות ה- <span class=\"lat\">Life savers</span> מדגימות היטב את הפער.\nהן מבטיחות חיים, הצלה ואחיזה- אך במרכזן קיים חור, ריק, בדידות.\nהחלל הזה אינו רק אלמנט צורני, הוא סמל למקום פנימי שיש בכל אחד מאיתנו, נקודת בדידות שמתקיימת גם בתוך סביבה מלאת צבע, רעש ותנועה.","bio_en":null,"works":[{"id":"adi-life-1","title":"״סוכריות הצלה״","image":"images/artists/adi-duak/work-01.webp"},{"id":"adi-life-2","title":"״סוכריות הצלה״","image":"images/artists/adi-duak/work-02.webp"},{"id":"adi-life-3","title":"״סוכריות הצלה״","image":"images/artists/adi-duak/work-03.webp"},{"id":"adi-life-4","title":"״סוכריות הצלה״","image":"images/artists/adi-duak/work-04.webp"}],"figma_artist_page_mobile":"235:632","figma_artist_page_desktop":null,"homepage_featured":false,"works_grid_order":12},{"id":"alon","slug":"alon","name_en":"alon manjoch","name_he":"אלון מנג׳וך","portrait":"images/artists/alon/portrait.webp","work_image":null,"instagram_handle":"@a_manjoch","bio_he":"חי בתוך ניסיון להבין את עולמנו הריגשי והכוחות הפועלים בו. דרך צילום, כתיבה ואומנות חזותית לצד עיון במחקרים מדעיים אני מנסה להתבונן, לחקור ולהביע את החוויה האנושית.\n\nביצירה \"מחשבות טורדניות\" אני מחפש לחבר אותנו אל הדפוסים הקומפלסיביים שנוצרים בראשנו, מעגל השאלות האין סופיות שמענות את נפשנו ללא מנוח, בעולם בו לעולם לא נדע לאן הבחירות שלנו יובילו אותנו. נאמר שהדבר שהכי קשה למוח האנושי להתמודד איתו הוא אי וודאות,\nאך באותו זמן, אין אנו יכולים להמנע ממנה.\n\nהאדם ינסה להילחם באי הוודאות שבחיו בעזרת הכלים שיש ברשותו, נסיונות בלתי פוסקים לתת תשובות לשאלות בעזרת חשיבה אובססיבית או לחלופין, שימוש בכלים רציונאלים כד להשליט סדר בכאוס, אנחנו יוצרים מערכת חוקים, שמות וכללים על מנת לכבוש את המתחולל בנפשנו.\n\n״מודלים סטטיסטיים של זוגיות״ הוא אוסף נוסחאות בלתי מדויקות המציע דרכים אמפיריות לענות על שאלות מעולם הזוגיות מתוך ניסיון נואש לתשובות ובהירות בתוך עולם רגשי לא מנוהל וחסר וודאות, נסיון כושל למדוד אינטימיות דרך מערכת מספרית של נתונים.","bio_en":null,"works":[{"id":"alon-machshavot","title":"״מחשבות טורדניות״","image":"images/artists/alon/work-01.webp","year":2026},{"id":"alon-modelim","title":"״מודלים סטטיסטיים של זוגיות״","image":"images/artists/alon/work-02.webp","year":2026}],"figma_artist_page_mobile":"1213:3815","figma_artist_page_desktop":"1213:3","homepage_featured":false,"_note":"the only artist with a Figma desktop frame (1213:3); mobile is artist2 (1213:3815). Older alon mobile frame 1213:89 is superseded."},{"id":"noemi-safir","slug":"noemi-safir","name_en":"noemi safir","name_he":"נועמי ספיר","portrait":"images/artists/noemi-safir/portrait.webp","work_image":null,"instagram_handle":"@noemi.safir.artist","bio_he":"העבודות שלי נולדות מתוך חקירה מתמשכת של הגוף הנשי, לא כאובייקט, אלא כמרחב שבו נרשמים חיים שלמים: זיכרונות, מערכות יחסים, עומסים רגשיים, תחושות של תלות, צורך והישרדות בתוך קשר.\n\nאני מתעניינת ברגעים שבהם הזהות אינה יציבה, כשהיא מתעצבת מתוך תגובה לאחר. המקומות שבהם אני לומדת להיות נוחה יותר, מתאימה יותר, שקטה יותר.\nהמקומות שבהם גבולות מיטשטשים מבלי לשים לב, והגוף מתחיל לשאת את מה שלא נאמר. בתוך מערכות קרובות, במיוחד אלו שאין מהן יציאה פשוטה, הקרבה הופכת לכח שמופעל על הגוף מבפנים, נוכחות מתמשכת שדורשת, מושכת, מתעקשת להישאר.\nלא תמיד יש בה אלימות גלויה, אבל יש בה לחץ עדין, כמעט בלתי נראה, שמצטבר עד שהנשימה עצמה משתנה.\n\nבציור, הגוף מתארך, נמתח, מתעוות, לא כאסתטיקה, אלא כשפה שמבטאת מצב נפשי. הוא מחזיק בתוכו מתח מתמשך בין רצון בקרבה לבין המחיר שהיא גובה. הציור עבורי הוא ניסיון להישאר בתוך המקומות האלה בלי לייפות אותם, לחשוף את השבריריות לצד הכוח, ואת האינטימיות לצד האלימות השקטה, שיכולה להתקיים בתוכה.\n\n<span class=\"lat\">How Many Partners Have You Had?</span>\nבסדרה המוצגת בתערוכה, אני עוסקת בשותפויות שמצטברות בתוך הגוף: דינמיקות משפחתיות, מערכות יחסים, ציפיות, תלות וריצוי. כל קשר כזה מותיר עקבה, לא תמיד נראית, אך מורגשת. הגוף בעבודות מתארך, נמתח, מתכופף, נשען או נלכד, לא מתוך בחירה חופשית, אלא מתוך הסתגלות מתמשכת למה שפועל עליו.\n\nהדמויות מופיעות בזוגות, יושבות קרוב מדי, נוגעות כמעט, אך לא באמת.\nהקרבה ביניהן אינה מנחמת אלא טעונה, לעיתים חונקת.\nהן מחזיקות זו את זו ובאותה נשימה גם מגבילות זו את תנועתה של זו. בתוך המפגש הזה מתגלה רגע שבו אינטימיות הופכת להסכם שקט, וכוח פועל דווקא דרך עדינות.\n\nהעבודות אינן מציעות תשובה, אלא מציבות גוף שנושא ומתמודד עם מה שנשאר.","bio_en":null,"works":[{"id":"noemi-ahava","title":"״אהבה ללא תנאי״","image":"images/artists/noemi-safir/work-01.webp","medium":"אקריליק על קנבס"},{"id":"noemi-milim","title":"״המילים שלא יוצאות״","image":"images/artists/noemi-safir/work-02.webp","medium":"אקריליק על קנבס"}],"figma_artist_page_mobile":"1213:4088","figma_artist_page_desktop":null,"homepage_featured":false},{"id":"yarden-amir","slug":"yarden-amir","name_en":"yarden amir","name_he":"ירדן אמיר","portrait":"images/artists/yarden-amir/portrait.webp","work_image":null,"instagram_handle":"@YARDEN_AMIR_ART","bio_he":"אמנית חזותית המזוהה עם \"הנעץ\" – הפיקסל האנלוגי שבאמצעותו היא בונה את שפתה הייחודית.\nבעבודה ידנית, מדויקת ואיטית היא בונה חיבורים בין טבעי לחומר תעשייתי, ומטשטשת גבולות בין ציור, פיסול ועיצוב.\nיצירותיה משלבות דיוק, טקסטורה ותנועה,\nומעניקות לכל אובייקט נוכחות חומרית, חושנית וחושית.\n\nבעבודותיה עומדת אמיר על הפער שבין דו ממד לתלת ממד.\nדרך גילום של צורות ואלמנטים בטבע, כאלה שניתן לראות מנקודת מבט של מעוף הציפור, ובד בבד להבחין בהם רק דרך מיקרוסקופ. בתהליך האמנותי הסיזיפי מוצאת יופי שקט, הפעולה המוטורית המונוטונית משחררת שלווה פשוטה, מדיטציה ונוכחות בה המחשבות מרפות.\n\n<span class=\"lat\">HOW MANY PARTNERS HAVE YOU HAD?</span>\nהעבודות בתערוכה פועלות כגוף אחד רב־שכבתי, המתפתח מתנועה פנימית־אינטימית אל התפזרות חופשית במרחב.\nנקודת המוצא היא היצירה <span class=\"lat\">LIFE MARKS — BODY WHISPERED</span>, המתייחסת לגוף הנשי כאתר של זיכרון, מגע והצטברות: תוואי גוף־נוף, איבר אינטימי, מרחב של הגנה וחשיפה בו־זמנית. מן הגוף הכמוס נפרשת תנועה החוצה.\n\nמטאוריטים — טריפטיך בגווני שחור, כסף ורוז גולד — מציגים מסות חומריות כשרידים או גופים שמימיים:\nחלקיקים שנפלטו, נפלו, נחרתו.\nהם נעים בין משיכה וכובד לבין ריחוף והתנתקות, וממשיכים את רעיון הסימן והעקבה ככוח שפועל גם מעבר לגבולות הגוף.\n\nציפורי החופש, מקבץ של צורות כסופות, מייצגות תנועה קולקטיבית של התרוממות, דחף, נדידה.\nאלו אינן ציפורים נרטיביות אלא מחוות של תעופה — גוף שמתפרק לצורה, קצב, כיוון. הן מסמנות שלב של שחרור מן הפנים אל המרחב, מן היחיד אל הריבוי.\n\nהפרח האפוקליפטי, עשוי מבלוני הליום, מהווה שיא של התנועה: חומר קל, מקרי, חסר צורה קבועה, הנעוץ אל משטח עץ. זהו אובייקט של נשימה, של התרוממות שנעצרה, של זיכרון אווירי. הפרח מתפקד כהתפוצצות רכה של האינטימי — לא כחשיפה דרמטית, אלא כהתרחבות.\n\nיחד, העבודות מתארות מסע מן העומק אל הגובה:\nמהאיבר הנשי והגוף הזוכר, דרך עקבות חומריות וקוסמיות, ועד חופש חסר צורה.\n\n<span class=\"lat\">HOW MANY PARTNERS HAVE YOU HAD?</span>\nכשנשאלת השאלה העבודות מבקשות — להציע הבנה רחבה של \"שותפים\" כיחסים בין גוף וחומר, זיכרון ומרחב, אינטימיות והתפזרות. מה שנשאר אינו מספר — אלא תנועה.","bio_en":null,"works":[{"id":"yarden-meteoritim","title":"״מטאוריטים״","image":"images/artists/yarden-amir/work-01.webp"},{"id":"yarden-tziporim","title":"״ציפורי החופש״","image":"images/artists/yarden-amir/work-02.webp"},{"id":"yarden-perah","title":"״הפרח האפוקליפטי״","image":"images/artists/yarden-amir/work-03.webp"}],"figma_artist_page_mobile":"1213:3954","figma_artist_page_desktop":null,"homepage_featured":false},{"id":"anat-wegier","slug":"anat-wegier","name_en":"anat wegier","name_he":"ענת ויז׳ייה","portrait":"images/artists/anat-wegier/portrait.webp","work_image":null,"instagram_handle":"@anatwrgier","bio_he":"ענת ויז׳ייה היא אמנית חיה ועובדת בתל אביב.\nהיצירה של ויז׳ייה נובעת מתוך התבוננות בחוויות רגשיות ובמערכות יחסים, ומהאופן שבו הן נחרטות בגוף ובזיכרון.\n\nבעבודותיה היא עוסקת ברגעים שבהם קשרים משתנים, מתפרקים או נבנים מחדש, ובמתח שבין מה שנראה כלפי חוץ לבין מה שממשיך לפעול מתחת לפני השטח.\n\nהציור משמש עבורה דרך להתקרב לאותם אזורים חזרתיים — מקומות שבהם הסיפור משתנה, אך התחושה נותרת מוכרת.\n\nבתערוכה זו ויז׳ייה מציגה את העבודה \"אותו אחד שוב\" (2026), שמן על בד, 95×115 ס\"מ.\n\nהעבודה נולדה מתוך התבוננות בשאלה:\n<span class=\"lat\">HOW MANY PARTNERS HAVE YOU HAD?</span>\nלא כשאלה של מספר, אלא כשאלה על חזרתיות, זיכרון ומשיכה. במבט לאחור, נדמה שהדמויות מתחלפות, אך הדינמיקה הרגשית נותרת דומה — אותו סיפור חוזר בצורות שונות.\n\nבציור מופיעות ארבע דמויות במבנה סגור, מחזיקות ידיים, כמעין מערכת שחוזרת על עצמה.\nהמסכות מטשטשות את הזהות האישית, אך בו בזמן מדגישות את הדמיון — את האפשרות שכל אחד מהם הוא אותו אדם, בצורה אחרת.\n\nהעבודה נוגעת בפער שבין שינוי חיצוני לבין חזרתיות פנימית, ובשאלה עד כמה אנו באמת פוגשים אחרים — או פוגשים שוב ושוב את אותו הסיפור.","bio_en":null,"works":[{"id":"anat-oto-ehad","title":"\"אותו אחד שוב\"","image":"images/artists/anat-wegier/work-01.webp","year":2026,"medium":"שמן על בד, 95×115 ס\"מ"}],"figma_artist_page_mobile":"1213:4223","figma_artist_page_desktop":null,"homepage_featured":false},{"id":"liel-salman","slug":"liel-salman","name_en":"liel salman","name_he":"ליאל סלמן","portrait":"images/artists/liel-salman/portrait.webp","work_image":null,"instagram_handle":"@LIELI.SA","bio_he":"אמנית ובעלת סטודיו לקעקועים, הפועלת במרחב שבין פרקטיקה גופנית לשפה ציורית מופשטת. עבודתה נעה בין קוביזם לאבסטרקט, תוך פירוק והרכבה של צורה, גוף ונוכחות.\nיצירתה מתאפיינת בפלטה מונוכרומטית ובשימוש מדויק בקו ובכתם - אלמנטים חדים ונקיים המתקיימים במתח בין שליטה לשחרור.\n\nדרך שפה זו, ליאל מנסחת מהלכים רגשיים ורעיוניים, כאשר מוטיב ה״נשיקה״ שב ומופיע כחתימה אישית וכמחווה חוזרת של חיבור, מגע ואינטימיות. בגוף עבודות זה, המוצג בתערוכה, נבחן מושג ה״פרטנר״ כמרחב דואלי:\nהתמזגות והתמסרות לצד בחירה וחירות,\nוכן המתח המתמיד בין אור לחושך, בין תלות לעצמאות.\n\nהבחירה בקונטרסט חריף של שחור על לבן מחדדת את עוצמת המחווה ומבקשת לנסח אמירה ישירה ובלתי מתפשרת. עם זאת, הצורות המעוגלות והפתוחות משמרות עמימות מכוונת, המותירה מקום לפרשנות סובייקטיבית של הצופה.\n\nהיצירה \"<span class=\"lat\">TOGETHER</span>\", המורכבת מצמד עבודות מקבילות, מציעה מרחב התבוננות שבו מתבקש הצופה לאתר את עצמו בתוך המופשט - לזהות, להשליך, ולמצוא עומק דווקא מתוך המינימלי.","bio_en":null,"works":[{"id":"liel-together","title":"\"together\"","image":"images/artists/liel-salman/work-01.webp","medium":"אקריליק על נייר, 35×50 ס\"מ"}],"figma_artist_page_mobile":"1213:4424","figma_artist_page_desktop":null,"homepage_featured":false},{"id":"tal-nehoray","slug":"tal-nehoray","name_en":"tal nehoray","name_he":"טל נהוראי","portrait":"images/artists/tal-nehoray/portrait-v2.webp","work_image":null,"instagram_handle":"@TALNEHORAY","bio_he":"טל נהוראי היא אמנית רב־תחומית הפועלת בעמק חפר. עבודותיה נמכרות בכל העולם. טל ויוצרת עבודות המשלבות בין חומרים עכשוויים לטכניקות מסורתיות והופכות אותם לאובייקטים חדים ומעוררי מחשבה.\n\nהאסתטיקה הצבעונית והפופ–ארטית שלה משמשת כעדשה ביקורתית על התרבות המערבית ועל המרדף המודרני אחר \"אושר מיידי\" — האריזות שאנו קונים, האשליות שאנו רודפים, וההבטחות שאנו בולעים.\n\nהעבודה מורכבת מעשרות דמעות קרמיקה קטנות, הנערמות לכדי הר שקט ודחוס. כל דמעה נושאת עקבה של חוויה אינטימית — רגע של קרבה, חשיפה או פרידה. יחד הן יוצרות גוף מצטבר של זיכרון רגשי, כזה שאינו נספר אלא מורגש.\n\n\"הר של דמעות\" מציע מבט על יחסים לא דרך מספר השותפים, אלא דרך מה שנשאר מהם: משקל עדין, מתמשך, שנשמר בחומר ובגוף.\n\nבסדרה ״ערכת בדידות״, סמלים יומיומיים של נחמה ורגש — כדור האושר, המוח, הלב, בקבוק־החימום המוכר — מקבלים צורה קרמית ונשללים מרכותם המקורית דרך האייקונים הללו טל בוחנת את המתח בין הכמיהה לנחמה לבין הריקנות שאנו לעיתים פוגשים בתוכנו.\nהפסלים מזמינים את הצופה לשאול מה באמת מרגיע אותנו, מה ממלא אותנו, ומה ממשיך לרעוד בתווך שבין פעימת הלב הראשונה לאחרונה.","bio_en":null,"works":[{"id":"tal-har-shel-dmaot","title":"\"הר של דמעות\"","image":"images/artists/tal-nehoray/work-01.webp","medium":"קרמיקה"},{"id":"tal-cn-1","title":"״COMFORTABLY NUMB״","image":"images/artists/tal-nehoray/work-02.webp","medium":"ceramic sculptures"},{"id":"tal-cn-2","title":"״COMFORTABLY NUMB״","image":"images/artists/tal-nehoray/work-03.webp"},{"id":"tal-cn-3","title":"״COMFORTABLY NUMB״","image":"images/artists/tal-nehoray/work-04.webp"},{"id":"tal-cn-4","title":"״COMFORTABLY NUMB״","image":"images/artists/tal-nehoray/work-05.webp"},{"id":"tal-cn-5","title":"״COMFORTABLY NUMB״","image":"images/artists/tal-nehoray/work-06.webp"}],"figma_artist_page_mobile":"235:224","figma_artist_page_desktop":null,"homepage_featured":false},{"id":"holy-kadosh","slug":"holy-kadosh","name_en":"tal holy kadosh","name_he":"טל הולי קדוש","portrait":"images/artists/holy-kadosh/portrait.webp","work_image":null,"instagram_handle":"@holy_kadosh","bio_he":"אמנית רב תחומית היוצרת במגוון מדיות כמו אומנות דיגיטלית, ציור על רדי מיידי ויצירות קנבס באקריל ובצבעי פנדה. היצירה שלי נולדת מתוך חיבור עמוק לתת המודע, אני מרפה משליטה ונותנת לדימויים לעלות מעצמם, בהובלת זרם פנימי אינטואיטיבי ורוחני.\n\nבסיום היצירה מתרחש דיאלוג שקט ביני לבין העבודה, ומתוך השכבות הנסתרות מתגלים מסרים, תובנות והשתקפויות\nשל מהותי הפנימית.\nכל יצירה עבורי היא שער רוחני, מראה לנשמה ומסע מתמשך של גילוי עצמי ״גן החיות של התודעה״ הוא אוסף יצירות שנולד מתת־מודע, מרחב פנימי של דימויים פראיים, קולות, קונפליקטים ודמויות שמופיעות כמעט ללא שליטה.\nלמרות העושר והעומס החזותי בלב הסדרה מתקיימת\nתחושת בדידות.\n\nהיצירות מציגות את הרגע שבו האדם צופה על עצמו מבפנים, בתוך ״גן חיות״ בלתי צפוי ואף כאוטי, ומזהה שההמולה שמסביב היא למעשה השתקפות של נפשו.\nהבדידות כאן אינה ניתוק מהעולם החיצון, אלא חוויית עומס פנימי: הדמויות מוקפות ביצורים, סמלים ותנועות שמרקדים בתודעה, ועדיין עומדות לבד בתוך הרעש.\n\n<span class=\"lat\">HOLY BILL</span>\nיצירה שמציגה שטר של 100 דולר בגווני כחול־סגול, צבעוניות המדגישה את המתח בין העולם החומרי, הקר והמנוכר, לבין רמז לרובד רוחני ותודעתי. הדמויות המאוירות באפור מדגישות את דעיכת האנושי בתוך מערכת פגומה ושחוקה.\nסביב הדמות המרכזית מופיעים מלאך, שטן וארנב- סמלים של מצפון מתערער, פיתוי ואשליה. הם יוצרים תחושה של חיים בתוך \"סרט מצויר\".\nעולם שבו בעלי הכוח רואים את האדם הפשוט כדמות שטוחה וחסרת עומק. העכברושים משמשים כמטאפורה ל\"כסף מלוכלך\" ולמערכת כלכלית מסואבת.\n\nמתוך כל התנועה, הרעש והסימבוליקה, עולה תחושת בדידות עמוקה: הדמות ניצבת בלב עולם תוסס ורווי כוח, אך נותרת לבד בתוך המאבק המוסרי והנפשי שהכסף יוצר.\n\n<span class=\"lat\">HOLY BAG</span>\nשק האגרוף, המעוטר במסכות אצטקיות ובכתובות ברכה, מציב בלב חלל תוסס את מה שאנו נוטים להצניע: מסע ההתמודדות הפנימי. בתוך מרחב מלא תנועה, צבע וקולות, מתגלה האמת השקטה- שהשדים שאנו נלחמים בהם אינם חלק מהעולם החיצון, אלא מתהווים בתוכנו.\n\nהיצירה מעניקה לדפוסים הפנימיים האלה צורה, פנים וסמלים. היא מזמינה את הצופה לא רק להיאבק בהם,\nאלא להכיר בהם כשליחים של תודעה מבקשת ריפוי.\nבתוך ההמולה, מתבהרת הבדידות העמוקה של האדם,\nזירה שבה כל אחד פוגש את עצמו ללא מסכות.\n\nכך הופך שק האגרוף לאובייקט רוחני כמעט: כלי שמאפשר לפרוק, להשתנות, ולשחרר. דווקא בסביבה תוססת, הוא מזכיר שהשקט האמיתי נוצר כשאנחנו מעזים לראות את מה שבתוכנו ולהפוך את המאבק למרחב של מודעות וצמיחה.","bio_en":null,"works":[{"id":"hk-zoo-1","title":"״THE ZOO OF THE SUBCONSCIOUS״ — ״גן החיות של התודעה״","image":"images/artists/holy-kadosh/work-01.webp"},{"id":"hk-zoo-2","title":"״THE ZOO OF THE SUBCONSCIOUS״ — ״גן החיות של התודעה״","image":"images/artists/holy-kadosh/work-02.webp"},{"id":"hk-zoo-3","title":"״THE ZOO OF THE SUBCONSCIOUS״ — ״גן החיות של התודעה״","image":"images/artists/holy-kadosh/work-03.webp"}],"figma_artist_page_mobile":"235:139","figma_artist_page_desktop":null,"homepage_featured":false},{"id":"costa-magarakis","slug":"costa-magarakis","name_en":"costa magarakis","name_he":"קוסטה מגרקיס","portrait":"images/artists/costa-magarakis/portrait.webp","work_image":null,"instagram_handle":"@duckpirate","bio_he":"העיסוק שלו באמנות נולד כבר בילדות- מתוך סקרנות גדולה לעולם הדימויים, אהבה לחומר, ולרצון לבנות מציאות חדשה מתוך פנטזיה והומור.\nהעבודות שלו נשענות על דימויים מוכרים אך מעוותים, יצורים היברידיים ומרחבים דמיוניים, שמאפשרים לחקור זהות, גוף, וזיכרון בצורה משחקית אך מדויקת.\n\nבתערוכה בגלריה מוצגים פסלים שהם חלק מעולם אישי שהוא בנה לאורך השנים. כל יצירה משלבת מלאכת־יד, דימיון וצורה חיונית, ומזמינה את הצופה להיכנס לעולם אחר- קצת מוזר, קצת מצחיק, בתוך בועה פנימית, לפעמים מצחיק, לפעמים מוזר, ולעיתים בודד.\nהעבודות שלי מציגות לעיתים קרובות יצורים היברידיים ודמויות שנראות כאילו הן מתקיימות בתוך מציאות פנימית משל עצמן. הן שוכנות במרחבים צבעוניים, אנרגטיים ומלאי חיים, אך כולן נושאות תחושת ריחוק עדינה- נוכחות ייחודית ובודדה. בדרך זו הן משקפות בעיניי את החוויה האנושית\nשל בדידות בתוך סביבה תוססת: להיות חלק מהעולם ובו־בזמן לעמוד מעט מחוץ לו.\n\nאני שמח לשתף את <span class=\"lat\">HIGH HILL</span>,\nאחד מהפסלים בתערוכה הנוכחית.\nעבורי, <span class=\"lat\">HIGH HILL</span> הוא יותר מפסל — הוא מטאפורה.\nהוא מייצג את התחושה של עמידה גבוה מעל הכל, בתוך תנועה ורעש מסביב, אך בו זמנית קיום פנימי במרחב של בדידות שקטה.\nהוא חלק מהיקום האישי שלי: צבעוני, דמיוני, חי — ובאותו הזמן מעט מרוחק, מעט בודד.","bio_en":null,"works":[{"id":"costa-high-hill","title":"״SURREAL OBJECTS FOR POSSIBLE WORLDS״ — ״אובייקטים סוריאליסטיים לעולמות אפשריים״","image":"images/artists/costa-magarakis/work-01.webp"}],"figma_artist_page_mobile":"235:306","figma_artist_page_desktop":null,"homepage_featured":false},{"id":"maya-nachum-levy","slug":"maya-nachum-levy","name_en":"maya nachum levy","name_he":"מאיה נחום לוי","portrait":"images/artists/maya-nachum-levy/portrait.webp","work_image":null,"instagram_handle":"@cracked.pigeons","bio_he":"באמנות הקלאסית ישנה קטגוריה של ציורי טבע דומם, בצרפתית <span class=\"lat\">nature morte</span> [טבע מת] בה מרחפות קומפוזיציות של ביכורים מהטבע, במותם, מאורגנים בהידוק, כד מעוטר פרחים שנגדעו מן השדה, גולגולת אדם, פרסי ציד, פירות וירקות.\nבתחומי העיצוב הנוגעים למוות של החיי, עולה משיכה עתיקה למראה פרווה ועור, תוצרים של פגרי בעלי חיים המיוחסים לאנשים אמידים, מה שהופך את פגר החיה לסמל שמבטא פרס, כוח ומעמד- מהות הפרדוקס שבין היפה והאסתטי למוסרי והאתי.\nכשהאדם חומד מן הטבע הוא למעשה נמצא בבדידות מוסרית. הוא רוצה, תופס, לוקח ממנו.\nהמתח שבמעשה הציד, הלבישה, ואבזור הבית יוצר תסיסה ממושכת על הציר האסתטי-מצפוני האנושי.\n\n״שועל״ ו״ממותה ואור ירח״ נבעו מתוך אוסף צילומי רחוב שצילמתי של חיות שנדרסו בעיר.\nבדומה לנהגים סקרנים שמאטים את רכבם למראה תאונת דרכים, כך גם אני לא יכלתי שלא לעצור ולבהות מהמראה האימתי והיפה בו זמנית.\nתהיתי, אם זה כזה מגעיל, מדוע אני מתקרבת.\n\nצמד היצירות לקוחות מתוך סדרה של יריעות בד המטופלות בפיגמנט בטכניקה ייחודית ואנלוגית שפיתחתי, חפה מפגיעה בבעלי חיים, ומקיימת.\nהיריעות מציגות לראווה חומר מלאכותי, דו צדדי, המזכיר פרווה ועור- ייצוגם החזותי של שטיחי פרווה של חיה ניצודה. קנה המידה שלהן טומן בתוכו את הסתירה בין פריסת עור החיה כפי שהוא, לבין פורמט גליל בד תעשייתי במטר רץ.","bio_en":null,"works":[{"id":"maya-fox-1","title":"״שועל, ממותה ואור ירח״","image":"images/artists/maya-nachum-levy/work-01.webp"},{"id":"maya-fox-2","title":"״שועל, ממותה ואור ירח״","image":"images/artists/maya-nachum-levy/work-02.webp"},{"id":"maya-fox-3","title":"״שועל, ממותה ואור ירח״","image":"images/artists/maya-nachum-levy/work-03.webp"},{"id":"maya-fox-4","title":"״שועל, ממותה ואור ירח״","image":"images/artists/maya-nachum-levy/work-04.webp"},{"id":"maya-fox-5","title":"״שועל, ממותה ואור ירח״","image":"images/artists/maya-nachum-levy/work-05.webp"}],"figma_artist_page_mobile":"235:554","figma_artist_page_desktop":null,"homepage_featured":false},{"id":"la-raz-porta","slug":"la-raz-porta","name_en":"la raz porta","name_he":"לה רז פורטה","portrait":"images/artists/la-raz-porta/portrait.webp","work_image":null,"instagram_handle":"@larazporta","bio_he":"סדרה זו נולדה מתוך מפגש בין שתי יוצרות אנונימיות, שבחרו לוותר על חתימה פרטית ולתת למעגלי הסמל, הציור והטקסט לדבר בעצמם.\nבתוך כל עבודה חבוי כתב־סתרים מקורי — מערכת קודים שנוצרה במיוחד עבור הסדרה, מעין לחישות חזותיות המשמשות כקמעות. כל קוד נכתב כטקס זימון,\nכהזמנה מדויקת לעבודה פנימית: הגנות, התמרה, בהירות, אומץ, התעוררות.\n\nהדימויים נשענים על שפות עתיקות אך מסרבים להישאר קשורים לזמן מסוים.\nהציורים אינם ארכיאולוגיה של רוחניות, אלא פרשנות חיה ואקטואלית של תהליכים נפשיים — טקסי מעבר שעוברים דרך גוף, פחד, אור, צל והתחדשות.\nהם מבקשים מהצופה לא רק להתבונן, אלא להשתתף:\nלקרוא, לפענח, להרגיש, ולשאול על איזה שער פנימי הוא עומד ברגע זה.\n\nיש בעבודות רגעים של המתנה — לא כעונש, אלא כהכנה מדויקת; שערים שנפתחים רק כשהתודעה בשלה לעבור דרכם. לצד זאת מתקיימת קריאה להתעורר ממה שכבר אינו משרת, להתקרב אל הלב לא כמשאב נוסטלגי אלא כמצפן חי, ולהאמין באור שמתחיל לנוע עוד לפני שהוא נראה.\n\nהסדרה מחזיקה תזכורת ברורה: השינוי שאנו מבקשים מצריך מפגש עם מה שאנחנו נוטים להתחמק ממנו. הגבול היחיד הוא לעיתים אנחנו עצמנו. הזריחה הפנימית מתחילה באופן שבו אנחנו חושבים, נושמים, מעזים.\n\nכך נרקמת מפה אישית ורב־שכבתית — מפת מסע של תודעה. לא כהבטחה לריפוי מהיר, אלא כהזמנה למפגש אמיתי עם מה שמניע אותנו, מגדיל אותנו, ולעיתים גם מערער אותנו.\nהקמיעות בסדרה אינם מגנים מבחוץ, אלא מזכירים את מה שכבר קיים בפנים:\nכוח, בחירה, כוונה, היכולת להשתנות, והידיעה שכל צעד — גם הכואב הוא חלק מההתמרה.\n\nבין השקט של הסמלים לאינטנסיביות של הפרטים, העבודות מציעות רגע של עצירה, כמו נשימה עמוקה לפני דלת שנפתחת.\nכך הן הופכות לקמיעות: לא אובייקטי כוח, אלא מראות.\nכל אחת מהן מצביעה באלגנטיות חדה אל האזור המדויק\nשבו מתחיל הקסם — בדיוק במקום שבו אנחנו היינו\nמעדיפים לעצום עיניים.","bio_en":null,"works":[{"id":"lrp-fortitudo-1","title":"״<span class=\"lat\">FORTITUDO</span>״","image":"images/artists/la-raz-porta/work-01.webp","medium":"for courage and confidence"},{"id":"lrp-fortitudo-2","title":"״<span class=\"lat\">FORTITUDO</span>״","image":"images/artists/la-raz-porta/work-02.webp"},{"id":"lrp-fortitudo-3","title":"״<span class=\"lat\">FORTITUDO</span>״","image":"images/artists/la-raz-porta/work-03.webp"}],"figma_artist_page_mobile":"235:723","figma_artist_page_desktop":null,"homepage_featured":false,"_note":"anonymous artist duo — no individual portrait; image is symbolic"}];</script>
+<script>
+/* ============================================================
+   Artist page — pulls slug from URL ?slug=… and renders from
+   data/artists.json. RTL Hebrew, lightbox on artwork click.
+   ============================================================ */
+(function(){
+  function getSlug(){
+    var d=document.documentElement.dataset.slug; if(d)return d;
+    var p=new URLSearchParams(location.search).get("slug");
+    if(p)return p;
+    /* fallback: derive from filename if hosted as /alon.html */
+    var m=location.pathname.match(/\/([^/]+?)\.html$/);
+    if(m && m[1]!=="artist")return m[1];
+    return null;
+  }
+  function escapeHtml(s){
+    if(s==null)return "";
+    return String(s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+  /* @handle from JSON → link to instagram.com/<username>/ */
+  function heroHandleLink(handle){
+    if(handle==null||handle==="")return "";
+    var display=String(handle).trim();
+    var user=display.replace(/^@+/,"").trim();
+    if(!user)return "";
+    var href="https://www.instagram.com/"+encodeURIComponent(user)+"/";
+    return '<a class="hero-handle" href="'+escapeHtml(href)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(display)+'</a>';
+  }
+  /* Hebrew letters proper (alef-tav + finals); excludes punctuation like ״ ׳.
+     Use for routing JSON-driven text into the right font + direction. */
+  var HEB_LETTERS=/[א-ת]/;
+  function langClass(s){ return HEB_LETTERS.test(s||"") ? "is-he" : "is-en"; }
+  var LATIN_RUN=/[A-Za-z][A-Za-z0-9@&'’._?!:,;()/" -]*[A-Za-z0-9?!)]|[A-Za-z]/g;
+  function restoreLatSpans(s){
+    if(!s) return "";
+    return escapeHtml(s).replace(
+      /&lt;span class=&quot;lat&quot;&gt;([\s\S]*?)&lt;\/span&gt;/g,
+      '<span class="lat">$1</span>'
+    );
+  }
+  function wrapLatinRuns(html){
+    return String(html).split(/(<span class="lat">[\s\S]*?<\/span>)/g).map(function(part){
+      if(/^<span class="lat">/.test(part)) return part;
+      var entities=[];
+      var safePart=part.replace(/&(?:[a-zA-Z]+|#\d+|#x[0-9A-Fa-f]+);/g,function(entity){
+        var token="\x00"+entities.length+"\x00";
+        entities.push(entity);
+        return token;
+      });
+      return safePart.replace(LATIN_RUN,function(match){
+        return '<span class="lat">'+match+'</span>';
+      }).replace(/\x00(\d+)\x00/g,function(_,idx){return entities[Number(idx)];});
+    }).join("");
+  }
+  /* JSON text can be Hebrew, English, or mixed. Preserve approved inline spans,
+     and auto-route bare Latin fragments to Copperplate. */
+  function mixedHtml(s){ return wrapLatinRuns(restoreLatSpans(s)); }
+  function titleHtml(s){ return mixedHtml(s); }
+  /* Figma landing::235:348 — title "EN — HE" → stacked EN lines, sep, stacked HE lines */
+  function worksSharedTitleBlock(titleStr){
+    if(!titleStr)return"";
+    var parts=String(titleStr).split(/\s+[\u2014\u2013]\s+/);
+    if(parts.length!==2){
+      return '<div class="title '+langClass(titleStr)+'">'+titleHtml(titleStr)+'</div>';
+    }
+    var en=parts[0].trim();
+    var he=parts[1].trim();
+    if(!HEB_LETTERS.test(he)){
+      return '<div class="title '+langClass(titleStr)+'">'+titleHtml(titleStr)+'</div>';
+    }
+    if(!/[A-Za-z]/.test(en)){
+      return '<div class="title '+langClass(titleStr)+'">'+titleHtml(titleStr)+'</div>';
+    }
+    var enLines="";
+    var enFor=en.match(/^([\s\S]*?)(\s+FOR\s+)([\s\S]+)$/i);
+    if(enFor){
+      enLines=
+        '<div class="works-shared-en-line">'+titleHtml(enFor[1].trim()+" FOR")+'</div>'+
+        '<div class="works-shared-en-line">'+titleHtml(enFor[3].trim())+'</div>';
+    }else{
+      enLines='<div class="works-shared-en-line">'+titleHtml(en)+'</div>';
+    }
+    var heLines="";
+    var lx=he.indexOf(" לעולמות");
+    if(lx>0){
+      heLines=
+        '<div class="works-shared-he-line">'+titleHtml(he.slice(0,lx).trim())+'</div>'+
+        '<div class="works-shared-he-line">'+titleHtml(he.slice(lx).trim())+'</div>';
+    }else{
+      heLines='<div class="works-shared-he-line">'+titleHtml(he)+'</div>';
+    }
+    return (
+      '<div class="works-shared-duo">'+
+        '<div class="works-shared-en">'+enLines+'</div>'+
+        '<div class="works-shared-sep" aria-hidden="true">-</div>'+
+        '<div class="works-shared-he">'+heLines+'</div>'+
+      '</div>'
+    );
+  }
+  function bioParagraphs(text){
+    if(!text)return "";
+    var HEB=/[֐-׿יִ-ﭏ]/;
+    function isAllEnglish(line){return line.trim().length>0&&!HEB.test(line);}
+    return text.split(/\n\s*\n/).map(function(para){
+      var lines=para.split(/\n/);
+      var out="",buf=[];
+      function flush(){if(buf.length){out+="<p>"+buf.join("<br>")+"</p>";buf=[];}}
+      lines.forEach(function(line){
+        if(isAllEnglish(line)){flush();out+='<div class="en-line">'+mixedHtml(line)+'</div>';}
+        else{buf.push(mixedHtml(line));}
+      });
+      flush();
+      return out;
+    }).join("");
+  }
+
+  function renderArtist(a){
+    var root=document.getElementById("artist-root");
+    document.title=(a.name_en?a.name_en:a.slug)+" — Zielinski & Rozen";
+
+    /* if artist has no figma page (no bio + no works), show placeholder */
+    if(!a.bio_he && (!a.works||a.works.length===0)){
+      var heroImg=a.work_image||a.portrait||"";
+      root.innerHTML=
+        '<section class="placeholder">'+
+          '<h1>'+escapeHtml(a.name_en||a.slug)+'</h1>'+
+          (a.name_he?'<p class="sub" dir="rtl">'+escapeHtml(a.name_he)+'</p>':"")+
+          '<p class="sub" style="margin-top:12px" dir="rtl">דף האומן בהכנה</p>'+
+          (heroImg?'<div class="work-image"><img src="../../'+escapeHtml(heroImg)+'" alt="'+escapeHtml(a.name_he||a.name_en)+'" decoding="async" fetchpriority="high"></div>':"")+
+        '</section>';
+      return;
+    }
+
+    /* Hero */
+    var heroHTML="";
+    var nameParts=(a.name_en||"").split(/\s+/);
+    var first=nameParts.shift()||"";
+    var last=nameParts.join(" ");
+
+    /* split bio: first paragraph is "intro", rest is "body" — matches alon-desktop divider layout */
+    var bioBlocks=(a.bio_he||"").split(/\n\s*\n/);
+    var intro=bioBlocks.shift()||"";
+    var body=bioBlocks.join("\n\n");
+    var hasIntro=intro && body;
+
+    /* Per-artist focal points — override with a.portrait_focus from JSON, or use lookup table.
+       Values are CSS object-position (x y). Face is always the target. */
+    var FOCAL_POINTS={
+      'zohar-ron': '50% 42%',
+      'eitan-goldson': '50% 18%',
+      'tanya-shin': '50% 30%',
+      'nir-giorgio-levin': '50% 32%',
+      'elsa-ars-brush': '50% 38%',
+      'gal-polk': '50% 20%',
+      'zohar-shtrit': '50% 25%',
+      'hila-loterstein': '50% 28%',
+      'sami-david': '50% 25%',
+      'risa-oz': '50% 35%',
+      'zohar-ron-dan-ben-ari': '50% 35%',
+      'adi-duak': '50% 28%',
+      'alon': '58% 40%',
+      'noemi-safir': '50% 18%',
+      'yarden-amir': '50% 38%',
+      'anat-wegier': '50% 32%',
+      'liel-salman': '50% 32%',
+      'tal-nehoray': '50% 32%',
+      'holy-kadosh': '50% 30%',
+      'costa-magarakis': '58% 35%',
+      'maya-nachum-levy': '50% 25%',
+      'la-raz-porta': '50% 50%'
+    };
+    var focus=a.portrait_focus||FOCAL_POINTS[a.slug]||'center 25%';
+    var focusStyle=' style="object-position:'+focus+'"';
+
+    var portraitHTML="";
+    if(a.hero_images && a.hero_images.length>=2){
+      var f0=(a.hero_image_focus&&a.hero_image_focus[0])||"";
+      var f1=(a.hero_image_focus&&a.hero_image_focus[1])||"";
+      var s0=f0?' style="object-position:'+f0+'"':"";
+      var s1=f1?' style="object-position:'+f1+'"':"";
+      var img0Attrs=' decoding="async" fetchpriority="high"';
+      var img1Attrs=' decoding="async" loading="lazy"';
+      portraitHTML=
+        '<div class="hero-portrait dual">'+
+          '<div class="pic"><img src="../../'+escapeHtml(a.hero_images[0])+'" alt="'+escapeHtml(a.name_he||a.name_en||'')+'"'+s0+img0Attrs+'></div>'+
+          '<div class="pic"><img src="../../'+escapeHtml(a.hero_images[1])+'" alt="'+escapeHtml(a.name_he||a.name_en||'')+'"'+s1+img1Attrs+'></div>'+
+        '</div>';
+    } else if(a.portrait){
+      portraitHTML=
+        '<div class="hero-portrait">'+
+          '<img src="../../'+escapeHtml(a.portrait)+'" alt="'+escapeHtml(a.name_en||a.slug)+'"'+focusStyle+' decoding="async" loading="lazy">'+
+        '</div>';
+    }
+
+    function collabNameParts(art){
+      var nl=art.name_en;
+      if(Array.isArray(nl)){
+        return {first:nl[0]||"",last:nl.slice(1).join(" ")};
+      }
+      var parts=String(nl||"").split(/\s+/);
+      return {first:parts[0]||"",last:parts.slice(1).join(" ")};
+    }
+    function collabBlock(art){
+      var np=collabNameParts(art);
+      return ''+
+        '<div class="hero-collab-block">'+
+          '<div class="hero-name hero-name--collab">'+
+            '<span class="first">'+escapeHtml(np.first)+'</span>'+
+            (np.last?'<span class="last">'+escapeHtml(np.last)+'</span>':"")+
+          '</div>'+
+          (art.bio_he_short?'<div class="hero-collab-bio">'+mixedHtml(art.bio_he_short).replace(/\n/g,"<br>")+'</div>':"")+
+          (art.instagram?heroHandleLink(art.instagram):"")+
+        '</div>';
+    }
+
+    var bioHTML;
+    var heroHTML;
+    if(a.hero_collab && a.hero_collab.artists && a.hero_collab.artists.length>=2){
+      var Ac=a.hero_collab.artists;
+      var bioFlat='<div class="hero-bio hero-bio--flat"><div class="body">'+bioParagraphs(a.bio_he||"")+'</div></div>';
+      heroHTML=
+        '<section class="hero is-collab"><div class="hero-inner">'+
+          '<div class="hero-text">'+
+            '<div class="hero-collab-meta">'+
+              collabBlock(Ac[0])+
+              '<p class="hero-collab-x" aria-hidden="true">×</p>'+
+              collabBlock(Ac[1])+
+            '</div>'+
+            bioFlat+
+          '</div>'+
+          portraitHTML+
+        '</div></section>';
+    } else {
+    if(hasIntro){
+      bioHTML=
+        '<div class="hero-bio">'+
+          '<div class="bio-intro-row">'+
+            '<div class="intro">'+mixedHtml(intro).replace(/\n/g,"<br>")+'</div>'+
+            '<div class="divider"></div>'+
+          '</div>'+
+          '<div class="body">'+bioParagraphs(body)+'</div>'+
+        '</div>';
+    } else {
+      bioHTML=
+        '<div class="hero-bio">'+
+          '<div class="body">'+bioParagraphs(a.bio_he||"")+'</div>'+
+        '</div>';
+    }
+
+    heroHTML=
+      '<section class="hero"><div class="hero-inner">'+
+        '<div class="hero-text">'+
+          '<div class="hero-info">'+
+            '<div class="hero-name">'+
+              '<span class="first">'+escapeHtml(first)+'</span>'+
+              (last?'<span class="last">'+escapeHtml(last)+'</span>':"")+
+            '</div>'+
+            (a.instagram_handle?heroHandleLink(a.instagram_handle):"")+
+          '</div>'+
+          bioHTML+
+        '</div>'+
+        portraitHTML+
+      '</div></section>';
+    }
+
+    /* Works section — shared caption when (a) all works share one title, or (b) one title
+       appears ≥2× (dominant series) so outliers keep per-card meta (e.g. Gal: exs + DLYH set).
+       Shared sub line: all matching subs equal, OR exactly one non-empty medium/year in the group. */
+    var worksHTML="";
+    if(a.works && a.works.length>0){
+      var single=a.works.length===1;
+      function workSub(w){
+        return [w.year,w.medium].filter(Boolean).join(" · ");
+      }
+      var trimmedTitles=a.works.map(function(w){
+        return (w.title && String(w.title).trim()) ? String(w.title).trim() : "";
+      });
+      var firstT=trimmedTitles[0]||"";
+      var allowSharedCaption=a.works_caption_each_image!==true;
+      var allSame=Boolean(firstT && trimmedTitles.every(function(t){return t===firstT;}));
+      var freq={};
+      var firstIdx={};
+      trimmedTitles.forEach(function(t,i){
+        if(!t)return;
+        freq[t]=(freq[t]||0)+1;
+        if(firstIdx[t]===undefined)firstIdx[t]=i;
+      });
+      var dominantT="",dominantC=0,dominantFirst=1e9;
+      if(!allSame && allowSharedCaption){
+        for (var ti in freq){
+          var c=freq[ti],fi=firstIdx[ti];
+          if(c>dominantC||(c===dominantC&&fi<dominantFirst)){
+            dominantC=c;dominantT=ti;dominantFirst=fi;
+          }
+        }
+      }
+      var sharedTitleText="";
+      if(allowSharedCaption){
+        if(allSame&&firstT)sharedTitleText=firstT;
+        else if(!allSame&&dominantC>=2&&dominantT)sharedTitleText=dominantT;
+      }
+      var subsOfShared=a.works.map(function(w){
+        var tw=(w.title&&String(w.title).trim())?String(w.title).trim():"";
+        if(!sharedTitleText)return "__skip__";
+        if(allSame)return workSub(w);
+        if(tw===sharedTitleText)return workSub(w);
+        return "__skip__";
+      }).filter(function(s){return s!=="__skip__";});
+      var uniqNE={};
+      subsOfShared.forEach(function(s){
+        var k=s&&String(s).trim();
+        if(k)uniqNE[k]=true;
+      });
+      var uniqKeys=Object.keys(uniqNE);
+      var s0=subsOfShared.length?subsOfShared[0]:"";
+      var allSubsMatchGroup=subsOfShared.every(function(s){return s===s0;});
+      var sharedSub="";
+      if(allSubsMatchGroup&&String(s0||"").trim())sharedSub=String(s0).trim();
+      else if(uniqKeys.length===1)sharedSub=uniqKeys[0];
+      var perCardSubOnly=Boolean(sharedTitleText&&uniqKeys.length>1);
+      var sharedMetaHTML="";
+      if(sharedTitleText){
+        var titleBlock=worksSharedTitleBlock(sharedTitleText);
+        var metaDuo=titleBlock.indexOf("works-shared-duo")!==-1?" works-shared-meta--duo":"";
+        sharedMetaHTML=
+          '<div class="works-shared-meta'+metaDuo+'">'+
+            titleBlock+
+            (sharedSub?'<div class="sub '+langClass(sharedSub)+'">'+escapeHtml(sharedSub)+'</div>':"")+
+          '</div>';
+      }
+      var cards=a.works.map(function(w){
+        var wTitle=(w.title && String(w.title).trim())?w.title:"";
+        var wTrim=(w.title && String(w.title).trim())?String(w.title).trim():"";
+        var wSub=workSub(w);
+        var inSharedGroup=Boolean(sharedTitleText&&(allSame||wTrim===sharedTitleText));
+        var workMetaHTML="";
+        if(!sharedTitleText){
+          if(wTitle || wSub){
+            workMetaHTML=
+              '<div class="work-meta">'+
+                (wTitle?'<div class="title '+langClass(wTitle)+'">'+titleHtml(wTitle)+'</div>':"")+
+                (wSub?'<div class="sub '+langClass(wSub)+'">'+escapeHtml(wSub)+'</div>':"")+
+              '</div>';
+          }
+        } else if(!inSharedGroup){
+          if(wTitle || wSub){
+            workMetaHTML=
+              '<div class="work-meta">'+
+                (wTitle?'<div class="title '+langClass(wTitle)+'">'+titleHtml(wTitle)+'</div>':"")+
+                (wSub?'<div class="sub '+langClass(wSub)+'">'+escapeHtml(wSub)+'</div>':"")+
+              '</div>';
+          }
+        } else if(perCardSubOnly && wSub){
+          workMetaHTML=
+            '<div class="work-meta">'+
+              '<div class="sub '+langClass(wSub)+'">'+escapeHtml(wSub)+'</div>'+
+            '</div>';
+        }
+        var altText=(inSharedGroup&&sharedTitleText)?sharedTitleText:(wTitle||(a.name_he||a.name_en||""));
+        return ''+
+          '<article class="work">'+
+            '<a class="img" href="#" '+
+                'data-artwork-src="../../'+escapeHtml(w.image)+'" '+
+                'data-artwork-title="'+escapeHtml(wTitle||sharedTitleText)+'" '+
+                'data-artwork-artist="'+escapeHtml(a.name_en||"")+'">'+
+              '<img src="../../'+escapeHtml(w.image)+'" alt="'+escapeHtml(altText)+'" loading="lazy" decoding="async">'+
+            '</a>'+
+            workMetaHTML+
+          '</article>';
+      }).join("");
+      worksHTML=
+        '<section class="works'+(sharedTitleText?' has-shared-caption':'')+'"><div class="works-inner">'+
+          '<div class="works-head"><h2>the artworks</h2></div>'+
+          sharedMetaHTML+
+          '<div class="works-grid'+(single?' single':'')+'" data-artwork-gallery>'+cards+'</div>'+
+        '</div></section>';
+    }
+
+    root.innerHTML=heroHTML+worksHTML;
+
+    /* lightbox: tell the shared component about freshly-injected nodes */
+    if (window.ArtworkLightbox && window.ArtworkLightbox.refreshFocusable){
+      window.ArtworkLightbox.refreshFocusable();
+    }
+    document.body.classList.remove('is-loading-data');
+  }
+
+  function renderError(msg){
+    document.getElementById("artist-root").innerHTML=
+      '<section class="placeholder">'+
+        '<h1>artist not found</h1>'+
+        '<p class="sub" dir="rtl">'+escapeHtml(msg||"")+'</p>'+
+        '<p class="sub" style="margin-top:24px"><a href="../../works/" style="text-decoration:underline">←&nbsp;the art works</a></p>'+
+      '</section>';
+    document.body.classList.remove('is-loading-data');
+  }
+
+  var slug=getSlug();
+  if(!slug){renderError("חסר slug בכתובת");return;}
+
+  function findAndRender(list){
+    var a=(list||[]).find(function(x){return x.slug===slug||x.id===slug;});
+    if(!a){renderError("האומן ׳"+slug+"׳ לא נמצא");return;}
+    renderArtist(a);
+  }
+
+  /* INLINE FIRST — works on file:// without a server. */
+  if(window.__ARTISTS_INLINE__ && window.__ARTISTS_INLINE__.length){
+    findAndRender(window.__ARTISTS_INLINE__);
+    return;
+  }
+
+  /* fallback: fetch (HTTP-served only) */
+  fetch("../../data/artists.json")
+    .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();})
+    .then(function(data){findAndRender(data.artists);})
+    .catch(function(err){
+      renderError("שגיאה בטעינת הנתונים: "+err.message+" — נסה להפעיל שרת מקומי או טען מחדש.");
+    });
+})();
+</script>
+
+<!-- Artwork Lightbox component (shared) — see CLAUDE.md §15 -->
+<script src="../../components/artwork-lightbox.js" defer></script>
+
+<!-- Site chrome: shared header + footer (single source of truth) -->
+<script src="../../components/site-chrome.js" defer></script>
+
+<script src="../../components/picture-upgrade.js" defer></script>
+</body>
+</html>

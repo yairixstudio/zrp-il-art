@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Zielinski & Rozen Art Galleries</title>
+<meta name="description" content="יצירת קשר עם זילינסקי & רוזן — גלריות אומנות בתל אביב">
+<link rel="preload" href="../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../components/site-boot.css">
+<style>
+/* ===== LOCAL FONTS ===== */
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --ink:#1B1B1B;
+  --grey-mid:#808080;
+  --copy-grey:#6B7280;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+
+/* ===== CONTACT PAGE ===== */
+.contact{padding:64px var(--pad-x) 96px;display:flex;justify-content:center}
+.contact .col{width:100%;max-width:880px;display:flex;flex-direction:column;gap:48px}
+.contact h1{font-family:var(--cop);font-weight:400;font-size:56px;line-height:1.05;letter-spacing:.02em;color:var(--ink);text-align:center;direction:ltr}
+.contact .lede{font-family:var(--heb);font-weight:300;font-size:20px;line-height:1.6;color:var(--ink);text-align:center;direction:rtl;text-transform:none;max-width:640px;margin:0 auto}
+
+/* Two-column row: form (right) + info (left). On RTL container, flex naturally flows R→L. */
+.contact .row{display:flex;gap:64px;align-items:flex-start;direction:rtl}
+.contact .form-col{flex:1 1 480px;min-width:0;direction:rtl}
+.contact .info-col{flex:0 1 300px;min-width:0;display:flex;flex-direction:column;gap:0;direction:rtl;background:var(--bg-grey);padding:28px 24px}
+.contact .info-block{padding:22px 0;border-bottom:1px solid rgba(27,27,27,.08)}
+.contact .info-block:first-child{padding-top:0}
+.contact .info-block:last-child{border-bottom:0;padding-bottom:0}
+.contact .info-head{display:flex;flex-direction:row;align-items:baseline;justify-content:flex-end;gap:12px;margin-bottom:12px;flex-wrap:wrap;direction:rtl}
+.contact .info-block > h3.info-head{margin:0;padding:0;border:0;font:inherit}
+.contact .info-head-he{font-family:var(--heb);font-weight:400;font-size:15px;line-height:1.25;color:var(--ink);text-transform:none;letter-spacing:0;text-align:right}
+.contact .info-head-en{font-family:var(--cop);font-weight:400;font-size:10px;line-height:1.2;letter-spacing:.18em;color:var(--grey-mid);direction:ltr;unicode-bidi:isolate;text-transform:uppercase;white-space:nowrap}
+
+/* Form */
+.contact form{display:flex;flex-direction:column;gap:22px}
+.contact .field{display:flex;flex-direction:column;gap:8px}
+.contact label{font-family:var(--heb);font-weight:400;font-size:15px;color:var(--ink);text-align:right;text-transform:none;direction:rtl}
+.contact label .req{color:#9b1c1c;margin-right:4px}
+.contact input,
+.contact textarea{
+  font-family:var(--heb);font-weight:300;font-size:17px;line-height:1.5;color:var(--ink);
+  background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0;
+  padding:10px 0 10px;width:100%;outline:0;direction:rtl;text-align:right;text-transform:none;-webkit-appearance:none;appearance:none;
+}
+.contact textarea{min-height:140px;resize:vertical;line-height:1.6}
+.contact input::placeholder,
+.contact textarea::placeholder{color:var(--grey-mid);opacity:.85}
+.contact input:focus-visible,
+.contact textarea:focus-visible{outline:none;border-bottom-color:var(--ink);box-shadow:0 1px 0 0 var(--ink)}
+
+.contact .consent{display:flex;flex-direction:row-reverse;align-items:flex-start;gap:10px;direction:rtl;margin-top:4px}
+.contact .consent input[type=checkbox]{width:18px;height:18px;flex-shrink:0;margin-top:3px;accent-color:var(--ink);cursor:pointer}
+.contact .consent label{font-family:var(--heb);font-weight:300;font-size:14px;line-height:1.55;color:var(--ink);text-align:right;cursor:pointer}
+.contact .consent a{text-decoration:underline;text-underline-offset:3px}
+
+.contact button[type=submit]{
+  margin-top:8px;padding:16px 32px;border:1px solid var(--ink);background:var(--ink);color:#fff;
+  font-family:var(--cop);font-weight:400;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  transition:background .2s,color .2s;align-self:flex-start;min-width:200px
+}
+.contact button[type=submit]:hover{background:#fff;color:var(--ink)}
+.contact button[type=submit]:disabled{opacity:.5;cursor:not-allowed}
+
+.contact .form-status{font-family:var(--heb);font-weight:400;font-size:15px;color:var(--ink);text-align:right;direction:rtl;text-transform:none;min-height:1.4em}
+.contact .form-status.is-ok{color:#0b6b3a}
+.contact .form-status.is-err{color:#9b1c1c}
+
+/* Info column body */
+.contact .info-block p,
+.contact .info-block li,
+.contact .info-block a{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.52;color:var(--ink);text-transform:none;text-align:right;direction:rtl}
+.contact .info-block p{display:block;margin:0}
+.contact .info-block a.inline{text-decoration:underline;text-underline-offset:3px;display:inline;font-family:inherit}
+.contact .info-block .lat{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.06em;font-weight:400}
+.contact .info-block ul{list-style:none;display:flex;flex-direction:column;gap:18px;margin:0;padding:0}
+.contact .info-block li strong{font-family:var(--heb);font-weight:400;font-size:15px;display:block;text-align:right;margin-bottom:6px;line-height:1.3}
+.contact .info-block li em{font-style:normal;font-family:var(--heb);font-weight:300;font-size:14px;opacity:.88}
+
+/* ===== FOCUS / SKIP LINK ===== */
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+.skip-link{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;background:var(--ink);color:#fff;padding:8px 12px;font-family:var(--cop);font-size:12px;letter-spacing:.1em;z-index:9999}
+.skip-link:focus,.skip-link:focus-visible{left:8px;top:8px;width:auto;height:auto;overflow:visible}
+
+@media (max-width:768px){
+  :root{--pad-x:24px}
+  .contact{padding:40px var(--pad-x) 64px}
+  .contact .col{gap:32px}
+  .contact h1{font-size:34px}
+  .contact .lede{font-size:16px;line-height:1.55}
+  .contact .row{flex-direction:column;gap:40px}
+  .contact .info-col{flex:0 0 auto;width:100%;max-width:100%;padding:24px 20px;border-radius:2px}
+  .contact .info-block{padding:18px 0}
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">SKIP TO CONTENT</a>
+
+<site-header></site-header>
+
+<main id="main" class="contact" tabindex="-1">
+  <div class="col">
+    <h1>Contact</h1>
+    <p class="lede">נשמח לשמוע מכם — שאלות, פניות אומנים, שיתופי פעולה, או כל דבר אחר.</p>
+
+    <div class="row">
+      <!-- Form column -->
+      <section class="form-col" aria-labelledby="contact-form-heading">
+        <h2 id="contact-form-heading" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">טופס יצירת קשר</h2>
+        <form id="contact-form" novalidate>
+          <div class="field">
+            <label for="c-name">שם מלא <span class="req" aria-hidden="true">*</span></label>
+            <input id="c-name" name="name" type="text" autocomplete="name" required aria-required="true" placeholder="שם מלא">
+          </div>
+          <div class="field">
+            <label for="c-email">כתובת דוא"ל <span class="req" aria-hidden="true">*</span></label>
+            <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-required="true" placeholder="name@example.com" dir="ltr">
+          </div>
+          <div class="field">
+            <label for="c-subject">נושא</label>
+            <input id="c-subject" name="subject" type="text" placeholder="נושא הפנייה (לא חובה)">
+          </div>
+          <div class="field">
+            <label for="c-message">הודעה <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="c-message" name="message" rows="6" required aria-required="true" placeholder="כתבו לנו..."></textarea>
+          </div>
+
+          <div class="consent">
+            <input id="c-consent" name="consent" type="checkbox" required aria-required="true">
+            <label for="c-consent">קראתי ואני מסכים/ה ל<a class="inline" href="../privacy/">מדיניות הפרטיות</a> ולשימוש בפרטים שלי לצורך מענה לפנייה.</label>
+          </div>
+
+          <button type="submit">SEND MESSAGE</button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- Info column -->
+      <aside class="info-col" aria-label="פרטי קשר נוספים">
+        <div class="info-block">
+          <h3 class="info-head"><span class="info-head-he">אינסטגרם</span><span class="info-head-en" lang="en">INSTAGRAM</span></h3>
+          <p><a class="inline" href="https://instagram.com/zielinski_rozen" rel="noopener" target="_blank"><span class="lat">@zielinski_rozen</span></a></p>
+        </div>
+        <div class="info-block">
+          <h3 class="info-head"><span class="info-head-he">גלריות</span><span class="info-head-en" lang="en">GALLERIES</span></h3>
+          <ul>
+            <li><strong>גלריית כיכר המדינה</strong><br>זʼבוטינסקי 131, תל אביב</li>
+            <li><strong>גלריית כיכר דיזינגוף</strong><br>תל אביב · <em>בקרוב</em></li>
+            <li><strong>גלריית שוק הפשפשים</strong><br>יפו · <em>בקרוב</em></li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <h3 class="info-head"><span class="info-head-he">שעות פתיחה</span><span class="info-head-en" lang="en">HOURS</span></h3>
+          <p>א׳–ה׳ · 10:00–19:00<br>ו׳ · 10:00–14:00<br>שבת — סגור</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<site-footer></site-footer>
+<script src="../components/site-chrome.js" defer></script>
+<script>
+(function(){
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var status = document.getElementById('form-status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    status.classList.remove('is-ok','is-err');
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    var msg = form.message.value.trim();
+    var consent = form.consent.checked;
+    if (!name || !email || !msg) {
+      status.textContent = 'יש למלא את כל שדות החובה.';
+      status.classList.add('is-err');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      status.textContent = 'כתובת הדוא"ל אינה תקינה.';
+      status.classList.add('is-err');
+      return;
+    }
+    if (!consent) {
+      status.textContent = 'יש לאשר את מדיניות הפרטיות.';
+      status.classList.add('is-err');
+      return;
+    }
+    // No backend wired yet — mailto fallback so the message actually goes somewhere.
+    var subject = encodeURIComponent(form.subject.value.trim() || 'פנייה מהאתר');
+    var body = encodeURIComponent(
+      'שם: ' + name + '\n' +
+      'דוא"ל: ' + email + '\n\n' +
+      msg
+    );
+    window.location.href = 'mailto:info@zielinski-rozen.com?subject=' + subject + '&body=' + body;
+    status.textContent = 'תודה — נפתח עבורכם חלון מייל לשליחת הפנייה.';
+    status.classList.add('is-ok');
+  });
+})();
+</script>
+</body>
+</html>

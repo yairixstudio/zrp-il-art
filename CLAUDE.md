@@ -40,7 +40,7 @@
 
 **אתר Zielinski & Rozen** — רשת 3 גלריות אומנות בתל אביב, מותג בישום שגם הוא אומנותי. ארז זילינסקי־רוזן (founder) הוא אמן בעצמו.
 
-תוכן: **תערוכות**, **אומנים** (18), **גלריות פיזיות** (3), **מאמרי עיתונות**, **אירועים**, **קולות קוראים**, **works**.
+תוכן: **תערוכות**, **אומנים** (22), **גלריות פיזיות** (3), **מאמרי עיתונות**, **אירועים**, **קולות קוראים**, **works**.
 
 עברית = body content; אנגלית = כותרות, ניווט, branding.
 
@@ -72,30 +72,31 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 | Route | שם | Figma desktop | Figma mobile | סטטוס |
 |---|---|---|---|---|
 | `/` | Homepage | `XhGH...::144:317` (canonical; older `Zn3N...::1213:3093`) | `XhGH...::144:2` (canonical; older `Zn3N...::1213:3360`) | ✅ `index.html` |
-| `/about` | Biography of Erez | `Zn3N...::1213:2970` | `Zn3N...::1213:2888` | ✅ `pages/about.html` |
-| `/works` | The Art Works | `Zn3N...::1213:2615` (name lies) / alt `1213:2725`, `2764` | (responsive) | ✅ `pages/works.html` |
-| `/galleries` | Galleries index | — | — | ⏳ |
-| `/galleries/:slug` | Single gallery | — | — | ⏳ (NOT `1213:2725/2820/2854` — אלו lightbox states) |
-| `/exhibitions` | Index | (כיום ארכיון בהומפייג') | — | ⏳ |
-| `/exhibitions/loneliness` | Single | `XhGH...::119:156` | `XhGH...::119:331` | ✅ `pages/exhibition.html?id=loneliness` |
-| `/exhibitions/how-many` | Single | `XhGH...::119:435` | `XhGH...::119:642` | ✅ `pages/exhibition.html?id=how-many` |
-| `/artists` | All artists | (אולי `Zn3N...::1213:4547`) | — | ⏳ |
-| `/artists/:slug` | Single artist (×18) | `Zn3N...::1213:3` (alon = canonical) | `Zn3N...::1213:3672` (`artist-pages`: 13×390) | ✅ 13 figma + 5 placeholder |
-| `/press` | Index | — | — | ⏳ |
-| `/press/walla` | Article | `XhGH...::119:740` | `XhGH...::119:868` | ✅ |
-| `/press/press-1` | Article (קורין אברהם) | `XhGH...::119:972` | `XhGH...::119:1163` | ✅ |
-| `/press/time-out` | Article | `XhGH...::119:1340` | `XhGH...::119:1433` | ✅ |
-| `/events/ktuba` | Event (zohar ron live art) | `XhGH...::119:1651` (canonical 2026-05-11; legacy `Zn3N...::1213:1644`) | `XhGH...::119:1509` (legacy `Zn3N...::1213:1502`) | ✅ |
-| `/events/loneliness` | Event (opening) | `Zn3N...::1213:1873` | `Zn3N...::1213:2099` | ✅ |
-| `/opencall` | Index | — | — | ⏳ |
-| `/opencall/the-peeler` | Single | `Zn3N...::1213:2417` | `Zn3N...::1213:2518` | ✅ |
-| `/opencall/how-many` | Single | `Zn3N...::1213:2340` | `Zn3N...::1213:2263` | ✅ |
-| `/contact` | Form | — | — | ✅ `pages/contact.html` |
-| `/accessibility` | Statement | — | — | ✅ `pages/accessibility.html` |
-| `/privacy` | Privacy policy | — | — | ✅ `pages/privacy.html` |
+| `/about/` | Biography of Erez | `Zn3N...::1213:2970` | `Zn3N...::1213:2888` | ✅ `about/index.html` |
+| `/works/` | The Art Works | `Zn3N...::1213:2615` (name lies) / alt `1213:2725`, `2764` | (responsive) | ✅ `works/index.html` |
+| `/galleries/` | Galleries index | — | — | ⏳ |
+| `/galleries/:slug/` | Single gallery | — | — | ⏳ (NOT `1213:2725/2820/2854` — אלו lightbox states) |
+| `/exhibitions/` | Index | (כיום ארכיון בהומפייג') | — | ⏳ |
+| `/exhibitions/loneliness/` | Single | `XhGH...::119:156` | `XhGH...::119:331` | ✅ `exhibitions/loneliness/index.html` |
+| `/exhibitions/how-many/` | Single | `XhGH...::119:435` | `XhGH...::119:642` | ✅ `exhibitions/how-many/index.html` |
+| `/curators/korin-avraham/` | Curator (Korin Avraham) | `XhGH...::314:4` | `XhGH...::314:97` | ✅ `curators/korin-avraham/index.html` |
+| `/artists/` | All artists | (אולי `Zn3N...::1213:4547`) | — | ⏳ |
+| `/artists/:slug/` | Single artist (×22) | `Zn3N...::1213:3` (alon = canonical) | `Zn3N...::1213:3672` (`artist-pages`: 13×390) | ✅ 13 figma + 5 placeholder. Each `artists/<slug>/index.html` is a copy of the shared template with `data-slug` set on `<html>`. |
+| `/press/` | Index | — | — | ⏳ |
+| `/press/walla/` | Article | `XhGH...::119:740` | `XhGH...::119:868` | ✅ |
+| `/press/press-1/` | Article (קורין אברהם) | `XhGH...::119:972` | `XhGH...::119:1163` | ✅ |
+| `/press/time-out/` | Article | `XhGH...::119:1340` | `XhGH...::119:1433` | ✅ |
+| `/events/ktuba/` | Event (zohar ron live art) | `XhGH...::119:1651` (canonical 2026-05-11; legacy `Zn3N...::1213:1644`) | `XhGH...::119:1509` (legacy `Zn3N...::1213:1502`) | ✅ |
+| `/events/loneliness/` | Event (opening) | `Zn3N...::1213:1873` | `Zn3N...::1213:2099` | ✅ |
+| `/opencalls/` | Index | — | — | ⏳ |
+| `/opencalls/the-peeler/` | Single | `Zn3N...::1213:2417` | `Zn3N...::1213:2518` | ✅ |
+| `/opencalls/how-many/` | Single | `Zn3N...::1213:2340` | `Zn3N...::1213:2263` | ✅ |
+| `/contact/` | Form | — | — | ✅ `contact/index.html` |
+| `/accessibility/` | Statement | — | — | ✅ `accessibility/index.html` |
+| `/privacy/` | Privacy policy | — | — | ✅ `privacy/index.html` |
 
 **סטטי (shell):** brand, nav, footer, newsletter copy, copyright, palette + typography. ב-`data/site.json` או CSS.
-**דינמי (JSON):** galleries, artists, exhibitions, events, press, opencalls, works, instagram, homepage curation, announcement.
+**דינמי (JSON):** galleries, artists, exhibitions, events, press, opencalls, works, instagram, homepage curation, announcement, **curators**.
 
 ---
 
@@ -103,16 +104,27 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 
 ```
 .
-├── index.html                 # Homepage entry
-├── pages/                     # /about.html, /works.html, /exhibition.html, /opencall.html, /artists/*, /press/*, /events/*
+├── index.html                 # Homepage entry → /
+├── about/index.html           # → /about/
+├── works/index.html           # → /works/
+├── contact/, accessibility/, privacy/   # Static pages, each <dir>/index.html
+├── artists/<slug>/index.html  # Per-artist pages (shared template + data-slug)
+├── exhibitions/<slug>/index.html
+├── opencalls/<slug>/index.html
+├── press/<slug>/index.html
+├── events/<slug>/index.html
+├── curators/<slug>/index.html
 ├── components/                # artwork-lightbox, gallery, stacked-gallery, triptych-gallery, site-chrome
 ├── data/                      # JSON content (mirrors future CMS)
 ├── images/                    # see docs/conventions.md §1
 ├── docs/                      # conventions, components, artist-linking, lessons, todo
 ├── פונטים/                    # Copperplate {300/400/700/900}, FbEzmel {300/400}
+├── .nojekyll                  # Tells GitHub Pages to serve files as-is (no Jekyll processing)
 ├── FIGMA_LINKS.md             # All page-by-page Figma URLs
 └── CLAUDE.md                  # ← you are here
 ```
+
+> **URLs:** Directory-based for clean paths. `/about/` instead of `/pages/about.html`. Templates (`exhibition`, `opencall`, `artist`) are copied per slug with `data-slug` attribute on `<html>` so each page is fully self-contained at its own clean URL.
 
 **שמות:** kebab-case, ASCII. סלאגים = `id` ב-JSON. תיקיות עברית רק לפונטים ולקובץ הזה.
 
@@ -128,14 +140,15 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 |---|---|
 | `site.json` | brand, nav, footer, announcement, social — **גלובלי בכל דף** |
 | `galleries.json` | id, slug, name_he/en, address_he/en, status (`open\|coming-soon\|closed`), hours[], image_hero |
-| `artists.json` | id, slug, name_he/en, portrait, bio_he/en, works[] (objects: `{id,title,image,year?,medium?}` inline, לא ref ל-works.json), instagram_handle, hero_images[], figma_artist_page_desktop/mobile, homepage_featured |
-| `exhibitions.json` | id, slug, title_en, subtitle_he, status (`current\|upcoming\|archived`), gallery_id, start/end_date, hero_image, thumbnails[], description_he/en (paragraphs: `[{weight, lines:[...]}]`), artist_ids[], `gallery_images[]`, `artists[]` (פריט: `name_en`, `thumb`, `slug` אופציונלי, `artist_page_slug` אופציונלי = קישור הכרטיס לדף אומן אחר — לשיתופי פעולה), `archive_thumbnails`, `hero_overlay_en_only` (אופציונלי: `true` = אוברליי תמונת גיבור רק `title_en`, בלי פס volume / כותרת עברית על התמונה), figma_node_* |
+| `artists.json` | id, slug, name_he/en, portrait, bio_he/en, works[] (objects: `{id,title,image,year?,medium?}` inline, לא ref ל-works.json), instagram_handle, hero_images[], **`hero_image_focus[]`** (object-position לכל תמונה בדואו), **`hero_collab`** (שיתוף: `artists[{name_en, bio_he_short, instagram}]` — hero מובייל Figma `119:3917`), figma_artist_page_desktop/mobile, homepage_featured, **אופציונלי:** `works_caption_each_image` (`true` = תמיד כיתוב מתחת לכל תמונה; דורש כשכותרות זהות אך הקשר How Many ולא loneliness) |
+| `exhibitions.json` | id, slug, title_en, subtitle_he, status (`current\|upcoming\|archived`), gallery_id, start/end_date, hero_image, thumbnails[], description_he/en (paragraphs: `[{weight, lines:[...]}]`), artist_ids[], `gallery_images[]`, `artists[]` (פריט: `name_en`, `thumb`, `slug` אופציונלי, `artist_page_slug` אופציונלי = קישור הכרטיס לדף אומן אחר — לשיתופי פעולה), **`curator_slug`** (אופציונלי: `slug` מ-`curators.json` — מציג סקשן אוצרת ב-`exhibition.html` מתחת לאומנים), `archive_thumbnails`, `hero_overlay_en_only` (אופציונלי: `true` = אוברליי תמונת גיבור רק `title_en`, בלי פס volume / כותרת עברית על התמונה), figma_node_* |
 | `events.json` | id, slug, title_he/en, date, gallery_id, cover_image, description_he, figma_node_*, figma_file |
 | `press.json` | type (`press\|event`), tag_he/en, source_he/en, subtitle_he, author_he, route, cover_image, date, homepage_visible, figma_article_*. **כתבות long-form: גוף נשאר ב-HTML, רק meta ב-JSON.** |
 | `opencalls.json` | id, slug, title_en, status (`open\|archived`), deadline, city, hero_image, **אופציונליים:** `emotional_triggers` (`title_he`, `items[]`, אופציונלית `lines[]` לשבירת שורות כמו ב-Figma), `gallery_images[]` |
 | `works.json` | id, title, image, artist_id, + homepage flags. **מעוקף לדפי אומן** — work data inline ב-`artists.json`. |
 | `instagram.json` | snapshot זמני |
-| `homepage.json` | composition layer — `*_id`/`*_ids` לפריטים מ-JSONs אחרים; בלוקים כמו `x_our_artists`, `tribe_teaser` (כותרת/קרדיטים/גלריה מעל press) |
+| `homepage.json` | composition layer — `*_id`/`*_ids` לפריטים מ-JSONs אחרים; בלוקים כמו `x_our_artists`, `tribe_teaser` (כותרת/קרדיטים/גלריה מעל press; **מובייל:** `gallery_images[]`, `figma_gallery_strip` `250:98`, thumbs = לייטבוקס בלי CTA — ראה `docs/components.md` §1.4.1) |
+| `curators.json` | `curators[]`: `id`, `slug`, `name_en_first`/`name_en_last`, `instagram_handle`, `badge_en`, `section_heading_en`, `portrait` (`src`, `width`, `height`, `alt_he`), `exhibition_slugs[]` (סדר דסקטופ שמאל→ימין; מובייל — CSS `order` אם נדרש), `figma_desktop`/`figma_mobile` |
 
 ---
 

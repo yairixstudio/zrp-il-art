@@ -22,9 +22,9 @@
       "cta": "SUBSCRIBE"
     },
     "links_he": [
-      { "label": "יצירת קשר",        "href": "/pages/contact.html" },
-      { "label": "הצהרת נגישות",     "href": "/pages/accessibility.html" },
-      { "label": "מדיניות פרטיות",   "href": "/pages/privacy.html" },
+      { "label": "יצירת קשר",        "href": "contact/" },
+      { "label": "הצהרת נגישות",     "href": "accessibility/" },
+      { "label": "מדיניות פרטיות",   "href": "privacy/" },
       { "label": "גלריית כיכר המדינה",  "href": "/galleries/medina" },
       { "label": "גלריית כיכר דיזינגוף", "href": "/galleries/dizengoff" },
       { "label": "גלריית שוק הפשפשים",  "href": "/galleries/flea-market" }

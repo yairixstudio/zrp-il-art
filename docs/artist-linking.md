@@ -37,7 +37,8 @@ holy-kadosh, costa-magarakis, maya-nachum-levy, la-raz-porta
 | גריד אומנים (`pages/works.html`) | תמונה + שם | `<a href="artists/<slug>.html">` סביב התמונה ועוד סביב השם |
 | Featured artists בהומפייג' | פורטרט + שם | `<a class="artist" href="pages/artists/<slug>.html">` סביב הקלף השלם |
 | Artist strip בדף תערוכה | תמונה + שם | קלף `<a class="card is-linked">` (slug ב-JSON או `_ARTIST_SLUGS` map) |
-| תמונת אומן בכתבה (press) | התמונה | `<a class="artist-img-link" href="../artists/<slug>.html">` סביב `<img>` בלבד (לא `<figure>`) |
+| תמונה בכתבה (press) — **פורטרט / צילום אדם** (התמונה עצמה היא האומן) | התמונה | `<a class="artist-img-link" href="../artists/<slug>.html">` סביב `<img>` בלבד (לא `<figure>`) |
+| תמונה בכתבה (press) — **יצירה, מיצב, תיעוד תערוכה, גלריה** | אין קישור על התמונה | `<img>` ישירות ב־`<div class="img …">`. הקישור לדף האומן נשאר ב־`<figcaption>` (`artist-link`) ובטקסט הגוף — לא מנווטים מקליק על היצירה לדף האומן |
 | `<figcaption>` שמזכיר אומן | השם בלבד | `<a class="artist-link" href="../artists/<slug>.html">` סביב המופע הראשון |
 | פסקת body (`<p>...האומנת X...`) | כל מופע של שם | `<a class="artist-link">` |
 | `<aside>`, `pull-quote`, `caption` | אותו דבר | `<a class="artist-link">` |
@@ -64,9 +65,11 @@ a.artist-img-link:hover img{filter:brightness(.96)}
 
 ---
 
-## 4. למה לא lightbox?
+## 4. למה לא lightbox? ומתי קליק על תמונה → דף אומן?
 
-ב-`/works.html` ההחלטה הקדומה הייתה image-click → lightbox. שונתה 2026-05-11: image-click → artist page. Lightbox נשמר רק כשהוא חושף תוכן שאין דרך אחרת להגיע אליו (artwork details בדף האומן ב-`pages/artists/artist.html`). **בכל מקום אחר, image of an artist → artist page.**
+ב־`/works.html` ההחלטה הקדומה הייתה image-click → lightbox. שונתה 2026-05-11: image-click → דף אומן. Lightbox נשמר רק כשהוא חושף תוכן שאין דרך אחרת להגיע אליו (artwork details בדף האומן ב־`pages/artists/artist.html`).
+
+**בכתבי press:** קליק על **תמונת פורטרט / אדם** עשוי לעטוף ב־`artist-img-link` לדף האומן. תמונת **יצירה או תיעוד תערוכה** — בלי anchor על ה־`<img>` (הקישור בכיתוב או בגוף הטקסט מספיק; קליק על היצירה לא אמור לפתוח דף אומן).
 
 ---
 

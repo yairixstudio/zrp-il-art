@@ -14,6 +14,7 @@
       "status_label_en": "current",
       "gallery_id": "medina",
       "gallery_label_he": "גלריית כיכר המדינה",
+      "curator_slug": "korin-avraham",
       "start_date": null,
       "end_date": null,
       "hero_image": "images/exhibitions/loneliness/hero.webp",
@@ -195,6 +196,7 @@
       "status_label_en": "current",
       "gallery_id": "dizengoff",
       "gallery_label_he": "גלריית כיכר דיזינגוף",
+      "curator_slug": "korin-avraham",
       "start_date": null,
       "end_date": null,
       "hero_image": "images/exhibitions/how-many/hero.webp",
@@ -363,31 +365,31 @@
         "label_en": "dizengoff square gallery",
         "active": false,
         "_placeholder": true,
-        "_placeholder_note": "Dizengoff is not open yet — no real archive photos exist. Showing 4 random loneliness artist works as a preview set until real archive photos arrive. Swap when available.",
+        "_placeholder_note": "Dizengoff placeholder thumbs — CTA targets how-many (גלריית כיכר דיזינגוף). Swap images when real archive photos exist.",
         "thumbs": [
           {
             "n": "01",
             "image": "images/artists/eitan-goldson/work-01.webp",
-            "exhibition_id": "loneliness",
-            "title_he": "בדידות בתוך סביבה תוססת — eitan goldson"
+            "exhibition_id": "how-many",
+            "title_he": "כמה שותפים היו לך? — eitan goldson"
           },
           {
             "n": "02",
             "image": "images/artists/tal-nehoray/work-02.webp",
-            "exhibition_id": "loneliness",
-            "title_he": "בדידות בתוך סביבה תוססת — tal nehoray"
+            "exhibition_id": "how-many",
+            "title_he": "כמה שותפים היו לך? — tal nehoray"
           },
           {
             "n": "03",
             "image": "images/artists/maya-nachum-levy/work-03.webp",
-            "exhibition_id": "loneliness",
-            "title_he": "בדידות בתוך סביבה תוססת — maya nachum levy"
+            "exhibition_id": "how-many",
+            "title_he": "כמה שותפים היו לך? — maya nachum levy"
           },
           {
             "n": "04",
             "image": "images/artists/zohar-shtrit/work-01.webp",
-            "exhibition_id": "loneliness",
-            "title_he": "בדידות בתוך סביבה תוססת — zohar shitrit"
+            "exhibition_id": "how-many",
+            "title_he": "כמה שותפים היו לך? — zohar shitrit"
           }
         ]
       },

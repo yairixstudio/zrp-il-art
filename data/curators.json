@@ -1,0 +1,24 @@
+{
+  "$schema": "./_schema/curators.schema.json",
+  "_note": "Profile pages for exhibition curators. Exhibition card copy comes from exhibitions.json + galleries.json; this file holds curator identity + figma refs + which exhibitions to list (order = desktop left-to-right; mobile order handled in CSS).",
+  "curators": [
+    {
+      "id": "korin-avraham",
+      "slug": "korin-avraham",
+      "name_en_first": "korin",
+      "name_en_last": "avraham",
+      "instagram_handle": "yasalamfashionblog",
+      "badge_en": "the curator",
+      "section_heading_en": "the curator's exhibitions",
+      "portrait": {
+        "src": "images/curators/korin-avraham/portrait.webp",
+        "width": 2117,
+        "height": 2809,
+        "alt_he": "קורין אברהם — אוצרת"
+      },
+      "exhibition_slugs": ["loneliness", "how-many"],
+      "figma_desktop": "XhGH289YTRcW811wrufRJz::314:4",
+      "figma_mobile": "XhGH289YTRcW811wrufRJz::314:97"
+    }
+  ]
+}

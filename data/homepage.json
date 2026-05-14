@@ -44,7 +44,25 @@
       "zohar-ron",
       "eitan-goldson",
       "tanya-shin",
-      "nir-giorgio-levin"
+      "nir-giorgio-levin",
+      "elsa-ars-brush",
+      "gal-polk",
+      "zohar-shtrit",
+      "hila-loterstein",
+      "sami-david",
+      "risa-oz",
+      "zohar-ron-dan-ben-ari",
+      "adi-duak",
+      "alon",
+      "noemi-safir",
+      "yarden-amir",
+      "anat-wegier",
+      "liel-salman",
+      "tal-nehoray",
+      "holy-kadosh",
+      "costa-magarakis",
+      "maya-nachum-levy",
+      "la-raz-porta"
     ]
   },
   "exhibitions_archive": {
@@ -100,9 +118,9 @@
         "slug": "gal-polk"
       },
       {
-        "name_en": "maya nachum levy",
+        "name_en": "gal pollak",
         "image": "images/homepage/x-our-artists/work-4.webp",
-        "slug": "maya-nachum-levy"
+        "slug": "gal-polk"
       },
       {
         "name_en": "maya nachum levy",
@@ -119,8 +137,8 @@
     "figma_node_mobile": "228:101"
   },
   "tribe_teaser": {
-    "_note": "Above #press — Figma landing::250:87 (desktop titles only) + 250:243 (mobile: titles + artist credits + 4-thumb strip).",
-    "exhibition_href": "pages/exhibition.html?id=loneliness",
+    "_note": "Above #press — Figma landing::250:87 (desktop titles only) + 250:243 (mobile: titles + artist credits + 4-thumb strip). Strip layout + media: 250:98. Thumbs: lightbox only (no <a>, no data-artwork-link / CTA).",
+    "exhibition_href": "exhibitions/loneliness/",
     "title_line_1": "loneliness",
     "title_line_2": "in a bubbling environment",
     "subtitle": "x the tribe",
@@ -153,31 +171,32 @@
     "gallery_images": [
       {
         "src": "images/homepage/tribe-teaser/thumb-1.webp",
-        "width": 1075,
-        "height": 1600,
+        "width": 158,
+        "height": 192,
         "alt": ""
       },
       {
         "src": "images/homepage/tribe-teaser/thumb-2.webp",
-        "width": 694,
-        "height": 1040,
+        "width": 158,
+        "height": 192,
         "alt": ""
       },
       {
         "src": "images/homepage/tribe-teaser/thumb-3.webp",
-        "width": 1275,
-        "height": 1600,
+        "width": 158,
+        "height": 192,
         "alt": ""
       },
       {
         "src": "images/homepage/tribe-teaser/thumb-4.webp",
-        "width": 1536,
-        "height": 2048,
+        "width": 158,
+        "height": 192,
         "alt": ""
       }
     ],
     "figma_node_desktop": "250:87",
-    "figma_node_mobile": "250:243"
+    "figma_node_mobile": "250:243",
+    "figma_gallery_strip": "250:98"
   },
   "press_section": {
     "title_b": "press",

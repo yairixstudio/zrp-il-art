@@ -1,6 +1,6 @@
 {
   "$schema": "./_schema/press.schema.json",
-  "_note": "Press articles + gallery events. Article bodies live inline in pages/press/<slug>.html (long-form Hebrew copy is too verbose to round-trip JSON). This file holds metadata + cover only.",
+  "_note": "Press articles + gallery events. Article bodies live inline in press/<slug>/index.html (long-form Hebrew copy is too verbose to round-trip JSON). This file holds metadata + cover only.",
   "items": [
     {
       "id": "portfolio-loneliness",
@@ -32,7 +32,7 @@
       "exhibition_id": null,
       "gallery_id": "medina",
       "homepage_visible": true,
-      "route": "pages/press/walla.html",
+      "route": "press/walla/",
       "figma_article_desktop": "XhGH289YTRcW811wrufRJz::119:740",
       "figma_article_mobile": "XhGH289YTRcW811wrufRJz::119:868",
       "_legacy_figma_desktop": "Zn3N3mBQkbYER7tTJMbCcz::1213:737",
@@ -52,7 +52,7 @@
       "cover_image": "images/press/press-1/00-home-card.webp",
       "exhibition_id": "loneliness",
       "homepage_visible": true,
-      "route": "pages/press/press-1.html",
+      "route": "press/press-1/",
       "figma_article_desktop": "XhGH289YTRcW811wrufRJz::119:972",
       "figma_article_mobile": "XhGH289YTRcW811wrufRJz::119:1163",
       "_legacy_figma_desktop": "Zn3N3mBQkbYER7tTJMbCcz::1213:968",
@@ -72,7 +72,7 @@
       "cover_image": "images/press/time-out/hero.webp",
       "exhibition_id": "loneliness",
       "homepage_visible": true,
-      "route": "pages/press/time-out.html",
+      "route": "press/time-out/",
       "figma_article_desktop": "XhGH289YTRcW811wrufRJz::119:1340",
       "figma_article_mobile": "XhGH289YTRcW811wrufRJz::119:1433",
       "_legacy_figma_desktop": "Zn3N3mBQkbYER7tTJMbCcz::1213:1335",

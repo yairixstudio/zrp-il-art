@@ -7,8 +7,9 @@
      <script src="<relative path to>/components/site-chrome.js" defer></script>
 
    The script computes the site root from its own URL, so paths
-   inside the header/footer work from any depth (root, /pages/,
-   /pages/artists/) and on any host (file://, github.io/repo/).
+   inside the header/footer work from any depth (root, /about/,
+   /artists/<slug>/, /press/<slug>/) and on any host (file://,
+   github.io/repo/).
    ============================================================ */
 
 (function () {
@@ -68,7 +69,7 @@
             '<svg class="hamburger-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="#1B1B1B" stroke-width="1.5" fill="none"/></svg>' +
             '<span class="hamburger-bars"><span></span><span></span><span></span></span>' +
           '</button>' +
-          '<a href="' + abs('index.html') + '" class="logo" aria-label="home" data-nav="home">' +
+          '<a href="' + abs('') + '" class="logo" aria-label="home" data-nav="home">' +
             '<img class="logo-svg" src="' + abs('images/header:footer:general/logo.svg') + '" alt="Zielinski &amp; Rozen" width="177" height="37" decoding="async">' +
           '</a>' +
           '<div class="nav-right">' +
@@ -82,12 +83,12 @@
                   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>' +
                 '</button>' +
               '</li>' +
-              '<li><a href="' + abs('index.html') + '#opencall" data-nav="opencall">open call</a></li>' +
-              '<li><a href="' + abs('index.html') + '#exhibitions" data-nav="exhibitions">exhibitions</a></li>' +
-              '<li><a href="' + abs('pages/works.html') + '" data-nav="works">the art works</a></li>' +
-              '<li><a href="' + abs('index.html') + '#galleries" data-nav="galleries">the galleries</a></li>' +
-              '<li><a href="' + abs('pages/about.html') + '" data-nav="about">about</a></li>' +
-              '<li><a href="' + abs('index.html') + '#press" data-nav="press">press &amp; events</a></li>' +
+              '<li><a href="' + abs('') + '#opencall" data-nav="opencall">open call</a></li>' +
+              '<li><a href="' + abs('') + '#exhibitions" data-nav="exhibitions">exhibitions</a></li>' +
+              '<li><a href="' + abs('works/') + '" data-nav="works">the art works</a></li>' +
+              '<li><a href="' + abs('') + '#galleries" data-nav="galleries">the galleries</a></li>' +
+              '<li><a href="' + abs('about/') + '" data-nav="about">about</a></li>' +
+              '<li><a href="' + abs('') + '#press" data-nav="press">press &amp; events</a></li>' +
             '</ul>' +
             '<div class="bm-backdrop" data-bookmark-backdrop hidden></div>' +
             '<aside class="bookmark-modal" data-bookmark-modal hidden role="dialog" aria-label="saved posts">' +
@@ -121,7 +122,7 @@
             '<button type="submit">SUBSCRIBE</button>' +
             '<label class="newsletter-consent">' +
               '<input type="checkbox" class="newsletter-consent-cb" name="consent" id="newsletter-consent-cb" required aria-required="true">' +
-              '<span class="newsletter-consent-text">קראתי ואני מסכים/ה ל<a href="' + abs('pages/privacy.html') + '">מדיניות הפרטיות</a> <span class="newsletter-consent-req">(חובה)</span></span>' +
+              '<span class="newsletter-consent-text">קראתי ואני מסכים/ה ל<a href="' + abs('privacy/') + '">מדיניות הפרטיות</a> <span class="newsletter-consent-req">(חובה)</span></span>' +
             '</label>' +
             '<p class="newsletter-status" data-newsletter-status role="status" aria-live="polite"></p>' +
           '</form>' +
@@ -129,14 +130,14 @@
         '<div class="footer-right">' +
           '<nav class="footer-menu" aria-label="footer links">' +
             '<div class="footer-row">' +
-              '<a href="' + abs('pages/contact.html') + '">יצירת קשר</a>' +
-              '<a href="' + abs('pages/accessibility.html') + '">הצהרת נגישות</a>' +
-              '<a href="' + abs('pages/privacy.html') + '">מדיניות פרטיות</a>' +
+              '<a href="' + abs('contact/') + '">יצירת קשר</a>' +
+              '<a href="' + abs('accessibility/') + '">הצהרת נגישות</a>' +
+              '<a href="' + abs('privacy/') + '">מדיניות פרטיות</a>' +
             '</div>' +
             '<div class="footer-row">' +
-              '<a href="' + abs('index.html') + '#galleries">גלריית כיכר המדינה</a>' +
-              '<a href="' + abs('index.html') + '#galleries">גלריית כיכר דיזינגוף</a>' +
-              '<a href="' + abs('index.html') + '#galleries">גלריית שוק הפשפשים</a>' +
+              '<a href="' + abs('') + '#galleries">גלריית כיכר המדינה</a>' +
+              '<a href="' + abs('') + '#galleries">גלריית כיכר דיזינגוף</a>' +
+              '<a href="' + abs('') + '#galleries">גלריית שוק הפשפשים</a>' +
             '</div>' +
           '</nav>' +
           '<p class="footer-copy">© 2026 THE art GALLERY<br>ZiELINSKI &amp; ROZEN ALL RIGHTS RESERVED.</p>' +
@@ -146,14 +147,14 @@
         '<div class="footer-mobile-extra">' +
           '<nav class="footer-mobile-mini" aria-label="footer links mobile">' +
             '<div class="footer-mobile-row">' +
-              '<a href="' + abs('pages/contact.html') + '">יצירת קשר</a>' +
-              '<a href="' + abs('pages/privacy.html') + '">מדיניות פרטיות</a>' +
-              '<a href="' + abs('pages/accessibility.html') + '">הצהרת נגישות</a>' +
+              '<a href="' + abs('contact/') + '">יצירת קשר</a>' +
+              '<a href="' + abs('privacy/') + '">מדיניות פרטיות</a>' +
+              '<a href="' + abs('accessibility/') + '">הצהרת נגישות</a>' +
             '</div>' +
             '<div class="footer-mobile-row">' +
-              '<a href="' + abs('index.html') + '#galleries">גלריית כיכר המדינה</a>' +
-              '<a href="' + abs('index.html') + '#galleries">גלריית כיכר דיזינגוף</a>' +
-              '<a href="' + abs('index.html') + '#galleries">גלריית שוק הפשפשים</a>' +
+              '<a href="' + abs('') + '#galleries">גלריית כיכר המדינה</a>' +
+              '<a href="' + abs('') + '#galleries">גלריית כיכר דיזינגוף</a>' +
+              '<a href="' + abs('') + '#galleries">גלריית שוק הפשפשים</a>' +
             '</div>' +
           '</nav>' +
           '<div class="footer-icons footer-icons--mobile">' + igFb +
@@ -175,7 +176,7 @@
 
     function syncOpenCallHref() {
       if (!openCallLink) return;
-      openCallLink.href = abs('index.html') + (window.innerWidth <= 768 ? '#mobile-cta' : '#opencall');
+      openCallLink.href = abs('') + (window.innerWidth <= 768 ? '#mobile-cta' : '#opencall');
     }
 
     function setOpen(open) {
@@ -212,23 +213,25 @@
     // Returns one of: home, opencall, exhibitions, works,
     // galleries, about, press — or null if no match.
     const path = location.pathname;
-    const file = path.split('/').pop() || 'index.html';
+    // Strip trailing slash for matching; consider /about/ same as /about.
+    const trimmed = path.replace(/\/+$/, '');
+    const last = trimmed.split('/').pop() || '';
     let key = null;
-    if (file === '' || file === 'index.html') {
-      // Home page; sub-section anchors handled below.
+    // Home: empty path or root-level index.html (legacy)
+    if (path === '/' || path === '' || last === '' || last === 'index.html') {
       key = 'home';
-    } else if (file === 'exhibition.html') {
+    } else if (path.indexOf('/exhibitions/') !== -1) {
       key = 'exhibitions';
-    } else if (file === 'works.html') {
-      key = 'works';
-    } else if (file === 'about.html') {
-      key = 'about';
-    } else if (file === 'opencall.html') {
+    } else if (path.indexOf('/opencalls/') !== -1 || path.indexOf('/opencall/') !== -1) {
       key = 'opencall';
+    } else if (last === 'works' || path.indexOf('/works/') !== -1) {
+      key = 'works';
+    } else if (last === 'about' || path.indexOf('/about/') !== -1) {
+      key = 'about';
     } else if (path.indexOf('/artists/') !== -1) {
       // Artist sub-pages aren't a primary nav target; leave inactive.
       key = null;
-    } else if (path.indexOf('/press/') !== -1) {
+    } else if (path.indexOf('/press/') !== -1 || path.indexOf('/events/') !== -1) {
       key = 'press';
     }
     if (!key) return;

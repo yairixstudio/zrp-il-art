@@ -41,6 +41,9 @@ image-gallery .gal-track.no-anim{transition:none}
 image-gallery .gal-slide{
   flex:0 0 100%;width:100%;height:100%;overflow:hidden;
 }
+image-gallery .gal-slide picture{
+  display:block;width:100%;height:100%;
+}
 image-gallery .gal-slide img{
   width:100%;height:100%;object-fit:cover;
   -webkit-user-drag:none;user-drag:none;

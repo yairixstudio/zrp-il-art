@@ -64,7 +64,7 @@
         {
           "name_en": "costa magarakis",
           "slug": "costa-magarakis",
-          "image": null
+          "image": "images/artists/costa-magarakis/portrait.webp"
         },
         {
           "name_en": "tal nehoray",
@@ -102,7 +102,7 @@
           "image": "images/events/ktuba/artists/zohar-shtrit.webp"
         }
       ],
-      "route": "pages/events/ktuba.html",
+      "route": "events/ktuba/",
       "homepage_visible": true,
       "figma_node_desktop": "119:1651",
       "figma_node_mobile": "119:1509",
@@ -135,7 +135,7 @@
         "לה רז פורטה",
         "זוהר שטרית"
       ],
-      "route": "pages/events/loneliness.html",
+      "route": "events/loneliness/",
       "homepage_visible": true,
       "figma_node_desktop": "1213:1873",
       "figma_node_mobile": "1213:2099"

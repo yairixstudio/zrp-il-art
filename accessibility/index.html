@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility Statement — Zielinski & Rozen Art Galleries</title>
+<meta name="description" content="הצהרת נגישות — אתר זילינסקי & רוזן">
+<link rel="preload" href="../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../components/site-boot.css">
+<style>
+/* ===== LOCAL FONTS ===== */
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --ink:#1B1B1B;
+  --grey-mid:#808080;
+  --copy-grey:#6B7280;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+
+/* ===== INFO PAGE ===== */
+.info{padding:64px var(--pad-x) 96px;display:flex;justify-content:center}
+.info .col{width:100%;max-width:820px;display:flex;flex-direction:column;gap:36px;direction:rtl}
+.info h1{font-family:var(--cop);font-weight:400;font-size:56px;line-height:1.05;letter-spacing:.02em;color:var(--ink);text-align:center;direction:ltr}
+.info h2{font-family:var(--heb);font-weight:400;font-size:22px;line-height:1.15;color:var(--ink);text-align:right;text-transform:none;margin-top:8px}
+.info p,.info li{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.18;color:var(--ink);text-align:right;text-transform:none}
+.info ul{padding-right:22px;display:flex;flex-direction:column;gap:8px}
+.info a.inline{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.info a.inline:hover{opacity:.7}
+.info .meta{font-family:var(--cop);font-weight:300;font-size:12px;letter-spacing:.12em;color:var(--copy-grey);text-align:center;direction:ltr}
+.info .lat{font-family:var(--cop);text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.04em}
+
+/* ===== FOCUS / SKIP LINK ===== */
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+.skip-link{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;background:var(--ink);color:#fff;padding:8px 12px;font-family:var(--cop);font-size:12px;letter-spacing:.1em;z-index:9999}
+.skip-link:focus,.skip-link:focus-visible{left:8px;top:8px;width:auto;height:auto;overflow:visible}
+
+@media (max-width:768px){
+  :root{--pad-x:24px}
+  .info{padding:40px var(--pad-x) 64px}
+  .info h1{font-size:34px}
+  .info h2{font-size:19px;line-height:1.12}
+  .info p,.info li{font-size:16px;line-height:1.22}
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">SKIP TO CONTENT</a>
+
+<site-header></site-header>
+
+<main id="main" class="info" tabindex="-1">
+  <article class="col">
+    <h1>Accessibility</h1>
+    <p class="meta">UPDATED MAY 2026</p>
+
+    <p>אתר זילינסקי &amp; רוזן רואה בנגישות ערך מרכזי. אנו פועלים על מנת לאפשר לכל אדם — ובכלל זה אנשים עם מוגבלות — לעשות שימוש מלא ושוויוני באתר, בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח‑1998, ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג‑2013.</p>
+
+    <h2>תקן הנגישות</h2>
+    <p>האתר נבנה במטרה לעמוד בדרישות תקן <span class="lat">WCAG 2.1</span> ברמת <span class="lat">AA</span>, ובהתאם לתקן הישראלי ת"י 5568.</p>
+
+    <h2>מה האתר כולל</h2>
+    <ul>
+      <li>מבנה סמנטי מסודר (כותרות, אזורי <span class="lat">landmark</span>, רשימות) המאפשר ניווט בקורא מסך.</li>
+      <li>קישור "דלג לתוכן" המופיע במיקוד מקלדת ומעביר ישר לתוכן המרכזי.</li>
+      <li>ניווט מלא באמצעות מקלדת — באמצעות <span class="lat">Tab</span>, <span class="lat">Shift+Tab</span>, <span class="lat">Enter</span> ו‑<span class="lat">Esc</span>.</li>
+      <li>חיווי מיקוד נראה (<span class="lat">focus outline</span>) על כל הקישורים, הכפתורים ושדות הטופס.</li>
+      <li>טקסט חלופי (<span class="lat">alt</span>) לכל התמונות המהוות תוכן.</li>
+      <li>תוויות מפורשות (<span class="lat">label</span>, <span class="lat">aria-label</span>) לכל שדות הטופס וכפתורי הפעולה.</li>
+      <li>ניגודיות צבעים גבוהה בין טקסט לרקע.</li>
+      <li>טקסט הניתן להגדלה דרך הדפדפן עד 200% מבלי לאבד פריסה או תוכן.</li>
+      <li>כיבוד העדפת המשתמש להפחתת תנועות (<span class="lat">prefers-reduced-motion</span>) — אנימציות מבוטלות כשהגדרה זו פעילה.</li>
+      <li>תמיכה בדפדפנים מודרניים: <span class="lat">Chrome</span>, <span class="lat">Safari</span>, <span class="lat">Firefox</span>, <span class="lat">Edge</span>.</li>
+    </ul>
+
+    <h2>כיצד לנווט באתר עם מקלדת בלבד</h2>
+    <ul>
+      <li><span class="lat">Tab</span> — מעבר לרכיב הבא.</li>
+      <li><span class="lat">Shift + Tab</span> — מעבר לרכיב הקודם.</li>
+      <li><span class="lat">Enter</span> או <span class="lat">Space</span> — הפעלת קישור או כפתור.</li>
+      <li><span class="lat">Esc</span> — סגירת תפריט נפתח או חלונית.</li>
+    </ul>
+
+    <h2>חלקים שעדיין בהנגשה</h2>
+    <p>אנו ממשיכים לעדכן ולשפר את האתר. ייתכן שבמהלך השדרוגים יימצאו רכיבים שעדיין לא הונגשו במלואם, למשל גלריות תמונות מסוימות וקבצי מדיה חיצוניים שטרם תוקננו. אנו מתחייבים לטפל בכל ממצא שיועלה בפנינו בהקדם.</p>
+
+    <h2>פנייה בנושאי נגישות</h2>
+    <p>אם נתקלתם בקושי, רכיב שלא נגיש, או רצונכם בהתאמה ספציפית — נשמח שתפנו אלינו. אנו מתחייבים לתת מענה ראשוני תוך 14 ימי עסקים.</p>
+    <ul>
+      <li><strong>רכז/ת נגישות:</strong> ארז זילינסקי–רוזן.</li>
+      <li><strong>דוא"ל:</strong> <a class="inline" href="mailto:accessibility@zielinski-rozen.com"><span class="lat">accessibility@zielinski-rozen.com</span></a></li>
+      <li><strong>טופס יצירת קשר:</strong> <a class="inline" href="../contact/">לחצו כאן</a>.</li>
+    </ul>
+
+    <h2>תאריך עדכון</h2>
+    <p>הצהרת הנגישות עודכנה לאחרונה במאי 2026.</p>
+  </article>
+</main>
+
+<site-footer></site-footer>
+<script src="../components/site-chrome.js" defer></script>
+</body>
+</html>

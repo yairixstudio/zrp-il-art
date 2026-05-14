@@ -39,6 +39,9 @@
 אותו בלוק מובייל + קרדיטים + גלריית 4 תמונות: Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=250-243&m=dev
 
+רצועת 4 התמונות (מדיה קנונית, `node-id=250-98`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=250-98&m=dev
+
 ### Homepage — exhibitions / now (כרטיסי תערוכות + our artists)
 
 דסקטופ (שני עמודות גבוהות + שורת אומנים): Implement this design from Figma.
@@ -93,6 +96,25 @@ works דסקטופ: Implement this design from Figma.
 תערוכה how-many מובייל: Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=119-642&m=dev
 
+סקשן אוצרת בתוך דף תערוכה (מתחת ל־artists) — דסקטופ:
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=301-2&m=dev
+
+סקשן אוצרת בתוך דף תערוכה — מובייל:
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=119-702&m=dev
+
+---
+
+## 🎭 אוצרת — קורין אברהם (/curators/korin-avraham)
+
+אוצרת קורין אברהם דסקטופ: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=314-4&m=dev
+
+אוצרת קורין אברהם מובייל: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=314-97&m=dev
+
+אוצרת קורין — תמונת פרופיל (hero / `Profile image`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=314-122&m=dev
+
 ---
 
 ## 🧑‍🎨 דפי אומנים (/artists/:slug)
@@ -107,6 +129,13 @@ works דסקטופ: Implement this design from Figma.
 
 אומנים — מסגרת frame עם 13 mobile mockups: Implement this design from Figma.
 @https://www.figma.com/design/Zn3N3mBQkbYER7tTJMbCcz/%D7%92%D7%A8%D7%A4%D7%99%D7%A7%D7%95%D7%AA-%D7%A9%D7%95%D7%A0%D7%95%D7%AA?node-id=1213-3672&m=dev
+
+### zohar ron × dandan nusha (שיתוף — `artist.html?slug=zohar-ron-dan-ben-ari`)
+
+מובייל (קנוני ב-`landing`, לא ב-`artist-pages`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=119-3917&m=dev
+
+> Frame ישן בגרפיקות (`1213:3879`) — legacy בלבד.
 
 ---
 

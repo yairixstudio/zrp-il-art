@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr" data-slug="loneliness">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exhibition — Zielinski & Rozen Art Galleries</title>
+<link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/Solway-Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../components/site-boot.css">
+<link rel="stylesheet" href="../../components/gallery.css">
+<style>
+/* ===== LOCAL FONTS ===== */
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Solway";src:url("../../פונטים/Solway-Light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Solway";src:url("../../פונטים/Solway-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --ink:#1B1B1B;
+  --grey-mid:#808080;
+  --copy-grey:#6B7280;
+  --artist:#828282;
+  --slide-active:#515151;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --exo-title-en:"Solway","Copperplate","Times New Roman",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+/* GLOBAL CASING — English UPPERCASE everywhere; Hebrew exempt. CLAUDE.md §9.2 */
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+
+.only-mobile{display:none}
+.only-desktop{display:block}
+
+/* ===== NAV/FOOTER moved to ../../components/site-chrome.css ===== */
+
+/* ============================================================
+   EXHIBITION HERO BLOCK — desktop (gray bg + side image)
+   ============================================================ */
+.ex-hero{background:var(--bg-grey);padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
+.ex-hero .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
+.ex-hero .text-col{flex:1;display:flex;flex-direction:column;gap:32px;padding:0 16px}
+.ex-hero .status-row{display:flex;justify-content:flex-end;align-items:center;gap:16px;flex-wrap:wrap}
+.ex-hero .badge{display:inline-flex;align-items:center;gap:10px;padding:4px 8px;border:1px solid var(--ink);min-height:30px}
+.ex-hero .badge.heb-badge{font-family:var(--heb);font-weight:300;font-size:18px}
+.ex-hero .badge.status-badge{font-family:var(--cop);font-weight:300;font-size:18px;letter-spacing:.04em}
+.ex-hero .descblock{display:flex;flex-direction:column;gap:0;align-items:flex-end;direction:rtl}
+.ex-hero .descblock .desc{width:100%;max-width:560px;font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.55;text-align:right;direction:rtl;color:var(--ink)}
+.ex-hero .descblock .desc p{margin:0 0 14px}
+.ex-hero .descblock .desc p:last-child{margin-bottom:0}
+.ex-hero .descblock .desc p.regular{font-weight:400}
+.ex-hero .descblock .desc p.heading-en{font-family:var(--cop);font-weight:400;font-size:18px;text-align:right;direction:ltr;letter-spacing:.04em;margin-bottom:18px}
+.ex-hero .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
+.ex-hero .img-frame{position:relative;width:492px;height:auto;aspect-ratio:492/744;overflow:hidden}
+.ex-hero .img-frame img{width:100%;height:100%;object-fit:cover}
+/* Gallery fills the frame; no z-index on it so its arrows/dots (z:2)
+   participate in the .img-frame stacking context above the gradient. */
+.ex-hero .img-frame > image-gallery{position:absolute;inset:0}
+.ex-hero .img-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:1}
+.ex-hero .overlay{position:absolute;left:90px;top:326px;width:max-content;max-width:calc(100% - 32px);display:flex;flex-direction:column;gap:6px;color:#fff;z-index:2;pointer-events:none}
+.ex-hero .overlay > *{pointer-events:auto}
+.ex-hero .overlay .title-bar{display:flex;align-items:center;justify-content:center;gap:13px;flex-wrap:nowrap;white-space:nowrap}
+.ex-hero .overlay .title-bar .lbl{font-family:var(--cop);font-weight:300;font-size:26px;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+.ex-hero .overlay .title-bar .dot{display:block;width:6px;height:6px;border-radius:300px;background:#fff;flex-shrink:0}
+.ex-hero .overlay .title-he{font-family:var(--heb);font-weight:400;font-size:29px;text-align:center;direction:rtl;line-height:1.1}
+.ex-hero .overlay .title-en{font-family:var(--exo-title-en);font-weight:300;font-size:17px;text-align:center;line-height:1.3;letter-spacing:.04em}
+.ex-hero.ex-hero--overlay-en-only .overlay .title-bar,
+.ex-hero.ex-hero--overlay-en-only .overlay .title-he{display:none !important}
+.ex-hero .img-frame:not(.is-hero-slide-0) .overlay{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s linear .2s}
+.ex-hero .img-frame.is-hero-slide-0 .overlay{opacity:1;visibility:visible;pointer-events:none;transition:opacity .2s ease,visibility 0s linear 0s}
+
+/* ============================================================
+   ARTISTS BAND — horizontally scrollable on all sizes
+   ============================================================ */
+.ex-artists,.ex-curator{padding:32px var(--pad-x);background:var(--white);display:flex;justify-content:center}
+.ex-artists .wrap,.ex-curator .wrap{display:flex;flex-direction:column;gap:16px;width:100%;max-width:1248px}
+.ex-artists .head,.ex-curator .head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.ex-artists .head .label,.ex-curator .head .label{display:flex;align-items:center;gap:8px;font-family:var(--cop);font-weight:300;font-size:28px;color:var(--ink);letter-spacing:.04em}
+.ex-artists .head .rule,.ex-curator .head .rule{flex:1;height:1px;background:var(--ink);opacity:.85}
+.ex-artists .strip,.ex-curator .strip{display:flex;gap:6px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.ex-artists .strip::-webkit-scrollbar,.ex-curator .strip::-webkit-scrollbar{height:4px}
+.ex-artists .strip::-webkit-scrollbar-thumb,.ex-curator .strip::-webkit-scrollbar-thumb{background:var(--bg-grey)}
+.ex-artists .card,.ex-curator .card{flex:0 0 178px;display:flex;flex-direction:column;align-items:center;gap:8px;scroll-snap-align:start;cursor:pointer}
+.ex-artists .card .pic,.ex-curator .card .pic{width:178px;height:148px;overflow:hidden;background:var(--bg-grey)}
+.ex-artists .card .pic picture,.ex-curator .card .pic picture{display:block;width:100%;height:100%}
+.ex-artists .card .pic img,.ex-curator .card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.ex-artists .card:hover .pic img,.ex-curator .card:hover .pic img{transform:scale(1.04)}
+.ex-artists .card .name,.ex-curator .card .name{font-family:var(--cop);font-weight:300;font-size:18px;line-height:18px;text-align:center;color:var(--artist);text-transform:uppercase;white-space:pre-line;word-break:normal;overflow-wrap:normal;hyphens:none;text-wrap:balance}
+.ex-curator[hidden]{display:none !important}
+
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤1100px)
+   ============================================================ */
+@media (max-width:1100px){
+  :root{--pad-x:48px}
+  .ex-hero .img-col{flex-basis:380px}
+  .ex-hero .img-frame{width:100%;max-width:380px;height:auto;aspect-ratio:492/744}
+  .ex-hero .overlay{left:50px;top:200px;width:280px}
+  .ex-hero .overlay .title-he{font-size:24px}
+  .ex-hero .overlay .title-bar .lbl{font-size:20px}
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤768px)
+   ============================================================ */
+@media (max-width:768px){
+  :root{--pad-x:16px}
+  .only-desktop{display:none !important}
+  .only-mobile{display:block}
+
+  /* HERO becomes vertical: banner image full-width on top, then info section, then artists */
+  .ex-hero{padding:0;background:var(--white);display:block}
+  .ex-hero .row{flex-direction:column;gap:0;width:100%}
+  .ex-hero .text-col{order:2}
+  .ex-hero .img-col{flex:0 0 auto;width:100%;justify-content:center;order:1}
+  /* Fluid height with width — avoids object-fit:cover re-cropping when only width grows */
+  .ex-hero .img-frame{width:100%;max-width:100%;height:auto;aspect-ratio:492/744}
+  /* Mobile darken layer on top of gallery slides, below arrows/dots/overlay. */
+  .ex-hero .img-frame::before{content:"";position:absolute;inset:0;background:rgba(27,27,27,0.4);z-index:1;pointer-events:none}
+  .ex-hero .img-frame::after{display:none}
+  .ex-hero .img-frame img{position:relative}
+  .ex-hero .overlay{left:50%;top:50%;transform:translate(-50%,-50%);width:min(313px,calc(100% - 32px));text-align:center;align-items:center}
+  .ex-hero .overlay .title-bar .lbl{font-size:22px}
+  .ex-hero .overlay .title-he{font-size:24px}
+  .ex-hero .overlay .title-en{font-size:15px}
+
+  /* slideshow dots */
+  .slide-dots{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:8px;z-index:2}
+  .slide-dots span{width:32px;height:2px;background:var(--slide-active)}
+  .slide-dots span.on{background:#fff}
+
+  /* INFO SECTION (status row + description) — white bg, RTL aligned */
+  .ex-hero .text-col{padding:24px 16px;gap:24px;align-items:flex-end;width:100%}
+  .ex-hero .status-row{justify-content:flex-end;width:100%}
+  .ex-hero .badge.heb-badge{font-size:16px;font-weight:300}
+  .ex-hero .badge.status-badge{font-size:16px}
+  .ex-hero .descblock{width:100%;align-items:flex-end}
+  .ex-hero .descblock .desc{font-size:16px;max-width:100%}
+  .ex-hero .descblock .desc p.heading-en{font-size:16px}
+
+  /* ARTISTS + CURATOR — smaller cards on mobile (Figma exhibition curator 119:702) */
+  .ex-artists,.ex-curator{padding:32px 16px}
+  .ex-artists .head .label,.ex-curator .head .label{font-size:20px}
+  .ex-artists .card,.ex-curator .card{flex:0 0 96px}
+  .ex-artists .card .pic,.ex-curator .card .pic{width:96px;height:80px}
+  .ex-artists .card .name,.ex-curator .card .name{font-size:13px;line-height:14px}
+
+}
+
+/* loading state */
+.loading{padding:120px 24px;text-align:center;font-family:var(--cop);font-weight:300;color:var(--grey-mid);letter-spacing:.08em}
+
+a.card.is-linked{cursor:pointer;display:flex;flex-direction:column;color:inherit;text-decoration:none}
+a.card.is-linked:hover .pic img{filter:brightness(.96)}
+a.card.is-linked .pic img{transition:filter .25s}
+</style>
+</head>
+<body class="is-loading-data page-exhibition">
+
+<site-header></site-header>
+
+<main id="page">
+  <div class="loading">loading…</div>
+</main>
+
+<template id="tpl-page">
+<section class="ex-hero">
+  <div class="row">
+    <div class="text-col">
+      <div class="status-row">
+        <span class="badge heb-badge" data-bind="gallery_label_he"></span>
+        <span class="badge status-badge" data-bind="status_label_en"></span>
+      </div>
+      <div class="descblock">
+        <div class="desc heb" data-bind-html="description_html"></div>
+      </div>
+    </div>
+    <div class="img-col">
+      <div class="img-frame is-hero-slide-0">
+        <image-gallery data-fit="cover" aria-label="exhibition gallery" data-bind-gallery></image-gallery>
+        <div class="overlay">
+          <div class="title-bar">
+            <span class="lbl" data-bind="label_en"></span>
+            <span class="dot"></span>
+            <span class="lbl" data-bind="volume_en"></span>
+          </div>
+          <div class="title-he heb" data-bind="title_he"></div>
+          <div class="title-en" data-bind="title_en"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ex-artists">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">artists</div>
+      <div class="rule"></div>
+    </div>
+    <div class="strip" data-bind-artists></div>
+  </div>
+</section>
+
+<section class="ex-curator" hidden data-ex-curator-root>
+  <div class="wrap">
+    <div class="head">
+      <div class="label" data-curator-label></div>
+      <div class="rule"></div>
+    </div>
+    <div class="strip" data-curator-strip></div>
+  </div>
+</section>
+
+<site-footer></site-footer>
+</template>
+
+<!-- Embedded fallbacks for file:// usage. Keep in sync with /data/*.json (or run a local HTTP server and the fetch() above will be the source of truth). -->
+<script type="application/json" id="fallback-site">{"brand":{"name_en":"ZIELINSKI & ROZEN"},"footer":{"newsletter":{"title":"Stay Informed","placeholder":"Email Address","cta":"SUBSCRIBE"},"links_he":[{"label":"יצירת קשר","href":"/contact"},{"label":"הצהרת נגישות","href":"/accessibility"},{"label":"גלריית כיכר המדינה","href":"/galleries/medina"},{"label":"גלריית כיכר דיזינגוף","href":"/galleries/dizengoff"},{"label":"גלריית שוק הפשפשים","href":"/galleries/flea-market"}],"copyright":"© 2026 THE art GALLERY ZiELINSKI & ROZEN ALL RIGHTS RESERVED."}}</script>
+<script type="application/json" id="fallback-curators">{"curators":[{"id":"korin-avraham","slug":"korin-avraham","name_en_first":"korin","name_en_last":"avraham","instagram_handle":"yasalamfashionblog","badge_en":"the curator","section_heading_en":"the curator's exhibitions","portrait":{"src":"images/curators/korin-avraham/portrait.webp","width":2117,"height":2809,"alt_he":"קורין אברהם — אוצרת"},"exhibition_slugs":["loneliness","how-many"],"figma_desktop":"XhGH289YTRcW811wrufRJz::314:4","figma_mobile":"XhGH289YTRcW811wrufRJz::314:97"}]}</script>
+<script type="application/json" id="fallback-exhibitions">{"exhibitions": [{"id": "loneliness", "slug": "loneliness", "label_en": "EXHIBITION", "volume_en": "VOLUME 1", "title_he": "בדידות בתוך בסביבה תוססת", "title_en": "Loneliness in a bubbling environment", "status": "current", "status_label_en": "current", "gallery_id": "medina", "gallery_label_he": "גלריית כיכר המדינה", "curator_slug": "korin-avraham", "hero_image": "images/exhibitions/loneliness/hero.webp", "gallery_images": [{"src": "images/exhibitions/loneliness/hero.webp", "alt": "בדידות בתוך סביבה תוססת — תמונת מפתח"}, {"src": "images/events/loneliness/invite-01.webp", "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"}, {"src": "images/events/loneliness/invite-02.webp", "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"}, {"src": "images/events/loneliness/invite-03.webp", "alt": "מתוך תערוכת בדידות בתוך סביבה תוססת"}, {"src": "images/events/loneliness/atmosphere.webp", "alt": "אווירה בגלריה — כיכר המדינה"}, {"src": "images/events/loneliness/second-01.webp", "alt": "מתוך התערוכה"}, {"src": "images/events/loneliness/second-02.webp", "alt": "מתוך התערוכה"}, {"src": "images/events/loneliness/second-03.webp", "alt": "מתוך התערוכה"}], "description_he": [{"weight": "regular", "lines": ["בדידות אינה תמיד שקט."]}, {"weight": "light", "lines": ["לעיתים היא מתרחשת דווקא במקומות הרועשים ביותר — בתוך שפע, צבע, תנועה, דימויים ואנשים.", "זו בדידות שאינה נובעת מהיעדר, אלא מעודף."]}, {"weight": "light", "lines": ["מעודף גירויים, מעודף מסכות, מעודף קולות שמטשטשים את הקול הפנימי."]}, {"weight": "light", "lines": ["התערוכה בדידות בתוך סביבה תוססת מבקשת להתבונן ברגע הזה:", "הרגע שבו אדם נמצא בלב ההמולה — ועדיין", "מרגיש לבד. לא כקריסה, אלא כמצב תודעתי.", "כהשהיה. כהתפכחות."]}, {"weight": "light", "lines": ["העבודות המוצגות בתערוכה נעות בין גוף לשפה, בין חומר לרגש, בין פיתוי לנחמה, בין משחקיות לפצע."]}, {"weight": "light", "lines": ["יש בהן צבע, ברק, הומור, פנטזיה ועושר חזותי — אך מתחת לפני השטח מתקיים שקט אחר:", "שאלות על זהות, על שייכות, על הצורך במגע, על כמיהה לנחמה בעולם שמציע אינסוף הסחות."]}, {"weight": "light", "lines": ["האמנים והאמניות שנאספו כאן מציעים נקודות מבט שונות על אותה חוויה אנושית:", "גוף שנוכח אך לא נענה, דימוי שמושך את העין אך מסתיר ריק, אובייקט שמבטיח הקלה אך חושף חוסר, יצור היברידי שחי בתוך עולם צבעוני אך מתקיים בבועה פנימית משלו."]}, {"weight": "light", "lines": ["הבדידות בתערוכה הזו אינה דרמטית ואינה מבקשת רחמים. היא עדינה, לעיתים כמעט יפה.", "כזו שמתקיימת בתוך תנועה, בתוך אור, בתוך חיים ומזמינה את הצופה לעצור, להרגיש, ולזהות בה אולי משהו מוכר מעצמו."]}, {"weight": "light", "lines": ["זו אינה תערוכה על להיות לבד."]}, {"weight": "regular", "lines": ["זו תערוכה על מה שקורה בפנים,", "כשמסביב הכל רועש."]}], "artists": [{"name_en": "zohar ron", "thumb": "images/exhibitions/loneliness/artists/01-zohar-ron.webp", "slug": "zohar-ron"}, {"name_en": "eitan goldson", "thumb": "images/exhibitions/loneliness/artists/02-eitan-goldson.webp", "slug": "eitan-goldson"}, {"name_en": "tal holy kadosh", "thumb": "images/exhibitions/loneliness/artists/03-holy-kadosh.webp", "slug": "holy-kadosh"}, {"name_en": "costa magarakis", "thumb": "images/exhibitions/loneliness/artists/04-costa-magarakis.webp", "slug": "costa-magarakis"}, {"name_en": "tal nehoray", "thumb": "images/exhibitions/loneliness/artists/05-tal-nehoray.webp", "slug": "tal-nehoray"}, {"name_en": "hila loterstein", "thumb": "images/exhibitions/loneliness/artists/06-hila-loterstein.webp", "slug": "hila-loterstein"}, {"name_en": "gal pollak", "thumb": "images/exhibitions/loneliness/artists/07-gal-pollak.webp", "slug": "gal-polk"}, {"name_en": "maya nachum levy", "thumb": "images/exhibitions/loneliness/artists/08-maya-nachum-levy.webp", "slug": "maya-nachum-levy"}, {"name_en": "adi duek", "thumb": "images/exhibitions/loneliness/artists/09-adi-duek.webp", "slug": "adi-duak"}, {"name_en": "la raz porta", "thumb": "images/exhibitions/loneliness/artists/10-la-raz-porta.webp", "slug": "la-raz-porta"}, {"name_en": "zohar shitrit", "thumb": "images/exhibitions/loneliness/artists/11-zohar-shitrit.webp", "slug": "zohar-shtrit"}]}, {"id": "how-many", "slug": "how-many", "hero_overlay_en_only": true, "label_en": "EXHIBITION", "volume_en": "VOLUME 2", "title_he": "כמה שותפים היו לך?", "title_en": "How many partners have you had?", "status": "current", "status_label_en": "current", "gallery_id": "dizengoff", "gallery_label_he": "גלריית כיכר דיזינגוף", "curator_slug": "korin-avraham", "hero_image": "images/exhibitions/how-many/hero.webp", "gallery_images": [{"src": "images/exhibitions/how-many/hero.webp", "alt": "כמה שותפים היו לך? — תמונת מפתח"}], "description_he": [{"weight": "heading-en", "lines": ["HOW MANY PARTNERS", "HAVE YOU HAD?"]}, {"weight": "light", "lines": ["השאלה הזאת נשמעת פשוטה.", "כמעט טכנית.", "אבל היא לא באמת שואלת על מספר.", "היא פותחת מרחב.", "מרחב שבו זיכרונות, תחושות ודפוסים מתקיימים בו זמנית,", "בלי היררכיה ובלי סדר ברור.", "מרחב שבו מה שנשאר אינו עובדה,", "אלא רישום בגוף."]}, {"weight": "light", "lines": ["לא תמיד ברור מה שייך למי. מה התחיל איפה.", "ומה בכלל ניתן להפרדה.", "ובתוך כל זה, יש גם רגעים שאינם ניתנים להסבר.", "משיכה שממשיכה להתקיים גם כשההיגיון כבר ביטל אותה,", "דלתות שנדפקות שוב, למרות שהן סגורות,", "רגעים שבהם חרדה מתחפשת לאהבה,", "וכאב מוכר מרגיש כמו בית."]}, {"weight": "light", "lines": ["בתוך המרחב הזה, העבודות בתערוכה אינן מנסות לענות.", "הן מציעות מבט על יחסים לא דרך סיפור,", "אלא דרך מה שמצטבר.", "מחוות קטנות, חזרות ושאריות.", "רגעים שבהם מגע הוא גם קרבה וגם ספק.", "רגעים שבהם אינטימיות מתקרבת ונעצרת באותו הזמן.", "רגעים שלא מתיישבים לכדי נרטיב אחד."]}, {"weight": "light", "lines": ["לאורך הדרך, החיפוש מופנה שוב ושוב החוצה.", "אל האחר, אל המפגש, אל מה שיכול למלא או להחזיר.", "ורק ברגעים נדירים של כנות, כמעט בלתי נסבלת,", "מתבהר שהשאלה מעולם לא הייתה שם.", "השאלה “כמה” מתפרקת כאן,", "ובמקומה נשאלת שאלה אחרת,", "לא מנוסחת עד הסוף, שנוכחת בגוף יותר משהיא נאמרת."]}, {"weight": "regular", "lines": ["לא מה קרה, אלא מה נשאר.", "מה חוזר, מה נמשך מעבר למפגש עצמו.", "ומה מתגלה, לאט, לאט, כאשר מפסיקים לחפש בחוץ,", "ונשארים מול מה שכבר נמצא בפנים."]}], "artists": [{"name_en": "zohar ron", "thumb": "images/exhibitions/how-many/artists/01-zohar-ron.webp", "slug": "zohar-ron", "artist_page_slug": "zohar-ron-dan-ben-ari"}, {"name_en": "dan ben-ary", "thumb": "images/exhibitions/how-many/artists/02-dan-ben-ari.webp", "slug": "zohar-ron-dan-ben-ari"}, {"name_en": "alon manjoch", "thumb": "images/exhibitions/how-many/artists/03-alon-manjoch.webp", "slug": "alon"}, {"name_en": "risa brooke oze", "thumb": "images/exhibitions/how-many/artists/04-risa-brooke-oze.webp", "slug": "risa-oz"}, {"name_en": "noemi safir", "thumb": "images/exhibitions/how-many/artists/05-noemi-safir.webp", "slug": "noemi-safir"}, {"name_en": "yarden amir", "thumb": "images/exhibitions/how-many/artists/06-yarden-amir.webp", "slug": "yarden-amir"}, {"name_en": "nir giorgio levin", "thumb": "images/exhibitions/how-many/artists/07-nir-giorgio-levin.webp", "slug": "nir-giorgio-levin"}, {"name_en": "anat wegier", "thumb": "images/exhibitions/how-many/artists/08-anat-wegier.webp", "slug": "anat-wegier"}, {"name_en": "elsa ers brosh", "thumb": "images/exhibitions/how-many/artists/09-elsa-ers-brosh.webp", "slug": "elsa-ars-brush"}, {"name_en": "liel salman noam", "thumb": "images/exhibitions/how-many/artists/10-liel-salman-noam.webp", "slug": "liel-salman"}, {"name_en": "tal nehoray", "thumb": "images/exhibitions/how-many/artists/11-tal-nehoray.webp", "slug": "tal-nehoray"}, {"name_en": "tanya shin", "thumb": "images/exhibitions/how-many/artists/12-tanya-shin.webp", "slug": "tanya-shin"}, {"name_en": "gal pollak", "thumb": "images/exhibitions/how-many/artists/13-gal-pollak.webp", "slug": "gal-polk"}, {"name_en": "samy david", "thumb": "images/exhibitions/how-many/artists/14-samy-david.webp", "slug": "sami-david"}, {"name_en": "racheli reuven", "thumb": "images/exhibitions/how-many/artists/15-racheli-reuven.webp"}]}]}</script>
+
+<script>
+(async function(){
+  const params = new URLSearchParams(location.search);
+  const slug = document.documentElement.dataset.slug || params.get('id') || params.get('slug') || 'loneliness';
+
+  // Load data: prefer fetch (so JSON edits flow through live), fall back to
+  // embedded copies so the page also works when opened directly via file:// .
+  async function loadJson(path, embeddedId){
+    try{
+      const res = await fetch(path, {cache:'no-store'});
+      if(res.ok) return await res.json();
+    }catch(_){/* file:// or offline */}
+    const el = document.getElementById(embeddedId);
+    if(el) return JSON.parse(el.textContent);
+    throw new Error('cannot load ' + path);
+  }
+
+  let site, data;
+  try{
+    [site, data] = await Promise.all([
+      loadJson('../../data/site.json', 'fallback-site'),
+      loadJson('../../data/exhibitions.json', 'fallback-exhibitions')
+    ]);
+  }catch(e){
+    document.getElementById('page').innerHTML = '<div class="loading">failed to load — serve via http (e.g. <code>python3 -m http.server</code>) or refresh fallbacks.</div>';
+    document.body.classList.remove('is-loading-data');
+    return;
+  }
+  const ex = data.exhibitions.find(e => e.slug === slug || e.id === slug);
+  if(!ex){
+    document.getElementById('page').innerHTML = '<div class="loading">exhibition not found</div>';
+    document.body.classList.remove('is-loading-data');
+    return;
+  }
+
+  let curatorsDoc = { curators: [] };
+  if (ex.curator_slug) {
+    try{
+      curatorsDoc = await loadJson('../../data/curators.json', 'fallback-curators');
+    }catch(_){}
+  }
+
+  document.title = (ex.title_en || ex.subtitle_he || 'Exhibition') + ' — Zielinski & Rozen';
+
+  // Build description HTML from paragraphs
+  function descToHtml(paras){
+    if(!Array.isArray(paras)) return '';
+    return paras.map(p => {
+      const cls = p.weight || 'light';
+      const lines = (p.lines || []).map(l => l.replace(/&/g,'&amp;').replace(/</g,'&lt;'));
+      return `<p class="${cls}">${lines.join('<br>')}</p>`;
+    }).join('');
+  }
+
+  // Build context object for binding
+  const ctx = {
+    label_en: ex.label_en || 'EXHIBITION',
+    volume_en: ex.volume_en || '',
+    title_he: ex.title_he || ex.subtitle_he || '',
+    title_en: ex.title_en || '',
+    gallery_label_he: ex.gallery_label_he || '',
+    status_label_en: ex.status_label_en || ex.status || '',
+    hero_image: '../../' + ex.hero_image,
+    description_html: descToHtml(ex.description_he),
+    footer_newsletter_title: site.footer.newsletter.title,
+    footer_newsletter_placeholder: site.footer.newsletter.placeholder,
+    footer_newsletter_cta: site.footer.newsletter.cta,
+    footer_copyright: site.footer.copyright,
+    footer_links_meta: site.footer.links_he.slice(0,2),
+    footer_links_galleries: site.footer.links_he.slice(2)
+  };
+
+  // Resolve gallery images — fall back to hero alone if list missing/empty.
+  const galleryImages = (Array.isArray(ex.gallery_images) && ex.gallery_images.length)
+    ? ex.gallery_images
+    : [{ src: ex.hero_image, alt: ex.title_he || '' }];
+
+  // Render template
+  const tpl = document.getElementById('tpl-page').content.cloneNode(true);
+
+  tpl.querySelectorAll('[data-bind]').forEach(el => {
+    const k = el.getAttribute('data-bind');
+    if(ctx[k] !== undefined) el.textContent = ctx[k];
+  });
+  tpl.querySelectorAll('[data-bind-html]').forEach(el => {
+    const k = el.getAttribute('data-bind-html');
+    el.innerHTML = ctx[k] || '';
+  });
+  tpl.querySelectorAll('[data-bind-attr]').forEach(el => {
+    const [k, attr] = el.getAttribute('data-bind-attr').split(':');
+    if(ctx[k] !== undefined) el.setAttribute(attr, ctx[k]);
+  });
+
+  // Inject gallery images as <img decoding="async"> children of <image-gallery>.
+  // The gallery component picks them up in its connectedCallback.
+  const galEl = tpl.querySelector('[data-bind-gallery]');
+  if(galEl){
+    galleryImages.forEach((g, i) => {
+      const img = document.createElement('img');
+      img.src = '../../' + g.src;
+      img.alt = g.alt || '';
+      if(i > 0) img.loading = 'lazy';
+      galEl.appendChild(img);
+    });
+  }
+
+  // Artists strip — each card links to its artist page when slug is known
+  const strip = tpl.querySelector('[data-bind-artists]');
+  const _ARTIST_SLUGS = {"zohar ron":"zohar-ron", "eitan goldson":"eitan-goldson", "eitan goldson and henrika rotenberg":"eitan-goldson", "tanya shin":"tanya-shin", "nir giorgio levin":"nir-giorgio-levin", "elsa ers brosh":"elsa-ars-brush", "elsa ars brush":"elsa-ars-brush", "gal pollak":"gal-polk", "gal polk":"gal-polk", "zohar shtrit":"zohar-shtrit", "zohar shitrit":"zohar-shtrit", "hila loterstein":"hila-loterstein", "sami david":"sami-david", "samy david":"sami-david", "risa brooke oze":"risa-oz", "risa oz":"risa-oz", "adi duak":"adi-duak", "adi duek":"adi-duak", "alon manjoch":"alon", "noemi safir":"noemi-safir", "yarden amir":"yarden-amir", "anat wegier":"anat-wegier", "anat wrgier":"anat-wegier", "liel salman":"liel-salman", "liel salman noam":"liel-salman", "tal nehoray":"tal-nehoray", "tal nehorai":"tal-nehoray"};
+  // Face-centered focal points per artist — mirrors FOCAL_POINTS in artists/<slug>/index.html
+  const _ARTIST_FOCAL = {
+    'zohar-ron':'50% 42%',
+    'eitan-goldson':'50% 18%',
+    'tanya-shin':'50% 30%',
+    'nir-giorgio-levin':'50% 32%',
+    'elsa-ars-brush':'50% 38%',
+    'gal-polk':'50% 20%',
+    'zohar-shtrit':'50% 25%',
+    'hila-loterstein':'50% 28%',
+    'sami-david':'50% 25%',
+    'risa-oz':'50% 35%',
+    'zohar-ron-dan-ben-ari':'50% 35%',
+    'adi-duak':'50% 28%',
+    'alon':'58% 40%',
+    'noemi-safir':'50% 18%',
+    'yarden-amir':'50% 38%',
+    'anat-wegier':'50% 32%',
+    'liel-salman':'50% 32%',
+    'tal-nehoray':'50% 32%',
+    'holy-kadosh':'50% 30%',
+    'costa-magarakis':'58% 35%',
+    'maya-nachum-levy':'50% 25%',
+    'la-raz-porta':'50% 50%'
+  };
+  (ex.artists || []).forEach(a => {
+    const nameDisplay = (a.name_en || '').replace(/\\n/g,'\n').replace(/\\L/g,'\n');
+    const lookup = (a.slug || _ARTIST_SLUGS[(a.name_en||'').toLowerCase().trim()] || null);
+    const hrefSlug = (a.artist_page_slug || lookup);
+    const linkable = !!hrefSlug;
+    const wrap = document.createElement(linkable ? 'a' : 'div');
+    wrap.className = 'card' + (linkable ? ' is-linked' : '');
+    if (linkable) {
+      wrap.href = '../../artists/' + hrefSlug + '/';
+      wrap.setAttribute('aria-label', 'לדף האומן ' + nameDisplay);
+    }
+    const focal = a.focus || (lookup && _ARTIST_FOCAL[lookup]) || (hrefSlug && _ARTIST_FOCAL[hrefSlug]) || 'center 25%';
+    wrap.innerHTML = `
+      <div class="pic"><img src="../../${a.thumb}" alt="" decoding="async" loading="lazy" style="object-position:${focal}"></div>
+      <div class="name">${nameDisplay}</div>
+    `;
+    strip.appendChild(wrap);
+  });
+
+  const curRoot = tpl.querySelector('[data-ex-curator-root]');
+  if (curRoot && ex.curator_slug) {
+    const cur = (curatorsDoc.curators || []).find(c => c.slug === ex.curator_slug);
+    if (cur) {
+      curRoot.removeAttribute('hidden');
+      const lbl = curRoot.querySelector('[data-curator-label]');
+      if (lbl) lbl.textContent = cur.badge_en || 'the curator';
+      const cStrip = curRoot.querySelector('[data-curator-strip]');
+      if (cStrip) {
+        const p = cur.portrait || {};
+        const nameDisplay = ((cur.name_en_first || '') + '\n' + (cur.name_en_last || '')).trim();
+        const link = document.createElement('a');
+        link.className = 'card is-linked';
+        link.href = '../../curators/' + cur.slug + '/';
+        link.setAttribute('aria-label', 'לדף האוצרת ' + (cur.name_en_first + ' ' + cur.name_en_last));
+        const pic = document.createElement('div');
+        pic.className = 'pic';
+        const img = document.createElement('img');
+        img.src = '../../' + (p.src || '');
+        img.alt = p.alt_he || '';
+        img.width = +p.width || 2117;
+        img.height = +p.height || 2809;
+        img.decoding = 'async';
+        img.loading = 'lazy';
+        img.style.objectPosition = '50% 28%';
+        pic.appendChild(img);
+        const nm = document.createElement('div');
+        nm.className = 'name';
+        nm.textContent = nameDisplay;
+        link.appendChild(pic);
+        link.appendChild(nm);
+        cStrip.appendChild(link);
+      }
+    }
+  }
+
+  // Footer link rows
+  tpl.querySelectorAll('[data-bind-footer-row]').forEach(row => {
+    const k = row.getAttribute('data-bind-footer-row');
+    (ctx[k] || []).forEach(l => {
+      const a = document.createElement('a');
+      a.href = l.href || '#';
+      a.textContent = l.label;
+      row.appendChild(a);
+    });
+  });
+
+  const page = document.getElementById('page');
+  page.innerHTML = '';
+  page.appendChild(tpl);
+  document.body.classList.remove('is-loading-data');
+
+  const heroSec = page.querySelector('.ex-hero');
+  const imgFrame = heroSec && heroSec.querySelector('.img-frame');
+  if (ex.hero_overlay_en_only && heroSec) heroSec.classList.add('ex-hero--overlay-en-only');
+
+  function syncHeroSlideOverlay() {
+    if (!imgFrame) return;
+    const gal = imgFrame.querySelector('image-gallery');
+    let idx = 0;
+    if (gal && typeof gal._idx === 'number') idx = gal._idx;
+    imgFrame.classList.toggle('is-hero-slide-0', idx === 0);
+  }
+
+  customElements.whenDefined('image-gallery').then(() => {
+    syncHeroSlideOverlay();
+    const gal = imgFrame && imgFrame.querySelector('image-gallery');
+    if (gal) {
+      gal.addEventListener('gallery:change', (e) => {
+        const i = e.detail && typeof e.detail.index === 'number' ? e.detail.index : 0;
+        imgFrame.classList.toggle('is-hero-slide-0', i === 0);
+      });
+    }
+  });
+})();
+</script>
+
+<!-- Site chrome: shared header + footer (single source of truth) -->
+<script src="../../components/site-chrome.js" defer></script>
+<!-- Reusable image gallery (defines <image-gallery> custom element) -->
+<script src="../../components/gallery.js" defer></script>
+
+<script src="../../components/picture-upgrade.js" defer></script>
+</body>
+</html>

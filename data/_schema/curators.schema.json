@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "curators",
+  "type": "object",
+  "required": ["curators"],
+  "properties": {
+    "curators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "slug", "name_en_first", "name_en_last", "instagram_handle", "portrait", "exhibition_slugs"],
+        "properties": {
+          "id": { "type": "string" },
+          "slug": { "type": "string" },
+          "name_en_first": { "type": "string" },
+          "name_en_last": { "type": "string" },
+          "instagram_handle": { "type": "string" },
+          "badge_en": { "type": "string" },
+          "section_heading_en": { "type": "string" },
+          "portrait": {
+            "type": "object",
+            "required": ["src", "width", "height", "alt_he"],
+            "properties": {
+              "src": { "type": "string" },
+              "width": { "type": "integer" },
+              "height": { "type": "integer" },
+              "alt_he": { "type": "string" }
+            }
+          },
+          "exhibition_slugs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "figma_desktop": { "type": "string" },
+          "figma_mobile": { "type": "string" }
+        }
+      }
+    }
+  }
+}

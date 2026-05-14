@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KORIN AVRAHAM — CURATOR — ZIELINSKI &amp; ROZEN ART GALLERIES</title>
+<meta name="description" content="קורין אברהם — אוצרת תערוכות בגלריות זילינסקי רוזן. תערוכות: בדידות בתוך סביבה תוססת; כמה שותפים היו לך?">
+<link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/Solway-Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../components/site-boot.css">
+<style>
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Solway";src:url("../../פונטים/Solway-Light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Solway";src:url("../../פונטים/Solway-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --ink:#1B1B1B;
+  --grey-mid:#808080;
+  --copy-grey:#6B7280;
+  --slide-active:#515151;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --exo-title-en:"Solway","Copperplate","Times New Roman",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+
+.only-mobile{display:none}
+.only-desktop{display:block}
+
+/* ===== HERO (grey band — Figma 314:30–314:42: left = badge + 24 + info; portrait 492×492 spans both text rows; top-aligned) ===== */
+.cur-hero{background:var(--bg-grey);padding:48px var(--pad-x) 32px;display:flex;justify-content:center;align-items:flex-start}
+/* Desktop: 2 rows × 2 cols — portrait spans rows (not 3-way split with text rows) so copy stays pinned to the top. DOM order is badge → pic → info for mobile column flow. */
+.cur-hero .cur-hero__row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 492px;
+  grid-template-rows:auto auto;
+  column-gap:48px;
+  row-gap:24px;
+  align-items:start;
+  align-content:start;
+  width:100%;
+  max-width:var(--max);
+}
+.cur-hero .cur-hero__badge{
+  grid-column:1;
+  grid-row:1;
+  justify-self:end;
+  align-self:start;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 16px;
+  border:1px solid var(--ink);
+  font-family:var(--cop);
+  font-weight:300;
+  font-size:20px;
+  letter-spacing:.04em;
+  color:var(--ink);
+  box-sizing:border-box;
+  margin:0 16px;
+}
+.cur-hero .cur-hero__pic-wrap{
+  grid-column:2;
+  grid-row:1 / span 2;
+  justify-self:end;
+  display:flex;
+  justify-content:flex-end;
+  align-self:start;
+}
+.cur-hero .cur-hero__info{
+  grid-column:1;
+  grid-row:2;
+  justify-self:end;
+  align-self:start;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:16px;
+  width:100%;
+  padding:0 16px;
+  box-sizing:border-box;
+}
+.cur-hero .cur-hero__names{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:20px;
+  text-align:center;
+  width:100%;
+  box-sizing:border-box;
+}
+.cur-hero .cur-hero__names .fn{font-family:var(--cop);font-weight:700;font-size:80px;line-height:1;color:var(--ink)}
+.cur-hero .cur-hero__names .ln{font-family:var(--cop);font-weight:300;font-size:80px;line-height:1;color:var(--ink)}
+.cur-hero .cur-hero__ig{
+  padding:0 8px;
+  font-family:var(--cop);
+  font-weight:300;
+  font-size:28px;
+  letter-spacing:.04em;
+  box-sizing:border-box;
+}
+.cur-hero .cur-hero__ig a{color:inherit;transition:opacity .2s}
+.cur-hero .cur-hero__ig a:hover{opacity:.6}
+.cur-hero .cur-hero__portrait{position:relative;width:492px;height:492px;overflow:hidden;background:var(--bg-grey)}
+.cur-hero .cur-hero__portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 32%}
+
+/* ===== EXHIBITIONS GRID (card visuals align with exhibition.html hero overlays) ===== */
+.cur-ex{padding:32px var(--pad-x);background:var(--white);display:flex;justify-content:center}
+.cur-ex .cur-ex__inner{width:100%;max-width:var(--max)}
+.cur-ex .cur-ex__head{font-family:var(--cop);font-weight:300;font-size:19px;letter-spacing:.04em;color:var(--ink);margin-bottom:24px}
+.cur-ex .cur-ex__grid{display:flex;flex-direction:row;gap:32px;align-items:flex-start}
+.cur-ex .cur-card{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:16px;color:inherit}
+.cur-ex .cur-card:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.cur-ex .cur-card__frame{position:relative;width:100%;height:736.97px;overflow:hidden;background:var(--bg-grey);isolation:isolate}
+/* picture-upgrade wraps <img> in <picture> — keep media under overlays for hit-testing + DevTools picker */
+.cur-ex .cur-card__frame > picture{position:relative;z-index:0;display:block;width:100%;height:100%}
+.cur-ex .cur-card__frame > picture img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.cur-ex .cur-card:hover .cur-card__frame > picture img{transform:scale(1.04)}
+/* before picture-upgrade runs, or if <img> stays direct child */
+.cur-ex .cur-card__frame > img{position:relative;z-index:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.cur-ex .cur-card:hover .cur-card__frame > img{transform:scale(1.04)}
+.cur-ex .cur-card__frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,0) 100%);pointer-events:none;z-index:1}
+/* pointer-events:auto — inspector picks overlay; <a> still receives clicks */
+.cur-ex .cur-card__overlay{
+  position:absolute;left:50%;transform:translate(-50%,-50%);top:50%;z-index:2;
+  display:flex;flex-direction:column;pointer-events:auto;color:#fff;
+}
+/* loneliness card: one column — stretch = same width for titlebar / Hebrew / English (Figma 400) */
+.cur-ex .cur-card__overlay:not(.cur-card__overlay--enonly){
+  align-items:stretch;
+  width:min(400px,calc(100% - 32px));
+  max-width:100%;
+  gap:6px;
+  text-align:center;
+  box-sizing:border-box;
+}
+.cur-ex .cur-card__overlay--enonly{
+  align-items:center;
+  gap:0;
+  width:max-content;
+  max-width:calc(100% - 32px);
+  text-align:center;
+}
+.cur-ex .cur-card__overlay--enonly .cur-card__enstack{font-family:var(--exo-title-en);font-weight:300;font-size:26px;line-height:normal;text-align:center;white-space:nowrap}
+.cur-ex .cur-card__overlay--enonly .cur-card__enstack span{display:block}
+.cur-ex .cur-card__titlebar{
+  display:flex;align-items:center;justify-content:center;gap:13px;
+  flex-wrap:wrap;width:100%;box-sizing:border-box;
+}
+.cur-ex .cur-card__titlebar .lbl{font-family:var(--exo-title-en);font-weight:300;font-size:26px;letter-spacing:.04em;line-height:1.15;white-space:nowrap}
+.cur-ex .cur-card__titlebar .dot{width:6px;height:6px;border-radius:300px;background:#fff;flex-shrink:0}
+.cur-ex .cur-card__overlay:not(.cur-card__overlay--enonly) .cur-card__title-he,
+.cur-ex .cur-card__overlay:not(.cur-card__overlay--enonly) .cur-card__title-en{
+  margin:0;
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+  text-align:center;
+}
+.cur-ex .cur-card__title-he{font-family:var(--heb);font-weight:400;font-size:29px;line-height:1.2;direction:rtl;text-wrap:balance}
+.cur-ex .cur-card__title-en{
+  font-family:var(--exo-title-en);font-weight:300;font-size:17px;line-height:1.35;letter-spacing:.04em;
+  overflow-wrap:break-word;word-break:normal;text-wrap:balance;
+}
+.cur-ex .cur-card__meta{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;max-width:100%}
+.cur-ex .cur-card__meta .t{font-family:var(--cop);font-weight:400;font-size:16px;line-height:1.45;letter-spacing:.04em;color:var(--ink);max-width:100%}
+.cur-ex .cur-card__meta .g{font-family:var(--cop);font-weight:300;font-size:16px;line-height:1.4;letter-spacing:.04em;color:var(--ink);max-width:100%}
+
+.loading{padding:120px 24px;text-align:center;font-family:var(--cop);font-weight:300;color:var(--grey-mid);letter-spacing:.08em}
+
+@media (max-width:1100px){
+  :root{--pad-x:48px}
+  .cur-hero .cur-hero__row{grid-template-columns:minmax(0,1fr) 380px}
+  .cur-hero .cur-hero__portrait{width:380px;height:380px}
+  .cur-hero .cur-hero__names .fn,.cur-hero .cur-hero__names .ln{font-size:64px}
+  .cur-ex .cur-card__frame{height:560px}
+  .cur-ex .cur-card__overlay--enonly .cur-card__enstack{font-size:22px}
+  .cur-ex .cur-card__titlebar .lbl{font-size:22px}
+  .cur-ex .cur-card__title-he{font-size:24px}
+}
+
+@media (max-width:768px){
+  :root{--pad-x:16px}
+  .only-desktop{display:none !important}
+  .only-mobile{display:block}
+
+  .cur-hero{padding:24px var(--pad-x) 20px}
+  .cur-hero .cur-hero__row{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:24px;
+    width:100%;
+    max-width:none;
+  }
+  .cur-hero .cur-hero__badge{
+    grid-column:auto;
+    grid-row:auto;
+    justify-self:center;
+    align-self:center;
+    width:max-content;
+    max-width:min(358px,calc(100vw - 2 * var(--pad-x)));
+    margin:0 auto;
+    font-size:16px;
+    padding:8px 16px;
+    box-sizing:border-box;
+    justify-content:center;
+  }
+  .cur-hero .cur-hero__info{
+    grid-column:auto;
+    grid-row:auto;
+    align-items:center;
+    padding:0;
+    width:100%;
+    max-width:358px;
+    gap:16px;
+  }
+  .cur-hero .cur-hero__names{
+    justify-self:center;
+    align-items:center;
+    gap:8px;
+    width:100%;
+    max-width:358px;
+    padding:0;
+  }
+  .cur-hero .cur-hero__names .fn,.cur-hero .cur-hero__names .ln{font-size:36px;width:100%}
+  .cur-hero .cur-hero__ig{padding:0;font-size:16px;width:100%;max-width:358px;text-align:center}
+  .cur-hero .cur-hero__pic-wrap{justify-self:center;width:100%;justify-content:center}
+  .cur-hero .cur-hero__portrait{width:262px;height:262px}
+  .cur-hero .cur-hero__portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 100%);pointer-events:none;z-index:1}
+  .cur-hero .cur-hero__portrait img{position:relative;z-index:0}
+
+  .cur-ex{padding:32px var(--pad-x)}
+  .cur-ex .cur-ex__inner{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+  .cur-ex .cur-ex__head{font-size:20px;margin-bottom:24px;width:100%;text-align:center}
+  .cur-ex .cur-ex__grid{flex-direction:column;gap:24px;align-items:center;width:100%}
+  .cur-ex .cur-card{width:100%;max-width:358px}
+  .cur-ex .cur-card--how-many{order:-1}
+  .cur-ex .cur-card__frame{height:433.939px}
+  .cur-ex .cur-card__overlay--enonly .cur-card__enstack{font-size:22px;top:50%}
+  .cur-ex .cur-card__titlebar .lbl{font-size:22px}
+  .cur-ex .cur-card__title-he{font-size:25px}
+  .cur-ex .cur-card__title-en{font-size:15px}
+}
+</style>
+</head>
+<body class="page-curator is-loading-data">
+
+<site-header></site-header>
+
+<main id="page">
+  <div class="loading">loading…</div>
+</main>
+
+<site-footer></site-footer>
+
+<script type="application/json" id="fallback-curators">{"curators":[{"id":"korin-avraham","slug":"korin-avraham","name_en_first":"korin","name_en_last":"avraham","instagram_handle":"yasalamfashionblog","badge_en":"the curator","section_heading_en":"the curator's exhibitions","portrait":{"src":"images/curators/korin-avraham/portrait.webp","width":2117,"height":2809,"alt_he":"קורין אברהם — אוצרת"},"exhibition_slugs":["loneliness","how-many"],"figma_desktop":"XhGH289YTRcW811wrufRJz::314:4","figma_mobile":"XhGH289YTRcW811wrufRJz::314:97"}]}</script>
+<script type="application/json" id="fallback-exhibitions-min">{"exhibitions":[{"id":"loneliness","slug":"loneliness","label_en":"EXHIBITION","volume_en":"VOLUME 1","title_he":"בדידות בתוך בסביבה תוססת","title_en":"Loneliness in a bubbling environment","gallery_id":"medina","hero_image":"images/exhibitions/loneliness/hero.webp","hero_overlay_en_only":false},{"id":"how-many","slug":"how-many","hero_overlay_en_only":true,"label_en":"EXHIBITION","volume_en":"VOLUME 2","title_he":"כמה שותפים היו לך?","title_en":"How many partners have you had?","gallery_id":"dizengoff","hero_image":"images/exhibitions/how-many/hero.webp","description_he":[{"weight":"heading-en","lines":["HOW MANY PARTNERS","HAVE YOU HAD?"]}]}]}</script>
+<script type="application/json" id="fallback-galleries">{"$schema":"./_schema/galleries.schema.json","galleries":[{"id":"medina","slug":"medina","name_he":"גלריית כיכר המדינה","name_en":"Kikar Hamedina Gallery","address_he":"ז'בוטינסקי 131, תל אביב","address_en":"Jabotinsky 131, Tel Aviv","city":"tel aviv","status":"open","hours":[{"days_he":"א'-ה'","days_en":"Sun-Thu","time":"10:00-19:00"},{"days_he":"ו'","days_en":"Fri","time":"10:00-14:00"},{"days_he":"שבת סגור","days_en":"Sat closed","time":null}],"image_hero":"images/galleries/medina/hero.webp","figma_node_desktop":null,"figma_node_mobile":null},{"id":"dizengoff","slug":"dizengoff","name_he":"גלריית כיכר דיזינגוף","name_en":"Kikar Dizengoff Gallery","address_he":"כיכר דיזינגוף, תל אביב","address_en":"Dizengoff Square, Tel Aviv","city":"tel aviv","status":"open","hours":[],"image_hero":"images/galleries/dizengoff/hero.webp","figma_node_desktop":"237:1465","figma_node_mobile":null},{"id":"flea-market","slug":"flea-market","name_he":"גלריית שוק הפשפשים","name_en":"Flea Market Gallery","address_he":"שוק הפשפשים, תל אביב","address_en":"Flea Market, Tel Aviv (Jaffa)","city":"tel aviv","status":"coming-soon","hours":[],"image_hero":"images/galleries/flea-market/hero.webp","note":"Hero image is currently a placeholder reusing dizengoff image — needs unique photo.","figma_node_desktop":null,"figma_node_mobile":null}]}</script>
+
+<script>
+(function(){
+  const CUR_SLUG = 'korin-avraham';
+
+  async function loadJson(path, embeddedId){
+    try{
+      var res = await fetch(path, {cache:'no-store'});
+      if(res.ok) return await res.json();
+    }catch(_){}
+    var el = document.getElementById(embeddedId);
+    if(el) return JSON.parse(el.textContent);
+    throw new Error('cannot load ' + path);
+  }
+
+  function esc(s){
+    return String(s == null ? '' : s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function galleryNameEn(galleries, gid){
+    var g = (galleries || []).find(function(x){ return x.id === gid; });
+    return g && g.name_en ? g.name_en : '';
+  }
+
+  function headingEnLines(ex){
+    var paras = ex.description_he || [];
+    for(var i = 0; i < paras.length; i++){
+      if(paras[i].weight === 'heading-en' && paras[i].lines && paras[i].lines.length)
+        return paras[i].lines;
+    }
+    return [ex.title_en || ''];
+  }
+
+  function buildCard(ex, galleries){
+    var gid = ex.gallery_id;
+    var gname = galleryNameEn(galleries, gid);
+    var href = '../../exhibitions/' + encodeURIComponent(ex.slug) + '/';
+    var imgSrc = '../../' + ex.hero_image;
+    var enOnly = !!ex.hero_overlay_en_only;
+    var w = ex.slug === 'loneliness' ? 690 : 1068;
+    var h = ex.slug === 'loneliness' ? 1044 : 1600;
+
+    var overlay;
+    if(enOnly){
+      var lines = headingEnLines(ex);
+      overlay =
+        '<div class="cur-card__overlay cur-card__overlay--enonly" aria-hidden="true">' +
+          '<div class="cur-card__enstack">' +
+            lines.map(function(line, idx){
+              return '<span>' + esc(line) + '</span>';
+            }).join('') +
+          '</div>' +
+        '</div>';
+    }else{
+      overlay =
+        '<div class="cur-card__overlay" aria-hidden="true">' +
+          '<div class="cur-card__titlebar">' +
+            '<span class="lbl">' + esc(ex.label_en || 'EXHIBITION') + '</span>' +
+            '<span class="dot"></span>' +
+            '<span class="lbl">' + esc(ex.volume_en || '') + '</span>' +
+          '</div>' +
+          '<p class="cur-card__title-he heb">' + esc(ex.title_he || '') + '</p>' +
+          '<p class="cur-card__title-en">' + esc(ex.title_en || '') + '</p>' +
+        '</div>';
+    }
+
+    return (
+      '<a class="cur-card cur-card--' + esc(ex.slug) + '" href="' + href + '">' +
+        '<div class="cur-card__frame">' +
+          '<img src="' + esc(imgSrc) + '" alt="' + esc(ex.title_he || ex.title_en || '') + '" width="' + w + '" height="' + h + '" loading="lazy" decoding="async">' +
+          overlay +
+        '</div>' +
+        '<div class="cur-card__meta">' +
+          '<p class="t">' + esc(ex.title_en || '') + '</p>' +
+          '<p class="g">' + esc(gname) + '</p>' +
+        '</div>' +
+      '</a>'
+    );
+  }
+
+  (async function(){
+    var page = document.getElementById('page');
+    try{
+      var curDoc = await loadJson('../../data/curators.json', 'fallback-curators');
+      var exDoc = await loadJson('../../data/exhibitions.json', 'fallback-exhibitions-min');
+      var galDoc = await loadJson('../../data/galleries.json', 'fallback-galleries');
+
+      var curators = curDoc.curators || [];
+      var cur = curators.find(function(c){ return c.slug === CUR_SLUG; }) || curators[0];
+      if(!cur){
+        page.innerHTML = '<div class="loading">curator not found</div>';
+        document.body.classList.remove('is-loading-data');
+        return;
+      }
+
+      var exhibitions = exDoc.exhibitions || [];
+      var galleries = galDoc.galleries || [];
+      var bySlug = {};
+      exhibitions.forEach(function(e){ bySlug[e.slug] = e; });
+
+      var cardsHtml = (cur.exhibition_slugs || []).map(function(slug){
+        var ex = bySlug[slug];
+        if(!ex) return '';
+        return buildCard(ex, galleries);
+      }).join('');
+
+      var ig = cur.instagram_handle || '';
+      var igHref = 'https://www.instagram.com/' + String(ig).replace(/^@/, '').replace(/[^A-Za-z0-9._]/g, '') + '/';
+
+      var portrait = cur.portrait || {};
+      var psrc = '../../' + (portrait.src || '');
+      var palt = portrait.alt_he || '';
+
+      document.title = (cur.name_en_first + ' ' + cur.name_en_last + ' — curator — Zielinski & Rozen art galleries').toUpperCase();
+
+      page.innerHTML =
+        '<section class="cur-hero">' +
+          '<div class="cur-hero__row">' +
+            '<span class="cur-hero__badge">' + esc(cur.badge_en || 'the curator') + '</span>' +
+            '<div class="cur-hero__pic-wrap">' +
+              '<div class="cur-hero__portrait">' +
+                '<img src="' + esc(psrc) + '" alt="' + esc(palt) + '" width="' + (+portrait.width || 1638) + '" height="' + (+portrait.height || 2048) + '" fetchpriority="high" decoding="async">' +
+              '</div>' +
+            '</div>' +
+            '<div class="cur-hero__info">' +
+              '<div class="cur-hero__names">' +
+                '<span class="fn">' + esc(cur.name_en_first) + '</span>' +
+                '<span class="ln">' + esc(cur.name_en_last) + '</span>' +
+              '</div>' +
+              '<p class="cur-hero__ig"><a href="' + esc(igHref) + '" target="_blank" rel="noopener noreferrer">@' + esc(ig.replace(/^@/, '')) + '</a></p>' +
+            '</div>' +
+          '</div>' +
+        '</section>' +
+        '<section class="cur-ex">' +
+          '<div class="cur-ex__inner">' +
+            '<h2 class="cur-ex__head">' + esc(cur.section_heading_en || "the curator's exhibitions") + '</h2>' +
+            '<div class="cur-ex__grid">' + cardsHtml + '</div>' +
+          '</div>' +
+        '</section>';
+
+      document.body.classList.remove('is-loading-data');
+    }catch(err){
+      page.innerHTML = '<div class="loading">failed to load — use a local server (e.g. python3 -m http.server)</div>';
+      document.body.classList.remove('is-loading-data');
+    }
+  })();
+})();
+</script>
+
+<script src="../../components/site-chrome.js" defer></script>
+<script src="../../components/picture-upgrade.js" defer></script>
+</body>
+</html>

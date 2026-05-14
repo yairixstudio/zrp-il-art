@@ -59,6 +59,26 @@
     document.head.appendChild(link);
   }
 
+  // ---- Inject favicon links (idempotent) ---------------------
+  if (!document.querySelector('link[data-site-chrome-icon]')) {
+    const icons = [
+      { rel: 'icon',             type: 'image/png', sizes: '16x16',  href: 'favicon-16.png' },
+      { rel: 'icon',             type: 'image/png', sizes: '32x32',  href: 'favicon-32.png' },
+      { rel: 'icon',             type: 'image/png', sizes: '192x192', href: 'favicon.png' },
+      { rel: 'shortcut icon',                                          href: 'favicon.ico' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: 'apple-touch-icon.png' }
+    ];
+    icons.forEach(function (cfg) {
+      const link = document.createElement('link');
+      link.rel = cfg.rel;
+      if (cfg.type)  link.type  = cfg.type;
+      if (cfg.sizes) link.sizes = cfg.sizes;
+      link.href = abs(cfg.href);
+      link.setAttribute('data-site-chrome-icon', '');
+      document.head.appendChild(link);
+    });
+  }
+
   // ---- Header markup -----------------------------------------
   function headerHTML() {
     return (

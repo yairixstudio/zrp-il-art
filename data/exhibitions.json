@@ -15,6 +15,7 @@
       "gallery_id": "medina",
       "gallery_label_he": "גלריית כיכר המדינה",
       "curator_slug": "korin-avraham",
+      "hero_letter_heading_en": "letter from the exhibition curator",
       "start_date": null,
       "end_date": null,
       "hero_image": "images/exhibitions/loneliness/hero.webp",
@@ -197,6 +198,7 @@
       "gallery_id": "dizengoff",
       "gallery_label_he": "גלריית כיכר דיזינגוף",
       "curator_slug": "korin-avraham",
+      "hero_letter_heading_en": "letter from the exhibition curator",
       "start_date": null,
       "end_date": null,
       "hero_image": "images/exhibitions/how-many/hero.webp",
@@ -212,8 +214,7 @@
         {
           "weight": "heading-en",
           "lines": [
-            "HOW MANY PARTNERS",
-            "HAVE YOU HAD?"
+            "HOW MANY PARTNERS HAVE YOU HAD?"
           ]
         },
         {

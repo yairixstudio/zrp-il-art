@@ -16,6 +16,7 @@
           "name_en_last": { "type": "string" },
           "instagram_handle": { "type": "string" },
           "badge_en": { "type": "string" },
+          "credit_he": { "type": "string" },
           "section_heading_en": { "type": "string" },
           "portrait": {
             "type": "object",

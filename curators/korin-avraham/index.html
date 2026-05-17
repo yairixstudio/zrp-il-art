@@ -46,25 +46,31 @@ body{text-transform:uppercase}
 .only-mobile{display:none}
 .only-desktop{display:block}
 
-/* ===== HERO (grey band — Figma 314:30–314:42: left = badge + 24 + info; portrait 492×492 spans both text rows; top-aligned) ===== */
+/* ===== HERO (grey band — Figma 314:30–314:42: left = badge + 24 + info; portrait 492×492; top-aligned) ===== */
 .cur-hero{background:var(--bg-grey);padding:48px var(--pad-x) 32px;display:flex;justify-content:center;align-items:flex-start}
-/* Desktop: 2 rows × 2 cols — portrait spans rows (not 3-way split with text rows) so copy stays pinned to the top. DOM order is badge → pic → info for mobile column flow. */
+/* Desktop: copy stack (badge → 24px → names → ig) in one column; portrait beside — avoids row-1 stretch from spanning portrait. DOM: copy → pic for mobile column flow. */
 .cur-hero .cur-hero__row{
   display:grid;
   grid-template-columns:minmax(0,1fr) 492px;
-  grid-template-rows:auto auto;
+  grid-template-rows:auto;
   column-gap:48px;
-  row-gap:24px;
   align-items:start;
-  align-content:start;
   width:100%;
   max-width:var(--max);
 }
-.cur-hero .cur-hero__badge{
+.cur-hero .cur-hero__copy{
   grid-column:1;
   grid-row:1;
   justify-self:end;
-  align-self:start;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:24px;
+  width:100%;
+  padding:0 16px;
+  box-sizing:border-box;
+}
+.cur-hero .cur-hero__badge{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -76,27 +82,22 @@ body{text-transform:uppercase}
   letter-spacing:.04em;
   color:var(--ink);
   box-sizing:border-box;
-  margin:0 16px;
+  margin:0;
 }
 .cur-hero .cur-hero__pic-wrap{
   grid-column:2;
-  grid-row:1 / span 2;
+  grid-row:1;
   justify-self:end;
   display:flex;
   justify-content:flex-end;
   align-self:start;
 }
 .cur-hero .cur-hero__info{
-  grid-column:1;
-  grid-row:2;
-  justify-self:end;
-  align-self:start;
   display:flex;
   flex-direction:column;
   align-items:flex-end;
   gap:16px;
   width:100%;
-  padding:0 16px;
   box-sizing:border-box;
 }
 .cur-hero .cur-hero__names{
@@ -156,12 +157,18 @@ body{text-transform:uppercase}
 .cur-ex .cur-card__overlay--enonly{
   align-items:center;
   gap:0;
-  width:max-content;
+  width:calc(100% - 32px);
   max-width:calc(100% - 32px);
+  min-width:0;
+  box-sizing:border-box;
   text-align:center;
 }
-.cur-ex .cur-card__overlay--enonly .cur-card__enstack{font-family:var(--exo-title-en);font-weight:300;font-size:26px;line-height:normal;text-align:center;white-space:nowrap}
-.cur-ex .cur-card__overlay--enonly .cur-card__enstack span{display:block}
+.cur-ex .cur-card__overlay--enonly .cur-card__enstack{
+  font-family:var(--exo-title-en);font-weight:300;font-size:26px;line-height:1.15;
+  text-align:center;width:100%;max-width:100%;box-sizing:border-box;
+  overflow-wrap:break-word;word-break:normal;text-wrap:balance;
+}
+.cur-ex .cur-card__overlay--enonly .cur-card__enstack span{display:block;max-width:100%}
 .cur-ex .cur-card__titlebar{
   display:flex;align-items:center;justify-content:center;gap:13px;
   flex-wrap:wrap;width:100%;box-sizing:border-box;
@@ -212,11 +219,12 @@ body{text-transform:uppercase}
     width:100%;
     max-width:none;
   }
+  /* Figma mobile 314:97 — badge → portrait → names/IG */
+  .cur-hero .cur-hero__copy{display:contents}
+  .cur-hero .cur-hero__badge{order:1}
+  .cur-hero .cur-hero__pic-wrap{order:2}
+  .cur-hero .cur-hero__info{order:3}
   .cur-hero .cur-hero__badge{
-    grid-column:auto;
-    grid-row:auto;
-    justify-self:center;
-    align-self:center;
     width:max-content;
     max-width:min(358px,calc(100vw - 2 * var(--pad-x)));
     margin:0 auto;
@@ -226,24 +234,22 @@ body{text-transform:uppercase}
     justify-content:center;
   }
   .cur-hero .cur-hero__info{
-    grid-column:auto;
-    grid-row:auto;
     align-items:center;
-    padding:0;
+    text-align:center;
     width:100%;
     max-width:358px;
+    margin-inline:auto;
     gap:16px;
   }
   .cur-hero .cur-hero__names{
-    justify-self:center;
     align-items:center;
     gap:8px;
     width:100%;
-    max-width:358px;
     padding:0;
+    text-align:center;
   }
-  .cur-hero .cur-hero__names .fn,.cur-hero .cur-hero__names .ln{font-size:36px;width:100%}
-  .cur-hero .cur-hero__ig{padding:0;font-size:16px;width:100%;max-width:358px;text-align:center}
+  .cur-hero .cur-hero__names .fn,.cur-hero .cur-hero__names .ln{font-size:36px;width:auto;text-align:center}
+  .cur-hero .cur-hero__ig{padding:0;font-size:16px;width:100%;text-align:center}
   .cur-hero .cur-hero__pic-wrap{justify-self:center;width:100%;justify-content:center}
   .cur-hero .cur-hero__portrait{width:262px;height:262px}
   .cur-hero .cur-hero__portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 100%);pointer-events:none;z-index:1}
@@ -256,7 +262,7 @@ body{text-transform:uppercase}
   .cur-ex .cur-card{width:100%;max-width:358px}
   .cur-ex .cur-card--how-many{order:-1}
   .cur-ex .cur-card__frame{height:433.939px}
-  .cur-ex .cur-card__overlay--enonly .cur-card__enstack{font-size:22px;top:50%}
+  .cur-ex .cur-card__overlay--enonly .cur-card__enstack{font-size:22px;line-height:1.2}
   .cur-ex .cur-card__titlebar .lbl{font-size:22px}
   .cur-ex .cur-card__title-he{font-size:25px}
   .cur-ex .cur-card__title-en{font-size:15px}
@@ -395,18 +401,20 @@ body{text-transform:uppercase}
       page.innerHTML =
         '<section class="cur-hero">' +
           '<div class="cur-hero__row">' +
-            '<span class="cur-hero__badge">' + esc(cur.badge_en || 'the curator') + '</span>' +
+            '<div class="cur-hero__copy">' +
+              '<span class="cur-hero__badge">' + esc(cur.badge_en || 'the curator') + '</span>' +
+              '<div class="cur-hero__info">' +
+                '<div class="cur-hero__names">' +
+                  '<span class="fn">' + esc(cur.name_en_first) + '</span>' +
+                  '<span class="ln">' + esc(cur.name_en_last) + '</span>' +
+                '</div>' +
+                '<p class="cur-hero__ig"><a href="' + esc(igHref) + '" target="_blank" rel="noopener noreferrer">@' + esc(ig.replace(/^@/, '')) + '</a></p>' +
+              '</div>' +
+            '</div>' +
             '<div class="cur-hero__pic-wrap">' +
               '<div class="cur-hero__portrait">' +
                 '<img src="' + esc(psrc) + '" alt="' + esc(palt) + '" width="' + (+portrait.width || 1638) + '" height="' + (+portrait.height || 2048) + '" fetchpriority="high" decoding="async">' +
               '</div>' +
-            '</div>' +
-            '<div class="cur-hero__info">' +
-              '<div class="cur-hero__names">' +
-                '<span class="fn">' + esc(cur.name_en_first) + '</span>' +
-                '<span class="ln">' + esc(cur.name_en_last) + '</span>' +
-              '</div>' +
-              '<p class="cur-hero__ig"><a href="' + esc(igHref) + '" target="_blank" rel="noopener noreferrer">@' + esc(ig.replace(/^@/, '')) + '</a></p>' +
             '</div>' +
           '</div>' +
         '</section>' +

@@ -85,6 +85,8 @@ body{text-transform:uppercase}
       <li><strong>טופס יצירת קשר:</strong> שם, כתובת דוא"ל, וכל פרט שתבחרו לכתוב בגוף ההודעה.</li>
       <li><strong>הרשמה לניוזלטר:</strong> כתובת דוא"ל בלבד, וזאת בכפוף לאישור מפורש (תיבת סימון) במעמד ההרשמה.</li>
       <li><strong>מידע טכני בסיסי:</strong> דפדפן, מערכת הפעלה, רזולוציית מסך וכתובת IP (לצורכי תפעול ואבטחת מידע בלבד; אינו מצורף לזהותכם).</li>
+      <li><strong>נתוני שימוש אנונימיים:</strong> דפים שנצפו, משך שהייה, מקור הגעה ופעולות באתר — נאספים באמצעות <span class="lat">Google Analytics 4</span> לצורך הבנת השימוש באתר ושיפורו. המידע מצטבר ואינו מזהה אתכם אישית; כתובת ה-<span class="lat">IP</span> מאוזנת (anonymized) על-ידי <span class="lat">Google</span>.</li>
+      <li><strong>הקלטות שימוש ומפות חום:</strong> באמצעות <span class="lat">Microsoft Clarity</span> אנו מתעדים אינטראקציות אנונימיות (תנועות עכבר, גלילה, לחיצות) על-מנת לזהות בעיות שימושיות באתר. <span class="lat">Clarity</span> מסתיר אוטומטית טקסט שהוקלד בשדות (כגון טופס יצירת קשר) כך שאינו נראה בהקלטה.</li>
     </ul>
 
     <h2>למה אנחנו משתמשים במידע</h2>
@@ -93,10 +95,16 @@ body{text-transform:uppercase}
       <li>שליחת עדכונים על תערוכות, אירועים וקולות קוראים — רק אם אישרתם זאת במפורש.</li>
       <li>תפעול שוטף של האתר, שיפור חוויית המשתמש ואבטחת מידע.</li>
     </ul>
-    <p>איננו מוכרים, משכירים או מעבירים את המידע לצדדים שלישיים, למעט ספקי שירות תפעוליים (אחסון אתר, מערכת דיוור) הפועלים בשמנו בהתאם להוראות חוק.</p>
+    <p>איננו מוכרים, משכירים או מעבירים את המידע לצדדים שלישיים, למעט ספקי שירות תפעוליים (אחסון אתר, מערכת דיוור, וכן <span class="lat">Google Analytics</span> ו-<span class="lat">Microsoft Clarity</span> למדידה אנונימית) הפועלים בשמנו בהתאם להוראות חוק ולמדיניות הפרטיות שלהם.</p>
 
-    <h2>עוגיות (Cookies)</h2>
-    <p>האתר עושה שימוש מינימלי בעוגיות הכרחיות לתפעולו (למשל שמירת רשימת פוסטים שמורים בדפדפן שלכם, באמצעות <span class="lat">localStorage</span>). מידע זה נשמר במכשיר שלכם בלבד ואינו נשלח לשרת. ניתן לנקות אותו דרך הגדרות הדפדפן בכל עת.</p>
+    <h2>עוגיות (Cookies) וכלי ניטור</h2>
+    <p>האתר עושה שימוש בעוגיות הכרחיות לתפעולו (למשל שמירת רשימת פוסטים שמורים בדפדפן שלכם, באמצעות <span class="lat">localStorage</span>). מידע זה נשמר במכשיר שלכם בלבד ואינו נשלח לשרת.</p>
+    <p>בנוסף, האתר משתמש בשני שירותי מדידה צד-שלישי:</p>
+    <ul>
+      <li><strong><span class="lat">Google Analytics 4</span></strong> (<span class="lat">Google LLC</span>) — סטטיסטיקה אנונימית של תנועת הגולשים. מציב עוגיות (כגון <span class="lat">_ga</span>, <span class="lat">_ga_*</span>) שתוקפן עד שנתיים.</li>
+      <li><strong><span class="lat">Microsoft Clarity</span></strong> (<span class="lat">Microsoft Corporation</span>) — הקלטות אנונימיות ומפות חום לזיהוי בעיות שימושיות. מציב עוגיות (כגון <span class="lat">_clck</span>, <span class="lat">_clsk</span>, <span class="lat">CLID</span>) שתוקפן עד שנה. <a class="inline" href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/cookie-list" target="_blank" rel="noopener">פירוט מלא</a>.</li>
+    </ul>
+    <p>ניתן לסרב למעקב באמצעות הוספת <a class="inline" href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">תוסף הביטול של <span class="lat">Google</span></a>, ניקוי עוגיות דרך הגדרות הדפדפן, או הפעלת מצב גלישה פרטית.</p>
 
     <h2>זכויותיכם</h2>
     <ul>
@@ -118,5 +126,6 @@ body{text-transform:uppercase}
 
 <site-footer></site-footer>
 <script src="../components/site-chrome.js" defer></script>
+<script src="../components/analytics.js" defer></script>
 </body>
 </html>

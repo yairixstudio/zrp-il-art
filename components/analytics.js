@@ -2,7 +2,7 @@
    ANALYTICS — Google Analytics 4 + Microsoft Clarity
    ------------------------------------------------------------
    Single shared loader for the whole site. Loaded from every
-   page next to picture-upgrade.js. Fill in the two IDs below,
+   page next to picture-upgrade.js and embed-iframe.js. Fill in the two IDs below,
    commit, and tracking is live on all 35 pages.
 
    Empty string in either ID = that service is disabled, no

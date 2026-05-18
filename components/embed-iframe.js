@@ -7,13 +7,24 @@
 
    Direct visits (window.self === window.top): no-op.
 
-   Height uses the lowest visible in-flow pixel (bounding rect),
-   not scrollHeight — avoids 100vh shells, fixed overlays, and
-   sticky nav inflating or clipping the reported size.
+   Height is the lowest margin-box pixel of any in-flow element
+   (not scrollHeight) — avoids 100vh shells, fixed overlays, and
+   sticky nav inflating or clipping the reported size. Each
+   element's own margin-bottom is added so the iframe always
+   contains the full visual layout.
 
-   Parent must listen for postMessage { type: 'resize', source: 'zrp' }.
+   Parent must listen for:
+     postMessage { type: 'resize', height, source: 'zrp' }
 
-   Debug: add ?zrp_embed_debug=1 to log scroll vs content metrics.
+   Parent origin discovery (in priority order):
+     1. window.ZRP_EMBED_PARENT_ORIGIN
+     2. <meta name="zrp-embed-parent" content="https://...">
+     3. document.location.ancestorOrigins[0]   (Chromium/Safari)
+     4. URL(document.referrer).origin
+     5. '*' (last-resort fallback)
+
+   Debug: add ?zrp_embed_debug=1 — every measurement logs
+   reported vs visualBottom (footer) and the delta.
    ============================================================ */
 
 (function () {
@@ -21,9 +32,14 @@
 
   if (window.self === window.top) return;
 
-  var THRESHOLD = 5;
-  var DEBOUNCE_MS = 80;
-  var LATE_DELAYS = [1000, 3000, 5000];
+  /* ---------- config ---------- */
+
+  var THRESHOLD = 1;                 // 1px — parent has no inner scroll, accuracy matters
+  var DEBOUNCE_EARLY_MS = 250;       // looser during initial paint
+  var DEBOUNCE_LATE_MS = 80;         // tight after settle
+  var EARLY_WINDOW_MS = 10000;       // first 10s use DEBOUNCE_EARLY_MS
+  var LATE_DELAYS = [500, 1000, 2000, 3000, 5000, 8000];
+  var FORCED_SAFETY_DELAYS = [2000, 5000];
 
   var EXCLUDE_SELECTOR =
     '.lb, .bm-backdrop, .bookmark-modal, .share-status, ' +
@@ -33,7 +49,36 @@
     typeof location !== 'undefined' &&
     /(?:\?|&)zrp_embed_debug=1(?:&|$)/.test(location.search);
 
-  /* ---------- link targets (unchanged behaviour) ---------- */
+  var SCRIPT_START = Date.now();
+
+  /* ---------- parent origin discovery ---------- */
+
+  function discoverParentOrigin() {
+    try {
+      var override = window.ZRP_EMBED_PARENT_ORIGIN;
+      if (typeof override === 'string' && /^https?:\/\//.test(override)) {
+        return override;
+      }
+      var meta = document.querySelector('meta[name="zrp-embed-parent"]');
+      if (meta) {
+        var c = meta.getAttribute('content');
+        if (c && /^https?:\/\//.test(c)) return c;
+      }
+      var ao = document.location && document.location.ancestorOrigins;
+      if (ao && ao.length && /^https?:\/\//.test(ao[0])) {
+        return ao[0];
+      }
+      var ref = document.referrer;
+      if (ref) {
+        try { return new URL(ref).origin; } catch (e) {}
+      }
+    } catch (e) {}
+    return '*';
+  }
+
+  var PARENT_ORIGIN = discoverParentOrigin();
+
+  /* ---------- link targets ---------- */
 
   function applyTarget() {
     if (!document.querySelector('base[data-zrp-embed]')) {
@@ -54,19 +99,6 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyTarget);
-  } else {
-    applyTarget();
-  }
-
-  if ('MutationObserver' in window) {
-    new MutationObserver(applyTarget).observe(document.documentElement, {
-      childList: true,
-      subtree: true,
-    });
-  }
-
   /* ---------- height measurement ---------- */
 
   function isExcludedFromHeight(el) {
@@ -78,49 +110,64 @@
     if (pos === 'fixed' || pos === 'sticky') return true;
     if (cs.display === 'none' || cs.visibility === 'hidden') return true;
     if (parseFloat(cs.opacity) === 0 && cs.pointerEvents === 'none') return true;
-
     return false;
   }
 
-  function elementBottom(el, scrollY, includeMarginBottom) {
-    var rect = el.getBoundingClientRect();
-    if (rect.width === 0 && rect.height === 0) return 0;
-    var bottom = rect.bottom + scrollY;
-    if (includeMarginBottom) {
-      bottom += parseFloat(getComputedStyle(el).marginBottom) || 0;
-    }
-    return bottom;
+  function marginBottomOf(el) {
+    var mb = parseFloat(getComputedStyle(el).marginBottom);
+    return isFinite(mb) ? mb : 0;
   }
 
+  function getVisualFooterBottom() {
+    var footer = document.querySelector(
+      'site-footer .footer, footer.footer, site-footer, footer'
+    );
+    if (!footer) return 0;
+    var rect = footer.getBoundingClientRect();
+    if (rect.width === 0 && rect.height === 0) return 0;
+    var scrollY = window.scrollY || window.pageYOffset || 0;
+    return Math.ceil(rect.bottom + scrollY + marginBottomOf(footer));
+  }
+
+  /* Lowest visual pixel = max over all in-flow elements of
+     (boundingRect.bottom + scrollY + own marginBottom). Adding
+     marginBottom to every element is safe because we take MAX,
+     not SUM — collapsed margins resolve to the larger value. */
   function getRealHeight() {
     var body = document.body;
     if (!body) return 0;
-
     var scrollY = window.scrollY || window.pageYOffset || 0;
     var maxBottom = 0;
 
-    var footer = document.querySelector('site-footer .footer, footer.footer');
-    if (footer && !isExcludedFromHeight(footer)) {
-      maxBottom = Math.max(maxBottom, elementBottom(footer, scrollY, true));
+    var de = document.documentElement;
+    if (de) {
+      var dr = de.getBoundingClientRect();
+      maxBottom = Math.max(maxBottom, dr.bottom + scrollY + marginBottomOf(de));
     }
+    var br = body.getBoundingClientRect();
+    maxBottom = Math.max(maxBottom, br.bottom + scrollY + marginBottomOf(body));
 
     var nodes = body.querySelectorAll('*');
     for (var i = 0; i < nodes.length; i++) {
       var el = nodes[i];
       if (isExcludedFromHeight(el)) continue;
-      var bottom = elementBottom(el, scrollY, false);
+      var rect = el.getBoundingClientRect();
+      if (rect.width === 0 && rect.height === 0) continue;
+      var bottom = rect.bottom + scrollY + marginBottomOf(el);
       if (bottom > maxBottom) maxBottom = bottom;
     }
 
     if (maxBottom < 1) {
       maxBottom = Math.max(
         body.scrollHeight,
-        document.documentElement.scrollHeight
+        de ? de.scrollHeight : 0
       );
     }
 
     return Math.ceil(maxBottom);
   }
+
+  try { window.getRealHeight = getRealHeight; } catch (e) {}
 
   function getScrollMetrics() {
     var de = document.documentElement;
@@ -133,26 +180,48 @@
     };
   }
 
+  /* ---------- sending ---------- */
+
   var lastHeight = 0;
   var debounceTimer = null;
   var rafId = null;
 
-  function sendHeightNow() {
+  function postToParent(payload) {
+    try {
+      window.parent.postMessage(payload, PARENT_ORIGIN);
+    } catch (e) {
+      try { window.parent.postMessage(payload, '*'); } catch (e2) {}
+    }
+  }
+
+  function sendHeightNow(opts) {
     if (!document.body) return;
+    var force = !!(opts && opts.force);
+    var label = (opts && opts.label) || 'auto';
     var h = getRealHeight();
-    if (Math.abs(h - lastHeight) <= THRESHOLD) return;
+    if (!force && Math.abs(h - lastHeight) <= THRESHOLD) return;
     lastHeight = h;
-    window.parent.postMessage(
-      { type: 'resize', height: h, source: 'zrp' },
-      '*'
-    );
+
+    postToParent({ type: 'resize', height: h, source: 'zrp' });
+
     if (DEBUG) {
+      var visualBottom = getVisualFooterBottom();
       console.log('[zrp-embed]', {
+        label: label,
+        forced: force,
         reported: h,
-        contentBottom: h,
+        visualBottom: visualBottom || null,
+        delta: visualBottom ? h - visualBottom : null,
+        parentOrigin: PARENT_ORIGIN,
         scroll: getScrollMetrics(),
       });
     }
+  }
+
+  function currentDebounceMs() {
+    return (Date.now() - SCRIPT_START) < EARLY_WINDOW_MS
+      ? DEBOUNCE_EARLY_MS
+      : DEBOUNCE_LATE_MS;
   }
 
   function scheduleSendHeight() {
@@ -162,10 +231,22 @@
       if (rafId) cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(function () {
         rafId = null;
-        requestAnimationFrame(sendHeightNow);
+        requestAnimationFrame(function () { sendHeightNow(); });
       });
-    }, DEBOUNCE_MS);
+    }, currentDebounceMs());
   }
+
+  function forceSend(label) {
+    if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        sendHeightNow({ force: true, label: label || 'forced' });
+      });
+    });
+  }
+
+  /* ---------- triggers ---------- */
 
   function watchImages() {
     document.querySelectorAll('img').forEach(function (img) {
@@ -179,6 +260,9 @@
     LATE_DELAYS.forEach(function (ms) {
       setTimeout(scheduleSendHeight, ms);
     });
+    FORCED_SAFETY_DELAYS.forEach(function (ms) {
+      setTimeout(function () { forceSend('safety-' + ms + 'ms'); }, ms);
+    });
   }
 
   function onReady() {
@@ -187,18 +271,10 @@
     scheduleSendHeight();
     scheduleLatePasses();
     if (DEBUG) {
-      console.log('[zrp-embed] initial metrics', {
-        real: getRealHeight(),
-        scroll: getScrollMetrics(),
-        footer: (function () {
-          var f = document.querySelector('site-footer .footer, footer.footer');
-          if (!f) return null;
-          var r = f.getBoundingClientRect();
-          return {
-            bottom: r.bottom + (window.scrollY || 0),
-            marginBottom: getComputedStyle(f).marginBottom,
-          };
-        })(),
+      console.log('[zrp-embed] ready', {
+        parentOrigin: PARENT_ORIGIN,
+        debounceEarly: DEBOUNCE_EARLY_MS,
+        debounceLate: DEBOUNCE_LATE_MS,
       });
     }
   }
@@ -216,13 +292,25 @@
   });
 
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(scheduleSendHeight);
+    document.fonts.ready.then(function () {
+      scheduleSendHeight();
+      setTimeout(function () { forceSend('fonts-ready+200ms'); }, 200);
+    });
   }
+
+  /* Re-measure when a nested iframe/lottie posts its own resize. */
+  window.addEventListener('message', function (e) {
+    var d = e && e.data;
+    if (d && typeof d === 'object' && d.type === 'resize' && d.source !== 'zrp') {
+      scheduleSendHeight();
+    }
+  });
 
   if ('MutationObserver' in window) {
     new MutationObserver(function () {
-      scheduleSendHeight();
+      applyTarget();
       watchImages();
+      scheduleSendHeight();
     }).observe(document.documentElement, {
       childList: true,
       subtree: true,

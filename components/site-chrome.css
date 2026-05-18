@@ -180,7 +180,19 @@ body.menu-open{overflow:hidden}
    presentational <li> doesn't add a stray gap inside the inline list. */
 @media (min-width:1025px){
   .nav-close-item{display:none}
+  /* Sponsor block only lives in the hamburger drawer — never in the inline desktop nav */
+  .nav-sponsor-item{display:none}
 }
+
+/* ===== HAMBURGER DRAWER — SPONSORED BY block (mobile/tablet only) =====
+   Sits pinned to the bottom of the open drawer (.nav-links is the column flex).
+   `margin-top:auto` pushes it past the menu items to the bottom edge.
+   Whole link is the hit-target → opens zrp.co.il in a new tab. */
+.nav-sponsor-item{margin-top:auto;list-style:none;width:100%;display:flex;justify-content:center}
+.nav-sponsor{display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:8px 12px;transition:opacity .2s}
+.nav-sponsor:hover{opacity:.7}
+.nav-sponsor-label{font-family:var(--cop);font-weight:300;font-size:11px;letter-spacing:.18em;line-height:1;color:var(--copy-grey,#6B7280);text-transform:uppercase}
+.nav-sponsor-logo{display:block;width:140px;height:auto;object-fit:contain}
 
 /* ===== RESPONSIVE — MOBILE content rules (≤768px) =====
    Per Figma mobile (119:2610): newsletter → tiny link rows + compact social → copyright */

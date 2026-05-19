@@ -6,9 +6,16 @@
 
 /* Offset anchor navigation so the sticky header doesn't cover the target.
    53/52px = header min-height, 24px = breathing room. */
+:root{--site-header-h:53px}
+@media (max-width:1024px){:root{--site-header-h:52px}}
+@media (max-width:400px){:root{--site-header-h:48px}}
+
 html{scroll-padding-top:77px;overflow-x:hidden}
 body{overflow-x:hidden;max-width:100vw}
 @media (max-width:768px){html{scroll-padding-top:76px}}
+
+/* Sticky header; above mobile lightbox (z-index 50), below desktop lightbox (z-index 110). */
+site-header{display:block;position:sticky;top:0;z-index:100}
 
 /* ===== GLOBAL: English-in-Hebrew islands (CLAUDE.md §9.2) =====
    Wrap any Latin/numeric run that appears INSIDE a Hebrew (.heb / [dir="rtl"]) container
@@ -174,6 +181,19 @@ body.menu-open{overflow:hidden}
 
   /* Hide the dedicated close button inside drawer — hamburger handles it now */
   .nav-close-item{display:none}
+
+  /* Sponsor only in drawer — must live inside this max-width block so desktop
+     `display:none` (below) is not overridden by a later global `display:flex`. */
+  .nav-sponsor-item{margin-top:auto;list-style:none;width:100%;display:flex;justify-content:center}
+}
+
+/* Mobile lightbox (≤768): header stays visible above the panel */
+@media (max-width:768px){
+  body.alb-lock site-header{z-index:1100}
+  body.alb-lock .nav.is-open .hamburger{
+    position:relative;
+    z-index:1101;
+  }
 }
 
 /* On wider screens (desktop nav inline), the close item is hidden so the
@@ -184,11 +204,10 @@ body.menu-open{overflow:hidden}
   .nav-sponsor-item{display:none}
 }
 
-/* ===== HAMBURGER DRAWER — SPONSORED BY block (mobile/tablet only) =====
+/* ===== HAMBURGER DRAWER — SPONSORED BY link styles (shown only ≤1024px; <li> hidden desktop) =====
    Sits pinned to the bottom of the open drawer (.nav-links is the column flex).
    `margin-top:auto` pushes it past the menu items to the bottom edge.
    Whole link is the hit-target → opens zrp.co.il in a new tab. */
-.nav-sponsor-item{margin-top:auto;list-style:none;width:100%;display:flex;justify-content:center}
 .nav-sponsor{display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:8px 12px;transition:opacity .2s}
 .nav-sponsor:hover{opacity:.7}
 .nav-sponsor-label{font-family:var(--cop);font-weight:300;font-size:11px;letter-spacing:.18em;line-height:1;color:var(--copy-grey,#6B7280);text-transform:uppercase}

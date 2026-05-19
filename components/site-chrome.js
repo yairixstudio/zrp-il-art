@@ -225,7 +225,9 @@
       if (e.target.closest('a')) setOpen(false);
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key !== 'Escape' || !nav.classList.contains('is-open')) return;
+      e.stopPropagation();
+      setOpen(false);
     });
     window.addEventListener('resize', function () {
       syncOpenCallHref();

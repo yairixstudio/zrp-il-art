@@ -23,6 +23,7 @@
   ];
   var worksIndex = null;               // {id: {title, artist, image, ...}}
   var worksReady = null;
+  var scrollBlockBound = false;
 
   // --- locate works.json from any page depth ---
   function loadWorks(){
@@ -90,16 +91,19 @@
     root.setAttribute('role','dialog');
     root.setAttribute('aria-modal','true');
     root.setAttribute('aria-label','Artwork viewer');
-    // Close button lives at the .alb root (NOT inside .alb-figure) so it
-    // never overlaps the image — see CLAUDE.md component notes.
+    // Close + nav live at the .alb root (NOT inside .alb-stage flex) so
+    // positioning is never affected by stage alignment — see components.md §1.
     root.innerHTML =
       '<button class="alb-close" type="button" aria-label="Close">'+
         '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>'+
       '</button>'+
+      '<button class="alb-nav prev" type="button" aria-label="Previous artwork">'+
+        '<svg viewBox="0 0 14 24" aria-hidden="true"><path d="M13 1L2 12l11 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>'+
+      '</button>'+
+      '<button class="alb-nav next" type="button" aria-label="Next artwork">'+
+        '<svg viewBox="0 0 14 24" aria-hidden="true"><path d="M13 1L2 12l11 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>'+
+      '</button>'+
       '<div class="alb-stage">'+
-        '<button class="alb-nav prev" type="button" aria-label="Previous artwork">'+
-          '<svg viewBox="0 0 14 24" aria-hidden="true"><path d="M13 1L2 12l11 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>'+
-        '</button>'+
         '<figure class="alb-figure">'+
           '<div class="alb-imgwrap">'+
             '<picture>'+
@@ -116,9 +120,6 @@
             '<span class="alb-artist"></span>'+
           '</figcaption>'+
         '</figure>'+
-        '<button class="alb-nav next" type="button" aria-label="Next artwork">'+
-          '<svg viewBox="0 0 14 24" aria-hidden="true"><path d="M13 1L2 12l11 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>'+
-        '</button>'+
       '</div>';
     document.body.appendChild(root);
 
@@ -143,10 +144,46 @@
     // button width == image width.
     imgEl.addEventListener('load', fitWrapperToImage);
     videoEl.addEventListener('loadedmetadata', fitWrapperToImage);
-    window.addEventListener('resize', fitWrapperToImage);
+    window.addEventListener('resize', function(){
+      syncHeaderOffset();
+      fitWrapperToImage();
+    });
     // Backdrop click intentionally does NOT close — close only via X button or Escape.
     document.addEventListener('keydown', onKey);
     bindSwipe();
+    bindScrollBlock();
+  }
+
+  function syncHeaderOffset(){
+    var hdr = document.querySelector('site-header');
+    if (!hdr) return;
+    var h = hdr.getBoundingClientRect().height;
+    if (h > 0){
+      document.documentElement.style.setProperty('--site-header-h', Math.ceil(h) + 'px');
+    }
+  }
+
+  function blockBackgroundScroll(e){
+    if (!root || !root.classList.contains('is-open')) return;
+    if (root.contains(e.target)) return;
+    e.preventDefault();
+  }
+
+  function bindScrollBlock(){
+    if (scrollBlockBound) return;
+    scrollBlockBound = true;
+    document.addEventListener('touchmove', blockBackgroundScroll, {passive:false});
+    document.addEventListener('wheel', blockBackgroundScroll, {passive:false});
+  }
+
+  function lockPageScroll(){
+    document.documentElement.classList.add('alb-lock');
+    document.body.classList.add('alb-lock');
+  }
+
+  function unlockPageScroll(){
+    document.documentElement.classList.remove('alb-lock');
+    document.body.classList.remove('alb-lock');
   }
 
   // Match the wrapper width to the image's *rendered* width (post-aspect/maxH
@@ -154,6 +191,11 @@
   function fitWrapperToImage(){
     if (!imgWrap) return;
     requestAnimationFrame(function(){
+      // Alt + CTA align to the visible image width; otherwise CSS fills the viewport box.
+      if (!root.classList.contains('has-alt') && !root.classList.contains('has-cta')) {
+        imgWrap.style.width = '';
+        return;
+      }
       var active = (videoEl && !videoEl.hidden) ? videoEl : imgEl;
       if (!active) return;
       var w = active.getBoundingClientRect().width;
@@ -165,6 +207,7 @@
   var currentList = [];                // array of HTMLElements
   var currentIdx  = 0;
   var lastFocus   = null;
+  var showToken   = 0;
 
   function findScope(el){
     return el.closest('[data-artwork-gallery]') || document.body;
@@ -339,9 +382,11 @@
     if (i < 0) i = currentList.length - 1;
     if (i >= currentList.length) i = 0;
     currentIdx = i;
+    var token = ++showToken;
     var srcEl = currentList[i];
     var id = srcEl.dataset.artworkId;
     loadWorks().then(function(idx){
+      if (token !== showToken) return;
       worksIndex = idx;
       var work = id ? idx[id] : null;
       setImage(srcEl, work);
@@ -365,8 +410,9 @@
     currentIdx = currentList.indexOf(srcEl);
     if (currentIdx < 0) currentIdx = 0;
     lastFocus = document.activeElement;
+    syncHeaderOffset();
     root.classList.add('is-open','has-caption');
-    document.body.classList.add('alb-lock');
+    lockPageScroll();
     show(currentIdx);
     setTimeout(function(){ closeBtn.focus(); }, 50);
   }
@@ -374,14 +420,18 @@
     if (!root) return;
     if (videoEl){ try { videoEl.pause(); } catch(_){} }
     root.classList.remove('is-open');
-    document.body.classList.remove('alb-lock');
+    unlockPageScroll();
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   function nav(delta){ show(currentIdx + delta); }
 
   function onKey(e){
     if (!root || !root.classList.contains('is-open')) return;
-    if (e.key === 'Escape')     { close(); }
+    if (e.key === 'Escape'){
+      var navOpen = document.querySelector('site-header .nav.is-open');
+      if (navOpen) return;
+      close();
+    }
     else if (e.key === 'ArrowLeft')  { nav(-1); }
     else if (e.key === 'ArrowRight') { nav( 1); }
     else if (e.key === 'Tab')        { trapFocus(e); }

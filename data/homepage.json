@@ -137,11 +137,21 @@
     "figma_node_mobile": "228:101"
   },
   "tribe_teaser": {
-    "_note": "Above #press — Figma landing::250:87 (desktop titles only) + 250:243 (mobile: titles + artist credits + 4-thumb strip). Strip layout + media: 250:98. Thumbs: lightbox only (no <a>, no data-artwork-link / CTA).",
+    "_note": "Above #press — desktop 250:87 + sponsor 361:393 + gallery 361:420; mobile 363:618 + sponsor 363:622 + strip 363:649. Thumbs: lightbox only. thumb-5 = duplicate of thumb-4 until video asset.",
     "exhibition_href": "exhibitions/loneliness/",
     "title_line_1": "loneliness",
     "title_line_2": "in a bubbling environment",
     "subtitle": "x the tribe",
+    "sponsor": {
+      "lockup": {
+        "src": "images/homepage/tribe-teaser/sponsored-by-moet.webp",
+        "width": 840,
+        "height": 41,
+        "alt": "sponsored by Moët & Chandon"
+      },
+      "figma_node_desktop": "361:393",
+      "figma_node_mobile": "363:622"
+    },
     "credit_rows": [
       [
         {
@@ -192,11 +202,20 @@
         "width": 158,
         "height": 192,
         "alt": ""
+      },
+      {
+        "src": "images/homepage/tribe-teaser/thumb-5.webp",
+        "width": 158,
+        "height": 192,
+        "alt": "",
+        "video": "images/homepage/tribe-teaser/video.mp4",
+        "poster": "images/homepage/tribe-teaser/thumb-5.webp"
       }
     ],
     "figma_node_desktop": "250:87",
-    "figma_node_mobile": "250:243",
-    "figma_gallery_strip": "250:98"
+    "figma_node_mobile": "363:618",
+    "figma_gallery_strip_desktop": "361:420",
+    "figma_gallery_strip_mobile": "363:649"
   },
   "press_section": {
     "title_b": "press",

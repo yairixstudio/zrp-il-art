@@ -348,12 +348,16 @@ body{text-transform:uppercase}
 .x-artists-card .name{font-family:var(--cop);font-weight:400;font-size:16px;text-align:center;color:var(--ink)}
 .x-artists-tri{display:none}
 
-/* ===== TRIBE TEASER (loneliness × the tribe) — Figma 250:87 desktop / 250:243 mobile; data: homepage.json :: tribe_teaser ===== */
+/* ===== TRIBE TEASER (loneliness × the tribe) — Figma 250:87 desktop / 363:618 mobile; data: homepage.json :: tribe_teaser ===== */
 .tribe-teaser{padding:48px var(--pad-x);background:var(--white);display:flex;flex-direction:column;align-items:center;gap:40px;max-width:1440px;margin:0 auto;min-width:0;box-sizing:border-box}
-.tribe-teaser-head{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.05;gap:8px;color:inherit;text-decoration:none;max-width:1248px}
+.tribe-teaser-intro{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;max-width:1248px}
+.tribe-teaser-head{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.05;gap:8px;color:inherit;text-decoration:none;width:100%}
 .tribe-teaser-head .b{font-family:var(--cop);font-weight:700;font-size:36px;letter-spacing:.02em;line-height:1.24}
 .tribe-teaser-head .l{font-family:var(--cop);font-weight:300;font-size:36px;letter-spacing:.02em}
-.tribe-teaser-credits{display:none;flex-direction:column;align-items:center;gap:16px;width:100%;box-sizing:border-box}
+.tribe-teaser-sponsor{display:flex;justify-content:center;align-items:center;margin:0;width:100%;font-size:16px;line-height:0}
+.tribe-teaser-sponsor picture,.tribe-teaser-sponsor .tribe-sponsor-lockup{display:block;width:225px;height:auto;max-width:100%;flex:0 0 auto;line-height:0}
+.tribe-teaser-sponsor picture .tribe-sponsor-lockup{width:100%;height:auto;max-width:none;object-fit:contain;object-position:center;overflow:visible}
+.tribe-teaser-credits{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;box-sizing:border-box}
 .tribe-teaser-credits .tribe-credit-row{
   display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:16px;width:100%;
 }
@@ -366,18 +370,29 @@ body{text-transform:uppercase}
   font-family:var(--heb);font-weight:300;font-size:16px;line-height:1;color:var(--ink);
   flex-shrink:0;white-space:nowrap;padding:0;
 }
-.tribe-teaser-gallery{display:none;width:100%;min-width:0;max-width:100%}
-.tribe-gallery-track{display:flex;gap:4px;width:max-content;justify-content:center}
-/* Thumbs open artwork-lightbox only — not navigation links (Figma 250:98). */
+.tribe-teaser-gallery{display:block;width:100%;min-width:0;max-width:100%}
+.tribe-gallery-track{display:flex;gap:16px;width:max-content;justify-content:center;margin:0 auto}
+/* Thumbs open artwork-lightbox only — not navigation links (Figma 361:420 desktop / 363:649 mobile). */
 .tribe-gallery-track .tribe-thumb-card{
-  flex:0 0 auto;width:100.25px;display:block;cursor:zoom-in;color:inherit;
+  flex:0 0 auto;width:158px;display:block;cursor:zoom-in;color:inherit;
   border:0;background:transparent;padding:0;margin:0;text-align:inherit;
 }
 .tribe-gallery-track .tribe-thumb-card:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .tribe-gallery-track .tribe-thumb-card .tribe-thumb-wrap{aspect-ratio:132/160;width:100%;overflow:hidden;background:#f3f1ee}
 .tribe-gallery-track .tribe-thumb-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
 .tribe-gallery-track .tribe-thumb-card:hover img{transform:scale(1.03)}
-.tribe-teaser-gallery-wrap{display:flex;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;max-width:100%;min-width:0;box-sizing:border-box;scrollbar-width:thin}
+.tribe-gallery-track .tribe-thumb-card--video .tribe-thumb-wrap{position:relative}
+.tribe-gallery-track .tribe-thumb-card--video .tribe-thumb-play{
+  position:absolute;left:50%;top:50%;width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;
+  transform:translate(-50%,-50%);pointer-events:none;
+}
+.tribe-gallery-track .tribe-thumb-card--video .tribe-thumb-play::before{
+  content:"";display:block;width:0;height:0;margin-left:2px;
+  border-style:solid;border-width:6px 0 6px 10px;
+  border-color:transparent transparent transparent var(--ink);
+}
+.tribe-teaser-gallery-wrap{display:flex;justify-content:center;overflow-x:visible;width:100%;max-width:100%;min-width:0;box-sizing:border-box}
 
 /* ===== PRESS & EVENTS ===== */
 .press{padding:32px var(--pad-x) 48px;display:flex;flex-direction:column;gap:24px;background:var(--white)}
@@ -578,9 +593,11 @@ body{text-transform:uppercase}
   .x-artists .tri-dots{display:none}
   .x-artists .tri-caption{font-family:var(--cop);font-weight:300;font-size:16px;color:#989898;direction:ltr;text-align:center}
 
-  /* TRIBE TEASER — Figma 250:243; narrow screens: keep inside padded column, scale thumbs + credits */
+  /* TRIBE TEASER — Figma 363:618; narrow screens: keep inside padded column, scale thumbs + credits */
   .tribe-teaser{padding:32px clamp(12px, 4.2vw, 16px);align-items:stretch;gap:40px;overflow-x:clip}
-  .tribe-teaser-head{max-width:100%;min-width:0;box-sizing:border-box;padding:0 2px}
+  .tribe-teaser-intro{max-width:100%;min-width:0;box-sizing:border-box;padding:0 2px}
+  .tribe-teaser-head{padding:0}
+  .tribe-teaser-sponsor{padding:0 2px;box-sizing:border-box}
   .tribe-teaser-credits{
     display:flex;
     max-width:100%;
@@ -616,6 +633,10 @@ body{text-transform:uppercase}
     padding:0;
     width:100%;
     max-width:100%;
+    justify-content:flex-start;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
     container-type:inline-size;
     container-name:tribe-gal;
   }
@@ -634,12 +655,57 @@ body{text-transform:uppercase}
     .tribe-gallery-track .tribe-thumb-card{width:25.641025641cqi}
   }
 
-  /* PRESS & EVENTS */
+  /* PRESS & EVENTS — fluid card: image shrinks on narrow rows so .desc stays ≤~5 lines */
   .press{padding:32px 16px}
   .press-rows{gap:24px}
   .press-row{flex-direction:column;gap:24px}
-  .press-card{flex:1 1 auto;direction:rtl}
-  .press-card .desc{font-size:14px}
+  .press-card{
+    flex:1 1 auto;
+    direction:rtl;
+    container-type:inline-size;
+    container-name:press-card;
+    gap:clamp(10px,calc((100vw - 32px) * 0.04),16px);
+  }
+  .press-card .img{
+    flex:0 1 clamp(88px,calc((100vw - 32px) * 0.36),178px);
+    width:clamp(88px,calc((100vw - 32px) * 0.36),178px);
+    height:auto;
+    aspect-ratio:178/112;
+  }
+  .press-card .info{flex:1 1 0;min-width:0}
+  .press-card .tag{
+    font-size:clamp(11px,calc((100vw - 32px) * 0.038),14px);
+    padding:clamp(3px,1vw,4px) clamp(6px,2vw,8px);
+  }
+  .press-card .tag.en{
+    font-size:clamp(9px,calc((100vw - 32px) * 0.03),11px);
+    padding:clamp(2px,.8vw,3px) clamp(5px,1.8vw,7px);
+  }
+  .press-card .desc{
+    font-size:clamp(12px,calc((100vw - 32px) * 0.038),14px);
+    line-height:1.35;
+  }
+  .press-card .date{font-size:clamp(11px,calc((100vw - 32px) * 0.034),14px)}
+  @supports (width:1cqi){
+    .press-card{gap:clamp(10px,4cqi,16px)}
+    .press-card .img{
+      flex:0 1 clamp(88px,36cqi,178px);
+      width:clamp(88px,36cqi,178px);
+    }
+    .press-card .tag{font-size:clamp(11px,4.2cqi,14px)}
+    .press-card .tag.en{font-size:clamp(9px,3.4cqi,11px)}
+    .press-card .desc{font-size:clamp(12px,4.2cqi,14px)}
+    .press-card .date{font-size:clamp(11px,3.8cqi,14px)}
+  }
+  @container press-card (max-width:300px){
+    .press-card .img{
+      flex:0 1 clamp(80px,34cqi,130px);
+      width:clamp(80px,34cqi,130px);
+    }
+    .press-card .desc{font-size:clamp(11px,3.9cqi,13px)}
+    .press-card .tag{font-size:clamp(10px,3.8cqi,13px)}
+    .press-card .date{font-size:clamp(10px,3.6cqi,13px)}
+  }
 
 }
 
@@ -1030,13 +1096,18 @@ porta</div></a>
   </div>
 </section>
 
-<!-- LONELINESS × THE TRIBE — Figma 250:87 (desktop title) / 250:243 (mobile + credits + gallery). Data: data/homepage.json :: tribe_teaser -->
+<!-- LONELINESS × THE TRIBE — Figma 250:87 (desktop title) / 363:618 (mobile + sponsor + credits + gallery). Data: data/homepage.json :: tribe_teaser -->
 <section class="tribe-teaser" id="tribe-teaser" aria-label="loneliness in a bubbling environment, x the tribe">
-  <a class="tribe-teaser-head" href="exhibitions/loneliness/">
-    <span class="b">loneliness<br>in a bubbling environment</span>
-    <span class="l">x the tribe</span>
-  </a>
-  <div class="tribe-teaser-credits only-mobile">
+  <div class="tribe-teaser-intro">
+    <a class="tribe-teaser-head" href="exhibitions/loneliness/">
+      <span class="b">loneliness<br>in a bubbling environment</span>
+      <span class="l">x the tribe</span>
+    </a>
+    <p class="tribe-teaser-sponsor">
+      <img class="tribe-sponsor-lockup" src="images/homepage/tribe-teaser/sponsored-by-moet.webp" width="840" height="41" alt="sponsored by Moët &amp; Chandon" loading="lazy" decoding="async">
+    </p>
+  </div>
+  <div class="tribe-teaser-credits">
     <div class="tribe-credit-row">
       <a href="artists/maya-nachum-levy/">maya nachum levy</a>
       <span class="tribe-sep heb" aria-hidden="true">|</span>
@@ -1050,32 +1121,43 @@ porta</div></a>
       <a href="artists/gal-polk/">gal pollak</a>
     </div>
   </div>
-  <div class="tribe-teaser-gallery only-mobile">
+  <div class="tribe-teaser-gallery">
     <div class="tribe-teaser-gallery-wrap">
       <div class="tribe-gallery-track" data-artwork-gallery="tribe-teaser">
         <div class="tribe-thumb-card" tabindex="0" role="button"
              data-artwork-src="images/homepage/tribe-teaser/thumb-1.webp"
              data-artwork-title="בדידות בסביבה תוססת × הקהילה — 1"
-             aria-label="פתיחת תמונה 1 מתוך 4, בדידות בסביבה תוססת × הקהילה">
+             aria-label="פתיחת תמונה 1 מתוך 5, בדידות בסביבה תוססת × הקהילה">
           <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-1.webp" width="158" height="192" alt="" decoding="async" loading="lazy"></div>
         </div>
         <div class="tribe-thumb-card" tabindex="0" role="button"
              data-artwork-src="images/homepage/tribe-teaser/thumb-2.webp"
              data-artwork-title="בדידות בסביבה תוססת × הקהילה — 2"
-             aria-label="פתיחת תמונה 2 מתוך 4, בדידות בסביבה תוססת × הקהילה">
+             aria-label="פתיחת תמונה 2 מתוך 5, בדידות בסביבה תוססת × הקהילה">
           <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-2.webp" width="158" height="192" alt="" decoding="async" loading="lazy"></div>
         </div>
         <div class="tribe-thumb-card" tabindex="0" role="button"
              data-artwork-src="images/homepage/tribe-teaser/thumb-3.webp"
              data-artwork-title="בדידות בסביבה תוססת × הקהילה — 3"
-             aria-label="פתיחת תמונה 3 מתוך 4, בדידות בסביבה תוססת × הקהילה">
+             aria-label="פתיחת תמונה 3 מתוך 5, בדידות בסביבה תוססת × הקהילה">
           <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-3.webp" width="158" height="192" alt="" decoding="async" loading="lazy"></div>
         </div>
         <div class="tribe-thumb-card" tabindex="0" role="button"
              data-artwork-src="images/homepage/tribe-teaser/thumb-4.webp"
              data-artwork-title="בדידות בסביבה תוססת × הקהילה — 4"
-             aria-label="פתיחת תמונה 4 מתוך 4, בדידות בסביבה תוססת × הקהילה">
+             aria-label="פתיחת תמונה 4 מתוך 5, בדידות בסביבה תוססת × הקהילה">
           <div class="tribe-thumb-wrap"><img src="images/homepage/tribe-teaser/thumb-4.webp" width="158" height="192" alt="" decoding="async" loading="lazy"></div>
+        </div>
+        <div class="tribe-thumb-card tribe-thumb-card--video" tabindex="0" role="button"
+             data-artwork-src="images/homepage/tribe-teaser/thumb-5.webp"
+             data-artwork-poster="images/homepage/tribe-teaser/thumb-5.webp"
+             data-artwork-video="images/homepage/tribe-teaser/video.mp4"
+             data-artwork-title="בדידות בסביבה תוססת × הקהילה — 5"
+             aria-label="הפעלת וידאו 5 מתוך 5, בדידות בסביבה תוססת × הקהילה">
+          <div class="tribe-thumb-wrap">
+            <img src="images/homepage/tribe-teaser/thumb-5.webp" width="158" height="192" alt="" decoding="async" loading="lazy">
+            <span class="tribe-thumb-play" aria-hidden="true"></span>
+          </div>
         </div>
       </div>
     </div>

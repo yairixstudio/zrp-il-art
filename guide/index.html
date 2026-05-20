@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>QR Campaigns — Guide</title>
+<style>
+  :root{
+    --ink:#1B1B1B; --white:#FFFFFF; --line:#E2E2E2; --muted:#6B7280; --field:#F6F6F5;
+    --code:#0F1117; --code-ink:#E6E8EE; --radius:10px;
+    --ui:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--ui);color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--ink)}
+  .wrap{max-width:780px;margin:0 auto;padding:32px 24px 96px}
+  header.top{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:36px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px}
+  .brand{font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+  .top nav{font-size:13px}
+  .top nav a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
+  .top nav a:hover{color:var(--ink);border-color:var(--ink)}
+  h1{font-size:30px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+  .lede{font-size:16px;color:var(--muted);margin-bottom:40px}
+  h2{font-size:19px;font-weight:600;margin:38px 0 12px;padding-top:10px}
+  h3{font-size:15px;font-weight:600;margin:22px 0 6px}
+  p{margin-bottom:12px}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:6px}
+  .steps{list-style:none;margin-left:0;counter-reset:s}
+  .steps li{counter-increment:s;position:relative;padding-left:42px;margin-bottom:16px}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600}
+  code{font-family:var(--mono);font-size:13px;background:var(--field);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+  table{width:100%;border-collapse:collapse;margin:14px 0 18px;font-size:14px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600}
+  td code{white-space:nowrap}
+  .codeblock{position:relative;margin:12px 0 22px}
+  .codeblock pre{background:var(--code);color:var(--code-ink);border-radius:var(--radius);padding:16px 18px;overflow:auto;font-family:var(--mono);font-size:12.5px;line-height:1.7}
+  .codeblock .copy{position:absolute;top:10px;right:10px;font-family:var(--ui);font-size:12px;font-weight:600;color:var(--code-ink);background:rgba(255,255,255,.12);border:0;border-radius:6px;padding:5px 10px;cursor:pointer}
+  .codeblock .copy:hover{background:rgba(255,255,255,.22)}
+  .note{background:var(--field);border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:8px;padding:14px 16px;font-size:14px;margin:16px 0}
+  .demo{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:14px 0 26px}
+  .demo iframe{display:block;width:100%;height:560px;border:0}
+  .cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;border:1px solid var(--ink);border-radius:8px;padding:10px 16px;text-decoration:none;margin:6px 0 12px;transition:background .15s,color .15s}
+  .cta:hover{background:var(--ink);color:var(--white)}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--white);font-size:13px;padding:10px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:50}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Zielinski &amp; Rozen — Campaign tools</div>
+    <nav><a href="../generate/">Open the generator →</a></nav>
+  </header>
+
+  <h1>QR Campaigns</h1>
+  <p class="lede">Turn any printed ad, window display or in-store card into a measurable sign-up. Each QR code carries the store, city and country it was printed for, so every new subscriber is tagged with where they came from.</p>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><strong>Generate a code.</strong> Fill in the store, city, country and any extra details in the <a href="../generate/">generator</a>. A QR code and link are built live.</li>
+    <li><strong>Print or place it.</strong> Download the QR as PNG (raster) or SVG (vector, best for print) and add it to the artwork.</li>
+    <li><strong>Customer scans.</strong> The code opens the sign-up form, already aware of its location and campaign.</li>
+    <li><strong>Data lands in Klaviyo.</strong> The email and all the tagged details are sent to your list as profile properties.</li>
+  </ol>
+
+  <a class="cta" href="../generate/">Open the generator</a>
+
+  <h2>Parameters</h2>
+  <p>Everything you add in the generator is appended to the form link as query parameters and forwarded to Klaviyo as profile properties.</p>
+  <table>
+    <thead><tr><th>Parameter</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>store_id</code></td><td>Identifier of the physical store or point of sale.</td></tr>
+      <tr><td><code>city</code></td><td>City the ad is placed in.</td></tr>
+      <tr><td><code>country</code></td><td>Two-letter country code; the form expands it to the full name.</td></tr>
+      <tr><td><code>lang</code></td><td>Language the form opens in. Defaults to English when omitted.</td></tr>
+      <tr><td><code>campaign</code></td><td>Free-text reference for the ad or placement.</td></tr>
+      <tr><td><code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code></td><td>Standard attribution tags, added automatically.</td></tr>
+      <tr><td><em>custom</em></td><td>Any extra key/value pairs you add in the generator.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Example link</h3>
+  <div class="codeblock">
+    <button class="copy" type="button">Copy</button>
+    <pre data-host-url><code>/form/?store_id=0042&amp;city=Paris&amp;country=FR&amp;lang=fr&amp;campaign=spring-window</code></pre>
+  </div>
+
+  <h2>Embedding the form</h2>
+  <p>Besides a QR code, the form can be embedded directly in any web page or landing page with an <code>&lt;iframe&gt;</code>. Adjust the parameters per placement.</p>
+  <div class="codeblock">
+    <button class="copy" type="button">Copy</button>
+    <pre data-embed><code>&lt;iframe
+  src="HOST/form/?store_id=0042&amp;city=Paris&amp;country=FR"
+  width="100%" height="640" style="border:0"
+  title="Subscribe" loading="lazy"&gt;&lt;/iframe&gt;</code></pre>
+  </div>
+
+  <h3>Live example</h3>
+  <div class="demo">
+    <iframe id="demoFrame" title="Form preview" loading="lazy"></iframe>
+  </div>
+
+  <h2>Languages</h2>
+  <p>The form ships in several languages and opens in English by default. Pass <code>lang</code> with one of the codes below, or let the visitor switch with the selector in the corner of the form.</p>
+  <p><code>ar</code> · <code>de</code> · <code>en</code> · <code>es</code> · <code>fr</code> · <code>he</code> · <code>it</code> · <code>ja</code> · <code>ru</code> · <code>zh</code></p>
+
+  <h2>Connecting Klaviyo</h2>
+  <p>Open <code>form/index.html</code> and set the two values at the top of its script. <code>companyId</code> is the public API key (site id); <code>listId</code> is the target list.</p>
+  <div class="codeblock">
+    <button class="copy" type="button">Copy</button>
+    <pre><code>var KLAVIYO = { companyId: "XXXXXX", listId: "YYYYYY" };</code></pre>
+  </div>
+  <div class="note">Until both values are filled in, the form runs in preview mode: it shows the thank-you screen but does not send anything.</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  var host = window.location.origin + window.location.pathname.replace(/\/guide\/.*$/, "");
+
+  // Show real host in the example + embed snippets and the live demo.
+  var exampleEl = document.querySelector("[data-host-url] code");
+  if (exampleEl) exampleEl.textContent = host + exampleEl.textContent;
+
+  var embedEl = document.querySelector("[data-embed] code");
+  if (embedEl) embedEl.innerHTML = embedEl.innerHTML.replace("HOST", host);
+
+  var demo = document.getElementById("demoFrame");
+  if (demo) demo.src = "../form/?store_id=0042&city=Paris&country=FR&campaign=demo";
+
+  var toast = document.getElementById("toast"), toastT;
+  function showToast(m){ toast.textContent = m; toast.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(function(){ toast.classList.remove("show"); }, 1600); }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".copy"), function(btn){
+    btn.addEventListener("click", function(){
+      var pre = btn.parentNode.querySelector("code");
+      var text = pre ? pre.textContent : "";
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(function(){ showToast("Copied"); });
+    });
+  });
+})();
+</script>
+</body>
+</html>

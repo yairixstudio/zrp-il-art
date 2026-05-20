@@ -348,6 +348,44 @@ body{text-transform:uppercase}
 .x-artists-card .name{font-family:var(--cop);font-weight:400;font-size:16px;text-align:center;color:var(--ink)}
 .x-artists-tri{display:none}
 
+/* ===== PERFUME PROMO (How Many Partners) — Figma 386:232 desktop / 386:806 mobile. Link → zrp.co.il product ===== */
+.perfume-promo{background:var(--white);padding:56px var(--pad-x) 40px;max-width:var(--max);margin:0 auto;box-sizing:border-box}
+.perfume-promo-inner{display:flex;gap:48px;align-items:center}
+.pp-media{flex:0 0 492px;width:492px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.pp-main{width:100%;aspect-ratio:1/1;overflow:hidden}
+.pp-main img{width:100%;height:100%;object-fit:cover;display:block}
+.pp-thumbs{display:flex;gap:4px}
+.pp-thumb{flex:1 1 0;min-width:0;aspect-ratio:95/115;padding:0;border:0;background:none;cursor:pointer;overflow:hidden;display:block}
+.pp-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.pp-thumb:hover img{transform:scale(1.05)}
+.pp-thumb.is-active{outline:2px solid var(--ink);outline-offset:-2px}
+.pp-info{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;text-align:center}
+.pp-logo{width:214px;height:64px;flex:0 0 auto;display:block}
+.pp-text{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.pp-head{display:flex;flex-direction:column;align-items:center;gap:24px;width:100%}
+.pp-title{font-family:var(--cop);font-weight:700;font-size:clamp(48px,5.56vw,80px);line-height:1;letter-spacing:.02em;color:var(--ink)}
+.pp-sub-he{font-family:var(--heb);font-weight:400;font-size:20px;line-height:1.4;color:var(--ink)}
+.pp-sub-en{font-family:var(--cop);font-weight:400;font-size:20px;line-height:1.15;letter-spacing:.04em;color:var(--ink)}
+.pp-bio{font-family:var(--heb);font-weight:400;font-size:18px;line-height:1.4;color:var(--ink);text-align:center}
+.pp-cta{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding:16px 24px;border:1.4px solid var(--ink);font-family:var(--heb);font-weight:400;font-size:18px;line-height:1;color:var(--ink);transition:background .2s,color .2s}
+.pp-cta:hover{background:var(--ink);color:var(--white)}
+@media (max-width:1199px){
+  .perfume-promo-inner{flex-direction:column;align-items:center;gap:40px}
+  .pp-media{flex:0 0 auto;width:100%;max-width:492px}
+  .pp-info{width:100%;max-width:560px;gap:32px}
+  .pp-logo{display:none}
+  .pp-title{font-size:clamp(36px,7vw,56px)}
+}
+@media (max-width:768px){
+  .perfume-promo{padding:40px var(--pad-x)}
+  .perfume-promo-inner{gap:40px}
+  .pp-info{gap:40px}
+  .pp-text{gap:8px}
+  .pp-head{gap:8px}
+  .pp-title{font-size:36px}
+  .pp-sub-en{font-weight:300}
+}
+
 /* ===== TRIBE TEASER (loneliness × the tribe) — Figma 250:87 desktop / 363:618 mobile; data: homepage.json :: tribe_teaser ===== */
 .tribe-teaser{padding:48px var(--pad-x);background:var(--white);display:flex;flex-direction:column;align-items:center;gap:40px;max-width:1440px;margin:0 auto;min-width:0;box-sizing:border-box}
 .tribe-teaser-intro{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;max-width:1248px}
@@ -954,6 +992,36 @@ porta</div></a>
   </div>
 </section>
 
+<!-- PERFUME PROMO — How Many Partners Have You Had? · Figma 386:232 / 386:806 -->
+<section class="perfume-promo" id="perfume-promo" aria-label="new perfume — how many partners have you had?">
+  <div class="perfume-promo-inner">
+    <div class="pp-media">
+      <div class="pp-main">
+        <img id="ppMain" src="images/homepage/perfume-promo/perfume-1.webp" width="1200" height="1200" alt="HOW MANY PARTNERS HAVE YOU HAD? perfume" decoding="async" loading="lazy">
+      </div>
+      <div class="pp-thumbs" role="group" aria-label="perfume gallery thumbnails">
+        <button type="button" class="pp-thumb is-active" data-full="images/homepage/perfume-promo/perfume-1.webp" aria-label="view image 1"><img src="images/homepage/perfume-promo/perfume-1.webp" width="960" height="1200" alt="" decoding="async" loading="lazy"></button>
+        <button type="button" class="pp-thumb" data-full="images/homepage/perfume-promo/perfume-2.webp" aria-label="view image 2"><img src="images/homepage/perfume-promo/perfume-2.webp" width="960" height="1200" alt="" decoding="async" loading="lazy"></button>
+        <button type="button" class="pp-thumb" data-full="images/homepage/perfume-promo/perfume-3.webp" aria-label="view image 3"><img src="images/homepage/perfume-promo/perfume-3.webp" width="381" height="462" alt="" decoding="async" loading="lazy"></button>
+        <button type="button" class="pp-thumb" data-full="images/homepage/perfume-promo/perfume-4.webp" aria-label="view image 4"><img src="images/homepage/perfume-promo/perfume-4.webp" width="900" height="1200" alt="" decoding="async" loading="lazy"></button>
+        <button type="button" class="pp-thumb" data-full="images/homepage/perfume-promo/perfume-5.webp" aria-label="view image 5"><img src="images/homepage/perfume-promo/perfume-5.webp" width="960" height="1200" alt="" decoding="async" loading="lazy"></button>
+      </div>
+    </div>
+    <div class="pp-info">
+      <img class="pp-logo" src="images/header:footer:general/sponsor-logo.svg" width="214" height="64" alt="Zielinski &amp; Rozen" decoding="async" loading="lazy">
+      <div class="pp-text">
+        <div class="pp-head">
+          <h2 class="pp-title">new perfume</h2>
+          <p class="pp-sub-he heb" dir="rtl">בושם הנושא של תערוכת</p>
+        </div>
+        <p class="pp-sub-en">how many partners have you had?</p>
+      </div>
+      <p class="pp-bio heb" dir="rtl">בושם רענן עם עומק, הים פוגש וויסקי איכותי.<br>בהתחלה הוא מריח קריר, מלוח ונקי<br>אבל אז משהו משתנה<br>הריח נהיה עמוק, מתובל וסקסי.<br>ריח של ניגודים</p>
+      <a class="pp-cta heb" dir="rtl" href="https://www.zrp.co.il/product/how-many-partners-have-you-had" target="_blank" rel="noopener">עוד על הבושם באתר</a>
+    </div>
+  </div>
+</section>
+
 <!-- INSTAGRAM -->
 <section class="social">
   <h2 class="social-title">
@@ -1428,6 +1496,25 @@ porta</div></a>
   window.addEventListener('resize', function(){
     clearTimeout(rt);
     rt = setTimeout(function(){ apply(false); }, 80);
+  });
+})();
+</script>
+
+<script>
+/* PERFUME PROMO — click a thumbnail to swap it into the main image */
+(function(){
+  var main = document.getElementById('ppMain');
+  if(!main) return;
+  var thumbs = document.querySelectorAll('.perfume-promo .pp-thumb');
+  if(!thumbs.length) return;
+  thumbs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var full = btn.getAttribute('data-full');
+      if(!full || btn.classList.contains('is-active')) return;
+      main.setAttribute('src', full);
+      thumbs.forEach(function(b){ b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+    });
   });
 })();
 </script>

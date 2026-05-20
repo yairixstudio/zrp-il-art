@@ -63,6 +63,14 @@ body.menu-open{overflow:hidden}
    Mobile layout: newsletter on top, centered copyright below (no links, no icons). */
 .footer{background:var(--ink);color:var(--white);padding:48px var(--pad-x);display:flex;justify-content:space-between;gap:64px;align-items:flex-start}
 
+/* Sponsor bar — white strip at the very bottom (Figma 386:5) */
+.footer-sponsor{background:#FFFFFF;display:flex;justify-content:center;align-items:center;gap:32px;padding:24px var(--pad-x);box-sizing:border-box}
+.footer-sponsor-label{font-family:var(--cop);font-weight:300;font-size:16px;line-height:1;color:#1B1B1B;text-transform:uppercase}
+.footer-sponsor-logo{display:flex;align-items:center;transition:opacity .2s}
+.footer-sponsor-logo:hover{opacity:.7}
+.footer-sponsor-logo img{display:block;width:107px;height:32px;object-fit:contain}
+@media (max-width:768px){.footer-sponsor{gap:20px;padding:20px}}
+
 /* Left column — newsletter */
 .newsletter{width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:17px}
 .newsletter h3{font-family:var(--cop);font-weight:400;font-size:24px;line-height:32px;letter-spacing:.04em}

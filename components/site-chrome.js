@@ -187,7 +187,13 @@
           '</div>' +
           '<p class="footer-copy footer-copy--mobile">© 2026 THE art GALLERY ZiELINSKI &amp; ROZEN ALL RIGHTS RESERVED.</p>' +
         '</div>' +
-      '</footer>'
+      '</footer>' +
+      '<div class="footer-sponsor">' +
+        '<span class="footer-sponsor-label">sponsored by</span>' +
+        '<a class="footer-sponsor-logo" href="https://zrp.co.il" target="_blank" rel="noopener" aria-label="sponsored by Zielinski &amp; Rozen — zrp.co.il">' +
+          '<img src="' + abs('images/header:footer:general/sponsor-logo.svg') + '" alt="Zielinski &amp; Rozen" width="107" height="32" decoding="async" loading="lazy">' +
+        '</a>' +
+      '</div>'
     );
   }
 

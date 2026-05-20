@@ -94,6 +94,9 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 | `/contact/` | Form | — | — | ✅ `contact/index.html` |
 | `/accessibility/` | Statement | — | — | ✅ `accessibility/index.html` |
 | `/privacy/` | Privacy policy | — | — | ✅ `privacy/index.html` |
+| `/generate/` | QR campaign generator (office tool, standalone, no-Figma) | — | — | ✅ `generate/index.html` |
+| `/form/` | Public subscribe form QR opens (multi-lang, Klaviyo) | — | — | ✅ `form/index.html` |
+| `/guide/` | QR tools guide + iframe embeds | — | — | ✅ `guide/index.html` |
 
 **סטטי (shell):** brand, nav, footer, newsletter copy, copyright, palette + typography. ב-`data/site.json` או CSS.
 **דינמי (JSON):** galleries, artists, exhibitions, events, press, opencalls, works, instagram, homepage curation, announcement, **curators**.

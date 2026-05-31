@@ -57,6 +57,14 @@
 כרטיס דיזינגוף (תמונה + שם + כתובת, ללא coming soon): Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=237-1465&m=dev
 
+### Homepage — `#press` כרטיס חדש (time out | תרבות)
+
+כרטיס חדש בדסקטופ (`Event Info 3`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=412-583&m=dev
+
+כרטיס חדש במובייל (`Event Item`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=412-996&m=dev
+
 ---
 
 ## 👤 אודות / Biography of Erez (/about)

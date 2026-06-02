@@ -65,6 +65,30 @@
 כרטיס חדש במובייל (`Event Item`): Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=412-996&m=dev
 
+### Homepage — `#press` כרטיס אירוע חדש (מבט מקרוב)
+
+כרטיס חדש בדסקטופ (`Event Info 2`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=428-445&m=dev
+
+כרטיס חדש במובייל (`Event Info 4`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=435-3&m=dev
+
+### Homepage — `#press` סקשן מלא (סדר + מדיה מעודכנים)
+
+סקשן מלא בדסקטופ (8 כרטיסים): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=428-430&m=dev
+
+סקשן מלא במובייל (8 כרטיסים): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=428-253&m=dev
+
+### Homepage — `#press` כרטיס אירוע how-many (26.5.2026)
+
+כרטיס בדסקטופ: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=428-432&m=dev
+
+כרטיס במובייל: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=427-128&m=dev
+
 ---
 
 ## 👤 אודות / Biography of Erez (/about)
@@ -194,6 +218,22 @@ event ktuba דסקטופ: Implement this design from Figma.
 
 event ktuba מובייל: Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=119-1509&m=dev
+
+### close-look event (מבט מקרוב — מפגש פתוח בתוך תערוכת how many | טניה שין)
+
+event close-look דסקטופ (`event-hmp1-desktop`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=420-1520&m=dev
+
+event close-look מובייל (`event-hmp1-mobile`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=420-1625&m=dev
+
+### how-many opening event (אירוע הפתיחה — כמה שותפים היו לך? | אוצרת קורין אברהם)
+
+event how-many opening דסקטופ (`event-opening how many-desktop`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=433-2&m=dev
+
+event how-many opening מובייל (`event-opening how many-mobile`): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=433-179&m=dev
 
 ---
 

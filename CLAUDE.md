@@ -88,6 +88,8 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 | `/press/time-out/` | Article | `XhGH...::119:1340` | `XhGH...::119:1433` | ✅ |
 | `/events/ktuba/` | Event (zohar ron live art) | `XhGH...::119:1651` (canonical 2026-05-11; legacy `Zn3N...::1213:1644`) | `XhGH...::119:1509` (legacy `Zn3N...::1213:1502`) | ✅ |
 | `/events/loneliness/` | Event (opening) | `Zn3N...::1213:1873` | `Zn3N...::1213:2099` | ✅ |
+| `/events/close-look/` | Event (מבט מקרוב — open meeting, tanya shin, how-many) | `XhGH...::420:1520` | `XhGH...::420:1625` | ✅ `events/close-look/index.html` |
+| `/events/how-many/` | Event (opening — how many, 15 artists, korin avraham) | `XhGH...::433:2` | `XhGH...::433:179` | ✅ `events/how-many/index.html` |
 | `/opencalls/` | Index | — | — | ⏳ |
 | `/opencalls/the-peeler/` | Single | `Zn3N...::1213:2417` | `Zn3N...::1213:2518` | ✅ |
 | `/opencalls/how-many/` | Single | `Zn3N...::1213:2340` | `Zn3N...::1213:2263` | ✅ |

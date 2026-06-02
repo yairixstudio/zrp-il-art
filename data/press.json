@@ -81,6 +81,32 @@
       "_legacy_figma_mobile": "Zn3N3mBQkbYER7tTJMbCcz::1213:1428"
     },
     {
+      "id": "event-how-many-close-look-1",
+      "type": "event",
+      "tag_en": "gallery event",
+      "title_he": "מבט מקרוב: מפגש פתוח בתוך התערוכה | טניה שין",
+      "date": "2026-06-02",
+      "cover_image": "images/events/close-look/intro-photo.webp",
+      "exhibition_id": "how-many",
+      "homepage_visible": true,
+      "route": "events/close-look/",
+      "figma_home_card_desktop": "XhGH289YTRcW811wrufRJz::428:445",
+      "figma_home_card_mobile": "XhGH289YTRcW811wrufRJz::435:3"
+    },
+    {
+      "id": "event-how-many-2026-05-26",
+      "type": "event",
+      "tag_en": "gallery event",
+      "title_he": "HOW MANY PARTNERS HAVE YOU HAD?",
+      "date": "2026-05-26",
+      "cover_image": "images/events/event-how-many-2026-05-26-cover.webp",
+      "exhibition_id": "how-many",
+      "homepage_visible": true,
+      "route": "events/how-many/",
+      "figma_home_card_desktop": "XhGH289YTRcW811wrufRJz::428:432",
+      "figma_home_card_mobile": "XhGH289YTRcW811wrufRJz::427:128"
+    },
+    {
       "id": "event-loneliness-3",
       "type": "event",
       "tag_en": "gallery event",
@@ -99,6 +125,22 @@
       "cover_image": "images/events/event-4-cover.webp",
       "exhibition_id": "loneliness",
       "homepage_visible": true
+    },
+    {
+      "id": "time-out-final-countdown-2025",
+      "type": "press",
+      "source_he": "מגזין timeout",
+      "source_en": "Timeout Magazine",
+      "title_he": "דה פיינל קאונטדאון: 18 תערוכות לחגוג בהן סופ\"ש ראשון של 2026",
+      "title_en": null,
+      "url": null,
+      "date": "2025-12-31",
+      "cover_image": "images/press/time-out/home-card-2025-12-31.webp",
+      "exhibition_id": "loneliness",
+      "homepage_visible": true,
+      "route": "press/time-out/",
+      "figma_home_card_desktop": "XhGH289YTRcW811wrufRJz::428:507",
+      "figma_home_card_mobile": "XhGH289YTRcW811wrufRJz::412:1051"
     }
   ]
 }

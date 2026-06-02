@@ -2,6 +2,121 @@
   "$schema": "./_schema/events.schema.json",
   "events": [
     {
+      "id": "close-look",
+      "slug": "close-look",
+      "title_he": "מבט מקרוב",
+      "title_en": "how many partners have u had?",
+      "subtitle_he": "מפגש פתוח בתוך התערוכה",
+      "exhibition_id": "how-many",
+      "exhibition_volume": 2,
+      "date": "2026-06-02",
+      "date_he": "2 יוני 2026",
+      "time_start": "18:00",
+      "time_end": "20:00",
+      "gallery_id": "dizengoff",
+      "gallery_label_he": "גלריית כיכר דיזינגוף",
+      "cover_image": "images/events/close-look/hero.webp",
+      "description_he": [
+        "מפגש פתוח בתוך התערוכה",
+        "HOW MANY PARTNERS HAVE U HAD?",
+        "האירוע מועבר על ידי האמנית הוויזואלית והצלמת טניה שין.",
+        "במהלך המפגש נדבר על הרעיונות שמאחורי יצירות האומנות ועל האמנים המשתתפים בתערוכה.",
+        "נדבר על צילום, אמנות, תהליכי יצירה ומה שקורה מאחורי העבודות שמוצגות על הקירות.",
+        "הכניסה פתוחה לכולם 🤍",
+        "כיכר דיזינגוף, ריינס 1, תל אביב"
+      ],
+      "gallery_images": [
+        {
+          "src": "images/events/close-look/slide-01.webp",
+          "alt": "טניה שין — עבודה מתוך התערוכה: עיגולים קונצנטריים"
+        },
+        {
+          "src": "images/artists/tanya-shin/work-01.webp",
+          "alt": "טניה שין — עבודה מתוך התערוכה: משולש"
+        },
+        {
+          "src": "images/artists/tanya-shin/work-02.webp",
+          "alt": "טניה שין — עבודה מתוך התערוכה: חיתוך"
+        },
+        {
+          "src": "images/events/close-look/slide-02.webp",
+          "alt": "טניה שין — עבודה מתוך התערוכה"
+        },
+        {
+          "src": "images/events/close-look/slide-03.webp",
+          "alt": "טניה שין — עבודה מתוך התערוכה"
+        },
+        {
+          "src": "images/events/close-look/slide-04.webp",
+          "alt": "טניה שין — עבודה מתוך התערוכה"
+        },
+        {
+          "src": "images/events/close-look/slide-05.webp",
+          "alt": "טניה שין — עבודה מתוך התערוכה"
+        },
+        {
+          "src": "images/events/close-look/slide-06.webp",
+          "alt": "טניה שין — עבודה מתוך התערוכה"
+        },
+        {
+          "src": "images/events/close-look/slide-07.webp",
+          "alt": "טניה שין — עבודה מתוך התערוכה"
+        }
+      ],
+      "_image_note": "hero = event-5-cover-v2 triangle (1500px LCP). Triptych initial 3 = slide-01 + work-01 + work-02 (unchanged). Slides 02–07 from Figma 420:1757,1755,1750,1754,1753,1751; skipped 420:1749/1756 (dup slide-01/work-02) and 420:1752 (not in page set).",
+      "artists": [
+        {
+          "name_en": "tanya shin",
+          "slug": "tanya-shin",
+          "image": "images/artists/tanya-shin/portrait-v2.webp"
+        }
+      ],
+      "route": "events/close-look/",
+      "homepage_visible": true,
+      "figma_node_desktop": "420:1520",
+      "figma_node_mobile": "420:1625",
+      "figma_file": "XhGH289YTRcW811wrufRJz"
+    },
+    {
+      "id": "how-many",
+      "slug": "how-many",
+      "title_he": "אירוע הפתיחה — כמה שותפים היו לך?",
+      "title_en": "Opening — How Many Partners Have You Had?",
+      "exhibition_id": "how-many",
+      "exhibition_volume": 2,
+      "date": "2026-05-26",
+      "date_he": "26 מאי 2026",
+      "time_start": "19:30",
+      "time_end": "21:30",
+      "gallery_id": "dizengoff",
+      "gallery_label_he": "גלריית כיכר דיזינגוף",
+      "cover_image": "images/events/event-how-many-2026-05-26-cover.webp",
+      "description_he": "השאלה הזאת נשמעת פשוטה. כמעט טכנית. אבל היא לא באמת שואלת על מספר. היא פותחת מרחב. מרחב שבו זיכרונות, תחושות ודפוסים מתקיימים בו זמנית, בלי היררכיה ובלי סדר ברור. העבודות בתערוכה אינן מנסות לענות — הן מציעות מבט על יחסים לא דרך סיפור, אלא דרך מה שמצטבר. (הטקסט האוצרותי המלא בדף האירוע.)",
+      "artists_he": [
+        "זוהר רון",
+        "דן בן-אבי",
+        "אלון מנג׳וך",
+        "ריסה עוז",
+        "נעמי ספיר",
+        "ירדן אמיר",
+        "ניר ג׳ורג׳יו לוין",
+        "ענת ויז׳ייה",
+        "אלסה ארס ברוש",
+        "ליאל סלמן נעם",
+        "טל נהוראי",
+        "טניה שין",
+        "גל פולק",
+        "samy d",
+        "רחלי ראובן"
+      ],
+      "_image_note": "תמונות הדף ב-images/events/how-many/ (invite-*, atmosphere, second-*, opening-01..14); hero = images/events/event-how-many-2026-05-26-cover.webp (משותף עם כרטיס ההומפייג', אומת זהה ב-RMSE).",
+      "route": "events/how-many/",
+      "homepage_visible": true,
+      "figma_node_desktop": "433:2",
+      "figma_node_mobile": "433:179",
+      "figma_file": "XhGH289YTRcW811wrufRJz"
+    },
+    {
       "id": "ktuba",
       "slug": "ktuba",
       "title_he": "כתובה — מיצג חי",

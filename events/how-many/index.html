@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אירוע הפתיחה — כמה שותפים היו לך? | Zielinski &amp; Rozen Art Galleries</title>
+<link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Light.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../../components/site-boot.css">
+<meta name="description" content="אירוע הפתיחה של תערוכת HOW MANY PARTNERS HAVE YOU HAD? — גלריית כיכר דיזינגוף, 26 במאי 2026, 19:30–21:30. אוצרת: קורין אברהם. 15 אומנים משתתפים.">
+<link rel="stylesheet" href="../../components/triptych-gallery.css">
+<style>
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;--bg-grey:#EEF0EF;--ink:#1B1B1B;--copy-grey:#6B7280;
+  --artist:#828282;--icon-grey:#707070;
+  --slide-active:#515151;--divider:#D8D8D8;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:clip;max-width:100vw}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+.heb .lat{font-family:var(--cop);font-weight:300;text-transform:uppercase}
+
+/* Desktop header — white strip on this page only (Figma; hero band stays grey) */
+@media (min-width:769px){
+  body.page-event-how-many site-header .nav{background:var(--white)}
+  body.page-event-how-many site-header .nav :focus-visible{outline-color:var(--ink)}
+}
+
+/* ===== EVENT PAGE — HOW MANY OPENING (אירוע הפתיחה) ===== */
+.event{display:flex;flex-direction:column;background:var(--white)}
+
+/* === HERO BAND (grey) — title + meta + curatorial text on left, image on right.
+   Mirrors Figma 433:28 (desktop) / 433:200 (mobile hero image). === */
+.event-hero{background:var(--bg-grey);padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
+.event-hero .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
+.event-hero .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;gap:17px;padding:0}
+
+/* Title block */
+.event-hero .h-title-block{display:flex;flex-direction:column;align-items:center;width:100%}
+/* Title: 80/72 FbEzmel Regular, centered (matches meta row below) */
+.event-hero .h-title{font-family:var(--heb);font-weight:400;font-size:64px;line-height:58px;text-align:center;width:100%;color:var(--ink);direction:rtl;padding:0 16px}
+/* Meta: gallery + date·time, centered (Figma 433:36-45) */
+.event-hero .h-meta{display:flex;flex-direction:column;gap:8px;align-items:center;padding:10px 10px 25px}
+.event-hero .h-meta .row-1,.event-hero .h-meta .row-2{display:flex;align-items:center;gap:8px;justify-content:center}
+.event-hero .h-meta .gallery{font-family:var(--heb);font-weight:400;font-size:28px;color:var(--ink);direction:rtl}
+.event-hero .h-meta .date,.event-hero .h-meta .time{font-family:var(--heb);font-weight:300;font-size:28px;color:var(--ink);direction:rtl}
+.event-hero .h-meta .dot{width:4px;height:4px;background:var(--icon-grey);border-radius:50%;display:inline-block}
+
+/* Body — curatorial text, FbEzmel Light 18/20 CENTER (Figma 433:53).
+   Default Light (ts2); .strong = Regular runs; .lat = the English title (ts1 = Copperplate). */
+.event-hero .h-body{font-family:var(--heb);font-weight:300;font-size:18px;line-height:20px;text-align:center;color:var(--ink);direction:rtl;padding:0 0 16px}
+.event-hero .h-body p+p{margin-top:16px}
+.event-hero .h-body .strong{font-weight:400}
+.event-hero .h-body .lat{font-weight:400;letter-spacing:.04em}
+.event-hero .h-body > p:first-child{font-size:14px}
+
+/* === Hero image (right column) — clean 492x744, no overlay (Figma 433:56) === */
+.event-hero .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
+.event-hero .card{position:relative;width:492px;height:744px;overflow:hidden;background:#000}
+.event-hero .card img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* === Section label (shared) === */
+.section-label{font-family:var(--cop);font-weight:300;font-size:28px;line-height:1.15;letter-spacing:.04em;color:var(--ink);text-align:left}
+
+/* === THE INVITATION — triptych + 7-segment dots (Figma 433:57) === */
+.event-invitation,.event-second{padding:64px var(--pad-x);background:var(--white);display:flex;justify-content:center}
+.event-invitation .inner,.event-second .inner{display:flex;flex-direction:column;gap:16px;width:100%;max-width:1248px}
+.event-tri{--tri-max-w:1248px;--tri-bg:transparent;--tri-dot-color:#EEF0EF;--tri-dot-active:#515151;width:100%}
+.event-tri .tri-frame{height:841px;aspect-ratio:auto;max-width:1248px}
+.event-tri .tri-slide.is-center{width:481px;height:841px}
+.event-tri .tri-slide.is-prev,.event-tri .tri-slide.is-next{width:302px;height:528px;opacity:.6}
+.event-tri .tri-slide.is-prev{left:calc(50% - 473px)}
+.event-tri .tri-slide.is-next{left:calc(50% + 472.5px)}
+.event-tri .tri-slide.is-hidden{width:481px;height:841px}
+
+/* === THE ATMOSPHERE — image (gradient fade) + artists list (Figma 433:75) === */
+.event-atmosphere{padding:64px var(--pad-x);background:var(--white);display:flex;justify-content:center}
+.event-atmosphere .inner{display:flex;flex-direction:column;gap:16px;width:100%;max-width:var(--max)}
+.event-atmosphere .atm-row{display:flex;gap:48px;align-items:stretch}
+.event-atmosphere .atm-img{flex:0 0 492px;display:flex;justify-content:flex-end}
+.event-atmosphere .atm-img .frame{position:relative;width:492px;height:744px;overflow:hidden}
+.event-atmosphere .atm-img .frame img{width:100%;height:100%;object-fit:cover}
+/* Bottom black fade — Figma 433:84 gradient layer */
+.event-atmosphere .atm-img .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);opacity:.55;pointer-events:none}
+.event-atmosphere .atm-artists{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:32px;padding:0 16px}
+/* Artists list — FbEzmel Light 28/32 CENTER, width 590 (Figma 433:86); NNBSP around pipes */
+.event-atmosphere .artists-text{font-family:var(--heb);font-weight:300;font-size:28px;line-height:32px;color:var(--ink);text-align:center;direction:rtl;max-width:590px}
+.event-atmosphere .artists-text .lead{font-weight:400;display:block;margin-bottom:.286em}
+.event-atmosphere .artists-text .lat{font-size:.86em}
+
+/* artist-link — every artist mention links to its page (docs/artist-linking.md) */
+a.artist-link{color:inherit;text-decoration:underline;text-decoration-color:rgba(27,27,27,.25);text-underline-offset:3px;transition:text-decoration-color .2s,opacity .2s}
+a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
+
+/* === MOMENTS FROM THE OPENING — 14-thumb horizontal strip (Figma 433:96) === */
+.event-moments{padding:32px var(--pad-x);background:var(--white);display:flex;justify-content:center}
+.event-moments .inner{display:flex;flex-direction:column;gap:16px;width:100%;max-width:1248px}
+.event-moments .head{display:flex;justify-content:space-between;align-items:center}
+.event-moments .head .more{display:flex;align-items:flex-start;padding-top:4px;color:#1A1C1C;transition:opacity .2s}
+.event-moments .head .more:hover{opacity:.6}
+.event-moments .head .more svg{width:10.33px;height:10.33px;display:block}
+/* Mobile swipe cue — horizontal arrows (Figma 433:295) */
+.event-moments .scroll-cue{display:none;justify-content:flex-end;gap:2px;color:var(--ink)}
+.event-moments .scroll-cue button{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;padding:0;color:inherit;border:0;background:none;cursor:pointer;transition:opacity .2s}
+.event-moments .scroll-cue button:hover{opacity:.55}
+.event-moments .scroll-cue button:disabled{opacity:.25;cursor:default;pointer-events:none}
+.event-moments .scroll-cue svg{width:24px;height:16px;display:block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.event-moments .strip{display:flex;flex-direction:row;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.event-moments .strip::-webkit-scrollbar{height:6px}
+.event-moments .strip::-webkit-scrollbar-thumb{background:var(--divider);border-radius:0}
+.event-moments .strip .cell{flex:0 0 auto;height:148px;overflow:hidden;background:#f3f1ee;scroll-snap-align:start}
+.event-moments .strip .cell img{height:148px;width:auto;max-width:none;object-fit:contain;transition:transform .8s ease}
+.event-moments .strip .cell:hover img{transform:scale(1.05)}
+
+/* === RESPONSIVE === */
+@media (max-width:1100px){
+  :root{--pad-x:48px}
+  .event-hero .img-col{flex-basis:380px}
+  .event-hero .card{width:380px;height:580px}
+  .event-hero .h-title{font-size:65px;line-height:1.0;width:100%;height:70px}
+  .event-hero .h-meta .gallery,.event-hero .h-meta .date,.event-hero .h-meta .time{font-size:22px}
+  .event-tri .tri-frame{height:560px}
+  .event-tri .tri-slide.is-center{width:360px;height:560px}
+  .event-tri .tri-slide.is-prev,.event-tri .tri-slide.is-next{width:220px;height:380px}
+  .event-tri .tri-slide.is-prev{left:calc(50% - 326px)}
+  .event-tri .tri-slide.is-next{left:calc(50% + 326px)}
+  .event-tri .tri-slide.is-hidden{width:360px;height:560px}
+  .event-atmosphere .atm-img{flex-basis:380px}
+  .event-atmosphere .atm-img .frame{width:380px;height:580px}
+  .event-atmosphere .artists-text{font-size:22px;line-height:1.2}
+}
+
+@media (max-width:768px){
+  :root{--pad-x:16px}
+
+  /* Mobile re-order (Figma 433:179): hero image → title+meta → invitation → body →
+     second gallery → atmosphere(+artists) → moments. The hero wrappers become
+     display:contents so their children interleave with the sibling sections. */
+  .event-hero,.event-hero .row,.event-hero .text-col{display:contents}
+  .event-hero .img-col{order:1}
+  .event-hero .h-title-block{order:2;padding:32px 0 0;background:var(--white);align-items:center}
+  .event-hero .h-meta{order:2;margin-top:16px;background:var(--white)}
+  .event-invitation{order:3}
+  .event-hero .h-body{order:4}
+  .event-second{order:5}
+  .event-atmosphere{order:6}
+  .event-moments{order:7}
+
+  /* Hero image — full viewport width, natural height (no crop) */
+  .event-hero .img-col{flex:none;width:100%;justify-content:stretch;align-self:stretch}
+  .event-hero .card{width:100%;height:auto;overflow:visible;background:transparent}
+  .event-hero .card img,
+  .event-hero .card picture,
+  .event-hero .card picture img{width:100%;height:auto;object-fit:unset;display:block}
+
+  /* Title + meta band (Figma 433:223) */
+  .event-hero .h-title-block{padding:32px 0 0;background:var(--white);align-items:center}
+  .event-hero .h-title{font-size:24px;line-height:1.1;padding:0 16px;text-align:center;width:100%;height:auto}
+  .event-hero .h-meta{gap:8px;padding:0 10px 8px}
+  .event-hero .h-meta .gallery,.event-hero .h-meta .date,.event-hero .h-meta .time{font-size:14px}
+  .event-hero .h-meta .dot{width:2px;height:2px}
+
+  /* Galleries: stage 443h, center 216x378, peeks bleed off-screen (Figma 433:245/433:262) */
+  .event-invitation,.event-second{padding:8px 16px}
+  .event-invitation .inner,.event-second .inner{gap:16px}
+  .event-invitation .section-label{display:none}
+  .section-label{font-size:20px}
+  .event-tri{--tri-max-w:none;width:100%}
+  .event-tri .tri-frame{height:443px;max-width:none;width:100%}
+  .event-tri .tri-slide.is-center{width:216px;height:378px}
+  .event-tri .tri-slide.is-prev,.event-tri .tri-slide.is-next{width:117px;height:204.75px;opacity:.6}
+  .event-tri .tri-slide.is-prev{left:calc(50% - 194.5px)}
+  .event-tri .tri-slide.is-next{left:calc(50% + 194.5px)}
+  .event-tri .tri-slide.is-hidden{width:216px;height:378px}
+
+  /* Body — after the invitation gallery (Figma 433:259) */
+  .event-hero .h-body{padding:16px;font-size:16px;line-height:20px;background:var(--white)}
+  .event-hero .h-body > p:first-child{font-size:12px;line-height:22px}
+
+  /* Atmosphere — header 19px Copperplate Regular, image full-width 638h (Figma 433:276) */
+  .event-atmosphere{padding:32px 16px 16px}
+  .event-atmosphere .inner{gap:16px}
+  .event-atmosphere .section-label{font-weight:400;font-size:19px;height:28px}
+  .event-atmosphere .atm-row{flex-direction:column;gap:16px}
+  .event-atmosphere .atm-img{flex:none;width:100%}
+  .event-atmosphere .atm-img .frame{width:100%;height:638px}
+  .event-atmosphere .atm-img .frame::after{display:none}
+  .event-atmosphere .atm-artists{padding:16px 0 0}
+  .event-atmosphere .artists-text{font-size:16px;line-height:20px;max-width:358px}
+
+  /* Moments — header 19px, swipe arrows, horizontal strip (Figma 433:286) */
+  .event-moments{padding:16px}
+  .event-moments .inner{gap:15px}
+  .event-moments .section-label{font-weight:400;font-size:19px}
+  .event-moments .scroll-cue{display:flex}
+  .event-moments .strip{gap:4px;padding-bottom:16px}
+  .event-moments .strip .cell{flex:0 0 auto;height:80px}
+  .event-moments .strip .cell img{height:80px;width:auto;max-width:none;object-fit:contain}
+}
+
+@media (max-width:400px){
+  .event-hero .h-title{font-size:22px}
+}
+</style>
+</head>
+<body class="page-event-how-many">
+
+<site-header></site-header>
+
+<main class="event">
+
+  <!-- HERO BAND (grey) — title + meta + curatorial body on left, hero image on right.
+       Mirrors Figma 433:28 (desktop) and 433:200 (mobile). -->
+  <section class="event-hero">
+    <div class="row">
+
+      <!-- Text column -->
+      <div class="text-col">
+        <div class="h-title-block">
+          <h1 class="h-title heb">אירוע הפתיחה</h1>
+        </div>
+
+        <div class="h-meta">
+          <div class="row-1"><span class="gallery heb">גלריית כיכר דיזינגוף</span></div>
+          <div class="row-2">
+            <span class="date heb"><bdi>26 מאי 2026</bdi></span>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="time"><bdi>19:30-21:30</bdi></span>
+          </div>
+        </div>
+
+        <!-- Curatorial body — full text lives here (long-form stays in HTML); excerpt in data/events.json -->
+        <div class="h-body heb">
+          <p><span class="lat">how many partners have you had?</span></p>
+          <p>השאלה הזאת נשמעת פשוטה.<br>
+          כמעט טכנית.<br>
+          אבל היא לא באמת שואלת על מספר.<br>
+          היא פותחת מרחב.<br>
+          מרחב שבו זיכרונות, תחושות ודפוסים מתקיימים בו זמנית,<br>
+          בלי היררכיה ובלי סדר ברור.<br>
+          מרחב שבו מה שנשאר אינו עובדה,<br>
+          אלא רישום בגוף.</p>
+          <p>לא תמיד ברור מה שייך למי. מה התחיל איפה.<br>
+          ומה בכלל ניתן להפרדה.<br>
+          ובתוך כל זה, יש גם רגעים שאינם ניתנים להסבר.<br>
+          משיכה שממשיכה להתקיים גם כשההיגיון כבר ביטל אותה,<br>
+          דלתות שנדפקות שוב, למרות שהן סגורות,<br>
+          רגעים שבהם חרדה מתחפשת לאהבה,<br>
+          וכאב מוכר מרגיש כמו בית.</p>
+          <p>בתוך המרחב הזה, העבודות בתערוכה אינן מנסות לענות.<br>
+          הן מציעות מבט על יחסים לא דרך סיפור,<br>
+          אלא דרך מה שמצטבר.<br>
+          מחוות קטנות, חזרות ושאריות.<br>
+          רגעים שבהם מגע הוא גם קרבה וגם ספק.<br>
+          רגעים שבהם אינטימיות מתקרבת ונעצרת באותו הזמן.<br>
+          רגעים שלא מתיישבים לכדי נרטיב אחד.</p>
+          <p>לאורך הדרך, החיפוש מופנה שוב ושוב החוצה.<br>
+          אל האחר, אל המפגש, אל מה שיכול למלא או להחזיר.<br>
+          ורק ברגעים נדירים של כנות, כמעט בלתי נסבלת,<br>
+          מתבהר שהשאלה מעולם לא הייתה שם.<br>
+          השאלה ״כמה״ מתפרקת כאן,<br>
+          ובמקומה נשאלת שאלה אחרת,<br>
+          לא מנוסחת עד הסוף, שנוכחת בגוף יותר משהיא נאמרת.</p>
+          <p class="strong">לא מה קרה, אלא מה נשאר.<br>
+          מה חוזר, מה נמשך מעבר למפגש עצמו.<br>
+          ומה מתגלה, לאט, לאט, כאשר מפסיקים לחפש בחוץ,<br>
+          ונשארים מול מה שכבר נמצא בפנים.</p>
+          <p class="strong">אוצרת התערוכה - <a class="artist-link" href="../../curators/korin-avraham/">קורין אברהם</a></p>
+        </div>
+      </div>
+
+      <!-- Hero image — clean, no overlay (Figma 433:56) -->
+      <div class="img-col">
+        <div class="card" aria-label="אירוע הפתיחה — כמה שותפים היו לך?">
+          <img src="../../images/events/event-how-many-2026-05-26-cover.webp" width="3058" height="4096" alt="אירוע הפתיחה של תערוכת how many partners have you had?" decoding="async" fetchpriority="high">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THE INVITATION — triptych slideshow, 7-segment dots (3 real images; Figma 433:57) -->
+  <section class="event-invitation" aria-label="ההזמנה לאירוע">
+    <div class="inner">
+      <div class="section-label">the invitation</div>
+      <div class="tri event-tri" data-tri-loop="true">
+        <div class="tri-frame">
+          <img class="tri-slide" src="../../images/events/how-many/invite-01.webp" width="1320" height="1565" alt="הזמנה לאירוע הפתיחה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-02.webp" width="1320" height="1564" alt="הזמנה לאירוע הפתיחה — צילום" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/event-how-many-2026-05-26-cover.webp" width="3058" height="4096" alt="כרזת התערוכה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-03.webp" width="1187" height="1400" alt="הזמנה לאירוע הפתיחה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-04.webp" width="1050" height="1400" alt="הזמנה לאירוע הפתיחה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-05.webp" width="1049" height="1400" alt="הזמנה לאירוע הפתיחה" draggable="false" decoding="async" loading="lazy">
+        </div>
+        <div class="tri-dots" role="tablist" aria-label="gallery navigation">
+          <button type="button" class="tri-dot is-on" aria-label="slide 1" role="tab" aria-selected="true"></button>
+          <button type="button" class="tri-dot" aria-label="slide 2" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot" aria-label="slide 3" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot" aria-label="slide 4" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot" aria-label="slide 5" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot" aria-label="slide 6" role="tab" aria-selected="false"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE ATMOSPHERE — image with bottom fade + artists list (Figma 433:75) -->
+  <section class="event-atmosphere" aria-label="האווירה והאומנים">
+    <div class="inner">
+      <div class="section-label">the atmosphere</div>
+      <div class="atm-row">
+        <div class="atm-img">
+          <div class="frame">
+            <img src="../../images/events/how-many/atmosphere.webp" width="1067" height="1600" alt="אווירת ערב הפתיחה בגלריה" decoding="async" loading="lazy">
+          </div>
+        </div>
+        <div class="atm-artists">
+          <div class="artists-text">
+            <span class="lead">אומנים מציגים:</span>
+            <a class="artist-link" href="../../artists/zohar-ron/">זוהר רון</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/zohar-ron-dan-ben-ari/">דן בן-אבי</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/alon/">אלון מנג׳וך</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/risa-oz/">ריסה עוז</a><br>
+            <a class="artist-link" href="../../artists/noemi-safir/">נעמי ספיר</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/yarden-amir/">ירדן אמיר</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/nir-giorgio-levin/">ניר ג׳ורג׳יו לוין</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/anat-wegier/">ענת ויז׳ייה</a><br>
+            <a class="artist-link" href="../../artists/elsa-ars-brush/">אלסה ארס ברוש</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/liel-salman/">ליאל סלמן נעם</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/tal-nehoray/">טל נהוראי</a><br>
+            <a class="artist-link" href="../../artists/tanya-shin/">טניה שין</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/gal-polk/">גל פולק</a>&#8239;|&#8239;<a class="artist-link" href="../../artists/sami-david/"><span class="lat">samy d</span></a>&#8239;|&#8239;רחלי ראובן
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECOND GALLERY — triptych, 3 dots, no header (Figma 433:87) -->
+  <section class="event-second" aria-label="צילומים מהאירוע">
+    <div class="inner">
+      <div class="tri event-tri" data-tri-loop="true">
+        <div class="tri-frame">
+          <img class="tri-slide" src="../../images/events/how-many/second-02.webp" width="1067" height="1600" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/second-03.webp" width="1600" height="1067" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/second-01.webp" width="1200" height="1600" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/second-04.webp" width="1200" height="1600" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/second-05.webp" width="1600" height="1066" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
+        </div>
+        <div class="tri-dots" role="tablist" aria-label="gallery navigation">
+          <button type="button" class="tri-dot is-on" aria-label="slide 1" role="tab" aria-selected="true"></button>
+          <button type="button" class="tri-dot" aria-label="slide 2" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot" aria-label="slide 3" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot" aria-label="slide 4" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot" aria-label="slide 5" role="tab" aria-selected="false"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOMENTS FROM THE OPENING — 14-thumb horizontal scroll strip (Figma 433:96) -->
+  <section class="event-moments" aria-label="רגעים מערב הפתיחה">
+    <div class="inner">
+      <div class="head">
+        <div class="section-label">moments from<br>the opening</div>
+        <a class="more" href="../../exhibitions/how-many/" aria-label="לדף התערוכה — how many partners have you had?">
+          <svg viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M0.926778 11.0004L0 10.0736L8.73379 1.33128H0.793662V0H11.0004V10.2067H9.6691V2.2666L0.926778 11.0004Z" fill="currentColor"/></svg>
+        </a>
+      </div>
+      <div class="scroll-cue">
+        <button type="button" class="strip-prev" aria-label="previous">
+          <svg viewBox="0 0 24 16" aria-hidden="true"><path d="M22 8H2M2 8l6-6M2 8l6 6"/></svg>
+        </button>
+        <button type="button" class="strip-next" aria-label="next">
+          <svg viewBox="0 0 24 16" aria-hidden="true"><path d="M2 8h20M22 8l-6-6M22 8l-6 6"/></svg>
+        </button>
+      </div>
+      <div class="strip" role="list">
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-01.webp" width="1320" height="1557" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-02.webp" width="1320" height="1773" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-03.webp" width="1320" height="1568" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-04.webp" width="1320" height="1564" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-05.webp" width="1536" height="2048" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-06.webp" width="846" height="1858" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-07.webp" width="2730" height="4096" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-08.webp" width="1320" height="1568" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-09.webp" width="1296" height="1565" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-10.webp" width="1320" height="1569" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-11.webp" width="3849" height="4000" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-12.webp" width="1126" height="2000" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-13.webp" width="4096" height="3277" alt="" decoding="async" loading="lazy"></div>
+        <div class="cell" role="listitem"><img src="../../images/events/how-many/moment-14.webp" width="2048" height="1365" alt="" decoding="async" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<site-footer></site-footer>
+
+<script src="../../components/site-chrome.js" defer></script>
+<script src="../../components/triptych-gallery.js" defer></script>
+
+<script>
+(function(){
+  var section = document.querySelector('.event-moments');
+  if(!section) return;
+  var strip = section.querySelector('.strip');
+  var prevBtn = section.querySelector('.strip-prev');
+  var nextBtn = section.querySelector('.strip-next');
+  if(!strip || !prevBtn || !nextBtn) return;
+
+  function step(){
+    var cell = strip.querySelector('.cell');
+    if(!cell) return strip.clientWidth;
+    var gap = parseFloat(getComputedStyle(strip).columnGap || getComputedStyle(strip).gap) || 0;
+    return cell.getBoundingClientRect().width + gap;
+  }
+
+  function atStart(){ return strip.scrollLeft <= 1; }
+  function atEnd(){
+    return strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 1;
+  }
+
+  function syncButtons(){
+    prevBtn.disabled = atStart();
+    nextBtn.disabled = atEnd();
+  }
+
+  function scrollStrip(dir){
+    strip.scrollBy({left: dir * step(), behavior: 'smooth'});
+  }
+
+  prevBtn.addEventListener('click', function(){ scrollStrip(-1); });
+  nextBtn.addEventListener('click', function(){ scrollStrip(1); });
+  strip.addEventListener('scroll', syncButtons, {passive: true});
+  window.addEventListener('resize', syncButtons);
+  syncButtons();
+})();
+</script>
+
+<script src="../../components/analytics.js" defer></script>
+<script src="../../components/picture-upgrade.js" defer></script>
+<script src="../../components/embed-iframe.js"></script>
+</body>
+</html>

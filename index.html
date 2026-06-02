@@ -439,16 +439,40 @@ body{text-transform:uppercase}
 .press-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
 .press-rows{display:flex;flex-direction:column;gap:48px}
 .press-row{display:flex;gap:48px}
+.press-row.press-row--swap{flex-direction:row-reverse}
 .press-row.press-row--right{justify-content:flex-end}
 .press-card{flex:0 1 calc(50% - 24px);min-width:0;display:flex;gap:16px;align-items:stretch;direction:rtl;color:inherit;text-decoration:none;transition:opacity .2s}
 .press-card:hover{opacity:.75}
 .press-card .img img{transition:transform .6s}
 .press-card:hover .img img{transform:scale(1.04)}
 .press-card .info{flex:1;display:flex;flex-direction:column;justify-content:space-between;text-align:right;min-width:0;padding:0 0 8px;gap:8px}
-.press-card .tag{align-self:flex-start;background:var(--bg-grey);padding:4px 8px;font-family:var(--heb);font-size:14px;font-weight:300;display:inline-block}
-.press-card .tag .tag-lat{font-family:var(--cop);direction:ltr;unicode-bidi:embed}
-.press-card .tag.en{font-family:var(--cop);font-weight:300;direction:ltr;white-space:nowrap;font-size:11px;line-height:1.15;padding:3px 7px}
+.press-card .tag{
+  align-self:flex-start;
+  background:var(--bg-grey);
+  padding:4px 8px;
+  font-family:var(--heb);
+  font-size:14px;
+  font-weight:300;
+  display:inline-flex;
+  align-items:center;
+  min-height:23px;
+  line-height:1;
+  box-sizing:border-box;
+}
+.press-card .tag .tag-lat{font-family:var(--cop);direction:ltr;unicode-bidi:embed;line-height:1}
+.press-card .tag.en{
+  font-family:var(--cop);
+  font-weight:300;
+  direction:ltr;
+  white-space:nowrap;
+  font-size:13px;
+  line-height:1;
+  padding:4px 8px;
+  min-height:23px;
+}
 .press-card .desc{font-family:var(--heb);font-size:16px;font-weight:400;line-height:1.4;text-align:right}
+.press-card .desc.desc-lat{font-family:var(--cop);direction:ltr;unicode-bidi:embed}
+.press-card .desc.desc-lat-sm{font-size:11px;line-height:1.2;letter-spacing:.02em}
 .press-card .date{font-family:var(--cop);font-size:14px;font-weight:300;text-align:right;direction:ltr;align-self:flex-start}
 .press-card .img{flex:0 0 178px;width:178px;height:112px;overflow:hidden;background:#f3f1ee;order:-1}
 .press-card .img img{width:100%;height:100%;object-fit:cover}
@@ -698,6 +722,7 @@ body{text-transform:uppercase}
   .press{padding:32px 16px}
   .press-rows{gap:24px}
   .press-row{flex-direction:column;gap:24px}
+  .press-row.press-row--swap{flex-direction:column}
   .press-card{
     flex:1 1 auto;
     direction:rtl;
@@ -717,8 +742,8 @@ body{text-transform:uppercase}
     padding:clamp(3px,1vw,4px) clamp(6px,2vw,8px);
   }
   .press-card .tag.en{
-    font-size:clamp(9px,calc((100vw - 32px) * 0.03),11px);
-    padding:clamp(2px,.8vw,3px) clamp(5px,1.8vw,7px);
+    font-size:clamp(11px,calc((100vw - 32px) * 0.038),14px);
+    padding:clamp(3px,1vw,4px) clamp(6px,2vw,8px);
   }
   .press-card .desc{
     font-size:clamp(12px,calc((100vw - 32px) * 0.038),14px);
@@ -732,7 +757,7 @@ body{text-transform:uppercase}
       width:clamp(88px,36cqi,178px);
     }
     .press-card .tag{font-size:clamp(11px,4.2cqi,14px)}
-    .press-card .tag.en{font-size:clamp(9px,3.4cqi,11px)}
+    .press-card .tag.en{font-size:clamp(11px,4.2cqi,14px)}
     .press-card .desc{font-size:clamp(12px,4.2cqi,14px)}
     .press-card .date{font-size:clamp(11px,3.8cqi,14px)}
   }
@@ -1240,7 +1265,33 @@ porta</div></a>
     <span class="l">&amp; events</span>
   </div>
   <div class="press-rows">
-    <div class="press-row">
+    <div class="press-row press-row--swap">
+      <a class="press-card" href="events/close-look/">
+        <div class="info">
+          <span class="tag en">gallery event</span>
+          <p class="desc">מבט מקרוב: מפגש פתוח בתוך התערוכה | טניה שין</p>
+          <span class="date">2.6.2026</span>
+        </div>
+        <div class="img"><img src="images/events/close-look/intro-photo.webp" width="292" height="162" alt="" decoding="async" loading="lazy"></div>
+      </a>
+      <a class="press-card" href="https://timeout.co.il/%D7%AA%D7%A2%D7%A8%D7%95%D7%9B%D7%95%D7%AA-%D7%9E%D7%95%D7%9E%D7%9C%D7%A6%D7%95%D7%AA-270526/" target="_blank" rel="noopener noreferrer">
+        <div class="info">
+          <span class="tag"><span class="tag-lat">TIME OUT</span> | תרבות</span>
+          <p class="desc">התחנה האחרונה: 25 תערוכות מומלצות לעצור בהן את הכל בסופ"ש</p>
+          <span class="date">27.5.2026</span>
+        </div>
+        <div class="img"><img src="images/press/time-out/home-card-2026-05-27.webp" width="1000" height="1246" alt="" decoding="async" loading="lazy"></div>
+      </a>
+    </div>
+    <div class="press-row press-row--swap">
+      <a class="press-card" href="events/how-many/">
+        <div class="info">
+          <span class="tag en">gallery event</span>
+          <p class="desc desc-lat desc-lat-sm">how many partners<br>have you had?</p>
+          <span class="date">26.5.2026</span>
+        </div>
+        <div class="img"><img src="images/events/event-how-many-2026-05-26-cover.webp" width="3058" height="4096" alt="" decoding="async" loading="lazy"></div>
+      </a>
       <a class="press-card" href="press/press-1/">
         <div class="info">
           <span class="tag">מגזין פורטפוליו</span>
@@ -1248,6 +1299,16 @@ porta</div></a>
           <span class="date">19.1.2026</span>
         </div>
         <div class="img"><img src="images/press/press-1/00-home-card.webp" width="171" height="108" alt="" decoding="async" loading="lazy"></div>
+      </a>
+    </div>
+    <div class="press-row press-row--swap">
+      <a class="press-card" href="events/loneliness/">
+        <div class="info">
+          <span class="tag en">gallery event</span>
+          <p class="desc">בדידות בתוך סביבה תוססת</p>
+          <span class="date">25.2.2026</span>
+        </div>
+        <div class="img"><img src="images/events/event-3-cover.webp" width="1435" height="1600" alt="" decoding="async" loading="lazy"></div>
       </a>
       <a class="press-card" href="press/walla/">
         <div class="info">
@@ -1263,27 +1324,17 @@ porta</div></a>
         <div class="info">
           <span class="tag en">gallery event</span>
           <p class="desc">בדידות בתוך סביבה תוססת</p>
-          <span class="date">25.2.2026</span>
+          <span class="date">19.1.2026</span>
         </div>
-        <div class="img"><img src="images/events/event-3-cover.webp" width="1435" height="1600" alt="" decoding="async" loading="lazy"></div>
+        <div class="img"><img src="images/events/event-4-cover.webp" width="1435" height="1600" alt="" decoding="async" loading="lazy"></div>
       </a>
-      <a class="press-card" href="events/ktuba/">
+      <a class="press-card" href="press/time-out/">
         <div class="info">
-          <span class="tag en">gallery event</span>
-          <p class="desc">כתובה — מיצג חי של זוהר רון</p>
-          <span class="date">25.2.2026</span>
+          <span class="tag"><span class="heb">מגזין</span> <span class="tag-lat">TIMEOUT</span></span>
+          <p class="desc">דה פיינל קאונטדאון: 18 תערוכות לחגוג בהן סופ"ש ראשון של 2026</p>
+          <span class="date">31.12.2025</span>
         </div>
-        <div class="img"><img src="images/events/ktuba/hero.webp" width="492" height="744" alt="" decoding="async" loading="lazy"></div>
-      </a>
-    </div>
-    <div class="press-row press-row--right">
-      <a class="press-card" href="https://timeout.co.il/%D7%AA%D7%A2%D7%A8%D7%95%D7%9B%D7%95%D7%AA-%D7%9E%D7%95%D7%9E%D7%9C%D7%A6%D7%95%D7%AA-270526/" target="_blank" rel="noopener noreferrer">
-        <div class="info">
-          <span class="tag"><span class="tag-lat">TIME OUT</span> | תרבות</span>
-          <p class="desc">התחנה האחרונה: 25 תערוכות מומלצות לעצור בהן את הכל בסופ"ש</p>
-          <span class="date">27.5.2026</span>
-        </div>
-        <div class="img"><img src="images/press/time-out/home-card-2026-05-27.webp" width="1000" height="1246" alt="" decoding="async" loading="lazy"></div>
+        <div class="img"><img src="images/press/time-out/home-card-2025-12-31.webp" width="1160" height="1066" alt="" decoding="async" loading="lazy"></div>
       </a>
     </div>
   </div>

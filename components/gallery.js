@@ -282,13 +282,11 @@
         if (this._idx < this._n - 1) {
           this.goTo(this._idx + 1);
         } else {
-          const prevIdx = this._idx;
           this._idx = 0;
           this._pos = this._n + 1;
+          this._pendingChange = 0;
           this._render();
-          if (prevIdx !== this._idx) {
-            this.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: 0 }, bubbles: true }));
-          }
+          this._scheduleWrapFallback();
         }
         return;
       }
@@ -301,17 +299,36 @@
         if (this._idx > 0) {
           this.goTo(this._idx - 1);
         } else {
-          const prevIdx = this._idx;
           this._idx = this._n - 1;
           this._pos = 0;
+          this._pendingChange = this._n - 1;
           this._render();
-          if (prevIdx !== this._idx) {
-            this.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: this._idx }, bubbles: true }));
-          }
+          this._scheduleWrapFallback();
         }
         return;
       }
       this.goTo(this._idx - 1);
+    }
+
+    _scheduleWrapFallback() {
+      clearTimeout(this._wrapTimer);
+      this._wrapTimer = setTimeout(() => this._completeWrap(), 400);
+    }
+
+    _completeWrap() {
+      clearTimeout(this._wrapTimer);
+      if (this._pos === this._n + 1) {
+        this._pos = 1;
+        this._finalizeSnapNoAnim();
+      } else if (this._pos === 0) {
+        this._pos = this._n;
+        this._finalizeSnapNoAnim();
+      }
+      if (this._pendingChange !== undefined) {
+        const idx = this._pendingChange;
+        this._pendingChange = undefined;
+        this.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: idx }, bubbles: true }));
+      }
     }
 
     _snapCloneEnd() {
@@ -339,12 +356,8 @@
     _onTransitionEnd(e) {
       if (!this._infinite || e.target !== this._track) return;
       if (e.propertyName !== 'transform') return;
-      if (this._pos === this._n + 1) {
-        this._pos = 1;
-        this._finalizeSnapNoAnim();
-      } else if (this._pos === 0) {
-        this._pos = this._n;
-        this._finalizeSnapNoAnim();
+      if (this._pos === this._n + 1 || this._pos === 0) {
+        this._completeWrap();
       }
     }
 
@@ -379,6 +392,7 @@
     }
 
     disconnectedCallback() {
+      clearTimeout(this._wrapTimer);
       if (this._ro) { this._ro.disconnect(); this._ro = null; }
       if (this._track && this._infinite && this._boundTransitionEnd) {
         this._track.removeEventListener('transitionend', this._boundTransitionEnd);

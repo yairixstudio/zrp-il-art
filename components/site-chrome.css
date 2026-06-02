@@ -73,7 +73,7 @@ body.menu-open{overflow:hidden}
 
 /* Left column — newsletter */
 .newsletter{width:300px;flex-shrink:0;display:flex;flex-direction:column;gap:17px}
-.newsletter h3{font-family:var(--cop);font-weight:400;font-size:24px;line-height:32px;letter-spacing:.04em}
+.newsletter h2{font-family:var(--cop);font-weight:400;font-size:24px;line-height:32px;letter-spacing:.04em}
 .newsletter form{display:flex;flex-direction:column;gap:12px}
 /* Textarea avoids native email-input clipping with Copperplate while staying single-line. */
 .newsletter textarea.newsletter-email{background:transparent;border:0;border-bottom:1px solid #fff;border-radius:0;height:47px;padding:14px 0 9px;color:#fff;font-family:var(--cop);font-size:14px;line-height:20px;letter-spacing:.02em;outline:0;width:100%;box-sizing:border-box;display:block;resize:none;overflow:hidden;white-space:nowrap;text-transform:uppercase;caret-color:#fff;-webkit-appearance:none;appearance:none}

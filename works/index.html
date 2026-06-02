@@ -180,7 +180,7 @@ body{text-transform:uppercase}
     return '<img class="tri-slide" src="'+src+'" alt="'+w.name_he+(w.name_he_line2?' · '+w.name_he_line2:'')+'" draggable="false"'+(i?' loading="lazy"':'')+' data-caption="'+w.name_he+'"'+(w.name_he_line2?' data-caption-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'"'+(w.name_he_line2?' data-artwork-he-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' decoding="async">';
   }).join('');
   var dots=items.map(function(_,i){
-    return '<button type="button" class="tri-dot'+(i===0?' is-on':'')+'" role="tab" aria-selected="'+(i===0)+'">';
+    return '<button type="button" class="tri-dot'+(i===0?' is-on':'')+'" role="tab" aria-selected="'+(i===0)+'" aria-label="Slide '+(i+1)+'">';
   }).join('');
   car.innerHTML='<div class="tri" data-tri-loop="true"><div class="tri-frame">'+slides+'</div><div class="tri-dots" role="tablist" aria-label="gallery navigation">'+dots+'</div></div>';
 

@@ -142,7 +142,7 @@
     return (
       '<footer class="footer">' +
         '<div class="newsletter">' +
-          '<h3>Stay Informed</h3>' +
+          '<h2>Stay Informed</h2>' +
           '<form onsubmit="event.preventDefault()" novalidate>' +
             '<textarea class="newsletter-email" name="email" rows="1" inputmode="email" autocomplete="email" placeholder="Email Address" aria-label="Email Address" spellcheck="false"></textarea>' +
             '<button type="submit">SUBSCRIBE</button>' +

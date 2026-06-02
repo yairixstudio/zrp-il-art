@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Loneliness in a Vibrant Environment — a group exhibition at Zielinski & Rozen galleries exploring solitude through the work of 10 Israeli artists.">
 <title>Exhibition — Zielinski & Rozen Art Galleries</title>
 <link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="../../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
@@ -85,7 +86,6 @@ body{text-transform:uppercase}
 .ex-hero .img-frame > image-gallery{position:absolute;inset:0}
 .ex-hero .img-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,0) 70%);pointer-events:none;z-index:1}
 .ex-hero .overlay{position:absolute;left:90px;top:326px;width:max-content;max-width:calc(100% - 32px);display:flex;flex-direction:column;gap:6px;color:#fff;z-index:2;pointer-events:none}
-.ex-hero .overlay > *{pointer-events:auto}
 .ex-hero .overlay .title-bar{display:flex;align-items:center;justify-content:center;gap:13px;flex-wrap:nowrap;white-space:nowrap}
 .ex-hero .overlay .title-bar .lbl{font-family:var(--cop);font-weight:300;font-size:26px;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
 .ex-hero .overlay .title-bar .dot{display:block;width:6px;height:6px;border-radius:300px;background:#fff;flex-shrink:0}
@@ -450,7 +450,7 @@ a.card.is-linked .pic img{transition:filter .25s}
         const link = document.createElement('a');
         link.className = 'card is-linked';
         link.href = '../../curators/' + cur.slug + '/';
-        link.setAttribute('aria-label', 'לדף האוצרת ' + (cur.name_en_first + ' ' + cur.name_en_last));
+        link.setAttribute('aria-label', (cur.name_en_first + ' ' + cur.name_en_last) + ' — curator page');
         const pic = document.createElement('div');
         pic.className = 'pic';
         const img = document.createElement('img');

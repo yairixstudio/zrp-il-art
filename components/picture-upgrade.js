@@ -41,15 +41,33 @@
     var avif = base + '.avif' + q;
     var webp = base + '.webp' + q;
 
+    // Responsive images: if the <img> carries srcset (WebP variants),
+    // mirror it onto the AVIF <source> by swapping extensions, and copy
+    // the sizes attribute so both formats resolve the same slot width.
+    var imgSrcset = img.getAttribute('srcset');
+    var imgSizes = img.getAttribute('sizes');
+
     var pic = document.createElement('picture');
     var sA = document.createElement('source');
-    sA.srcset = avif; sA.type = 'image/avif';
+    sA.type = 'image/avif';
+    if (imgSrcset) {
+      sA.srcset = imgSrcset.replace(/\.png\b/gi, '.webp').replace(/\.webp\b/gi, '.avif');
+      if (imgSizes) sA.setAttribute('sizes', imgSizes);
+    } else {
+      sA.srcset = avif;
+    }
     pic.appendChild(sA);
 
     // Legacy PNG src → also need an explicit WebP <source> AND rewrite img src.
     if (ext === 'png') {
       var sW = document.createElement('source');
-      sW.srcset = webp; sW.type = 'image/webp';
+      if (imgSrcset) {
+        sW.srcset = imgSrcset.replace(/\.png\b/gi, '.webp');
+        if (imgSizes) sW.setAttribute('sizes', imgSizes);
+      } else {
+        sW.srcset = webp;
+      }
+      sW.type = 'image/webp';
       pic.appendChild(sW);
     }
 
@@ -57,8 +75,7 @@
     if (!parent) { img.dataset.picDone = '1'; return; }
     parent.insertBefore(pic, img);
     // copy srcset if present (responsive cases) — replace .png with .webp
-    var ss = img.getAttribute('srcset');
-    if (ss) img.setAttribute('srcset', ss.replace(/\.png\b/gi, '.webp'));
+    if (imgSrcset) img.setAttribute('srcset', imgSrcset.replace(/\.png\b/gi, '.webp'));
     if (ext === 'png') img.setAttribute('src', webp);
     pic.appendChild(img);
     img.dataset.picDone = '1';
@@ -79,6 +96,9 @@
         if (m.type === 'attributes' && m.target && m.target.tagName === 'IMG') {
           var img = m.target;
           if (img.parentNode && img.parentNode.tagName === 'PICTURE') {
+            // Responsive imgs: sources mirror the img srcset (set in makePicture);
+            // a src swap alone must not clobber them with a single-URL srcset.
+            if (img.getAttribute('srcset')) continue;
             var src = img.getAttribute('src') || '';
             var mm = src.match(RE);
             if (mm) {

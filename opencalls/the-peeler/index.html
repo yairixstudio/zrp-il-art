@@ -391,7 +391,7 @@ a.artist-figure-link img{transition:filter .25s}
           ${heroBlocks.join('')}
         </div>
         <div class="img-col">
-          <div class="img-frame"><img src="${ctx.hero_image}" alt="" decoding="async" loading="lazy"></div>
+          <div class="img-frame"><img src="${ctx.hero_image}" alt="" decoding="async" fetchpriority="high"></div>
         </div>
       </div>
     </section>
@@ -481,6 +481,6 @@ a.artist-figure-link img{transition:filter .25s}
 
 <script src="../../components/analytics.js" defer></script>
 <script src="../../components/picture-upgrade.js" defer></script>
-<script src="../../components/embed-iframe.js"></script>
+<script src="../../components/embed-iframe.js" defer></script>
 </body>
 </html>

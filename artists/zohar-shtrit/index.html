@@ -465,7 +465,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
     } else if(a.portrait){
       portraitHTML=
         '<div class="hero-portrait">'+
-          '<img src="../../'+escapeHtml(a.portrait)+'" alt="'+escapeHtml(a.name_en||a.slug)+'"'+focusStyle+' decoding="async" loading="lazy">'+
+          '<img src="../../'+escapeHtml(a.portrait)+'" alt="'+escapeHtml(a.name_en||a.slug)+'"'+focusStyle+' decoding="async" fetchpriority="high">'+
         '</div>';
     }
 
@@ -705,6 +705,6 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
 
 <script src="../../components/analytics.js" defer></script>
 <script src="../../components/picture-upgrade.js" defer></script>
-<script src="../../components/embed-iframe.js"></script>
+<script src="../../components/embed-iframe.js" defer></script>
 </body>
 </html>

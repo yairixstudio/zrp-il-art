@@ -385,6 +385,7 @@ a.card.is-linked .pic img{transition:filter .25s}
       img.src = '../../' + g.src;
       img.alt = g.alt || '';
       if(i > 0) img.loading = 'lazy';
+      else img.fetchPriority = 'high';
       galEl.appendChild(img);
     });
   }
@@ -548,6 +549,6 @@ a.card.is-linked .pic img{transition:filter .25s}
 
 <script src="../../components/analytics.js" defer></script>
 <script src="../../components/picture-upgrade.js" defer></script>
-<script src="../../components/embed-iframe.js"></script>
+<script src="../../components/embed-iframe.js" defer></script>
 </body>
 </html>

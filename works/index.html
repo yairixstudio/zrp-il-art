@@ -161,12 +161,12 @@ body{text-transform:uppercase}
 
   /* --- GRID (desktop) --- */
   var grid=document.getElementById('works-grid');
-  grid.innerHTML=items.map(function(w){
+  grid.innerHTML=items.map(function(w,i){
     var src=base+w.img+'.webp';
     var href='../artists/'+w.slug+'/';
     return '<article class="card'+(w.fit?' fit':'')+'">'+
       '<div class="img" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'"'+(w.name_he_line2?' data-artwork-he-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+'>'+
-        '<img src="'+src+'" alt="'+w.name_he+'" decoding="async" fetchpriority="high">'+
+        '<img src="'+src+'" alt="'+w.name_he+'" decoding="async"'+(i?' loading="lazy"':' fetchpriority="high"')+'>'+
       '</div>'+
       '<a class="name" href="'+href+'">'+w.name_he+(w.name_he_line2?'<br><span class="name-line2">'+w.name_he_line2+'</span>':'')+'</a>'+
     '</article>';
@@ -177,7 +177,7 @@ body{text-transform:uppercase}
   var slides=items.map(function(w,i){
     var src=base+w.img+'.webp';
     var href='../artists/'+w.slug+'/';
-    return '<img class="tri-slide" src="'+src+'" alt="'+w.name_he+(w.name_he_line2?' · '+w.name_he_line2:'')+'" draggable="false"'+(i?' loading="lazy"':'')+' data-caption="'+w.name_he+'"'+(w.name_he_line2?' data-caption-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'"'+(w.name_he_line2?' data-artwork-he-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' decoding="async">';
+    return '<img class="tri-slide" src="'+src+'" alt="'+w.name_he+(w.name_he_line2?' · '+w.name_he_line2:'')+'" draggable="false"'+(i?' loading="lazy"':' fetchpriority="high"')+' data-caption="'+w.name_he+'"'+(w.name_he_line2?' data-caption-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'"'+(w.name_he_line2?' data-artwork-he-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' decoding="async">';
   }).join('');
   var dots=items.map(function(_,i){
     return '<button type="button" class="tri-dot'+(i===0?' is-on':'')+'" role="tab" aria-selected="'+(i===0)+'" aria-label="Slide '+(i+1)+'">';
@@ -203,6 +203,6 @@ body{text-transform:uppercase}
 
 <script src="../components/analytics.js" defer></script>
 <script src="../components/picture-upgrade.js" defer></script>
-<script src="../components/embed-iframe.js"></script>
+<script src="../components/embed-iframe.js" defer></script>
 </body>
 </html>

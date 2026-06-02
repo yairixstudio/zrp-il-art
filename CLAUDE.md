@@ -189,6 +189,7 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
     - `width="N" height="N"` (מהפיקסלים האמיתיים, מונע CLS).
     - `loading="lazy" decoding="async"` — חוץ מה-img הראשון בדף.
     - ה-img הראשון בדף = ה-LCP, מקבל `fetchpriority="high"` במקום `loading="lazy"`.
+    - **תמונה ≥80KB וגם ≥800px רוחב → חובה srcset:** צור וריאנטים `<name>-{480,768,1080}w.webp+avif` (רק רחבים מ-90% מהמקור: `magick src.webp -resize 480x -strip -quality 85 out.webp`, avif עם `-quality 60`), והוסף `srcset="...-480w.webp 480w, ..., <name>.webp <naturalW>w" sizes="100vw"`. `picture-upgrade.js` ממפה את ה-srcset ל-AVIF אוטומטית — חובה ש**כל** וריאנט webp יהיה לו אח avif.
 12. **כן** לעדכן את הקובץ הזה כש-state משתנה (sitemap, golden rules, contracts).
 
 ---

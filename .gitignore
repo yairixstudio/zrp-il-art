@@ -1,6 +1,16 @@
 # original (uncompressed) media — kept locally only
 _originals/
 
+# raw import material — never published (images/ ships only processed WebP+AVIF)
+**/_import/
+images/**/*.png
+images/**/*.jpg
+events/**/*.jpg
+events/**/*.png
+
+# macOS duplicate-file artifacts ("name 2.ext")
+**/* 2.*
+
 # macOS
 .DS_Store
 **/.DS_Store

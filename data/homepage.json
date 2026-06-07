@@ -32,11 +32,12 @@
     ]
   },
   "exhibitions_now": {
-    "_note": "Figma 'exhibitions/now' — current/upcoming cards + artists row. loneliness archived → only how-many.",
+    "_note": "Figma 'exhibitions/now' — current/upcoming cards + artists row. loneliness stays visible with status_label_en previous.",
     "title_b": "exhibitions",
     "title_l": "now",
     "exhibition_ids": [
-      "how-many"
+      "how-many",
+      "loneliness"
     ],
     "artists_label": "our artists",
     "artist_ids": [

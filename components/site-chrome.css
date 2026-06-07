@@ -190,9 +190,8 @@ body.menu-open{overflow:hidden}
   /* Hide the dedicated close button inside drawer — hamburger handles it now */
   .nav-close-item{display:none}
 
-  /* Sponsor only in drawer — must live inside this max-width block so desktop
-     `display:none` (below) is not overridden by a later global `display:flex`. */
-  .nav-sponsor-item{margin-top:auto;list-style:none;width:100%;display:flex;justify-content:center}
+  /* ZRP home CTA — drawer only; sits directly below the last nav link. */
+  .nav-zrp-cta-item{list-style:none;width:100%;display:flex;justify-content:center;margin-top:8px}
 }
 
 /* Mobile lightbox (≤768): header stays visible above the panel */
@@ -208,18 +207,16 @@ body.menu-open{overflow:hidden}
    presentational <li> doesn't add a stray gap inside the inline list. */
 @media (min-width:1025px){
   .nav-close-item{display:none}
-  /* Sponsor block only lives in the hamburger drawer — never in the inline desktop nav */
-  .nav-sponsor-item{display:none}
+  /* ZRP home CTA only in hamburger drawer — never in inline desktop nav */
+  .nav-zrp-cta-item{display:none}
 }
 
-/* ===== HAMBURGER DRAWER — SPONSORED BY link styles (shown only ≤1024px; <li> hidden desktop) =====
-   Sits pinned to the bottom of the open drawer (.nav-links is the column flex).
-   `margin-top:auto` pushes it past the menu items to the bottom edge.
-   Whole link is the hit-target → opens zrp.co.il in a new tab. */
-.nav-sponsor{display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:8px 12px;transition:opacity .2s}
-.nav-sponsor:hover{opacity:.7}
-.nav-sponsor-label{font-family:var(--cop);font-weight:300;font-size:11px;letter-spacing:.18em;line-height:1;color:var(--copy-grey,#6B7280);text-transform:uppercase}
-.nav-sponsor-logo{display:block;width:140px;height:auto;object-fit:contain}
+/* ===== HAMBURGER DRAWER — ZRP home CTA (shown only ≤1024px; <li> hidden desktop) =====
+   Bordered button directly below menu links → opens zrp.co.il in a new tab. */
+.nav-zrp-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:200px;padding:8px 28px;border:1px solid rgba(27,27,27,.22);border-radius:0;text-decoration:none;color:var(--ink);background:transparent;transition:opacity .2s,background .2s}
+.nav-zrp-cta:hover{opacity:.75;background:rgba(27,27,27,.03)}
+.nav-zrp-cta-he{font-family:var(--heb);font-weight:400;font-size:20px;line-height:1.2;letter-spacing:0;text-transform:none;direction:rtl;color:var(--ink)}
+.nav-zrp-cta-url{font-family:var(--cop);font-weight:300;font-size:10px;letter-spacing:.12em;line-height:1;color:var(--copy-grey,#6B7280)}
 
 /* ===== RESPONSIVE — MOBILE content rules (≤768px) =====
    Per Figma mobile (119:2610): newsletter → tiny link rows + compact social → copyright */

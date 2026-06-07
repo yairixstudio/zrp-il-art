@@ -571,8 +571,9 @@ body{text-transform:uppercase}
   .ex-now .titles .b{font-size:44px;letter-spacing:-.01em}
   .ex-now .titles .l{font-size:70px;margin-top:-6px;letter-spacing:-.01em}
   .ex-now .cards{gap:4px}
-  .ex-now .card-link:first-child{flex:0 0 177px}
+  .ex-now .card-link:first-child:not(:only-child){flex:0 0 177px}
   .ex-now .card-link:nth-child(2){flex:1}
+  .ex-now .card-link:only-child{flex:1 1 0}
   .ex-now .card-link .card,.ex-now .card{gap:8px}
   .ex-now .card .gname{font-weight:400;font-size:14px;text-align:left;padding:0}
   .ex-now .card .img{height:214.55px}
@@ -904,22 +905,6 @@ body{text-transform:uppercase}
               <div class="stat">current</div>
               <div class="ovr-titles">
                 <div class="ttl-en ttl-en--stack"><span class="ttl-en-row1">how many partners</span><span class="ttl-en-row2">have you had?</span></div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </a>
-      <a class="card-link" href="exhibitions/loneliness/">
-        <article class="card">
-          <div class="gname">גלריית כיכר המדינה</div>
-          <div class="img">
-            <img class="ex-now-photo ex-now-photo--mob" src="images/exhibitions/loneliness-mobile.webp" srcset="images/exhibitions/loneliness-mobile-480w.webp 480w, images/exhibitions/loneliness-mobile.webp 800w" sizes="100vw" width="177" height="214" alt="" decoding="async" loading="lazy">
-            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/loneliness-mobile.webp" srcset="images/exhibitions/loneliness-mobile-480w.webp 480w, images/exhibitions/loneliness-mobile.webp 800w" sizes="100vw" width="177" height="214" alt="" decoding="async" loading="lazy">
-            <div class="ovr">
-              <div class="stat">current</div>
-              <div class="ovr-titles">
-                <div class="ttl-en">exhibition volume 1</div>
-                <div class="ttl-he">בדידות בסביבה תוססת</div>
               </div>
             </div>
           </div>

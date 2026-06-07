@@ -213,10 +213,10 @@ body.menu-open{overflow:hidden}
 
 /* ===== HAMBURGER DRAWER — ZRP home CTA (shown only ≤1024px; <li> hidden desktop) =====
    Bordered button directly below menu links → opens zrp.co.il in a new tab. */
-.nav-zrp-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:200px;padding:8px 28px;border:1px solid rgba(27,27,27,.22);border-radius:0;text-decoration:none;color:var(--ink);background:transparent;transition:opacity .2s,background .2s}
+.nav-zrp-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-width:200px;padding:10px 28px 15px;border:1px solid rgba(27,27,27,.22);border-radius:0;text-decoration:none;color:var(--ink);background:transparent;transition:opacity .2s,background .2s}
 .nav-zrp-cta:hover{opacity:.75;background:rgba(27,27,27,.03)}
-.nav-zrp-cta-he{font-family:var(--heb);font-weight:400;font-size:20px;line-height:1.2;letter-spacing:0;text-transform:none;direction:rtl;color:var(--ink)}
-.nav-zrp-cta-url{font-family:var(--cop);font-weight:300;font-size:10px;letter-spacing:.12em;line-height:1;color:var(--copy-grey,#6B7280)}
+.nav-zrp-cta-logo{display:block;width:140px;height:auto;object-fit:contain}
+.nav-zrp-cta-label{font-family:var(--cop);font-weight:300;font-size:10px;letter-spacing:.12em;line-height:1;color:var(--copy-grey,#6B7280);text-transform:uppercase}
 
 /* ===== RESPONSIVE — MOBILE content rules (≤768px) =====
    Per Figma mobile (119:2610): newsletter → tiny link rows + compact social → copyright */

@@ -32,12 +32,11 @@
     ]
   },
   "exhibitions_now": {
-    "_note": "Mobile only — Figma 'exhibitions/now' with 2 current/upcoming cards + artists row",
+    "_note": "Figma 'exhibitions/now' — current/upcoming cards + artists row. loneliness archived → only how-many.",
     "title_b": "exhibitions",
     "title_l": "now",
     "exhibition_ids": [
-      "how-many",
-      "loneliness"
+      "how-many"
     ],
     "artists_label": "our artists",
     "artist_ids": [

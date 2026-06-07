@@ -110,9 +110,9 @@
               '<li><a href="' + abs('about/') + '" data-nav="about">about</a></li>' +
               '<li><a href="' + abs('') + '#press" data-nav="press">press &amp; events</a></li>' +
               '<li class="nav-zrp-cta-item" role="presentation">' +
-                '<a class="nav-zrp-cta" href="https://zrp.co.il" target="_blank" rel="noopener" aria-label="לאתר הבית zrp.co.il">' +
-                  '<span class="nav-zrp-cta-he">לאתר הבית</span>' +
-                  '<span class="nav-zrp-cta-url lat">zrp.co.il</span>' +
+                '<a class="nav-zrp-cta" href="https://zrp.co.il" target="_blank" rel="noopener" aria-label="the official site — zrp.co.il">' +
+                  '<img class="nav-zrp-cta-logo" src="' + abs('images/header:footer:general/logo.svg') + '" alt="Zielinski &amp; Rozen" width="177" height="37" decoding="async" loading="lazy">' +
+                  '<span class="nav-zrp-cta-label">the official site</span>' +
                 '</a>' +
               '</li>' +
             '</ul>' +

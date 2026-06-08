@@ -8,9 +8,8 @@
 <link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="../components/site-boot.css">
-<meta name="description" content="The Art Works — featured artists at Zielinski & Rozen Galleries">
+<meta name="description" content="The Art Works — original artworks from the artists of Zielinski & Rozen Galleries">
 <link rel="stylesheet" href="../components/artwork-lightbox.css">
-<link rel="stylesheet" href="../components/triptych-gallery.css">
 <style>
 /* ===== LOCAL FONTS ===== */
 @font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
@@ -24,56 +23,66 @@
   --white:#FFFFFF;
   --bg-grey:#EEF0EF;
   --ink:#1B1B1B;
-  --grey-mid:#808080;
+  --grey-mid:#7D7D7D;
   --copy-grey:#6B7280;
-  --sep:#EFEFEF;
-  --artist:#828282;
   --max:1440px;
   --cop:"Copperplate","Times New Roman",serif;
   --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
   --pad-x:96px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:clip;max-width:100vw}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
 
 /* GLOBAL CASING RULE — all English text renders UPPERCASE (project-wide).
-   Hebrew is exempt. See CLAUDE.md §9. */
+   Hebrew is exempt. See CLAUDE.md §9 / conventions.md §5. */
 body{text-transform:uppercase}
 .heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
 
-/* ===== NAV/FOOTER moved to ../components/site-chrome.css ===== */
-
 /* ===== HERO (THE ART works) ===== */
-.hero{background:var(--bg-grey);padding:48px var(--pad-x) 40px;display:flex;justify-content:center}
-.hero-inner{width:100%;max-width:var(--max);display:flex;align-items:flex-end;gap:48px}
-.hero h1,.hero h2{font-family:var(--cop);font-size:80px;line-height:1;color:var(--ink);letter-spacing:.02em;text-align:left}
+.hero{background:var(--bg-grey);padding:48px var(--pad-x) 40px}
+.hero-inner{width:100%;max-width:var(--max);margin:0 auto;text-align:right}
+.hero h1,.hero h2{font-family:var(--cop);font-size:80px;line-height:.96;color:var(--ink);letter-spacing:.02em}
 .hero h1{font-weight:700}
 .hero h2{font-weight:300}
-.hero-side{margin-left:auto;font-family:var(--heb);font-weight:300;font-size:18px;color:var(--ink);direction:rtl;text-align:right;max-width:360px;line-height:1.55;align-self:flex-end;padding-bottom:8px}
 
-/* ===== ARTWORK GRID ===== */
-.grid{padding:48px var(--pad-x);display:grid;grid-template-columns:repeat(3,1fr);gap:48px 32px;background:#fafafa}
-.card{display:flex;flex-direction:column;gap:16px;min-width:0}
-.card .img{position:relative;width:100%;height:478.38px;overflow:hidden;background:#f3f1ee}
-.card .img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
-.card:hover .img img{transform:scale(1.04)}
-.card .img::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,0);transition:background .3s}
-.card:hover .img::after{background:rgba(27,27,27,.06)}
-.card .name{font-family:var(--heb);font-weight:400;font-size:16px;color:var(--ink);direction:rtl;text-align:center;line-height:1.3;padding:0 4px;display:block;transition:opacity .2s,text-decoration-color .2s;text-decoration:underline transparent;text-underline-offset:3px}
-.card a.name .name-line2{display:block;font:inherit;font-weight:300;margin-top:.15em}
-.card a.name:hover{opacity:.65;text-decoration-color:currentColor}
+/* ===== ARTWORK GRID — 2 columns (desktop + mobile), per Figma 491:928 / 489:4 ===== */
+.grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(2,1fr);
+  column-gap:16px;row-gap:64px;
+  padding:48px var(--pad-x);background:var(--white);
+}
+.card{display:flex;flex-direction:column;gap:16px;min-width:0;height:100%}
+.card .img{position:relative;width:100%;aspect-ratio:100/121;overflow:hidden;background:#f3f1ee;cursor:pointer}
+.card .img img{width:100%;height:100%;object-fit:contain;transition:transform .7s ease}
+.card .img::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,0);transition:background .3s;pointer-events:none}
+.card .img:hover img{transform:scale(1.03)}
+.card .img:hover::after{background:rgba(27,27,27,.05)}
 
-/* fit-vs-cover variants per Figma scaleMode */
-.card.fit .img img{object-fit:contain;background:#f3f1ee}
+/* card meta — right-aligned (RTL), per Figma Frame 376/379 */
+.meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right;flex:1}
+.meta .artist{font-family:var(--heb);font-weight:400;font-size:18px;color:var(--ink);line-height:1.25;direction:rtl}
+.meta .artist.is-en{font-family:var(--cop);font-weight:700;text-transform:uppercase;letter-spacing:.03em;direction:ltr}
+.meta a.artist{transition:opacity .2s}
+.meta a.artist:hover{opacity:.6}
+.meta .title{font-size:16px;color:var(--ink);line-height:1.3}
+.meta .title.is-he{font-family:var(--heb);direction:rtl;text-transform:none}
+.meta .title.is-en{font-family:var(--cop);font-weight:300;text-transform:uppercase;letter-spacing:.03em;direction:ltr}
+.meta .title.is-bi{display:inline-flex;flex-direction:row;direction:rtl;align-items:baseline;justify-content:flex-end;gap:0.35em;flex-wrap:wrap;max-width:100%}
+.meta .title.is-bi .title-he{font-family:var(--heb);direction:rtl;text-transform:none}
+.meta .title.is-bi .title-sep{display:inline-block;width:1.4px;height:0.85em;background:var(--ink);opacity:.55;align-self:center;flex-shrink:0;direction:ltr;unicode-bidi:isolate}
+.meta .title.is-bi .title-en{font-family:var(--cop);font-weight:300;text-transform:uppercase;letter-spacing:.03em;direction:ltr;unicode-bidi:isolate}
+.meta .details{font-family:var(--heb);font-weight:300;font-size:15px;color:var(--grey-mid);line-height:1.2;direction:rtl;max-width:100%}
+.meta-foot{display:flex;flex-direction:column;align-items:flex-end;gap:6px;margin-top:auto;padding-top:12px}
+.sold{font-family:var(--heb);font-weight:300;font-size:14px;color:var(--ink);border:1.4px solid var(--ink);padding:2px 10px;line-height:1.25}
+.gallery{font-family:var(--cop);font-weight:700;font-size:10px;color:var(--ink);text-transform:uppercase;letter-spacing:.02em;direction:ltr;transition:opacity .2s}
+.gallery:hover{opacity:.6}
 
 /* lightbox styles imported from components/artwork-lightbox.css (see <link> in head) */
-
-/* WORKS CAROUSEL — mobile-only; hidden on desktop */
-.works-carousel{display:none}
 
 /* ============================================================
    RESPONSIVE — TABLET (≤1100px)
@@ -81,41 +90,31 @@ body{text-transform:uppercase}
 @media (max-width:1100px){
   :root{--pad-x:48px}
   .hero h1,.hero h2{font-size:60px}
-  .card .img{height:380px}
+  .grid{row-gap:48px}
 }
 
 /* ============================================================
-   RESPONSIVE — MOBILE (≤768px)
+   RESPONSIVE — MOBILE (≤768px) — stays 2-up per Figma 489:4
    ============================================================ */
 @media (max-width:768px){
   :root{--pad-x:16px}
-
-  /* HERO */
-  .hero{padding:32px 16px 24px}
-  .hero-inner{flex-direction:column;align-items:flex-start;gap:8px}
-  .hero h1,.hero h2{font-size:48px}
-  .hero-side{margin-left:0;max-width:100%;font-size:14px;align-self:stretch;padding-bottom:0;margin-top:8px}
-
-  /* GRID → hide; carousel takes over */
-  .grid{display:none}
-  .works-carousel{display:block;padding:24px 16px 32px}
-  .works-carousel .tri{
-    --tri-aspect: 3/4;
-    --tri-center-w: 58%;
-    --tri-peek-w: 28%;
-    --tri-peek-h: 75%;
-    --tri-peek-left: 0%;
-    --tri-peek-right: 100%;
-  }
-  /* LIGHTBOX */
+  .hero{padding:32px 16px 8px}
+  .hero-inner{text-align:center}
+  .hero h1{font-size:clamp(40px,15vw,58px)}
+  .hero h2{font-size:clamp(64px,24vw,91px);margin-top:-.12em}
+  .grid{padding:32px 16px;column-gap:16px;row-gap:40px}
+  .card{gap:12px}
+  .meta .artist{font-size:16px}
+  .meta .title{font-size:15px}
+  .meta .details{font-size:15px}
 }
 
 /* ============================================================
-   RESPONSIVE — SMALL MOBILE (≤400px)
+   RESPONSIVE — SMALL MOBILE (≤390px)
    ============================================================ */
-@media (max-width:400px){
-  .hero h1,.hero h2{font-size:36px}
-  .card .name{font-size:12px}
+@media (max-width:390px){
+  .grid{column-gap:12px}
+  .meta .artist{font-size:15px}
 }
 </style>
 </head>
@@ -127,76 +126,131 @@ body{text-transform:uppercase}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div>
-      <h1>THE ART</h1>
-      <h2>works</h2>
-    </div>
+    <h1>THE ART</h1>
+    <h2>works</h2>
   </div>
 </section>
 
-<!-- Grid (desktop) + Carousel (mobile) — both rendered from single data source -->
-<section class="grid" data-artwork-gallery id="works-grid"></section>
-<section class="works-carousel" data-artwork-gallery id="works-carousel"></section>
+<!-- Artwork grid — rendered from inline data (file:// can't fetch JSON).
+     Canonical record lives in data/works.json → art_works[]; keep in sync. -->
+<section class="grid" id="works-grid"></section>
 
 <script type="application/json" id="works-data">
 [
-  {"img":"eitan-goldson-henrika","name_he":"איתן גולדסון","name_he_line2":"הנריקה רוטנברג","name_en":"eitan goldson","slug":"eitan-goldson","fit":true},
-  {"img":"elsa-ars-brush","name_he":"אלסה ארס ברוש","name_en":"elsa ars brush","slug":"elsa-ars-brush"},
-  {"img":"gal-polk","name_he":"גל פולק","name_en":"gal polk","slug":"gal-polk"},
-  {"img":"tanya-shin","name_he":"טניה שין","name_en":"tanya shin","slug":"tanya-shin"},
-  {"img":"zohar-shtrit","name_he":"זוהר שטרית","name_en":"zohar shitrit","slug":"zohar-shtrit","fit":true},
-  {"img":"hila-loterstein","name_he":"הילה לוטרשטיין","name_en":"hila loterstein","slug":"hila-loterstein"},
-  {"img":"nir-giorgio-levin","name_he":"ניר ג׳ורג׳יו לוין","name_en":"nir giorgio levin","slug":"nir-giorgio-levin"},
-  {"img":"sami-david","name_he":"סמי דוד","name_en":"sami david","slug":"sami-david"},
-  {"img":"zohar-ron","name_he":"זוהר רון","name_en":"zohar ron","slug":"zohar-ron","fit":true},
-  {"img":"risa-oz","name_he":"ריסה עוז","name_en":"risa oz","slug":"risa-oz"},
-  {"img":"zohar-ron-dan-ben-ari","name_he":"זוהר רון | דן בן ארי","name_en":"zohar ron | dan ben ari","slug":"zohar-ron-dan-ben-ari"},
-  {"img":"adi-duak","name_he":"עדי דואק","name_en":"adi duek","slug":"adi-duak"}
+{"id":"zohar-ron-1","artist_slug":"zohar-ron","artist_he":"זוהר רון","artist_en":"zohar ron","title_he":"כְּתוּבָּה","title_en":"QTUBA","gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"zohar-ron-1","w":690,"h":1044,"widths":[480,690]},
+{"id":"zohar-ron-2","artist_slug":"zohar-ron","artist_he":"זוהר רון","artist_en":"zohar ron","title_he":"כְּתוּבָּה","title_en":"QTUBA","gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"zohar-ron-2","w":690,"h":1044,"widths":[480,690]},
+{"id":"zohar-ron-3","artist_slug":"zohar-ron","artist_he":"זוהר רון","artist_en":"zohar ron","title_he":"כְּתוּבָּה","title_en":"QTUBA","gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"zohar-ron-3","w":690,"h":1044,"widths":[480,690]},
+{"id":"zohar-ron-4","artist_slug":"zohar-ron","artist_he":"זוהר רון","artist_en":"zohar ron","title_he":"כְּתוּבָּה","title_en":"QTUBA","gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"zohar-ron-4","w":690,"h":1044,"widths":[480,690]},
+{"id":"eitan-goldson-1","artist_slug":"eitan-goldson","artist_he":"איתן גולדסון","artist_en":"eitan goldson","title_he":"תשע נשמות","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":"מדיה מעורבת - עבודה משותפת עם הנריקה רוטנברג. צבעי שמן, אקריליק, גרפיט וקפה על קנבס מודפס בלייזר.","img":"eitan-goldson-1","w":690,"h":1044,"widths":[480,690]},
+{"id":"eitan-goldson-2","artist_slug":"eitan-goldson","artist_he":"איתן גולדסון","artist_en":"eitan goldson","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"eitan-goldson-2","w":690,"h":1044,"widths":[480,690]},
+{"id":"holy-kadosh-1","artist_slug":"holy-kadosh","artist_he":"טל קדוש","artist_en":"tal holy kadosh","title_he":null,"title_en":"HOLY BAG","gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"holy-kadosh-1","w":690,"h":1044,"widths":[480,690]},
+{"id":"holy-kadosh-2","artist_slug":"holy-kadosh","artist_he":"טל קדוש","artist_en":"tal holy kadosh","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"holy-kadosh-2","w":918,"h":1390,"widths":[480,768,918]},
+{"id":"holy-kadosh-3","artist_slug":"holy-kadosh","artist_he":"טל קדוש","artist_en":"tal holy kadosh","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"holy-kadosh-3","w":918,"h":1034,"widths":[480,768,918]},
+{"id":"tal-nehoray-1","artist_slug":"tal-nehoray","artist_he":"טל נהוראי","artist_en":"tal nehoray","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"קרמיקה","img":"tal-nehoray-1","w":690,"h":1044,"widths":[480,690]},
+{"id":"tal-nehoray-2","artist_slug":"tal-nehoray","artist_he":"טל נהוראי","artist_en":"tal nehoray","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"קרמיקה","img":"tal-nehoray-2","w":1080,"h":1080,"widths":[480,768,1080]},
+{"id":"tal-nehoray-3","artist_slug":"tal-nehoray","artist_he":"טל נהוראי","artist_en":"tal nehoray","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"קרמיקה","img":"tal-nehoray-3","w":690,"h":1044,"widths":[480,690]},
+{"id":"tal-nehoray-4","artist_slug":"tal-nehoray","artist_he":"טל נהוראי","artist_en":"tal nehoray","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"קרמיקה","img":"tal-nehoray-4","w":1080,"h":1080,"widths":[480,768,1080]},
+{"id":"tal-nehoray-5","artist_slug":"tal-nehoray","artist_he":"טל נהוראי","artist_en":"tal nehoray","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"קרמיקה","img":"tal-nehoray-5","w":690,"h":1044,"widths":[480,690]},
+{"id":"costa-magarakis-1","artist_slug":"costa-magarakis","artist_he":"קוסטה מגרקיס","artist_en":"costa magarakis","title_he":null,"title_en":"HIGH HILL","gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"costa-magarakis-1","w":499,"h":1012,"widths":[480,499]},
+{"id":"hila-loterstein-1","artist_slug":"hila-loterstein","artist_he":"הילה לוטרשטרין","artist_en":"hila loterstein","title_he":"אלה עם כנפיים","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"hila-loterstein-1","w":690,"h":1044,"widths":[480,690]},
+{"id":"hila-loterstein-2","artist_slug":"hila-loterstein","artist_he":"הילה לוטרשטרין","artist_en":"hila loterstein","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"hila-loterstein-2","w":900,"h":874,"widths":[480,768,900]},
+{"id":"hila-loterstein-3","artist_slug":"hila-loterstein","artist_he":"הילה לוטרשטרין","artist_en":"hila loterstein","title_he":"הרקדנית הצהובה","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"hila-loterstein-3","w":720,"h":743,"widths":[480,720]},
+{"id":"gal-polk-1","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-1","w":1080,"h":992,"widths":[480,768,1080]},
+{"id":"gal-polk-2","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-2","w":1080,"h":1440,"widths":[480,768,1080]},
+{"id":"gal-polk-3","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-3","w":1080,"h":1080,"widths":[480,768,1080]},
+{"id":"gal-polk-4","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-4","w":1080,"h":1620,"widths":[480,768,1080]},
+{"id":"gal-polk-5","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"gal-polk-5","w":1080,"h":720,"widths":[480,768,1080]},
+{"id":"gal-polk-6","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-6","w":1080,"h":1440,"widths":[480,768,1080]},
+{"id":"maya-nachum-levy-1","artist_slug":"maya-nachum-levy","artist_he":"מאיה נחום לוי","artist_en":"maya nachum levy","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"maya-nachum-levy-1","w":758,"h":980,"widths":[480,758]},
+{"id":"maya-nachum-levy-2","artist_slug":"maya-nachum-levy","artist_he":"מאיה נחום לוי","artist_en":"maya nachum levy","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"maya-nachum-levy-2","w":904,"h":1744,"widths":[480,768,904]},
+{"id":"adi-duak-1","artist_slug":"adi-duak","artist_he":"עדי דואק","artist_en":"adi duak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"adi-duak-1","w":690,"h":1044,"widths":[480,690]},
+{"id":"adi-duak-2","artist_slug":"adi-duak","artist_he":"עדי דואק","artist_en":"adi duak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"adi-duak-2","w":1080,"h":1440,"widths":[480,768,1080]},
+{"id":"adi-duak-3","artist_slug":"adi-duak","artist_he":"עדי דואק","artist_en":"adi duak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"adi-duak-3","w":1080,"h":1231,"widths":[480,768,1080]},
+{"id":"adi-duak-4","artist_slug":"adi-duak","artist_he":"עדי דואק","artist_en":"adi duak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"adi-duak-4","w":1080,"h":1064,"widths":[480,768,1080]},
+{"id":"la-raz-porta-1","artist_slug":"la-raz-porta","artist_he":null,"artist_en":"la raz porta","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"la-raz-porta-1","w":918,"h":1390,"widths":[480,768,918]},
+{"id":"la-raz-porta-2","artist_slug":"la-raz-porta","artist_he":null,"artist_en":"la raz porta","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"la-raz-porta-2","w":918,"h":1166,"widths":[480,768,918]},
+{"id":"la-raz-porta-3","artist_slug":"la-raz-porta","artist_he":null,"artist_en":"la raz porta","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"la-raz-porta-3","w":918,"h":1390,"widths":[480,768,918]},
+{"id":"zohar-shtrit-1","artist_slug":"zohar-shtrit","artist_he":"זוהר שטרית","artist_en":"zohar shtrit","title_he":"אחר מבפנים","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"zohar-shtrit-1","w":690,"h":1044,"widths":[480,690]}
 ]
 </script>
+
 <script>
 (function(){
-  var items=JSON.parse(document.getElementById('works-data').textContent);
-  var base='../images/works/grid/';
+  var items = JSON.parse(document.getElementById('works-data').textContent);
+  var base  = '../images/works/v2/';
+  var HEB   = /[א-ת]/;
 
-  /* --- GRID (desktop) --- */
-  var grid=document.getElementById('works-grid');
-  grid.innerHTML=items.map(function(w,i){
-    var src=base+w.img+'.webp';
-    var href='../artists/'+w.slug+'/';
-    return '<article class="card'+(w.fit?' fit':'')+'">'+
-      '<div class="img" data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'"'+(w.name_he_line2?' data-artwork-he-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+'>'+
-        '<img src="'+src+'" alt="'+w.name_he+'" decoding="async"'+(i?' loading="lazy"':' fetchpriority="high"')+'>'+
-      '</div>'+
-      '<a class="name" href="'+href+'">'+w.name_he+(w.name_he_line2?'<br><span class="name-line2">'+w.name_he_line2+'</span>':'')+'</a>'+
-    '</article>';
+  function esc(s){
+    if(s==null) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  function srcset(w){
+    return w.widths.map(function(width,i){
+      var last = i === w.widths.length-1;
+      var file = last ? (base+w.img+'.webp') : (base+w.img+'-'+width+'w.webp');
+      return file+' '+width+'w';
+    }).join(', ');
+  }
+  function artistName(w){ return w.artist_he || w.artist_en || ''; }
+  function captionTitle(w){
+    if(w.title_he && w.title_en) return w.title_he + ' · ' + w.title_en;
+    return w.title_he || w.title_en || '';
+  }
+
+  function titleHtml(w){
+    if(w.title_he && w.title_en){
+      return '<span class="title is-bi">'+
+        '<span class="title-he">'+esc(w.title_he)+'</span>'+
+        '<span class="title-sep" aria-hidden="true"></span>'+
+        '<span class="title-en">'+esc(w.title_en)+'</span>'+
+      '</span>';
+    }
+    if(w.title_he) return '<span class="title is-he">'+esc(w.title_he)+'</span>';
+    if(w.title_en) return '<span class="title is-en">'+esc(w.title_en)+'</span>';
+    return '';
+  }
+  function artistHtml(w){
+    var href = '../artists/'+w.artist_slug+'/';
+    var cls  = w.artist_he ? 'is-he' : 'is-en';
+    var name = w.artist_he || w.artist_en;
+    return '<a class="artist '+cls+'" href="'+href+'">'+esc(name)+'</a>';
+  }
+
+  var grid = document.getElementById('works-grid');
+  grid.innerHTML = items.map(function(w,i){
+    var main   = base+w.img+'.webp';
+    var href   = '../artists/'+w.artist_slug+'/';
+    var alt    = artistName(w) + (captionTitle(w) ? ' — '+captionTitle(w) : '');
+    var loadAttr = i ? 'loading="lazy"' : 'fetchpriority="high"';
+    var imgTag = '<img src="'+main+'" srcset="'+srcset(w)+'" sizes="(max-width:768px) 46vw, (max-width:1100px) 45vw, 600px" '+
+                 'width="'+w.w+'" height="'+w.h+'" alt="'+esc(alt)+'" decoding="async" '+loadAttr+'>';
+    var details = w.details_he ? '<span class="details">'+esc(w.details_he)+'</span>' : '';
+    var foot = (w.sold ? '<span class="sold">נמכר</span>' : '') +
+               '<a class="gallery" href="../#galleries">'+esc(w.gallery_en)+'</a>';
+    return '<article class="card" data-artwork-gallery>'+
+        '<div class="img" data-artwork-src="'+main+'" data-artwork-title="'+esc(captionTitle(w))+'" '+
+             'data-artwork-artist="'+esc(artistName(w))+'" data-artwork-link="'+href+'">'+
+          imgTag+
+        '</div>'+
+        '<div class="meta">'+
+          artistHtml(w)+
+          titleHtml(w)+
+          details+
+          '<div class="meta-foot">'+foot+'</div>'+
+        '</div>'+
+      '</article>';
   }).join('');
 
-  /* --- CAROUSEL (mobile) --- */
-  var car=document.getElementById('works-carousel');
-  var slides=items.map(function(w,i){
-    var src=base+w.img+'.webp';
-    var href='../artists/'+w.slug+'/';
-    return '<img class="tri-slide" src="'+src+'" alt="'+w.name_he+(w.name_he_line2?' · '+w.name_he_line2:'')+'" draggable="false"'+(i?' loading="lazy"':' fetchpriority="high"')+' data-caption="'+w.name_he+'"'+(w.name_he_line2?' data-caption-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' data-artwork-src="'+src+'" data-artwork-title="'+w.name_he+'" data-artwork-artist="'+w.name_en+'" data-artwork-link="'+href+'"'+(w.name_he_line2?' data-artwork-he-line2="'+w.name_he_line2.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"':'')+' decoding="async">';
-  }).join('');
-  var dots=items.map(function(_,i){
-    return '<button type="button" class="tri-dot'+(i===0?' is-on':'')+'" role="tab" aria-selected="'+(i===0)+'" aria-label="Slide '+(i+1)+'">';
-  }).join('');
-  car.innerHTML='<div class="tri" data-tri-loop="true"><div class="tri-frame">'+slides+'</div><div class="tri-dots" role="tablist" aria-label="gallery navigation">'+dots+'</div></div>';
-
-  if(window.TriptychGallery) TriptychGallery.refresh();
   if(window.ArtworkLightbox) ArtworkLightbox.refreshFocusable();
+  if(window.PictureUpgrade)  PictureUpgrade.refresh(grid);
 })();
 </script>
-
-<!-- LIGHTBOX: shared component, see components/artwork-lightbox.{css,js} -->
 
 <!-- FOOTER -->
 <site-footer></site-footer>
 
-<!-- Artwork Lightbox component (shared) — see CLAUDE.md §15 -->
+<!-- Artwork Lightbox component (shared) — single-image scope per card (no prev/next) -->
 <script src="../components/artwork-lightbox.js" defer></script>
-<script src="../components/triptych-gallery.js" defer></script>
 
 <!-- Site chrome: shared header + footer (single source of truth) -->
 <script src="../components/site-chrome.js" defer></script>

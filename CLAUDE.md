@@ -73,7 +73,7 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 |---|---|---|---|---|
 | `/` | Homepage | `XhGH...::144:317` (canonical; older `Zn3N...::1213:3093`) | `XhGH...::144:2` (canonical; older `Zn3N...::1213:3360`) | ✅ `index.html` |
 | `/about/` | Biography of Erez | `Zn3N...::1213:2970` | `Zn3N...::1213:2888` | ✅ `about/index.html` |
-| `/works/` | The Art Works | `Zn3N...::1213:2615` (name lies) / alt `1213:2725`, `2764` | (responsive) | ✅ `works/index.html` |
+| `/works/` | The Art Works | `XhGH...::491:928` (redesign 2026-06-08; layout-only) | `XhGH...::489:4` (content source — 34 works) | ✅ `works/index.html` — גריד 2 עמודות, כרטיסי יצירה (אומן/כותרת/גלריה/נמכר/פרטים), לייטבוקס single. Data ב-`works.json` `art_works[]` (+ inline). תמונות `images/works/v2/`. legacy: `Zn3N...::1213:2615` |
 | `/galleries/` | Galleries index | — | — | ⏳ |
 | `/galleries/:slug/` | Single gallery | — | — | ⏳ (NOT `1213:2725/2820/2854` — אלו lightbox states) |
 | `/exhibitions/` | Index | (כיום ארכיון בהומפייג') | — | ⏳ |
@@ -147,7 +147,7 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 | `events.json` | id, slug, title_he/en, date, gallery_id, cover_image, description_he, figma_node_*, figma_file |
 | `press.json` | type (`press\|event`), tag_he/en, source_he/en, subtitle_he, author_he, route, cover_image, date, homepage_visible, figma_article_*. **כתבות long-form: גוף נשאר ב-HTML, רק meta ב-JSON.** |
 | `opencalls.json` | id, slug, title_en, status (`open\|archived`), deadline, city, hero_image, **אופציונליים:** `emotional_triggers` (`title_he`, `items[]`, אופציונלית `lines[]` לשבירת שורות כמו ב-Figma), `gallery_images[]` |
-| `works.json` | id, title, image, artist_id, + homepage flags. **מעוקף לדפי אומן** — work data inline ב-`artists.json`. |
+| `works.json` | `works[]` = 4 אריחי הומפייג'. `art_works[]` = גריד עמוד The Art Works: `id`, `artist_slug`(→קישור אומן), `artist_he`/`artist_en` (אם `artist_he`=null → שם לטיני מוצג, כמו la-raz-porta), `title_he`/`title_en` (אופציונלי, דו-לשוני), `gallery_slug`+`gallery_en` (→ `/#galleries`), `sold` (bool → תג "נמכר"), `details_he` (טקסט אפור אופציונלי), `img` (תחת `images/works/v2/`), `w`/`h`, `widths[]` (לבניית srcset; האחרון = הקובץ הראשי `<img>.webp`). **מירור inline ב-`works/index.html`** כי file:// לא יכול fetch — לסנכרן. work data לדפי אומן נשאר inline ב-`artists.json`. |
 | `instagram.json` | snapshot זמני |
 | `homepage.json` | composition layer — `*_id`/`*_ids` לפריטים מ-JSONs אחרים; בלוקים כמו `x_our_artists`, `tribe_teaser` (כותרת/קרדיטים/גלריה מעל press; **מובייל:** `gallery_images[]`, `figma_gallery_strip` `250:98`, thumbs = לייטבוקס בלי CTA — ראה `docs/components.md` §1.4.1) |
 | `curators.json` | `curators[]`: `id`, `slug`, `name_en_first`/`name_en_last`, `instagram_handle`, `badge_en`, `section_heading_en`, `portrait` (`src`, `width`, `height`, `alt_he`), `exhibition_slugs[]` (סדר דסקטופ שמאל→ימין; מובייל — CSS `order` אם נדרש), `figma_desktop`/`figma_mobile` |

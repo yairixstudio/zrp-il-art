@@ -103,10 +103,18 @@
 
 ## 🖼 The Art Works (/works)
 
-> ⚠ ה-frame הזה ב-Figma שמו `the art works-phone` אבל ברוחב 1440px — זה דסקטופ. אין frame mobile נפרד; הדף responsive מהדסקטופ.
+> **עיצוב מחדש 2026-06-08** — גריד 2 עמודות עם כרטיסי יצירה מלאים (תמונה, אומן, כותרת, גלריה, תג "נמכר", פרטים). קובץ `landing` (`XhGH...`). **מובייל = מקור התוכן** (34 יצירות אמיתיות); **דסקטופ = מקור הלייאוט בלבד** (התמונות שם placeholder).
 
-works דסקטופ: Implement this design from Figma.
+works v2 דסקטופ (1440 — layout): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=491-928&m=dev
+
+works v2 מובייל (390 — content): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=489-4&m=dev
+
+<details><summary>גרסה ישנה (graphics file, responsive)</summary>
+
 @https://www.figma.com/design/Zn3N3mBQkbYER7tTJMbCcz/%D7%92%D7%A8%D7%A4%D7%99%D7%A7%D7%95%D7%AA-%D7%A9%D7%95%D7%A0%D7%95%D7%AA?node-id=1213-2615&m=dev
+</details>
 
 ---
 

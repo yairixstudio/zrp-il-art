@@ -47,6 +47,16 @@
 דסקטופ (שני עמודות גבוהות + שורת אומנים): Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=237-1285&m=dev
 
+### Homepage — exhibitions/now כרטיס "הקולפן / the peeler" (upcoming) + ארכיון מחדש (2026-06-08)
+
+כרטיס הקולפן (מחליף את בדידות בסקשן exhibitions-now; →`opencalls/the-peeler/`):
+דסקטופ: @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=412-84&m=dev
+מובייל: @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=487-14&m=dev
+
+ארכיון תערוכות בעיצוב חדש (כרטיס תערוכה גדול יחיד — בדידות; החליף את הטאבים+thumbs):
+דסקטופ: @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=474-97&m=dev
+מובייל: @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=467-45&m=dev
+
 ### Homepage — שורת הגלריות (3 כרטיסים, gap 8px, crop תמונות)
 
 שורת the galleries בדסקטופ (מדינה · דיזינגוף · שוק): Implement this design from Figma.

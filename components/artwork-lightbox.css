@@ -148,6 +148,10 @@ body.alb-lock{
 .alb-caption .alb-title.is-en{font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase;direction:ltr}
 .alb-caption .alb-title .lat,.alb-alt .lat{font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase;direction:ltr;unicode-bidi:isolate;letter-spacing:.08em}
 .alb-caption .alb-artist{font-weight:300;font-size:11px;letter-spacing:.08em;display:flex;gap:4px;line-height:1.2;font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase}
+.alb-caption .alb-artist.is-he{font-family:"FbEzmel","Arial Hebrew","David Libre",serif;text-transform:none;direction:rtl;letter-spacing:.06em}
+.alb-caption .alb-artist.is-he .alb-caption-link--artist{display:inline-flex;flex-direction:row;gap:4px;font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;text-transform:none;direction:inherit}
+.alb-caption .alb-artist.is-he .first,
+.alb-caption .alb-artist.is-he .last{font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;text-transform:none;direction:inherit}
 .alb-caption .alb-artist .first,
 .alb-caption .alb-artist .last{font-weight:300;font-size:11px;letter-spacing:.08em}
 .alb-caption a.alb-caption-link{
@@ -385,6 +389,10 @@ body.alb-lock{
     font-weight:300;font-size:10px;letter-spacing:.06em;line-height:1.2;
     font-family:"Copperplate","Times New Roman",serif;text-transform:uppercase;
   }
+  .alb-caption .alb-artist.is-he{font-family:"FbEzmel","Arial Hebrew","David Libre",serif;text-transform:none;direction:rtl;letter-spacing:.06em}
+  .alb-caption .alb-artist.is-he .alb-caption-link--artist{display:inline-flex;flex-direction:row;gap:4px;font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;text-transform:none;direction:inherit}
+  .alb-caption .alb-artist.is-he .first,
+  .alb-caption .alb-artist.is-he .last{font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;text-transform:none;direction:inherit}
   .alb-caption .alb-artist .first,
   .alb-caption .alb-artist .last{font-size:10px;font-weight:300}
   .alb-caption .alb-artist.has-he-line2{

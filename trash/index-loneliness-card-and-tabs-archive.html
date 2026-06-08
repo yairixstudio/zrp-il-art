@@ -1,0 +1,155 @@
+<!-- ============================================================
+     BACKUP — removed from index.html on 2026-06-08
+     Reason: "בדידות בסביבה תוססת" moved out of "exhibitions now"
+     (replaced by "הקולפן / the peeler" upcoming card), and the
+     tabs+thumbnails archive was replaced by the new big-card
+     archive design (Figma landing::474:97 / 467:45).
+     Kept here only as a restore point.
+     ============================================================ -->
+
+<!-- (1) Loneliness "previous exhibition" card — was the 2nd card in #exhibitions-now -->
+      <a class="card-link" href="exhibitions/loneliness/">
+        <article class="card">
+          <div class="gname">גלריית כיכר המדינה</div>
+          <div class="img">
+            <img class="ex-now-photo ex-now-photo--mob" src="images/exhibitions/loneliness-mobile.webp" srcset="images/exhibitions/loneliness-mobile-480w.webp 480w, images/exhibitions/loneliness-mobile.webp 800w" sizes="100vw" width="177" height="214" alt="" decoding="async" loading="lazy">
+            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/loneliness-mobile.webp" srcset="images/exhibitions/loneliness-mobile-480w.webp 480w, images/exhibitions/loneliness-mobile.webp 800w" sizes="100vw" width="177" height="214" alt="" decoding="async" loading="lazy">
+            <div class="ovr">
+              <div class="stat">previous</div>
+              <div class="ovr-titles">
+                <div class="ttl-en">exhibition volume 1</div>
+                <div class="ttl-he">בדידות בסביבה תוססת</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </a>
+
+<!-- (2) Old tabs + thumbnails exhibitions-archive section -->
+<!-- EXHIBITIONS ARCHIVE -->
+<section class="exhibitions" id="exhibitions">
+  <div class="exhibitions-titles">
+    <span class="b">exhibitions</span>
+    <span class="l">archive</span>
+  </div>
+  <div class="past-list">
+    <div class="past-tabs" role="tablist" aria-label="exhibitions archive by gallery">
+      <button type="button" class="inactive" role="tab" data-tab="dizengoff" aria-selected="false">גלריית כיכר דיזינגוף</button>
+      <button type="button" class="active"   role="tab" data-tab="medina"    aria-selected="true">גלריית כיכר המדינה</button>
+    </div>
+    <div class="past-thumbs" data-artwork-gallery="exhibitions-archive" role="tabpanel"></div>
+  </div>
+</section>
+
+<!-- (3) Old archive JS — tab toggle + lightbox wiring (data: exhibitions.json::archive_thumbnails) -->
+<script type="application/json" id="fallback-archive">
+{
+  "tabs": [
+    {
+      "gallery_id": "dizengoff",
+      "label_he": "גלריית כיכר דיזינגוף",
+      "active": false,
+      "thumbs": [
+        { "n": "01", "image": "images/artists/eitan-goldson/work-01.webp",    "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — eitan goldson" },
+        { "n": "02", "image": "images/artists/tal-nehoray/work-02.webp",      "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — tal nehoray" },
+        { "n": "03", "image": "images/artists/maya-nachum-levy/work-03.webp", "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — maya nachum levy" },
+        { "n": "04", "image": "images/artists/zohar-shtrit/work-01.webp",     "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — zohar shitrit" }
+      ]
+    },
+    {
+      "gallery_id": "medina",
+      "label_he": "גלריית כיכר המדינה",
+      "active": true,
+      "thumbs": [
+        { "n": "01", "image": "images/exhibitions/archive/thumb-01.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 01" },
+        { "n": "02", "image": "images/exhibitions/archive/thumb-02.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 02" },
+        { "n": "03", "image": "images/exhibitions/archive/thumb-03.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 03" },
+        { "n": "04", "image": "images/exhibitions/archive/thumb-04.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 04" }
+      ]
+    }
+  ]
+}
+</script>
+<script>
+(function(){
+  var thumbsEl = document.querySelector('.past-thumbs');
+  var tabsEl   = document.querySelector('.past-tabs');
+  if (!thumbsEl || !tabsEl) return;
+
+  var data = null;
+  var byGallery = {};
+
+  function loadData(){
+    return fetch('data/exhibitions.json')
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(j){ return j && j.archive_thumbnails; })
+      .catch(function(){
+        var node = document.getElementById('fallback-archive');
+        try { return node ? JSON.parse(node.textContent) : null; }
+        catch(e){ return null; }
+      });
+  }
+
+  function renderThumbs(galleryId){
+    var tab = byGallery[galleryId];
+    if (!tab) return;
+    var html = tab.thumbs.map(function(t){
+      var title = (t.title_he || '').replace(/"/g,'&quot;');
+      var link = t.exhibition_id ? ('exhibitions/'+encodeURIComponent(t.exhibition_id)+'/') : '';
+      return '<div class="past-thumb" '+
+                'data-artwork-src="'+t.image+'" '+
+                'data-artwork-title="'+title+'" '+
+                'data-artwork-exhibition="'+(t.exhibition_id||'')+'" '+
+                (link  ? 'data-artwork-link="'+link+'" data-artwork-link-label="מעבר לתערוכה" ' : '')+
+                'tabindex="0" role="button" aria-label="'+(t.n ? t.n+' — '+title : title)+'">'+
+               '<span class="num">'+t.n+'</span>'+
+               '<img src="'+t.image+'" alt="'+title+'" decoding="async" loading="lazy">'+
+             '</div>';
+    }).join('');
+    thumbsEl.innerHTML = html;
+    updateThumbsLayout();
+    if (window.ArtworkLightbox && window.ArtworkLightbox.refreshFocusable){
+      window.ArtworkLightbox.refreshFocusable();
+    }
+  }
+
+  function updateThumbsLayout(){
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (!isMobile){
+      thumbsEl.classList.remove('past-thumbs--centered');
+      return;
+    }
+    var hasOverflow = thumbsEl.scrollWidth - thumbsEl.clientWidth > 1;
+    thumbsEl.classList.toggle('past-thumbs--centered', !hasOverflow);
+  }
+
+  function setActive(galleryId){
+    var btns = tabsEl.querySelectorAll('button[data-tab]');
+    Array.prototype.forEach.call(btns, function(b){
+      var on = b.getAttribute('data-tab') === galleryId;
+      b.classList.toggle('active', on);
+      b.classList.toggle('inactive', !on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    renderThumbs(galleryId);
+  }
+
+  tabsEl.addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-tab]');
+    if (!btn) return;
+    setActive(btn.getAttribute('data-tab'));
+  });
+
+  loadData().then(function(d){
+    if (!d || !d.tabs) return;
+    data = d;
+    d.tabs.forEach(function(t){ byGallery[t.gallery_id] = t; });
+    var initial = (d.tabs.filter(function(t){ return t.active; })[0] || d.tabs[0]).gallery_id;
+    setActive(initial);
+  });
+
+  window.addEventListener('resize', function(){
+    updateThumbsLayout();
+  });
+})();
+</script>

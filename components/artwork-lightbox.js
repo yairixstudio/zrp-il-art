@@ -237,6 +237,8 @@
 
     artistEl.innerHTML = '';
     artistEl.classList.toggle('has-he-line2', !!line2);
+    artistEl.classList.toggle('is-he', HEB_LETTERS.test(artist));
+    artistEl.classList.toggle('is-en', !HEB_LETTERS.test(artist));
     if (!artist){ root.classList.add('no-caption'); return; }
     root.classList.remove('no-caption');
 

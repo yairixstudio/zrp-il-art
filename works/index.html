@@ -65,8 +65,9 @@ body{text-transform:uppercase}
 
 /* card meta — right-aligned (RTL), per Figma Frame 376/379 */
 .meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right;flex:1}
-.meta .artist{font-family:var(--heb);font-weight:400;font-size:18px;color:var(--ink);line-height:1.25;direction:rtl}
+.meta .artist{font-family:var(--heb);font-weight:400;font-size:20px;color:var(--ink);line-height:1.25;direction:rtl}
 .meta .artist.is-en{font-family:var(--cop);font-weight:700;text-transform:uppercase;letter-spacing:.03em;direction:ltr}
+.meta .artist + .title{margin-top:-2px}
 .meta a.artist{transition:opacity .2s}
 .meta a.artist:hover{opacity:.6}
 .meta .title{font-size:16px;color:var(--ink);line-height:1.3}
@@ -104,7 +105,7 @@ body{text-transform:uppercase}
   .hero h2{font-size:clamp(64px,24vw,91px);margin-top:-.12em}
   .grid{padding:32px 16px;column-gap:16px;row-gap:40px}
   .card{gap:12px}
-  .meta .artist{font-size:16px}
+  .meta .artist{font-size:18px}
   .meta .title{font-size:15px}
   .meta .details{font-size:15px}
 }
@@ -114,7 +115,7 @@ body{text-transform:uppercase}
    ============================================================ */
 @media (max-width:390px){
   .grid{column-gap:12px}
-  .meta .artist{font-size:15px}
+  .meta .artist{font-size:17px}
 }
 </style>
 </head>
@@ -143,9 +144,11 @@ body{text-transform:uppercase}
 {"id":"zohar-ron-4","artist_slug":"zohar-ron","artist_he":"זוהר רון","artist_en":"zohar ron","title_he":"כְּתוּבָּה","title_en":"QTUBA","gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"zohar-ron-4","w":690,"h":1044,"widths":[480,690]},
 {"id":"eitan-goldson-1","artist_slug":"eitan-goldson","artist_he":"איתן גולדסון","artist_en":"eitan goldson","title_he":"תשע נשמות","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":"מדיה מעורבת - עבודה משותפת עם הנריקה רוטנברג. צבעי שמן, אקריליק, גרפיט וקפה על קנבס מודפס בלייזר.","img":"eitan-goldson-1","w":690,"h":1044,"widths":[480,690]},
 {"id":"eitan-goldson-2","artist_slug":"eitan-goldson","artist_he":"איתן גולדסון","artist_en":"eitan goldson","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"eitan-goldson-2","w":690,"h":1044,"widths":[480,690]},
+{"id":"eitan-goldson-3","artist_slug":"eitan-goldson","artist_he":"איתן גולדסון","artist_en":"eitan goldson","title_he":"תשע נשמות","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"eitan-goldson-3","w":690,"h":1035,"widths":[480,690]},
 {"id":"holy-kadosh-1","artist_slug":"holy-kadosh","artist_he":"טל קדוש","artist_en":"tal holy kadosh","title_he":null,"title_en":"HOLY BAG","gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"holy-kadosh-1","w":690,"h":1044,"widths":[480,690]},
 {"id":"holy-kadosh-2","artist_slug":"holy-kadosh","artist_he":"טל קדוש","artist_en":"tal holy kadosh","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"holy-kadosh-2","w":918,"h":1390,"widths":[480,768,918]},
 {"id":"holy-kadosh-3","artist_slug":"holy-kadosh","artist_he":"טל קדוש","artist_en":"tal holy kadosh","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"holy-kadosh-3","w":918,"h":1034,"widths":[480,768,918]},
+{"id":"tal-nehoray-6","artist_slug":"tal-nehoray","artist_he":"טל נהוראי","artist_en":"tal nehoray","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"קרמיקה","img":"tal-nehoray-6","w":1080,"h":1156,"widths":[480,768,1080]},
 {"id":"tal-nehoray-1","artist_slug":"tal-nehoray","artist_he":"טל נהוראי","artist_en":"tal nehoray","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"קרמיקה","img":"tal-nehoray-1","w":690,"h":1044,"widths":[480,690]},
 {"id":"tal-nehoray-2","artist_slug":"tal-nehoray","artist_he":"טל נהוראי","artist_en":"tal nehoray","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"קרמיקה","img":"tal-nehoray-2","w":1080,"h":1080,"widths":[480,768,1080]},
 {"id":"tal-nehoray-3","artist_slug":"tal-nehoray","artist_he":"טל נהוראי","artist_en":"tal nehoray","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"קרמיקה","img":"tal-nehoray-3","w":690,"h":1044,"widths":[480,690]},
@@ -155,12 +158,16 @@ body{text-transform:uppercase}
 {"id":"hila-loterstein-1","artist_slug":"hila-loterstein","artist_he":"הילה לוטרשטרין","artist_en":"hila loterstein","title_he":"אלה עם כנפיים","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"hila-loterstein-1","w":690,"h":1044,"widths":[480,690]},
 {"id":"hila-loterstein-2","artist_slug":"hila-loterstein","artist_he":"הילה לוטרשטרין","artist_en":"hila loterstein","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"hila-loterstein-2","w":900,"h":874,"widths":[480,768,900]},
 {"id":"hila-loterstein-3","artist_slug":"hila-loterstein","artist_he":"הילה לוטרשטרין","artist_en":"hila loterstein","title_he":"הרקדנית הצהובה","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"hila-loterstein-3","w":720,"h":743,"widths":[480,720]},
+{"id":"gal-polk-7","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-7","w":864,"h":1243,"widths":[480,768,864]},
 {"id":"gal-polk-1","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-1","w":1080,"h":992,"widths":[480,768,1080]},
 {"id":"gal-polk-2","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-2","w":1080,"h":1440,"widths":[480,768,1080]},
 {"id":"gal-polk-3","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-3","w":1080,"h":1080,"widths":[480,768,1080]},
 {"id":"gal-polk-4","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-4","w":1080,"h":1620,"widths":[480,768,1080]},
 {"id":"gal-polk-5","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":null,"img":"gal-polk-5","w":1080,"h":720,"widths":[480,768,1080]},
 {"id":"gal-polk-6","artist_slug":"gal-polk","artist_he":"גל פולק","artist_en":"gal pollak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"gal-polk-6","w":1080,"h":1440,"widths":[480,768,1080]},
+{"id":"maya-nachum-levy-3","artist_slug":"maya-nachum-levy","artist_he":"מאיה נחום לוי","artist_en":"maya nachum levy","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"maya-nachum-levy-3","w":690,"h":1044,"widths":[480,690]},
+{"id":"maya-nachum-levy-4","artist_slug":"maya-nachum-levy","artist_he":"מאיה נחום לוי","artist_en":"maya nachum levy","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"maya-nachum-levy-4","w":690,"h":1044,"widths":[480,690]},
+{"id":"maya-nachum-levy-5","artist_slug":"maya-nachum-levy","artist_he":"מאיה נחום לוי","artist_en":"maya nachum levy","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"maya-nachum-levy-5","w":690,"h":1044,"widths":[480,690]},
 {"id":"maya-nachum-levy-1","artist_slug":"maya-nachum-levy","artist_he":"מאיה נחום לוי","artist_en":"maya nachum levy","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"maya-nachum-levy-1","w":758,"h":980,"widths":[480,758]},
 {"id":"maya-nachum-levy-2","artist_slug":"maya-nachum-levy","artist_he":"מאיה נחום לוי","artist_en":"maya nachum levy","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"maya-nachum-levy-2","w":904,"h":1744,"widths":[480,768,904]},
 {"id":"adi-duak-1","artist_slug":"adi-duak","artist_he":"עדי דואק","artist_en":"adi duak","title_he":null,"title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":null,"img":"adi-duak-1","w":690,"h":1044,"widths":[480,690]},

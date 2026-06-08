@@ -237,25 +237,23 @@ body{text-transform:uppercase}
 .ex-now .artist[href$="/maya-nachum-levy/"] img{object-position:50% 25%}
 .ex-now .artist[href$="/la-raz-porta/"] img{object-position:50% 50%}
 
-/* ===== EXHIBITIONS ARCHIVE ===== */
-.exhibitions{padding:48px var(--pad-x) 96px;display:flex;flex-direction:column;gap:40px;align-items:center;background:var(--white);width:100%;max-width:var(--max);margin:0 auto}
-.exhibitions-titles{text-align:center;line-height:1.05}
-.exhibitions-titles .b,.exhibitions-titles .l{font-family:var(--cop);font-size:36px;display:block}
-.exhibitions-titles .b{font-weight:700}
-.exhibitions-titles .l{font-weight:300}
-.past-list{display:flex;flex-direction:column;gap:40px;align-items:center;width:100%}
-.past-tabs{display:flex;justify-content:center;gap:24px;font-family:var(--heb);font-size:28px;direction:rtl;flex-wrap:wrap}
-.past-tabs button{background:none;border:0;padding:0 0 2px;margin:0;font:inherit;color:inherit;cursor:pointer;font-weight:300;transition:color .2s ease,border-color .2s ease;border-bottom:.5px solid transparent}
-.past-tabs button.inactive{color:var(--grey-mid)}
-.past-tabs button.active{color:var(--ink);border-bottom-color:var(--ink)}
-.past-tabs button:hover{color:var(--ink)}
-.past-tabs button:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
-.past-thumbs{display:flex;gap:16px;justify-content:center;width:100%}
-.past-thumb{width:158px;display:flex;flex-direction:column;gap:6px;flex-shrink:0;cursor:pointer}
-.past-thumb .num{font-family:var(--cop);font-weight:400;font-size:18.99px;text-align:right;padding-right:12.66px}
-.past-thumb img{width:100%;height:191.52px;object-fit:cover;transition:transform .6s ease}
-.past-thumb:hover img{transform:scale(1.04)}
-.past-thumb:focus-visible{outline:1px solid var(--ink);outline-offset:4px}
+/* ===== EXHIBITIONS ARCHIVE — Figma landing::474:97 (desktop) / 467:45 (mobile) ===== */
+.ex-archive{padding:48px var(--pad-x) 96px;display:flex;flex-direction:column;gap:40px;align-items:center;background:var(--white);width:100%;max-width:var(--max);margin:0 auto}
+.ex-archive-titles{text-align:center;line-height:1.05}
+.ex-archive-titles .b,.ex-archive-titles .l{font-family:var(--cop);font-size:36px;display:block}
+.ex-archive-titles .b{font-weight:700}
+.ex-archive-titles .l{font-weight:300}
+.ex-archive-list{display:flex;flex-direction:column;gap:40px;align-items:center;width:100%}
+.ex-archive-card{position:relative;display:block;width:100%;height:693px;overflow:hidden;background:#222;text-decoration:none;color:#fff}
+.ex-archive-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.ex-archive-card:hover .ex-archive-photo{transform:scale(1.04)}
+.ex-archive-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(102,102,102,0) 0%,rgba(0,0,0,.8) 81%);pointer-events:none;z-index:0}
+.ex-archive-card:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.ex-archive-ovr{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;z-index:1}
+.ex-archive-title{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0;text-align:left}
+.ex-archive-title .en{font-family:var(--cop);font-weight:300;font-size:36px;line-height:1.08;letter-spacing:.035em;text-align:left}
+.ex-archive-title .he{font-family:var(--heb);font-weight:300;font-size:36px;direction:rtl;text-align:left;line-height:1.15}
+.ex-archive-badge{font-family:var(--heb);font-weight:300;font-size:36px;color:#fff;background:#1B1B1B;padding:8px 16px;direction:rtl;white-space:nowrap;line-height:1;flex-shrink:0}
 
 /* ===== ART WORKS ===== */
 .artworks{display:flex;flex-direction:column;background:var(--white)}
@@ -500,8 +498,6 @@ body{text-transform:uppercase}
   .aw-text .more{left:50%;top:50%;transform:translate(-50%,-50%);font-size:60px}
   .opencall-card{width:280px}
   .opencall-card .img{height:420px}
-  .past-thumb{width:140px}
-  .past-thumb img{height:170px}
 }
 
 /* ============================================================
@@ -591,17 +587,16 @@ body{text-transform:uppercase}
   .ex-now .artist .nm{font-size:11px;line-height:18px}
 
   /* EXHIBITIONS ARCHIVE */
-  .exhibitions{padding:32px 16px;gap:128px;align-items:stretch}
-  .exhibitions-titles{text-align:left;line-height:.95;max-width:100%}
-  .exhibitions-titles .b{font-size:44px;white-space:nowrap;letter-spacing:-.01em}
-  .exhibitions-titles .l{font-size:70px;margin-top:-6px;white-space:nowrap;letter-spacing:-.01em}
-  .past-tabs{justify-content:flex-end;font-size:16px;gap:16px;flex-wrap:wrap}
-  .past-thumbs{overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;gap:8px;scroll-snap-type:x mandatory;padding-bottom:4px;margin:0 -16px;padding-left:16px;padding-right:16px}
-  .past-thumbs.past-thumbs--centered{justify-content:center}
-  .past-thumbs::-webkit-scrollbar{display:none}
-  .past-thumb{width:100px;flex-shrink:0;scroll-snap-align:start}
-  .past-thumb .num{font-size:12px;line-height:1.25;direction:ltr;text-align:left;padding-left:0;padding-right:0;padding-bottom:2px}
-  .past-thumb img{height:120px}
+  .ex-archive{padding:32px 16px;gap:128px;align-items:stretch}
+  .ex-archive-titles{text-align:left;line-height:.95;max-width:100%}
+  .ex-archive-titles .b{font-size:44px;white-space:nowrap;letter-spacing:-.01em}
+  .ex-archive-titles .l{font-size:70px;margin-top:-6px;white-space:nowrap;letter-spacing:-.01em}
+  .ex-archive-list{gap:16px;align-items:stretch}
+  .ex-archive-card{height:214.55px}
+  .ex-archive-ovr{left:8px;right:8px;bottom:8px;gap:8px}
+  .ex-archive-title .en{font-size:13px;line-height:1.2;letter-spacing:.02em}
+  .ex-archive-title .he{font-size:14px;font-weight:300;line-height:1.25}
+  .ex-archive-badge{font-size:14px;padding:4px 8px}
 
   /* ART WORKS — 2x2 grid; mobile ART = uppercase per Figma */
   .artworks{padding:32px 16px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;align-content:start}
@@ -910,17 +905,16 @@ body{text-transform:uppercase}
           </div>
         </article>
       </a>
-      <a class="card-link" href="exhibitions/loneliness/">
+      <a class="card-link" href="opencalls/the-peeler/">
         <article class="card">
           <div class="gname">גלריית כיכר המדינה</div>
           <div class="img">
-            <img class="ex-now-photo ex-now-photo--mob" src="images/exhibitions/loneliness-mobile.webp" srcset="images/exhibitions/loneliness-mobile-480w.webp 480w, images/exhibitions/loneliness-mobile.webp 800w" sizes="100vw" width="177" height="214" alt="" decoding="async" loading="lazy">
-            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/loneliness-mobile.webp" srcset="images/exhibitions/loneliness-mobile-480w.webp 480w, images/exhibitions/loneliness-mobile.webp 800w" sizes="100vw" width="177" height="214" alt="" decoding="async" loading="lazy">
+            <img class="ex-now-photo ex-now-photo--mob" src="images/exhibitions/peeler-mobile.webp" srcset="images/exhibitions/peeler-mobile-480w.webp 480w, images/exhibitions/peeler-mobile.webp 620w" sizes="100vw" width="177" height="214" alt="" decoding="async" loading="lazy">
+            <img class="ex-now-photo ex-now-photo--desk" src="images/exhibitions/peeler-mobile.webp" srcset="images/exhibitions/peeler-mobile-480w.webp 480w, images/exhibitions/peeler-mobile.webp 620w" sizes="100vw" width="177" height="214" alt="" decoding="async" loading="lazy">
             <div class="ovr">
-              <div class="stat">previous</div>
+              <div class="stat">upcoming</div>
               <div class="ovr-titles">
-                <div class="ttl-en">exhibition volume 1</div>
-                <div class="ttl-he">בדידות בסביבה תוססת</div>
+                <div class="ttl-he">הקולפן</div>
               </div>
             </div>
           </div>
@@ -982,18 +976,23 @@ porta</div></a>
   </div>
 </section>
 
-<!-- EXHIBITIONS ARCHIVE -->
-<section class="exhibitions" id="exhibitions">
-  <div class="exhibitions-titles">
+<!-- EXHIBITIONS ARCHIVE — Figma landing::474:97 (desktop) / 467:45 (mobile) -->
+<section class="ex-archive" id="exhibitions" aria-label="exhibitions archive">
+  <div class="ex-archive-titles">
     <span class="b">exhibitions</span>
     <span class="l">archive</span>
   </div>
-  <div class="past-list">
-    <div class="past-tabs" role="tablist" aria-label="exhibitions archive by gallery">
-      <button type="button" class="inactive" role="tab" data-tab="dizengoff" aria-selected="false">גלריית כיכר דיזינגוף</button>
-      <button type="button" class="active"   role="tab" data-tab="medina"    aria-selected="true">גלריית כיכר המדינה</button>
-    </div>
-    <div class="past-thumbs" data-artwork-gallery="exhibitions-archive" role="tabpanel"></div>
+  <div class="ex-archive-list">
+    <a class="ex-archive-card" href="exhibitions/loneliness/">
+      <img class="ex-archive-photo" src="images/exhibitions/loneliness-mobile.webp" srcset="images/exhibitions/loneliness-mobile-480w.webp 480w, images/exhibitions/loneliness-mobile.webp 800w" sizes="100vw" width="800" height="1067" alt="" decoding="async" loading="lazy">
+      <div class="ex-archive-ovr">
+        <div class="ex-archive-title">
+          <span class="en">exhibition volume 1</span>
+          <span class="he" dir="rtl">בדידות בסביבה תוססת</span>
+        </div>
+        <span class="ex-archive-badge" dir="rtl">גלריית כיכר המדינה</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -1347,126 +1346,6 @@ porta</div></a>
 <!-- FOOTER -->
 <site-footer></site-footer>
 
-<!-- ============================================================
-     EXHIBITIONS ARCHIVE — tab toggle + lightbox wiring
-     Data source: data/exhibitions.json :: archive_thumbnails
-     Inline fallback below covers file:// usage (fetch may be blocked).
-     IMPORTANT: when updating exhibitions.json::archive_thumbnails,
-     also update the inline fallback (until a build step exists).
-     ============================================================ -->
-<script type="application/json" id="fallback-archive">
-{
-  "tabs": [
-    {
-      "gallery_id": "dizengoff",
-      "label_he": "גלריית כיכר דיזינגוף",
-      "active": false,
-      "thumbs": [
-        { "n": "01", "image": "images/artists/eitan-goldson/work-01.webp",    "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — eitan goldson" },
-        { "n": "02", "image": "images/artists/tal-nehoray/work-02.webp",      "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — tal nehoray" },
-        { "n": "03", "image": "images/artists/maya-nachum-levy/work-03.webp", "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — maya nachum levy" },
-        { "n": "04", "image": "images/artists/zohar-shtrit/work-01.webp",     "exhibition_id": "how-many", "title_he": "כמה שותפים היו לך? — zohar shitrit" }
-      ]
-    },
-    {
-      "gallery_id": "medina",
-      "label_he": "גלריית כיכר המדינה",
-      "active": true,
-      "thumbs": [
-        { "n": "01", "image": "images/exhibitions/archive/thumb-01.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 01" },
-        { "n": "02", "image": "images/exhibitions/archive/thumb-02.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 02" },
-        { "n": "03", "image": "images/exhibitions/archive/thumb-03.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 03" },
-        { "n": "04", "image": "images/exhibitions/archive/thumb-04.webp", "exhibition_id": "loneliness", "title_he": "בדידות בתוך סביבה תוססת — 04" }
-      ]
-    }
-  ]
-}
-</script>
-<script>
-(function(){
-  var thumbsEl = document.querySelector('.past-thumbs');
-  var tabsEl   = document.querySelector('.past-tabs');
-  if (!thumbsEl || !tabsEl) return;
-
-  var data = null;
-  var byGallery = {};
-
-  function loadData(){
-    return fetch('data/exhibitions.json')
-      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-      .then(function(j){ return j && j.archive_thumbnails; })
-      .catch(function(){
-        var node = document.getElementById('fallback-archive');
-        try { return node ? JSON.parse(node.textContent) : null; }
-        catch(e){ return null; }
-      });
-  }
-
-  function renderThumbs(galleryId){
-    var tab = byGallery[galleryId];
-    if (!tab) return;
-    var html = tab.thumbs.map(function(t){
-      var title = (t.title_he || '').replace(/"/g,'&quot;');
-      // CTA inside lightbox → /exhibitions/<slug>/ (same route as rest of site).
-      var link = t.exhibition_id ? ('exhibitions/'+encodeURIComponent(t.exhibition_id)+'/') : '';
-      return '<div class="past-thumb" '+
-                'data-artwork-src="'+t.image+'" '+
-                'data-artwork-title="'+title+'" '+
-                'data-artwork-exhibition="'+(t.exhibition_id||'')+'" '+
-                (link  ? 'data-artwork-link="'+link+'" data-artwork-link-label="מעבר לתערוכה" ' : '')+
-                'tabindex="0" role="button" aria-label="'+(t.n ? t.n+' — '+title : title)+'">'+
-               '<span class="num">'+t.n+'</span>'+
-               '<img src="'+t.image+'" alt="'+title+'" decoding="async" loading="lazy">'+
-             '</div>';
-    }).join('');
-    thumbsEl.innerHTML = html;
-    updateThumbsLayout();
-    if (window.ArtworkLightbox && window.ArtworkLightbox.refreshFocusable){
-      window.ArtworkLightbox.refreshFocusable();
-    }
-  }
-
-  function updateThumbsLayout(){
-    // On wider phones, center the row only when all thumbs fit without horizontal scroll.
-    var isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (!isMobile){
-      thumbsEl.classList.remove('past-thumbs--centered');
-      return;
-    }
-    var hasOverflow = thumbsEl.scrollWidth - thumbsEl.clientWidth > 1;
-    thumbsEl.classList.toggle('past-thumbs--centered', !hasOverflow);
-  }
-
-  function setActive(galleryId){
-    var btns = tabsEl.querySelectorAll('button[data-tab]');
-    Array.prototype.forEach.call(btns, function(b){
-      var on = b.getAttribute('data-tab') === galleryId;
-      b.classList.toggle('active', on);
-      b.classList.toggle('inactive', !on);
-      b.setAttribute('aria-selected', on ? 'true' : 'false');
-    });
-    renderThumbs(galleryId);
-  }
-
-  tabsEl.addEventListener('click', function(e){
-    var btn = e.target.closest('button[data-tab]');
-    if (!btn) return;
-    setActive(btn.getAttribute('data-tab'));
-  });
-
-  loadData().then(function(d){
-    if (!d || !d.tabs) return;
-    data = d;
-    d.tabs.forEach(function(t){ byGallery[t.gallery_id] = t; });
-    var initial = (d.tabs.filter(function(t){ return t.active; })[0] || d.tabs[0]).gallery_id;
-    setActive(initial);
-  });
-
-  window.addEventListener('resize', function(){
-    updateThumbsLayout();
-  });
-})();
-</script>
 
 <!-- Artwork Lightbox component (shared) — see CLAUDE.md §15 -->
 <script src="components/artwork-lightbox.js" defer></script>

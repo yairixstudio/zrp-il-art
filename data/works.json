@@ -668,11 +668,12 @@
       "sold": false,
       "details_he": null,
       "img": "adi-duak-1",
-      "w": 690,
-      "h": 1044,
+      "w": 1080,
+      "h": 1634,
       "widths": [
         480,
-        690
+        768,
+        1080
       ]
     },
     {
@@ -688,7 +689,7 @@
       "details_he": null,
       "img": "adi-duak-2",
       "w": 1080,
-      "h": 1440,
+      "h": 1634,
       "widths": [
         480,
         768,
@@ -708,7 +709,7 @@
       "details_he": null,
       "img": "adi-duak-3",
       "w": 1080,
-      "h": 1231,
+      "h": 1634,
       "widths": [
         480,
         768,
@@ -728,7 +729,7 @@
       "details_he": null,
       "img": "adi-duak-4",
       "w": 1080,
-      "h": 1064,
+      "h": 1634,
       "widths": [
         480,
         768,

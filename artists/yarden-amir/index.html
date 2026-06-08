@@ -78,24 +78,20 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
 .hero-collab-x{font-family:var(--cop);font-weight:300;font-size:36px;line-height:1;color:var(--ink);text-align:center;margin:0;width:100%}
 
 /* ===== ARTWORKS SECTION ===== */
-.works{padding:32px var(--pad-x);background:var(--white);display:flex;justify-content:center}
+.works{padding:48px var(--pad-x);background:var(--white);display:flex;justify-content:center}
 .works-inner{width:100%;max-width:var(--max);display:flex;flex-direction:column;gap:24px}
 .works-head{display:flex;align-items:flex-start;justify-content:flex-start;gap:8px;text-align:left}
 .works-head h2{font-family:var(--cop);font-weight:300;font-size:28px;color:var(--ink);letter-spacing:.02em;text-align:right}
-.works-grid{display:grid;grid-template-columns:repeat(2,1fr);column-gap:16px;row-gap:48px}
-.work{display:flex;flex-direction:column;align-items:stretch;min-width:0;gap:12px;height:100%}
-/* Artwork frame: full image visible (no crop), width fills cell; min height with #FAFAFA letterboxing for wide/short images */
+.works-grid{display:grid;grid-template-columns:repeat(2,1fr);column-gap:16px;row-gap:64px}
+.work{display:flex;flex-direction:column;align-items:stretch;min-width:0;gap:16px;height:100%}
+/* Artwork frame: full image visible (no crop), width fills cell; fixed 690/1044 frame, contain + #FAFAFA letterboxing for wide/short images */
 .work .img{
-  position:relative;width:100%;min-height:433px;
+  position:relative;width:100%;aspect-ratio:690/1044;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;background:#FAFAFA;cursor:zoom-in;
 }
-.work .img picture{display:block;width:100%;line-height:0}
-.work .img img{
-  width:100%;height:auto;max-width:100%;
-  object-fit:contain;object-position:center;
-  vertical-align:middle;
-}
+.work .img picture{display:flex;width:100%;height:100%;align-items:center;justify-content:center;line-height:0}
+.work .img img{width:100%;height:100%;object-fit:contain;object-position:center}
 .work .img::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,0);transition:background .3s;pointer-events:none}
 .work:hover .img::after{background:rgba(27,27,27,.06)}
 /* per-image caption (below each artwork) */
@@ -178,7 +174,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
   .hero.is-collab .hero-portrait.dual{width:100%;max-width:420px;height:240px}
   .hero.is-collab .hero-name.hero-name--collab .first,.hero.is-collab .hero-name.hero-name--collab .last{font-size:36px;line-height:1}
   .hero.is-collab .hero-handle{font-size:16px}
-  .works-grid{gap:24px}
+  .works-grid{row-gap:48px}
 }
 
 /* ============================================================
@@ -200,13 +196,12 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
   .hero.is-collab .hero-portrait.dual{max-width:358px;height:211px;gap:16px}
 
   /* WORKS — stay 2-col on mobile (matches /works/) */
-  .works{padding:32px 16px}
+  .works{padding:48px 16px}
   .works-grid{column-gap:16px;row-gap:40px}
-  .work{gap:10px}
-  .work .img{min-height:220px}
+  .work{gap:12px}
   .work-meta .artist{font-size:18px}
   .work-meta .title{font-size:15px}
-  .work-meta .details{font-size:14px}
+  .work-meta .details{font-size:15px}
   .works-grid.single{grid-template-columns:1fr}
   .works-grid.single .work{max-width:100%}
   .works-head h2{font-size:20px}
@@ -222,6 +217,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
    SMALL MOBILE (≤400px)
    ============================================================ */
 @media (max-width:400px){
+  .works-grid{column-gap:12px}
   .hero-name .first,.hero-name .last{font-size:32px}
   .hero-portrait,.hero-portrait.dual{width:240px;height:240px}
   .hero.is-collab .hero-portrait.dual{width:100%;max-width:358px;height:200px}

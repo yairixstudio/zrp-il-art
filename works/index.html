@@ -57,8 +57,8 @@ body{text-transform:uppercase}
   padding:48px var(--pad-x);background:var(--white);
 }
 .card{display:flex;flex-direction:column;gap:16px;min-width:0;height:100%}
-.card .img{position:relative;width:100%;aspect-ratio:100/121;overflow:hidden;background:#f3f1ee;cursor:pointer}
-.card .img img{width:100%;height:100%;object-fit:contain;transition:transform .7s ease}
+.card .img{position:relative;width:100%;aspect-ratio:690/1044;overflow:hidden;background:#f3f1ee;cursor:pointer}
+.card .img img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .7s ease}
 .card .img::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,0);transition:background .3s;pointer-events:none}
 .card .img:hover img{transform:scale(1.03)}
 .card .img:hover::after{background:rgba(27,27,27,.05)}

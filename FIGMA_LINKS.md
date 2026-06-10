@@ -113,9 +113,12 @@
 
 ## 🖼 The Art Works (/works)
 
-> **עיצוב מחדש 2026-06-08** — גריד 2 עמודות עם כרטיסי יצירה מלאים (תמונה, אומן, כותרת, גלריה, תג "נמכר", פרטים). קובץ `landing` (`XhGH...`). **מובייל = מקור התוכן** (34 יצירות אמיתיות); **דסקטופ = מקור הלייאוט בלבד** (התמונות שם placeholder).
+> **עדכון 2026-06-10** — גריד **3 עמודות דסקטופ / 2 מובייל**, **94 יצירות** מסודרות בדיוק לפי Figma `542:499`, מקובצות ל-3 בלוקים לפי גלריה (מדינה 1–23 · דיזנגוף 24–60 · מדינה 61–94). הקנוני החדש = `542:499` (גם layout וגם content). קובץ `landing` (`XhGH...`).
 
-works v2 דסקטופ (1440 — layout): Implement this design from Figma.
+works v2 דסקטופ (1440 — canonical layout+content, 94 כרטיסים): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=542-499&m=dev
+
+works v2 דסקטופ ישן (491:928 — 2026-06-08, 2 עמודות, legacy): Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=491-928&m=dev
 
 works v2 מובייל (390 — content): Implement this design from Figma.
@@ -180,6 +183,28 @@ works v2 מובייל (390 — content): Implement this design from Figma.
 אומנים — מסגרת frame עם 13 mobile mockups: Implement this design from Figma.
 @https://www.figma.com/design/Zn3N3mBQkbYER7tTJMbCcz/%D7%92%D7%A8%D7%A4%D7%99%D7%A7%D7%95%D7%AA-%D7%A9%D7%95%D7%A0%D7%95%D7%AA?node-id=1213-3672&m=dev
 
+### artist-pages-קולפן — 14 mobile frames (תערוכת הקולפן, 2026-06-10)
+
+סקשן בקובץ `landing` עם דפי אומן מובייל (390px) לתערוכת הקולפן: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=560-3384&m=dev
+
+node-ids פר-אומן (כולם ב-`XhGH289YTRcW811wrufRJz`):
+| אומן | node | הערות |
+|---|---|---|
+| jessica-tabarovsky | `560:4910` | קנוני; `560:4678` variant ישן עם leftover של hila-loterstein |
+| chen-ziv | `560:5552` | 2 פסקאות סיום הן leftover של ג'סיקה ("התנערות") — הושמטו |
+| baruch-torgeman | `560:5637` | |
+| noemi-safir | `560:4741` | ביו חדש (קולפן) |
+| elsa-ars-brush | `560:5350` | ביו חדש + תיקון כתיב כותרות ("הסרף"→"השרף") |
+| anat-wegier | `560:5792` | ביו חדש (קולפן) |
+| yarden-amir | `561:1154` | ללא שינוי תוכן |
+| gilad-kenan | `560:5857` | |
+| lahav-barak | `560:5967` | |
+| livay-levi | `560:6036` | ⚠️ Profile Text בפיגמה אומר "lahav barak" בטעות |
+| natasha-zeriker | `560:6159` | |
+| nir-giorgio-levin | `571:6354` | +7 יצירות חדשות (`583:331..379`) |
+| talia-zoref | `560:6232` | |
+
 ### zohar ron × dandan nusha (שיתוף — `artist.html?slug=zohar-ron-dan-ben-ari`)
 
 מובייל (קנוני ב-`landing`, לא ב-`artist-pages`): Implement this design from Figma.
@@ -214,6 +239,17 @@ press time-out דסקטופ: Implement this design from Figma.
 
 press time-out מובייל: Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=119-1433&m=dev
+
+### the-sixth-scent — ora magazine | issue 02 (interview with Erez Zielinski Rozen)
+
+press the-sixth-scent דסקטופ: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=545-1669&m=dev
+
+press the-sixth-scent מובייל: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=545-1762&m=dev
+
+homepage `#press` כרטיס חדש (the sixth scent) + גריד מעודכן: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=551-371&m=dev
 
 ---
 
@@ -312,7 +348,7 @@ lightbox state 3 (mobile no-caption): Implement this design from Figma.
 | `/exhibitions` (index) | ❌ אין | אולי anchor (`#exhibitions`) |
 | `/press` (index) | ❌ אין | אולי anchor (`#press`) |
 | `/opencall` (index) | ❌ אין | אולי anchor (`#opencall`) |
-| `/artists` (index) | ⚠ אולי `1213:4547` — בפועל זו רק תווית טקסט עם hyperlink חיצוני | נדרשת החלטה |
+| `/artists` (index) | ✅ canonical: landing `XhGH...::523:107` (desktop) / `523:2` (mobile) — גריד 28 אומנים. (`1213:4547` הישן = תווית טקסט בלבד) | `artists/index.html` |
 | `/contact` | ❌ אין | תכנון נדרש מאפס |
 | `/accessibility` | ❌ אין | תכנון נדרש מאפס |
 

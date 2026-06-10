@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORA MAGAZINE — THE SIXTH SCENT | Zielinski &amp; Rozen</title>
+<link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../פונטים/Copperplate.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../../components/site-boot.css">
+<meta name="description" content="The Sixth Scent — Ora Magazine, Issue 02. From Polish roots to a global empire: the alchemical vision of Erez Zielinski Rozen. An interview on scent, legacy, family and the art gallery project.">
+<style>
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.woff2") format("woff2"),url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate.woff2") format("woff2"),url("../../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Bold.woff2") format("woff2"),url("../../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.woff2") format("woff2"),url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.woff2") format("woff2"),url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;--bg-grey:#EEF0EF;--ink:#1B1B1B;--copy-grey:#6B7280;
+  --caption:#989898;--icon-grey:#707070;--placeholder:#FAFAFA;--link:#2D3BD5;
+  --max:1440px;--col:600px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;--col-pad:max(16px, calc((100vw - var(--col))/2));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+/* Global casing: all English = Copperplate UPPERCASE (conventions §5) */
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+
+/* nav/footer styles in ../../components/site-chrome.css */
+
+.article{background:var(--white);display:flex;flex-direction:column}
+.article-head{padding:32px var(--col-pad) 0;display:flex;flex-direction:column;align-items:center;gap:16px}
+.meta-line{display:flex;align-items:center;justify-content:center;gap:10px}
+.meta-line .tag,.meta-line .src{font-family:var(--cop);font-weight:300;font-size:18px;color:var(--ink);letter-spacing:.02em}
+.meta-line .sep{font-family:var(--heb);font-weight:300;font-size:16px;color:var(--ink);text-transform:none}
+
+.article-title{font-family:var(--cop);font-weight:400;font-size:48px;line-height:1.1;color:var(--ink);text-align:center;padding:0 16px;width:100%;letter-spacing:.01em}
+.article-subtitle{font-family:var(--cop);font-weight:400;font-size:18px;line-height:1.3;color:var(--ink);text-align:center;padding:0 16px;width:100%}
+
+.article-meta-bar{padding:0 10px 24px;display:flex;flex-direction:column;align-items:center;gap:24px}
+.byline{display:flex;align-items:center;gap:8px;font-family:var(--heb);font-weight:400;font-size:16px;color:var(--ink);direction:rtl;text-transform:none}
+.actions{display:flex;align-items:center;justify-content:space-between;width:96px;padding:8px 16px;border:1px solid var(--icon-grey);border-radius:100px}
+.actions svg{width:16px;height:16px;color:var(--ink)}
+.actions .vsep{width:1px;height:16px;background:var(--icon-grey)}
+
+.article-figure{padding:16px var(--col-pad);display:flex;justify-content:center}
+.article-figure .frame{width:100%;max-width:var(--col);display:flex;flex-direction:column;gap:10px}
+.article-figure .img{width:100%;background:var(--placeholder);overflow:hidden}
+.article-figure .img img{width:100%;height:auto;display:block}
+.article-figure .img.fit{background:var(--placeholder)}
+.article-figure .img.fit img{object-fit:contain}
+
+.body-block{padding:16px var(--col-pad);display:flex;flex-direction:column;align-items:center}
+.body-block .col{width:100%;max-width:var(--col);display:flex;flex-direction:column;gap:16px;padding:16px 0}
+.body-section-h{font-family:var(--cop);font-weight:700;font-size:24px;line-height:1.3;color:var(--ink);text-align:left}
+.qa-q{font-family:var(--cop);font-weight:400;font-size:20px;line-height:1.4;color:var(--ink);text-align:left}
+.qa-a{font-family:var(--cop);font-weight:300;font-size:18px;line-height:1.45;color:var(--ink);text-align:left}
+
+.divider-row{padding:24px var(--col-pad) 16px;display:flex;justify-content:flex-end}
+.divider-row .line{width:72px;height:1px;background:#EFEFEF}
+
+.tail-spacer{height:48px}
+
+@media (max-width:768px){
+  :root{--pad-x:16px;--col-pad:0px}
+
+  .article-head{padding:32px 0 0}
+  .meta-line .tag,.meta-line .src{font-size:16px}
+  .article-title{font-size:48px;line-height:1.1}
+  .article-subtitle{font-size:18px;line-height:1.25}
+  .byline{font-size:14px}
+
+  .article-figure{padding:16px}
+
+  .body-block{padding:16px}
+  .body-section-h{font-size:24px}
+  .qa-q{font-size:18px}
+  .qa-a{font-size:16px;line-height:1.45}
+
+  .divider-row{padding:24px 16px 16px}
+}
+</style>
+</head>
+<body>
+
+<site-header></site-header>
+
+<article class="article">
+
+  <header class="article-head">
+    <div class="meta-line">
+      <span class="tag">issue 02</span>
+      <span class="sep">|</span>
+      <span class="src">ora magazine</span>
+    </div>
+    <h1 class="article-title">the sixth scent</h1>
+    <p class="article-subtitle">from polish roots to a global empire:<br>the alchemical vision of erez zielinski rozen</p>
+    <div class="article-meta-bar">
+      <div class="byline">
+        <span class="item heb">7 יוני 2026</span>
+      </div>
+      <div class="actions" role="toolbar" aria-label="article actions">
+        <button type="button" data-share-btn aria-label="share"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M28.88 30a1 1 0 0 1-.88-.5A15.19 15.19 0 0 0 15 22v6a1 1 0 0 1-.62.92 1 1 0 0 1-1.09-.21l-12-12a1 1 0 0 1 0-1.42l12-12a1 1 0 0 1 1.09-.21A1 1 0 0 1 15 4v6.11a17.19 17.19 0 0 1 15 17 16.34 16.34 0 0 1-.13 2 1 1 0 0 1-.79.86ZM14.5 20A17.62 17.62 0 0 1 28 26 15.31 15.31 0 0 0 13.91 12 1 1 0 0 1 13 11V6.41L3.41 16 13 25.59V21a1 1 0 0 1 1-1h.54Z"/></svg></button>
+        <span class="vsep" aria-hidden="true"></span>
+        <button type="button" data-bookmark-toggle aria-label="bookmark" aria-pressed="false"
+          data-item-id="the-sixth-scent"
+          data-item-title="ORA MAGAZINE — THE SIXTH SCENT"
+          data-item-date="2026-06-07">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M4 2h8v12l-4-3-4 3V2z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/the-sixth-scent/01-hero.webp" srcset="../../images/press/the-sixth-scent/01-hero-480w.webp 480w, ../../images/press/the-sixth-scent/01-hero-768w.webp 768w, ../../images/press/the-sixth-scent/01-hero.webp 1080w" sizes="(max-width:768px) 100vw, 600px" width="1080" height="1350" alt="Erez Zielinski Rozen" decoding="async" fetchpriority="high"></div>
+    </div>
+  </figure>
+
+  <!-- Section header + interview part 1 -->
+  <section class="body-block">
+    <div class="col">
+      <h2 class="body-section-h">the art of perfumery: inside erez zielinski rozen's world of scent, legacy, and beauty</h2>
+      <p class="qa-q">Your great-grandfather built something in Jaffa in 1905. When you opened that vault of formulas, what did it smell like and what did it feel like?</p>
+      <p class="qa-a">My great grandfather, Abraham Zielinski, was not in Jaffa. He was a perfumer in Poland.<br>Years later I found a small notebook that belonged to him at my parents' house, among my mother's family belongings. Inside there was very little writing, but there were several perfume formulas he had written.<br>Even that small fragment was enough to spark something in me. It did not feel like discovering a business or a brand that I had to continue. It felt more like finding a trace of a life that once existed.<br>That discovery stayed with me for many years and eventually led me to begin creating fragrances myself.</p>
+    </div>
+  </section>
+
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/the-sixth-scent/02.webp" srcset="../../images/press/the-sixth-scent/02-480w.webp 480w, ../../images/press/the-sixth-scent/02-768w.webp 768w, ../../images/press/the-sixth-scent/02.webp 1200w" sizes="(max-width:768px) 100vw, 600px" width="1200" height="1600" alt="" decoding="async" loading="lazy"></div>
+    </div>
+  </figure>
+
+  <!-- Interview part 2 -->
+  <section class="body-block">
+    <div class="col">
+      <p class="qa-q">The name Zielinski is an Eastern European Jewish name. What's the family history behind it and why was it important to carry it forward?</p>
+      <p class="qa-a">The name Zielinski comes from my mother's family. They were originally from Poland and arrived in Israel after the war.<br>My father's family name is Rozen.<br>When my wife Lea and I created the brand, combining the two names felt natural. It was not a marketing decision. It was simply a way to bring both sides of my family story into the work that I do.</p>
+      <p class="qa-q">Most founders build brands. You inherited one that was dormant for generations. How do you honor something without being imprisoned by it?</p>
+      <p class="qa-a">I do not feel that I inherited a brand. What I inherited was a spark.<br>The notebook was not a blueprint. It did not tell me what to do. It simply reminded me that someone in my family had once lived a life connected to scent.<br>Everything that came after is my own journey. I work intuitively. I do not follow trends and I never try to recreate the past.<br>For me honoring the past means continuing to create, not repeating what already existed.</p>
+    </div>
+  </section>
+
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/the-sixth-scent/03.webp" srcset="../../images/press/the-sixth-scent/03-480w.webp 480w, ../../images/press/the-sixth-scent/03-768w.webp 768w, ../../images/press/the-sixth-scent/03-1080w.webp 1080w, ../../images/press/the-sixth-scent/03.webp 1585w" sizes="(max-width:768px) 100vw, 600px" width="1585" height="1189" alt="" decoding="async" loading="lazy"></div>
+    </div>
+  </figure>
+
+  <!-- Interview part 3 -->
+  <section class="body-block">
+    <div class="col">
+      <p class="qa-q">You say a fragrance is like a personal biography. What does your biography smell like?</p>
+      <p class="qa-a">It changes all the time.<br>I do not believe a life can be reduced to one scent. Some days it might be something warm and spicy like black pepper and wood. Another day it could be something completely different.<br>Every fragrance I create reflects a moment in time. A mood, a memory, a feeling.<br>My biography is not a single perfume. It is a constant movement.</p>
+      <p class="qa-q">Every ingredient you use comes from somewhere you've traveled or someone you've met. Can you give me an example: a scent and the moment behind it?</p>
+      <p class="qa-a">For me a fragrance never begins with an ingredient. It always begins with a feeling or with a story. The ingredients come later. They are simply the language I use to tell it.<br>I once spent twenty four hours in Paris that stayed with me in a very unusual way. Paris has that quality. The city itself feels like a stage where life becomes slightly more intense, almost cinematic.<br>That day felt almost surreal, as if an entire chapter of life unfolded inside a single day.</p>
+      <p class="qa-q">The morning carried a feeling of surrender. Elegance, drama, determination and a sense of quiet luxury. That emotion later became Pourquoi Pas?</p>
+      <p class="qa-a">The middle of the day stretched into the warm Paris evening. Something magnetic about it. Seductive, intriguing, almost like an enigma slowly revealing itself. That became Until Ten…<br>And everything that followed felt deeply personal. Full of excitement and unpredictability. Like a story that is too improbable to invent. That became Based on a True Story.<br>Some moments in life resist explanation. They stay with you as atmosphere, as emotion. That day in Paris was one of them. The only honest thing I could do was leave the story inside the fragrances.</p>
+      <p class="qa-q">All your fragrances are unisex. Was that a philosophical decision?</p>
+      <p class="qa-a">Not really. It felt natural to me.<br>When I smell something beautiful I do not think about whether it belongs to a man or a woman. A fragrance belongs to whoever connects with it.<br>For me scent is about emotion and identity, not gender.</p>
+      <p class="qa-q">You live outside the city but go to the Jaffa store every day. What does Jaffa give you that you can't get anywhere else?</p>
+      <p class="qa-a">I do not go there every day.<br>But the flea market is where everything began for us. Our first store opened there sixteen years ago and it still represents the spirit of the brand.<br>What I love about that place is its imperfection. It is noisy, chaotic and full of different cultures and languages. That kind of environment feeds creativity.<br>Our fragrances were born in that atmosphere.</p>
+    </div>
+  </section>
+
+  <!-- Interview part 4 -->
+  <section class="body-block">
+    <div class="col">
+      <p class="qa-q">Your great-grandfather built his pharmacy there over a century ago. Do you feel him when you walk those streets?</p>
+      <p class="qa-a">My great grandfather actually lived and worked in Poland, not in Jaffa.<br>But there is something poetic about the fact that the journey of our brand began in a place like the flea market. It is a place full of history, layers and different stories.<br>In a way it feels like a continuation of something much older.</p>
+      <p class="qa-q">You and your wife Lea run this together. What does she understand about the work that no one else does?</p>
+      <p class="qa-a">Lea understands the structure behind the creativity.<br>I work very intuitively and sometimes chaotically. She brings clarity and structure to the entire operation. She is the CEO of the company and manages the whole organization.<br>Without her the ideas might remain ideas. Together we built the world that allows them to exist.</p>
+      <p class="qa-q">You have three daughters. Are any of them already learning the formulas?</p>
+      <p class="qa-a">My daughters are still discovering their own paths. They are 18, 17 and 12.<br>If one day they become curious about fragrance I would be happy to share that world with them. But it has to come from them.</p>
+      <p class="qa-q">You start and end every day with a call to each of your daughters. What do you want them to know about what you built?</p>
+      <p class="qa-a">More than anything I want them to know that creativity can be a way of life.<br>That it is possible to build something from intuition, passion and persistence.<br>And that the most important thing is to stay connected to your inner voice.</p>
+    </div>
+  </section>
+
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img cover"><img src="../../images/press/the-sixth-scent/04.webp" srcset="../../images/press/the-sixth-scent/04-480w.webp 480w, ../../images/press/the-sixth-scent/04-768w.webp 768w, ../../images/press/the-sixth-scent/04-1080w.webp 1080w, ../../images/press/the-sixth-scent/04.webp 1536w" sizes="(max-width:768px) 100vw, 600px" width="1536" height="2048" alt="" decoding="async" loading="lazy"></div>
+    </div>
+  </figure>
+
+  <!-- Interview part 5 -->
+  <section class="body-block">
+    <div class="col">
+      <p class="qa-q">You hand-sign almost every bottle. In a world of mass production and AI, what does that gesture mean?</p>
+      <p class="qa-a">For me it is a small act of presence.<br>Each bottle carries a moment of human attention. It reminds me that behind every fragrance there is a person who created it and another person who will experience it.</p>
+      <p class="qa-q">What's a scent that has never been made yet that you're still trying to get right?</p>
+      <p class="qa-a">There are thousands of them.<br>Every week I might create ten new fragrances. Many of them remain unfinished.<br>I have a very large archive of perfumes that are almost there but not exactly right. Sometimes I return to them days later. Sometimes months or years later. Sometimes never.<br>Perfumery is not mathematics. It is about a feeling. When the feeling is right you know it immediately.</p>
+      <p class="qa-q">Tell me about the Art Gallery Project: what made you decide to go from supporting art to actually opening a space?</p>
+      <p class="qa-a">Art has always been part of my world.<br>Perfumery itself is an art form. When I create a fragrance I work with memory, emotion, rhythm and composition. In many ways it is not very different from painting, music or writing.<br>Over time I felt a natural desire to create a space where different forms of creativity could exist together. Opening a gallery was not a business decision for me. It was a cultural one.<br>The gallery is dedicated entirely to contemporary art. There is no perfume there, no store and no cash register. It exists purely as a platform for artists. When a work is sold the artist receives the full amount.<br>The first exhibition was called Loneliness in a Bubbling Environment. It explored a feeling that many people experience today. Being surrounded by noise, information and people, and still feeling alone.<br>Each artist approached that idea in a different way through sculpture, painting, objects and installations.<br>For me the gallery is not separate from what I do in fragrance. It is simply another dimension of the same creative universe.<br>Scent, music and visual art all speak about the same thing in the end. How we experience the world emotionally.</p>
+      <p class="qa-q">You're a perfumer who also makes music playlists, partners with La Scala, and now runs an art gallery. What are you actually building?</p>
+      <p class="qa-a">I am not trying to build only a perfume brand.<br>What I am building is a cultural universe.<br>Fragrance, music, art and architecture are all different ways of expressing the same creative energy.</p>
+      <p class="qa-q">Every city you've opened in has its own relationship with scent and beauty. What does America's relationship with fragrance look like to you from the outside? Is there an American city that smells like Zielinski &amp; Rozen to you?</p>
+      <p class="qa-a">America has a strong curiosity for individuality. People are constantly searching for something that feels personal and authentic.<br>We are planning to enter the American market including New York, both physically and online.<br>If I had to choose a city that feels close to the spirit of Zielinski &amp; Rozen I would probably say Brooklyn. There is something raw, creative and culturally layered there that feels very familiar to me.</p>
+      <p class="qa-q">In 20 years, what do you want Zielinski &amp; Rozen to be known for beyond fragrance?</p>
+      <p class="qa-a">Culture.<br>Fragrance is the language we started with but the deeper goal is to create spaces where creativity can exist and grow.</p>
+    </div>
+  </section>
+
+  <figure class="article-figure">
+    <div class="frame">
+      <div class="img fit"><img src="../../images/press/the-sixth-scent/05.webp" srcset="../../images/press/the-sixth-scent/05-480w.webp 480w, ../../images/press/the-sixth-scent/05-768w.webp 768w, ../../images/press/the-sixth-scent/05-1080w.webp 1080w, ../../images/press/the-sixth-scent/05.webp 1536w" sizes="(max-width:768px) 100vw, 600px" width="1536" height="2048" alt="" decoding="async" loading="lazy"></div>
+    </div>
+  </figure>
+
+  <!-- Interview part 6 -->
+  <section class="body-block">
+    <div class="col">
+      <p class="qa-q">"Today is today" is your life philosophy. What does that cost you?</p>
+      <p class="qa-a">For me it means living with maximum presence.<br>It means understanding that the universe is speaking to you all the time and that inspiration can appear anywhere. Sometimes simply from the fact that you woke up today.<br>But living like that also requires openness. You have to accept uncertainty, change and intensity.<br>That is the price of living creatively.</p>
+    </div>
+  </section>
+
+  <div class="divider-row"><span class="line" aria-hidden="true"></span></div>
+  <div class="tail-spacer"></div>
+
+</article>
+
+<site-footer></site-footer>
+
+<!-- Site chrome: shared header + footer (single source of truth) -->
+<script src="../../components/site-chrome.js?v=2" defer></script>
+
+<script src="../../components/analytics.js" defer></script>
+<script src="../../components/picture-upgrade.js" defer></script>
+<script src="../../components/embed-iframe.js" defer></script>
+</body>
+</html>

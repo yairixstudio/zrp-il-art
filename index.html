@@ -16,32 +16,32 @@
 /* ===== LOCAL FONTS ===== */
 @font-face{
   font-family:"Copperplate";
-  src:url("פונטים/Copperplate-Light.ttf") format("truetype");
+  src:url("פונטים/Copperplate-Light.woff2") format("woff2"),url("פונטים/Copperplate-Light.ttf") format("truetype");
   font-weight:300;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:"Copperplate";
-  src:url("פונטים/Copperplate.otf") format("opentype");
+  src:url("פונטים/Copperplate.woff2") format("woff2"),url("פונטים/Copperplate.otf") format("opentype");
   font-weight:400;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:"Copperplate";
-  src:url("פונטים/CopperplateCC-Bold.otf") format("opentype");
+  src:url("פונטים/CopperplateCC-Bold.woff2") format("woff2"),url("פונטים/CopperplateCC-Bold.otf") format("opentype");
   font-weight:700;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:"Copperplate";
-  src:url("פונטים/CopperplateCC-Heavy.otf") format("opentype");
+  src:url("פונטים/CopperplateCC-Heavy.woff2") format("woff2"),url("פונטים/CopperplateCC-Heavy.otf") format("opentype");
   font-weight:900;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:"FbEzmel";
-  src:url("פונטים/FbEzmel-Light.otf") format("opentype");
+  src:url("פונטים/FbEzmel-Light.woff2") format("woff2"),url("פונטים/FbEzmel-Light.otf") format("opentype");
   font-weight:300;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:"FbEzmel";
-  src:url("פונטים/FbEzmel-Regular.otf") format("opentype");
+  src:url("פונטים/FbEzmel-Regular.woff2") format("woff2"),url("פונטים/FbEzmel-Regular.otf") format("opentype");
   font-weight:400;font-style:normal;font-display:swap;
 }
 
@@ -437,10 +437,10 @@ body{text-transform:uppercase}
 .press-title .b{font-family:var(--cop);font-weight:700;font-size:36px;display:block}
 .press-title .l{font-family:var(--cop);font-weight:300;font-size:36px;display:block}
 .press-rows{display:flex;flex-direction:column;gap:48px}
-.press-row{display:flex;gap:48px}
+.press-row{display:flex;gap:32px}
 .press-row.press-row--swap{flex-direction:row-reverse}
 .press-row.press-row--right{justify-content:flex-end}
-.press-card{flex:0 1 calc(50% - 24px);min-width:0;display:flex;gap:16px;align-items:stretch;direction:rtl;color:inherit;text-decoration:none;transition:opacity .2s}
+.press-card{flex:0 1 calc(50% - 16px);min-width:0;display:flex;gap:16px;align-items:stretch;direction:rtl;color:inherit;text-decoration:none;transition:opacity .2s}
 .press-card:hover{opacity:.75}
 .press-card .img img{transition:transform .6s}
 .press-card:hover .img img{transform:scale(1.04)}
@@ -473,7 +473,7 @@ body{text-transform:uppercase}
 }
 .press-card .desc{font-family:var(--heb);font-size:16px;font-weight:400;line-height:1.4;text-align:right}
 .press-card .desc.desc-lat{font-family:var(--cop);direction:ltr;unicode-bidi:embed}
-.press-card .desc.desc-lat-sm{font-size:11px;line-height:1.2;letter-spacing:.02em}
+.press-card .desc.desc-lat-sm{font-size:11px;font-weight:400;line-height:1.55;letter-spacing:.02em}
 .press-card .date{font-family:var(--cop);font-size:14px;font-weight:300;text-align:right;direction:ltr;align-self:flex-start}
 .press-card .img{flex:0 0 178px;width:178px;height:112px;overflow:hidden;background:#f3f1ee;order:-1}
 .press-card .img img{width:100%;height:100%;object-fit:cover}
@@ -719,11 +719,14 @@ body{text-transform:uppercase}
 
   /* PRESS & EVENTS — fluid card: image shrinks on narrow rows so .desc stays ≤~5 lines */
   .press{padding:32px 16px}
-  .press-rows{gap:24px}
-  .press-row{flex-direction:column;gap:24px}
+  .press-rows{gap:24px;align-items:center}
+  .press-row{flex-direction:column;gap:24px;align-items:center;width:100%}
   .press-row.press-row--swap{flex-direction:column}
   .press-card{
     flex:1 1 auto;
+    width:100%;
+    max-width:360px;
+    margin-inline:auto;
     direction:rtl;
     container-type:inline-size;
     container-name:press-card;
@@ -748,6 +751,11 @@ body{text-transform:uppercase}
     font-size:clamp(12px,calc((100vw - 32px) * 0.038),14px);
     line-height:1.35;
   }
+  .press-card .desc.desc-lat-sm{
+    font-size:clamp(10px,calc((100vw - 32px) * 0.03),11px);
+    font-weight:400;
+    line-height:1.55;
+  }
   .press-card .date{font-size:clamp(11px,calc((100vw - 32px) * 0.034),14px)}
   @supports (width:1cqi){
     .press-card{gap:clamp(10px,4cqi,16px)}
@@ -766,6 +774,7 @@ body{text-transform:uppercase}
       width:clamp(80px,34cqi,130px);
     }
     .press-card .desc{font-size:clamp(11px,3.9cqi,13px)}
+    .press-card .desc.desc-lat-sm{font-size:clamp(10px,3.4cqi,11px);line-height:1.55}
     .press-card .tag{font-size:clamp(10px,3.8cqi,13px)}
     .press-card .date{font-size:clamp(10px,3.6cqi,13px)}
   }
@@ -1119,16 +1128,16 @@ porta</div></a>
     <span class="b">zielinski rozen</span>
     <span class="l">x our artists</span>
   </div>
-  <!-- DESKTOP — 3×3 grid -->
+  <!-- DESKTOP — 4×3 grid -->
   <div class="x-artists-grid only-desktop">
     <div class="x-artists-row">
       <a class="x-artists-card" href="artists/nir-giorgio-levin/">
         <div class="img"><img src="images/homepage/x-our-artists/work-1.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">nir giorgio levin</div>
       </a>
-      <a class="x-artists-card" href="artists/gal-polk/">
+      <a class="x-artists-card" href="artists/maya-nachum-levy/">
         <div class="img"><img src="images/homepage/x-our-artists/work-2.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">gal pollak</div>
+        <div class="name">maya nachum levy</div>
       </a>
       <a class="x-artists-card" href="artists/gal-polk/">
         <div class="img"><img src="images/homepage/x-our-artists/work-3.webp" alt="" loading="lazy" decoding="async"></div>
@@ -1136,31 +1145,59 @@ porta</div></a>
       </a>
     </div>
     <div class="x-artists-row">
-      <a class="x-artists-card" href="artists/gal-polk/">
+      <a class="x-artists-card" href="artists/gilad-kenan/">
         <div class="img"><img src="images/homepage/x-our-artists/work-4.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">gilad kenan</div>
+      </a>
+      <a class="x-artists-card" href="artists/gal-polk/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-5.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">gal pollak</div>
       </a>
+      <a class="x-artists-card" href="artists/gilad-kenan/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-6.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">gilad kenan</div>
+      </a>
+    </div>
+    <div class="x-artists-row">
       <a class="x-artists-card" href="artists/maya-nachum-levy/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-5.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-7.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
       </a>
+      <a class="x-artists-card" href="artists/yarden-amir/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-8.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">yarden amir</div>
+      </a>
       <a class="x-artists-card" href="artists/tanya-shin/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-6.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-9.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">tanya shin</div>
       </a>
     </div>
     <div class="x-artists-row">
-      <a class="x-artists-card" href="artists/yarden-amir/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-7.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">yarden amir</div>
-      </a>
       <a class="x-artists-card" href="artists/maya-nachum-levy/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-8.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-10.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
       </a>
+      <a class="x-artists-card" href="artists/yarden-amir/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-11.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">yarden amir</div>
+      </a>
+      <a class="x-artists-card" href="artists/gilad-kenan/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-12.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">gilad kenan</div>
+      </a>
+    </div>
+    <div class="x-artists-row">
+      <a class="x-artists-card" href="artists/yarden-amir/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-13.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">yarden amir</div>
+      </a>
       <a class="x-artists-card" href="artists/alon/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-9.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-14.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">alon manjoch</div>
+      </a>
+      <a class="x-artists-card" href="artists/yarden-amir/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-15.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">yarden amir</div>
       </a>
     </div>
   </div>
@@ -1169,14 +1206,20 @@ porta</div></a>
     <div class="tri" data-tri-loop="true">
       <div class="tri-frame">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-1.webp" alt="" data-caption="nir giorgio levin" data-artist-href="artists/nir-giorgio-levin/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-3.webp" alt="" data-caption="gal pollak"        data-artist-href="artists/gal-polk/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="tanya shin" data-artist-href="artists/tanya-shin/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-7.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-8.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-9.webp" alt="" data-caption="alon manjoch" data-artist-href="artists/alon/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-3.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="gilad kenan" data-artist-href="artists/gilad-kenan/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="gilad kenan" data-artist-href="artists/gilad-kenan/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-7.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-8.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-9.webp" alt="" data-caption="tanya shin" data-artist-href="artists/tanya-shin/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-10.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-11.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-12.webp" alt="" data-caption="gilad kenan" data-artist-href="artists/gilad-kenan/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-13.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-14.webp" alt="" data-caption="alon manjoch" data-artist-href="artists/alon/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-15.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
       </div>
       <div class="tri-dots" role="tablist">
         <button class="tri-dot is-on" type="button" aria-label="1"></button>
@@ -1188,6 +1231,12 @@ porta</div></a>
         <button class="tri-dot" type="button" aria-label="7"></button>
         <button class="tri-dot" type="button" aria-label="8"></button>
         <button class="tri-dot" type="button" aria-label="9"></button>
+        <button class="tri-dot" type="button" aria-label="10"></button>
+        <button class="tri-dot" type="button" aria-label="11"></button>
+        <button class="tri-dot" type="button" aria-label="12"></button>
+        <button class="tri-dot" type="button" aria-label="13"></button>
+        <button class="tri-dot" type="button" aria-label="14"></button>
+        <button class="tri-dot" type="button" aria-label="15"></button>
       </div>
     </div>
   </div>
@@ -1269,6 +1318,14 @@ porta</div></a>
   </div>
   <div class="press-rows">
     <div class="press-row press-row--swap">
+      <a class="press-card" href="press/the-sixth-scent/">
+        <div class="info">
+          <span class="tag en">ora magazine | issue 02</span>
+          <p class="desc desc-lat desc-lat-sm">the sixth scent | from polish roots to a global empire: the alchemical vision of erez zielinski rozen</p>
+          <span class="date">7.6.2026</span>
+        </div>
+        <div class="img"><img src="images/press/the-sixth-scent/home-card.webp" srcset="images/press/the-sixth-scent/home-card-480w.webp 480w, images/press/the-sixth-scent/home-card-768w.webp 768w, images/press/the-sixth-scent/home-card.webp 1079w" sizes="100vw" width="1079" height="599" alt="" decoding="async" loading="lazy"></div>
+      </a>
       <a class="press-card" href="events/close-look/">
         <div class="info">
           <span class="tag en">gallery event</span>
@@ -1277,6 +1334,8 @@ porta</div></a>
         </div>
         <div class="img"><img src="images/events/close-look/intro-photo.webp" width="292" height="162" alt="" decoding="async" loading="lazy"></div>
       </a>
+    </div>
+    <div class="press-row press-row--swap">
       <a class="press-card" href="https://timeout.co.il/%D7%AA%D7%A2%D7%A8%D7%95%D7%9B%D7%95%D7%AA-%D7%9E%D7%95%D7%9E%D7%9C%D7%A6%D7%95%D7%AA-270526/" target="_blank" rel="noopener noreferrer">
         <div class="info">
           <span class="tag"><span class="tag-lat">TIME OUT</span><span class="tag-sep">|</span><span>תרבות</span></span>
@@ -1285,8 +1344,6 @@ porta</div></a>
         </div>
         <div class="img"><img src="images/press/time-out/home-card-2026-05-27.webp" srcset="images/press/time-out/home-card-2026-05-27-480w.webp 480w, images/press/time-out/home-card-2026-05-27-768w.webp 768w, images/press/time-out/home-card-2026-05-27.webp 1000w" sizes="100vw" width="1000" height="1246" alt="" decoding="async" loading="lazy"></div>
       </a>
-    </div>
-    <div class="press-row press-row--swap">
       <a class="press-card" href="events/how-many/">
         <div class="info">
           <span class="tag en">gallery event</span>
@@ -1294,6 +1351,16 @@ porta</div></a>
           <span class="date">26.5.2026</span>
         </div>
         <div class="img"><img src="images/events/event-how-many-2026-05-26-cover.webp" srcset="images/events/event-how-many-2026-05-26-cover-480w.webp 480w, images/events/event-how-many-2026-05-26-cover-768w.webp 768w, images/events/event-how-many-2026-05-26-cover-1080w.webp 1080w, images/events/event-how-many-2026-05-26-cover.webp 3058w" sizes="100vw" width="3058" height="4096" alt="" decoding="async" loading="lazy"></div>
+      </a>
+    </div>
+    <div class="press-row press-row--swap">
+      <a class="press-card" href="events/loneliness/">
+        <div class="info">
+          <span class="tag en">gallery event</span>
+          <p class="desc">בדידות בתוך סביבה תוססת</p>
+          <span class="date">25.2.2026</span>
+        </div>
+        <div class="img"><img src="images/events/event-3-cover-v2.webp" srcset="images/events/event-3-cover-v2-480w.webp 480w, images/events/event-3-cover-v2-768w.webp 768w, images/events/event-3-cover-v2-1080w.webp 1080w, images/events/event-3-cover-v2.webp 1500w" sizes="100vw" width="1500" height="2000" alt="" decoding="async" loading="lazy"></div>
       </a>
       <a class="press-card" href="press/press-1/">
         <div class="info">
@@ -1309,9 +1376,9 @@ porta</div></a>
         <div class="info">
           <span class="tag en">gallery event</span>
           <p class="desc">בדידות בתוך סביבה תוססת</p>
-          <span class="date">25.2.2026</span>
+          <span class="date">19.1.2026</span>
         </div>
-        <div class="img"><img src="images/events/event-3-cover.webp" srcset="images/events/event-3-cover-480w.webp 480w, images/events/event-3-cover-768w.webp 768w, images/events/event-3-cover-1080w.webp 1080w, images/events/event-3-cover.webp 1435w" sizes="100vw" width="1435" height="1600" alt="" decoding="async" loading="lazy"></div>
+        <div class="img"><img src="images/events/event-4-cover.webp" srcset="images/events/event-4-cover-480w.webp 480w, images/events/event-4-cover-768w.webp 768w, images/events/event-4-cover-1080w.webp 1080w, images/events/event-4-cover.webp 1435w" sizes="100vw" width="1435" height="1600" alt="" decoding="async" loading="lazy"></div>
       </a>
       <a class="press-card" href="press/walla/">
         <div class="info">
@@ -1322,15 +1389,7 @@ porta</div></a>
         <div class="img"><img src="images/press/walla-cover.webp" width="462" height="626" alt="" decoding="async" loading="lazy"></div>
       </a>
     </div>
-    <div class="press-row">
-      <a class="press-card" href="events/loneliness/">
-        <div class="info">
-          <span class="tag en">gallery event</span>
-          <p class="desc">בדידות בתוך סביבה תוססת</p>
-          <span class="date">19.1.2026</span>
-        </div>
-        <div class="img"><img src="images/events/event-4-cover.webp" srcset="images/events/event-4-cover-480w.webp 480w, images/events/event-4-cover-768w.webp 768w, images/events/event-4-cover-1080w.webp 1080w, images/events/event-4-cover.webp 1435w" sizes="100vw" width="1435" height="1600" alt="" decoding="async" loading="lazy"></div>
-      </a>
+    <div class="press-row press-row--right">
       <a class="press-card" href="press/time-out/">
         <div class="info">
           <span class="tag"><span class="heb">מגזין</span> <span class="tag-lat">TIMEOUT</span></span>
@@ -1351,7 +1410,7 @@ porta</div></a>
 <script src="components/artwork-lightbox.js" defer></script>
 
 <!-- Site chrome: shared header + footer (single source of truth) -->
-<script src="components/site-chrome.js" defer></script>
+<script src="components/site-chrome.js?v=2" defer></script>
 
 <!-- Stacked gallery component (homepage mobile-cta uses sg-mode-swap) -->
 <script src="components/stacked-gallery.js" defer></script>

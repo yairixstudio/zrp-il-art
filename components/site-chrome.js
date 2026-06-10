@@ -54,7 +54,7 @@
   if (!document.querySelector('link[data-site-chrome-css]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = abs('components/site-chrome.css');
+    link.href = abs('components/site-chrome.css?v=2');
     link.setAttribute('data-site-chrome-css', '');
     document.head.appendChild(link);
   }
@@ -106,6 +106,7 @@
               '<li><a href="' + abs('') + '#opencall" data-nav="opencall">open call</a></li>' +
               '<li><a href="' + abs('') + '#exhibitions" data-nav="exhibitions">exhibitions</a></li>' +
               '<li><a href="' + abs('works/') + '" data-nav="works">the art works</a></li>' +
+              '<li><a href="' + abs('artists/') + '" data-nav="artists">the artists</a></li>' +
               '<li><a href="' + abs('') + '#galleries" data-nav="galleries">the galleries</a></li>' +
               '<li><a href="' + abs('about/') + '" data-nav="about">about</a></li>' +
               '<li><a href="' + abs('') + '#press" data-nav="press">press &amp; events</a></li>' +
@@ -211,10 +212,23 @@
       openCallLink.href = abs('') + (window.innerWidth <= 768 ? '#mobile-cta' : '#opencall');
     }
 
+    var savedScrollY = 0;
     function setOpen(open) {
+      var wasOpen = nav.classList.contains('is-open');
+      if (open === wasOpen) return;
       nav.classList.toggle('is-open', open);
-      document.body.classList.toggle('menu-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      // Scroll-lock: body.menu-open is position:fixed, so we must preserve the
+      // page's scroll offset on open and restore it on close (iOS-safe lock).
+      if (open) {
+        savedScrollY = window.scrollY || window.pageYOffset || 0;
+        document.body.style.top = (-savedScrollY) + 'px';
+        document.body.classList.add('menu-open');
+      } else {
+        document.body.classList.remove('menu-open');
+        document.body.style.top = '';
+        window.scrollTo(0, savedScrollY);
+      }
     }
     syncOpenCallHref();
     btn.addEventListener('click', function () {
@@ -263,8 +277,8 @@
     } else if (last === 'about' || path.indexOf('/about/') !== -1) {
       key = 'about';
     } else if (path.indexOf('/artists/') !== -1) {
-      // Artist sub-pages aren't a primary nav target; leave inactive.
-      key = null;
+      // Both the /artists/ index and individual artist sub-pages highlight "the artists".
+      key = 'artists';
     } else if (path.indexOf('/press/') !== -1 || path.indexOf('/events/') !== -1) {
       key = 'press';
     }

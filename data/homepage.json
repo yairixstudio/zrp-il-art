@@ -98,7 +98,7 @@
     ]
   },
   "x_our_artists": {
-    "_note": "Above press section — 'Zielinski Rozen × our artists' featured grid. Desktop: 2×3 grid. Mobile: triptych coverflow showing items 1–3. Captions verbatim from Figma 228:67/228:101; unlinked when no artist page exists.",
+    "_note": "Above press section — 'Zielinski Rozen × our artists' featured grid. Desktop: 4×3 grid. Mobile: triptych coverflow. Captions verbatim from Figma 412:334; gal pollak work-3 = blue-bottle close-up cropped to hide the cap.",
     "title_b": "Zielinski Rozen",
     "title_l": "x our artists",
     "items": [
@@ -108,9 +108,9 @@
         "slug": "nir-giorgio-levin"
       },
       {
-        "name_en": "gal pollak",
+        "name_en": "maya nachum levy",
         "image": "images/homepage/x-our-artists/work-2.webp",
-        "slug": "gal-polk"
+        "slug": "maya-nachum-levy"
       },
       {
         "name_en": "gal pollak",
@@ -118,22 +118,52 @@
         "slug": "gal-polk"
       },
       {
-        "name_en": "gal pollak",
+        "name_en": "gilad kenan",
         "image": "images/homepage/x-our-artists/work-4.webp",
+        "slug": "gilad-kenan"
+      },
+      {
+        "name_en": "gal pollak",
+        "image": "images/homepage/x-our-artists/work-5.webp",
         "slug": "gal-polk"
       },
       {
-        "name_en": "maya nachum levy",
-        "image": "images/homepage/x-our-artists/work-5.webp",
-        "slug": "maya-nachum-levy"
+        "name_en": "gilad kenan",
+        "image": "images/homepage/x-our-artists/work-6.webp",
+        "slug": "gilad-kenan"
       },
       {
         "name_en": "maya nachum levy",
-        "image": "images/homepage/x-our-artists/work-6.webp",
+        "image": "images/homepage/x-our-artists/work-7.webp",
         "slug": "maya-nachum-levy"
+      },
+      {
+        "name_en": "yarden amir",
+        "image": "images/homepage/x-our-artists/work-8.webp",
+        "slug": "yarden-amir"
+      },
+      {
+        "name_en": "tanya shin",
+        "image": "images/homepage/x-our-artists/work-9.webp",
+        "slug": "tanya-shin"
+      },
+      {
+        "name_en": "maya nachum levy",
+        "image": "images/homepage/x-our-artists/work-10.webp",
+        "slug": "maya-nachum-levy"
+      },
+      {
+        "name_en": "alon manjoch",
+        "image": "images/homepage/x-our-artists/work-11.webp",
+        "slug": "alon"
+      },
+      {
+        "name_en": "gilad kenan",
+        "image": "images/homepage/x-our-artists/work-12.webp",
+        "slug": "gilad-kenan"
       }
     ],
-    "figma_node_desktop": "228:67",
+    "figma_node_desktop": "412:334",
     "figma_node_mobile": "228:101"
   },
   "tribe_teaser": {

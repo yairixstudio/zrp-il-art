@@ -49,7 +49,9 @@ site-header{display:block;position:sticky;top:0;z-index:100}
 .nav.is-open .hamburger .hamburger-bars span:nth-child(1){transform:translateY(8.25px) rotate(45deg)}
 .nav.is-open .hamburger .hamburger-bars span:nth-child(2){opacity:0}
 .nav.is-open .hamburger .hamburger-bars span:nth-child(3){transform:translateY(-8.25px) rotate(-45deg)}
-body.menu-open{overflow:hidden}
+/* Scroll-lock while the drawer is open. position:fixed (not just overflow:hidden)
+   so iOS Safari can't scroll the page behind the menu; JS preserves & restores scrollY. */
+body.menu-open{position:fixed;width:100%;overflow:hidden;overscroll-behavior:none}
 
 /* Wrapper for the right-side cluster (bookmark + hamburger on desktop).
    margin-left:auto pushes it to the far right of nav-inner so .nav-links can hug the left.

@@ -3,6 +3,25 @@
   "_note": "Press articles + gallery events. Article bodies live inline in press/<slug>/index.html (long-form Hebrew copy is too verbose to round-trip JSON). This file holds metadata + cover only.",
   "items": [
     {
+      "id": "the-sixth-scent",
+      "type": "press",
+      "source_he": null,
+      "source_en": "Ora Magazine",
+      "tag_en": "issue 02",
+      "title_he": null,
+      "title_en": "the sixth scent",
+      "subtitle_en": "from polish roots to a global empire: the alchemical vision of erez zielinski rozen",
+      "url": null,
+      "date": "2026-06-07",
+      "cover_image": "images/press/the-sixth-scent/home-card.webp",
+      "exhibition_id": null,
+      "homepage_visible": true,
+      "route": "press/the-sixth-scent/",
+      "figma_article_desktop": "XhGH289YTRcW811wrufRJz::545:1669",
+      "figma_article_mobile": "XhGH289YTRcW811wrufRJz::545:1762",
+      "figma_home_card": "XhGH289YTRcW811wrufRJz::551:372"
+    },
+    {
       "id": "portfolio-loneliness",
       "type": "press",
       "source_he": "מגזין פורטפוליו",
@@ -112,7 +131,7 @@
       "tag_en": "gallery event",
       "title_he": "בדידות בתוך סביבה תוססת",
       "date": "2026-02-25",
-      "cover_image": "images/events/event-3-cover.webp",
+      "cover_image": "images/events/event-3-cover-v2.webp",
       "exhibition_id": "loneliness",
       "homepage_visible": true
     },

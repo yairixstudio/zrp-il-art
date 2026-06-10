@@ -35,6 +35,1427 @@
   ],
   "art_works": [
     {
+      "id": "nir-giorgio-levin-3",
+      "artist_slug": "nir-giorgio-levin",
+      "artist_he": "ניר ג׳ורג׳יו לוין",
+      "artist_en": "nir giorgio levin",
+      "title_he": null,
+      "title_en": "\"Untitled\" (After I Let Go)",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "110x80 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה",
+      "img": "nir-giorgio-levin-3",
+      "w": 1080,
+      "h": 1348,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "nir-giorgio-levin-4",
+      "artist_slug": "nir-giorgio-levin",
+      "artist_he": "ניר ג׳ורג׳יו לוין",
+      "artist_en": "nir giorgio levin",
+      "title_he": null,
+      "title_en": "\"Untitled\" (Fading Light)",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "70x70 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה",
+      "img": "nir-giorgio-levin-4",
+      "w": 1080,
+      "h": 1079,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 2
+    },
+    {
+      "id": "nir-giorgio-levin-5",
+      "artist_slug": "nir-giorgio-levin",
+      "artist_he": "ניר ג׳ורג׳יו לוין",
+      "artist_en": "nir giorgio levin",
+      "title_he": null,
+      "title_en": "\"Untitled\" (Where I Am No Longer Seen)",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "50x40 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה\nעותק 1 מתוך 7 עותקים",
+      "img": "nir-giorgio-levin-5",
+      "w": 1080,
+      "h": 1355,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 3
+    },
+    {
+      "id": "nir-giorgio-levin-6",
+      "artist_slug": "nir-giorgio-levin",
+      "artist_he": "ניר ג׳ורג׳יו לוין",
+      "artist_en": "nir giorgio levin",
+      "title_he": null,
+      "title_en": "\"Untitled\" (Where the Body Gives Way)",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "50x40 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה\nעותק 1 מתוך 7 עותקים",
+      "img": "nir-giorgio-levin-6",
+      "w": 1080,
+      "h": 1349,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 4
+    },
+    {
+      "id": "nir-giorgio-levin-7",
+      "artist_slug": "nir-giorgio-levin",
+      "artist_he": "ניר ג׳ורג׳יו לוין",
+      "artist_en": "nir giorgio levin",
+      "title_he": null,
+      "title_en": "\"Untitled\" (Where the Self Disappears)",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "40x50 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה\nעותק 1 מתוך 7 עותקים",
+      "img": "nir-giorgio-levin-7",
+      "w": 1080,
+      "h": 1348,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 5
+    },
+    {
+      "id": "nir-giorgio-levin-8",
+      "artist_slug": "nir-giorgio-levin",
+      "artist_he": "ניר ג׳ורג׳יו לוין",
+      "artist_en": "nir giorgio levin",
+      "title_he": null,
+      "title_en": "\"Untitled\" (Where We Stop Resisting)",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "114x80 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה",
+      "img": "nir-giorgio-levin-8",
+      "w": 1080,
+      "h": 1350,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 6
+    },
+    {
+      "id": "nir-giorgio-levin-9",
+      "artist_slug": "nir-giorgio-levin",
+      "artist_he": "ניר ג׳ורג׳יו לוין",
+      "artist_en": "nir giorgio levin",
+      "title_he": null,
+      "title_en": "\"Untitled\" (Where We Yield)",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "40x50 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה",
+      "img": "nir-giorgio-levin-9",
+      "w": 1080,
+      "h": 1355,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 7
+    },
+    {
+      "id": "noemi-safir-1",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "בין החדרים",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "100/80 ס\"מ\nאקריליק על קנבס",
+      "img": "noemi-safir-1",
+      "w": 1080,
+      "h": 1350,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "noemi-safir-2",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "היא מעולם לא נכנסה",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "100/120 ס\"מ\nאקריליק על קנבס",
+      "img": "noemi-safir-2",
+      "w": 1080,
+      "h": 900,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 2
+    },
+    {
+      "id": "noemi-safir-3",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "אחרי שכולם הלכו",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "100/80 ס\"מ\nאקריליק על קנבס",
+      "img": "noemi-safir-3",
+      "w": 1080,
+      "h": 1350,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 4
+    },
+    {
+      "id": "jessica-tabarovsky-1",
+      "artist_slug": "jessica-tabarovsky",
+      "artist_he": "ג׳סיקה טברובסקי",
+      "artist_en": "jessica tabarovsky",
+      "title_he": "התנערות",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "jessica-tabarovsky-1",
+      "w": 1080,
+      "h": 1447,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "elsa-ars-brush-1",
+      "artist_slug": "elsa-ars-brush",
+      "artist_he": "אלסה ארס ברוש",
+      "artist_en": "elsa ers brosh",
+      "title_he": "חלום השרף",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "58x78 ס\"מ\nאקריליק על בד קנבס",
+      "img": "elsa-ars-brush-1",
+      "w": 1080,
+      "h": 1442,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "elsa-ars-brush-2",
+      "artist_slug": "elsa-ars-brush",
+      "artist_he": "אלסה ארס ברוש",
+      "artist_en": "elsa ers brosh",
+      "title_he": "האנטומיה של השרף",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "78x138 ס\"מ\nאקריליק על בד",
+      "img": "elsa-ars-brush-2",
+      "w": 1080,
+      "h": 652,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 2
+    },
+    {
+      "id": "anat-wegier-1",
+      "artist_slug": "anat-wegier",
+      "artist_he": "ענת ויז׳ייה",
+      "artist_en": "anat wegier",
+      "title_he": "אישור 1",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "A3, ממוסגרת 50x40 ס\"מ\nצבעי מים על נייר",
+      "img": "anat-wegier-1",
+      "w": 1080,
+      "h": 1528,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 2
+    },
+    {
+      "id": "anat-wegier-2",
+      "artist_slug": "anat-wegier",
+      "artist_he": "ענת ויז׳ייה",
+      "artist_en": "anat wegier",
+      "title_he": "אישור 2",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "A3, ממוסגרת 50x40 ס\"מ\nצבעי מים על נייר",
+      "img": "anat-wegier-2",
+      "w": 1080,
+      "h": 1528,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "anat-wegier-3",
+      "artist_slug": "anat-wegier",
+      "artist_he": "ענת ויז׳ייה",
+      "artist_en": "anat wegier",
+      "title_he": "אישור 3",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "A3, ממוסגרת 50x40 ס\"מ\nצבעי מים על נייר",
+      "img": "anat-wegier-3",
+      "w": 1080,
+      "h": 1528,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 3
+    },
+    {
+      "id": "yarden-amir-1",
+      "artist_slug": "yarden-amir",
+      "artist_he": "ירדן אמיר",
+      "artist_en": "yarden amir",
+      "title_he": null,
+      "title_en": "heart my free",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "קוטר 40 ס\"מ\nטריפטיך נעצים, שעם ועץ",
+      "img": "yarden-amir-1",
+      "w": 1080,
+      "h": 360,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 6
+    },
+    {
+      "id": "yarden-amir-2",
+      "artist_slug": "yarden-amir",
+      "artist_he": "ירדן אמיר",
+      "artist_en": "yarden amir",
+      "title_he": null,
+      "title_en": "heart blown",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "52x56 ס\"מ\nבלון הליום ונעצים על עץ",
+      "img": "yarden-amir-2",
+      "w": 1080,
+      "h": 1440,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 5
+    },
+    {
+      "id": "chen-ziv-1",
+      "artist_slug": "chen-ziv",
+      "artist_he": "חן זיו",
+      "artist_en": "chen ziv",
+      "title_he": null,
+      "title_en": "Cocoon",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "50x20x22 ס\"מ\nברונזה",
+      "img": "chen-ziv-1",
+      "w": 1080,
+      "h": 1620,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "lahav-barak-1",
+      "artist_slug": "lahav-barak",
+      "artist_he": "להב ברק",
+      "artist_en": "lahav barak",
+      "title_he": "גבול דק -לב",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "25x20 ס\"מ\nספר מפוסל",
+      "img": "lahav-barak-1",
+      "w": 768,
+      "h": 704,
+      "widths": [
+        480,
+        768
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "baruch-torgeman-1",
+      "artist_slug": "baruch-torgeman",
+      "artist_he": "ברוך תורג׳מן",
+      "artist_en": "baruch torgeman",
+      "title_he": null,
+      "title_en": "books on plywood special edition",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "130x100 ס\"מ\nספרים 22, לוח עץ",
+      "img": "baruch-torgeman-1",
+      "w": 839,
+      "h": 669,
+      "widths": [
+        480,
+        839
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "lahav-barak-2",
+      "artist_slug": "lahav-barak",
+      "artist_he": "להב ברק",
+      "artist_en": "lahav barak",
+      "title_he": "גבול דק- ריאות",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "25x20 ס\"מ\nספר מפוסל",
+      "img": "lahav-barak-2",
+      "w": 790,
+      "h": 773,
+      "widths": [
+        480,
+        790
+      ],
+      "artist_page_pos": 2
+    },
+    {
+      "id": "lahav-barak-3",
+      "artist_slug": "lahav-barak",
+      "artist_he": "להב ברק",
+      "artist_en": "lahav barak",
+      "title_he": "גבול דק- שפתיים",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "25x20 ס\"מ\nספר מפוסל",
+      "img": "lahav-barak-3",
+      "w": 1055,
+      "h": 1008,
+      "widths": [
+        480,
+        768,
+        1055
+      ],
+      "artist_page_pos": 3
+    },
+    {
+      "id": "lahav-barak-4",
+      "artist_slug": "lahav-barak",
+      "artist_he": "להב ברק",
+      "artist_en": "lahav barak",
+      "title_he": "גבול דק- מוח",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "25x20 ס\"מ\nספר מפוסל",
+      "img": "lahav-barak-4",
+      "w": 1080,
+      "h": 941,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 5
+    },
+    {
+      "id": "lahav-barak-5",
+      "artist_slug": "lahav-barak",
+      "artist_he": "להב ברק",
+      "artist_en": "lahav barak",
+      "title_he": "גבול דק-ידיים",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "25x20 ס\"מ\nספר מפוסל",
+      "img": "lahav-barak-5",
+      "w": 1080,
+      "h": 1044,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 4
+    },
+    {
+      "id": "gilad-kenan-1",
+      "artist_slug": "gilad-kenan",
+      "artist_he": "גלעד כנען",
+      "artist_en": "gilad kenan",
+      "title_he": "כסא ירח",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "200x200x60 ס\"מ\nאלומיניום semi polished, נירוסטה mirror finish",
+      "img": "gilad-kenan-1",
+      "w": 1024,
+      "h": 1536,
+      "widths": [
+        480,
+        768,
+        1024
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "livay-levi-1",
+      "artist_slug": "livay-levi",
+      "artist_he": "ליביי לוי",
+      "artist_en": "livay levi",
+      "title_he": "על פניו",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "כסא: גובה 40 ס\"מ | עומק 40 ס\"מ | אורך 40 ס\"מ",
+      "img": "livay-levi-1",
+      "w": 1080,
+      "h": 864,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 2
+    },
+    {
+      "id": "livay-levi-2",
+      "artist_slug": "livay-levi",
+      "artist_he": "ליביי לוי",
+      "artist_en": "livay levi",
+      "title_he": "על פניו",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "שולחן: גובה 50 ס\"מ | עומק 70 ס\"מ | אורך 120 ס\"מ",
+      "img": "livay-levi-2",
+      "w": 1080,
+      "h": 1411,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "natasha-zeriker-1",
+      "artist_slug": "natasha-zeriker",
+      "artist_he": "נטשה זריקר",
+      "artist_en": "natasha zeriker",
+      "title_he": null,
+      "title_en": "linger",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "129.9x91.6 ס\"מ כולל מסגרת\nצילום סטודיו בחשיפה ממושכת מודפס נייר מטאלי,\nממוסגר במסגרת אלומיניום מט מוברשת מחופה בזכוכית מוזיאלית",
+      "img": "natasha-zeriker-1",
+      "w": 1080,
+      "h": 1540,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "talia-zoref-1",
+      "artist_slug": "talia-zoref",
+      "artist_he": "טליה צורף",
+      "artist_en": "talia zoref",
+      "title_he": "כאוס הרמוני",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "105x108 ס\"מ\nאקריליק על קנבס, ציור בידיים ובמברשות",
+      "img": "talia-zoref-1",
+      "w": 1080,
+      "h": 864,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "zohar-ron-dan-ben-ari-1",
+      "artist_slug": "zohar-ron-dan-ben-ari",
+      "artist_he": "זוהר רון | דן בן ארי",
+      "artist_en": "zohar ron × dandan nusha",
+      "title_he": null,
+      "title_en": "sex?",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "וידאו",
+      "img": "zohar-ron-dan-ben-ari-1",
+      "w": 682,
+      "h": 1040,
+      "widths": [
+        480,
+        682
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "risa-oz-1",
+      "artist_slug": "risa-oz",
+      "artist_he": "ריסה עוז",
+      "artist_en": "risa brooke oze",
+      "title_he": null,
+      "title_en": "body language",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "50x60 ס\"מ\nאקריליק, פחם ופסטל על נייר ארכיוני עבה",
+      "img": "risa-oz-1",
+      "w": 666,
+      "h": 885,
+      "widths": [
+        480,
+        666
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "anat-wegier-4",
+      "artist_slug": "anat-wegier",
+      "artist_he": "ענת ויז׳ייה",
+      "artist_en": "anat wegier",
+      "title_he": "אותו אחד שוב",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "95×115 ס\"מ\nשמן על בד",
+      "img": "anat-wegier-4",
+      "w": 1080,
+      "h": 1303,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 4
+    },
+    {
+      "id": "alon-1",
+      "artist_slug": "alon",
+      "artist_he": "אלון מנג׳וך",
+      "artist_en": "alon manjoch",
+      "title_he": "מחשבות טורדניות",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "קובץ סאונד",
+      "img": "alon-1",
+      "w": 1080,
+      "h": 1440,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "alon-2",
+      "artist_slug": "alon",
+      "artist_he": "אלון מנג׳וך",
+      "artist_en": "alon manjoch",
+      "title_he": "מודלים סטטיסטיים של זוגיות",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "40x40 ס\"מ\nזכוכית",
+      "img": "alon-2",
+      "w": 1080,
+      "h": 1207,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tal-nehoray-7",
+      "artist_slug": "tal-nehoray",
+      "artist_he": "טל נהוראי",
+      "artist_en": "tal nehoray",
+      "title_he": "הר של דמעות",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "קרמיקה",
+      "img": "tal-nehoray-7",
+      "w": 1080,
+      "h": 1156,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "noemi-safir-4",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "המילים שלא יוצאות",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "50x40 ס\"מ\nאקריליק",
+      "img": "noemi-safir-4",
+      "w": 1080,
+      "h": 1254,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 3
+    },
+    {
+      "id": "noemi-safir-5",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "עוד פעם מרצה",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "50x40 ס\"מ\nאקריליק",
+      "img": "noemi-safir-5",
+      "w": 1080,
+      "h": 1298,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 5
+    },
+    {
+      "id": "noemi-safir-6",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "אהבה ללא תנאי",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "50x40 ס\"מ\nאקריליק",
+      "img": "noemi-safir-6",
+      "w": 1080,
+      "h": 1238,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 6
+    },
+    {
+      "id": "noemi-safir-7",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "להישאר מבלי להיבלע",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "50x40 ס\"מ\nאקריליק",
+      "img": "noemi-safir-7",
+      "w": 1080,
+      "h": 1263,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 7
+    },
+    {
+      "id": "noemi-safir-8",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "שכבות שהשאירו בי סימן",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "50x40 ס\"מ\nאקריליק",
+      "img": "noemi-safir-8",
+      "w": 1080,
+      "h": 1257,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 8
+    },
+    {
+      "id": "noemi-safir-9",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "עד שנהייתי דקה",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "50x40 ס\"מ\nאקריליק",
+      "img": "noemi-safir-9",
+      "w": 1080,
+      "h": 1253,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 9
+    },
+    {
+      "id": "noemi-safir-10",
+      "artist_slug": "noemi-safir",
+      "artist_he": "נועמי ספיר",
+      "artist_en": "noemi safir",
+      "title_he": "כמה אני צריכה להיות צודקת",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "80x60 ס\"מ\nאקריליק",
+      "img": "noemi-safir-10",
+      "w": 1080,
+      "h": 1331,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 10
+    },
+    {
+      "id": "nir-giorgio-levin-1",
+      "artist_slug": "nir-giorgio-levin",
+      "artist_he": "ניר ג׳ורג׳יו לוין",
+      "artist_en": "nir giorgio levin",
+      "title_he": null,
+      "title_en": "\"untitled\" (flesh and marble)",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "60x85 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה",
+      "img": "nir-giorgio-levin-1",
+      "w": 1080,
+      "h": 1356,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 8
+    },
+    {
+      "id": "nir-giorgio-levin-2",
+      "artist_slug": "nir-giorgio-levin",
+      "artist_he": "ניר ג׳ורג׳יו לוין",
+      "artist_en": "nir giorgio levin",
+      "title_he": null,
+      "title_en": "\"untitled\" (with eyes closed, we saw)",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "90x110 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה",
+      "img": "nir-giorgio-levin-2",
+      "w": 1080,
+      "h": 1295,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 9
+    },
+    {
+      "id": "yarden-amir-3",
+      "artist_slug": "yarden-amir",
+      "artist_he": "ירדן אמיר",
+      "artist_en": "yarden amir",
+      "title_he": "ציפורי החופש",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "נעצים, שעם, עץ",
+      "img": "yarden-amir-3",
+      "w": 1080,
+      "h": 692,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 3
+    },
+    {
+      "id": "yarden-amir-4",
+      "artist_slug": "yarden-amir",
+      "artist_he": "ירדן אמיר",
+      "artist_en": "yarden amir",
+      "title_he": null,
+      "title_en": "Life Marks - Body Whispered",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "37x143 ס\"מ\nנעצים, שעם, עץ",
+      "img": "yarden-amir-4",
+      "w": 1080,
+      "h": 1440,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 2
+    },
+    {
+      "id": "yarden-amir-5",
+      "artist_slug": "yarden-amir",
+      "artist_he": "ירדן אמיר",
+      "artist_en": "yarden amir",
+      "title_he": "פרח אפוקליפטי",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "בלוני הליום, חוט סרט, נעצים, עץ",
+      "img": "yarden-amir-5",
+      "w": 1080,
+      "h": 1347,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 4
+    },
+    {
+      "id": "yarden-amir-6",
+      "artist_slug": "yarden-amir",
+      "artist_he": "ירדן אמיר",
+      "artist_en": "yarden amir",
+      "title_he": "מטאוריטים",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "31x38, 58x67, 64x86 ס\"מ\nנעצים, שעם, עץ, יציקת פוליאוריתן וגבס",
+      "img": "yarden-amir-6",
+      "w": 1080,
+      "h": 1307,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 1
+    },
+    {
+      "id": "elsa-ars-brush-3",
+      "artist_slug": "elsa-ars-brush",
+      "artist_he": "אלסה ארס ברוש",
+      "artist_en": "elsa ers brosh",
+      "title_he": null,
+      "title_en": "gossip",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "30×45 ס\"מ\nאקריליק",
+      "img": "elsa-ars-brush-3",
+      "w": 1080,
+      "h": 1629,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 3
+    },
+    {
+      "id": "elsa-ars-brush-4",
+      "artist_slug": "elsa-ars-brush",
+      "artist_he": "אלסה ארס ברוש",
+      "artist_en": "elsa ers brosh",
+      "title_he": null,
+      "title_en": "an intimate portrait",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "30×40 ס\"מ\nאקריליק",
+      "img": "elsa-ars-brush-4",
+      "w": 1080,
+      "h": 1467,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 4
+    },
+    {
+      "id": "elsa-ars-brush-5",
+      "artist_slug": "elsa-ars-brush",
+      "artist_he": "אלסה ארס ברוש",
+      "artist_en": "elsa ers brosh",
+      "title_he": null,
+      "title_en": "within the flesh",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "80×120 ס\"מ\nאקריליק",
+      "img": "elsa-ars-brush-5",
+      "w": 1080,
+      "h": 1608,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": 5
+    },
+    {
+      "id": "tanya-shin-1",
+      "artist_slug": "tanya-shin",
+      "artist_he": "טניה שין",
+      "artist_en": "tanya shin",
+      "title_he": null,
+      "title_en": "crop 1",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "30*40 ס\"מ\nmixed media photography",
+      "img": "tanya-shin-1",
+      "w": 800,
+      "h": 616,
+      "widths": [
+        480,
+        800
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tanya-shin-2",
+      "artist_slug": "tanya-shin",
+      "artist_he": "טניה שין",
+      "artist_en": "tanya shin",
+      "title_he": null,
+      "title_en": "stay still",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "25*25 ס\"מ\nmixed media photography",
+      "img": "tanya-shin-2",
+      "w": 601,
+      "h": 601,
+      "widths": [
+        480,
+        601
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tanya-shin-3",
+      "artist_slug": "tanya-shin",
+      "artist_he": "טניה שין",
+      "artist_en": "tanya shin",
+      "title_he": null,
+      "title_en": "hand wrapped",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "25*25 ס\"מ\nmixed media photography",
+      "img": "tanya-shin-3",
+      "w": 1080,
+      "h": 1080,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tanya-shin-4",
+      "artist_slug": "tanya-shin",
+      "artist_he": "טניה שין",
+      "artist_en": "tanya shin",
+      "title_he": null,
+      "title_en": "triangle",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "25*25 ס\"מ\nmixed media photography",
+      "img": "tanya-shin-4",
+      "w": 1080,
+      "h": 1080,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tanya-shin-5",
+      "artist_slug": "tanya-shin",
+      "artist_he": "טניה שין",
+      "artist_en": "tanya shin",
+      "title_he": null,
+      "title_en": "crop 2",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "30*40 ס\"מ\nmixed media photography",
+      "img": "tanya-shin-5",
+      "w": 1080,
+      "h": 1925,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tanya-shin-6",
+      "artist_slug": "tanya-shin",
+      "artist_he": "טניה שין",
+      "artist_en": "tanya shin",
+      "title_he": null,
+      "title_en": "concentric lines",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "mixed media photography",
+      "img": "tanya-shin-6",
+      "w": 1024,
+      "h": 1024,
+      "widths": [
+        480,
+        768,
+        1024
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tanya-shin-7",
+      "artist_slug": "tanya-shin",
+      "artist_he": "טניה שין",
+      "artist_en": "tanya shin",
+      "title_he": null,
+      "title_en": "shave",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "mixed media photography",
+      "img": "tanya-shin-7",
+      "w": 1080,
+      "h": 1080,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tanya-shin-8",
+      "artist_slug": "tanya-shin",
+      "artist_he": "טניה שין",
+      "artist_en": "tanya shin",
+      "title_he": null,
+      "title_en": "aura 1",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "mixed media photography",
+      "img": "tanya-shin-8",
+      "w": 1080,
+      "h": 1315,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tanya-shin-9",
+      "artist_slug": "tanya-shin",
+      "artist_he": "טניה שין",
+      "artist_en": "tanya shin",
+      "title_he": null,
+      "title_en": "aura 2",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "mixed media photography",
+      "img": "tanya-shin-9",
+      "w": 1057,
+      "h": 1252,
+      "widths": [
+        480,
+        768,
+        1057
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "gal-polk-8",
+      "artist_slug": "gal-polk",
+      "artist_he": "גל פולק",
+      "artist_en": "gal pollak",
+      "title_he": null,
+      "title_en": "exs and oh's",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "קריסטלים על גרזן ברזל",
+      "img": "gal-polk-8",
+      "w": 864,
+      "h": 1243,
+      "widths": [
+        480,
+        768,
+        864
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "liel-salman-1",
+      "artist_slug": "liel-salman",
+      "artist_he": "ליאל סלמן",
+      "artist_en": "liel salman",
+      "title_he": null,
+      "title_en": "together",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "35×50 ס\"מ\nאקריליק",
+      "img": "liel-salman-1",
+      "w": 1080,
+      "h": 1920,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "sami-david-1",
+      "artist_slug": "sami-david",
+      "artist_he": null,
+      "artist_en": "samy d",
+      "title_he": null,
+      "title_en": "nova",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "40x40 ס\"מ | 3.85 ק\"ג\nקרמיקה, זהב 14 קראט",
+      "img": "sami-david-1",
+      "w": 1080,
+      "h": 1079,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "sami-david-2",
+      "artist_slug": "sami-david",
+      "artist_he": null,
+      "artist_en": "samy d",
+      "title_he": null,
+      "title_en": "nova",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "40x40 ס\"מ | 3.85 ק\"ג\nקרמיקה, זהב 14 קראט",
+      "img": "sami-david-2",
+      "w": 1080,
+      "h": 1079,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "sami-david-3",
+      "artist_slug": "sami-david",
+      "artist_he": null,
+      "artist_en": "samy d",
+      "title_he": null,
+      "title_en": "nova",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "40x40 ס\"מ | 3.85 ק\"ג\nקרמיקה, זהב 14 קראט",
+      "img": "sami-david-3",
+      "w": 1080,
+      "h": 1079,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "sami-david-4",
+      "artist_slug": "sami-david",
+      "artist_he": null,
+      "artist_en": "samy d",
+      "title_he": null,
+      "title_en": "nova",
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "40x40 ס\"מ | 2.7 ק\"ג\nקרמיקה, זהב 14 קראט",
+      "img": "sami-david-4",
+      "w": 1080,
+      "h": 1619,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "racheli-reuven-1",
+      "artist_slug": "racheli-reuven",
+      "artist_he": "רחלי ראובן",
+      "artist_en": "racheli reuven",
+      "title_he": "עשי בי קרבה",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "שיר",
+      "img": "racheli-reuven-1",
+      "w": 1080,
+      "h": 1410,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
       "id": "zohar-ron-1",
       "artist_slug": "zohar-ron",
       "artist_he": "זוהר רון",
@@ -51,26 +1472,8 @@
       "widths": [
         480,
         690
-      ]
-    },
-    {
-      "id": "zohar-ron-2",
-      "artist_slug": "zohar-ron",
-      "artist_he": "זוהר רון",
-      "artist_en": "zohar ron",
-      "title_he": "כְּתוּבָּה",
-      "title_en": "QTUBA",
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "zohar-ron-2",
-      "w": 690,
-      "h": 1044,
-      "widths": [
-        480,
-        690
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "zohar-ron-3",
@@ -89,7 +1492,28 @@
       "widths": [
         480,
         690
-      ]
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "zohar-ron-2",
+      "artist_slug": "zohar-ron",
+      "artist_he": "זוהר רון",
+      "artist_en": "zohar ron",
+      "title_he": "כְּתוּבָּה",
+      "title_en": "QTUBA",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": null,
+      "img": "zohar-ron-2",
+      "w": 690,
+      "h": 1044,
+      "widths": [
+        480,
+        690
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "zohar-ron-4",
@@ -108,7 +1532,28 @@
       "widths": [
         480,
         690
-      ]
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "holy-kadosh-1",
+      "artist_slug": "holy-kadosh",
+      "artist_he": "טל קדוש",
+      "artist_en": "tal holy kadosh",
+      "title_he": null,
+      "title_en": "HOLY BAG",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "holy-kadosh-1",
+      "w": 690,
+      "h": 1044,
+      "widths": [
+        480,
+        690
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "eitan-goldson-1",
@@ -120,14 +1565,15 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": true,
-      "details_he": "מדיה מעורבת - עבודה משותפת עם הנריקה רוטנברג. צבעי שמן, אקריליק, גרפיט וקפה על קנבס מודפס בלייזר.",
+      "details_he": "מדיה מעורבת - עבודה משותפת עם הנריקה רוטנברג.\nצבעי שמן, אקריליק, גרפיט וקפה על קנבס מודפס בלייזר.",
       "img": "eitan-goldson-1",
       "w": 690,
       "h": 1044,
       "widths": [
         480,
         690
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "eitan-goldson-2",
@@ -146,45 +1592,28 @@
       "widths": [
         480,
         690
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
-      "id": "eitan-goldson-3",
-      "artist_slug": "eitan-goldson",
-      "artist_he": "איתן גולדסון",
-      "artist_en": "eitan goldson",
-      "title_he": "תשע נשמות",
+      "id": "tal-nehoray-1",
+      "artist_slug": "tal-nehoray",
+      "artist_he": "טל נהוראי",
+      "artist_en": "tal nehoray",
+      "title_he": "קרמיקה",
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
-      "img": "eitan-goldson-3",
-      "w": 690,
-      "h": 1035,
-      "widths": [
-        480,
-        690
-      ]
-    },
-    {
-      "id": "holy-kadosh-1",
-      "artist_slug": "holy-kadosh",
-      "artist_he": "טל קדוש",
-      "artist_en": "tal holy kadosh",
-      "title_he": null,
-      "title_en": "HOLY BAG",
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "holy-kadosh-1",
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "tal-nehoray-1",
       "w": 690,
       "h": 1044,
       "widths": [
         480,
         690
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "holy-kadosh-2",
@@ -196,7 +1625,7 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "holy-kadosh-2",
       "w": 918,
       "h": 1390,
@@ -204,19 +1633,20 @@
         480,
         768,
         918
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "holy-kadosh-3",
       "artist_slug": "holy-kadosh",
       "artist_he": "טל קדוש",
       "artist_en": "tal holy kadosh",
-      "title_he": null,
+      "title_he": "התנערות",
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "holy-kadosh-3",
       "w": 918,
       "h": 1034,
@@ -224,58 +1654,20 @@
         480,
         768,
         918
-      ]
-    },
-    {
-      "id": "tal-nehoray-6",
-      "artist_slug": "tal-nehoray",
-      "artist_he": "טל נהוראי",
-      "artist_en": "tal nehoray",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": "קרמיקה",
-      "img": "tal-nehoray-6",
-      "w": 1080,
-      "h": 1156,
-      "widths": [
-        480,
-        768,
-        1080
-      ]
-    },
-    {
-      "id": "tal-nehoray-1",
-      "artist_slug": "tal-nehoray",
-      "artist_he": "טל נהוראי",
-      "artist_en": "tal nehoray",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": "קרמיקה",
-      "img": "tal-nehoray-1",
-      "w": 690,
-      "h": 1044,
-      "widths": [
-        480,
-        690
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "tal-nehoray-2",
       "artist_slug": "tal-nehoray",
       "artist_he": "טל נהוראי",
       "artist_en": "tal nehoray",
-      "title_he": null,
+      "title_he": "קרמיקה",
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": "קרמיקה",
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "tal-nehoray-2",
       "w": 1080,
       "h": 1080,
@@ -283,38 +1675,40 @@
         480,
         768,
         1080
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "tal-nehoray-3",
       "artist_slug": "tal-nehoray",
       "artist_he": "טל נהוראי",
       "artist_en": "tal nehoray",
-      "title_he": null,
+      "title_he": "קרמיקה",
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": "קרמיקה",
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "tal-nehoray-3",
       "w": 690,
       "h": 1044,
       "widths": [
         480,
         690
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "tal-nehoray-4",
       "artist_slug": "tal-nehoray",
       "artist_he": "טל נהוראי",
       "artist_en": "tal nehoray",
-      "title_he": null,
+      "title_he": "קרמיקה",
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": "קרמיקה",
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "tal-nehoray-4",
       "w": 1080,
       "h": 1080,
@@ -322,26 +1716,8 @@
         480,
         768,
         1080
-      ]
-    },
-    {
-      "id": "tal-nehoray-5",
-      "artist_slug": "tal-nehoray",
-      "artist_he": "טל נהוראי",
-      "artist_en": "tal nehoray",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": "קרמיקה",
-      "img": "tal-nehoray-5",
-      "w": 690,
-      "h": 1044,
-      "widths": [
-        480,
-        690
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "costa-magarakis-1",
@@ -353,14 +1729,35 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "costa-magarakis-1",
       "w": 499,
       "h": 1012,
       "widths": [
         480,
         499
-      ]
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tal-nehoray-5",
+      "artist_slug": "tal-nehoray",
+      "artist_he": "טל נהוראי",
+      "artist_en": "tal nehoray",
+      "title_he": "קרמיקה",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "tal-nehoray-5",
+      "w": 690,
+      "h": 1044,
+      "widths": [
+        480,
+        690
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "hila-loterstein-1",
@@ -372,34 +1769,36 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": true,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "hila-loterstein-1",
       "w": 690,
       "h": 1044,
       "widths": [
         480,
         690
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
-      "id": "hila-loterstein-2",
-      "artist_slug": "hila-loterstein",
-      "artist_he": "הילה לוטרשטרין",
-      "artist_en": "hila loterstein",
+      "id": "gal-polk-1",
+      "artist_slug": "gal-polk",
+      "artist_he": "גל פולק",
+      "artist_en": "gal pollak",
       "title_he": null,
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
-      "img": "hila-loterstein-2",
-      "w": 900,
-      "h": 874,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "gal-polk-1",
+      "w": 1080,
+      "h": 992,
       "widths": [
         480,
         768,
-        900
-      ]
+        1080
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "hila-loterstein-3",
@@ -418,107 +1817,29 @@
       "widths": [
         480,
         720
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
-      "id": "gal-polk-7",
-      "artist_slug": "gal-polk",
-      "artist_he": "גל פולק",
-      "artist_en": "gal pollak",
+      "id": "hila-loterstein-2",
+      "artist_slug": "hila-loterstein",
+      "artist_he": "הילה לוטרשטרין",
+      "artist_en": "hila loterstein",
       "title_he": null,
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
-      "img": "gal-polk-7",
-      "w": 864,
-      "h": 1243,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "hila-loterstein-2",
+      "w": 900,
+      "h": 874,
       "widths": [
         480,
         768,
-        864
-      ]
-    },
-    {
-      "id": "gal-polk-1",
-      "artist_slug": "gal-polk",
-      "artist_he": "גל פולק",
-      "artist_en": "gal pollak",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "gal-polk-1",
-      "w": 1080,
-      "h": 992,
-      "widths": [
-        480,
-        768,
-        1080
-      ]
-    },
-    {
-      "id": "gal-polk-2",
-      "artist_slug": "gal-polk",
-      "artist_he": "גל פולק",
-      "artist_en": "gal pollak",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "gal-polk-2",
-      "w": 1080,
-      "h": 1440,
-      "widths": [
-        480,
-        768,
-        1080
-      ]
-    },
-    {
-      "id": "gal-polk-3",
-      "artist_slug": "gal-polk",
-      "artist_he": "גל פולק",
-      "artist_en": "gal pollak",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "gal-polk-3",
-      "w": 1080,
-      "h": 1080,
-      "widths": [
-        480,
-        768,
-        1080
-      ]
-    },
-    {
-      "id": "gal-polk-4",
-      "artist_slug": "gal-polk",
-      "artist_he": "גל פולק",
-      "artist_en": "gal pollak",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "gal-polk-4",
-      "w": 1080,
-      "h": 1620,
-      "widths": [
-        480,
-        768,
-        1080
-      ]
+        900
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "gal-polk-5",
@@ -530,7 +1851,7 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": true,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "gal-polk-5",
       "w": 1080,
       "h": 720,
@@ -538,10 +1859,11 @@
         480,
         768,
         1080
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
-      "id": "gal-polk-6",
+      "id": "gal-polk-2",
       "artist_slug": "gal-polk",
       "artist_he": "גל פולק",
       "artist_en": "gal pollak",
@@ -550,72 +1872,37 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
-      "img": "gal-polk-6",
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "gal-polk-2",
       "w": 1080,
       "h": 1440,
       "widths": [
         480,
         768,
         1080
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
-      "id": "maya-nachum-levy-3",
-      "artist_slug": "maya-nachum-levy",
-      "artist_he": "מאיה נחום לוי",
-      "artist_en": "maya nachum levy",
+      "id": "gal-polk-3",
+      "artist_slug": "gal-polk",
+      "artist_he": "גל פולק",
+      "artist_en": "gal pollak",
       "title_he": null,
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
-      "img": "maya-nachum-levy-3",
-      "w": 690,
-      "h": 1044,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "gal-polk-3",
+      "w": 1080,
+      "h": 1080,
       "widths": [
         480,
-        690
-      ]
-    },
-    {
-      "id": "maya-nachum-levy-4",
-      "artist_slug": "maya-nachum-levy",
-      "artist_he": "מאיה נחום לוי",
-      "artist_en": "maya nachum levy",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "maya-nachum-levy-4",
-      "w": 690,
-      "h": 1044,
-      "widths": [
-        480,
-        690
-      ]
-    },
-    {
-      "id": "maya-nachum-levy-5",
-      "artist_slug": "maya-nachum-levy",
-      "artist_he": "מאיה נחום לוי",
-      "artist_en": "maya nachum levy",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "maya-nachum-levy-5",
-      "w": 690,
-      "h": 1044,
-      "widths": [
-        480,
-        690
-      ]
+        768,
+        1080
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "maya-nachum-levy-1",
@@ -627,34 +1914,57 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "maya-nachum-levy-1",
       "w": 758,
       "h": 980,
       "widths": [
         480,
         758
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
-      "id": "maya-nachum-levy-2",
-      "artist_slug": "maya-nachum-levy",
-      "artist_he": "מאיה נחום לוי",
-      "artist_en": "maya nachum levy",
+      "id": "gal-polk-4",
+      "artist_slug": "gal-polk",
+      "artist_he": "גל פולק",
+      "artist_en": "gal pollak",
       "title_he": null,
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
-      "img": "maya-nachum-levy-2",
-      "w": 904,
-      "h": 1744,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "gal-polk-4",
+      "w": 1080,
+      "h": 1620,
       "widths": [
         480,
         768,
-        904
-      ]
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "gal-polk-6",
+      "artist_slug": "gal-polk",
+      "artist_he": "גל פולק",
+      "artist_en": "gal pollak",
+      "title_he": null,
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "gal-polk-6",
+      "w": 1080,
+      "h": 1440,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "adi-duak-1",
@@ -666,7 +1976,7 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "adi-duak-1",
       "w": 1080,
       "h": 1634,
@@ -674,7 +1984,8 @@
         480,
         768,
         1080
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "adi-duak-2",
@@ -686,7 +1997,7 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "adi-duak-2",
       "w": 1080,
       "h": 1634,
@@ -694,7 +2005,29 @@
         480,
         768,
         1080
-      ]
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "maya-nachum-levy-2",
+      "artist_slug": "maya-nachum-levy",
+      "artist_he": "מאיה נחום לוי",
+      "artist_en": "maya nachum levy",
+      "title_he": null,
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "maya-nachum-levy-2",
+      "w": 904,
+      "h": 1744,
+      "widths": [
+        480,
+        768,
+        904
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "adi-duak-3",
@@ -706,7 +2039,7 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "adi-duak-3",
       "w": 1080,
       "h": 1634,
@@ -714,7 +2047,8 @@
         480,
         768,
         1080
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "adi-duak-4",
@@ -726,7 +2060,7 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": null,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "adi-duak-4",
       "w": 1080,
       "h": 1634,
@@ -734,7 +2068,8 @@
         480,
         768,
         1080
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "la-raz-porta-1",
@@ -745,8 +2080,8 @@
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
-      "sold": true,
-      "details_he": null,
+      "sold": false,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
       "img": "la-raz-porta-1",
       "w": 918,
       "h": 1390,
@@ -754,47 +2089,8 @@
         480,
         768,
         918
-      ]
-    },
-    {
-      "id": "la-raz-porta-2",
-      "artist_slug": "la-raz-porta",
-      "artist_he": null,
-      "artist_en": "la raz porta",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "la-raz-porta-2",
-      "w": 918,
-      "h": 1166,
-      "widths": [
-        480,
-        768,
-        918
-      ]
-    },
-    {
-      "id": "la-raz-porta-3",
-      "artist_slug": "la-raz-porta",
-      "artist_he": null,
-      "artist_en": "la raz porta",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "la-raz-porta-3",
-      "w": 918,
-      "h": 1390,
-      "widths": [
-        480,
-        768,
-        918
-      ]
+      ],
+      "artist_page_pos": null
     },
     {
       "id": "zohar-shtrit-1",
@@ -806,14 +2102,57 @@
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": true,
-      "details_he": null,
+      "details_he": "52x56 ס\"מ\nבלון הליום ונעצים על עץ",
       "img": "zohar-shtrit-1",
       "w": 690,
       "h": 1044,
       "widths": [
         480,
         690
-      ]
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "la-raz-porta-2",
+      "artist_slug": "la-raz-porta",
+      "artist_he": null,
+      "artist_en": "la raz porta",
+      "title_he": null,
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "la-raz-porta-2",
+      "w": 918,
+      "h": 1166,
+      "widths": [
+        480,
+        768,
+        918
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "la-raz-porta-3",
+      "artist_slug": "la-raz-porta",
+      "artist_he": null,
+      "artist_en": "la raz porta",
+      "title_he": null,
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "60x80 ס\"מ\nשמן על קנבס",
+      "img": "la-raz-porta-3",
+      "w": 918,
+      "h": 1390,
+      "widths": [
+        480,
+        768,
+        918
+      ],
+      "artist_page_pos": null
     }
   ]
 }

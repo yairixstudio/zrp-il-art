@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Artists — Zielinski &amp; Rozen</title>
+<link rel="preload" href="../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../components/site-boot.css">
+<meta name="description" content="The Artists of Zielinski & Rozen — the painters, sculptors and photographers represented across the three Tel Aviv galleries.">
+<style>
+/* ===== LOCAL FONTS ===== */
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate-Light.woff2") format("woff2"),url("../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate.woff2") format("woff2"),url("../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Bold.woff2") format("woff2"),url("../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../פונטים/CopperplateCC-Heavy.woff2") format("woff2"),url("../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Light.woff2") format("woff2"),url("../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../פונטים/FbEzmel-Regular.woff2") format("woff2"),url("../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --ink:#1B1B1B;
+  --artist:#828282;
+  --max:1440px;
+  --cop:"Copperplate","Times New Roman",serif;
+  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:clip;max-width:100vw}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+
+/* GLOBAL CASING RULE — all English text renders UPPERCASE (project-wide).
+   Hebrew is exempt. See CLAUDE.md §9 / conventions.md §5. */
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+
+/* ===== HERO (THE artists) — Figma desktop 523:107 (grey) / mobile 523:2 ===== */
+.hero{background:var(--bg-grey);padding:48px var(--pad-x) 40px}
+.hero-inner{width:100%;max-width:var(--max);margin:0 auto;text-align:right}
+.hero h1,.hero h2{font-family:var(--cop);font-size:80px;line-height:.96;color:var(--ink);letter-spacing:.02em}
+.hero h1{font-weight:700}
+.hero h2{font-weight:300}
+.hero-intro{margin-top:18px;max-width:var(--max);margin-left:auto;margin-right:auto}
+.hero-intro p{font-family:var(--heb);font-weight:400;font-size:18px;line-height:1.55;color:var(--ink);direction:rtl;text-align:right}
+.hero-intro p + p{margin-top:1em}
+
+/* ===== ARTIST GRID — 3 columns desktop / 2 columns mobile, per Figma 523:107 / 523:2 ===== */
+.grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  column-gap:16px;row-gap:56px;
+  padding:48px var(--pad-x);background:var(--white);
+}
+.artist{display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0}
+.artist .img{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#FAFAFA}
+.artist .img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.artist .img::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,0);transition:background .3s;pointer-events:none}
+.artist:hover .img::after{background:rgba(27,27,27,.06)}
+.artist .nm{
+  font-family:var(--cop);font-weight:300;font-size:28px;line-height:1.05;
+  text-align:center;color:var(--artist);white-space:pre-line;letter-spacing:.02em;
+  transition:color .2s;
+}
+.artist:hover .nm{color:var(--ink)}
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤1100px) — stays 3-up
+   ============================================================ */
+@media (max-width:1100px){
+  :root{--pad-x:48px}
+  .hero h1,.hero h2{font-size:60px}
+  .grid{row-gap:44px}
+  .artist .nm{font-size:22px}
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤768px) — 2-up per Figma 523:2 (white hero)
+   ============================================================ */
+@media (max-width:768px){
+  :root{--pad-x:16px}
+  .hero{background:var(--white);padding:32px 16px 8px}
+  .hero-inner{text-align:center;padding-left:16px;padding-right:16px}
+  .hero h1{font-size:40px}
+  .hero h2{font-size:60px;margin-top:0}
+  .hero-intro{margin-top:16px}
+  .hero-intro p{font-size:16px;text-align:center}
+  .grid{grid-template-columns:repeat(2,1fr);padding:32px 16px;column-gap:16px;row-gap:40px}
+  .artist{gap:12px}
+  .artist .nm{font-size:16px;line-height:1.12}
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL MOBILE (≤390px) — stays 2-up
+   ============================================================ */
+@media (max-width:390px){
+  .grid{column-gap:12px}
+  .artist .nm{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<site-header></site-header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>THE</h1>
+    <h2>artists</h2>
+  </div>
+  <div class="hero-intro heb" dir="rtl">
+    <p>הגלריות של ארז זילינסקי רוזן נולדו מתוך אהבה עמוקה לאמנות ולאנשים שיוצרים אותה. לאורך השנים בחר ארז להשקיע את זמנו, משאביו והבמה שיצר כדי לקדם אמנים ואמניות, מתוך אמונה שאמנות היא כוח שמחבר בין אנשים, מעורר מחשבה ויוצר שינוי.</p>
+    <p>במודל יוצא דופן בנוף המקומי, הגלריות פועלות ללא עמלות תיווך, וכל ההכנסות ממכירת היצירות מועברות ישירות לאמנים המציגים. זהו ביטוי למחויבות אמיתית לתמיכה ביצירה ישראלית ולבניית קהילה שבה האמנות עומדת במרכז.</p>
+  </div>
+</section>
+
+<!-- Artist grid — rendered from inline data (file:// can't fetch JSON).
+     Order + two-line names follow Figma 523:107 (desktop) / 523:2 (mobile).
+     Each card links to /artists/<slug>/. Images: images/artists/grid/<slug>.webp -->
+<section class="grid" id="artists-grid"></section>
+
+<script type="application/json" id="artists-grid-data">
+[
+{"slug":"zohar-ron","name":"zohar\nron"},
+{"slug":"gilad-kenan","name":"gilad\nkenan"},
+{"slug":"nir-giorgio-levin","name":"nir giorgio\nlevin"},
+{"slug":"jessica-tabarovsky","name":"jessica\ntabarovsky"},
+{"slug":"baruch-torgeman","name":"baruch\ntorgeman"},
+{"slug":"chen-ziv","name":"chen\nziv"},
+{"slug":"lahav-barak","name":"lahav\nbarak"},
+{"slug":"anat-wegier","name":"anat\nwegier"},
+{"slug":"elsa-ars-brush","name":"elsa\ners brosh"},
+{"slug":"noemi-safir","name":"noemi\nsafir"},
+{"slug":"yarden-amir","name":"yarden\namir"},
+{"slug":"livay-levi","name":"livay\nlevi"},
+{"slug":"natasha-zeriker","name":"natasha\nzeriker"},
+{"slug":"talia-zoref","name":"talia\nzoref"},
+{"slug":"gal-polk","name":"gal\npollak"},
+{"slug":"alon","name":"alon\nmanjoch"},
+{"slug":"risa-oz","name":"risa\nbrooke oze"},
+{"slug":"tanya-shin","name":"tanya\nshin"},
+{"slug":"liel-salman","name":"liel\nsalman noam"},
+{"slug":"sami-david","name":"samy\nd"},
+{"slug":"dan-ben-ary","name":"dan\nben-ary"},
+{"slug":"racheli-reuven","name":"racheli\nreuven"},
+{"slug":"tal-nehoray","name":"tal\nnehoray"},
+{"slug":"holy-kadosh","name":"tal holy\nkadosh"},
+{"slug":"costa-magarakis","name":"costa\nmagarakis"},
+{"slug":"hila-loterstein","name":"hila\nloterstrin"},
+{"slug":"eitan-goldson","name":"eitan\ngoldson"},
+{"slug":"maya-nachum-levy","name":"maya\nnachum levy"},
+{"slug":"adi-duak","name":"adi\nduek"},
+{"slug":"la-raz-porta","name":"la raz porta\nanonymous artist duo"},
+{"slug":"zohar-shtrit","name":"zohar\nshitrit"}
+]
+</script>
+
+<script>
+(function(){
+  var items = JSON.parse(document.getElementById('artists-grid-data').textContent);
+  var base  = '../images/artists/grid/';
+  function esc(s){
+    if(s==null) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  var grid = document.getElementById('artists-grid');
+  grid.innerHTML = items.map(function(a,i){
+    var main = base + a.slug + '.webp';
+    var sset = base + a.slug + '-480w.webp 480w, ' + main + ' 810w';
+    var alt  = a.name.replace(/\n/g,' ');
+    var load = i ? 'loading="lazy"' : 'fetchpriority="high"';
+    return '<a class="artist" href="../artists/' + a.slug + '/">' +
+        '<div class="img">' +
+          '<img src="' + main + '" srcset="' + sset + '" ' +
+               'sizes="(max-width:768px) 46vw, (max-width:1100px) 30vw, 405px" ' +
+               'width="810" height="810" alt="' + esc(alt) + '" decoding="async" ' + load + '>' +
+        '</div>' +
+        '<div class="nm">' + esc(a.name) + '</div>' +
+      '</a>';
+  }).join('');
+  if(window.PictureUpgrade) PictureUpgrade.refresh(grid);
+})();
+</script>
+
+<!-- FOOTER -->
+<site-footer></site-footer>
+
+<!-- Site chrome: shared header + footer (single source of truth) -->
+<script src="../components/site-chrome.js?v=2" defer></script>
+<script src="../components/analytics.js" defer></script>
+<script src="../components/picture-upgrade.js" defer></script>
+<script src="../components/embed-iframe.js" defer></script>
+</body>
+</html>

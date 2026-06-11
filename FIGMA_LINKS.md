@@ -208,6 +208,16 @@ node-ids פר-אומן (כולם ב-`XhGH289YTRcW811wrufRJz`):
 | nir-giorgio-levin | `571:6354` | +7 יצירות חדשות (`583:331..379`) |
 | talia-zoref | `560:6232` | |
 
+### gal-rotem + raz-ronen — דפי אומן מלאים (2026-06-11, `landing`)
+
+> 2 אומנים חדשים שהיו placeholder וקיבלו דף מלא (ביו+פורטרט+יצירות). מובייל 390px. ה-handle ב-Figma אצל שניהם = leftover תבנית (`@samyd`/`@rachelli_reuven`) → `instagram_handle:null`.
+
+gal-rotem מובייל: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=605-7711&m=dev
+
+raz-ronen מובייל: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=605-7995&m=dev
+
 ### zohar ron × dandan nusha (שיתוף — `artist.html?slug=zohar-ron-dan-ben-ari`)
 
 מובייל (קנוני ב-`landing`, לא ב-`artist-pages`): Implement this design from Figma.

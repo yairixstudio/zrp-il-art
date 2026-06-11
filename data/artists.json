@@ -858,7 +858,7 @@
       "slug": "racheli-reuven",
       "name_en": "racheli reuven",
       "name_he": "רחלי ראובן",
-      "portrait": "images/artists/grid/racheli-reuven.webp",
+      "portrait": "images/artists/racheli-reuven/portrait.webp",
       "work_image": null,
       "instagram_handle": null,
       "bio_he": null,
@@ -867,45 +867,41 @@
       "figma_artist_page_mobile": null,
       "figma_artist_page_desktop": null,
       "homepage_featured": false,
-      "_note": "NEW — נוסף מעמוד /artists/ (Figma 571:6350). placeholder עם תמונת הגריד; צריך למלא פורטרט, ביו, עבודות, אינסטגרם."
+      "_note": "placeholder — תמונת גריד+פורטרט עודכנה מ-Figma 571:6350 (2026-06-11). צריך ביו, עבודות, אינסטגרם."
     },
     {
       "id": "gal-rotem",
       "slug": "gal-rotem",
       "name_en": "gal rotem",
       "name_he": "גל רותם",
-      "portrait": "images/artists/grid/gal-rotem.webp",
+      "portrait": "images/artists/gal-rotem/portrait.webp",
       "work_image": null,
       "instagram_handle": null,
-      "bio_he": null,
+      "bio_he": "גל רותם, אמן רב תחומי, בן 38 מגבעתיים.\nיצירותיו עוסקות בעיקר ברגשות שלא תמיד ניתן לראות במבט ראשון, כאשר דיכאון הוא המרכזי בהם.\n\nביצירה זו אני מנסה להביא לידי ביטוי דרך חיים לא ממומשת ואיתה מגיעה התמסרות טוטאלית לבדידות.\n\nאישה עירומה, עוצמת עיניים ומרפה את גופה לחלוטין.\nהתמסרות מלאה לתחושת בדידות מביאה עמה ויתור מוחלט על ההצלחה לייצר קשרים חברתיים אמיתיים ועמוקים. תחושה שיכולה להתעצם אצל אדם שזה כל רצונו.\nכל דרך חיים שנפגעת או לא ממומשת יוצרת ריק שמביא לטביעה בחשיכה תרתי משמע.\n\nהמים החשוכים המייצגים את הבדידות מנצחים והמרדף מפסיק.\nהסיפוק שהיא מקבלת מפעולת הוויתור הוא אין סופי אך פני המים מעליה מראים שלא צריך הרבה בשביל לצאת, יד אחת מושטת יכולה להספיק.",
       "bio_en": null,
       "works": [],
-      "figma_artist_page_mobile": null,
+      "figma_artist_page_mobile": "XhGH289YTRcW811wrufRJz::605:7711",
       "figma_artist_page_desktop": null,
-      "homepage_featured": false,
-      "_note": "NEW — נוסף מעמוד /artists/ (Figma 613:281). placeholder עם תמונת הגריד; צריך למלא פורטרט, ביו, עבודות, אינסטגרם."
+      "homepage_featured": false
     },
     {
       "id": "raz-ronen",
       "slug": "raz-ronen",
       "name_en": "raz ronen",
       "name_he": "רז רונן",
-      "portrait": "images/artists/grid/raz-ronen.webp",
+      "portrait": "images/artists/raz-ronen/portrait.webp",
       "work_image": null,
       "instagram_handle": null,
-      "bio_he": null,
+      "bio_he": "רז רונן (נולד בשנות ה־80, חולון, ישראל) הוא צייר שיצירתו נעה על התפר שבין כאוס לשליטה, בין זוהר לחספוס.\n\nגדילתו בחולון עיצבה את קולו האמנותי לא פחות ממה שהיה סביבו מאשר ממה שהיה חסר—והציתה משיכה מתמשכת אל הגולמי, המרדני, ואל יופי שמסרב להיות מהוקצע.\n\nאת דרכו החל בציור על חולצות שמכר בעצמו—גישה שממשיכה לעצב את עבודתו עד היום: ישירה, גופנית ומיידית.\n\nציוריו של רונן נוצרים במהירות ובאופן אינסטינקטיבי, מתוך אמונה שהאמנות הטובה ביותר נובעת מהבטן ולא מהתלבטות יתר. תנועות המכחול שלו פרועות אך מכוונות, חצופות אך מהפנטות; ותמיד נושאות עמן עוקץ—סאטירי, מפתה, ומעט \"לא במקום\".\n\nהסגנון שלו מסרב לקטגוריות נקיות: תרבות פופ ומיתולוגיה אישית, אלגנטיות והאבסורד. בין אם הוא בוחן תשוקה, התפכחות או את המופע של החיים המודרניים, רונן נשאר נאמן לרעיון אחד: אמנות צריך להרגיש לפני שמבינים.\nכיום רז חי ויוצר בתל אביב.",
       "bio_en": null,
       "works": [],
-      "figma_artist_page_mobile": null,
+      "figma_artist_page_mobile": "XhGH289YTRcW811wrufRJz::605:7995",
       "figma_artist_page_desktop": null,
-      "homepage_featured": false,
-      "_note": "NEW — נוסף מעמוד /artists/ (Figma 613:285). placeholder עם תמונת הגריד; צריך למלא פורטרט, ביו, עבודות, אינסטגרם."
+      "homepage_featured": false
     }
   ],
   "_pending_artist_pages": [
     "dan-ben-ary",
-    "racheli-reuven",
-    "gal-rotem",
-    "raz-ronen"
+    "racheli-reuven"
   ]
 }

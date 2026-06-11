@@ -70,18 +70,20 @@ body{text-transform:uppercase}
 /* card meta — right-aligned (RTL), per Figma Frame 376/379 */
 .meta{display:flex;flex-direction:column;align-items:flex-end;gap:7px;text-align:right;flex:1}
 .meta .artist{font-family:var(--heb);font-weight:400;font-size:20px;color:var(--ink);line-height:1.25;direction:rtl}
-.meta .artist.is-en{font-family:var(--cop);font-weight:700;text-transform:uppercase;letter-spacing:.03em;direction:ltr}
+.meta .artist.is-en{font-family:var(--cop);font-weight:400;font-size:16px;text-transform:uppercase;letter-spacing:.03em;direction:ltr}
 .meta .artist + .title{margin-top:-5px}
+.meta .artist + .details{margin-top:-5px}
 .meta a.artist{transition:opacity .2s}
 .meta a.artist:hover{opacity:.6}
 .meta .title{font-size:16px;color:var(--ink);line-height:1.3}
 .meta .title.is-he{font-family:var(--heb);direction:rtl;text-transform:none}
-.meta .title.is-en{font-family:var(--cop);font-weight:300;font-size:13px;line-height:1.2;text-transform:uppercase;letter-spacing:.03em;direction:ltr}
+.meta .title.is-en{font-family:var(--cop);font-weight:400;font-size:12px;line-height:1.2;text-transform:uppercase;letter-spacing:.03em;direction:ltr}
 .meta .title.is-bi{display:inline-flex;flex-direction:row;direction:rtl;align-items:baseline;justify-content:flex-end;gap:0.35em;flex-wrap:wrap;max-width:100%}
 .meta .title.is-bi .title-he{font-family:var(--heb);direction:rtl;text-transform:none}
 .meta .title.is-bi .title-sep{display:inline-block;width:1.4px;height:0.85em;background:var(--ink);opacity:.55;align-self:center;flex-shrink:0;direction:ltr;unicode-bidi:isolate}
 .meta .title.is-bi .title-en{font-family:var(--cop);font-weight:400;font-size:14px;line-height:1.2;text-transform:uppercase;letter-spacing:.03em;direction:ltr;unicode-bidi:isolate}
 .meta .details{font-family:var(--heb);font-weight:300;font-size:15px;color:var(--grey-mid);line-height:1.2;direction:rtl;max-width:100%;white-space:pre-line}
+.meta .details .det-en{font-family:var(--cop);font-weight:300;font-size:.85em;text-transform:uppercase;letter-spacing:.02em;direction:ltr;unicode-bidi:isolate}
 .meta-foot{display:flex;flex-direction:column;align-items:flex-end;gap:6px;margin-top:auto;padding-top:12px}
 .sold{font-family:var(--heb);font-weight:300;font-size:14px;color:var(--ink);border:1.4px solid var(--ink);padding:2px 10px;line-height:1.25}
 .gallery{font-family:var(--cop);font-weight:600;font-size:8px;color:var(--ink);text-transform:uppercase;letter-spacing:.02em;direction:ltr;transition:opacity .2s}
@@ -111,7 +113,7 @@ body{text-transform:uppercase}
   .card{gap:12px}
   .meta .artist{font-size:18px}
   .meta .title{font-size:15px}
-  .meta .title.is-en{font-weight:300;font-size:13px;line-height:1.2;letter-spacing:0.45px}
+  .meta .title.is-en{font-weight:400;font-size:12px;line-height:1.2;letter-spacing:0.45px}
   .meta .title.is-bi .title-en{font-size:14px;font-weight:400}
   .meta .details{font-size:15px;line-height:1.2}
 }
@@ -266,6 +268,30 @@ body{text-transform:uppercase}
     if(s==null) return '';
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
+  /* Wrap Latin WORDS (2+ letters) in <span class="det-en"> for Copperplate font.
+     Numbers and single letters (like X in 40X40) stay in Hebrew font. */
+  function detailsHtml(s){
+    if(!s) return '';
+    var result = [];
+    var lastIndex = 0;
+    // Match: Latin words (2+ letters), with optional spaces between words
+    var re = /[A-Za-z]{2,}(?:\s+[A-Za-z]{2,})*/g;
+    var match;
+    while((match = re.exec(s)) !== null){
+      // Add part before this match (escaped)
+      if(match.index > lastIndex){
+        result.push(esc(s.slice(lastIndex, match.index)));
+      }
+      // Add wrapped English part (escaped inside span)
+      result.push('<span class="det-en">'+esc(match[0])+'</span>');
+      lastIndex = re.lastIndex;
+    }
+    // Add remaining part after last match
+    if(lastIndex < s.length){
+      result.push(esc(s.slice(lastIndex)));
+    }
+    return result.join('');
+  }
   function srcset(w){
     return w.widths.map(function(width,i){
       var last = i === w.widths.length-1;
@@ -307,7 +333,7 @@ body{text-transform:uppercase}
     var loadAttr = i ? 'loading="lazy"' : 'fetchpriority="high"';
     var imgTag = '<img src="'+main+'" srcset="'+srcset(w)+'" sizes="(max-width:768px) 46vw, (max-width:1100px) 30vw, 420px" '+
                  'width="'+w.w+'" height="'+w.h+'" alt="'+esc(alt)+'" decoding="async" '+loadAttr+'>';
-    var details = w.details_he ? '<span class="details">'+esc(w.details_he)+'</span>' : '';
+    var details = w.details_he ? '<span class="details">'+detailsHtml(w.details_he)+'</span>' : '';
     var foot = (w.sold ? '<span class="sold">נמכר</span>' : '') +
                '<a class="gallery" href="../#galleries">'+esc(w.gallery_en)+'</a>';
     return '<article class="card" data-artwork-gallery>'+

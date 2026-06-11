@@ -205,7 +205,7 @@ body{text-transform:uppercase}
 .ex-now .card .ttl-en--stack .ttl-en-row1{white-space:nowrap}
 .ex-now .card .ttl-en--stack .ttl-en-row2{letter-spacing:.025em;opacity:.96;white-space:normal}
 .ex-now .card .ttl-he{font-family:var(--heb);font-weight:300;font-size:clamp(14px,1.25vw + 10px,36px);direction:rtl;text-align:left;line-height:1.15;text-transform:none}
-.ex-now .artists-bar{display:flex;justify-content:space-between;align-items:center;padding:0}
+.ex-now .artists-bar{display:flex;justify-content:space-between;align-items:center;padding:0;text-decoration:none;color:inherit;cursor:pointer}
 .ex-now .artists-bar .lbl{font-family:var(--cop);font-weight:300;font-size:28px;direction:rtl;text-align:right}
 .ex-now .artists-bar svg{width:11px;height:11px;flex-shrink:0}
 .ex-now .artists-list{display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:6px;scrollbar-width:none;width:100%}
@@ -473,7 +473,7 @@ body{text-transform:uppercase}
 }
 .press-card .desc{font-family:var(--heb);font-size:16px;font-weight:400;line-height:1.4;text-align:right}
 .press-card .desc.desc-lat{font-family:var(--cop);direction:ltr;unicode-bidi:embed}
-.press-card .desc.desc-lat-sm{font-size:11px;font-weight:400;line-height:1.55;letter-spacing:.02em}
+.press-card .desc.desc-lat-sm{font-size:10px;font-weight:400;line-height:1.55;letter-spacing:.02em}
 .press-card .date{font-family:var(--cop);font-size:14px;font-weight:300;text-align:right;direction:ltr;align-self:flex-start}
 .press-card .img{flex:0 0 178px;width:178px;height:112px;overflow:hidden;background:#f3f1ee;order:-1}
 .press-card .img img{width:100%;height:100%;object-fit:cover}
@@ -932,10 +932,10 @@ body{text-transform:uppercase}
     </div>
   </div>
   <div class="ex-now-tail">
-    <div class="artists-bar">
+    <a class="artists-bar" href="artists/" aria-label="all artists">
       <span class="lbl">our artists</span>
-      <a href="artists/alon/" aria-label="all artists"><svg width="16" height="16" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.926778 11.0004L0 10.0736L8.73379 1.33128H0.793662V0H11.0004V10.2067H9.6691V2.2666L0.926778 11.0004Z" fill="#1A1C1C"/></svg></a>
-    </div>
+      <svg width="16" height="16" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M0.926778 11.0004L0 10.0736L8.73379 1.33128H0.793662V0H11.0004V10.2067H9.6691V2.2666L0.926778 11.0004Z" fill="#1A1C1C"/></svg>
+    </a>
     <div class="artists-list">
       <a class="artist" href="artists/zohar-ron/"><img src="images/artists/zohar-ron/portrait.webp" width="690" height="1044" alt="זוהר רון" decoding="async" loading="lazy"><div class="nm">zohar
 ron</div></a>

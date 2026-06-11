@@ -868,10 +868,44 @@
       "figma_artist_page_desktop": null,
       "homepage_featured": false,
       "_note": "NEW — נוסף מעמוד /artists/ (Figma 571:6350). placeholder עם תמונת הגריד; צריך למלא פורטרט, ביו, עבודות, אינסטגרם."
+    },
+    {
+      "id": "gal-rotem",
+      "slug": "gal-rotem",
+      "name_en": "gal rotem",
+      "name_he": "גל רותם",
+      "portrait": "images/artists/grid/gal-rotem.webp",
+      "work_image": null,
+      "instagram_handle": null,
+      "bio_he": null,
+      "bio_en": null,
+      "works": [],
+      "figma_artist_page_mobile": null,
+      "figma_artist_page_desktop": null,
+      "homepage_featured": false,
+      "_note": "NEW — נוסף מעמוד /artists/ (Figma 613:281). placeholder עם תמונת הגריד; צריך למלא פורטרט, ביו, עבודות, אינסטגרם."
+    },
+    {
+      "id": "raz-ronen",
+      "slug": "raz-ronen",
+      "name_en": "raz ronen",
+      "name_he": "רז רונן",
+      "portrait": "images/artists/grid/raz-ronen.webp",
+      "work_image": null,
+      "instagram_handle": null,
+      "bio_he": null,
+      "bio_en": null,
+      "works": [],
+      "figma_artist_page_mobile": null,
+      "figma_artist_page_desktop": null,
+      "homepage_featured": false,
+      "_note": "NEW — נוסף מעמוד /artists/ (Figma 613:285). placeholder עם תמונת הגריד; צריך למלא פורטרט, ביו, עבודות, אינסטגרם."
     }
   ],
   "_pending_artist_pages": [
     "dan-ben-ary",
-    "racheli-reuven"
+    "racheli-reuven",
+    "gal-rotem",
+    "raz-ronen"
   ]
 }

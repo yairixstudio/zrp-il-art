@@ -113,15 +113,18 @@
 
 ## 🖼 The Art Works (/works)
 
-> **עדכון 2026-06-10** — גריד **3 עמודות דסקטופ / 2 מובייל**, **94 יצירות** מסודרות בדיוק לפי Figma `542:499`, מקובצות ל-3 בלוקים לפי גלריה (מדינה 1–23 · דיזנגוף 24–60 · מדינה 61–94). הקנוני החדש = `542:499` (גם layout וגם content). קובץ `landing` (`XhGH...`).
+> **עדכון 2026-06-11** — **109 יצירות**, סדר 1:1 לפי גריד הדסקטופ `542:500` (בתוך עמוד `542:467`). ⚠️ לגריד המובייל `542:1390` (בתוך `542:1365`) יש **סדר שונה** בפיגמה — האתר עוקב אחרי הדסקטופ (data אחד לשני ה-breakpoints). קובץ `landing` (`XhGH...`).
 
-works v2 דסקטופ (1440 — canonical layout+content, 94 כרטיסים): Implement this design from Figma.
-@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=542-499&m=dev
+works דסקטופ — עמוד מלא (1440 — canonical layout+content, 109 כרטיסים): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=542-467&m=dev
+
+works מובייל — עמוד מלא (390 — 2026-06-11): Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=542-1365&m=dev
 
 works v2 דסקטופ ישן (491:928 — 2026-06-08, 2 עמודות, legacy): Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=491-928&m=dev
 
-works v2 מובייל (390 — content): Implement this design from Figma.
+works v2 מובייל ישן (390 — legacy content): Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=489-4&m=dev
 
 <details><summary>גרסה ישנה (graphics file, responsive)</summary>

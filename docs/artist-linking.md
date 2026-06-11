@@ -24,7 +24,7 @@ anat-wegier, liel-salman, tal-nehoray,
 holy-kadosh, costa-magarakis, maya-nachum-levy, la-raz-porta
 ```
 
-**אומנים שאינם רשומים** (אורחים בתערוכות אבל אין להם דף — `dan ben-ari` בנפרד, `racheli reuven`, `raz ronen`): להשאיר כטקסט רגיל. **אל תקשר ל-`/artists/<slug>.html` שלא קיים.**
+**אומנים שאינם רשומים / placeholder בלבד** (`dan ben-ary`, `racheli reuven`, `gal rotem` — אין ביו/עבודות): יש דף וקישור חובה מעמוד `/artists/`, אבל בתערוכות/טקסטים אם מוזכרים בלי דף מלא — עדיין לא לקשר עד שיש תוכן. **`raz ronen`** — נוסף לגריד `/artists/` (2026-06-11, Figma `613:285`); כעת חובה לקשר.
 
 > **2026-05-12 update:** 4 אומנים שלא היו רשומים (`holy-kadosh`, `costa-magarakis`, `maya-nachum-levy`, `la-raz-porta`) קיבלו עכשיו דפים מלאים מתוך Figma `artist-pages-lonely` (`XhGH289YTRcW811wrufRJz::235:874`) ולכן הם כעת חובה לקישור.
 
@@ -123,7 +123,7 @@ for p in pathlib.Path('.').rglob('*.html'):
 ## 8. חריגים יחידים
 
 - שם אומן בתוך עצם דף האומן (`pages/artists/<slug>.html`) — לא מקשר לעצמו.
-- אומן שאינו רשום (`racheli reuven`, `raz ronen`, `dan ben-ari` בנפרד) — להשאיר טקסט.
+- אומן placeholder ללא תוכן (`dan ben-ary`, `racheli reuven`, `gal rotem`) — קישור מעמוד `/artists/` חובה; בתערוכות/טקסטים — לפי §1. **`raz ronen`** — יש דף (2026-06-11).
 - שם הבעלים/founder (`ארז זילינסקי רוזן`) → `pages/about.html`, לא `/artists/`.
 
 ---

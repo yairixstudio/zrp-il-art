@@ -35,6 +35,90 @@
   ],
   "art_works": [
     {
+      "id": "zohar-ron-5",
+      "artist_slug": "zohar-ron",
+      "artist_he": "זוהר רון",
+      "artist_en": "zohar ron",
+      "title_he": "דג 1",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "250x150 ס\"מ\nצילום, הדפסה על נייר צילום איכותי, למינציה ומסגרת דיבונד.",
+      "img": "zohar-ron-5",
+      "w": 1080,
+      "h": 1603,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "zohar-ron-6",
+      "artist_slug": "zohar-ron",
+      "artist_he": "זוהר רון",
+      "artist_en": "zohar ron",
+      "title_he": "דג 2",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "80x80 ס\"מ\nצילום, הדפסה על נייר צילום איכותי, למינציה ומסגרת דיבונד.",
+      "img": "zohar-ron-6",
+      "w": 1080,
+      "h": 1041,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "zohar-ron-7",
+      "artist_slug": "zohar-ron",
+      "artist_he": "זוהר רון",
+      "artist_en": "zohar ron",
+      "title_he": "דג 3",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "80x80 ס\"מ\nצילום, הדפסה על נייר צילום איכותי, למינציה ומסגרת דיבונד.",
+      "img": "zohar-ron-7",
+      "w": 1080,
+      "h": 1159,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "zohar-ron-8",
+      "artist_slug": "zohar-ron",
+      "artist_he": "זוהר רון",
+      "artist_en": "zohar ron",
+      "title_he": "בּוּרְקָה | برقع",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "40x40 ס\"מ\nצילום, הדפסה על נייר צילום איכותי, למינציה ומסגרת עץ שחורה.",
+      "img": "zohar-ron-8",
+      "w": 1080,
+      "h": 608,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
       "id": "nir-giorgio-levin-3",
       "artist_slug": "nir-giorgio-levin",
       "artist_he": "ניר ג׳ורג׳יו לוין",
@@ -371,6 +455,27 @@
       "artist_page_pos": 3
     },
     {
+      "id": "gal-rotem-1",
+      "artist_slug": "gal-rotem",
+      "artist_he": "גל רותם",
+      "artist_en": "gal rotem",
+      "title_he": "טביעה בחשיכה",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": false,
+      "details_he": "120x120 ס\"מ\nשמן על קנבס",
+      "img": "gal-rotem-1",
+      "w": 1080,
+      "h": 1079,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
       "id": "yarden-amir-1",
       "artist_slug": "yarden-amir",
       "artist_he": "ירדן אמיר",
@@ -703,6 +808,48 @@
       "artist_page_pos": null
     },
     {
+      "id": "raz-ronen-1",
+      "artist_slug": "raz-ronen",
+      "artist_he": "רז רונן",
+      "artist_en": "raz ronen",
+      "title_he": "נוחות בעירום מלא על ספה",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": true,
+      "details_he": "160x120 ס\"מ\nאקריליק וגיר על בד קנבס",
+      "img": "raz-ronen-1",
+      "w": 1080,
+      "h": 1440,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "raz-ronen-2",
+      "artist_slug": "raz-ronen",
+      "artist_he": "רז רונן",
+      "artist_en": "raz ronen",
+      "title_he": "מינימליזם של גוף האישה ושמירה על סטייל",
+      "title_en": null,
+      "gallery_slug": "dizengoff",
+      "gallery_en": "Dizengoff Square Gallery",
+      "sold": true,
+      "details_he": "150x150 ס\"מ\nאקריליק על קנבס",
+      "img": "raz-ronen-2",
+      "w": 1080,
+      "h": 1222,
+      "widths": [
+        480,
+        768,
+        1080
+      ],
+      "artist_page_pos": null
+    },
+    {
       "id": "anat-wegier-4",
       "artist_slug": "anat-wegier",
       "artist_he": "ענת ויז׳ייה",
@@ -711,7 +858,7 @@
       "title_en": null,
       "gallery_slug": "dizengoff",
       "gallery_en": "Dizengoff Square Gallery",
-      "sold": false,
+      "sold": true,
       "details_he": "95×115 ס\"מ\nשמן על בד",
       "img": "anat-wegier-4",
       "w": 1080,
@@ -753,7 +900,7 @@
       "title_en": null,
       "gallery_slug": "dizengoff",
       "gallery_en": "Dizengoff Square Gallery",
-      "sold": false,
+      "sold": true,
       "details_he": "40x40 ס\"מ\nזכוכית",
       "img": "alon-2",
       "w": 1080,
@@ -963,7 +1110,7 @@
       "title_en": "\"untitled\" (with eyes closed, we saw)",
       "gallery_slug": "dizengoff",
       "gallery_en": "Dizengoff Square Gallery",
-      "sold": false,
+      "sold": true,
       "details_he": "90x110 ס\"מ\nחוטי אקרילן, סריגה במכונה תעשייתית שטוחה",
       "img": "nir-giorgio-levin-2",
       "w": 1080,
@@ -1537,26 +1684,6 @@
       "artist_page_pos": null
     },
     {
-      "id": "holy-kadosh-1",
-      "artist_slug": "holy-kadosh",
-      "artist_he": "טל קדוש",
-      "artist_en": "tal holy kadosh",
-      "title_he": null,
-      "title_en": "HOLY BAG",
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "holy-kadosh-1",
-      "w": 690,
-      "h": 1044,
-      "widths": [
-        480,
-        690
-      ],
-      "artist_page_pos": null
-    },
-    {
       "id": "eitan-goldson-1",
       "artist_slug": "eitan-goldson",
       "artist_he": "איתן גולדסון",
@@ -1597,23 +1724,22 @@
       "artist_page_pos": null
     },
     {
-      "id": "tal-nehoray-2",
-      "artist_slug": "tal-nehoray",
-      "artist_he": "טל נהוראי",
-      "artist_en": "tal nehoray",
+      "id": "holy-kadosh-1",
+      "artist_slug": "holy-kadosh",
+      "artist_he": "טל קדוש",
+      "artist_en": "tal holy kadosh",
       "title_he": null,
-      "title_en": null,
+      "title_en": "HOLY BAG",
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
       "sold": false,
-      "details_he": "קרמיקה",
-      "img": "tal-nehoray-2",
-      "w": 1080,
-      "h": 1080,
+      "details_he": null,
+      "img": "holy-kadosh-1",
+      "w": 690,
+      "h": 1044,
       "widths": [
         480,
-        768,
-        1080
+        690
       ],
       "artist_page_pos": null
     },
@@ -1656,6 +1782,27 @@
         480,
         768,
         918
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "tal-nehoray-2",
+      "artist_slug": "tal-nehoray",
+      "artist_he": "טל נהוראי",
+      "artist_en": "tal nehoray",
+      "title_he": null,
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "קרמיקה",
+      "img": "tal-nehoray-2",
+      "w": 1080,
+      "h": 1080,
+      "widths": [
+        480,
+        768,
+        1080
       ],
       "artist_page_pos": null
     },
@@ -1720,26 +1867,6 @@
       "artist_page_pos": null
     },
     {
-      "id": "costa-magarakis-1",
-      "artist_slug": "costa-magarakis",
-      "artist_he": "קוסטה מגרקיס",
-      "artist_en": "costa magarakis",
-      "title_he": null,
-      "title_en": "HIGH HILL",
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "costa-magarakis-1",
-      "w": 499,
-      "h": 1012,
-      "widths": [
-        480,
-        499
-      ],
-      "artist_page_pos": null
-    },
-    {
       "id": "tal-nehoray-4",
       "artist_slug": "tal-nehoray",
       "artist_he": "טל נהוראי",
@@ -1761,6 +1888,26 @@
       "artist_page_pos": null
     },
     {
+      "id": "costa-magarakis-1",
+      "artist_slug": "costa-magarakis",
+      "artist_he": "קוסטה מגרקיס",
+      "artist_en": "costa magarakis",
+      "title_he": null,
+      "title_en": "HIGH HILL",
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": null,
+      "img": "costa-magarakis-1",
+      "w": 499,
+      "h": 1012,
+      "widths": [
+        480,
+        499
+      ],
+      "artist_page_pos": null
+    },
+    {
       "id": "hila-loterstein-1",
       "artist_slug": "hila-loterstein",
       "artist_he": "הילה לוטרשטרין",
@@ -1777,27 +1924,6 @@
       "widths": [
         480,
         690
-      ],
-      "artist_page_pos": null
-    },
-    {
-      "id": "gal-polk-4",
-      "artist_slug": "gal-polk",
-      "artist_he": "גל פולק",
-      "artist_en": "gal pollak",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "gal-polk-4",
-      "w": 1080,
-      "h": 1620,
-      "widths": [
-        480,
-        768,
-        1080
       ],
       "artist_page_pos": null
     },
@@ -1839,6 +1965,27 @@
         480,
         768,
         900
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "gal-polk-4",
+      "artist_slug": "gal-polk",
+      "artist_he": "גל פולק",
+      "artist_en": "gal pollak",
+      "title_he": null,
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": null,
+      "img": "gal-polk-4",
+      "w": 1080,
+      "h": 1620,
+      "widths": [
+        480,
+        768,
+        1080
       ],
       "artist_page_pos": null
     },
@@ -1902,26 +2049,6 @@
         480,
         768,
         1080
-      ],
-      "artist_page_pos": null
-    },
-    {
-      "id": "maya-nachum-levy-1",
-      "artist_slug": "maya-nachum-levy",
-      "artist_he": "מאיה נחום לוי",
-      "artist_en": "maya nachum levy",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "maya-nachum-levy-1",
-      "w": 758,
-      "h": 980,
-      "widths": [
-        480,
-        758
       ],
       "artist_page_pos": null
     },
@@ -2010,27 +2137,6 @@
       "artist_page_pos": null
     },
     {
-      "id": "maya-nachum-levy-2",
-      "artist_slug": "maya-nachum-levy",
-      "artist_he": "מאיה נחום לוי",
-      "artist_en": "maya nachum levy",
-      "title_he": null,
-      "title_en": null,
-      "gallery_slug": "medina",
-      "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
-      "details_he": null,
-      "img": "maya-nachum-levy-2",
-      "w": 904,
-      "h": 1744,
-      "widths": [
-        480,
-        768,
-        904
-      ],
-      "artist_page_pos": null
-    },
-    {
       "id": "adi-duak-2",
       "artist_slug": "adi-duak",
       "artist_he": "עדי דואק",
@@ -2069,6 +2175,47 @@
         480,
         768,
         1080
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "maya-nachum-levy-2",
+      "artist_slug": "maya-nachum-levy",
+      "artist_he": "מאיה נחום לוי",
+      "artist_en": "maya nachum levy",
+      "title_he": null,
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": null,
+      "img": "maya-nachum-levy-2",
+      "w": 904,
+      "h": 1744,
+      "widths": [
+        480,
+        768,
+        904
+      ],
+      "artist_page_pos": null
+    },
+    {
+      "id": "maya-nachum-levy-1",
+      "artist_slug": "maya-nachum-levy",
+      "artist_he": "מאיה נחום לוי",
+      "artist_en": "maya nachum levy",
+      "title_he": null,
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": null,
+      "img": "maya-nachum-levy-1",
+      "w": 758,
+      "h": 980,
+      "widths": [
+        480,
+        758
       ],
       "artist_page_pos": null
     },
@@ -2122,7 +2269,7 @@
       "title_en": null,
       "gallery_slug": "medina",
       "gallery_en": "Hamedina Square Gallery",
-      "sold": false,
+      "sold": true,
       "details_he": null,
       "img": "la-raz-porta-1",
       "w": 918,

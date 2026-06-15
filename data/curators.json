@@ -8,6 +8,7 @@
       "name_en_first": "korin",
       "name_en_last": "avraham",
       "instagram_handle": "yasalamfashionblog",
+      "contact_email": "korinalove5@gmail.com",
       "badge_en": "the curator",
       "section_heading_en": "the curator's exhibitions",
       "credit_he": "אוצרת התערוכה - קורין אברהם",
@@ -17,7 +18,10 @@
         "height": 2809,
         "alt_he": "קורין אברהם — אוצרת"
       },
-      "exhibition_slugs": ["loneliness", "how-many"],
+      "exhibition_slugs": [
+        "loneliness",
+        "how-many"
+      ],
       "figma_desktop": "XhGH289YTRcW811wrufRJz::314:4",
       "figma_mobile": "XhGH289YTRcW811wrufRJz::314:97"
     }

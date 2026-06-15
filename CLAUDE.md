@@ -16,8 +16,9 @@
 7. **מובייל ≠ דסקטופ מצומצם.** sections ייחודיים, סדר שונה, overlay אחר. תבדוק שני frames לפני CSS.
 8. **אינטראקטיביות נסתרת.** Figma סטטי; באתר יש גלילה אופקית, lightbox, hover scale. ראה `docs/lessons.md §1` — Static-vs-Dynamic. **שאל אם לא ברור.**
 9. **כל אנגלית באתר = Copperplate UPPERCASE.** הכלל ב-CSS גלובלי. פרטים: `docs/conventions.md §5`.
-10. **כל אזכור אומן = קישור** (`docs/artist-linking.md`). הפרה = הדף לא מוכן.
-11. בסוף — עדכן sitemap (§3), `FIGMA_LINKS.md` אם גילית URL חדש, JSON contracts (§5) אם נוסף שדה, ולקח חדש ב-`docs/lessons.md §4`.
+10. **עברית+אנגלית באותה שורה/מחרוזת:** FbEzmel לעברית, `<span class="lat">` + Copperplate ל-Latin — **גודל ויזואלי** (em optical), לא אותו `font-size` px. פרטים: `docs/conventions.md §5.2`.
+11. **כל אזכור אומן = קישור** (`docs/artist-linking.md`). הפרה = הדף לא מוכן.
+12. בסוף — עדכן sitemap (§3), `FIGMA_LINKS.md` אם גילית URL חדש, JSON contracts (§5) אם נוסף שדה, ולקח חדש ב-`docs/lessons.md §4`.
 
 ---
 
@@ -27,7 +28,7 @@
 
 | אם אתה עושה... | קרא חובה |
 |---|---|
-| כותב CSS חדש, נוגע ב-typography, RTL, casing, `text-transform`, responsive, או tokens | [`docs/conventions.md`](./docs/conventions.md) |
+| כותב CSS חדש, נוגע ב-typography, RTL, casing, `text-transform`, responsive, mixed Hebrew/English, או tokens | [`docs/conventions.md`](./docs/conventions.md) |
 | מוסיף/נוגע ב-lightbox, gallery, carousel, slideshow, או רואה ב-Figma תמונות עם dots | [`docs/components.md`](./docs/components.md) |
 | מוסיף תוכן/קוד שמזכיר אומן (שם, תמונה, פסקת body, caption, alt) | [`docs/artist-linking.md`](./docs/artist-linking.md) — **חובה לפני סיום משימה** |
 | בונה דף חדש או נתקלת ב-Figma quirk / Static-vs-Dynamic decision | [`docs/lessons.md`](./docs/lessons.md) |
@@ -71,9 +72,10 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 
 | Route | שם | Figma desktop | Figma mobile | סטטוס |
 |---|---|---|---|---|
-| `/` | Homepage | `XhGH...::144:317` (canonical; older `Zn3N...::1213:3093`) | `XhGH...::144:2` (canonical; older `Zn3N...::1213:3360`) | ✅ `index.html` — exhibitions-now: how-many (current) + **the-peeler/הקולפן** (upcoming, →`opencalls/the-peeler/`, card `XhGH...::412:84`/`487:14`, img `images/exhibitions/peeler-mobile.webp`). Archive redesigned 2026-06-08 → big single exhibition card (`.ex-archive`, loneliness, `XhGH...::474:97`/`467:45`); old tabs+thumbs archive backed up in `trash/`. |
+| `/` | Homepage | `XhGH...::144:317` (canonical; older `Zn3N...::1213:3093`) | `XhGH...::144:2` (canonical; older `Zn3N...::1213:3360`) | ✅ `index.html` — exhibitions-now: how-many (current) + **the-peeler/הקולפן** (upcoming, →`opencalls/the-peeler/`, card `XhGH...::412:84`/`487:14`, img `images/exhibitions/peeler-mobile.webp`). Archive redesigned 2026-06-08 → big single exhibition card (`.ex-archive`, loneliness, `XhGH...::474:97`/`467:45`); old tabs+thumbs archive backed up in `trash/`. **2026-06-15:** נוסף curator footer בתחתית סקשן `artworks` (`.aw-curator`, "korin avraham / the curator" + כפתור view →`/curators/korin-avraham/`, Figma `710:177` desktop / `710:117` mobile; מובייל הופך סדר ל-role-מעל-name). |
 | `/about/` | Biography of Erez | `Zn3N...::1213:2970` | `Zn3N...::1213:2888` | ✅ `about/index.html` |
 | `/works/` | The Art Works | `XhGH...::542:467` (עמוד מלא; הגריד = `542:500`. canonical 2026-06-11) | `XhGH...::542:1365` (עמוד מלא; גריד `542:1390`. ⚠️ **סדר שונה מהדסקטופ בפיגמה** — האתר עוקב אחרי הדסקטופ) | ✅ `works/index.html` — **גריד 3 עמודות דסקטופ / 2 מובייל**, כרטיסי יצירה (אומן/כותרת/גלריה/נמכר/פרטים, `white-space:pre-line`), לייטבוקס single. Data ב-`works.json` `art_works[]` = **109 יצירות**, סדר **1:1 מול גריד הדסקטופ `542:500`** — אומת 2026-06-11 ברמת מיקום+תמונה (node-id binding + imageRef diff), וברמת **טקסט גלוי**: כל 109 הכרטיסים רונדרו כ-PNG ונבדקו מול ה-data (שכבות מוסתרות לא נשאבות — ראה lessons). (⚠️ הפריים `mode:none` = absolute; סדר ויזואלי = מיון לפי y,x). תמונות ב-`images/works/v2/`. **עדכון Figma 2026-06-11:** +7 יצירות: **zohar-ron-5..8** (דג 1/2/3 + בּוּרְקָה|برقع, ראש הגריד, nodes `613:67..91`), **gal-rotem-1** (טביעה בחשיכה, `607:33`, pos20), **raz-ronen-1..2** (`616:129/149`, pos37-38, שתיהן נמכר) — שני אמנים חדשים שכבר היו עם דפי placeholder; +4 תגי נמכר חדשים: anat-wegier-4, alon-2, nir-giorgio-levin-2, la-raz-porta-1. עדיין מוסתר-ולא-נשאב: בולרפלייט "60x80 שמן על קנבס" ב-26 כרטיסים אחוריים + כותרת "התנערות" ב-holy-kadosh-3 + פרטי zohar-shtrit-1; "קרמיקה" **כן גלוי** בפיגמה על tal-nehoray 1-5 (אומת ברינדור 2026-06-11). **כפילויות תמונה ב-Figma (לא שוכפלו):** jessica=anat-4, noemi-4=risa, noemi-6=alon-1, NGL-2≈alon-1, tanya crop2/aura1=aura2, sami 64=66 — לתקן ב-Figma. **טעינה מדורגת:** 12 ראשונים ואז צ'אנקים של 18 (IntersectionObserver sentinel, rootMargin 1800px, re-arm); fallback מרנדר הכל. כתיב שמות עברית = הקנוני של `artists.json`; גרשיים מנורמלים ל-`ס"מ`. legacy: `542:499` (לפני המובייל החדש), `491:928`, `489:4`, `Zn3N...::1213:2615` |
+| `/works/:id/` | Single artwork (template) | `XhGH...::674:14072` | `XhGH...::674:14022` | 🟡 התחלה — `works/zohar-ron-5/index.html` (דג 1, זוהר רון, תערוכת הקולפן). **טמפלט data-driven:** `<html data-artwork-id>` + `#artwork-data` inline (מירור של רשומת `art_works[]` היחידה + שדות חדשים). שני עמודות דסקטופ (תמונה contain משמאל / מידע מימין), מובייל column. כפתורי **share** (Web Share API + fallback העתקת קישור) ו-**contact us** (→`/contact/`). מטא: כותרת, שם אומן (→דף אומן), פרטים, גלריה (→`/#galleries`), ואז כותרת תערוכה (→`/opencalls/the-peeler/`) + טקסט התערוכה. **קישור מהגריד:** רשומת `art_works[]` עם `page:true` → הכרטיס ב-`/works/` הופך ל-`<a href="<id>/">` (במקום לייטבוקס). **שדות חדשים ב-`art_works[]`** (אופציונליים, רק ל-zohar-ron-5 כרגע): `page`, `exhibition_title_he`, `exhibition_slug`, `statement_he[]`. עמוד יצירה חדש = העתק התבנית, החלף `data-artwork-id` + `#artwork-data`, והוסף `page:true` לרשומה ב-`works.json` + במירור `#works-data` של `works/index.html`. שאר היצירות עדיין פותחות לייטבוקס (לא קושרו לדפים). |
 | `/galleries/` | Galleries index | — | — | ⏳ |
 | `/galleries/:slug/` | Single gallery | — | — | ⏳ (NOT `1213:2725/2820/2854` — אלו lightbox states) |
 | `/exhibitions/` | Index | (כיום ארכיון בהומפייג') | — | ⏳ |
@@ -85,7 +87,8 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 | `/press/` | Index | — | — | ⏳ |
 | `/press/walla/` | Article | `XhGH...::119:740` | `XhGH...::119:868` | ✅ |
 | `/press/press-1/` | Article (קורין אברהם) | `XhGH...::119:972` | `XhGH...::119:1163` | ✅ |
-| `/press/time-out/` | Article | `XhGH...::119:1340` | `XhGH...::119:1433` | ✅ |
+| `/press/time-out/` | Article (time out — "דה פיינל קאונטדאון", 31.12.25 — **הכתבה הישנה**) | `XhGH...::119:1340` | `XhGH...::119:1433` | ✅ |
+| `/press/the-last-station/` | Article (time out — "התחנה האחרונה: 25 תערוכות", 27.5.26 — **הכתבה החדשה**, על תערוכת how-many) | `XhGH...::412:1118` | `XhGH...::412:1214` | ✅ `press/the-last-station/index.html` — מבוסס על תבנית `press/time-out/`. תמונת גיבור = יצירת **אלסה ארס ברוש** (cover, `images/press/the-last-station/`, imageRef `2e374464…`). קפשן + כותרת הסקשן (HOW MANY PARTNERS HAVE YOU HAD? → `/exhibitions/how-many/`) מקושרים. "לכתבה המלאה" → timeout.co.il חיצוני. כרטיס הומפייג' `#press` (412:583/996) הופנה מקישור חיצוני → לדף הפנימי. JSON: `press.json` id `time-out` (route עודכן ל-`press/the-last-station/`, `exhibition_id:how-many`). ⚠️ headings מעורבי-כיוון: `unicode-bidi:plaintext` + `min-width:0` על ילדי הפלקס (מונע flex min-content overflow בנייד צר). |
 | `/press/the-sixth-scent/` | Article (ora magazine — interview w/ Erez, **English long-form**) | `XhGH...::545:1669` | `XhGH...::545:1762` | ✅ `press/the-sixth-scent/index.html` — ראיון אנגלי, Copperplate UPPER (גובר על `textCase:LOWER` ב-Figma, conventions §5). 5 תמונות `images/press/the-sixth-scent/`. נוסף לגריד הומפייג' `#press` ככרטיס הכי חדש (7.6.2026, top-right; כרטיס `551:372`, גריד מלא `551:371`). |
 | `/events/ktuba/` | Event (zohar ron live art) | `XhGH...::119:1651` (canonical 2026-05-11; legacy `Zn3N...::1213:1644`) | `XhGH...::119:1509` (legacy `Zn3N...::1213:1502`) | ✅ |
 | `/events/loneliness/` | Event (opening) | `Zn3N...::1213:1873` | `Zn3N...::1213:2099` | ✅ |
@@ -100,6 +103,8 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 
 **סטטי (shell):** brand, nav, footer, newsletter copy, copyright, palette + typography. ב-`data/site.json` או CSS.
 **דינמי (JSON):** galleries, artists, exhibitions, events, press, opencalls, works, instagram, homepage curation, announcement, **curators**.
+
+**📬 טופס ניוזלטר (פוטר):** עובד דרך **Wix Velo**, לא Firebase (Firebase נפסל — Spark חוסם קריאות יוצאות, Functions דורש Blaze בתשלום). הטופס ב-`components/site-chrome.js` שולח `POST https://zrp.co.il/_functions/subscribe` (אתר ה-Wix "ZIELINSKI & ROZEN", siteId `03bb4cff-b492-498b-9864-9258e743d0a2`). מקור ה-backend: `newsletter-backend/wix-velo/http-functions.js` → להדביק ל-Backend ב-Wix ולפרסם. כל נרשם: honeypot (שדה `website`) + rate-limit לפי IP (5/דקה, דרך קולקשן אופציונלי `NewsletterThrottle` עם שדה `ip`; fail-open אם חסר) → `appendOrCreateContact` → לייבל **`custom.art-newsletter` ("Art Newsletter" segment)** → **סימון SUBSCRIBED** דרך REST Email Subscriptions API. **חשוב:** הסימון SUBSCRIBED דורש **Wix API key** עם הרשאת "Manage Email Subscriptions", שמור ב-Wix Secrets Manager בשם `WIX_API_KEY` (Velo לבדו לא יכול לשנות subscriptionStatus — read-only). בלי הסוד → איש הקשר עדיין נוצר+מתויג אבל לא מסומן מנוי. רואים נרשמים ב-Wix → Contacts מסונן ל-label "Art Newsletter". **גילוי פרטיות:** ההרשמה מצרפת גם לרשימת התפוצה של האתר הראשי (הבשמים, zrp.co.il) — מצוין ב-`privacy/index.html` ובטקסט ההסכמה שבטופס. **לא להחזיר Firebase.**
 
 ---
 
@@ -121,7 +126,7 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 ├── data/                      # JSON content (mirrors future CMS)
 ├── images/                    # see docs/conventions.md §1
 ├── docs/                      # conventions, components, artist-linking, lessons, todo
-├── פונטים/                    # Copperplate {300/400/700/900}, FbEzmel {300/400}
+├── פונטים/                    # Copperplate {300/400/700/900}, FbEzmel {300/400}, NotoSansArabic {300/400}
 ├── .nojekyll                  # Tells GitHub Pages to serve files as-is (no Jekyll processing)
 ├── FIGMA_LINKS.md             # All page-by-page Figma URLs
 └── CLAUDE.md                  # ← you are here
@@ -178,20 +183,23 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 1. **לא משכפלים תוכן** מ-JSON ל-HTML. שדה חסר → תוסיף ל-JSON.
 2. **לא Google Fonts** כתחליף לפונטים מקומיים. **גם לא Inter/sans-serif כברירת מחדל** — אם צריך גופן ללא-Copperplate, להוריד מקומית.
 3. **🔴 כל אנגלית = Copperplate UPPERCASE** — כולל אימיילים, handles, URLs, שמות אומנים, caption. הפרה = bug. פרטים ב-`docs/conventions.md §5`.
-4. **לא Figma node IDs ב-CSS/HTML.** רק ב-JSONs (כ-meta) וכאן.
-5. **לא לשנות slugs** של entities שכבר קיימים.
-6. **לא לעגל pixel values** מהפיגמה.
-7. **לא לדרוס תמונות קיימות** — `portrait-v2.webp` אם הצילום שונה. (מקור גולמי ב-`_originals/`, gitignored; ב-`images/` רק WebP+AVIF.)
-8. **Re-Read לפני edit** של קובץ shared (`index.html`, `data/site.json`, `CLAUDE.md`).
-9. **🔴 כל אזכור של אומן חייב להיות קישור** לדף האומן (`pages/artists/<slug>.html`). פרטים ב-`docs/artist-linking.md` — **קרא לפני סיום משימה**.
-10. **לא לבנות קומפוננטה שכבר קיימת** (lightbox, gallery, carousel). `docs/components.md` הוא ה-source of truth.
-11. **🔴 Perf checklist לכל `<img>`:**
+4. **🔴 עברית+אנגלית מעורבבים** (גם במחרוזת/שורה אחת): עברית = FbEzmel (`var(--heb)`), אנגלית = Copperplate UPPERCASE ב-`<span class="lat">` — **התאמת גודל ויזואלי** (לא אותו px). פרטים ב-`docs/conventions.md §5.2`.
+   - **🔴 ערבית = Noto Sans Arabic** (OFL, `./פונטים/NotoSansArabic-{Light,Regular}.woff2`, 300/400). אוטומטי — fallback בסוף מחסניות `--heb`/`--cop` עם `unicode-range` ערבי בלבד; **בלי span, בלי לגעת ב-data**. כל גליף ערבי מנותב אליו (FbEzmel/Copperplate חסרי ערבית). שני ה-`@font-face` של Noto + ה-fallback במחסניות הם כבר חלק מבלוק הפונטים שכל דף מעתיק. פרטים: `docs/conventions.md §3.2`. (נפרס לכל 57 הדפים המסוגננים, 2026-06-15.)
+5. **לא Figma node IDs ב-CSS/HTML.** רק ב-JSONs (כ-meta) וכאן.
+6. **לא לשנות slugs** של entities שכבר קיימים.
+7. **לא לעגל pixel values** מהפיגמה.
+8. **לא לדרוס תמונות קיימות** — `portrait-v2.webp` אם הצילום שונה. (מקור גולמי ב-`_originals/`, gitignored; ב-`images/` רק WebP+AVIF.)
+9. **Re-Read לפני edit** של קובץ shared (`index.html`, `data/site.json`, `CLAUDE.md`).
+10. **🔴 כל אזכור של אומן חייב להיות קישור** לדף האומן (`pages/artists/<slug>.html`). פרטים ב-`docs/artist-linking.md` — **קרא לפני סיום משימה**.
+11. **לא לבנות קומפוננטה שכבר קיימת** (lightbox, gallery, carousel). `docs/components.md` הוא ה-source of truth.
+12. **🔴 Perf checklist לכל `<img>`:**
     - `src="...webp"` (לא `.png`. `picture-upgrade.js` מוסיף source ל-AVIF אוטומטית.)
     - `width="N" height="N"` (מהפיקסלים האמיתיים, מונע CLS).
     - `loading="lazy" decoding="async"` — חוץ מה-img הראשון בדף.
     - ה-img הראשון בדף = ה-LCP, מקבל `fetchpriority="high"` במקום `loading="lazy"`.
     - **תמונה ≥80KB וגם ≥800px רוחב → חובה srcset:** צור וריאנטים `<name>-{480,768,1080}w.webp+avif` (רק רחבים מ-90% מהמקור: `magick src.webp -resize 480x -strip -quality 85 out.webp`, avif עם `-quality 60`), והוסף `srcset="...-480w.webp 480w, ..., <name>.webp <naturalW>w" sizes="100vw"`. `picture-upgrade.js` ממפה את ה-srcset ל-AVIF אוטומטית — חובה ש**כל** וריאנט webp יהיה לו אח avif.
-12. **כן** לעדכן את הקובץ הזה כש-state משתנה (sitemap, golden rules, contracts).
+13. **כן** לעדכן את הקובץ הזה כש-state משתנה (sitemap, golden rules, contracts).
+14. **🔴 git commit אחרי כל מצב-עבודה תקין.** אסור לעבוד שעות בלי commit. **הנתונים** (`data/*.json`) הם מקור-האמת — הם תמיד שורדים; אבל **ה-renderer/CSS בתבנית** (`artists/<slug>/index.html`) הם קוד שאפשר לאבד ב-rebuild שגוי (קרה: כל לוגיקת ה-`buildExGroups`/grouping/`bio-col` נמחקה כי תבנית-מקור ישנה דרסה את zohar, ולא היה commit לשחזר ממנו). לכן: לפני כל rebuild גורף של דפי אומנים, ואחרי כל פיצ'ר/תיקון שעובד — `git add -A && git commit`. אם משחזרים תבנית, לשחזר מ-HEAD (git), לא מקובץ-אחר-שאולי-נסוג.
 
 ---
 

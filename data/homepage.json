@@ -98,7 +98,7 @@
     ]
   },
   "x_our_artists": {
-    "_note": "Above press section — 'Zielinski Rozen × our artists' featured grid. Desktop: 4×3 grid. Mobile: triptych coverflow. Captions verbatim from Figma 412:334; gal pollak work-3 = blue-bottle close-up cropped to hide the cap.",
+    "_note": "Above press section — 'Zielinski Rozen × our artists' featured grid. items[] = mobile order (640:249, canonical), 20 items: 17 originals + 3× noemi safir (work-18/19/20) added at positions 5, 15 & 20 per Figma 2026-06-15 (FIT/contain on #FAFAFA → \"contain\":true → object-fit:contain). baruch torgeman at positions 3 & 13. Desktop = 3-col grid and Mobile = triptych coverflow both render all 20 in this order. Captions verbatim from Figma; gal pollak work-4 = blue-bottle close-up cropped to hide the cap.",
     "title_b": "Zielinski Rozen",
     "title_l": "x our artists",
     "items": [
@@ -108,29 +108,35 @@
         "slug": "nir-giorgio-levin"
       },
       {
-        "name_en": "maya nachum levy",
+        "name_en": "gilad kenan",
         "image": "images/homepage/x-our-artists/work-2.webp",
+        "slug": "gilad-kenan"
+      },
+      {
+        "name_en": "baruch torgeman",
+        "image": "images/homepage/x-our-artists/work-3.webp",
+        "slug": "baruch-torgeman"
+      },
+      {
+        "name_en": "gal pollak",
+        "image": "images/homepage/x-our-artists/work-4.webp",
+        "slug": "gal-polk"
+      },
+      {
+        "name_en": "noemi safir",
+        "image": "images/homepage/x-our-artists/work-18.webp",
+        "slug": "noemi-safir",
+        "contain": true
+      },
+      {
+        "name_en": "maya nachum levy",
+        "image": "images/homepage/x-our-artists/work-5.webp",
         "slug": "maya-nachum-levy"
       },
       {
-        "name_en": "gal pollak",
-        "image": "images/homepage/x-our-artists/work-3.webp",
-        "slug": "gal-polk"
-      },
-      {
-        "name_en": "gilad kenan",
-        "image": "images/homepage/x-our-artists/work-4.webp",
-        "slug": "gilad-kenan"
-      },
-      {
-        "name_en": "gal pollak",
-        "image": "images/homepage/x-our-artists/work-5.webp",
-        "slug": "gal-polk"
-      },
-      {
-        "name_en": "gilad kenan",
+        "name_en": "yarden amir",
         "image": "images/homepage/x-our-artists/work-6.webp",
-        "slug": "gilad-kenan"
+        "slug": "yarden-amir"
       },
       {
         "name_en": "maya nachum levy",
@@ -138,33 +144,70 @@
         "slug": "maya-nachum-levy"
       },
       {
-        "name_en": "yarden amir",
-        "image": "images/homepage/x-our-artists/work-8.webp",
-        "slug": "yarden-amir"
-      },
-      {
         "name_en": "tanya shin",
-        "image": "images/homepage/x-our-artists/work-9.webp",
+        "image": "images/homepage/x-our-artists/work-8.webp",
         "slug": "tanya-shin"
       },
       {
         "name_en": "maya nachum levy",
-        "image": "images/homepage/x-our-artists/work-10.webp",
+        "image": "images/homepage/x-our-artists/work-9.webp",
         "slug": "maya-nachum-levy"
       },
       {
         "name_en": "alon manjoch",
-        "image": "images/homepage/x-our-artists/work-11.webp",
+        "image": "images/homepage/x-our-artists/work-10.webp",
         "slug": "alon"
       },
       {
         "name_en": "gilad kenan",
-        "image": "images/homepage/x-our-artists/work-12.webp",
+        "image": "images/homepage/x-our-artists/work-11.webp",
         "slug": "gilad-kenan"
+      },
+      {
+        "name_en": "baruch torgeman",
+        "image": "images/homepage/x-our-artists/work-12.webp",
+        "slug": "baruch-torgeman"
+      },
+      {
+        "name_en": "gal pollak",
+        "image": "images/homepage/x-our-artists/work-13.webp",
+        "slug": "gal-polk"
+      },
+      {
+        "name_en": "noemi safir",
+        "image": "images/homepage/x-our-artists/work-19.webp",
+        "slug": "noemi-safir",
+        "contain": true
+      },
+      {
+        "name_en": "yarden amir",
+        "image": "images/homepage/x-our-artists/work-14.webp",
+        "slug": "yarden-amir"
+      },
+      {
+        "name_en": "gilad kenan",
+        "image": "images/homepage/x-our-artists/work-15.webp",
+        "slug": "gilad-kenan"
+      },
+      {
+        "name_en": "yarden amir",
+        "image": "images/homepage/x-our-artists/work-16.webp",
+        "slug": "yarden-amir"
+      },
+      {
+        "name_en": "yarden amir",
+        "image": "images/homepage/x-our-artists/work-17.webp",
+        "slug": "yarden-amir"
+      },
+      {
+        "name_en": "noemi safir",
+        "image": "images/homepage/x-our-artists/work-20.webp",
+        "slug": "noemi-safir",
+        "contain": true
       }
     ],
     "figma_node_desktop": "412:334",
-    "figma_node_mobile": "228:101"
+    "figma_node_mobile": "640:249"
   },
   "tribe_teaser": {
     "_note": "Above #press — desktop 250:87 + sponsor 361:393 + gallery 361:420; mobile 363:618 + sponsor 363:622 + strip 363:649. Thumbs: lightbox only. thumb-5 = duplicate of thumb-4 until video asset.",

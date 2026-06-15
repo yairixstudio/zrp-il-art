@@ -11,7 +11,12 @@
 @media (max-width:400px){:root{--site-header-h:48px}}
 
 html{scroll-padding-top:77px;overflow-x:hidden}
-body{overflow-x:hidden;max-width:100vw}
+/* Clip horizontal overflow on <html> (the viewport-level scroll container) ONLY.
+   Do NOT clip overflow-x on <body>: any non-visible overflow on the sticky
+   header's parent turns <body> into the header's scroll container, so the header
+   sticks to the body box (which itself scrolls inside <html>) and scrolls away
+   instead of freezing at the top. */
+body{overflow-x:visible;max-width:100vw}
 @media (max-width:768px){html{scroll-padding-top:76px}}
 
 /* Sticky header; above mobile lightbox (z-index 50), below desktop lightbox (z-index 110). */
@@ -37,9 +42,10 @@ site-header{display:block;position:sticky;top:0;z-index:100}
 .logo{display:flex;align-items:center;gap:8px;font-family:var(--cop);flex-shrink:1;min-width:0}
 .logo .logo-svg{display:block;width:177px;height:auto;object-fit:contain;flex-shrink:0}
 .nav-links{display:flex;align-items:center;gap:clamp(12px,1.5vw,20px);list-style:none;flex-wrap:nowrap;min-width:0}
-.nav-links a{font-family:var(--cop);font-weight:300;font-size:14px;color:var(--ink);letter-spacing:.04em;transition:opacity .2s;white-space:nowrap}
+.nav-links a{font-family:var(--cop);font-weight:300;font-size:14px;color:var(--ink);letter-spacing:.04em;text-transform:uppercase;transition:opacity .2s;white-space:nowrap}
 .nav-links a:hover{opacity:.6}
-.nav-links a.active{font-weight:500;opacity:1}
+/* Active: use loaded Copperplate 400 — not 500 (synthetic bold breaks uppercase "i" + metrics). */
+.nav-links a.active{font-weight:400;opacity:1}
 .hamburger{display:none;width:24px;height:24px;padding:0;background:transparent;border:0;cursor:pointer;position:relative;z-index:101}
 .hamburger .hamburger-figma,.hamburger .hamburger-x{position:absolute;inset:0;width:24px;height:24px;transition:opacity .25s ease,transform .3s ease}
 .hamburger .hamburger-figma{display:none}
@@ -187,7 +193,8 @@ body.menu-open{position:fixed;width:100%;overflow:hidden;overscroll-behavior:non
   /* Drawer slides from LEFT — links start near the top, not vertically centered */
   .nav-links{position:fixed;inset:0;background:var(--bg-grey);flex-direction:column;justify-content:flex-start;align-items:center;gap:32px;padding:120px 24px 32px;transform:translateX(-100%);transition:transform .35s ease;z-index:99;visibility:hidden}
   .nav.is-open .nav-links{transform:translateX(0);visibility:visible}
-  .nav-links a{font-size:24px;letter-spacing:.06em}
+  .nav-links a{font-size:24px;letter-spacing:.06em;text-transform:uppercase}
+  .nav-links a.active{font-weight:400}
 
   /* Hide the dedicated close button inside drawer — hamburger handles it now */
   .nav-close-item{display:none}
@@ -284,6 +291,34 @@ body.menu-open{position:fixed;width:100%;overflow:hidden;overscroll-behavior:non
 
 .share-status{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;font-family:var(--cop);font-size:12px;letter-spacing:.08em;opacity:0;pointer-events:none;transition:opacity .25s;z-index:201;text-transform:uppercase}
 .share-status.show{opacity:.95}
+
+/* ============================================================
+   LOGO DESTINATION CHOOSER
+   Clicking the header logo asks: gallery home or perfume brand.
+   Same blur-backdrop + soft card language as the bookmark modal.
+   ============================================================ */
+.logo-choose-backdrop{position:fixed;inset:0;background:rgba(238,240,239,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:299;opacity:0;transition:opacity .28s ease}
+.logo-choose-backdrop.is-open{opacity:1}
+.logo-choose-backdrop[hidden]{display:none}
+
+.logo-choose{position:fixed;top:50%;left:50%;width:min(560px,calc(100vw - 40px));background:rgba(245,245,245,.98);border-radius:18px;z-index:300;display:flex;flex-direction:column;align-items:center;gap:28px;padding:44px 40px 48px;box-sizing:border-box;font-family:var(--cop);transform:translate(-50%,-46%);opacity:0;transition:opacity .3s ease,transform .3s cubic-bezier(.22,.61,.36,1)}
+.logo-choose.is-open{opacity:1;transform:translate(-50%,-50%)}
+.logo-choose[hidden]{display:none}
+.logo-choose-close{position:absolute;top:16px;right:18px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;color:var(--grey-mid,#808080);transition:color .2s}
+.logo-choose-close:hover{color:var(--ink)}
+.logo-choose-q{font-family:var(--heb);font-weight:300;font-size:21px;line-height:1.3;color:var(--ink);text-align:center;direction:rtl;margin:0}
+.logo-choose-opts{display:flex;gap:18px;width:100%;justify-content:center}
+.logo-choose-opt{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:30px 18px;border:1px solid rgba(27,27,27,.16);border-radius:12px;background:#fff;text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s,box-shadow .2s}
+.logo-choose-opt:hover,.logo-choose-opt:focus-visible{border-color:var(--ink);transform:translateY(-3px);box-shadow:0 8px 24px rgba(27,27,27,.08)}
+.logo-choose-opt-en{font-family:var(--cop);font-weight:400;font-size:16px;letter-spacing:.06em;text-transform:uppercase;text-align:center;line-height:1.25}
+.logo-choose-opt-he{font-family:var(--heb);font-weight:300;font-size:14px;line-height:1.3;color:var(--copy-grey,#6B7280);direction:rtl;text-transform:none}
+@media (max-width:560px){
+  .logo-choose{padding:40px 22px 30px;gap:22px}
+  .logo-choose-opts{flex-direction:column;gap:12px}
+  .logo-choose-opt{flex-direction:row;justify-content:space-between;padding:18px 22px;gap:14px}
+  .logo-choose-opt-en{font-size:14px}
+  .logo-choose-opt-he{font-size:13px}
+}
 
 /* Saved-state for any [data-bookmark-toggle] button on a page.
    Only fill the SVG — no background change (avoids turning the whole button into a black blob). */

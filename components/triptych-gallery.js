@@ -101,8 +101,15 @@
       if(!s || !frame.contains(s)) return false;
       if(s.classList.contains('is-prev')){ go(idx - 1); return true; }
       if(s.classList.contains('is-next')){ go(idx + 1); return true; }
-      if(s.classList.contains('is-center') && s.dataset.artistHref){
-        window.location.href = s.dataset.artistHref; return true;
+      if(s.classList.contains('is-center')){
+        if(s.dataset.artistHref){
+          window.location.href = s.dataset.artistHref; return true;
+        }
+        if(section.dataset.triLightbox === 'true' &&
+           (s.dataset.artworkSrc || s.dataset.artworkTitle || s.dataset.artworkId) &&
+           window.ArtworkLightbox && window.ArtworkLightbox.open){
+          window.ArtworkLightbox.open(s); return true;
+        }
       }
       return false;
     }

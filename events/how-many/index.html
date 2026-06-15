@@ -10,20 +10,23 @@
 <link rel="stylesheet" href="../../components/site-boot.css">
 <meta name="description" content="אירוע הפתיחה של תערוכת HOW MANY PARTNERS HAVE YOU HAD? — גלריית כיכר דיזינגוף, 26 במאי 2026, 19:30–21:30. אוצרת: קורין אברהם. 15 אומנים משתתפים.">
 <link rel="stylesheet" href="../../components/triptych-gallery.css">
+<link rel="stylesheet" href="../../components/artwork-lightbox.css">
 <style>
 @font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.woff2") format("woff2"),url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate.woff2") format("woff2"),url("../../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Bold.woff2") format("woff2"),url("../../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.woff2") format("woff2"),url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.woff2") format("woff2"),url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Noto Sans Arabic";src:url("../../פונטים/NotoSansArabic-Light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:"Noto Sans Arabic";src:url("../../פונטים/NotoSansArabic-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
 
 :root{
   --white:#FFFFFF;--bg-grey:#EEF0EF;--ink:#1B1B1B;--copy-grey:#6B7280;
   --artist:#828282;--icon-grey:#707070;
   --slide-active:#515151;--divider:#D8D8D8;
   --max:1440px;
-  --cop:"Copperplate","Times New Roman",serif;
-  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --cop:"Copperplate","Noto Sans Arabic","Times New Roman",serif;
+  --heb:"FbEzmel","Noto Sans Arabic","Arial Hebrew","David Libre",serif;
   --pad-x:96px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -79,7 +82,7 @@ body{text-transform:uppercase}
 /* === Section label (shared) === */
 .section-label{font-family:var(--cop);font-weight:300;font-size:28px;line-height:1.15;letter-spacing:.04em;color:var(--ink);text-align:left}
 
-/* === THE INVITATION — triptych + 7-segment dots (Figma 433:57) === */
+/* === THE INVITATION — triptych + 6 dots (Figma 433:57) === */
 .event-invitation,.event-second{padding:64px var(--pad-x);background:var(--white);display:flex;justify-content:center}
 .event-invitation .inner,.event-second .inner{display:flex;flex-direction:column;gap:16px;width:100%;max-width:1248px}
 .event-tri{--tri-max-w:1248px;--tri-bg:transparent;--tri-dot-color:#EEF0EF;--tri-dot-active:#515151;width:100%}
@@ -189,6 +192,7 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
   .event-tri .tri-slide.is-prev{left:calc(50% - 194.5px)}
   .event-tri .tri-slide.is-next{left:calc(50% + 194.5px)}
   .event-tri .tri-slide.is-hidden{width:216px;height:378px}
+.event-tri[data-tri-lightbox="true"] .tri-slide.is-center{cursor:zoom-in}
 
   /* Body — after the invitation gallery (Figma 433:259) */
   .event-hero .h-body{padding:16px;font-size:16px;line-height:20px;background:var(--white)}
@@ -296,18 +300,18 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
     </div>
   </section>
 
-  <!-- THE INVITATION — triptych slideshow, 7-segment dots (3 real images; Figma 433:57) -->
+  <!-- THE INVITATION — triptych slideshow, 6 slides (Figma 433:348→324→333→329→345→340) -->
   <section class="event-invitation" aria-label="ההזמנה לאירוע">
     <div class="inner">
       <div class="section-label">the invitation</div>
-      <div class="tri event-tri" data-tri-loop="true">
+      <div class="tri event-tri" data-tri-loop="true" data-tri-lightbox="true" data-artwork-gallery="event-invitation">
         <div class="tri-frame">
-          <img class="tri-slide" src="../../images/events/how-many/invite-01.webp" srcset="../../images/events/how-many/invite-01-480w.webp 480w, ../../images/events/how-many/invite-01-768w.webp 768w, ../../images/events/how-many/invite-01-1080w.webp 1080w, ../../images/events/how-many/invite-01.webp 1320w" sizes="100vw" width="1320" height="1565" alt="הזמנה לאירוע הפתיחה" draggable="false" decoding="async" loading="lazy">
-          <img class="tri-slide" src="../../images/events/how-many/invite-02.webp" srcset="../../images/events/how-many/invite-02-480w.webp 480w, ../../images/events/how-many/invite-02-768w.webp 768w, ../../images/events/how-many/invite-02-1080w.webp 1080w, ../../images/events/how-many/invite-02.webp 1320w" sizes="100vw" width="1320" height="1564" alt="הזמנה לאירוע הפתיחה — צילום" draggable="false" decoding="async" loading="lazy">
-          <img class="tri-slide" src="../../images/events/event-how-many-2026-05-26-cover.webp" srcset="../../images/events/event-how-many-2026-05-26-cover-480w.webp 480w, ../../images/events/event-how-many-2026-05-26-cover-768w.webp 768w, ../../images/events/event-how-many-2026-05-26-cover-1080w.webp 1080w, ../../images/events/event-how-many-2026-05-26-cover.webp 3058w" sizes="100vw" width="3058" height="4096" alt="כרזת התערוכה" draggable="false" decoding="async" loading="lazy">
-          <img class="tri-slide" src="../../images/events/how-many/invite-03.webp" srcset="../../images/events/how-many/invite-03-480w.webp 480w, ../../images/events/how-many/invite-03-768w.webp 768w, ../../images/events/how-many/invite-03.webp 1187w" sizes="100vw" width="1187" height="1400" alt="הזמנה לאירוע הפתיחה" draggable="false" decoding="async" loading="lazy">
-          <img class="tri-slide" src="../../images/events/how-many/invite-04.webp" width="1050" height="1400" alt="הזמנה לאירוע הפתיחה" draggable="false" decoding="async" loading="lazy">
-          <img class="tri-slide" src="../../images/events/how-many/invite-05.webp" srcset="../../images/events/how-many/invite-05-480w.webp 480w, ../../images/events/how-many/invite-05-768w.webp 768w, ../../images/events/how-many/invite-05.webp 1049w" sizes="100vw" width="1049" height="1400" alt="הזמנה לאירוע הפתיחה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-01.webp" srcset="../../images/events/how-many/invite-01-480w.webp 480w, ../../images/events/how-many/invite-01-768w.webp 768w, ../../images/events/how-many/invite-01-1080w.webp 1080w, ../../images/events/how-many/invite-01.webp 1320w" sizes="100vw" width="1320" height="1565" alt="הזמנה לאירוע הפתיחה" data-artwork-title="the invitation" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-02.webp" srcset="../../images/events/how-many/invite-02-480w.webp 480w, ../../images/events/how-many/invite-02-768w.webp 768w, ../../images/events/how-many/invite-02-1080w.webp 1080w, ../../images/events/how-many/invite-02.webp 1320w" sizes="100vw" width="1320" height="1564" alt="הזמנה לאירוע הפתיחה — צילום" data-artwork-title="the invitation" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-03.webp" srcset="../../images/events/how-many/invite-03-480w.webp 480w, ../../images/events/how-many/invite-03-768w.webp 768w, ../../images/events/how-many/invite-03.webp 1187w" sizes="100vw" width="1187" height="1400" alt="הזמנה לאירוע הפתיחה" data-artwork-title="the invitation" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-04.webp" width="1050" height="1400" alt="הזמנה לאירוע הפתיחה" data-artwork-title="the invitation" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-05.webp" srcset="../../images/events/how-many/invite-05-480w.webp 480w, ../../images/events/how-many/invite-05-768w.webp 768w, ../../images/events/how-many/invite-05.webp 1049w" sizes="100vw" width="1049" height="1400" alt="הזמנה לאירוע הפתיחה" data-artwork-title="the invitation" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/invite-06.webp" srcset="../../images/events/how-many/invite-06-480w.webp 480w, ../../images/events/how-many/invite-06-768w.webp 768w, ../../images/events/how-many/invite-06-1080w.webp 1080w, ../../images/events/how-many/invite-06.webp 3024w" sizes="100vw" width="3024" height="4032" alt="הזמנה לאירוע הפתיחה — שולחן הכניסה" data-artwork-title="the invitation" draggable="false" decoding="async" loading="lazy">
         </div>
         <div class="tri-dots" role="tablist" aria-label="gallery navigation">
           <button type="button" class="tri-dot is-on" aria-label="slide 1" role="tab" aria-selected="true"></button>
@@ -347,13 +351,13 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
   <!-- SECOND GALLERY — triptych, 3 dots, no header (Figma 433:87) -->
   <section class="event-second" aria-label="צילומים מהאירוע">
     <div class="inner">
-      <div class="tri event-tri" data-tri-loop="true">
+      <div class="tri event-tri" data-tri-loop="true" data-tri-lightbox="true" data-artwork-gallery="event-second">
         <div class="tri-frame">
-          <img class="tri-slide" src="../../images/events/how-many/second-02.webp" srcset="../../images/events/how-many/second-02-480w.webp 480w, ../../images/events/how-many/second-02-768w.webp 768w, ../../images/events/how-many/second-02.webp 1067w" sizes="100vw" width="1067" height="1600" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
-          <img class="tri-slide" src="../../images/events/how-many/second-03.webp" srcset="../../images/events/how-many/second-03-480w.webp 480w, ../../images/events/how-many/second-03-768w.webp 768w, ../../images/events/how-many/second-03-1080w.webp 1080w, ../../images/events/how-many/second-03.webp 1600w" sizes="100vw" width="1600" height="1067" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
-          <img class="tri-slide" src="../../images/events/how-many/second-01.webp" srcset="../../images/events/how-many/second-01-480w.webp 480w, ../../images/events/how-many/second-01-768w.webp 768w, ../../images/events/how-many/second-01.webp 1200w" sizes="100vw" width="1200" height="1600" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
-          <img class="tri-slide" src="../../images/events/how-many/second-04.webp" srcset="../../images/events/how-many/second-04-480w.webp 480w, ../../images/events/how-many/second-04-768w.webp 768w, ../../images/events/how-many/second-04.webp 1200w" sizes="100vw" width="1200" height="1600" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
-          <img class="tri-slide" src="../../images/events/how-many/second-05.webp" srcset="../../images/events/how-many/second-05-480w.webp 480w, ../../images/events/how-many/second-05-768w.webp 768w, ../../images/events/how-many/second-05-1080w.webp 1080w, ../../images/events/how-many/second-05.webp 1600w" sizes="100vw" width="1600" height="1066" alt="צילום מערב הפתיחה" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/second-02.webp" srcset="../../images/events/how-many/second-02-480w.webp 480w, ../../images/events/how-many/second-02-768w.webp 768w, ../../images/events/how-many/second-02.webp 1067w" sizes="100vw" width="1067" height="1600" alt="צילום מערב הפתיחה" data-artwork-title="opening night" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/second-03.webp" srcset="../../images/events/how-many/second-03-480w.webp 480w, ../../images/events/how-many/second-03-768w.webp 768w, ../../images/events/how-many/second-03-1080w.webp 1080w, ../../images/events/how-many/second-03.webp 1600w" sizes="100vw" width="1600" height="1067" alt="צילום מערב הפתיחה" data-artwork-title="opening night" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/second-01.webp" srcset="../../images/events/how-many/second-01-480w.webp 480w, ../../images/events/how-many/second-01-768w.webp 768w, ../../images/events/how-many/second-01.webp 1200w" sizes="100vw" width="1200" height="1600" alt="צילום מערב הפתיחה" data-artwork-title="opening night" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/second-04.webp" srcset="../../images/events/how-many/second-04-480w.webp 480w, ../../images/events/how-many/second-04-768w.webp 768w, ../../images/events/how-many/second-04.webp 1200w" sizes="100vw" width="1200" height="1600" alt="צילום מערב הפתיחה" data-artwork-title="opening night" draggable="false" decoding="async" loading="lazy">
+          <img class="tri-slide" src="../../images/events/how-many/second-05.webp" srcset="../../images/events/how-many/second-05-480w.webp 480w, ../../images/events/how-many/second-05-768w.webp 768w, ../../images/events/how-many/second-05-1080w.webp 1080w, ../../images/events/how-many/second-05.webp 1600w" sizes="100vw" width="1600" height="1066" alt="צילום מערב הפתיחה" data-artwork-title="opening night" draggable="false" decoding="async" loading="lazy">
         </div>
         <div class="tri-dots" role="tablist" aria-label="gallery navigation">
           <button type="button" class="tri-dot is-on" aria-label="slide 1" role="tab" aria-selected="true"></button>
@@ -406,8 +410,9 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
 
 <site-footer></site-footer>
 
-<script src="../../components/site-chrome.js?v=2" defer></script>
+<script src="../../components/site-chrome.js?v=3" defer></script>
 <script src="../../components/triptych-gallery.js" defer></script>
+<script src="../../components/artwork-lightbox.js" defer></script>
 
 <script>
 (function(){

@@ -13,6 +13,11 @@
    ============================================================ */
 
 (function () {
+  // ---- Newsletter signup endpoint (Wix Velo http-function) ---
+  // Runs on the site's own Wix server (zrp.co.il). Adds {email} to the Wix
+  // contact list via appendOrCreateContact. Source: newsletter-backend/wix-velo/.
+  const NEWSLETTER_ENDPOINT = 'https://zrp.co.il/_functions/subscribe';
+
   // ---- Resolve site root from this script's own URL ----------
   const scriptEl = document.currentScript;
   const scriptUrl = new URL(scriptEl.src, location.href);
@@ -54,7 +59,7 @@
   if (!document.querySelector('link[data-site-chrome-css]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = abs('components/site-chrome.css?v=2');
+    link.href = abs('components/site-chrome.css?v=3');
     link.setAttribute('data-site-chrome-css', '');
     document.head.appendChild(link);
   }
@@ -97,7 +102,7 @@
               '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12v18l-6-4-6 4V3z"/></svg>' +
               '<span class="hd-bookmark-count" data-bookmark-count>0</span>' +
             '</button>' +
-            '<ul class="nav-links" id="primary-nav">' +
+            '<ul class="nav-links" id="primary-nav" lang="en">' +
               '<li class="nav-close-item" role="presentation">' +
                 '<button class="nav-close" type="button" aria-label="close menu">' +
                   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>' +
@@ -146,10 +151,14 @@
           '<h2>Stay Informed</h2>' +
           '<form onsubmit="event.preventDefault()" novalidate>' +
             '<textarea class="newsletter-email" name="email" rows="1" inputmode="email" autocomplete="email" placeholder="Email Address" aria-label="Email Address" spellcheck="false"></textarea>' +
+            // Honeypot — hidden from humans; bots that fill it are silently dropped.
+            '<div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">' +
+              '<label>Website<input type="text" class="newsletter-hp" name="website" tabindex="-1" autocomplete="off"></label>' +
+            '</div>' +
             '<button type="submit">SUBSCRIBE</button>' +
             '<label class="newsletter-consent">' +
               '<input type="checkbox" class="newsletter-consent-cb" name="consent" id="newsletter-consent-cb" required aria-required="true">' +
-              '<span class="newsletter-consent-text">קראתי ואני מסכים/ה ל<a href="' + abs('privacy/') + '">מדיניות הפרטיות</a> <span class="newsletter-consent-req">(חובה)</span></span>' +
+              '<span class="newsletter-consent-text">קראתי ואני מסכים/ה ל<a href="' + abs('privacy/') + '">מדיניות הפרטיות</a> ולקבלת דיוור מ<span class="lat">Zielinski &amp; Rozen</span> (כולל אתר הבשמים <span class="lat">zrp.co.il</span>) <span class="newsletter-consent-req">(חובה)</span></span>' +
             '</label>' +
             '<p class="newsletter-status" data-newsletter-status role="status" aria-live="polite"></p>' +
           '</form>' +
@@ -196,6 +205,91 @@
         '</a>' +
       '</div>'
     );
+  }
+
+  // ---- Logo destination chooser ------------------------------
+  // Clicking the header logo opens a small, friendly chooser:
+  //   "art gallery home"  (this site)   |   "perfume brand home" (zrp.co.il)
+  // Progressive enhancement: the logo stays a real <a href> to the gallery
+  // home, so with JS off (or modifier-click) it just navigates there.
+  function logoChooserHTML() {
+    return (
+      '<div class="logo-choose-backdrop" data-logo-choose-backdrop hidden></div>' +
+      '<div class="logo-choose" data-logo-choose hidden role="dialog" aria-modal="true" aria-label="לאן להגיע">' +
+        '<button class="logo-choose-close" type="button" data-logo-choose-close aria-label="סגירה">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+        '</button>' +
+        '<p class="logo-choose-q">לאן תרצו להגיע?</p>' +
+        '<div class="logo-choose-opts">' +
+          '<a class="logo-choose-opt" href="' + abs('') + '" data-logo-choose-go="art">' +
+            '<span class="logo-choose-opt-en">THE art GALLERY</span>' +
+            '<span class="logo-choose-opt-he">אתר הגלריות</span>' +
+          '</a>' +
+          '<a class="logo-choose-opt" href="https://zrp.co.il" target="_blank" rel="noopener" data-logo-choose-go="perfume">' +
+            '<span class="logo-choose-opt-en">ZIELINSKI &amp; ROZEN</span>' +
+            '<span class="logo-choose-opt-he">מותג הבישום</span>' +
+          '</a>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function wireLogoChooser(root) {
+    var logo = root.querySelector('a.logo');
+    if (!logo) return;
+    // Inject the chooser once at body level (fixed positioning → location-agnostic).
+    if (!document.querySelector('[data-logo-choose]')) {
+      var holder = document.createElement('div');
+      holder.innerHTML = logoChooserHTML();
+      while (holder.firstChild) document.body.appendChild(holder.firstChild);
+    }
+    var modal = document.querySelector('[data-logo-choose]');
+    var backdrop = document.querySelector('[data-logo-choose-backdrop]');
+    var closeBtn = modal && modal.querySelector('[data-logo-choose-close]');
+    if (!modal || !backdrop) return;
+
+    var lastFocus = null;
+    function open() {
+      lastFocus = document.activeElement;
+      backdrop.hidden = false;
+      modal.hidden = false;
+      // next frame → trigger the open transition
+      requestAnimationFrame(function () {
+        backdrop.classList.add('is-open');
+        modal.classList.add('is-open');
+      });
+      var first = modal.querySelector('.logo-choose-opt');
+      if (first) first.focus();
+    }
+    function close() {
+      backdrop.classList.remove('is-open');
+      modal.classList.remove('is-open');
+      var done = function () {
+        modal.hidden = true;
+        backdrop.hidden = true;
+        modal.removeEventListener('transitionend', done);
+      };
+      modal.addEventListener('transitionend', done);
+      // Fallback in case transitionend doesn't fire
+      setTimeout(function () { if (!modal.classList.contains('is-open')) { modal.hidden = true; backdrop.hidden = true; } }, 320);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    logo.addEventListener('click', function (e) {
+      // Respect modifier-clicks / middle-click → let the browser do its thing.
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      open();
+    });
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+    // Selecting an option navigates normally → just close the overlay state.
+    modal.querySelectorAll('[data-logo-choose-go]').forEach(function (opt) {
+      opt.addEventListener('click', function () { close(); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) { e.stopPropagation(); close(); }
+    });
   }
 
   // ---- Wiring: hamburger toggle ------------------------------
@@ -429,6 +523,57 @@
     });
   }
 
+  function sharePayloads() {
+    var item = pageItem() || {};
+    var url = location.href;
+    var title = document.title || '';
+    var text = item.title || title;
+    return [
+      { title: title, url: url, text: text },
+      { title: title, url: url },
+      { url: url }
+    ];
+  }
+
+  function canShareData(data) {
+    return !navigator.canShare || navigator.canShare(data);
+  }
+
+  async function sharePage() {
+    var url = location.href;
+    if (navigator.share) {
+      var payloads = sharePayloads();
+      for (var i = 0; i < payloads.length; i++) {
+        var data = payloads[i];
+        if (!canShareData(data)) continue;
+        try {
+          await navigator.share(data);
+          return;
+        } catch (e) {
+          if (e && e.name === 'AbortError') return;
+        }
+      }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(url);
+        toast('LINK COPIED');
+        return;
+      } catch (e) { /* fall through */ }
+    }
+    toast('SHARE NOT SUPPORTED');
+  }
+
+  function wireShareButtons() {
+    document.querySelectorAll('[data-share-btn]').forEach(function (btn) {
+      if (btn.dataset.shareWired) return;
+      btn.dataset.shareWired = '1';
+      btn.addEventListener('click', function () {
+        sharePage();
+      });
+    });
+  }
+
   function wireBookmark(root) {
     var hdBtn = root.querySelector('[data-bookmark-open]');
     var modal = root.querySelector('[data-bookmark-modal]');
@@ -468,23 +613,7 @@
         renderList();
       });
     }
-    // Page-level share button(s)
-    document.querySelectorAll('[data-share-btn]').forEach(function (btn) {
-      if (btn.dataset.shareWired) return;
-      btn.dataset.shareWired = '1';
-      btn.addEventListener('click', async function () {
-        var item = pageItem() || {};
-        var data = { title: document.title, url: location.href, text: item.title || '' };
-        if (navigator.share) {
-          try { await navigator.share(data); } catch (e) { /* user cancel — silent */ }
-        } else if (navigator.clipboard && navigator.clipboard.writeText) {
-          try { await navigator.clipboard.writeText(location.href); toast('LINK COPIED'); }
-          catch (e) { toast('SHARE NOT SUPPORTED'); }
-        } else {
-          toast('SHARE NOT SUPPORTED');
-        }
-      });
-    });
+    wireShareButtons();
     refreshCount();
     refreshToggle();
   }
@@ -505,6 +634,7 @@
       field.value = field.value.replace(/[\r\n]+/g, ' ');
     });
     if (form) {
+      var submitBtn = form.querySelector('button[type="submit"]');
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (!statusEl) return;
@@ -522,10 +652,40 @@
           consentBox.focus();
           return;
         }
-        statusEl.textContent = 'תודה — נרשמת לרשימת התפוצה.';
-        statusEl.classList.add('is-ok');
-        field.value = '';
-        if (consentBox) consentBox.checked = false;
+        statusEl.textContent = 'שולח…';
+        if (submitBtn) submitBtn.disabled = true;
+        var hpField = form.querySelector('.newsletter-hp');
+        fetch(NEWSLETTER_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: email,
+            consent: true,
+            website: hpField ? hpField.value : ''
+          })
+        })
+          .then(function (res) {
+            return res.json().catch(function () { return {}; }).then(function (data) {
+              return { ok: res.ok && data && data.ok, data: data };
+            });
+          })
+          .then(function (r) {
+            if (submitBtn) submitBtn.disabled = false;
+            if (!r.ok) {
+              statusEl.classList.add('is-err');
+              statusEl.textContent = 'אירעה תקלה ברישום. נסו שוב מאוחר יותר.';
+              return;
+            }
+            statusEl.classList.add('is-ok');
+            statusEl.textContent = 'תודה — נרשמת לרשימת התפוצה.';
+            field.value = '';
+            if (consentBox) consentBox.checked = false;
+          })
+          .catch(function () {
+            if (submitBtn) submitBtn.disabled = false;
+            statusEl.classList.add('is-err');
+            statusEl.textContent = 'אירעה תקלה ברישום. נסו שוב מאוחר יותר.';
+          });
       });
     }
   }
@@ -539,6 +699,7 @@
       wireHamburger(this);
       markActive(this);
       wireBookmark(this);
+      wireLogoChooser(this);
       ensureSkipLink();
     }
   }
@@ -554,6 +715,7 @@
 
   customElements.define('site-header', SiteHeader);
   customElements.define('site-footer', SiteFooter);
+  wireShareButtons();
 
   // ---- Boot sequencer ----------------------------------------
   // Wait for: chrome hydration + web fonts + optional dynamic data,
@@ -608,7 +770,10 @@
         withTimeout(dataReady(), 1200)
       ]),
       ceiling
-    ]).then(reveal);
+    ]).then(function () {
+      wireShareButtons();
+      reveal();
+    });
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', startBoot);

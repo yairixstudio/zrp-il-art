@@ -79,6 +79,7 @@ linear-gradient(180deg, rgba(102,102,102,0) 0%, rgba(0,0,0,0.8) 81%)
 
 - **Copperplate** (`./פונטים/Copperplate*.{otf,ttf}`) — אנגלית. 300/400/700/900.
 - **FbEzmel** (`./פונטים/FbEzmel-*.otf`) — עברית. 300/400.
+- **Noto Sans Arabic** (`./פונטים/NotoSansArabic-{Light,Regular}.woff2`, OFL) — **ערבית** בלבד. 300/400. **לא צריך span ייעודי** — מופיע כ-fallback בסוף מחסניות `--heb` ו-`--cop`, עם `unicode-range` מצומצם לבלוקים הערביים (U+0600–06FF + הרחבות). הדפדפן מנתב כל גליף ערבי אליו אוטומטית (FbEzmel/Copperplate חסרי גליפים ערביים), והפונט נטען רק בדפים שבהם באמת יש ערבית. כל טקסט ערבי באתר (למשל برقع של זוהר רון) חייב לצאת ב-Noto — לא ב-fallback של המערכת.
 - **Inter** (Google) — רק לכפתור `SUBSCRIBE` (12px, ls 10%, 400).
 
 תמיד `@font-face` בקובץ. **אסור Google substitutes** (Cormorant/Frank Ruhl).
@@ -178,6 +179,40 @@ function langClass(s){ return HEB_LETTERS.test(s||"") ? "is-he" : "is-en"; }
 **גרשיים עבריים `״` `׳`** (U+05F4 / U+05F3) — לא letters. כותרת `״DON'T LOSE YOUR HEAD״` תזוהה כ-`is-en` והעטיפה הגרפית תישמר. זה הנכון: התוכן הוא אנגלי.
 
 **Inline `<span class="lat">` בתוך JSON titles** (לקטעי לועזית בכותרת עברית): renderer של artist.html יודע לעבור דרך `escapeHtml` ולשמר את ה-tag הזה בלבד (`titleHtml()` helper). אם מוסיפים render חדש שמקבל ערך שעלול להכיל `<span class="lat">` — תעתיק את ה-helper.
+
+### 5.2 עברית + אנגלית באותה שורה — פונט וגודל ויזואלי (חובה)
+
+**הבעיה:** Copperplate (Latin) נראה **גדול יותר** מ-FbEzmel (עברית) באותו `font-size` px/em — במיוחד בכותרות. אם מגדירים `32px` לשניהם, האנגלית "קופצת" ויזואלית.
+
+**הכלל:** גם כשהטקסט הוא **מחרוזת אחת** (למשל `בדידות… | QTUBA`), חובה:
+1. **קונטיינר עברי** — `font-family: var(--heb)`, `direction: rtl`.
+2. **קטעים לatin** — `<span class="lat">` (או `mixedHtml()` / `wrapLatinRuns()` ב-JS) עם `font-family: var(--cop)`, `text-transform: uppercase`, `direction: ltr`, `unicode-bidi: isolate`.
+3. **לא** להסתמך על אותו `font-size` — להתאים **גודל ויזואלי** עם `font-size` קטן יותר על `.lat` (יחס `em` לגודל ההורה).
+
+**סקאלת optical (נקודת התחלה — לאמת בדפדפן מול עברית סמוכה):**
+
+| גודל הורה (עברית) | `.lat` font-size | דוגמה |
+|---|---|---|
+| כותרות ≥24px | `0.84em` | `.ex-heading .lat`, `.body-section-h .lat` |
+| body 16–22px | `0.88em` | `.hero-bio .lat`, `.ex-statement .lat`, `.body-text .lat` |
+| fine print ≤15px | `0.88em`, `letter-spacing: normal` | `.work-meta .details .lat` / הורה `15px` |
+
+```css
+.ex-heading{font-family:var(--heb);font-size:32px;direction:rtl}
+.ex-heading .lat{
+  font-family:var(--cop);
+  font-size:0.84em;           /* לא 32px — optical match */
+  text-transform:uppercase;
+  direction:ltr;
+  unicode-bidi:isolate;
+}
+```
+
+**JS (JSON / mixed strings):** השתמש ב-`mixedHtml()` (artist pages) — עוטף ריצות Latin אוטומטית ב-`<span class="lat">`. אל תשאיר אנגלית גולמית בתוך אלמנט `--heb` בלי `.lat`. **מספרים ומידות (`200x200x60`, `80x80`) נשארים FbEzmel** — `wrapLatinRuns` לא עוטף אותם (ה-`x` אינו מילה אנגלית).
+
+**מימושים קיימים:** `artists/zohar-ron/index.html` (`.ex-heading`, `.ex-statement`), `events/how-many/index.html` (`.event-atmosphere .artists-text .lat` → `0.86em`), `artists/*/index.html` (`.work-meta .details .lat` → `0.88em`; `keepEzmelRun()` ב-JS).
+
+**לפני סיום:** בדוק ויזואלית side-by-side שהעברית והאנגלית **נראות באותו גובה x-height**, לא רק שיש להן אותו ערך CSS.
 
 ---
 

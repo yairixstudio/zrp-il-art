@@ -17,6 +17,8 @@
 @font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Heavy.woff2") format("woff2"),url("../../פונטים/CopperplateCC-Heavy.otf") format("opentype");font-weight:900;font-style:normal;font-display:swap}
 @font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.woff2") format("woff2"),url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.woff2") format("woff2"),url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Noto Sans Arabic";src:url("../../פונטים/NotoSansArabic-Light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:"Noto Sans Arabic";src:url("../../פונטים/NotoSansArabic-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
 @font-face{font-family:"Solway";src:url("../../פונטים/Solway-Light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:"Solway";src:url("../../פונטים/Solway-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
 
@@ -28,14 +30,14 @@
   --copy-grey:#6B7280;
   --slide-active:#515151;
   --max:1440px;
-  --cop:"Copperplate","Times New Roman",serif;
-  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --cop:"Copperplate","Noto Sans Arabic","Times New Roman",serif;
+  --heb:"FbEzmel","Noto Sans Arabic","Arial Hebrew","David Libre",serif;
   --exo-title-en:"Solway","Copperplate","Times New Roman",serif;
   --pad-x:96px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
@@ -185,7 +187,7 @@ body{text-transform:uppercase}
 }
 .cur-ex .cur-card__title-he{font-family:var(--heb);font-weight:400;font-size:29px;line-height:1.2;direction:rtl;text-wrap:balance}
 .cur-ex .cur-card__title-en{
-  font-family:var(--exo-title-en);font-weight:300;font-size:17px;line-height:1.35;letter-spacing:.04em;
+  font-family:var(--exo-title-en);font-weight:300;font-size:17px;line-height:1.25;letter-spacing:.04em;
   overflow-wrap:break-word;word-break:normal;text-wrap:balance;
 }
 .cur-ex .cur-card__meta{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;max-width:100%}
@@ -434,7 +436,7 @@ body{text-transform:uppercase}
 })();
 </script>
 
-<script src="../../components/site-chrome.js?v=2" defer></script>
+<script src="../../components/site-chrome.js?v=3" defer></script>
 <script src="../../components/analytics.js" defer></script>
 <script src="../../components/picture-upgrade.js" defer></script>
 <script src="../../components/embed-iframe.js" defer></script>

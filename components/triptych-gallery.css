@@ -70,6 +70,8 @@
 .tri-caption a:hover{text-decoration-color:currentColor;opacity:.75}
 .tri-caption-line2{display:block;font:inherit;font-weight:300;margin-top:.2em}
 .tri-slide.is-center[data-artist-href]{cursor:pointer}
+.tri[data-tri-lightbox="true"] .tri-slide.is-center{cursor:zoom-in}
+.tri[data-tri-lightbox="true"] .tri-slide.is-center[data-artist-href]{cursor:pointer}
 
 @media (max-width:1100px){
   .tri{--tri-max-w:720px}

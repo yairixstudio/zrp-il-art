@@ -44,6 +44,18 @@
   src:url("פונטים/FbEzmel-Regular.woff2") format("woff2"),url("פונטים/FbEzmel-Regular.otf") format("opentype");
   font-weight:400;font-style:normal;font-display:swap;
 }
+@font-face{
+  font-family:"Noto Sans Arabic";
+  src:url("פונטים/NotoSansArabic-Light.woff2") format("woff2");
+  font-weight:300;font-style:normal;font-display:swap;
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF;
+}
+@font-face{
+  font-family:"Noto Sans Arabic";
+  src:url("פונטים/NotoSansArabic-Regular.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF;
+}
 
 :root{
   --white:#FFFFFF;
@@ -54,8 +66,8 @@
   --sep:#EFEFEF;
   --artist:#828282;
   --max:1440px;
-  --cop:"Copperplate","Times New Roman",serif;
-  --heb:"FbEzmel","Arial Hebrew","David Libre",serif;
+  --cop:"Copperplate","Noto Sans Arabic","Times New Roman",serif;
+  --heb:"FbEzmel","Noto Sans Arabic","Arial Hebrew","David Libre",serif;
   --pad-x:96px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -270,6 +282,15 @@ body{text-transform:uppercase}
 .aw-text .word.art-text::before{content:"art"}
 /* mobile: uppercase 'ART' (per Figma mobile) */
 
+/* curator footer of art-works section (Figma 710:177 desktop / 710:117 mobile) */
+.aw-curator{display:flex;flex-direction:column;align-items:center;gap:32px;padding:96px var(--pad-x);background:var(--white);text-align:center}
+.aw-curator-titles{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;min-width:0}
+.awc-name,.awc-role{font-family:var(--cop);line-height:1;color:var(--ink);white-space:nowrap;max-width:100%}
+.awc-name{font-weight:300;font-size:48px}
+.awc-role{font-weight:700;font-size:48px}
+.awc-view{font-family:var(--cop);font-weight:300;font-size:18px;line-height:1;color:var(--ink);border:1.4px solid var(--ink);padding:16px 24px;text-decoration:none;transition:opacity .2s}
+.awc-view:hover{opacity:.7}
+
 /* ===== INSTAGRAM (Figma XhGH:144:431) — title left, arrows top-right, infinite-loop carousel.
    Visible columns via --ig-cols (fractional = peek): ~8.5 @1440 desktop, ~3.5 @390 mobile. */
 .social{padding:34px var(--pad-x);display:flex;flex-direction:column;gap:16px;background:var(--white);--ig-cols:8.5}
@@ -343,6 +364,8 @@ body{text-transform:uppercase}
   flex-shrink:0;
 }
 .x-artists-card .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;display:block}
+.x-artists-card.is-contain .img img{object-fit:contain}
+.x-artists .tri-slide.is-contain{object-fit:contain}
 .x-artists-card:hover .img img{transform:scale(1.03)}
 .x-artists-card .name{font-family:var(--cop);font-weight:400;font-size:16px;text-align:center;color:var(--ink)}
 .x-artists-tri{display:none}
@@ -618,6 +641,13 @@ body{text-transform:uppercase}
   .aw-text .word.art{visibility:hidden}
   .aw-text .word.art::after{content:"ART";visibility:visible;position:absolute;left:0;top:0;font-weight:700}
 
+  /* curator footer — mobile: role above name, smaller (Figma 710:117) */
+  .aw-curator{grid-column:1/-1;padding:48px;gap:16px}
+  .awc-name,.awc-role{font-size:clamp(16px,7.2vw,36px)}
+  .awc-name{order:2}
+  .awc-role{order:1}
+  .awc-view{font-size:16px;border-width:1px;padding:4px 16px}
+
   /* INSTAGRAM — ~3.5 cards visible @390 (viewport minus --pad-x) */
   .social{padding:32px 16px;gap:16px;--ig-cols:3.5}
   .social-title{width:auto;line-height:1.05}
@@ -749,7 +779,7 @@ body{text-transform:uppercase}
   }
   .press-card .desc{
     font-size:clamp(12px,calc((100vw - 32px) * 0.038),14px);
-    line-height:1.35;
+    line-height:1.25;
   }
   .press-card .desc.desc-lat-sm{
     font-size:clamp(10px,calc((100vw - 32px) * 0.03),11px);
@@ -1028,6 +1058,14 @@ porta</div></a>
     </div>
     <div class="aw-img"><img src="images/works/tile-more.webp" srcset="images/works/tile-more-480w.webp 480w, images/works/tile-more-768w.webp 768w, images/works/tile-more-1080w.webp 1080w, images/works/tile-more.webp 1500w" sizes="100vw" width="3024" height="4032" alt="" decoding="async" loading="lazy"></div>
   </div>
+  <!-- curator footer · Figma 710:177 (desktop) / 710:117 (mobile) -->
+  <div class="aw-curator">
+    <div class="aw-curator-titles">
+      <span class="awc-name">korin avraham</span>
+      <span class="awc-role">the curator</span>
+    </div>
+    <a class="awc-view" href="curators/korin-avraham/">view</a>
+  </div>
 </section>
 
 <!-- PERFUME PROMO — How Many Partners Have You Had? · Figma 386:232 / 386:806 -->
@@ -1128,34 +1166,35 @@ porta</div></a>
     <span class="b">zielinski rozen</span>
     <span class="l">x our artists</span>
   </div>
-  <!-- DESKTOP — 4×3 grid -->
+  <!-- DESKTOP — 3-col grid; order + images from Figma "mobile order" (640:249), 21 items.
+       Node-rendered PNGs (crop/FIT baked in -> all object-fit:cover, no is-contain). -->
   <div class="x-artists-grid only-desktop">
     <div class="x-artists-row">
       <a class="x-artists-card" href="artists/nir-giorgio-levin/">
         <div class="img"><img src="images/homepage/x-our-artists/work-1.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">nir giorgio levin</div>
       </a>
-      <a class="x-artists-card" href="artists/maya-nachum-levy/">
+      <a class="x-artists-card" href="artists/gilad-kenan/">
         <div class="img"><img src="images/homepage/x-our-artists/work-2.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">maya nachum levy</div>
+        <div class="name">gilad kenan</div>
       </a>
-      <a class="x-artists-card" href="artists/gal-polk/">
+      <a class="x-artists-card" href="artists/baruch-torgeman/">
         <div class="img"><img src="images/homepage/x-our-artists/work-3.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">gal pollak</div>
+        <div class="name">baruch torgeman</div>
       </a>
     </div>
     <div class="x-artists-row">
-      <a class="x-artists-card" href="artists/gilad-kenan/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-4.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">gilad kenan</div>
-      </a>
       <a class="x-artists-card" href="artists/gal-polk/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-5.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-4.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">gal pollak</div>
       </a>
-      <a class="x-artists-card" href="artists/gilad-kenan/">
+      <a class="x-artists-card" href="artists/noemi-safir/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-5.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">noemi safir</div>
+      </a>
+      <a class="x-artists-card" href="artists/noemi-safir/">
         <div class="img"><img src="images/homepage/x-our-artists/work-6.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">gilad kenan</div>
+        <div class="name">noemi safir</div>
       </a>
     </div>
     <div class="x-artists-row">
@@ -1167,37 +1206,65 @@ porta</div></a>
         <div class="img"><img src="images/homepage/x-our-artists/work-8.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">yarden amir</div>
       </a>
-      <a class="x-artists-card" href="artists/tanya-shin/">
+      <a class="x-artists-card" href="artists/maya-nachum-levy/">
         <div class="img"><img src="images/homepage/x-our-artists/work-9.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">tanya shin</div>
+        <div class="name">maya nachum levy</div>
       </a>
     </div>
     <div class="x-artists-row">
-      <a class="x-artists-card" href="artists/maya-nachum-levy/">
+      <a class="x-artists-card" href="artists/tanya-shin/">
         <div class="img"><img src="images/homepage/x-our-artists/work-10.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">tanya shin</div>
+      </a>
+      <a class="x-artists-card" href="artists/maya-nachum-levy/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-11.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">maya nachum levy</div>
       </a>
+      <a class="x-artists-card" href="artists/alon/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-12.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">alon manjoch</div>
+      </a>
+    </div>
+    <div class="x-artists-row">
+      <a class="x-artists-card" href="artists/gilad-kenan/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-13.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">gilad kenan</div>
+      </a>
+      <a class="x-artists-card" href="artists/baruch-torgeman/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-14.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">baruch torgeman</div>
+      </a>
+      <a class="x-artists-card" href="artists/gal-polk/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-15.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">gal pollak</div>
+      </a>
+    </div>
+    <div class="x-artists-row">
+      <a class="x-artists-card" href="artists/noemi-safir/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-16.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">noemi safir</div>
+      </a>
       <a class="x-artists-card" href="artists/yarden-amir/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-11.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-17.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">yarden amir</div>
       </a>
       <a class="x-artists-card" href="artists/gilad-kenan/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-12.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-18.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">gilad kenan</div>
       </a>
     </div>
     <div class="x-artists-row">
       <a class="x-artists-card" href="artists/yarden-amir/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-13.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-19.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">yarden amir</div>
-      </a>
-      <a class="x-artists-card" href="artists/alon/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-14.webp" alt="" loading="lazy" decoding="async"></div>
-        <div class="name">alon manjoch</div>
       </a>
       <a class="x-artists-card" href="artists/yarden-amir/">
-        <div class="img"><img src="images/homepage/x-our-artists/work-15.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="img"><img src="images/homepage/x-our-artists/work-20.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="name">yarden amir</div>
+      </a>
+      <a class="x-artists-card" href="artists/noemi-safir/">
+        <div class="img"><img src="images/homepage/x-our-artists/work-21.webp" alt="" loading="lazy" decoding="async"></div>
+        <div class="name">noemi safir</div>
       </a>
     </div>
   </div>
@@ -1206,20 +1273,26 @@ porta</div></a>
     <div class="tri" data-tri-loop="true">
       <div class="tri-frame">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-1.webp" alt="" data-caption="nir giorgio levin" data-artist-href="artists/nir-giorgio-levin/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-3.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="gilad kenan" data-artist-href="artists/gilad-kenan/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="gilad kenan" data-artist-href="artists/gilad-kenan/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-2.webp" alt="" data-caption="gilad kenan" data-artist-href="artists/gilad-kenan/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-3.webp" alt="" data-caption="baruch torgeman" data-artist-href="artists/baruch-torgeman/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-4.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-5.webp" alt="" data-caption="noemi safir" data-artist-href="artists/noemi-safir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-6.webp" alt="" data-caption="noemi safir" data-artist-href="artists/noemi-safir/">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-7.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
         <img class="tri-slide" src="images/homepage/x-our-artists/work-8.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-9.webp" alt="" data-caption="tanya shin" data-artist-href="artists/tanya-shin/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-10.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-11.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-12.webp" alt="" data-caption="gilad kenan" data-artist-href="artists/gilad-kenan/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-13.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-14.webp" alt="" data-caption="alon manjoch" data-artist-href="artists/alon/">
-        <img class="tri-slide" src="images/homepage/x-our-artists/work-15.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-9.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-10.webp" alt="" data-caption="tanya shin" data-artist-href="artists/tanya-shin/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-11.webp" alt="" data-caption="maya nachum levy" data-artist-href="artists/maya-nachum-levy/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-12.webp" alt="" data-caption="alon manjoch" data-artist-href="artists/alon/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-13.webp" alt="" data-caption="gilad kenan" data-artist-href="artists/gilad-kenan/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-14.webp" alt="" data-caption="baruch torgeman" data-artist-href="artists/baruch-torgeman/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-15.webp" alt="" data-caption="gal pollak" data-artist-href="artists/gal-polk/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-16.webp" alt="" data-caption="noemi safir" data-artist-href="artists/noemi-safir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-17.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-18.webp" alt="" data-caption="gilad kenan" data-artist-href="artists/gilad-kenan/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-19.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-20.webp" alt="" data-caption="yarden amir" data-artist-href="artists/yarden-amir/">
+        <img class="tri-slide" src="images/homepage/x-our-artists/work-21.webp" alt="" data-caption="noemi safir" data-artist-href="artists/noemi-safir/">
       </div>
       <div class="tri-dots" role="tablist">
         <button class="tri-dot is-on" type="button" aria-label="1"></button>
@@ -1237,6 +1310,11 @@ porta</div></a>
         <button class="tri-dot" type="button" aria-label="13"></button>
         <button class="tri-dot" type="button" aria-label="14"></button>
         <button class="tri-dot" type="button" aria-label="15"></button>
+        <button class="tri-dot" type="button" aria-label="16"></button>
+        <button class="tri-dot" type="button" aria-label="17"></button>
+        <button class="tri-dot" type="button" aria-label="18"></button>
+        <button class="tri-dot" type="button" aria-label="19"></button>
+        <button class="tri-dot" type="button" aria-label="20"></button>
       </div>
     </div>
   </div>
@@ -1336,7 +1414,7 @@ porta</div></a>
       </a>
     </div>
     <div class="press-row press-row--swap">
-      <a class="press-card" href="https://timeout.co.il/%D7%AA%D7%A2%D7%A8%D7%95%D7%9B%D7%95%D7%AA-%D7%9E%D7%95%D7%9E%D7%9C%D7%A6%D7%95%D7%AA-270526/" target="_blank" rel="noopener noreferrer">
+      <a class="press-card" href="press/the-last-station/">
         <div class="info">
           <span class="tag"><span class="tag-lat">TIME OUT</span><span class="tag-sep">|</span><span>תרבות</span></span>
           <p class="desc">התחנה האחרונה: 25 תערוכות מומלצות לעצור בהן את הכל בסופ"ש</p>
@@ -1354,7 +1432,7 @@ porta</div></a>
       </a>
     </div>
     <div class="press-row press-row--swap">
-      <a class="press-card" href="events/loneliness/">
+      <a class="press-card" href="events/ktuba/">
         <div class="info">
           <span class="tag en">gallery event</span>
           <p class="desc">בדידות בתוך סביבה תוססת</p>
@@ -1410,7 +1488,7 @@ porta</div></a>
 <script src="components/artwork-lightbox.js" defer></script>
 
 <!-- Site chrome: shared header + footer (single source of truth) -->
-<script src="components/site-chrome.js?v=2" defer></script>
+<script src="components/site-chrome.js?v=3" defer></script>
 
 <!-- Stacked gallery component (homepage mobile-cta uses sg-mode-swap) -->
 <script src="components/stacked-gallery.js" defer></script>

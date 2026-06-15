@@ -89,15 +89,13 @@
       "date": "2026-05-27",
       "author_he": "רעות ברנע",
       "cover_image": "images/press/time-out/home-card-2026-05-27.webp",
-      "exhibition_id": "loneliness",
+      "exhibition_id": "how-many",
       "homepage_visible": true,
-      "route": "press/time-out/",
+      "route": "press/the-last-station/",
       "figma_home_card_desktop": "XhGH289YTRcW811wrufRJz::412:583",
       "figma_home_card_mobile": "XhGH289YTRcW811wrufRJz::412:996",
-      "figma_article_desktop": "XhGH289YTRcW811wrufRJz::119:1340",
-      "figma_article_mobile": "XhGH289YTRcW811wrufRJz::119:1433",
-      "_legacy_figma_desktop": "Zn3N3mBQkbYER7tTJMbCcz::1213:1335",
-      "_legacy_figma_mobile": "Zn3N3mBQkbYER7tTJMbCcz::1213:1428"
+      "figma_article_desktop": "XhGH289YTRcW811wrufRJz::412:1118",
+      "figma_article_mobile": "XhGH289YTRcW811wrufRJz::412:1214"
     },
     {
       "id": "event-how-many-close-look-1",
@@ -133,7 +131,9 @@
       "date": "2026-02-25",
       "cover_image": "images/events/event-3-cover-v2.webp",
       "exhibition_id": "loneliness",
-      "homepage_visible": true
+      "event_id": "ktuba",
+      "homepage_visible": true,
+      "route": "events/ktuba/"
     },
     {
       "id": "event-loneliness-4",
@@ -143,7 +143,8 @@
       "date": "2026-01-19",
       "cover_image": "images/events/event-4-cover.webp",
       "exhibition_id": "loneliness",
-      "homepage_visible": true
+      "homepage_visible": true,
+      "route": "events/loneliness/"
     },
     {
       "id": "time-out-final-countdown-2025",

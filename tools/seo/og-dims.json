@@ -1,0 +1,797 @@
+{
+"images/artists/adi-duak/portrait.webp": {
+"jpg": "og/artists-adi-duak-portrait.jpg",
+"w": 800,
+"h": 1200
+},
+"images/artists/alon/portrait.webp": {
+"jpg": "og/artists-alon-portrait.jpg",
+"w": 795,
+"h": 1200
+},
+"images/artists/anat-wegier/portrait.webp": {
+"jpg": "og/artists-anat-wegier-portrait.jpg",
+"w": 580,
+"h": 998
+},
+"images/artists/baruch-torgeman/portrait.webp": {
+"jpg": "og/artists-baruch-torgeman-portrait.jpg",
+"w": 1080,
+"h": 1080
+},
+"images/artists/chen-ziv/portrait.webp": {
+"jpg": "og/artists-chen-ziv-portrait.jpg",
+"w": 864,
+"h": 1080
+},
+"images/artists/costa-magarakis/portrait.webp": {
+"jpg": "og/artists-costa-magarakis-portrait.jpg",
+"w": 690,
+"h": 690
+},
+"images/artists/eitan-goldson/portrait.webp": {
+"jpg": "og/artists-eitan-goldson-portrait.jpg",
+"w": 690,
+"h": 1044
+},
+"images/artists/elsa-ars-brush/portrait.webp": {
+"jpg": "og/artists-elsa-ars-brush-portrait.jpg",
+"w": 1200,
+"h": 900
+},
+"images/artists/gal-polk/portrait-v2.webp": {
+"jpg": "og/artists-gal-polk-portrait-v2.jpg",
+"w": 690,
+"h": 690
+},
+"images/artists/gal-rotem/portrait.webp": {
+"jpg": "og/artists-gal-rotem-portrait.jpg",
+"w": 810,
+"h": 810
+},
+"images/artists/gilad-kenan/portrait.webp": {
+"jpg": "og/artists-gilad-kenan-portrait.jpg",
+"w": 640,
+"h": 640
+},
+"images/artists/grid/dan-ben-ary.webp": {
+"jpg": "og/artists-grid-dan-ben-ary.jpg",
+"w": 810,
+"h": 810
+},
+"images/artists/hila-loterstein/portrait.webp": {
+"jpg": "og/artists-hila-loterstein-portrait.jpg",
+"w": 690,
+"h": 690
+},
+"images/artists/holy-kadosh/portrait.webp": {
+"jpg": "og/artists-holy-kadosh-portrait.jpg",
+"w": 690,
+"h": 690
+},
+"images/artists/jessica-tabarovsky/portrait.webp": {
+"jpg": "og/artists-jessica-tabarovsky-portrait.jpg",
+"w": 810,
+"h": 1080
+},
+"images/artists/la-raz-porta/portrait.webp": {
+"jpg": "og/artists-la-raz-porta-portrait.jpg",
+"w": 690,
+"h": 1044
+},
+"images/artists/lahav-barak/portrait.webp": {
+"jpg": "og/artists-lahav-barak-portrait.jpg",
+"w": 893,
+"h": 1080
+},
+"images/artists/liel-salman/portrait.webp": {
+"jpg": "og/artists-liel-salman-portrait.jpg",
+"w": 900,
+"h": 1200
+},
+"images/artists/livay-levi/portrait.webp": {
+"jpg": "og/artists-livay-levi-portrait.jpg",
+"w": 720,
+"h": 1080
+},
+"images/artists/maya-nachum-levy/portrait.webp": {
+"jpg": "og/artists-maya-nachum-levy-portrait.jpg",
+"w": 690,
+"h": 1044
+},
+"images/artists/natasha-zeriker/portrait.webp": {
+"jpg": "og/artists-natasha-zeriker-portrait.jpg",
+"w": 757,
+"h": 1080
+},
+"images/artists/nir-giorgio-levin/portrait-v2.webp": {
+"jpg": "og/artists-nir-giorgio-levin-portrait-v2.jpg",
+"w": 1144,
+"h": 1200
+},
+"images/artists/noemi-safir/portrait-v2.webp": {
+"jpg": "og/artists-noemi-safir-portrait-v2.jpg",
+"w": 1080,
+"h": 1080
+},
+"images/artists/racheli-reuven/portrait.webp": {
+"jpg": "og/artists-racheli-reuven-portrait.jpg",
+"w": 810,
+"h": 810
+},
+"images/artists/raz-ronen/portrait.webp": {
+"jpg": "og/artists-raz-ronen-portrait.jpg",
+"w": 851,
+"h": 851
+},
+"images/artists/risa-oz/portrait.webp": {
+"jpg": "og/artists-risa-oz-portrait.jpg",
+"w": 842,
+"h": 1072
+},
+"images/artists/sami-david/portrait.webp": {
+"jpg": "og/artists-sami-david-portrait.jpg",
+"w": 675,
+"h": 1200
+},
+"images/artists/tal-nehoray/portrait-v2.webp": {
+"jpg": "og/artists-tal-nehoray-portrait-v2.jpg",
+"w": 690,
+"h": 690
+},
+"images/artists/talia-zoref/portrait.webp": {
+"jpg": "og/artists-talia-zoref-portrait.jpg",
+"w": 802,
+"h": 1080
+},
+"images/artists/tanya-shin/portrait-v2.webp": {
+"jpg": "og/artists-tanya-shin-portrait-v2.jpg",
+"w": 675,
+"h": 1200
+},
+"images/artists/yarden-amir/portrait-v2.webp": {
+"jpg": "og/artists-yarden-amir-portrait-v2.jpg",
+"w": 1048,
+"h": 1048
+},
+"images/artists/zohar-ron-dan-ben-ari/hero-left.webp": {
+"jpg": "og/artists-zohar-ron-dan-ben-ari-hero-left.jpg",
+"w": 1200,
+"h": 985
+},
+"images/artists/zohar-ron/portrait-v3.webp": {
+"jpg": "og/artists-zohar-ron-portrait-v3.jpg",
+"w": 1000,
+"h": 1000
+},
+"images/artists/zohar-shtrit/portrait.webp": {
+"jpg": "og/artists-zohar-shtrit-portrait.jpg",
+"w": 690,
+"h": 1044
+},
+"images/curators/korin-avraham/portrait.webp": {
+"jpg": "og/curators-korin-avraham-portrait.jpg",
+"w": 904,
+"h": 1200
+},
+"images/events/close-look/hero.webp": {
+"jpg": "og/events-close-look-hero.jpg",
+"w": 900,
+"h": 1200
+},
+"images/events/event-how-many-2026-05-26-cover.webp": {
+"jpg": "og/events-event-how-many-2026-05-26-cover.jpg",
+"w": 896,
+"h": 1200
+},
+"images/events/ktuba/hero.webp": {
+"jpg": "og/events-ktuba-hero.jpg",
+"w": 900,
+"h": 1200
+},
+"images/events/loneliness/hero.webp": {
+"jpg": "og/events-loneliness-hero.jpg",
+"w": 735,
+"h": 1200
+},
+"images/exhibitions/how-many/hero.webp": {
+"jpg": "og/exhibitions-how-many-hero.jpg",
+"w": 801,
+"h": 1200
+},
+"images/exhibitions/loneliness/hero.webp": {
+"jpg": "og/exhibitions-loneliness-hero.jpg",
+"w": 690,
+"h": 1044
+},
+"images/homepage/hero-landscape.webp": {
+"jpg": "og/homepage-hero-landscape.jpg",
+"w": 1200,
+"h": 995
+},
+"images/opencalls/how-many/hero.webp": {
+"jpg": "og/opencalls-how-many-hero.jpg",
+"w": 960,
+"h": 1200
+},
+"images/opencalls/the-peeler/hero.webp": {
+"jpg": "og/opencalls-the-peeler-hero.jpg",
+"w": 961,
+"h": 1200
+},
+"images/press/press-1/00-home-card.webp": {
+"jpg": "og/press-press-1-00-home-card.jpg",
+"w": 171,
+"h": 108
+},
+"images/press/the-sixth-scent/home-card.webp": {
+"jpg": "og/press-the-sixth-scent-home-card.jpg",
+"w": 1079,
+"h": 599
+},
+"images/press/time-out/home-card-2026-05-27.webp": {
+"jpg": "og/press-time-out-home-card-2026-05-27.jpg",
+"w": 963,
+"h": 1200
+},
+"images/press/walla-cover.webp": {
+"jpg": "og/press-walla-cover.jpg",
+"w": 462,
+"h": 626
+},
+"images/works/v2/adi-duak-1.webp": {
+"jpg": "og/works-v2-adi-duak-1.jpg",
+"w": 793,
+"h": 1200
+},
+"images/works/v2/adi-duak-2.webp": {
+"jpg": "og/works-v2-adi-duak-2.jpg",
+"w": 793,
+"h": 1200
+},
+"images/works/v2/adi-duak-3.webp": {
+"jpg": "og/works-v2-adi-duak-3.jpg",
+"w": 793,
+"h": 1200
+},
+"images/works/v2/adi-duak-4.webp": {
+"jpg": "og/works-v2-adi-duak-4.jpg",
+"w": 793,
+"h": 1200
+},
+"images/works/v2/alon-1.webp": {
+"jpg": "og/works-v2-alon-1.jpg",
+"w": 900,
+"h": 1200
+},
+"images/works/v2/alon-2.webp": {
+"jpg": "og/works-v2-alon-2.jpg",
+"w": 1074,
+"h": 1200
+},
+"images/works/v2/anat-wegier-1.webp": {
+"jpg": "og/works-v2-anat-wegier-1.jpg",
+"w": 848,
+"h": 1200
+},
+"images/works/v2/anat-wegier-2.webp": {
+"jpg": "og/works-v2-anat-wegier-2.jpg",
+"w": 848,
+"h": 1200
+},
+"images/works/v2/anat-wegier-3.webp": {
+"jpg": "og/works-v2-anat-wegier-3.jpg",
+"w": 848,
+"h": 1200
+},
+"images/works/v2/anat-wegier-4.webp": {
+"jpg": "og/works-v2-anat-wegier-4.jpg",
+"w": 995,
+"h": 1200
+},
+"images/works/v2/baruch-torgeman-1.webp": {
+"jpg": "og/works-v2-baruch-torgeman-1.jpg",
+"w": 839,
+"h": 669
+},
+"images/works/v2/chen-ziv-1.webp": {
+"jpg": "og/works-v2-chen-ziv-1.jpg",
+"w": 800,
+"h": 1200
+},
+"images/works/v2/costa-magarakis-1.webp": {
+"jpg": "og/works-v2-costa-magarakis-1.jpg",
+"w": 499,
+"h": 1012
+},
+"images/works/v2/eitan-goldson-1.webp": {
+"jpg": "og/works-v2-eitan-goldson-1.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/eitan-goldson-2.webp": {
+"jpg": "og/works-v2-eitan-goldson-2.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/elsa-ars-brush-1.webp": {
+"jpg": "og/works-v2-elsa-ars-brush-1.jpg",
+"w": 899,
+"h": 1200
+},
+"images/works/v2/elsa-ars-brush-2.webp": {
+"jpg": "og/works-v2-elsa-ars-brush-2.jpg",
+"w": 1080,
+"h": 652
+},
+"images/works/v2/elsa-ars-brush-3.webp": {
+"jpg": "og/works-v2-elsa-ars-brush-3.jpg",
+"w": 796,
+"h": 1200
+},
+"images/works/v2/elsa-ars-brush-4.webp": {
+"jpg": "og/works-v2-elsa-ars-brush-4.jpg",
+"w": 883,
+"h": 1200
+},
+"images/works/v2/elsa-ars-brush-5.webp": {
+"jpg": "og/works-v2-elsa-ars-brush-5.jpg",
+"w": 806,
+"h": 1200
+},
+"images/works/v2/gal-polk-1.webp": {
+"jpg": "og/works-v2-gal-polk-1.jpg",
+"w": 1080,
+"h": 992
+},
+"images/works/v2/gal-polk-2.webp": {
+"jpg": "og/works-v2-gal-polk-2.jpg",
+"w": 900,
+"h": 1200
+},
+"images/works/v2/gal-polk-3.webp": {
+"jpg": "og/works-v2-gal-polk-3.jpg",
+"w": 1080,
+"h": 1080
+},
+"images/works/v2/gal-polk-4.webp": {
+"jpg": "og/works-v2-gal-polk-4.jpg",
+"w": 800,
+"h": 1200
+},
+"images/works/v2/gal-polk-5.webp": {
+"jpg": "og/works-v2-gal-polk-5.jpg",
+"w": 1080,
+"h": 720
+},
+"images/works/v2/gal-polk-6.webp": {
+"jpg": "og/works-v2-gal-polk-6.jpg",
+"w": 900,
+"h": 1200
+},
+"images/works/v2/gal-polk-8.webp": {
+"jpg": "og/works-v2-gal-polk-8.jpg",
+"w": 834,
+"h": 1200
+},
+"images/works/v2/gal-rotem-1.webp": {
+"jpg": "og/works-v2-gal-rotem-1.jpg",
+"w": 1080,
+"h": 1079
+},
+"images/works/v2/gilad-kenan-1.webp": {
+"jpg": "og/works-v2-gilad-kenan-1.jpg",
+"w": 800,
+"h": 1200
+},
+"images/works/v2/hila-loterstein-1.webp": {
+"jpg": "og/works-v2-hila-loterstein-1.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/hila-loterstein-2.webp": {
+"jpg": "og/works-v2-hila-loterstein-2.jpg",
+"w": 900,
+"h": 874
+},
+"images/works/v2/hila-loterstein-3.webp": {
+"jpg": "og/works-v2-hila-loterstein-3.jpg",
+"w": 720,
+"h": 743
+},
+"images/works/v2/holy-kadosh-1.webp": {
+"jpg": "og/works-v2-holy-kadosh-1.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/holy-kadosh-2.webp": {
+"jpg": "og/works-v2-holy-kadosh-2.jpg",
+"w": 793,
+"h": 1200
+},
+"images/works/v2/holy-kadosh-3.webp": {
+"jpg": "og/works-v2-holy-kadosh-3.jpg",
+"w": 918,
+"h": 1034
+},
+"images/works/v2/jessica-tabarovsky-1.webp": {
+"jpg": "og/works-v2-jessica-tabarovsky-1.jpg",
+"w": 896,
+"h": 1200
+},
+"images/works/v2/la-raz-porta-1.webp": {
+"jpg": "og/works-v2-la-raz-porta-1.jpg",
+"w": 793,
+"h": 1200
+},
+"images/works/v2/la-raz-porta-2.webp": {
+"jpg": "og/works-v2-la-raz-porta-2.jpg",
+"w": 918,
+"h": 1166
+},
+"images/works/v2/la-raz-porta-3.webp": {
+"jpg": "og/works-v2-la-raz-porta-3.jpg",
+"w": 793,
+"h": 1200
+},
+"images/works/v2/lahav-barak-1.webp": {
+"jpg": "og/works-v2-lahav-barak-1.jpg",
+"w": 768,
+"h": 704
+},
+"images/works/v2/lahav-barak-2.webp": {
+"jpg": "og/works-v2-lahav-barak-2.jpg",
+"w": 790,
+"h": 773
+},
+"images/works/v2/lahav-barak-3.webp": {
+"jpg": "og/works-v2-lahav-barak-3.jpg",
+"w": 1055,
+"h": 1008
+},
+"images/works/v2/lahav-barak-4.webp": {
+"jpg": "og/works-v2-lahav-barak-4.jpg",
+"w": 1080,
+"h": 941
+},
+"images/works/v2/lahav-barak-5.webp": {
+"jpg": "og/works-v2-lahav-barak-5.jpg",
+"w": 1080,
+"h": 1044
+},
+"images/works/v2/liel-salman-1.webp": {
+"jpg": "og/works-v2-liel-salman-1.jpg",
+"w": 675,
+"h": 1200
+},
+"images/works/v2/livay-levi-1.webp": {
+"jpg": "og/works-v2-livay-levi-1.jpg",
+"w": 1080,
+"h": 864
+},
+"images/works/v2/livay-levi-2.webp": {
+"jpg": "og/works-v2-livay-levi-2.jpg",
+"w": 918,
+"h": 1200
+},
+"images/works/v2/maya-nachum-levy-1.webp": {
+"jpg": "og/works-v2-maya-nachum-levy-1.jpg",
+"w": 758,
+"h": 980
+},
+"images/works/v2/maya-nachum-levy-2.webp": {
+"jpg": "og/works-v2-maya-nachum-levy-2.jpg",
+"w": 622,
+"h": 1200
+},
+"images/works/v2/natasha-zeriker-1.webp": {
+"jpg": "og/works-v2-natasha-zeriker-1.jpg",
+"w": 842,
+"h": 1200
+},
+"images/works/v2/nir-giorgio-levin-1.webp": {
+"jpg": "og/works-v2-nir-giorgio-levin-1.jpg",
+"w": 956,
+"h": 1200
+},
+"images/works/v2/nir-giorgio-levin-2.webp": {
+"jpg": "og/works-v2-nir-giorgio-levin-2.jpg",
+"w": 1001,
+"h": 1200
+},
+"images/works/v2/nir-giorgio-levin-3.webp": {
+"jpg": "og/works-v2-nir-giorgio-levin-3.jpg",
+"w": 961,
+"h": 1200
+},
+"images/works/v2/nir-giorgio-levin-4.webp": {
+"jpg": "og/works-v2-nir-giorgio-levin-4.jpg",
+"w": 1080,
+"h": 1079
+},
+"images/works/v2/nir-giorgio-levin-5.webp": {
+"jpg": "og/works-v2-nir-giorgio-levin-5.jpg",
+"w": 956,
+"h": 1200
+},
+"images/works/v2/nir-giorgio-levin-6.webp": {
+"jpg": "og/works-v2-nir-giorgio-levin-6.jpg",
+"w": 961,
+"h": 1200
+},
+"images/works/v2/nir-giorgio-levin-7.webp": {
+"jpg": "og/works-v2-nir-giorgio-levin-7.jpg",
+"w": 961,
+"h": 1200
+},
+"images/works/v2/nir-giorgio-levin-8.webp": {
+"jpg": "og/works-v2-nir-giorgio-levin-8.jpg",
+"w": 960,
+"h": 1200
+},
+"images/works/v2/nir-giorgio-levin-9.webp": {
+"jpg": "og/works-v2-nir-giorgio-levin-9.jpg",
+"w": 956,
+"h": 1200
+},
+"images/works/v2/noemi-safir-1.webp": {
+"jpg": "og/works-v2-noemi-safir-1.jpg",
+"w": 960,
+"h": 1200
+},
+"images/works/v2/noemi-safir-10.webp": {
+"jpg": "og/works-v2-noemi-safir-10.jpg",
+"w": 974,
+"h": 1200
+},
+"images/works/v2/noemi-safir-2.webp": {
+"jpg": "og/works-v2-noemi-safir-2.jpg",
+"w": 1080,
+"h": 900
+},
+"images/works/v2/noemi-safir-3.webp": {
+"jpg": "og/works-v2-noemi-safir-3.jpg",
+"w": 960,
+"h": 1200
+},
+"images/works/v2/noemi-safir-4.webp": {
+"jpg": "og/works-v2-noemi-safir-4.jpg",
+"w": 1033,
+"h": 1200
+},
+"images/works/v2/noemi-safir-5.webp": {
+"jpg": "og/works-v2-noemi-safir-5.jpg",
+"w": 998,
+"h": 1200
+},
+"images/works/v2/noemi-safir-6.webp": {
+"jpg": "og/works-v2-noemi-safir-6.jpg",
+"w": 1047,
+"h": 1200
+},
+"images/works/v2/noemi-safir-7.webp": {
+"jpg": "og/works-v2-noemi-safir-7.jpg",
+"w": 1026,
+"h": 1200
+},
+"images/works/v2/noemi-safir-8.webp": {
+"jpg": "og/works-v2-noemi-safir-8.jpg",
+"w": 1031,
+"h": 1200
+},
+"images/works/v2/noemi-safir-9.webp": {
+"jpg": "og/works-v2-noemi-safir-9.jpg",
+"w": 1034,
+"h": 1200
+},
+"images/works/v2/racheli-reuven-1.webp": {
+"jpg": "og/works-v2-racheli-reuven-1.jpg",
+"w": 919,
+"h": 1200
+},
+"images/works/v2/raz-ronen-1.webp": {
+"jpg": "og/works-v2-raz-ronen-1.jpg",
+"w": 900,
+"h": 1200
+},
+"images/works/v2/raz-ronen-2.webp": {
+"jpg": "og/works-v2-raz-ronen-2.jpg",
+"w": 1061,
+"h": 1200
+},
+"images/works/v2/raz-ronen-3.webp": {
+"jpg": "og/works-v2-raz-ronen-3.jpg",
+"w": 675,
+"h": 1200
+},
+"images/works/v2/raz-ronen-4.webp": {
+"jpg": "og/works-v2-raz-ronen-4.jpg",
+"w": 900,
+"h": 1200
+},
+"images/works/v2/risa-oz-1.webp": {
+"jpg": "og/works-v2-risa-oz-1.jpg",
+"w": 666,
+"h": 885
+},
+"images/works/v2/sami-david-1.webp": {
+"jpg": "og/works-v2-sami-david-1.jpg",
+"w": 1080,
+"h": 1079
+},
+"images/works/v2/sami-david-2.webp": {
+"jpg": "og/works-v2-sami-david-2.jpg",
+"w": 1080,
+"h": 1079
+},
+"images/works/v2/sami-david-3.webp": {
+"jpg": "og/works-v2-sami-david-3.jpg",
+"w": 1080,
+"h": 1079
+},
+"images/works/v2/sami-david-4.webp": {
+"jpg": "og/works-v2-sami-david-4.jpg",
+"w": 800,
+"h": 1200
+},
+"images/works/v2/tal-nehoray-1.webp": {
+"jpg": "og/works-v2-tal-nehoray-1.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/tal-nehoray-2.webp": {
+"jpg": "og/works-v2-tal-nehoray-2.jpg",
+"w": 1080,
+"h": 1080
+},
+"images/works/v2/tal-nehoray-3.webp": {
+"jpg": "og/works-v2-tal-nehoray-3.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/tal-nehoray-4.webp": {
+"jpg": "og/works-v2-tal-nehoray-4.jpg",
+"w": 1080,
+"h": 1080
+},
+"images/works/v2/tal-nehoray-5.webp": {
+"jpg": "og/works-v2-tal-nehoray-5.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/tal-nehoray-7.webp": {
+"jpg": "og/works-v2-tal-nehoray-7.jpg",
+"w": 1080,
+"h": 1156
+},
+"images/works/v2/talia-zoref-1.webp": {
+"jpg": "og/works-v2-talia-zoref-1.jpg",
+"w": 1080,
+"h": 864
+},
+"images/works/v2/tanya-shin-1.webp": {
+"jpg": "og/works-v2-tanya-shin-1.jpg",
+"w": 800,
+"h": 616
+},
+"images/works/v2/tanya-shin-2.webp": {
+"jpg": "og/works-v2-tanya-shin-2.jpg",
+"w": 601,
+"h": 601
+},
+"images/works/v2/tanya-shin-3.webp": {
+"jpg": "og/works-v2-tanya-shin-3.jpg",
+"w": 1080,
+"h": 1080
+},
+"images/works/v2/tanya-shin-4.webp": {
+"jpg": "og/works-v2-tanya-shin-4.jpg",
+"w": 1080,
+"h": 1080
+},
+"images/works/v2/tanya-shin-5.webp": {
+"jpg": "og/works-v2-tanya-shin-5.jpg",
+"w": 673,
+"h": 1200
+},
+"images/works/v2/tanya-shin-6.webp": {
+"jpg": "og/works-v2-tanya-shin-6.jpg",
+"w": 1024,
+"h": 1024
+},
+"images/works/v2/tanya-shin-7.webp": {
+"jpg": "og/works-v2-tanya-shin-7.jpg",
+"w": 1080,
+"h": 1080
+},
+"images/works/v2/tanya-shin-8.webp": {
+"jpg": "og/works-v2-tanya-shin-8.jpg",
+"w": 986,
+"h": 1200
+},
+"images/works/v2/tanya-shin-9.webp": {
+"jpg": "og/works-v2-tanya-shin-9.jpg",
+"w": 1013,
+"h": 1200
+},
+"images/works/v2/yarden-amir-1.webp": {
+"jpg": "og/works-v2-yarden-amir-1.jpg",
+"w": 1080,
+"h": 360
+},
+"images/works/v2/yarden-amir-2.webp": {
+"jpg": "og/works-v2-yarden-amir-2.jpg",
+"w": 900,
+"h": 1200
+},
+"images/works/v2/yarden-amir-3.webp": {
+"jpg": "og/works-v2-yarden-amir-3.jpg",
+"w": 1080,
+"h": 692
+},
+"images/works/v2/yarden-amir-4.webp": {
+"jpg": "og/works-v2-yarden-amir-4.jpg",
+"w": 900,
+"h": 1200
+},
+"images/works/v2/yarden-amir-5.webp": {
+"jpg": "og/works-v2-yarden-amir-5.jpg",
+"w": 962,
+"h": 1200
+},
+"images/works/v2/yarden-amir-6.webp": {
+"jpg": "og/works-v2-yarden-amir-6.jpg",
+"w": 992,
+"h": 1200
+},
+"images/works/v2/zohar-ron-1.webp": {
+"jpg": "og/works-v2-zohar-ron-1.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/zohar-ron-2.webp": {
+"jpg": "og/works-v2-zohar-ron-2.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/zohar-ron-3.webp": {
+"jpg": "og/works-v2-zohar-ron-3.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/zohar-ron-4.webp": {
+"jpg": "og/works-v2-zohar-ron-4.jpg",
+"w": 690,
+"h": 1044
+},
+"images/works/v2/zohar-ron-5.webp": {
+"jpg": "og/works-v2-zohar-ron-5.jpg",
+"w": 808,
+"h": 1200
+},
+"images/works/v2/zohar-ron-6.webp": {
+"jpg": "og/works-v2-zohar-ron-6.jpg",
+"w": 1080,
+"h": 1041
+},
+"images/works/v2/zohar-ron-7.webp": {
+"jpg": "og/works-v2-zohar-ron-7.jpg",
+"w": 1080,
+"h": 1159
+},
+"images/works/v2/zohar-ron-8.webp": {
+"jpg": "og/works-v2-zohar-ron-8.jpg",
+"w": 1080,
+"h": 608
+},
+"images/works/v2/zohar-ron-dan-ben-ari-1-v2.webp": {
+"jpg": "og/works-v2-zohar-ron-dan-ben-ari-1-v2.jpg",
+"w": 1080,
+"h": 720
+},
+"images/works/v2/zohar-shtrit-1.webp": {
+"jpg": "og/works-v2-zohar-shtrit-1.jpg",
+"w": 690,
+"h": 1044
+}
+}

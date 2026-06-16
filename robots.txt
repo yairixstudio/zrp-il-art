@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /trash/
+
+Sitemap: https://art.zrp.co.il/sitemap.xml

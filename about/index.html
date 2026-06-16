@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ארז זילינסקי–רוזן — אמן, מייסד ומנהל גלריות זילינסקי & רוזן, שלוש גלריות אמנות בתל אביב.">
+<meta name="description" content="ארז זילינסקי–רוזן, אמן ומייסד גלריות זילינסקי &amp; רוזן בתל אביב — שלוש גלריות אמנות ללא מטרות רווח התומכות באמנים צעירים.">
 <title>About — Zielinski & Rozen Art Galleries</title>
 <link rel="preload" href="../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="../פונטים/CopperplateCC-Bold.otf" as="font" type="font/otf" crossorigin>
@@ -123,6 +123,28 @@ body{text-transform:uppercase}
 .about-close .img-col .img-frame{width:492px;height:744px;overflow:hidden}
 .about-close .img-col img{width:100%;height:100%;object-fit:cover;object-position:center}
 
+/* SECTION 7/8 — Exhibitions curator (korin avraham) + Gallery manager (natalie zigel)
+   Figma 768:2 / 742:37 (korin) · 768:32 / 769:14 (natalie) */
+.about-person{padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
+.about-person .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
+.about-person .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
+.about-person .img-col .img-frame{position:relative;width:492px;height:744px;overflow:hidden;background:#f3f1ee}
+.about-person .img-col img{width:100%;height:100%;object-fit:cover;object-position:center}
+.about-person .text-col{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:32px;padding:0 16px}
+.about-person .p-id{display:flex;flex-direction:column;align-items:center;gap:20px}
+.about-person .p-name{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1}
+.about-person .p-name .first{font-family:var(--cop);font-weight:700;font-size:80px}
+.about-person .p-name .last{font-family:var(--cop);font-weight:300;font-size:80px}
+.about-person .p-handle{font-family:var(--cop);font-weight:300;font-size:28px;line-height:1.1;padding:0 8px;text-align:center;color:var(--ink)}
+.about-person a.p-handle{transition:opacity .2s}
+.about-person a.p-handle:hover{opacity:.6}
+.about-person .p-roles{display:flex;gap:19px;align-items:stretch}
+.about-person--manager .p-roles{justify-content:center}
+.about-person .p-role{display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 16px;border:1px solid var(--ink);font-family:var(--cop);font-weight:300;font-size:13px;line-height:1.15;color:var(--ink)}
+.about-person .p-role.fill{flex:1 1 0}
+.about-person .p-bio{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.55;text-align:center;direction:rtl;color:var(--ink)}
+.about-person .p-bio .lat{font-family:var(--cop);font-weight:300}
+
 /* ===== FOOTER styles in ../components/site-chrome.css ===== */
 
 /* ============================================================
@@ -144,6 +166,9 @@ body{text-transform:uppercase}
   .about-tri{padding:48px var(--pad-x)}
   .about-close .stamp{font-size:48px}
   .about-quote-grey{padding:48px var(--pad-x)}
+  .about-person .img-col{flex-basis:380px;width:380px}
+  .about-person .img-col .img-frame{width:380px;height:560px}
+  .about-person .p-name .first,.about-person .p-name .last{font-size:60px}
 }
 
 /* ============================================================
@@ -185,21 +210,30 @@ body{text-transform:uppercase}
   .about-bio .img-col img{width:216px;height:378px;object-fit:cover}
 
   /* Section D — gray quote band */
-  .about-quote-grey{padding:24px 16px;background:var(--white)}
+  .about-quote-grey{padding:24px 16px;background:var(--white);order:4}
   .about-quote-grey .row{flex-direction:row;gap:16px;align-items:stretch;justify-content:flex-end}
   .about-quote-grey .qtext{font-size:16px;line-height:1.34;max-width:none;flex:1}
   .about-quote-grey .qspacer{width:1px;flex-shrink:0}
 
+  /* Mobile page order: …quote-grey → close image → en image → en quote */
+  .about-hero{order:1}
+  .about-tri{order:2}
+  .about-bio{order:3}
+  .about-close{order:5}
+  .about-en{order:6}
+  .about-person--curator{order:7}
+  .about-person--manager{order:8}
+
   /* Section E — closing big stretched image */
-  .about-close{padding:0 16px 32px;order:initial}
+  .about-close{padding:24px 16px 0}
   .about-close .row{flex-direction:column;gap:16px}
   .about-close .text-col{order:2;padding:8px 0;display:none}
   .about-close .stamp{font-size:32px}
   .about-close .img-col{order:1;width:100%;flex:0 0 auto}
   .about-close .img-col .img-frame{width:100%;height:566px}
 
-  /* Section F — Erez portrait + English quote (mobile order: image, then quote) */
-  .about-en{padding:48px 16px}
+  /* Section F — Erez portrait + English quote (image, then quote) */
+  .about-en{padding:16px 16px 32px}
   .about-en .row{flex-direction:column;gap:16px}
   .about-en .img-col{order:1;flex:0 0 auto;width:100%}
   .about-en .img-col .img-frame{width:100%;height:447.44px}
@@ -207,6 +241,21 @@ body{text-transform:uppercase}
   .about-en .qmark{font-size:32px}
   .about-en .qbody{font-size:13px;line-height:1.2}
 
+  /* Sections 7/8 — curator + manager (mobile: photo on top w/ gradient, centered name, role tags) */
+  .about-person{padding:24px 16px}
+  .about-person .row{flex-direction:column;gap:16px}
+  .about-person .img-col{flex:0 0 auto;width:100%;justify-content:flex-start;order:1}
+  .about-person .img-col .img-frame{width:100%;height:auto;aspect-ratio:358/448}
+  .about-person .img-col .img-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(27,27,27,0) 55%);pointer-events:none}
+  .about-person .text-col{order:2;padding:0;gap:24px;justify-content:flex-start}
+  .about-person .p-id{gap:8px}
+  .about-person .p-name .first,.about-person .p-name .last{font-size:30px}
+  .about-person .p-handle{font-size:16px;padding:0}
+  .about-person .p-roles{flex-direction:column;gap:19px;align-items:stretch}
+  .about-person .p-role{align-self:stretch}
+  .about-person--manager .p-roles{flex-direction:row;justify-content:center}
+  .about-person--manager .p-role{align-self:auto}
+  .about-person .p-bio{font-size:16px;line-height:1.5;text-align:right}
 }
 
 @media (max-width:400px){
@@ -217,6 +266,30 @@ body{text-transform:uppercase}
   .about-close .stamp{font-size:26px}
 }
 </style>
+<!-- SEO:auto:start -->
+<link rel="canonical" href="https://art.zrp.co.il/about/">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:site_name" content="ZIELINSKI &amp; ROZEN">
+<meta property="og:locale" content="he_IL">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About — Zielinski &amp; Rozen Art Galleries">
+<meta property="og:description" content="ארז זילינסקי–רוזן, אמן ומייסד גלריות זילינסקי &amp; רוזן בתל אביב — שלוש גלריות אמנות ללא מטרות רווח התומכות באמנים צעירים.">
+<meta property="og:url" content="https://art.zrp.co.il/about/">
+<meta property="og:image" content="https://art.zrp.co.il/og/homepage-hero-landscape.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="995">
+<meta property="og:image:alt" content="About — Zielinski &amp; Rozen Art Galleries">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About — Zielinski &amp; Rozen Art Galleries">
+<meta name="twitter:description" content="ארז זילינסקי–רוזן, אמן ומייסד גלריות זילינסקי &amp; רוזן בתל אביב — שלוש גלריות אמנות ללא מטרות רווח התומכות באמנים צעירים.">
+<meta name="twitter:image" content="https://art.zrp.co.il/og/homepage-hero-landscape.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"AboutPage","@id":"https://art.zrp.co.il/about/#webpage","url":"https://art.zrp.co.il/about/","name":"About — Zielinski & Rozen Art Galleries","isPartOf":{"@id":"https://art.zrp.co.il/#website"},"about":{"@id":"https://art.zrp.co.il/#org"},"mainEntity":{"@type":"Person","name":"Erez Zielinski-Rozen","jobTitle":"Founder & Artist","worksFor":{"@id":"https://art.zrp.co.il/#org"}}}]}</script>
+<!-- SEO:auto:end -->
 </head>
 <body>
 
@@ -360,7 +433,51 @@ body{text-transform:uppercase}
     </div>
   </section>
 
+
+  <!-- SECTION 7 — Exhibitions curator (korin avraham). Figma 768:2 desktop / 742:37 mobile -->
+  <section class="about-person about-person--curator" aria-label="korin avraham — exhibitions curator">
+    <div class="row">
+      <div class="img-col">
+        <div class="img-frame">
+          <img src="../images/about/people/korin-avraham.webp" srcset="../images/about/people/korin-avraham-480w.webp 480w, ../images/about/people/korin-avraham.webp 984w" sizes="(max-width:768px) 100vw, 492px" width="984" height="1304" alt="korin avraham" decoding="async" loading="lazy">
+        </div>
+      </div>
+      <div class="text-col">
+        <div class="p-id">
+          <div class="p-name"><span class="first">korin</span><span class="last">avraham</span></div>
+          <a class="p-handle" href="https://www.instagram.com/yasalamfashionblog/" target="_blank" rel="noopener">@yasalamfashionblog</a>
+        </div>
+        <div class="p-roles">
+          <span class="p-role">exhibitions curator</span>
+          <span class="p-role fill">international art department manager</span>
+        </div>
+        <p class="p-bio" dir="rtl">קורין אברהם, 45, תל-אביב יפו, היא יוצרת, אוצרת ויזמית תוכן הפועלת בצומת שבין אופנה, תרבות, אמנות ורגש. היא מייסדת פלטפורמת הלייף-סטייל והקריאייטיב <span class="lat">"YA SALAM",</span> ונמנית עם יוצרות התוכן בישראל ובעולם שפועלות בשפה חזותית מבוססת נרטיב.<br><br>בשנים האחרונות פועלת אברהם כמשפיענית לייף סטייל בינלאומית וכמפיקה קריאטיבית, ומשלבת בין עשייה דיגיטלית לעשייה תרבותית.<br>היא שימשה כשגרירת המדיה הרשמית הראשונה של עיריית תל-אביב-יפו, ויצרה שיתופי פעולה עם מותגי יוקרה בינלאומיים.<br><br>בהכשרתה היא עורכת דין ובהדרגה פנתה לעשייה יצירתית הנשענת על צילום. עבודתה מאופיינת בדיוק אסתטי וביכולת לבנות סיפור דרך דימוי שמקבל חיים בהפקות ופרויקטים שמתקיימים בין ערים ותרבויות שונות, תוך חיבור בין מקומי לגלובלי.<br><br>אברהם עוסקת ביצירה כדרך לפגוש את עצמה. העבודה שלה מתקיימת בתוך העולם גם כשהוא רועש, צפוף ורווי תפקידים. עשייתה מצביעה על ידע קיים - ידע שאינו נלמד, אלא נזכר.<br><br>היא אינה מחפשת תנאים של ניתוק או התבודדות, אלא תשומת לב שמתקיימת בתוך החיים עצמם. מכלול העבודות בתערוכה מהוות עבור אברהם סקלה של בדידות, לפעמים כמקום של נחמה והסחת דעת, לפעמים כעמידה חשופה, לפעמים כהתמודדות.<br><br>החיבור שלה אליהן נובע מהבחירה להישאר בתוך התנועה הזו, גם כשלא ברור מה מחכה בצומת הבא. זה אינו סיפור סגור, אלא תהליך חי שמבקש אומץ, הקשבה והסכמה, כאשר הבהירות נוצרת מתוך נוכחות מתמשכת, ולאו דווקא מתוך היעלמות מהעולם.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8 — Gallery manager (natalie zigel). Figma 768:32 desktop / 769:14 mobile -->
+  <section class="about-person about-person--manager" aria-label="natalie zigel — the gallery manager">
+    <div class="row">
+      <div class="text-col">
+        <div class="p-id">
+          <div class="p-name"><span class="first">natalie</span><span class="last">zigel</span></div>
+          <a class="p-handle" href="mailto:Nataliesiegel8@gmail.com">Nataliesiegel8@gmail.com</a>
+        </div>
+        <div class="p-roles">
+          <span class="p-role">the gallery manager</span>
+        </div>
+      </div>
+      <div class="img-col">
+        <div class="img-frame">
+          <img src="../images/about/people/natalie-zigel.webp" srcset="../images/about/people/natalie-zigel-480w.webp 480w, ../images/about/people/natalie-zigel.webp 984w" sizes="(max-width:768px) 100vw, 492px" width="984" height="1099" alt="natalie zigel" decoding="async" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
+
 
 <!-- FOOTER -->
 <site-footer></site-footer>

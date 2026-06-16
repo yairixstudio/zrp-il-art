@@ -279,7 +279,7 @@ body{text-transform:uppercase}
     if(parts.length<2) return esc(s);
     return esc(parts[0])+'\n'+esc(parts.slice(1).join(' '));
   }
-  function wrapDimRuns(t){return t.replace(/\d+(?:[.,]\d+)?\s*[xX×]\s*\d+(?:[.,]\d+)?/g,function(m){return '<span class="dim">'+m+'</span>';});}
+  function wrapDimRuns(t){return t.replace(/\d+(?:[.,]\d+)?(?:\s*[xX×]\s*\d+(?:[.,]\d+)?)+/g,function(m){return '<span class="dim">'+m+'</span>';});}
   /* Wrap Latin WORDS (2+ letters) in <span class="det-en"> for Copperplate font.
      Numbers and single letters (like X in 40X40) stay in Hebrew font. */
   function detailsHtml(s){

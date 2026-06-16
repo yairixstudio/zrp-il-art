@@ -139,7 +139,7 @@ a.aw-ex-title:hover{opacity:.6}
     if(!s) return '';
     return esc(String(s).trim());
   }
-  function wrapDimRuns(t){return t.replace(/\d+(?:[.,]\d+)?\s*[xX×]\s*\d+(?:[.,]\d+)?/g,function(m){return '<span class="dim">'+m+'</span>';});}
+  function wrapDimRuns(t){return t.replace(/\d+(?:[.,]\d+)?(?:\s*[xX×]\s*\d+(?:[.,]\d+)?)+/g,function(m){return '<span class="dim">'+m+'</span>';});}
   /* Wrap Latin words (2+ letters) so they render in Copperplate (CLAUDE.md §9). */
   function detailsHtml(s){
     if(!s) return '';

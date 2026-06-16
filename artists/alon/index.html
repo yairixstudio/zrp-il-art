@@ -312,7 +312,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
       return safePart.replace(LATIN_RUN,function(match){
         return '<span class="lat">'+match+'</span>';
       }).replace(/\x00(\d+)\x00/g,function(_,idx){return entities[Number(idx)];})
-        .replace(/\d+(?:[.,]\d+)?\s*[xX×]\s*\d+(?:[.,]\d+)?/g,function(m){return '<span class="dim">'+m+'</span>';});
+        .replace(/\d+(?:[.,]\d+)?(?:\s*[xX×]\s*\d+(?:[.,]\d+)?)+/g,function(m){return '<span class="dim">'+m+'</span>';});
     }).join("");
   }
   /* JSON text can be Hebrew, English, or mixed. Preserve approved inline spans,

@@ -103,6 +103,11 @@ body.alb-lock{
   font-family:"FbEzmel","Arial Hebrew","David Libre",serif;
   font-weight:400;letter-spacing:.04em;direction:rtl;
 }
+/* Page-navigation CTA: a small, centered button — not the full image width. */
+.alb-cta.is-page{
+  width:auto;align-self:center;
+  padding:10px 22px;font-size:13px;letter-spacing:.06em;
+}
 
 /* chevrons — direct children of .alb (like .alb-close), never in flex row */
 .alb-nav{

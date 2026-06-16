@@ -357,16 +357,25 @@
     var label = srcEl.dataset.artworkLinkLabel || (work && work.link_label) || '';
     var artistForCta = (work && work.artist) || srcEl.dataset.artworkArtist || '';
     var skipCta = !!(href && String(artistForCta).trim());
+    // No explicit link CTA, but the artwork has its own page (data-artwork-page)?
+    // Offer a small "go to artwork page" button so the navigation is discoverable
+    // — clicking the bare image still works too. Reuses the CTA element + layout.
+    var isPageCta = false;
+    if ((!href || skipCta) && currentPageHref){
+      href = currentPageHref; label = 'לעמוד היצירה'; skipCta = false; isPageCta = true;
+    }
     if (href && !skipCta){
       if (!label) label = 'מעבר ליצירה';
       ctaEl.textContent = label;
       ctaEl.setAttribute('href', href);
       ctaEl.classList.toggle('is-hebrew', HEB_RE.test(label));
+      ctaEl.classList.toggle('is-page', isPageCta);
       root.classList.add('has-cta');
     } else {
       ctaEl.removeAttribute('href');
       ctaEl.textContent = '';
       ctaEl.classList.remove('is-hebrew');
+      ctaEl.classList.remove('is-page');
       root.classList.remove('has-cta');
     }
 

@@ -59,7 +59,7 @@
   if (!document.querySelector('link[data-site-chrome-css]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = abs('components/site-chrome.css?v=3');
+    link.href = abs('components/site-chrome.css?v=4');
     link.setAttribute('data-site-chrome-css', '');
     document.head.appendChild(link);
   }

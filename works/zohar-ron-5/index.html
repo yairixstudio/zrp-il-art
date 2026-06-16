@@ -8,7 +8,8 @@
 <link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="../../פונטים/FbEzmel-Light.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="../../components/site-boot.css">
-<meta name="description" content="דג 1 — זוהר רון. עבודה מתוך תערוכת הקולפן בגלריות Zielinski & Rozen.">
+<link rel="stylesheet" href="../../components/artwork-lightbox.css">
+<meta name="description" content="דג 1 — זוהר רון. יצירת אומנות בגלריות Zielinski &amp; Rozen.">
 <style>
 /* ===== LOCAL FONTS ===== */
 @font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.woff2") format("woff2"),url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
@@ -48,6 +49,7 @@ body{text-transform:uppercase}
 
 /* Media (left) */
 .aw-media{flex:1 1 0;min-width:0;display:flex;align-items:flex-start;justify-content:center;min-height:570px}
+.aw-media [data-artwork-src]{display:flex;width:100%;align-items:flex-start;justify-content:center;line-height:0;cursor:zoom-in}
 .aw-media picture{display:flex;width:100%;align-items:flex-start;justify-content:center;line-height:0}
 .aw-media img{max-width:100%;max-height:640px;width:auto;height:auto;object-fit:contain}
 
@@ -62,7 +64,7 @@ body{text-transform:uppercase}
 .aw-btn:hover svg{fill:var(--white)}
 .aw-btn--contact{font-family:var(--cop);font-weight:300;font-size:16px;text-transform:uppercase;letter-spacing:.02em;color:#000}
 .aw-btn--share{padding:8px 16px}
-.aw-btn--share svg{width:16px;height:16px;fill:var(--ink);display:block}
+.aw-btn--share svg{width:16px;height:16px;fill:var(--ink);display:block;transform:scaleX(-1)}
 
 /* Title block */
 .aw-titleblock{display:flex;flex-direction:column;align-items:stretch;gap:8px;width:312px;max-width:100%}
@@ -70,7 +72,7 @@ body{text-transform:uppercase}
 .aw-title{font-family:var(--heb);font-weight:400;font-size:28px;line-height:1.15;color:var(--ink);direction:rtl}
 .aw-artist{font-family:var(--heb);font-weight:400;font-size:16px;line-height:1.2;color:var(--ink);direction:rtl;transition:opacity .2s}
 .aw-artist:hover{opacity:.6}
-.aw-details{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.25;color:var(--grey-mid);direction:rtl;white-space:pre-line}
+.aw-details{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.25;color:var(--grey-mid);direction:rtl;white-space:pre-line;text-transform:none}
 .aw-details .det-en{font-family:var(--cop);font-weight:300;font-size:.85em;text-transform:uppercase;letter-spacing:.02em;direction:ltr;unicode-bidi:isolate}
 .aw-gallery{display:block;font-family:var(--cop);font-weight:400;font-size:12px;line-height:1.4;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);direction:ltr;white-space:pre-line;text-align:right;transition:opacity .2s}
 .aw-gallery:hover{opacity:.6}
@@ -120,7 +122,7 @@ a.aw-ex-title:hover{opacity:.6}
 </main>
 
 <script type="application/json" id="artwork-data">
-{"id":"zohar-ron-5","artist_slug":"zohar-ron","artist_he":"זוהר רון","artist_en":"zohar ron","title_he":"דג 1","title_en":null,"gallery_slug":"dizengoff","gallery_en":"Dizengoff Square Gallery","sold":false,"details_he":"250x150 ס\"מ\nצילום, הדפסה על נייר צילום איכותי, למינציה ומסגרת דיבונד.","img":"zohar-ron-5","w":1080,"h":1603,"widths":[480,768,1080],"exhibition_title_he":"הקולפן | כְּמִיהָה","exhibition_slug":"the-peeler","statement_he":["כוח משיכה קדום אל מה שמעבר לקיים, בין יופי לסכנה.","הדג נשלף מהים ומשתוקק חזרה למעמקיו, מונח על הגוף כישות זרה. קשקשים קרים נוגעים בעור החם, המפגש ביניהם יוצר מנעד בין משיכה לדחייה, בין עדינות לאלימות, תשוקה ואבדן, כל התחושות והרגשות מתקיימים יחד.","בצילומים הכמיהה מופנית אל החוויה של המפגש עם האחר.","הדג סמל לכוח קדום ובלתי ניתן לאילוף, יצור המגיע מממלכה זרה, נושא עמו את זכרון הים.","הגוף האנושי אינו מבקש לשלוט בו, הוא מבקש להתקרב, לגעת במה שלעולם ישאר בלתי מושג.","הקעקועים החרוטים בעור מהדהדים מבנים אורגניים, בין קשקשים לתאי כוורת, כנפיים ושרידים ביולוגיים, כאילו הגוף עצמו מבקש להתמזג עם עולם אחר.","בתוך המתח הזה נולד רצון לחצות את גבולות העצמי, להתאחד עם דבר מה זר, גם במחיר של אבדן, גם בידיעה שהאיחוד המלא לעולם לא יתרחש.","היצירה ממקדת מבט על אחד הכוחות העתיקים ביותר בנפש האנושית הכמיהה אל מה שנמצא מעבר להשג ידנו. אל מה שמסוכן, יפהפה, חמקמק וחולף. אל מה שאיננו יכולים להחזיק, אך איננו מסוגלים להפסיק לחשוק ולקרב."]}
+{"id":"zohar-ron-5","artist_slug":"zohar-ron","artist_he":"זוהר רון","artist_en":"zohar ron","title_he":"דג 1","title_en":null,"gallery_slug":"dizengoff","gallery_en":"Dizengoff Square Gallery","sold":false,"details_he":"250x150 ס\"מ\nצילום, הדפסה על נייר צילום איכותי, למינציה ומסגרת דיבונד.","img":"zohar-ron-5","w":1080,"h":1603,"widths":[480,768,1080],"artist_page_pos":2,"page":true,"exhibition_title_he":"הקולפן | כְּמִיהָה","exhibition_slug":"the-peeler","exhibition_route":"opencalls/the-peeler","statement_he":["כוח משיכה קדום אל מה שמעבר לקיים, בין יופי לסכנה.","הדג נשלף מהים ומשתוקק חזרה למעמקיו, מונח על הגוף כישות זרה. קשקשים קרים נוגעים בעור החם, המפגש ביניהם יוצר מנעד בין משיכה לדחייה, בין עדינות לאלימות, תשוקה ואבדן, כל התחושות והרגשות מתקיימים יחד.","בצילומים הכמיהה מופנית אל החוויה של המפגש עם האחר.","הדג סמל לכוח קדום ובלתי ניתן לאילוף, יצור המגיע מממלכה זרה, נושא עמו את זכרון הים.","הגוף האנושי אינו מבקש לשלוט בו, הוא מבקש להתקרב, לגעת במה שלעולם ישאר בלתי מושג.","הקעקועים החרוטים בעור מהדהדים מבנים אורגניים, בין קשקשים לתאי כוורת, כנפיים ושרידים ביולוגיים, כאילו הגוף עצמו מבקש להתמזג עם עולם אחר.","בתוך המתח הזה נולד רצון לחצות את גבולות העצמי, להתאחד עם דבר מה זר, גם במחיר של אבדן, גם בידיעה שהאיחוד המלא לעולם לא יתרחש.","היצירה ממקדת מבט על אחד הכוחות העתיקים ביותר בנפש האנושית הכמיהה אל מה שנמצא מעבר להשג ידנו. אל מה שמסוכן, יפהפה, חמקמק וחולף. אל מה שאיננו יכולים להחזיק, אך איננו מסוגלים להפסיק לחשוק ולקרב."]}
 </script>
 
 <script>
@@ -160,16 +162,24 @@ a.aw-ex-title:hover{opacity:.6}
 
   document.title = titleText(w) + ' · ' + artistName(w) + ' — Zielinski & Rozen';
 
-  /* --- Media --- */
-  var main = imgBase+w.img+'.webp';
-  var alt  = artistName(w) + (titleText(w) ? ' — '+titleText(w) : '');
-  document.getElementById('aw-media').innerHTML =
-    '<img src="'+main+'" srcset="'+srcset(w)+'" sizes="(max-width:768px) 100vw, 55vw" '+
-    'width="'+w.w+'" height="'+w.h+'" alt="'+esc(alt)+'" decoding="async" fetchpriority="high">';
-
-  /* --- Info --- */
   var artistHref  = '../../artists/'+w.artist_slug+'/';
   var galleryHref = '../../#galleries';
+
+  /* --- Media (click → shared artwork lightbox) --- */
+  var main = imgBase+w.img+'.webp';
+  var alt  = artistName(w) + (titleText(w) ? ' — '+titleText(w) : '');
+  var imgTag =
+    '<img src="'+main+'" srcset="'+srcset(w)+'" sizes="(max-width:768px) 100vw, 55vw" '+
+    'width="'+w.w+'" height="'+w.h+'" alt="'+esc(alt)+'" decoding="async" fetchpriority="high">';
+  document.getElementById('aw-media').setAttribute('data-artwork-gallery','');
+  document.getElementById('aw-media').innerHTML =
+    '<div class="aw-media-trigger" data-artwork-src="'+main+'" '+
+      'data-artwork-title="'+esc(titleText(w))+'" '+
+      'data-artwork-artist="'+esc(artistName(w))+'" '+
+      'data-artwork-link="'+artistHref+'" '+
+      'aria-label="פתיחת תמונה במסך מלא">'+imgTag+'</div>';
+
+  /* --- Info --- */
 
   /* Contact button → pre-filled email to the exhibition curator.
      Korin Avraham (curator of the-peeler / how-many) — email per data/opencalls.json. */
@@ -220,8 +230,7 @@ a.aw-ex-title:hover{opacity:.6}
       detailsBlock+
       galleryBlock+
     '</div>'+
-    '<div class="aw-divider"><span></span></div>'+
-    exhibitionBlock;
+    (exhibitionBlock ? '<div class="aw-divider"><span></span></div>'+exhibitionBlock : '');
 })();
 </script>
 
@@ -232,5 +241,9 @@ a.aw-ex-title:hover{opacity:.6}
 <script src="../../components/site-chrome.js?v=3" defer></script>
 <script src="../../components/analytics.js" defer></script>
 <script src="../../components/picture-upgrade.js" defer></script>
+<script src="../../components/artwork-lightbox.js" defer></script>
+<script defer>
+if (window.ArtworkLightbox) window.ArtworkLightbox.refreshFocusable();
+</script>
 </body>
 </html>

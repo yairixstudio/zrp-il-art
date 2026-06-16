@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr" data-artwork-id="eitan-goldson-1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תשע נשמות · איתן גולדסון — Zielinski &amp; Rozen</title>
+<link rel="preload" href="../../פונטים/Copperplate-Light.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="../../פונטים/FbEzmel-Light.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="../../components/site-boot.css">
+<link rel="stylesheet" href="../../components/artwork-lightbox.css">
+<meta name="description" content="תשע נשמות — איתן גולדסון. יצירת אומנות בגלריות Zielinski &amp; Rozen.">
+<style>
+/* ===== LOCAL FONTS ===== */
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.woff2") format("woff2"),url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate.woff2") format("woff2"),url("../../פונטים/Copperplate.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Copperplate";src:url("../../פונטים/CopperplateCC-Bold.woff2") format("woff2"),url("../../פונטים/CopperplateCC-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Light.woff2") format("woff2"),url("../../פונטים/FbEzmel-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"FbEzmel";src:url("../../פונטים/FbEzmel-Regular.woff2") format("woff2"),url("../../פונטים/FbEzmel-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Noto Sans Arabic";src:url("../../פונטים/NotoSansArabic-Light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:"Noto Sans Arabic";src:url("../../פונטים/NotoSansArabic-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+08A0-08FF,U+200C-200D,U+FB50-FDFF,U+FE70-FEFF}
+
+:root{
+  --white:#FFFFFF;
+  --bg-grey:#EEF0EF;
+  --ink:#1B1B1B;
+  --grey-mid:#7D7D7D;
+  --line:#EFEFEF;
+  --stroke:#707070;
+  --max:1440px;
+  --cop:"Copperplate","Noto Sans Arabic","Times New Roman",serif;
+  --heb:"FbEzmel","Noto Sans Arabic","Arial Hebrew","David Libre",serif;
+  --pad-x:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--white);color:var(--ink);font-family:var(--cop);-webkit-font-smoothing:antialiased;overflow-x:visible}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+
+/* GLOBAL CASING RULE — all English renders UPPERCASE (CLAUDE.md §9). Hebrew exempt. */
+body{text-transform:uppercase}
+.heb,.heb *,[dir="rtl"],[dir="rtl"] *{text-transform:none;font-family:var(--heb)}
+
+/* ===== ARTWORK DETAIL ===== */
+.aw{max-width:var(--max);margin:0 auto;padding:48px var(--pad-x)}
+.aw-grid{display:flex;gap:48px;align-items:stretch}
+
+/* Media (left) */
+.aw-media{flex:1 1 0;min-width:0;display:flex;align-items:flex-start;justify-content:center;min-height:570px}
+.aw-media [data-artwork-src]{display:flex;width:100%;align-items:flex-start;justify-content:center;line-height:0;cursor:zoom-in}
+.aw-media picture{display:flex;width:100%;align-items:flex-start;justify-content:center;line-height:0}
+.aw-media img{max-width:100%;max-height:640px;width:auto;height:auto;object-fit:contain}
+
+/* Info (right) — keep the flex container LTR so align-items:flex-end == right;
+   direction:rtl lives only on the Hebrew text elements (else flex-end flips to left). */
+.aw-info{flex:0 0 360px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-end;gap:32px;text-align:right}
+
+/* Buttons */
+.aw-actions{display:flex;justify-content:flex-end;gap:16px}
+.aw-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--stroke);border-radius:100px;padding:8px 16px;line-height:1;transition:background .2s,color .2s}
+.aw-btn:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.aw-btn:hover svg{fill:var(--white)}
+.aw-btn--contact{font-family:var(--cop);font-weight:300;font-size:16px;text-transform:uppercase;letter-spacing:.02em;color:#000}
+.aw-btn--share{padding:8px 16px}
+.aw-btn--share svg{width:16px;height:16px;fill:var(--ink);display:block;transform:scaleX(-1)}
+
+/* Title block */
+.aw-titleblock{display:flex;flex-direction:column;align-items:stretch;gap:8px;width:312px;max-width:100%}
+.aw-headings{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.aw-title{font-family:var(--heb);font-weight:400;font-size:28px;line-height:1.15;color:var(--ink);direction:rtl}
+.aw-artist{font-family:var(--heb);font-weight:400;font-size:16px;line-height:1.2;color:var(--ink);direction:rtl;transition:opacity .2s}
+.aw-artist:hover{opacity:.6}
+.aw-details{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.25;color:var(--grey-mid);direction:rtl;white-space:pre-line;text-transform:none}
+.aw-details .det-en{font-family:var(--cop);font-weight:300;font-size:.85em;text-transform:uppercase;letter-spacing:.02em;direction:ltr;unicode-bidi:isolate}
+.aw-gallery{display:block;font-family:var(--cop);font-weight:400;font-size:12px;line-height:1.4;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);direction:ltr;white-space:pre-line;text-align:right;transition:opacity .2s}
+.aw-gallery:hover{opacity:.6}
+
+/* Divider */
+.aw-divider{align-self:stretch;display:flex;justify-content:flex-end;padding:16px 0 8px}
+.aw-divider span{display:block;width:72px;height:1px;background:var(--line)}
+
+/* Exhibition */
+.aw-exhibition{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.aw-ex-title{font-family:var(--heb);font-weight:400;font-size:18px;line-height:1.3;color:var(--ink);direction:rtl;padding:8px 0;transition:opacity .2s}
+a.aw-ex-title:hover{opacity:.6}
+.aw-ex-body{display:flex;flex-direction:column;gap:1em}
+.aw-ex-body p{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.55;color:var(--ink);direction:rtl;text-align:right}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:1100px){:root{--pad-x:48px}.aw-info{flex-basis:320px}}
+
+@media (max-width:768px){
+  :root{--pad-x:16px}
+  .aw{padding:24px 16px}
+  .aw-grid{flex-direction:column;gap:24px}
+  .aw-media{flex:0 0 auto;min-height:0;width:100%}
+  .aw-media img{max-height:none;width:100%}
+  .aw-info{flex:none;width:100%;gap:24px;justify-content:flex-start}
+  .aw-actions{order:2;align-self:stretch;flex-direction:row-reverse;justify-content:flex-start}
+  .aw-titleblock{order:1;width:100%}
+  .aw-divider{order:3}
+  .aw-exhibition{order:4}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<site-header></site-header>
+
+<!-- ARTWORK DETAIL — rendered from inline data (file:// can't fetch JSON).
+     Canonical record lives in data/works.json → art_works[] (zohar-ron-5);
+     this page mirrors only its own artwork object. To make another artwork's
+     page: copy this file, change <html data-artwork-id>, and swap #artwork-data. -->
+<main class="aw">
+  <div class="aw-grid">
+    <div class="aw-media" id="aw-media"></div>
+    <div class="aw-info" id="aw-info"></div>
+  </div>
+</main>
+
+<script type="application/json" id="artwork-data">
+{"id":"eitan-goldson-1","artist_slug":"eitan-goldson","artist_he":"איתן גולדסון","artist_en":"eitan goldson","title_he":"תשע נשמות","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":true,"details_he":"מדיה מעורבת - עבודה משותפת עם הנריקה רוטנברג.\nצבעי שמן, אקריליק, גרפיט וקפה על קנבס מודפס בלייזר.","img":"eitan-goldson-1","w":690,"h":1044,"widths":[480,690],"artist_page_pos":1,"exhibition_title_he":"בדידות בסביבה תוססת","exhibition_slug":"loneliness","exhibition_route":"exhibitions/loneliness","statement_he":["”תשע נשמות\" - מדיה מעורבת - עבודה משותפת עם\nהנריקה רוטנברג. צבעי שמן, אקריליק, גרפיט וקפה על קנבס מודפס בלייזר.","כחלק מהפרוייקט המשותף אני בכל פעם בוחר כמה צילום מתוך ספר האמן של הנריקה ובוחר איזו יצירה להדפיס ובאיזה גודל , ואז מתחיל תהליך חשיבה ארוך, לפעמים שבועות ואף חודשים על כל קנבס, איך ליצור סימביוזה בין\nשתי הנשמות שלי ושל האמן הנריקה, וליצור בכל ציור נשמה אחת משותפת.\nבחרתי כאן לגשת ליצירה עם דגש על המיתוס האומר כי לחתול יש תשע נשמות, תוך התייחסות לחיים המודרניים של היום - כמה הזדמנויות אדם מקבל בחיים כדי להצליח לממש את עצמו ולהגיע להצלחה? כמה גלגולי זהות אנחנו עוברים\nעד שאנחנו \"מוצאים את עצמינו\"? האם הצלחה ועושר מפיגים את קללת הבדידות האנושית בתוך החיים המודרניים? האם חתול או חיית מחמד היא הפתרון לבדידות בעיר הגדולה והסואנת? או להתחפש לחיה מארץ יצורי הפרא ולהעמיד פנים שאתה מלא תשוקה לערב אחד במבנה נטוש ורועש?"],"page":true}
+</script>
+
+<script>
+(function(){
+  var w = JSON.parse(document.getElementById('artwork-data').textContent);
+  var imgBase = '../../images/works/v2/';
+
+  function esc(s){
+    if(s==null) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  function galleryLabel(s){
+    if(!s) return '';
+    return esc(String(s).trim());
+  }
+  /* Wrap Latin words (2+ letters) so they render in Copperplate (CLAUDE.md §9). */
+  function detailsHtml(s){
+    if(!s) return '';
+    var out=[], last=0, re=/[A-Za-z]{2,}(?:\s+[A-Za-z]{2,})*/g, m;
+    while((m=re.exec(s))!==null){
+      if(m.index>last) out.push(esc(s.slice(last,m.index)));
+      out.push('<span class="det-en">'+esc(m[0])+'</span>');
+      last=re.lastIndex;
+    }
+    if(last<s.length) out.push(esc(s.slice(last)));
+    return out.join('');
+  }
+  function srcset(w){
+    return w.widths.map(function(width,i){
+      var last = i===w.widths.length-1;
+      var file = last ? (imgBase+w.img+'.webp') : (imgBase+w.img+'-'+width+'w.webp');
+      return file+' '+width+'w';
+    }).join(', ');
+  }
+  function artistName(w){ return w.artist_he || w.artist_en || ''; }
+  function titleText(w){ return w.title_he || w.title_en || ''; }
+
+  document.title = titleText(w) + ' · ' + artistName(w) + ' — Zielinski & Rozen';
+
+  var artistHref  = '../../artists/'+w.artist_slug+'/';
+  var galleryHref = '../../#galleries';
+
+  /* --- Media (click → shared artwork lightbox) --- */
+  var main = imgBase+w.img+'.webp';
+  var alt  = artistName(w) + (titleText(w) ? ' — '+titleText(w) : '');
+  var imgTag =
+    '<img src="'+main+'" srcset="'+srcset(w)+'" sizes="(max-width:768px) 100vw, 55vw" '+
+    'width="'+w.w+'" height="'+w.h+'" alt="'+esc(alt)+'" decoding="async" fetchpriority="high">';
+  document.getElementById('aw-media').setAttribute('data-artwork-gallery','');
+  document.getElementById('aw-media').innerHTML =
+    '<div class="aw-media-trigger" data-artwork-src="'+main+'" '+
+      'data-artwork-title="'+esc(titleText(w))+'" '+
+      'data-artwork-artist="'+esc(artistName(w))+'" '+
+      'data-artwork-link="'+artistHref+'" '+
+      'aria-label="פתיחת תמונה במסך מלא">'+imgTag+'</div>';
+
+  /* --- Info --- */
+
+  /* Contact button → pre-filled email to the exhibition curator.
+     Korin Avraham (curator of the-peeler / how-many) — email per data/opencalls.json. */
+  var curatorEmail = 'korinalove5@gmail.com';
+  var mailSubject = 'פנייה מאתר האומנות — ' + titleText(w) + ' / ' + artistName(w);
+  var mailBody = [
+    'שלום קורין,', '',
+    'פנייה זו נשלחה דרך אתר האומנות של גלריות Zielinski & Rozen.', '',
+    'אני מעוניין/ת בפרטים נוספים על היצירה הבאה:',
+    'שם היצירה: ' + titleText(w),
+    'אמן/ית: ' + artistName(w),
+    (w.exhibition_title_he ? 'תערוכה: ' + w.exhibition_title_he : null),
+    (w.details_he ? 'פרטים: ' + w.details_he.replace(/\n/g, ' | ') : null),
+    'קישור ליצירה: ' + location.href, '',
+    'תודה רבה!'
+  ].filter(Boolean).join('\n');
+  var contactHref = 'mailto:' + curatorEmail +
+    '?subject=' + encodeURIComponent(mailSubject) +
+    '&body=' + encodeURIComponent(mailBody);
+
+  var titleHtml = w.title_he
+    ? '<span class="aw-title">'+esc(w.title_he)+'</span>'
+    : '<span class="aw-title" style="direction:ltr;font-family:var(--cop);text-transform:uppercase">'+esc(w.title_en)+'</span>';
+  var artistHtml = '<a class="aw-artist" href="'+artistHref+'">'+esc(artistName(w))+'</a>';
+  var detailsBlock = w.details_he ? '<span class="aw-details">'+detailsHtml(w.details_he)+'</span>' : '';
+  var galleryBlock = w.gallery_en ? '<a class="aw-gallery" href="'+galleryHref+'">'+galleryLabel(w.gallery_en)+'</a>' : '';
+
+  var exHeadInner = esc(w.exhibition_title_he||'');
+  var exHead = w.exhibition_slug
+    ? '<a class="aw-ex-title" href="../../opencalls/'+w.exhibition_slug+'/">'+exHeadInner+'</a>'
+    : '<span class="aw-ex-title">'+exHeadInner+'</span>';
+  var exBody = (w.statement_he||[]).map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
+  var exhibitionBlock = (w.exhibition_title_he || exBody)
+    ? '<div class="aw-exhibition">'+exHead+'<div class="aw-ex-body">'+exBody+'</div></div>'
+    : '';
+
+  /* Shared share button (same as press/events) — wired automatically by
+     components/site-chrome.js via [data-share-btn] (navigator.share / copy-link + toast). */
+  var shareIcon = '<svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M28.88 30a1 1 0 0 1-.88-.5A15.19 15.19 0 0 0 15 22v6a1 1 0 0 1-.62.92 1 1 0 0 1-1.09-.21l-12-12a1 1 0 0 1 0-1.42l12-12a1 1 0 0 1 1.09-.21A1 1 0 0 1 15 4v6.11a17.19 17.19 0 0 1 15 17 16.34 16.34 0 0 1-.13 2 1 1 0 0 1-.79.86ZM14.5 20A17.62 17.62 0 0 1 28 26 15.31 15.31 0 0 0 13.91 12 1 1 0 0 1 13 11V6.41L3.41 16 13 25.59V21a1 1 0 0 1 1-1h.54Z"/></svg>';
+
+  document.getElementById('aw-info').innerHTML =
+    '<div class="aw-actions">'+
+      '<a class="aw-btn aw-btn--contact" href="'+contactHref+'">contact us</a>'+
+      '<button class="aw-btn aw-btn--share" type="button" data-share-btn aria-label="שתף">'+shareIcon+'</button>'+
+    '</div>'+
+    '<div class="aw-titleblock">'+
+      '<div class="aw-headings">'+titleHtml+artistHtml+'</div>'+
+      detailsBlock+
+      galleryBlock+
+    '</div>'+
+    (exhibitionBlock ? '<div class="aw-divider"><span></span></div>'+exhibitionBlock : '');
+})();
+</script>
+
+<!-- FOOTER -->
+<site-footer></site-footer>
+
+<!-- Site chrome: shared header + footer (single source of truth) -->
+<script src="../../components/site-chrome.js?v=3" defer></script>
+<script src="../../components/analytics.js" defer></script>
+<script src="../../components/picture-upgrade.js" defer></script>
+<script src="../../components/artwork-lightbox.js" defer></script>
+<script defer>
+if (window.ArtworkLightbox) window.ArtworkLightbox.refreshFocusable();
+</script>
+</body>
+</html>

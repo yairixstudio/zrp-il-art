@@ -56,7 +56,7 @@
     if(s==null) return '';
     return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
-  var LATIN_RUN=/[A-Za-z][A-Za-z0-9@&'’._?!:,;()/" -]*[A-Za-z0-9?!)]|[A-Za-z]/g;
+  var LATIN_RUN=/[A-Za-z]{2}[A-Za-z0-9@&'’._?!:,;()/" -]*[A-Za-z0-9?!)]|[A-Za-z]{2,}/g;
   function restoreLatSpans(s){
     return escapeHtml(s).replace(
       /&lt;span class=&quot;lat&quot;&gt;([\s\S]*?)&lt;\/span&gt;/g,
@@ -471,11 +471,18 @@
   }
 
   // --- delegate click handler ---
+  // Root elements (<html>/<body>) sometimes carry data-artwork-id as a page-level
+  // identifier (e.g. artwork pages). Those are NOT triggers — treating them as such
+  // makes every click anywhere reopen the lightbox (and breaks the close button).
+  function isTriggerElement(el){
+    return el && el.nodeType === 1 &&
+      el !== document.documentElement && el !== document.body;
+  }
   function shouldIntercept(el){
     if (!el || el.nodeType !== 1) return null;
     // walk up to find an artwork-tagged element
     var target = el.closest('[data-artwork-id], [data-artwork-title], [data-artwork-src]');
-    if (!target) return null;
+    if (!isTriggerElement(target)) return null;
     // exclude explicit opt-outs
     if (target.closest('[data-artwork-skip]')) return null;
     return target;
@@ -501,6 +508,7 @@
   function makeFocusable(){
     var els = document.querySelectorAll('[data-artwork-id], [data-artwork-title], [data-artwork-src]');
     Array.prototype.forEach.call(els, function(el){
+      if (!isTriggerElement(el)) return;
       if (el.tagName === 'A' || el.tagName === 'BUTTON') return;
       if (el.closest('a[href], button')) return;
       if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex','0');

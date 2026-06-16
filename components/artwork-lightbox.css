@@ -294,7 +294,7 @@ body.alb-lock{
     height:100%;
     max-width:none;
     max-height:none;
-    object-fit:cover;
+    object-fit:contain;
     background:#1B1B1B;
   }
   .alb:not(.has-alt):not(.has-cta) .alb-imgwrap{
@@ -309,7 +309,7 @@ body.alb-lock{
     height:100%;
     max-width:none;
     max-height:none;
-    object-fit:cover;
+    object-fit:contain;
   }
   .alb.has-alt .alb-figure,
   .alb.has-cta .alb-figure{

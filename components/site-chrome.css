@@ -42,7 +42,9 @@ site-header{display:block;position:sticky;top:0;z-index:100}
 .logo{display:flex;align-items:center;gap:8px;font-family:var(--cop);flex-shrink:1;min-width:0}
 .logo .logo-svg{display:block;width:177px;height:auto;object-fit:contain;flex-shrink:0}
 .nav-links{display:flex;align-items:center;gap:clamp(12px,1.5vw,20px);list-style:none;flex-wrap:nowrap;min-width:0}
-.nav-links a{font-family:var(--cop);font-weight:300;font-size:14px;color:var(--ink);letter-spacing:.04em;text-transform:uppercase;transition:opacity .2s;white-space:nowrap}
+/* Copperplate 400 (.active) has abnormally tight vertical metrics with line-height:normal
+   (e.g. 24px type → ~14.5px box on iOS/Android) — explicit line-height prevents top clipping. */
+.nav-links a{font-family:var(--cop);font-weight:300;font-size:14px;line-height:1.2;color:var(--ink);letter-spacing:.04em;text-transform:uppercase;transition:opacity .2s;white-space:nowrap;display:inline-block}
 .nav-links a:hover{opacity:.6}
 /* Active: use loaded Copperplate 400 — not 500 (synthetic bold breaks uppercase "i" + metrics). */
 .nav-links a.active{font-weight:400;opacity:1}

@@ -8,7 +8,7 @@
 <link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="../../פונטים/FbEzmel-Light.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="../../components/site-boot.css">
-<link rel="stylesheet" href="../../components/artwork-lightbox.css">
+<link rel="stylesheet" href="../../components/artwork-lightbox.css?v=2">
 <meta name="description" content="דג 1 — זוהר רון. יצירת אומנות בגלריות Zielinski &amp; Rozen.">
 <style>
 /* ===== LOCAL FONTS ===== */
@@ -73,6 +73,7 @@ body{text-transform:uppercase}
 .aw-artist{font-family:var(--heb);font-weight:400;font-size:16px;line-height:1.2;color:var(--ink);direction:rtl;transition:opacity .2s}
 .aw-artist:hover{opacity:.6}
 .aw-details{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.25;color:var(--grey-mid);direction:rtl;white-space:pre-line;text-transform:none}
+.dim{direction:ltr;unicode-bidi:isolate}
 .aw-details .det-en{font-family:var(--cop);font-weight:300;font-size:.85em;text-transform:uppercase;letter-spacing:.02em;direction:ltr;unicode-bidi:isolate}
 .aw-gallery{display:block;font-family:var(--cop);font-weight:400;font-size:12px;line-height:1.4;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);direction:ltr;white-space:pre-line;text-align:right;transition:opacity .2s}
 .aw-gallery:hover{opacity:.6}
@@ -138,16 +139,17 @@ a.aw-ex-title:hover{opacity:.6}
     if(!s) return '';
     return esc(String(s).trim());
   }
+  function wrapDimRuns(t){return t.replace(/\d+(?:[.,]\d+)?\s*[xX×]\s*\d+(?:[.,]\d+)?/g,function(m){return '<span class="dim">'+m+'</span>';});}
   /* Wrap Latin words (2+ letters) so they render in Copperplate (CLAUDE.md §9). */
   function detailsHtml(s){
     if(!s) return '';
     var out=[], last=0, re=/[A-Za-z]{2,}(?:\s+[A-Za-z]{2,})*/g, m;
     while((m=re.exec(s))!==null){
-      if(m.index>last) out.push(esc(s.slice(last,m.index)));
+      if(m.index>last) out.push(wrapDimRuns(esc(s.slice(last,m.index))));
       out.push('<span class="det-en">'+esc(m[0])+'</span>');
       last=re.lastIndex;
     }
-    if(last<s.length) out.push(esc(s.slice(last)));
+    if(last<s.length) out.push(wrapDimRuns(esc(s.slice(last))));
     return out.join('');
   }
   function srcset(w){
@@ -241,7 +243,7 @@ a.aw-ex-title:hover{opacity:.6}
 <script src="../../components/site-chrome.js?v=3" defer></script>
 <script src="../../components/analytics.js" defer></script>
 <script src="../../components/picture-upgrade.js" defer></script>
-<script src="../../components/artwork-lightbox.js" defer></script>
+<script src="../../components/artwork-lightbox.js?v=2" defer></script>
 <script defer>
 if (window.ArtworkLightbox) window.ArtworkLightbox.refreshFocusable();
 </script>

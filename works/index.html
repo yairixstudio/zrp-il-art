@@ -9,7 +9,7 @@
 <link rel="preload" href="../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="../components/site-boot.css">
 <meta name="description" content="The Art Works — original artworks from the artists of Zielinski & Rozen Galleries">
-<link rel="stylesheet" href="../components/artwork-lightbox.css">
+<link rel="stylesheet" href="../components/artwork-lightbox.css?v=2">
 <style>
 /* ===== LOCAL FONTS ===== */
 @font-face{font-family:"Copperplate";src:url("../פונטים/Copperplate-Light.woff2") format("woff2"),url("../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
@@ -85,6 +85,7 @@ body{text-transform:uppercase}
 .meta .title.is-bi .title-sep{display:inline-block;width:1.4px;height:0.85em;background:var(--ink);opacity:.55;align-self:center;flex-shrink:0;direction:ltr;unicode-bidi:isolate}
 .meta .title.is-bi .title-en{font-family:var(--cop);font-weight:400;font-size:14px;line-height:1.2;text-transform:uppercase;letter-spacing:.03em;direction:ltr;unicode-bidi:isolate}
 .meta .details{font-family:var(--heb);font-weight:300;font-size:15px;color:var(--grey-mid);line-height:1.2;direction:rtl;max-width:100%;white-space:pre-line;text-transform:none}
+.dim{direction:ltr;unicode-bidi:isolate}
 .meta .details .det-en{font-family:var(--cop);font-weight:300;font-size:.85em;text-transform:uppercase;letter-spacing:.02em;direction:ltr;unicode-bidi:isolate}
 .meta-foot{display:flex;flex-direction:column;align-items:flex-end;gap:6px;margin-top:auto;padding-top:12px}
 .sold{font-family:var(--heb);font-weight:300;font-size:14px;color:var(--ink);border:1.4px solid var(--ink);padding:2px 10px;line-height:1.25}
@@ -278,6 +279,7 @@ body{text-transform:uppercase}
     if(parts.length<2) return esc(s);
     return esc(parts[0])+'\n'+esc(parts.slice(1).join(' '));
   }
+  function wrapDimRuns(t){return t.replace(/\d+(?:[.,]\d+)?\s*[xX×]\s*\d+(?:[.,]\d+)?/g,function(m){return '<span class="dim">'+m+'</span>';});}
   /* Wrap Latin WORDS (2+ letters) in <span class="det-en"> for Copperplate font.
      Numbers and single letters (like X in 40X40) stay in Hebrew font. */
   function detailsHtml(s){
@@ -290,7 +292,7 @@ body{text-transform:uppercase}
     while((match = re.exec(s)) !== null){
       // Add part before this match (escaped)
       if(match.index > lastIndex){
-        result.push(esc(s.slice(lastIndex, match.index)));
+        result.push(wrapDimRuns(esc(s.slice(lastIndex, match.index))));
       }
       // Add wrapped English part (escaped inside span)
       result.push('<span class="det-en">'+esc(match[0])+'</span>');
@@ -298,7 +300,7 @@ body{text-transform:uppercase}
     }
     // Add remaining part after last match
     if(lastIndex < s.length){
-      result.push(esc(s.slice(lastIndex)));
+      result.push(wrapDimRuns(esc(s.slice(lastIndex))));
     }
     return result.join('');
   }
@@ -405,7 +407,7 @@ body{text-transform:uppercase}
 <site-footer></site-footer>
 
 <!-- Artwork Lightbox component (shared) — single-image scope per card (no prev/next) -->
-<script src="../components/artwork-lightbox.js" defer></script>
+<script src="../components/artwork-lightbox.js?v=2" defer></script>
 
 <!-- Site chrome: shared header + footer (single source of truth) -->
 <script src="../components/site-chrome.js?v=3" defer></script>

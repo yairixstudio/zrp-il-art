@@ -190,7 +190,7 @@ body.menu-open{position:fixed;width:100%;overflow:hidden;overscroll-behavior:non
   .nav-inner{justify-content:space-between}
   .nav-right{position:static;margin-left:0;width:auto;overflow:visible;order:1;display:flex;align-items:center;gap:0;flex-shrink:0}
   /* While the drawer is open the hamburger is hidden — the drawer shows its own
-     dedicated close (X) button pinned to the top-right corner (see .nav-close). */
+     close (X) button in the same top-left slot (see .nav-close). */
   .nav.is-open .hamburger{opacity:0;pointer-events:none}
   /* Drawer slides from LEFT — links start near the top, not vertically centered */
   .nav-links{position:fixed;inset:0;background:var(--bg-grey);flex-direction:column;justify-content:flex-start;align-items:center;gap:32px;padding:120px 24px 32px;transform:translateX(-100%);transition:transform .35s ease;z-index:99;visibility:hidden}
@@ -198,11 +198,11 @@ body.menu-open{position:fixed;width:100%;overflow:hidden;overscroll-behavior:non
   .nav-links a{font-size:24px;letter-spacing:.06em;text-transform:uppercase}
   .nav-links a.active{font-weight:400}
 
-  /* Dedicated close (X) button — pinned to the drawer's top-right corner. */
-  .nav-close-item{position:absolute;top:8px;right:12px;margin:0;list-style:none;display:block;z-index:2}
-  .nav-close{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:transparent;border:0;color:var(--ink);cursor:pointer;transition:opacity .2s}
+  /* Close (X) — fixed top-left, same slot as the hamburger icon. */
+  .nav-close-item{position:fixed;top:14.5px;left:32px;margin:0;list-style:none;display:block;z-index:102}
+  .nav-close{display:flex;align-items:center;justify-content:center;width:24px;height:24px;padding:0;background:transparent;border:0;color:var(--ink);cursor:pointer;transition:opacity .2s}
   .nav-close:hover{opacity:.6}
-  .nav-close svg{width:26px;height:26px}
+  .nav-close svg{width:24px;height:24px}
 
   /* ZRP home CTA — drawer only; sits directly below the last nav link. */
   .nav-zrp-cta-item{list-style:none;width:100%;display:flex;justify-content:center;margin-top:8px}
@@ -236,6 +236,7 @@ body.menu-open{position:fixed;width:100%;overflow:hidden;overscroll-behavior:non
    Per Figma mobile (119:2610): newsletter → tiny link rows + compact social → copyright */
 @media (max-width:768px){
   .nav{padding:8px 16px;min-height:52px}
+  .nav-close-item{top:14px;left:16px}
 
   .footer{flex-direction:column;padding:0;gap:0;align-items:stretch}
   .newsletter{width:100%;padding:24px;gap:15px}

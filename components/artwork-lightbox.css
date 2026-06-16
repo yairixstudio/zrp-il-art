@@ -60,6 +60,9 @@ body.alb-lock{
   background:#FFFFFF;
 }
 .alb-figure .alb-video[hidden]{display:none}
+/* clickable artwork → navigates to its own page (data-artwork-page set on trigger) */
+.alb.has-page .alb-figure img{cursor:pointer}
+
 .alb-imgwrap picture{
   display:block;
   max-width:100%;

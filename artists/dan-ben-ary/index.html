@@ -11,7 +11,7 @@
 <link rel="preload" href="../../פונטים/FbEzmel-Regular.otf" as="font" type="font/otf" crossorigin>
 <link rel="stylesheet" href="../../components/site-boot.css">
 <meta name="description" content="Artist page at Zielinski & Rozen Galleries">
-<link rel="stylesheet" href="../../components/artwork-lightbox.css?v=2">
+<link rel="stylesheet" href="../../components/artwork-lightbox.css?v=3">
 <style>
 /* ===== LOCAL FONTS ===== */
 @font-face{font-family:"Copperplate";src:url("../../פונטים/Copperplate-Light.woff2") format("woff2"),url("../../פונטים/Copperplate-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
@@ -592,7 +592,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
           (w.gallery_en?'<a class="gallery" href="../../#galleries">'+escapeHtml(w.gallery_en)+'</a>':'');
         var foot=footInner?('<div class="work-meta-foot">'+footInner+'</div>'):'';
         return '<article class="work">'+
-            '<div class="img" data-artwork-src="'+main+'" data-artwork-title="'+escapeHtml(capTitle)+'" data-artwork-artist="'+escapeHtml(w.artist_en||"")+'">'+img+'</div>'+
+            '<div class="img" data-artwork-src="'+main+'"'+(w.id?' data-artwork-page="../../works/'+escapeHtml(w.id)+'/"':'')+' data-artwork-title="'+escapeHtml(capTitle)+'" data-artwork-artist="'+escapeHtml(w.artist_en||"")+'">'+img+'</div>'+
             '<div class="work-meta">'+
               artistNameSpan(w.artist_he,w.artist_en)+
               biTitle(w.title_he,w.title_en)+
@@ -679,7 +679,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
 </script>
 
 <!-- Artwork Lightbox component (shared) — see CLAUDE.md §15 -->
-<script src="../../components/artwork-lightbox.js?v=2" defer></script>
+<script src="../../components/artwork-lightbox.js?v=3" defer></script>
 
 <!-- Site chrome: shared header + footer (single source of truth) -->
 <script src="../../components/site-chrome.js?v=2" defer></script>

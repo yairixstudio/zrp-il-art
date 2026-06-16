@@ -139,6 +139,13 @@
     prevBtn.addEventListener('click', function(){ nav(-1); });
     nextBtn.addEventListener('click', function(){ nav( 1); });
     closeBtn.addEventListener('click', close);
+    // Click the image itself → go to the artwork's own page, but ONLY when the
+    // trigger declared one via data-artwork-page (e.g. lightbox opened from an
+    // artist page). Lightboxes without it (the artwork's own page, gallery/press
+    // images) stay non-navigating. See CLAUDE.md §15.
+    imgEl.addEventListener('click', function(){
+      if (currentPageHref) window.location.href = currentPageHref;
+    });
     // Resize the image-wrapper to the image's actual rendered width whenever
     // the image finishes loading OR the viewport changes — keeps the CTA
     // button width == image width.
@@ -206,6 +213,7 @@
   // --- collect siblings within current gallery scope ---
   var currentList = [];                // array of HTMLElements
   var currentIdx  = 0;
+  var currentPageHref = '';            // dedicated artwork page for the open item (data-artwork-page)
   var lastFocus   = null;
   var showToken   = 0;
 
@@ -387,6 +395,9 @@
     var token = ++showToken;
     var srcEl = currentList[i];
     var id = srcEl.dataset.artworkId;
+    currentPageHref = srcEl.dataset.artworkPage || '';
+    root.classList.toggle('has-page', !!currentPageHref);
+    if (imgEl) imgEl.title = currentPageHref ? 'מעבר לעמוד היצירה' : '';
     loadWorks().then(function(idx){
       if (token !== showToken) return;
       worksIndex = idx;

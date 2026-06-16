@@ -189,17 +189,20 @@ body.menu-open{position:fixed;width:100%;overflow:hidden;overscroll-behavior:non
   .logo{flex-shrink:0;order:0}
   .nav-inner{justify-content:space-between}
   .nav-right{position:static;margin-left:0;width:auto;overflow:visible;order:1;display:flex;align-items:center;gap:0;flex-shrink:0}
-  /* Hamburger morphs to X when drawer is open */
-  .nav.is-open .hamburger .hamburger-figma{opacity:0;transform:rotate(90deg)}
-  .nav.is-open .hamburger .hamburger-x{opacity:1;transform:rotate(0)}
+  /* While the drawer is open the hamburger is hidden — the drawer shows its own
+     dedicated close (X) button pinned to the top-right corner (see .nav-close). */
+  .nav.is-open .hamburger{opacity:0;pointer-events:none}
   /* Drawer slides from LEFT — links start near the top, not vertically centered */
   .nav-links{position:fixed;inset:0;background:var(--bg-grey);flex-direction:column;justify-content:flex-start;align-items:center;gap:32px;padding:120px 24px 32px;transform:translateX(-100%);transition:transform .35s ease;z-index:99;visibility:hidden}
   .nav.is-open .nav-links{transform:translateX(0);visibility:visible}
   .nav-links a{font-size:24px;letter-spacing:.06em;text-transform:uppercase}
   .nav-links a.active{font-weight:400}
 
-  /* Hide the dedicated close button inside drawer — hamburger handles it now */
-  .nav-close-item{display:none}
+  /* Dedicated close (X) button — pinned to the drawer's top-right corner. */
+  .nav-close-item{position:absolute;top:8px;right:12px;margin:0;list-style:none;display:block;z-index:2}
+  .nav-close{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:transparent;border:0;color:var(--ink);cursor:pointer;transition:opacity .2s}
+  .nav-close:hover{opacity:.6}
+  .nav-close svg{width:26px;height:26px}
 
   /* ZRP home CTA — drawer only; sits directly below the last nav link. */
   .nav-zrp-cta-item{list-style:none;width:100%;display:flex;justify-content:center;margin-top:8px}
@@ -299,14 +302,18 @@ body.menu-open{position:fixed;width:100%;overflow:hidden;overscroll-behavior:non
    Clicking the header logo asks: gallery home or perfume brand.
    Same blur-backdrop; card = sharp corners, hairline border, centered diffuse shadow.
    ============================================================ */
-.logo-choose-backdrop{position:fixed;inset:0;background:rgba(230,232,231,.78);backdrop-filter:blur(28px) saturate(1.15);-webkit-backdrop-filter:blur(28px) saturate(1.15);z-index:299;opacity:0;transition:opacity .28s ease}
+.logo-choose-backdrop{position:fixed;inset:0;background:rgba(234,236,235,.62);backdrop-filter:blur(14px) saturate(1.05);-webkit-backdrop-filter:blur(14px) saturate(1.05);z-index:299;opacity:0;transition:opacity .28s ease}
 .logo-choose-backdrop.is-open{opacity:1}
 .logo-choose-backdrop[hidden]{display:none}
 
-.logo-choose{position:fixed;top:50%;left:50%;width:min(560px,calc(100vw - 40px));background:rgba(245,245,245,.98);border:0.5px solid rgba(50,50,50,.48);border-radius:0;box-shadow:0 0 32px rgba(27,27,27,.06),0 0 64px rgba(27,27,27,.04),0 0 112px rgba(27,27,27,.025);z-index:300;display:flex;flex-direction:column;align-items:center;gap:28px;padding:44px 40px 48px;box-sizing:border-box;font-family:var(--cop);transform:translate(-50%,-46%);opacity:0;transition:opacity .3s ease,transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s ease}
-.logo-choose.is-open{opacity:1;transform:translate(-50%,-50%)}
-.logo-choose[hidden]{display:none}
-.logo-choose-close{position:absolute;bottom:calc(100% + 18px);left:50%;right:auto;top:auto;transform:translateX(-50%);width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;color:var(--ink);transition:color .2s,opacity .2s}
+.logo-choose-wrap{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;pointer-events:none}
+.logo-choose-wrap[hidden]{display:none}
+.logo-choose-unit{display:flex;flex-direction:column;align-items:center;width:min(560px,calc(100vw - 40px));transform:translateY(-23px);opacity:0;transition:opacity .3s ease,transform .3s cubic-bezier(.22,.61,.36,1)}
+.logo-choose-wrap.is-open{pointer-events:auto}
+.logo-choose-wrap.is-open .logo-choose-unit{opacity:1;transform:translateY(-31px)}
+
+.logo-choose{width:100%;background:rgba(245,245,245,.98);border:0.5px solid rgba(50,50,50,.48);border-radius:0;box-shadow:0 0 32px rgba(27,27,27,.06),0 0 64px rgba(27,27,27,.04),0 0 112px rgba(27,27,27,.025);display:flex;flex-direction:column;align-items:center;gap:28px;padding:44px 40px 48px;box-sizing:border-box;font-family:var(--cop);overflow:visible}
+.logo-choose-close{position:relative;flex-shrink:0;margin:0 0 18px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;color:var(--ink);transition:color .2s,opacity .2s}
 .logo-choose-close svg{width:28px;height:28px;stroke-width:2.25}
 .logo-choose-close:hover{color:var(--ink);opacity:.72}
 .logo-choose-q{font-family:var(--heb);font-weight:300;font-size:21px;line-height:1.3;color:var(--ink);text-align:center;direction:rtl;margin:0}

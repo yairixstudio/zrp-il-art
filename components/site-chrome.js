@@ -59,7 +59,7 @@
   if (!document.querySelector('link[data-site-chrome-css]')) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = abs('components/site-chrome.css?v=4');
+    link.href = abs('components/site-chrome.css?v=6');
     link.setAttribute('data-site-chrome-css', '');
     document.head.appendChild(link);
   }
@@ -215,20 +215,24 @@
   function logoChooserHTML() {
     return (
       '<div class="logo-choose-backdrop" data-logo-choose-backdrop hidden></div>' +
-      '<div class="logo-choose" data-logo-choose hidden role="dialog" aria-modal="true" aria-label="לאן להגיע">' +
-        '<button class="logo-choose-close" type="button" data-logo-choose-close aria-label="סגירה">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" width="28" height="28"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
-        '</button>' +
-        '<p class="logo-choose-q">לאן תרצו להגיע?</p>' +
-        '<div class="logo-choose-opts">' +
-          '<a class="logo-choose-opt" href="' + abs('') + '" data-logo-choose-go="art">' +
-            '<span class="logo-choose-opt-en">THE art GALLERY</span>' +
-            '<span class="logo-choose-opt-he">אתר הגלריות</span>' +
-          '</a>' +
-          '<a class="logo-choose-opt" href="https://zrp.co.il" target="_blank" rel="noopener" data-logo-choose-go="perfume">' +
-            '<span class="logo-choose-opt-en">ZIELINSKI &amp; ROZEN</span>' +
-            '<span class="logo-choose-opt-he">מותג הבישום</span>' +
-          '</a>' +
+      '<div class="logo-choose-wrap" data-logo-choose-wrap hidden>' +
+        '<div class="logo-choose-unit">' +
+          '<button class="logo-choose-close" type="button" data-logo-choose-close aria-label="סגירה">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" width="28" height="28"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+          '</button>' +
+          '<div class="logo-choose" data-logo-choose role="dialog" aria-modal="true" aria-label="לאן להגיע">' +
+            '<p class="logo-choose-q">לאן תרצו להגיע?</p>' +
+            '<div class="logo-choose-opts">' +
+              '<a class="logo-choose-opt" href="' + abs('') + '" data-logo-choose-go="art">' +
+                '<span class="logo-choose-opt-en">THE art GALLERY</span>' +
+                '<span class="logo-choose-opt-he">אתר הגלריות</span>' +
+              '</a>' +
+              '<a class="logo-choose-opt" href="https://zrp.co.il" target="_blank" rel="noopener" data-logo-choose-go="perfume">' +
+                '<span class="logo-choose-opt-en">ZIELINSKI &amp; ROZEN</span>' +
+                '<span class="logo-choose-opt-he">מותג הבישום</span>' +
+              '</a>' +
+            '</div>' +
+          '</div>' +
         '</div>' +
       '</div>'
     );
@@ -243,13 +247,18 @@
       holder.innerHTML = logoChooserHTML();
       while (holder.firstChild) document.body.appendChild(holder.firstChild);
     }
+    var wrap = document.querySelector('[data-logo-choose-wrap]');
     var modal = document.querySelector('[data-logo-choose]');
     var backdrop = document.querySelector('[data-logo-choose-backdrop]');
-    var closeBtn = modal && modal.querySelector('[data-logo-choose-close]');
-    if (!modal || !backdrop) return;
+    var closeBtn = document.querySelector('[data-logo-choose-close]');
+    if (!wrap || !modal || !backdrop) return;
 
     var lastFocus = null;
     var scrollLockY = 0;
+    function preventTouchMove(e) {
+      if (wrap.hidden) return;
+      e.preventDefault();
+    }
     function lockScroll() {
       scrollLockY = window.scrollY || window.pageYOffset || 0;
       document.body.style.position = 'fixed';
@@ -257,6 +266,7 @@
       document.body.style.left = '0';
       document.body.style.right = '0';
       document.body.style.width = '100%';
+      document.addEventListener('touchmove', preventTouchMove, { passive: false });
     }
     function unlockScroll() {
       document.body.style.position = '';
@@ -264,17 +274,17 @@
       document.body.style.left = '';
       document.body.style.right = '';
       document.body.style.width = '';
+      document.removeEventListener('touchmove', preventTouchMove);
       window.scrollTo(0, scrollLockY);
     }
     function open() {
       lastFocus = document.activeElement;
       lockScroll();
       backdrop.hidden = false;
-      modal.hidden = false;
-      // next frame → trigger the open transition
+      wrap.hidden = false;
       requestAnimationFrame(function () {
         backdrop.classList.add('is-open');
-        modal.classList.add('is-open');
+        wrap.classList.add('is-open');
       });
       var first = modal.querySelector('.logo-choose-opt');
       if (first) first.focus();
@@ -282,15 +292,14 @@
     function close() {
       unlockScroll();
       backdrop.classList.remove('is-open');
-      modal.classList.remove('is-open');
+      wrap.classList.remove('is-open');
       var done = function () {
-        modal.hidden = true;
+        wrap.hidden = true;
         backdrop.hidden = true;
-        modal.removeEventListener('transitionend', done);
+        wrap.removeEventListener('transitionend', done);
       };
-      modal.addEventListener('transitionend', done);
-      // Fallback in case transitionend doesn't fire
-      setTimeout(function () { if (!modal.classList.contains('is-open')) { modal.hidden = true; backdrop.hidden = true; } }, 320);
+      wrap.addEventListener('transitionend', done);
+      setTimeout(function () { if (!wrap.classList.contains('is-open')) { wrap.hidden = true; backdrop.hidden = true; } }, 320);
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
@@ -307,7 +316,7 @@
       opt.addEventListener('click', function () { close(); });
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !modal.hidden) { e.stopPropagation(); close(); }
+      if (e.key === 'Escape' && wrap && !wrap.hidden) { e.stopPropagation(); close(); }
     });
   }
 

@@ -149,7 +149,7 @@ body{text-transform:uppercase}
 {"slug":"tanya-shin","name":"tanya\nshin"},
 {"slug":"liel-salman","name":"liel\nsalman noam"},
 {"slug":"sami-david","name":"samy\nd"},
-{"slug":"dan-ben-ary","name":"dan\nben-ary"},
+{"slug":"dan-ben-ary","name":"dan\nben-ary","link":"zohar-ron-dan-ben-ari"},
 {"slug":"racheli-reuven","name":"racheli\nreuven"},
 {"slug":"tal-nehoray","name":"tal\nnehoray"},
 {"slug":"holy-kadosh","name":"tal holy\nkadosh"},
@@ -179,7 +179,7 @@ body{text-transform:uppercase}
     var sset = base + a.slug + '-480w.webp 480w, ' + main + ' 810w';
     var alt  = a.name.replace(/\n/g,' ');
     var load = i ? 'loading="lazy"' : 'fetchpriority="high"';
-    return '<a class="artist" href="../artists/' + a.slug + '/">' +
+    return '<a class="artist" href="../artists/' + (a.link || a.slug) + '/">' +
         '<div class="img">' +
           '<img src="' + main + '" srcset="' + sset + '" ' +
                'sizes="(max-width:768px) 46vw, (max-width:1100px) 30vw, 405px" ' +

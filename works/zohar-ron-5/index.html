@@ -93,10 +93,10 @@ a.aw-ex-title:hover{opacity:.6}
   :root{--pad-x:16px}
   .aw{padding:24px 16px}
   .aw-grid{flex-direction:column;gap:24px}
-  .aw-media{min-height:0;width:100%}
-  .aw-media img{max-height:none}
+  .aw-media{flex:0 0 auto;min-height:0;width:100%}
+  .aw-media img{max-height:none;width:100%}
   .aw-info{flex:none;width:100%;gap:24px;justify-content:flex-start}
-  .aw-actions{order:2;align-self:stretch;flex-direction:row-reverse}
+  .aw-actions{order:2;align-self:stretch;flex-direction:row-reverse;justify-content:flex-start}
   .aw-titleblock{order:1;width:100%}
   .aw-divider{order:3}
   .aw-exhibition{order:4}
@@ -134,9 +134,7 @@ a.aw-ex-title:hover{opacity:.6}
   }
   function galleryLabel(s){
     if(!s) return '';
-    var parts=String(s).trim().split(/\s+/);
-    if(parts.length<2) return esc(s);
-    return esc(parts[0])+'\n'+esc(parts.slice(1).join(' '));
+    return esc(String(s).trim());
   }
   /* Wrap Latin words (2+ letters) so they render in Copperplate (CLAUDE.md §9). */
   function detailsHtml(s){

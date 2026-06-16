@@ -287,6 +287,11 @@ body.alb-lock{
     position:absolute;inset:0;
     width:100%;
     height:100%;
+    /* The lightbox starts below the sticky header (top:--site-header-h), so the
+       image's box is vertically centered within that lower region — which reads
+       as ~half-header-height BELOW the true screen center. Pull it up so the
+       contained image sits at the visual center of the full viewport. */
+    transform:translateY(calc(var(--site-header-h, 52px) / -2));
   }
   .alb-figure img,
   .alb-figure .alb-video{

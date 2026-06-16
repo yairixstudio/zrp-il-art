@@ -204,7 +204,7 @@ a.aw-ex-title:hover{opacity:.6}
     ? '<span class="aw-title">'+esc(w.title_he)+'</span>'
     : '<span class="aw-title" style="direction:ltr;font-family:var(--cop);text-transform:uppercase">'+esc(w.title_en)+'</span>';
   var artistHtml = '<a class="aw-artist" href="'+artistHref+'">'+esc(artistName(w))+'</a>';
-  var detailsBlock = w.details_he ? '<span class="aw-details">'+detailsHtml(w.details_he)+'</span>' : '';
+  var detailsBlock = w.details_he ? '<span class="aw-details">'+detailsHtml(w.details_he).replace(/(\d)([xX])(?=\d)/g,'$1<span class="dim-x">$2</span>')+'</span>' : '';
   var galleryBlock = w.gallery_en ? '<a class="aw-gallery" href="'+galleryHref+'">'+galleryLabel(w.gallery_en)+'</a>' : '';
 
   var exHeadInner = esc(w.exhibition_title_he||'');

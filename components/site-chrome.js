@@ -217,7 +217,7 @@
       '<div class="logo-choose-backdrop" data-logo-choose-backdrop hidden></div>' +
       '<div class="logo-choose" data-logo-choose hidden role="dialog" aria-modal="true" aria-label="לאן להגיע">' +
         '<button class="logo-choose-close" type="button" data-logo-choose-close aria-label="סגירה">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" width="28" height="28"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
         '</button>' +
         '<p class="logo-choose-q">לאן תרצו להגיע?</p>' +
         '<div class="logo-choose-opts">' +
@@ -249,8 +249,26 @@
     if (!modal || !backdrop) return;
 
     var lastFocus = null;
+    var scrollLockY = 0;
+    function lockScroll() {
+      scrollLockY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + scrollLockY + 'px';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+    }
+    function unlockScroll() {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollLockY);
+    }
     function open() {
       lastFocus = document.activeElement;
+      lockScroll();
       backdrop.hidden = false;
       modal.hidden = false;
       // next frame → trigger the open transition
@@ -262,6 +280,7 @@
       if (first) first.focus();
     }
     function close() {
+      unlockScroll();
       backdrop.classList.remove('is-open');
       modal.classList.remove('is-open');
       var done = function () {

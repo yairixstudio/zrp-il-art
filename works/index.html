@@ -345,7 +345,7 @@ body{text-transform:uppercase}
     var loadAttr = i ? 'loading="lazy"' : 'fetchpriority="high"';
     var imgTag = '<img src="'+main+'" srcset="'+srcset(w)+'" sizes="(max-width:768px) 46vw, (max-width:1100px) 30vw, 420px" '+
                  'width="'+w.w+'" height="'+w.h+'" alt="'+esc(alt)+'" decoding="async" '+loadAttr+'>';
-    var details = w.details_he ? '<span class="details">'+detailsHtml(w.details_he)+'</span>' : '';
+    var details = w.details_he ? '<span class="details">'+detailsHtml(w.details_he).replace(/(\d)([xX])(?=\d)/g,'$1<span class="dim-x">$2</span>')+'</span>' : '';
     var foot = (w.sold ? '<span class="sold">נמכר</span>' : '') +
                '<a class="gallery" href="../#galleries">'+galleryLabel(w.gallery_en)+'</a>';
     /* Artworks with a dedicated page navigate to it on click (real link).

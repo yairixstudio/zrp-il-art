@@ -13,6 +13,12 @@
       fade-in only.
    ============================================================ */
 
+/* ---- Dimension multiplier 'x' (e.g. 80x80) ----
+   FbEzmel has NO Latin glyphs, so a bare ASCII x between digits falls back
+   to an inconsistent system serif. Render this single separator in a clean
+   classic face so it sits well next to the FbEzmel digits. */
+.dim-x{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-style:normal;text-transform:none}
+
 /* ---- Initial paint: hide body, match expected background ---- */
 html{background:#FFFFFF}
 body{opacity:0;transition:opacity .35s ease-out}

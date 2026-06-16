@@ -585,7 +585,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
         var alt=(w.artist_he||w.artist_en||"")+(capTitle?" — "+capTitle:"");
         var loadAttr=i?'loading="lazy"':'fetchpriority="high"';
         var img='<img src="'+main+'" srcset="'+v2srcset(w)+'" sizes="(max-width:768px) 46vw, 45vw" width="'+w.w+'" height="'+w.h+'" alt="'+escapeHtml(alt)+'" decoding="async" '+loadAttr+'>';
-        var details=w.details_he?'<span class="details">'+mixedHtml(w.details_he)+'</span>':'';
+        var details=w.details_he?'<span class="details">'+mixedHtml(w.details_he).replace(/(\d)([xX])(?=\d)/g,'$1<span class="dim-x">$2</span>')+'</span>':'';
         var footInner=(w.sold?'<span class="sold">נמכר</span>':'')+
           (w.gallery_en?'<a class="gallery" href="../../#galleries">'+escapeHtml(w.gallery_en)+'</a>':'');
         var foot=footInner?('<div class="work-meta-foot">'+footInner+'</div>'):'';

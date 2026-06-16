@@ -74,6 +74,7 @@ body{text-transform:uppercase}
 .aw-artist:hover{opacity:.6}
 .aw-details{font-family:var(--heb);font-weight:300;font-size:16px;line-height:1.25;color:var(--grey-mid);direction:rtl;white-space:pre-line;text-transform:none}
 .aw-details .det-en{font-family:var(--cop);font-weight:300;font-size:.85em;text-transform:uppercase;letter-spacing:.02em;direction:ltr;unicode-bidi:isolate}
+.aw-ex-title .lat,.aw-ex-body .lat,.aw-artist .lat{font-family:var(--cop);text-transform:uppercase;letter-spacing:.02em;direction:ltr;unicode-bidi:isolate;font-size:.86em}
 .aw-gallery{display:block;font-family:var(--cop);font-weight:400;font-size:12px;line-height:1.4;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);direction:ltr;white-space:pre-line;text-align:right;transition:opacity .2s}
 .aw-gallery:hover{opacity:.6}
 
@@ -150,6 +151,20 @@ a.aw-ex-title:hover{opacity:.6}
     if(last<s.length) out.push(esc(s.slice(last)));
     return out.join('');
   }
+  /* Wrap Latin runs so English renders in Copperplate (CLAUDE.md §9). Same
+     LATIN_RUN as the artist pages; runs on raw text, esc() per segment. */
+  function latHtml(s){
+    if(s==null) return '';
+    s=String(s);
+    var out=[], last=0, re=/[A-Za-z]{2}[A-Za-z0-9@&'’._?!:,;()/" -]*[A-Za-z0-9?!)]|[A-Za-z]{2,}/g, m;
+    while((m=re.exec(s))!==null){
+      if(m.index>last) out.push(esc(s.slice(last,m.index)));
+      out.push('<span class="lat">'+esc(m[0])+'</span>');
+      last=re.lastIndex;
+    }
+    if(last<s.length) out.push(esc(s.slice(last)));
+    return out.join('');
+  }
   function srcset(w){
     return w.widths.map(function(width,i){
       var last = i===w.widths.length-1;
@@ -203,15 +218,15 @@ a.aw-ex-title:hover{opacity:.6}
   var titleHtml = w.title_he
     ? '<span class="aw-title">'+esc(w.title_he)+'</span>'
     : '<span class="aw-title" style="direction:ltr;font-family:var(--cop);text-transform:uppercase">'+esc(w.title_en)+'</span>';
-  var artistHtml = '<a class="aw-artist" href="'+artistHref+'">'+esc(artistName(w))+'</a>';
+  var artistHtml = '<a class="aw-artist" href="'+artistHref+'">'+latHtml(artistName(w))+'</a>';
   var detailsBlock = w.details_he ? '<span class="aw-details">'+detailsHtml(w.details_he).replace(/(\d)([xX])(?=\d)/g,'$1<span class="dim-x">$2</span>')+'</span>' : '';
   var galleryBlock = w.gallery_en ? '<a class="aw-gallery" href="'+galleryHref+'">'+galleryLabel(w.gallery_en)+'</a>' : '';
 
-  var exHeadInner = esc(w.exhibition_title_he||'');
+  var exHeadInner = latHtml(w.exhibition_title_he||'');
   var exHead = w.exhibition_slug
     ? '<a class="aw-ex-title" href="../../opencalls/'+w.exhibition_slug+'/">'+exHeadInner+'</a>'
     : '<span class="aw-ex-title">'+exHeadInner+'</span>';
-  var exBody = (w.statement_he||[]).map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
+  var exBody = (w.statement_he||[]).map(function(p){ return '<p>'+latHtml(p)+'</p>'; }).join('');
   var exhibitionBlock = (w.exhibition_title_he || exBody)
     ? '<div class="aw-exhibition">'+exHead+'<div class="aw-ex-body">'+exBody+'</div></div>'
     : '';

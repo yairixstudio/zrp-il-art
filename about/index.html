@@ -63,8 +63,11 @@ body{text-transform:uppercase}
 .about-hero .img-frame img{width:100%;height:100%;object-fit:cover}
 .about-hero .img-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);pointer-events:none;opacity:.55}
 .about-hero .name-overlay{position:absolute;right:0;top:597px;width:auto;display:flex;flex-direction:column;align-items:flex-end;color:#fff;font-family:var(--cop);font-weight:700;font-size:40px;letter-spacing:.22em;text-align:right;line-height:1.025;z-index:1}
-.about-hero .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;gap:32px;padding:0 16px}
-.about-hero h1{font-family:var(--cop);font-weight:400;font-size:80px;line-height:72px;text-align:center;color:var(--ink)}
+.about-hero .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;gap:40px;padding:0 16px}
+.about-hero h1{font-family:var(--cop);font-weight:400;font-size:80px;line-height:1;text-align:center;color:var(--ink)}
+.about-hero .ig-handle{align-self:center;font-family:var(--cop);font-weight:400;font-size:24px;line-height:1.1;text-align:center;color:var(--ink)}
+.about-hero a.ig-handle{transition:opacity .2s}
+.about-hero a.ig-handle:hover{opacity:.6}
 .about-hero .intro-he{font-family:var(--heb);font-weight:300;font-size:18px;line-height:1.55;text-align:center;direction:rtl;color:var(--ink)}
 
 /* SECTION 2 — Erez portraits coverflow carousel.
@@ -115,10 +118,8 @@ body{text-transform:uppercase}
 /* SECTION 6 — Closing image with big logotype on left */
 .about-close{padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
 .about-close .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
-.about-close .text-col{flex:1;display:flex;align-items:center;justify-content:center;padding:0 16px}
-.about-close .stamp{font-family:var(--cop);font-weight:400;font-size:64px;line-height:1.05;letter-spacing:.04em;color:var(--ink);text-align:center}
-.about-close .stamp .b{font-weight:700;display:block}
-.about-close .stamp .l{font-weight:300;display:block}
+.about-close .text-col{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;padding:0 16px;container-type:inline-size}
+.about-close .stamp{font-family:var(--cop);font-weight:400;font-size:min(32px,calc(100cqw / 12));line-height:1.05;letter-spacing:.04em;color:var(--ink);text-align:center;white-space:nowrap;width:100%;max-width:100%}
 .about-close .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
 .about-close .img-col .img-frame{width:492px;height:744px;overflow:hidden}
 .about-close .img-col img{width:100%;height:100%;object-fit:cover;object-position:center}
@@ -164,7 +165,6 @@ body{text-transform:uppercase}
   .about-bio .bio-block{gap:14px}
   .about-bio .paras{font-size:18px;gap:14px}
   .about-tri{padding:48px var(--pad-x)}
-  .about-close .stamp{font-size:48px}
   .about-quote-grey{padding:48px var(--pad-x)}
   .about-person .img-col{flex-basis:380px;width:380px}
   .about-person .img-col .img-frame{width:380px;height:560px}
@@ -190,6 +190,7 @@ body{text-transform:uppercase}
   .about-hero .name-overlay{left:auto;right:16px;top:auto;bottom:24px;width:auto;text-align:right;font-size:40px;line-height:1.025}
   .about-hero .text-col{padding:8px 0;gap:8px;order:2}
   .about-hero h1{font-size:24px;line-height:1.1;text-align:right;font-family:var(--cop);font-weight:400}
+  .about-hero .ig-handle{font-size:16px;margin-bottom:20px}
   .about-hero .intro-he{font-size:16px;text-align:right;line-height:1.55}
 
   /* Section B — coverflow carousel (mobile: smaller peeks, slightly taller frame) */
@@ -228,7 +229,6 @@ body{text-transform:uppercase}
   .about-close{padding:24px 16px 0}
   .about-close .row{flex-direction:column;gap:16px}
   .about-close .text-col{order:2;padding:8px 0;display:none}
-  .about-close .stamp{font-size:32px}
   .about-close .img-col{order:1;width:100%;flex:0 0 auto}
   .about-close .img-col .img-frame{width:100%;height:566px}
 
@@ -263,7 +263,6 @@ body{text-transform:uppercase}
   .about-hero .name-overlay{font-size:32px}
   .about-bio .paras{font-size:15px}
   .about-quote-grey .qtext{font-size:13px}
-  .about-close .stamp{font-size:26px}
 }
 </style>
 <!-- SEO:auto:start -->
@@ -312,6 +311,7 @@ body{text-transform:uppercase}
         </div>
       </div>
       <div class="text-col">
+        <a class="ig-handle" href="https://www.instagram.com/erezzielinskirozen/" target="_blank" rel="noopener">@erezzielinskirozen</a>
         <h1>Make you feel like Art</h1>
         <p class="intro-he">אומנות שוברת מוסכמות ויצירה חדשה היא חלק בלתי נפרד מהמותג זילינסקי רוזן.<br>הצורך בהתפתחות תמידית, מחשבה שונה ויציאה מהקופסא הוא חלק הכרחי בהתפתחות האנושית<br>ולכן חשוב לנו לעודד ולתמוך באמנים ואומניות צעירים המביאים בשורה חדשה, כמו הבשמים שלנו.</p>
       </div>
@@ -422,10 +422,7 @@ body{text-transform:uppercase}
   <section class="about-close">
     <div class="row">
       <div class="text-col">
-        <div class="stamp">
-          <span class="b">ZIELINSKI</span>
-          <span class="l">&amp; ROZEN</span>
-        </div>
+        <div class="stamp">ZIELINSKI &amp; ROZEN</div>
       </div>
       <div class="img-col">
         <div class="img-frame"><img src="../images/about/erez-closing.webp" srcset="../images/about/erez-closing-480w.webp 480w, ../images/about/erez-closing-768w.webp 768w, ../images/about/erez-closing-1080w.webp 1080w, ../images/about/erez-closing.webp 1500w" sizes="100vw" width="3072" height="4096" alt="" decoding="async" loading="lazy"></div>
@@ -451,7 +448,7 @@ body{text-transform:uppercase}
           <span class="p-role">exhibitions curator</span>
           <span class="p-role fill">international art department manager</span>
         </div>
-        <p class="p-bio" dir="rtl">קורין אברהם, 45, תל-אביב יפו, היא יוצרת, אוצרת ויזמית תוכן הפועלת בצומת שבין אופנה, תרבות, אמנות ורגש. היא מייסדת פלטפורמת הלייף-סטייל והקריאייטיב <span class="lat">"YA SALAM",</span> ונמנית עם יוצרות התוכן בישראל ובעולם שפועלות בשפה חזותית מבוססת נרטיב.<br><br>בשנים האחרונות פועלת אברהם כמשפיענית לייף סטייל בינלאומית וכמפיקה קריאטיבית, ומשלבת בין עשייה דיגיטלית לעשייה תרבותית.<br>היא שימשה כשגרירת המדיה הרשמית הראשונה של עיריית תל-אביב-יפו, ויצרה שיתופי פעולה עם מותגי יוקרה בינלאומיים.<br><br>בהכשרתה היא עורכת דין ובהדרגה פנתה לעשייה יצירתית הנשענת על צילום. עבודתה מאופיינת בדיוק אסתטי וביכולת לבנות סיפור דרך דימוי שמקבל חיים בהפקות ופרויקטים שמתקיימים בין ערים ותרבויות שונות, תוך חיבור בין מקומי לגלובלי.<br><br>אברהם עוסקת ביצירה כדרך לפגוש את עצמה. העבודה שלה מתקיימת בתוך העולם גם כשהוא רועש, צפוף ורווי תפקידים. עשייתה מצביעה על ידע קיים - ידע שאינו נלמד, אלא נזכר.<br><br>היא אינה מחפשת תנאים של ניתוק או התבודדות, אלא תשומת לב שמתקיימת בתוך החיים עצמם. מכלול העבודות בתערוכה מהוות עבור אברהם סקלה של בדידות, לפעמים כמקום של נחמה והסחת דעת, לפעמים כעמידה חשופה, לפעמים כהתמודדות.<br><br>החיבור שלה אליהן נובע מהבחירה להישאר בתוך התנועה הזו, גם כשלא ברור מה מחכה בצומת הבא. זה אינו סיפור סגור, אלא תהליך חי שמבקש אומץ, הקשבה והסכמה, כאשר הבהירות נוצרת מתוך נוכחות מתמשכת, ולאו דווקא מתוך היעלמות מהעולם.</p>
+        <p class="p-bio" dir="rtl">קורין אברהם, 45, תל-אביב יפו, היא יוצרת, אוצרת ויזמית תוכן הפועלת בצומת שבין אופנה, תרבות, אמנות ורגש.<br><br>בהכשרתה היא עורכת דין ובהדרגה פנתה לעשייה יצירתית הנשענת על צילום. עבודתה מאופיינת בדיוק אסתטי וביכולת לבנות סיפור דרך דימוי שמקבל חיים בהפקות ופרויקטים שמתקיימים בין ערים ותרבויות שונות, תוך חיבור בין מקומי לגלובלי.<br><br>אברהם עוסקת ביצירה כדרך לפגוש את עצמה. העבודה שלה מתקיימת בתוך העולם גם כשהוא רועש, צפוף ורווי תפקידים. עשייתה מצביעה על ידע קיים - ידע שאינו נלמד, אלא נזכר.<br><br>היא אינה מחפשת תנאים של ניתוק או התבודדות, אלא תשומת לב שמתקיימת בתוך החיים עצמם. מכלול העבודות בתערוכה מהוות עבור אברהם סקלה של בדידות, לפעמים כמקום של נחמה והסחת דעת, לפעמים כעמידה חשופה, לפעמים כהתמודדות.<br><br>החיבור שלה אליהן נובע מהבחירה להישאר בתוך התנועה הזו, גם כשלא ברור מה מחכה בצומת הבא. זה אינו סיפור סגור, אלא תהליך חי שמבקש אומץ, הקשבה והסכמה, כאשר הבהירות נוצרת מתוך נוכחות מתמשכת, ולאו דווקא מתוך היעלמות מהעולם.</p>
       </div>
     </div>
   </section>

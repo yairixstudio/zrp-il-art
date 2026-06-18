@@ -317,7 +317,7 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
      Use for routing JSON-driven text into the right font + direction. */
   var HEB_LETTERS=/[א-ת]/;
   function langClass(s){ return HEB_LETTERS.test(s||"") ? "is-he" : "is-en"; }
-  var LATIN_RUN=/[A-Za-z]{2}[A-Za-z0-9@&'’._?!:,;()/" -]*[A-Za-z0-9?!)]|[A-Za-z]{2,}/g;
+  var LATIN_RUN=/[A-Za-zÀ-ÖØ-öø-ÿ]{2}[A-Za-zÀ-ÖØ-öø-ÿ0-9@&'’._?!:,;()/" -]*[A-Za-zÀ-ÖØ-öø-ÿ0-9?!)]|[A-Za-zÀ-ÖØ-öø-ÿ]{2,}/g;
   function restoreLatSpans(s){
     if(!s) return "";
     return escapeHtml(s).replace(

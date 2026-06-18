@@ -56,7 +56,7 @@
     if(s==null) return '';
     return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
-  var LATIN_RUN=/[A-Za-z]{2}[A-Za-z0-9@&'’._?!:,;()/" -]*[A-Za-z0-9?!)]|[A-Za-z]{2,}/g;
+  var LATIN_RUN=/["'“«(]*[A-Za-zÀ-ÖØ-öø-ÿ]{2}[A-Za-zÀ-ÖØ-öø-ÿ0-9@&'’._?!:,;()/" -]*[A-Za-zÀ-ÖØ-öø-ÿ0-9?!)]|[A-Za-zÀ-ÖØ-öø-ÿ]{2,}/g;
   function restoreLatSpans(s){
     return escapeHtml(s).replace(
       /&lt;span class=&quot;lat&quot;&gt;([\s\S]*?)&lt;\/span&gt;/g,

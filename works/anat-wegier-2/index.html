@@ -49,9 +49,9 @@ body{text-transform:uppercase}
 
 /* Media (left) */
 .aw-media{flex:1 1 0;min-width:0;display:flex;align-items:flex-start;justify-content:center;min-height:570px}
-.aw-media [data-artwork-src]{display:flex;width:100%;align-items:flex-start;justify-content:center;line-height:0;cursor:zoom-in}
+.aw-media [data-artwork-src]{display:flex;width:100%;align-items:flex-start;justify-content:center;line-height:0}
 .aw-media picture{display:flex;width:100%;align-items:flex-start;justify-content:center;line-height:0}
-.aw-media img{max-width:100%;max-height:640px;width:auto;height:auto;object-fit:contain}
+.aw-media img{max-width:100%;max-height:640px;width:auto;height:auto;object-fit:contain;cursor:zoom-in}
 
 /* Info (right) — keep the flex container LTR so align-items:flex-end == right;
    direction:rtl lives only on the Hebrew text elements (else flex-end flips to left). */
@@ -280,7 +280,7 @@ a.aw-ex-title:hover{opacity:.6}
 <script src="../../components/site-chrome.js?v=5" defer></script>
 <script src="../../components/analytics.js" defer></script>
 <script src="../../components/picture-upgrade.js" defer></script>
-<script src="../../components/artwork-lightbox.js?v=4" defer></script>
+<script src="../../components/artwork-lightbox.js?v=5" defer></script>
 <script defer>
 if (window.ArtworkLightbox) window.ArtworkLightbox.refreshFocusable();
 </script>

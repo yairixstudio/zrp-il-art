@@ -155,7 +155,18 @@
       syncHeaderOffset();
       fitWrapperToImage();
     });
-    // Backdrop click intentionally does NOT close — close only via X button or Escape.
+    // Backdrop / empty-area click closes (in addition to the X button and Escape).
+    // A pointerdown flag guards against a drag that starts on the image and
+    // releases on the backdrop being mistaken for a backdrop click.
+    var downOnBackdrop = false;
+    root.addEventListener('pointerdown', function(e){
+      downOnBackdrop = !e.target.closest('.alb-figure, .alb-close, .alb-nav');
+    });
+    root.addEventListener('click', function(e){
+      if (!downOnBackdrop) return;
+      if (e.target.closest('.alb-figure, .alb-close, .alb-nav')) return;
+      close();
+    });
     document.addEventListener('keydown', onKey);
     bindSwipe();
     bindScrollBlock();

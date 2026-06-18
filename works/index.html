@@ -73,6 +73,7 @@ body{text-transform:uppercase}
 .meta{display:flex;flex-direction:column;align-items:flex-end;gap:7px;text-align:right;flex:1}
 .meta .artist{font-family:var(--heb);font-weight:400;font-size:20px;color:var(--ink);line-height:1.25;direction:rtl}
 .meta .artist.is-en{font-family:var(--cop);font-weight:400;font-size:16px;text-transform:uppercase;letter-spacing:.03em;direction:ltr}
+.meta .artist a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}
 .meta .artist + .title{margin-top:-5px}
 .meta .artist + .details{margin-top:-5px}
 .meta a.artist{transition:opacity .2s}
@@ -173,6 +174,7 @@ body{text-transform:uppercase}
 
 <script type="application/json" id="works-data">
 [
+ {"id":"aharon-bas-1","artist_slug":"aharon-bas","artist_pages":["bar-cohen"],"artist_he":"אהרן בס בשיתוף בר כהן","artist_en":"aharon bas with bar cohen","collab":[{"slug":"aharon-bas","name_he":"אהרן בס","name_en":"aharon bas"},{"slug":"bar-cohen","name_he":"בר כהן","name_en":"bar cohen"}],"collab_connector_he":"בשיתוף","title_he":"ניגודים","title_en":null,"gallery_slug":"medina","gallery_en":"Hamedina Square Gallery","sold":false,"details_he":"שירה","img":"aharon-bas-1","w":1600,"h":1131,"widths":[480,768,1080,1600],"artist_page_pos":1,"page":true,"exhibition_title_he":"הקולפן","exhibition_slug":"the-peeler","exhibition_route":"opencalls/the-peeler","statement_he":["היצירה \"ניגודים\" מבטאת את לב עולמו היצירתי: ההבנה שהאדם אינו עשוי מקו אחד ברור, אלא מריבוי כוחות, מאבקים, אהבות ופחדים. דווקא הניגודים שבתוכנו הם שמרכיבים את האנושיות שלנו — ומגלים שגם האחר, בפנים אחרות ובשם אחר, נושא בתוכו את אותה מלחמה, באותו הלב."],"statement_he_by_artist":{"bar-cohen":["העבודה \"במקרה\" נולדה מתוך תקופה של שינויים, בניית דרך עצמאית והתמודדות עם בדידות, חוסר ודאות ובלבול. מתוך הכמיהה לבהירות וההבנה כי תחושות מנוגדות – תסכול והודיה, חופש ופחד, צמיחה ותקיעות – יכולות להתקיים בו-זמנית באותו מרחב, התגבשה היצירה כהכרה במורכבות החיים כאן ועכשיו. העבודה מתכתבת עם טקסט שירי שמנסח את המורכבות הזו, ונוגעת בנושאים שמלווים את יצירתה כחשיפה לצד הסתרה, והאפשרות לשאת אמיתות שונות בעת ובעונה אחת."]}},
  {
   "id": "zohar-ron-5",
   "artist_slug": "zohar-ron",
@@ -3557,6 +3559,14 @@ body{text-transform:uppercase}
     return '';
   }
   function artistHtml(w){
+    /* collaborative artwork: each participant name linked separately (golden rule) */
+    if(w.collab && w.collab.length){
+      var conn=w.collab_connector_he||'בשיתוף';
+      var inner=w.collab.map(function(c){
+        return '<a href="../artists/'+esc(c.slug)+'/">'+esc(c.name_he||c.name_en||'')+'</a>';
+      }).join(' '+esc(conn)+' ');
+      return '<span class="artist is-he">'+inner+'</span>';
+    }
     var href = '../artists/'+w.artist_slug+'/';
     var cls  = w.artist_he ? 'is-he' : 'is-en';
     var name = w.artist_he || w.artist_en;

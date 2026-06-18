@@ -899,6 +899,36 @@
       "figma_artist_page_mobile": "XhGH289YTRcW811wrufRJz::605:7995",
       "figma_artist_page_desktop": null,
       "homepage_featured": false
+    },
+    {
+      "id": "aharon-bas",
+      "slug": "aharon-bas",
+      "name_en": "aharon bas",
+      "name_he": "אהרן בס",
+      "portrait": "images/artists/aharon-bas/portrait.webp",
+      "work_image": null,
+      "instagram_handle": "@aharon.bs",
+      "bio_he": "אהרן בס הוא משורר, יוצר ומלווה תהליכים דרך כתיבה.\n\nיצירתו נוגעת במתח העדין שבין חשיפה להסתרה, בין פגיעוּת לחוסן, בין בדידות לחיבור, ובין הכאב הפרטי לבין התקווה המשותפת לכל אדם.\n\nבשירתו מבקש בס לתת מילים לאזורים הפנימיים ביותר של הנפש — המקומות שבהם האדם מסתתר מעצמו, אך גם משתוקק להיראות ולהיות מובן. דרך כתיבה חשופה, ישירה ורוחנית, הוא מתבונן בשברים, בפחדים ובסתירות שבתוכנו, לא ככישלון אנושי אלא כחלק בלתי נפרד מן הדרך אל שלמות.",
+      "bio_en": null,
+      "works": [],
+      "figma_artist_page_mobile": "XhGH289YTRcW811wrufRJz::781:9",
+      "figma_artist_page_desktop": null,
+      "homepage_featured": false
+    },
+    {
+      "id": "bar-cohen",
+      "slug": "bar-cohen",
+      "name_en": "bar cohen",
+      "name_he": "בר כהן",
+      "portrait": "images/artists/bar-cohen/portrait.webp",
+      "work_image": null,
+      "instagram_handle": null,
+      "bio_he": "יוצרת ומעצבת אופנה (המותג AKRA). במשך שנים ביטאה את עצמה דרך מוזיקה, עד שהמעבר מחולצות תנועת הנוער אל מדי הצבא חידד עבורה את האופן שבו לבוש נושא זהות ושייכות. בעקבות התנסות מקרית בסריגה, לצד מגורים בנגב והשפעת המרחבים והשקט המדברי, החלה לפתח שפה עיצובית המבוססת על אינטואיציה, אקראיות ואמון בתהליך. היא יוצרת אופנה שבה המעשה היצירתי אינו מסתיים עם מסירת הבגד, אלא ממשיך לפעום מתוך מפגש בין האינטואיציה שלה לזו של הלובש.",
+      "bio_en": null,
+      "works": [],
+      "figma_artist_page_mobile": "XhGH289YTRcW811wrufRJz::798:307",
+      "figma_artist_page_desktop": null,
+      "homepage_featured": false
     }
   ],
   "_pending_artist_pages": [

@@ -35,6 +35,56 @@
   ],
   "art_works": [
     {
+      "id": "aharon-bas-1",
+      "artist_slug": "aharon-bas",
+      "artist_pages": [
+        "bar-cohen"
+      ],
+      "artist_he": "אהרן בס בשיתוף בר כהן",
+      "artist_en": "aharon bas with bar cohen",
+      "collab": [
+        {
+          "slug": "aharon-bas",
+          "name_he": "אהרן בס",
+          "name_en": "aharon bas"
+        },
+        {
+          "slug": "bar-cohen",
+          "name_he": "בר כהן",
+          "name_en": "bar cohen"
+        }
+      ],
+      "collab_connector_he": "בשיתוף",
+      "title_he": "ניגודים",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "שירה",
+      "img": "aharon-bas-1",
+      "w": 1600,
+      "h": 1131,
+      "widths": [
+        480,
+        768,
+        1080,
+        1600
+      ],
+      "artist_page_pos": 1,
+      "page": true,
+      "exhibition_title_he": "הקולפן",
+      "exhibition_slug": "the-peeler",
+      "exhibition_route": "opencalls/the-peeler",
+      "statement_he": [
+        "היצירה \"ניגודים\" מבטאת את לב עולמו היצירתי: ההבנה שהאדם אינו עשוי מקו אחד ברור, אלא מריבוי כוחות, מאבקים, אהבות ופחדים. דווקא הניגודים שבתוכנו הם שמרכיבים את האנושיות שלנו — ומגלים שגם האחר, בפנים אחרות ובשם אחר, נושא בתוכו את אותה מלחמה, באותו הלב."
+      ],
+      "statement_he_by_artist": {
+        "bar-cohen": [
+          "העבודה \"במקרה\" נולדה מתוך תקופה של שינויים, בניית דרך עצמאית והתמודדות עם בדידות, חוסר ודאות ובלבול. מתוך הכמיהה לבהירות וההבנה כי תחושות מנוגדות – תסכול והודיה, חופש ופחד, צמיחה ותקיעות – יכולות להתקיים בו-זמנית באותו מרחב, התגבשה היצירה כהכרה במורכבות החיים כאן ועכשיו. העבודה מתכתבת עם טקסט שירי שמנסח את המורכבות הזו, ונוגעת בנושאים שמלווים את יצירתה כחשיפה לצד הסתרה, והאפשרות לשאת אמיתות שונות בעת ובעונה אחת."
+        ]
+      }
+    },
+    {
       "id": "zohar-ron-5",
       "artist_slug": "zohar-ron",
       "artist_he": "זוהר רון",

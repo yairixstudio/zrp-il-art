@@ -348,7 +348,12 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
      (Figma intro: "ענת ויז׳ייה (ANAT WÉGIER), 43, תל אביב") */
   function introHtml(s){
     if(!s) return "";
-    var pre=String(s).replace(/\(([^()]*[A-Za-zÀ-ÖØ-öø-ÿ][^()]*)\)/g,'<span class="lat">($1)</span>');
+    /* Only isolate a PURELY-Latin parenthetical (e.g. "(Samy D)"). A paren group that
+       also contains Hebrew (e.g. "(המותג AKRA)") must stay in the RTL flow — wrapping it
+       would force the Hebrew into a Copperplate LTR isolate. */
+    var pre=String(s).replace(/\(([^()]*[A-Za-zÀ-ÖØ-öø-ÿ][^()]*)\)/g,function(m,inner){
+      return /[\u0590-\u05FF]/.test(inner) ? m : '<span class="lat">('+inner+')</span>';
+    });
     return mixedHtml(pre);
   }
   /* English-only titles: Hebrew gershayim (\u05f4) break bidi next to apostrophes. */

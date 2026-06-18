@@ -347,11 +347,17 @@ button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
      (Figma intro: "ענת ויז׳ייה (ANAT WÉGIER), 43, תל אביב") */
   function introHtml(s){
     if(!s) return "";
-    /* Only isolate a PURELY-Latin parenthetical (e.g. "(Samy D)"). A paren group that
-       also contains Hebrew (e.g. "(המותג AKRA)") must stay in the RTL flow — wrapping it
-       would force the Hebrew into a Copperplate LTR isolate. */
+    /* Parenthetical handling in RTL:
+       - purely-Latin "(Samy D)" -> isolate the whole group (parens included) LTR.
+       - mixed "(המותג AKRA)" -> keep BOTH parens in the RTL flow and isolate ONLY the
+         Latin word, so the parens hug correctly and the Hebrew stays Hebrew. (Wrapping
+         "AKRA)" together would split the paren pair across bidi contexts -> "(המותג (akra".) */
     var pre=String(s).replace(/\(([^()]*[A-Za-zÀ-ÖØ-öø-ÿ][^()]*)\)/g,function(m,inner){
-      return /[\u0590-\u05FF]/.test(inner) ? m : '<span class="lat">('+inner+')</span>';
+      if(/[\u0590-\u05FF]/.test(inner)){
+        var w=inner.replace(/[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ0-9'’.&-]*/g,function(lat){return '<span class="lat">'+lat+'</span>';});
+        return '('+w+')';
+      }
+      return '<span class="lat">('+inner+')</span>';
     });
     return mixedHtml(pre);
   }

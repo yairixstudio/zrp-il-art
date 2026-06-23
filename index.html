@@ -129,6 +129,17 @@ body{text-transform:uppercase}
 .hero-image .img-frame img{width:100%;height:100%;object-fit:cover;display:block}
 
 @keyframes scroll-prompt-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes scroll-prompt-shimmer{0%{background-position:130% 50%}100%{background-position:-30% 50%}}
+.scroll-prompt span{
+  display:inline-block;
+  background:linear-gradient(90deg,var(--ink) 0%,var(--ink) 32%,#7a7a7a 42%,#e8e8e8 50%,#7a7a7a 58%,var(--ink) 68%,var(--ink) 100%);
+  background-size:260% 100%;
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  animation:scroll-prompt-shimmer 2.8s ease-in-out infinite;
+}
 .scroll-prompt svg{width:16px;height:16px;display:block;animation:scroll-prompt-bob 1.5s ease-in-out infinite}
 
 /* ===== ANNOUNCEMENT BAR — marquee ===== */
@@ -137,7 +148,7 @@ body{text-transform:uppercase}
 .announce:hover .announce-track{animation-play-state:paused}
 .announce-item{flex:0 0 auto;padding-right:var(--announce-gap);white-space:nowrap}
 @keyframes announce-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.announce{text-align:center;padding:32px 16px}.announce-track{animation:none;width:100%;justify-content:center}.announce-item:not(:first-child){display:none}.announce-item{padding-right:0}.scroll-prompt svg{animation:none}}
+@media (prefers-reduced-motion:reduce){.announce{text-align:center;padding:32px 16px}.announce-track{animation:none;width:100%;justify-content:center}.announce-item:not(:first-child){display:none}.announce-item{padding-right:0}.scroll-prompt svg,.scroll-prompt span{animation:none}.scroll-prompt span{background:none;color:var(--ink);-webkit-text-fill-color:currentColor}}
 
 /* ===== SECTION HEADERS ===== */
 .section-header{font-family:var(--cop);font-size:36px;font-weight:400;letter-spacing:.02em;line-height:1.1}

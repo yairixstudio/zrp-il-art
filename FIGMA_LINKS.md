@@ -304,6 +304,21 @@ event how-many opening מובייל (`event-opening how many-mobile`): Implement
 
 ---
 
+## 🎨 artist-pages הקולפן — 6 mobile frames (2026-06-23, קובץ `landing`)
+
+דפי אומן מובייל (390px) לתערוכת הקולפן (`opencalls/the-peeler`), כולם גלריית המדינה:
+
+| אומן | node mobile | סטטוס |
+|---|---|---|
+| michael-konovalenko | `798:374` | חדש (3 יצירות: inner silence / מנמוסינה / דמות קדושה) |
+| maria-artamonova | `798:240` | חדש (Freedom, מקרמה) |
+| alice-debellis | `849:963` | חדש (2 יצירות, ציור דיגיטלי על בד) |
+| amnon-lipkin | `798:173` | חדש (11 יצירות ריקמה/תפר) |
+| aharon-bas | `781:9` | קיים — variant ניגודים של היצירה המשותפת |
+| bar-cohen | `798:307` | קיים — variant במקרה (+instagram @akra_e_) |
+
+---
+
 ## 📢 קולות קוראים (/opencall/:slug)
 
 ### the-peeler — הקולפן

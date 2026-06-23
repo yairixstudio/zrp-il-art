@@ -99,8 +99,10 @@ def main():
         open(fp, "w", encoding="utf-8").write(t2)
     print("  works/index.html #works-data refreshed:", bool(n))
 
-    # ---- 3) single artwork pages: refresh from works.json, preserve injected statement
-    #         for exhibition works whose statement lives in the store (work has none). ----
+    # ---- 3) single artwork pages: refresh from works.json. statement_he shown =
+    #         per-work text if any, ELSE the artist's exhibition statement from the
+    #         store, ELSE nothing (the renderer reads w.statement_he verbatim). ----
+    store_lut = {(r["artist_slug"], r["exhibition_title_he"]): r["statement_he"] for r in STORE}
     single = changed = missing = 0
     for fp in sorted(glob.glob("works/*/index.html")):
         if fp == "works/index.html":
@@ -119,9 +121,11 @@ def main():
             continue
         rec = dict(base)
         if not rec.get("statement_he"):
-            old = rec_old.get("statement_he")
-            if old:
-                rec["statement_he"] = old  # exhibition-level statement injected earlier; keep it
+            stmt = store_lut.get((rec["artist_slug"], rec.get("exhibition_title_he")))
+            if stmt:
+                rec["statement_he"] = stmt  # fall back to artist's exhibition statement
+            else:
+                rec.pop("statement_he", None)  # nothing to show -> leave empty
         compact = json.dumps(rec, separators=(",", ":"), ensure_ascii=False)
         if compact != m.group(2):
             t = t[:m.start(2)] + compact + t[m.end(2):]

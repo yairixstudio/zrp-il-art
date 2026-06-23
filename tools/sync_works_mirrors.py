@@ -30,21 +30,30 @@ def replace_js_array(text, var_name, arr):
 
 
 # ---- renderer upgrade snippets (idempotent) ----
-OLD_JS = ('        var cards=g.items.map(function(w){var _wb=(w.statement_he&&w.statement_he.length)?'
-          '\'<div class="work-statement">\'+statementHtml(w.statement_he)+\'</div>\':\'\';'
-          'return _wb+buildRichCard(w,gi++);}).join("");')
-NEW_JS = ('        var cards=g.items.map(function(w){if(w.statement_he&&w.statement_he.length){'
+# v3: statement banner spans full grid width, but the artwork CARD stays a normal
+# half-width grid item (even when alone) — banner and card are SEPARATE grid children
+# (no full-width .work-featured wrapper that stretched the image edge-to-edge).
+OLD_JS = ('        var cards=g.items.map(function(w){if(w.statement_he&&w.statement_he.length){'
           'var _wt=(w.title_he||w.title_en||"");'
           'var _wh=_wt?\'<div class="ws-head">\'+mixedHtml(_wt)+\'</div>\':"";'
           'return \'<div class="work-featured"><div class="work-statement"><span class="ws-rule"></span>\''
           '+_wh+\'<div class="ws-body">\'+statementHtml(w.statement_he)+\'</div></div>\'+buildRichCard(w,gi++)+\'</div>\';}'
           'return buildRichCard(w,gi++);}).join("");')
+NEW_JS = ('        var cards=g.items.map(function(w){if(w.statement_he&&w.statement_he.length){'
+          'var _wt=(w.title_he||w.title_en||"");'
+          'var _wh=_wt?\'<div class="ws-head">\'+mixedHtml(_wt)+\'</div>\':"";'
+          'return \'<div class="work-statement"><span class="ws-rule"></span>\''
+          '+_wh+\'<div class="ws-body">\'+statementHtml(w.statement_he)+\'</div></div>\'+buildRichCard(w,gi++);}'
+          'return buildRichCard(w,gi++);}).join("");')
 
-OLD_CSS = ('.work-statement{grid-column:1/-1;direction:rtl;text-align:right;font-family:var(--heb);'
-           'color:var(--ink);font-size:16px;line-height:1.7;margin:0}.work-statement p{margin:0 0 .7em}'
-           '.work-statement p:last-child{margin-bottom:0}')
-NEW_CSS = ('.work-featured{grid-column:1/-1;display:flex;flex-direction:column;gap:24px}'
+OLD_CSS = ('.work-featured{grid-column:1/-1;display:flex;flex-direction:column;gap:24px}'
            '.work-statement{direction:rtl;text-align:right;font-family:var(--heb);color:var(--ink)}'
+           '.ws-rule{display:block;width:72px;height:1px;background:#EFEFEF;margin:0 0 16px auto}'
+           '.ws-head{font-size:16px;letter-spacing:.02em;margin:0 0 8px;line-height:1.3}'
+           '.ws-head .lat{font-family:var(--cop)}'
+           '.ws-body{font-size:16px;line-height:1.7}.ws-body p{margin:0 0 .7em}.ws-body p:last-child{margin-bottom:0}')
+NEW_CSS = ('.work-statement{grid-column:1/-1;direction:rtl;text-align:right;font-family:var(--heb);'
+           'color:var(--ink);margin-bottom:-40px}'
            '.ws-rule{display:block;width:72px;height:1px;background:#EFEFEF;margin:0 0 16px auto}'
            '.ws-head{font-size:16px;letter-spacing:.02em;margin:0 0 8px;line-height:1.3}'
            '.ws-head .lat{font-family:var(--cop)}'
@@ -66,16 +75,15 @@ def main():
             if 'id="ex-statements-inline"' in t:
                 t = re.sub(r'<script id="ex-statements-inline">window\.__EX_STATEMENTS_INLINE__=\[.*?\]</script>',
                            lambda _: ex_script, t, count=1, flags=re.S)
-            # banner renderer upgrade
-            if "work-featured" not in t:
-                if OLD_JS in t:
-                    t = t.replace(OLD_JS, NEW_JS, 1)
-                else:
-                    print("  ! banner JS anchor not found:", fp, file=sys.stderr)
-                if OLD_CSS in t:
-                    t = t.replace(OLD_CSS, NEW_CSS, 1)
-                else:
-                    print("  ! banner CSS anchor not found:", fp, file=sys.stderr)
+            # banner renderer upgrade (idempotent: OLD vanishes after replace)
+            if OLD_JS in t:
+                t = t.replace(OLD_JS, NEW_JS, 1)
+            elif NEW_JS not in t:
+                print("  ! banner JS anchor not found:", fp, file=sys.stderr)
+            if OLD_CSS in t:
+                t = t.replace(OLD_CSS, NEW_CSS, 1)
+            elif NEW_CSS not in t:
+                print("  ! banner CSS anchor not found:", fp, file=sys.stderr)
             patched += 1
         if t != orig:
             open(fp, "w", encoding="utf-8").write(t)

@@ -27,7 +27,7 @@
   --max:1440px;
   --cop:"Copperplate","Noto Sans Arabic","Times New Roman",serif;
   --heb:"FbEzmel","Noto Sans Arabic","Arial Hebrew","David Libre",serif;
-  --pad-x:96px;
+  --pad-x:48px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:clip}
@@ -46,20 +46,20 @@ body{text-transform:uppercase}
 /* === HERO BAND (grey) — two-column on desktop, mirrors Figma 818:185 === */
 .event-hero{background:var(--bg-grey);padding:48px var(--pad-x) 32px;display:flex;justify-content:center}
 .event-hero .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
-.event-hero .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;gap:32px;padding:0 16px}
+.event-hero .text-col{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:32px;padding:0 16px}
 
 /* Title block — title only */
 .event-hero .h-title-block{display:flex;flex-direction:column;align-items:center;margin-bottom:-28px}
 
-/* Title: English Copperplate, centered — uppercase by global rule (Figma 818:191; 48px for long multi-line copy) */
-.event-hero .h-title{font-family:var(--cop);font-weight:400;font-size:48px;line-height:1.35;text-align:center;width:100%;color:var(--ink);padding:0 16px}
+/* Title: English Copperplate, centered — uppercase by global rule (Figma 818:191; 48px only when column is wide enough) */
+.event-hero .h-title{font-family:var(--cop);font-weight:400;font-size:28px;line-height:1.2;text-align:center;width:100%;color:var(--ink);padding:0 16px}
 .event-hero .h-title .artist-link{color:inherit;text-decoration:none}
 
 /* Meta: gallery row + date·time row, centered (Figma 818:193) */
 .event-hero .h-meta{display:flex;flex-direction:column;gap:8px;align-items:center;padding:0 10px 8px}
 .event-hero .h-meta .row-1,.event-hero .h-meta .row-2{display:flex;align-items:center;gap:8px;justify-content:center}
-.event-hero .h-meta .gallery{font-family:var(--heb);font-weight:400;font-size:28px;color:var(--ink);direction:rtl}
-.event-hero .h-meta .date,.event-hero .h-meta .time{font-family:var(--heb);font-weight:300;font-size:28px;color:var(--ink);direction:rtl}
+.event-hero .h-meta .gallery{font-family:var(--heb);font-weight:400;font-size:22px;color:var(--ink);direction:rtl}
+.event-hero .h-meta .date,.event-hero .h-meta .time{font-family:var(--heb);font-weight:300;font-size:22px;color:var(--ink);direction:rtl}
 /* Figma separator dot — 1×1 (818:193) */
 .event-hero .h-meta .dot{width:1px;height:1px;background:var(--icon-grey);border-radius:50%;display:inline-block}
 
@@ -67,9 +67,9 @@ body{text-transform:uppercase}
 .event-hero .h-body{font-family:var(--cop);font-weight:300;font-size:16px;line-height:1.5;text-align:center;color:var(--ink);padding:16px 0;letter-spacing:.02em}
 .event-hero .h-body .artist-link{text-decoration-color:rgba(27,27,27,.12)}
 
-/* === Hero card (right column) — 492x744, flat scrim + centered title overlay (Figma 818:212) === */
-.event-hero .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
-.event-hero .card{position:relative;width:492px;height:744px;overflow:hidden;background:#000}
+/* === Hero card (right column) — compact by default; full 492×744 at wide desktop (Figma 818:212) === */
+.event-hero .img-col{flex:0 0 380px;display:flex;justify-content:flex-end;flex-shrink:0}
+.event-hero .card{position:relative;width:380px;height:580px;overflow:hidden;background:#000;flex-shrink:0}
 .event-hero .card>img,.event-hero .card>picture,.event-hero .card>picture>img{width:100%;height:100%;object-fit:cover;display:block}
 /* Flat dark scrim (Figma gradient/fill on the image) */
 .event-hero .card::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,.32);pointer-events:none}
@@ -81,16 +81,18 @@ body{text-transform:uppercase}
 /* === THE ARTWORKS — triptych band (Figma 818:237) === */
 .event-artworks{padding:64px var(--pad-x);background:var(--white);display:flex;justify-content:center}
 .event-artworks .inner{display:flex;flex-direction:column;gap:16px;width:100%;max-width:1248px}
-.section-label{font-family:var(--cop);font-weight:300;font-size:28px;line-height:1.15;letter-spacing:.04em;color:var(--ink);text-align:left}
 .event-artworks .tri{--tri-max-w:1248px;--tri-bg:transparent;width:100%}
 .event-artworks .tri-frame > a{display:contents}
-.event-artworks .tri-frame{height:841px;aspect-ratio:auto;max-width:1248px}
+.event-artworks .tri-frame{height:560px;aspect-ratio:auto;max-width:1248px}
 /* Center slide shows the full image (contain, light bg); peeks crop (cover) — Figma 818:239-240 */
-.event-artworks .tri-slide.is-center{width:481px;height:841px;object-fit:contain;background:var(--slide-bg)}
-.event-artworks .tri-slide.is-prev,.event-artworks .tri-slide.is-next{width:302px;height:528px;opacity:.6;object-fit:cover}
-.event-artworks .tri-slide.is-prev{left:calc(50% - 473px)}
-.event-artworks .tri-slide.is-next{left:calc(50% + 472.5px)}
-.event-artworks .tri-slide.is-hidden{width:481px;height:841px}
+.event-artworks .tri-slide.is-center{width:360px;height:560px;object-fit:contain;background:var(--slide-bg)}
+.event-artworks .tri-slide.is-prev,.event-artworks .tri-slide.is-next{width:220px;height:380px;opacity:.6;object-fit:cover}
+/* Video slides (event documentation, landscape 16:9) fill their box — cover, no letterbox */
+.event-artworks video.tri-slide{object-fit:cover}
+.event-artworks video.tri-slide.is-center{background:#000}
+.event-artworks .tri-slide.is-prev{left:calc(50% - 326px)}
+.event-artworks .tri-slide.is-next{left:calc(50% + 326px)}
+.event-artworks .tri-slide.is-hidden{width:360px;height:560px}
 
 /* === ARTISTS strip (Figma 820:439) === */
 .event-artists{padding:32px var(--pad-x);display:flex;justify-content:center}
@@ -113,18 +115,19 @@ a.artist-link{color:inherit;text-decoration:underline;text-decoration-color:rgba
 a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
 
 /* === RESPONSIVE === */
-@media (max-width:1100px){
-  :root{--pad-x:48px}
-  .event-hero .img-col{flex-basis:380px}
-  .event-hero .card{width:380px;height:580px}
-  .event-hero .h-title{font-size:28px;line-height:1.2}
-  .event-hero .h-meta .gallery,.event-hero .h-meta .date,.event-hero .h-meta .time{font-size:22px}
-  .event-artworks .tri-frame{height:560px}
-  .event-artworks .tri-slide.is-center{width:360px;height:560px}
-  .event-artworks .tri-slide.is-prev,.event-artworks .tri-slide.is-next{width:220px;height:380px}
-  .event-artworks .tri-slide.is-prev{left:calc(50% - 326px)}
-  .event-artworks .tri-slide.is-next{left:calc(50% + 326px)}
-  .event-artworks .tri-slide.is-hidden{width:360px;height:560px}
+/* Wide desktop only — below 1320px the compact hero stays (avoids 492px card + 48px title in a narrow text column) */
+@media (min-width:1320px){
+  :root{--pad-x:96px}
+  .event-hero .img-col{flex-basis:492px}
+  .event-hero .card{width:492px;height:744px}
+  .event-hero .h-title{font-size:48px;line-height:1.35}
+  .event-hero .h-meta .gallery,.event-hero .h-meta .date,.event-hero .h-meta .time{font-size:28px}
+  .event-artworks .tri-frame{height:841px}
+  .event-artworks .tri-slide.is-center{width:481px;height:841px}
+  .event-artworks .tri-slide.is-prev,.event-artworks .tri-slide.is-next{width:302px;height:528px}
+  .event-artworks .tri-slide.is-prev{left:calc(50% - 473px)}
+  .event-artworks .tri-slide.is-next{left:calc(50% + 472.5px)}
+  .event-artworks .tri-slide.is-hidden{width:481px;height:841px}
 }
 
 @media (max-width:920px){
@@ -153,9 +156,11 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
 
   /* Title + meta band below the image (Figma 818:84) */
   .event-hero .h-title-block{padding:32px 0 0;background:var(--white);align-items:center;margin-bottom:0}
-  .event-hero .h-title{font-size:24px;line-height:1.15;padding:0 16px;text-align:center;width:100%}
+  .event-hero .h-title{font-size:20px;line-height:35px;padding:0 16px;text-align:center;width:100%}
   .event-hero .h-meta{gap:8px;padding:0 10px 8px;margin-top:16px;background:var(--white)}
-  .event-hero .h-meta .gallery,.event-hero .h-meta .date,.event-hero .h-meta .time{font-size:14px}
+  .event-hero .h-meta .gallery{font-size:15px;font-weight:500}
+  .event-hero .h-meta .row-2{font-size:17px}
+  .event-hero .h-meta .date,.event-hero .h-meta .time{font-size:inherit}
 
   /* Body — after the meta (Figma 818:105) */
   .event-hero .h-body{padding:16px;font-size:14px;line-height:1.5;background:var(--white)}
@@ -163,7 +168,6 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
   /* Artworks gallery: stage 443h, center 216x378 contain, peeks bleed off-screen (Figma 818:107) */
   .event-artworks{padding:8px 16px}
   .event-artworks .inner{gap:16px}
-  .event-artworks .section-label{font-size:20px;text-align:center}
   .event-artworks .tri{--tri-max-w:none;width:100%}
   .event-artworks .tri-frame{height:443px;max-width:none;width:100%}
   .event-artworks .tri-slide.is-center{width:216px;height:378px;background:#F8F8F8}
@@ -245,7 +249,7 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
       <!-- Image card — desktop storefront / mobile live-art portrait, flat scrim + exhibition title overlay -->
       <div class="img-col">
         <div class="card" aria-label="artist talk — gal pollak & elsa ers brosh">
-          <img src="../../images/events/artist-talk/hero-desktop.webp" srcset="../../images/events/artist-talk/hero-desktop-480w.webp 480w, ../../images/events/artist-talk/hero-desktop-768w.webp 768w, ../../images/events/artist-talk/hero-desktop.webp 984w" sizes="(max-width:768px) 100vw, (max-width:1100px) 380px, 492px" width="984" height="1312" alt="חלון הראווה של גלריית כיכר המדינה — How Many Partners Have U Had?" decoding="async" fetchpriority="high">
+          <img src="../../images/events/artist-talk/hero-desktop.webp" srcset="../../images/events/artist-talk/hero-desktop-480w.webp 480w, ../../images/events/artist-talk/hero-desktop-768w.webp 768w, ../../images/events/artist-talk/hero-desktop.webp 984w" sizes="(max-width:768px) 100vw, (max-width:1319px) 380px, 492px" width="984" height="1312" alt="חלון הראווה של גלריית כיכר המדינה — How Many Partners Have U Had?" decoding="async" fetchpriority="high">
           <div class="center-text">
             <div class="en">artist talk</div>
             <div class="sub">how many partners have you had?</div>
@@ -260,17 +264,18 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
        Center slide = contain on light bg, peeks = cover (Figma 818:237). -->
   <section class="event-artworks" aria-label="העבודות בתערוכה">
     <div class="inner">
-      <div class="section-label">the artworks</div>
       <div class="tri" data-tri-loop="true">
         <div class="tri-frame">
-          <a href="../../exhibitions/how-many/" aria-label="How Many Partners — לדף התערוכה" draggable="false"><img class="tri-slide" src="../../images/events/artist-talk/slide-01.webp" srcset="../../images/events/artist-talk/slide-01-480w.webp 480w, ../../images/events/artist-talk/slide-01-768w.webp 768w, ../../images/events/artist-talk/slide-01.webp 1000w" sizes="100vw" width="1000" height="1333" alt="מבקרים בגלריה מול עבודות התערוכה" draggable="false" decoding="async" loading="lazy"></a>
-          <a href="../../exhibitions/how-many/" aria-label="How Many Partners — לדף התערוכה" draggable="false"><img class="tri-slide" src="../../images/events/artist-talk/slide-05.webp" width="576" height="1024" alt="אובייקט עץ מוצג בגלריה" draggable="false" decoding="async" loading="lazy"></a>
-          <a href="../../exhibitions/how-many/" aria-label="How Many Partners — לדף התערוכה" draggable="false"><img class="tri-slide" src="../../images/events/artist-talk/hero-desktop.webp" srcset="../../images/events/artist-talk/hero-desktop-480w.webp 480w, ../../images/events/artist-talk/hero-desktop-768w.webp 768w, ../../images/events/artist-talk/hero-desktop.webp 984w" sizes="100vw" width="984" height="1312" alt="חלון הראווה של הגלריה — How Many Partners Have U Had?" draggable="false" decoding="async" loading="lazy"></a>
+          <video class="tri-slide" data-src="../../images/events/artist-talk/clip-01.mp4" poster="../../images/events/artist-talk/clip-01-poster.webp" width="1024" height="576" muted loop playsinline preload="none" aria-label="תיעוד מתוך האירוע"></video>
+          <video class="tri-slide" data-src="../../images/events/artist-talk/clip-02.mp4" poster="../../images/events/artist-talk/clip-02-poster.webp" width="1024" height="576" muted loop playsinline preload="none" aria-label="תיעוד מתוך האירוע"></video>
+          <video class="tri-slide" data-src="../../images/events/artist-talk/clip-03.mp4" poster="../../images/events/artist-talk/clip-03-poster.webp" width="1024" height="576" muted loop playsinline preload="none" aria-label="תיעוד מתוך האירוע"></video>
+          <video class="tri-slide" data-src="../../images/events/artist-talk/clip-04.mp4" poster="../../images/events/artist-talk/clip-04-poster.webp" width="1024" height="576" muted loop playsinline preload="none" aria-label="תיעוד מתוך האירוע"></video>
         </div>
         <div class="tri-dots" role="tablist" aria-label="ניווט בגלריית העבודות">
-          <button type="button" class="tri-dot is-on" aria-label="עבודה 1" role="tab" aria-selected="true"></button>
-          <button type="button" class="tri-dot" aria-label="עבודה 2" role="tab" aria-selected="false"></button>
-          <button type="button" class="tri-dot" aria-label="עבודה 3" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot is-on" aria-label="סרטון 1" role="tab" aria-selected="true"></button>
+          <button type="button" class="tri-dot" aria-label="סרטון 2" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot" aria-label="סרטון 3" role="tab" aria-selected="false"></button>
+          <button type="button" class="tri-dot" aria-label="סרטון 4" role="tab" aria-selected="false"></button>
         </div>
       </div>
     </div>
@@ -304,6 +309,25 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
 
 <script src="../../components/site-chrome.js?v=5" defer></script>
 <script src="../../components/triptych-gallery.js" defer></script>
+<script>
+/* Lazy: each clip's mp4 downloads only when it becomes the centered slide; until then
+   the poster (first frame) is shown. Only the centered clip plays. Good for slow links. */
+(function(){
+  var tri = document.querySelector('.event-artworks .tri');
+  if(!tri) return;
+  var vids = tri.querySelectorAll('video.tri-slide');
+  function focus(i){
+    vids.forEach(function(v,n){
+      if(n===i){
+        if(!v.src && v.dataset.src) v.src = v.dataset.src; /* fetch on demand */
+        var p = v.play(); if(p && p.catch) p.catch(function(){});
+      } else { v.pause(); }
+    });
+  }
+  tri.addEventListener('tri:change', function(e){ focus(e.detail.index); });
+  focus(0);
+})();
+</script>
 
 <script src="../../components/analytics.js" defer></script>
 <script src="../../components/picture-upgrade.js" defer></script>

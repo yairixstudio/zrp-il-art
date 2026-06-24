@@ -989,6 +989,23 @@
       "figma_artist_page_mobile": "XhGH289YTRcW811wrufRJz::798:173",
       "figma_artist_page_desktop": null,
       "homepage_featured": false
+    },
+    {
+      "id": "tali-zelnik",
+      "slug": "tali-zelnik",
+      "name_en": "tali zelnik",
+      "studio_en": "piece of mine studio",
+      "name_he": "טלי זלניק",
+      "portrait": "images/artists/tali-zelnik/portrait.webp",
+      "work_image": null,
+      "instagram_handle": "@pieceofmine.studio",
+      "bio_he": null,
+      "bio_en": null,
+      "works": [],
+      "figma_artist_page_mobile": "XhGH289YTRcW811wrufRJz::854:1040",
+      "figma_artist_page_desktop": null,
+      "homepage_featured": false,
+      "hidden": true
     }
   ],
   "_pending_artist_pages": [

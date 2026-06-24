@@ -48,11 +48,11 @@ body{text-transform:uppercase}
 .event-hero .row{display:flex;gap:48px;align-items:stretch;width:100%;max-width:var(--max)}
 .event-hero .text-col{flex:1;display:flex;flex-direction:column;justify-content:center;gap:32px;padding:0 16px}
 
-/* Title + meta block — title↔meta gap 4 desktop (Figma 818:189) */
-.event-hero .h-title-block{display:flex;flex-direction:column;gap:4px;align-items:center}
+/* Title block — title only */
+.event-hero .h-title-block{display:flex;flex-direction:column;align-items:center;margin-bottom:-28px}
 
 /* Title: English Copperplate, centered — uppercase by global rule (Figma 818:191; 48px for long multi-line copy) */
-.event-hero .h-title{font-family:var(--cop);font-weight:400;font-size:48px;line-height:1.15;text-align:center;width:100%;color:var(--ink);padding:0 16px}
+.event-hero .h-title{font-family:var(--cop);font-weight:400;font-size:48px;line-height:1.35;text-align:center;width:100%;color:var(--ink);padding:0 16px}
 .event-hero .h-title .artist-link{color:inherit;text-decoration:none}
 
 /* Meta: gallery row + date·time row, centered (Figma 818:193) */
@@ -60,13 +60,12 @@ body{text-transform:uppercase}
 .event-hero .h-meta .row-1,.event-hero .h-meta .row-2{display:flex;align-items:center;gap:8px;justify-content:center}
 .event-hero .h-meta .gallery{font-family:var(--heb);font-weight:400;font-size:28px;color:var(--ink);direction:rtl}
 .event-hero .h-meta .date,.event-hero .h-meta .time{font-family:var(--heb);font-weight:300;font-size:28px;color:var(--ink);direction:rtl}
-/* Figma draws the separator as 1×1 — rendered 4px so it reads as a dot */
-.event-hero .h-meta .dot{width:4px;height:4px;background:var(--icon-grey);border-radius:50%;display:inline-block}
+/* Figma separator dot — 1×1 (818:193) */
+.event-hero .h-meta .dot{width:1px;height:1px;background:var(--icon-grey);border-radius:50%;display:inline-block}
 
 /* Body — fills the column, Copperplate Light 18/20 CENTER (Figma 818:210). */
-.event-hero .h-body{font-family:var(--cop);font-weight:300;font-size:18px;line-height:20px;text-align:center;color:var(--ink);padding:16px 0;letter-spacing:.02em}
-.event-hero .h-body p+p{margin-top:6px}
-.event-hero .h-body .strong{font-weight:400}
+.event-hero .h-body{font-family:var(--cop);font-weight:300;font-size:16px;line-height:1.5;text-align:center;color:var(--ink);padding:16px 0;letter-spacing:.02em}
+.event-hero .h-body .artist-link{text-decoration-color:rgba(27,27,27,.12)}
 
 /* === Hero card (right column) — 492x744, flat scrim + centered title overlay (Figma 818:212) === */
 .event-hero .img-col{flex:0 0 492px;display:flex;justify-content:flex-end}
@@ -75,9 +74,9 @@ body{text-transform:uppercase}
 /* Flat dark scrim (Figma gradient/fill on the image) */
 .event-hero .card::after{content:"";position:absolute;inset:0;background:rgba(27,27,27,.32);pointer-events:none}
 /* Title overlay — Figma 818:216: y=342/744 (46%), width 301, gap 16 */
-.event-hero .card .center-text{position:absolute;left:50%;top:46%;transform:translateX(-50%);width:301px;display:flex;flex-direction:column;align-items:center;gap:16px;color:#fff;z-index:2}
-.event-hero .card .center-text .en{font-family:var(--cop);font-weight:700;font-size:36px;line-height:1.1;text-align:center}
-.event-hero .card .center-text .sub{font-family:var(--cop);font-weight:400;font-size:24px;line-height:1.15;text-align:center;width:266px}
+.event-hero .card .center-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:301px;display:flex;flex-direction:column;align-items:center;gap:16px;color:#fff;z-index:2}
+.event-hero .card .center-text .en{font-family:var(--cop);font-weight:700;font-size:28px;line-height:1.1;text-align:center}
+.event-hero .card .center-text .sub{font-family:var(--cop);font-weight:400;font-size:16px;line-height:22px;letter-spacing:1.4px;text-align:center;width:266px}
 
 /* === THE ARTWORKS — triptych band (Figma 818:237) === */
 .event-artworks{padding:64px var(--pad-x);background:var(--white);display:flex;justify-content:center}
@@ -118,7 +117,7 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
   :root{--pad-x:48px}
   .event-hero .img-col{flex-basis:380px}
   .event-hero .card{width:380px;height:580px}
-  .event-hero .h-title{font-size:40px;line-height:1.15}
+  .event-hero .h-title{font-size:28px;line-height:1.2}
   .event-hero .h-meta .gallery,.event-hero .h-meta .date,.event-hero .h-meta .time{font-size:22px}
   .event-artworks .tri-frame{height:560px}
   .event-artworks .tri-slide.is-center{width:360px;height:560px}
@@ -128,6 +127,10 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
   .event-artworks .tri-slide.is-hidden{width:360px;height:560px}
 }
 
+@media (max-width:920px){
+  .event-hero .h-title{font-size:22px;line-height:1.15}
+}
+
 @media (max-width:768px){
   :root{--pad-x:16px}
 
@@ -135,7 +138,8 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
   .event-hero,.event-hero .row,.event-hero .text-col{display:contents}
   .event-hero .img-col{order:1}
   .event-hero .h-title-block{order:2}
-  .event-hero .h-body{order:3}
+  .event-hero .h-meta{order:3}
+  .event-hero .h-body{order:4}
   .event-artworks{order:4}
   .event-artists{order:5}
 
@@ -143,18 +147,18 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
   .event-hero .img-col{flex:none;width:100%;justify-content:center}
   .event-hero .card{width:100%;height:520px}
   /* Overlay block: Figma y=208/520 (40%), width 301 */
-  .event-hero .card .center-text{top:40%;width:301px;gap:16px}
-  .event-hero .card .center-text .en{font-size:36px}
-  .event-hero .card .center-text .sub{font-size:24px;width:266px}
+  .event-hero .card .center-text{width:301px;gap:16px}
+  .event-hero .card .center-text .en{font-size:28px}
+  .event-hero .card .center-text .sub{font-size:16px;line-height:22px;letter-spacing:1.4px;width:266px}
 
   /* Title + meta band below the image (Figma 818:84) */
-  .event-hero .h-title-block{padding:32px 0 0;gap:16px;background:var(--white);align-items:center}
+  .event-hero .h-title-block{padding:32px 0 0;background:var(--white);align-items:center;margin-bottom:0}
   .event-hero .h-title{font-size:24px;line-height:1.15;padding:0 16px;text-align:center;width:100%}
-  .event-hero .h-meta{gap:8px;padding:0 10px 8px}
+  .event-hero .h-meta{gap:8px;padding:0 10px 8px;margin-top:16px;background:var(--white)}
   .event-hero .h-meta .gallery,.event-hero .h-meta .date,.event-hero .h-meta .time{font-size:14px}
 
   /* Body — after the meta (Figma 818:105) */
-  .event-hero .h-body{padding:16px;font-size:16px;line-height:20px;background:var(--white)}
+  .event-hero .h-body{padding:16px;font-size:14px;line-height:1.5;background:var(--white)}
 
   /* Artworks gallery: stage 443h, center 216x378 contain, peeks bleed off-screen (Figma 818:107) */
   .event-artworks{padding:8px 16px}
@@ -177,8 +181,8 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
 }
 
 @media (max-width:400px){
-  .event-hero .card .center-text .en{font-size:32px}
-  .event-hero .card .center-text .sub{font-size:22px}
+  .event-hero .card .center-text .en{font-size:28px}
+  .event-hero .card .center-text .sub{font-size:16px;line-height:22px;letter-spacing:1.4px}
 }
 </style>
 <!-- SEO:auto:start -->
@@ -195,14 +199,14 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
 <meta property="og:title" content="Artist Talk with Gal Pollak &amp; Elsa Ers Brosh — Zielinski &amp; Rozen">
 <meta property="og:description" content="שיחת אמנים עם גל פולק ואלסה ארס ברוש בתוך התערוכה How Many Partners Have You Had?, גלריית כיכר המדינה תל אביב, 11 ביוני 2026, בשעה 11:00.">
 <meta property="og:url" content="https://art.zrp.co.il/events/artist-talk/">
-<meta property="og:image" content="https://art.zrp.co.il/images/events/artist-talk/hero-mobile.webp">
-<meta property="og:image:width" content="800">
-<meta property="og:image:height" content="1067">
+<meta property="og:image" content="https://art.zrp.co.il/images/events/artist-talk/hero-desktop.webp">
+<meta property="og:image:width" content="984">
+<meta property="og:image:height" content="1312">
 <meta property="og:image:alt" content="Artist Talk with Gal Pollak &amp; Elsa Ers Brosh — Zielinski &amp; Rozen">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Artist Talk with Gal Pollak &amp; Elsa Ers Brosh — Zielinski &amp; Rozen">
 <meta name="twitter:description" content="שיחת אמנים עם גל פולק ואלסה ארס ברוש בתוך התערוכה How Many Partners Have You Had?, גלריית כיכר המדינה תל אביב, 11 ביוני 2026, בשעה 11:00.">
-<meta name="twitter:image" content="https://art.zrp.co.il/images/events/artist-talk/hero-mobile.webp">
+<meta name="twitter:image" content="https://art.zrp.co.il/images/events/artist-talk/hero-desktop.webp">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Event","@id":"https://art.zrp.co.il/events/artist-talk/#event","url":"https://art.zrp.co.il/events/artist-talk/","name":"Artist Talk with Gal Pollak & Elsa Ers Brosh","image":"https://art.zrp.co.il/images/events/artist-talk/hero-desktop.webp","organizer":{"@id":"https://art.zrp.co.il/#org"},"location":{"@id":"https://art.zrp.co.il/#org"},"startDate":"2026-06-11T11:00","description":"שיחת אמנים עם גל פולק ואלסה ארס ברוש בתוך התערוכה How Many Partners Have You Had?, גלריית כיכר המדינה תל אביב, 11 ביוני 2026, בשעה 11:00."},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Press & Events","item":"https://art.zrp.co.il/press/"},{"@type":"ListItem","position":2,"name":"Artist Talk with Gal Pollak & Elsa Ers Brosh","item":"https://art.zrp.co.il/events/artist-talk/"}]}]}</script>
 <!-- SEO:auto:end -->
 </head>
@@ -220,34 +224,28 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
       <!-- Text column — title, meta, description -->
       <div class="text-col">
         <div class="h-title-block">
-          <h1 class="h-title">artist talk with <a class="artist-link" href="../../artists/gal-polk/">gal pollak</a> and <a class="artist-link" href="../../artists/elsa-ars-brush/">elsa ers brosh</a></h1>
+          <h1 class="h-title">artist talk<br>with <a class="artist-link" href="../../artists/gal-polk/">gal pollak</a><br>and<br><a class="artist-link" href="../../artists/elsa-ars-brush/">elsa ers brosh</a></h1>
+        </div>
 
-          <div class="h-meta">
-            <div class="row-1"><span class="gallery heb">גלריית כיכר המדינה</span></div>
-            <div class="row-2">
-              <span class="date heb"><bdi>11 יוני 2026</bdi></span>
-              <span class="dot" aria-hidden="true"></span>
-              <span class="time"><bdi>11:00</bdi></span>
-            </div>
+        <div class="h-meta">
+          <div class="row-1"><span class="gallery heb">גלריית כיכר המדינה</span></div>
+          <div class="row-2">
+            <span class="date heb"><bdi>11 יוני 2026</bdi></span>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="time"><bdi>11:00</bdi></span>
           </div>
         </div>
 
         <!-- Body — content mirrors data/events.json::artist-talk.description_he -->
         <div class="h-body">
-          <p class="strong">artists talk</p>
-          <p>event with our artists <a class="artist-link" href="../../artists/gal-polk/">gal pollak</a> and <a class="artist-link" href="../../artists/elsa-ars-brush/">elsa ers brosh</a> in our gallery</p>
+          <p>artists talk<br>event with our artists <a class="artist-link" href="../../artists/gal-polk/">gal pollak</a> and <a class="artist-link" href="../../artists/elsa-ars-brush/">elsa ers brosh</a> in our gallery</p>
         </div>
       </div>
 
       <!-- Image card — desktop storefront / mobile live-art portrait, flat scrim + exhibition title overlay -->
       <div class="img-col">
         <div class="card" aria-label="artist talk — gal pollak & elsa ers brosh">
-          <picture>
-            <source media="(max-width:768px)" type="image/avif" srcset="../../images/events/artist-talk/hero-mobile-480w.avif 480w, ../../images/events/artist-talk/hero-mobile-768w.avif 768w, ../../images/events/artist-talk/hero-mobile.avif 800w" sizes="100vw">
-            <source media="(max-width:768px)" type="image/webp" srcset="../../images/events/artist-talk/hero-mobile-480w.webp 480w, ../../images/events/artist-talk/hero-mobile-768w.webp 768w, ../../images/events/artist-talk/hero-mobile.webp 800w" sizes="100vw">
-            <source type="image/avif" srcset="../../images/events/artist-talk/hero-desktop-480w.avif 480w, ../../images/events/artist-talk/hero-desktop-768w.avif 768w, ../../images/events/artist-talk/hero-desktop.avif 984w" sizes="(max-width:1100px) 380px, 492px">
-            <img src="../../images/events/artist-talk/hero-desktop.webp" srcset="../../images/events/artist-talk/hero-desktop-480w.webp 480w, ../../images/events/artist-talk/hero-desktop-768w.webp 768w, ../../images/events/artist-talk/hero-desktop.webp 984w" sizes="(max-width:1100px) 380px, 492px" width="984" height="1312" alt="חלון הראווה של גלריית כיכר המדינה — How Many Partners Have U Had?" decoding="async" fetchpriority="high">
-          </picture>
+          <img src="../../images/events/artist-talk/hero-desktop.webp" srcset="../../images/events/artist-talk/hero-desktop-480w.webp 480w, ../../images/events/artist-talk/hero-desktop-768w.webp 768w, ../../images/events/artist-talk/hero-desktop.webp 984w" sizes="(max-width:768px) 100vw, (max-width:1100px) 380px, 492px" width="984" height="1312" alt="חלון הראווה של גלריית כיכר המדינה — How Many Partners Have U Had?" decoding="async" fetchpriority="high">
           <div class="center-text">
             <div class="en">artist talk</div>
             <div class="sub">how many partners have you had?</div>
@@ -266,9 +264,6 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
       <div class="tri" data-tri-loop="true">
         <div class="tri-frame">
           <a href="../../exhibitions/how-many/" aria-label="How Many Partners — לדף התערוכה" draggable="false"><img class="tri-slide" src="../../images/events/artist-talk/slide-01.webp" srcset="../../images/events/artist-talk/slide-01-480w.webp 480w, ../../images/events/artist-talk/slide-01-768w.webp 768w, ../../images/events/artist-talk/slide-01.webp 1000w" sizes="100vw" width="1000" height="1333" alt="מבקרים בגלריה מול עבודות התערוכה" draggable="false" decoding="async" loading="lazy"></a>
-          <a href="../../exhibitions/how-many/" aria-label="How Many Partners — לדף התערוכה" draggable="false"><img class="tri-slide" src="../../images/events/artist-talk/slide-02.webp" srcset="../../images/events/artist-talk/slide-02-480w.webp 480w, ../../images/events/artist-talk/slide-02-768w.webp 768w, ../../images/events/artist-talk/slide-02.webp 900w" sizes="100vw" width="900" height="1200" alt="מיצג קליגרפיה חיה על גוף בגלריה" draggable="false" decoding="async" loading="lazy"></a>
-          <a href="../../exhibitions/how-many/" aria-label="How Many Partners — לדף התערוכה" draggable="false"><img class="tri-slide" src="../../images/events/artist-talk/slide-03.webp" width="800" height="1422" alt="קליגרפיה עברית על גב — מיצג חי" draggable="false" decoding="async" loading="lazy"></a>
-          <a href="../../exhibitions/how-many/" aria-label="How Many Partners — לדף התערוכה" draggable="false"><img class="tri-slide" src="../../images/events/artist-talk/slide-04.webp" width="800" height="1422" alt="דמות עטופה בבד לבן עם כתב על העור" draggable="false" decoding="async" loading="lazy"></a>
           <a href="../../exhibitions/how-many/" aria-label="How Many Partners — לדף התערוכה" draggable="false"><img class="tri-slide" src="../../images/events/artist-talk/slide-05.webp" width="576" height="1024" alt="אובייקט עץ מוצג בגלריה" draggable="false" decoding="async" loading="lazy"></a>
           <a href="../../exhibitions/how-many/" aria-label="How Many Partners — לדף התערוכה" draggable="false"><img class="tri-slide" src="../../images/events/artist-talk/hero-desktop.webp" srcset="../../images/events/artist-talk/hero-desktop-480w.webp 480w, ../../images/events/artist-talk/hero-desktop-768w.webp 768w, ../../images/events/artist-talk/hero-desktop.webp 984w" sizes="100vw" width="984" height="1312" alt="חלון הראווה של הגלריה — How Many Partners Have U Had?" draggable="false" decoding="async" loading="lazy"></a>
         </div>
@@ -276,9 +271,6 @@ a.artist-link:hover{text-decoration-color:currentColor;opacity:.75}
           <button type="button" class="tri-dot is-on" aria-label="עבודה 1" role="tab" aria-selected="true"></button>
           <button type="button" class="tri-dot" aria-label="עבודה 2" role="tab" aria-selected="false"></button>
           <button type="button" class="tri-dot" aria-label="עבודה 3" role="tab" aria-selected="false"></button>
-          <button type="button" class="tri-dot" aria-label="עבודה 4" role="tab" aria-selected="false"></button>
-          <button type="button" class="tri-dot" aria-label="עבודה 5" role="tab" aria-selected="false"></button>
-          <button type="button" class="tri-dot" aria-label="עבודה 6" role="tab" aria-selected="false"></button>
         </div>
       </div>
     </div>

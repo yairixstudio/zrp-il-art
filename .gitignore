@@ -32,3 +32,6 @@ tmp/
 # Node / Lighthouse (dev tooling only — not part of the published site)
 node_modules/
 lighthouse-reports/
+
+# staged-but-unpublished pages (hidden until reveal; not served by GitHub Pages)
+_staging/

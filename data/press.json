@@ -3,6 +3,19 @@
   "_note": "Press articles + gallery events. Article bodies live inline in press/<slug>/index.html (long-form Hebrew copy is too verbose to round-trip JSON). This file holds metadata + cover only.",
   "items": [
     {
+      "id": "event-how-many-artist-talk",
+      "type": "event",
+      "tag_en": "gallery event",
+      "title_he": "artist talk with gal pollak and elsa ers brosh",
+      "date": "2026-06-11",
+      "cover_image": "images/events/artist-talk/hero-mobile.webp",
+      "exhibition_id": "how-many",
+      "homepage_visible": true,
+      "route": "events/artist-talk/",
+      "figma_home_card_desktop": "XhGH289YTRcW811wrufRJz::818:159",
+      "figma_home_card_mobile": "XhGH289YTRcW811wrufRJz::818:17"
+    },
+    {
       "id": "the-sixth-scent",
       "type": "press",
       "source_he": null,

@@ -93,6 +93,7 @@ Stack: **HTML + CSS** (single-file per page), נתונים ב-`data/*.json`. JSO
 | `/events/ktuba/` | Event (zohar ron live art) | `XhGH...::119:1651` (canonical 2026-05-11; legacy `Zn3N...::1213:1644`) | `XhGH...::119:1509` (legacy `Zn3N...::1213:1502`) | ✅ |
 | `/events/loneliness/` | Event (opening) | `Zn3N...::1213:1873` | `Zn3N...::1213:2099` | ✅ |
 | `/events/close-look/` | Event (מבט מקרוב — open meeting, tanya shin, how-many) | `XhGH...::420:1520` | `XhGH...::420:1625` | ✅ `events/close-look/index.html` |
+| `/events/artist-talk/` | Event (artist talk — gal pollak + elsa ers brosh, how-many, 11.6.26 11:00, גלריית כיכר המדינה) | `XhGH...::818:159` | `XhGH...::818:17` | ✅ `events/artist-talk/index.html` — מבוסס על תבנית `close-look`. **כותרת ראשית באנגלית** (Copperplate UPPER, לא עברית כמו close-look). Hero **שונה בין breakpoints** (`<picture>` עם `media`): דסקטופ = חלון ראווה (6fb63f12), מובייל = מיצג קליגרפיה חיה (97bfe6a2). Overlay = "artist talk" + "how many partners have you had?". טריפטיך מ-6 תמונות `images/events/artist-talk/`. שני אומנים מארחים (gal-polk, elsa-ars-brush) — strip מ-portraits קיימים, חץ →`/exhibitions/how-many/`. הומפייג': כרטיס `#press` במקום **שני** (`event-how-many-artist-talk` ב-press.json + homepage.json). |
 | `/events/how-many/` | Event (opening — how many, 15 artists, korin avraham) | `XhGH...::433:2` | `XhGH...::433:179` | ✅ `events/how-many/index.html` |
 | `/opencalls/` | Index | — | — | ⏳ |
 | `/opencalls/the-peeler/` | Single | `Zn3N...::1213:2417` | `Zn3N...::1213:2518` | ✅ |

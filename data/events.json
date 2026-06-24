@@ -2,6 +2,43 @@
   "$schema": "./_schema/events.schema.json",
   "events": [
     {
+      "id": "artist-talk",
+      "slug": "artist-talk",
+      "title_he": "שיחת אמנים עם גל פולק ואלסה ארס ברוש",
+      "title_en": "artist talk with gal pollak and elsa ers brosh",
+      "subtitle_he": "how many partners have you had?",
+      "exhibition_id": "how-many",
+      "exhibition_volume": 2,
+      "date": "2026-06-11",
+      "date_he": "11 יוני 2026",
+      "time_start": "11:00",
+      "gallery_id": "medina",
+      "gallery_label_he": "גלריית כיכר המדינה",
+      "cover_image": "images/events/artist-talk/hero-mobile.webp",
+      "description_he": [
+        "artists talk",
+        "event with our artists gal pollak and elsa ers brosh in our gallery"
+      ],
+      "gallery_images": [
+        { "src": "images/events/artist-talk/slide-01.webp", "alt": "מבקרים בגלריה מול עבודות התערוכה" },
+        { "src": "images/events/artist-talk/slide-02.webp", "alt": "מיצג קליגרפיה חיה על גוף בגלריה" },
+        { "src": "images/events/artist-talk/slide-03.webp", "alt": "קליגרפיה עברית על גב — מיצג חי" },
+        { "src": "images/events/artist-talk/slide-04.webp", "alt": "דמות עטופה בבד לבן עם כתב על העור" },
+        { "src": "images/events/artist-talk/slide-05.webp", "alt": "אובייקט עץ מוצג בגלריה" },
+        { "src": "images/events/artist-talk/hero-desktop.webp", "alt": "חלון הראווה של הגלריה — How Many Partners Have U Had?" }
+      ],
+      "_image_note": "hero-desktop = storefront window (6fb63f12, desktop card); hero-mobile = live calligraphy portrait (97bfe6a2, mobile card + OG). Slides from Figma 818:240/97bfe6a2/2ae67900/a9cb03d4/2132e280. Artist strip reuses existing portraits (gal-polk/portrait-v2, elsa-ars-brush/portrait).",
+      "artists": [
+        { "name_en": "gal pollak", "slug": "gal-polk", "image": "images/artists/gal-polk/portrait-v2.webp" },
+        { "name_en": "elsa ers brosh", "slug": "elsa-ars-brush", "image": "images/artists/elsa-ars-brush/portrait.webp" }
+      ],
+      "route": "events/artist-talk/",
+      "homepage_visible": true,
+      "figma_node_desktop": "818:159",
+      "figma_node_mobile": "818:17",
+      "figma_file": "XhGH289YTRcW811wrufRJz"
+    },
+    {
       "id": "close-look",
       "slug": "close-look",
       "title_he": "מבט מקרוב",

@@ -907,7 +907,7 @@
     {
       "id": "natasha-zeriker-1",
       "artist_slug": "natasha-zeriker",
-      "artist_he": "נטשה זריקר",
+      "artist_he": "נטאשה זריקר",
       "artist_en": "natasha zeriker",
       "title_he": null,
       "title_en": "linger",
@@ -3047,7 +3047,7 @@
         768,
         1168
       ],
-      "artist_page_pos": 1,
+      "artist_page_pos": 3,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3072,7 +3072,7 @@
         768,
         1200
       ],
-      "artist_page_pos": 2,
+      "artist_page_pos": 4,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3098,7 +3098,7 @@
         1080,
         1474
       ],
-      "artist_page_pos": 3,
+      "artist_page_pos": 5,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3124,7 +3124,7 @@
         1080,
         1518
       ],
-      "artist_page_pos": 4,
+      "artist_page_pos": 6,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3150,7 +3150,7 @@
         1080,
         1421
       ],
-      "artist_page_pos": 5,
+      "artist_page_pos": 7,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3176,7 +3176,7 @@
         1080,
         1345
       ],
-      "artist_page_pos": 6,
+      "artist_page_pos": 8,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3202,7 +3202,7 @@
         1080,
         1401
       ],
-      "artist_page_pos": 7,
+      "artist_page_pos": 9,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3227,7 +3227,7 @@
         768,
         1200
       ],
-      "artist_page_pos": 8,
+      "artist_page_pos": 10,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3252,7 +3252,7 @@
         768,
         1200
       ],
-      "artist_page_pos": 9,
+      "artist_page_pos": 11,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3278,7 +3278,7 @@
         1080,
         1600
       ],
-      "artist_page_pos": 10,
+      "artist_page_pos": 12,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3303,7 +3303,7 @@
         768,
         1200
       ],
-      "artist_page_pos": 11,
+      "artist_page_pos": 13,
       "page": true,
       "exhibition_title_he": "הקולפן",
       "exhibition_slug": "the-peeler",
@@ -3358,6 +3358,56 @@
       "exhibition_slug": "how-many",
       "exhibition_route": "exhibitions/how-many",
       "page": true
+    },
+    {
+      "id": "amnon-lipkin-12",
+      "artist_slug": "amnon-lipkin",
+      "artist_he": "אמנון ליפקין",
+      "artist_en": "amnon lipkin",
+      "title_he": "קולפן - לב",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "36/66 ס\"מ\nריקמה ידנית",
+      "img": "amnon-lipkin-12",
+      "w": 1200,
+      "h": 1600,
+      "widths": [
+        480,
+        768,
+        1200
+      ],
+      "artist_page_pos": 1,
+      "page": true,
+      "exhibition_title_he": "הקולפן",
+      "exhibition_slug": "the-peeler",
+      "exhibition_route": "opencalls/the-peeler"
+    },
+    {
+      "id": "amnon-lipkin-13",
+      "artist_slug": "amnon-lipkin",
+      "artist_he": "אמנון ליפקין",
+      "artist_en": "amnon lipkin",
+      "title_he": "קולפן - מילים",
+      "title_en": null,
+      "gallery_slug": "medina",
+      "gallery_en": "Hamedina Square Gallery",
+      "sold": false,
+      "details_he": "36/66 ס\"מ\nריקמה ידנית",
+      "img": "amnon-lipkin-13",
+      "w": 1200,
+      "h": 1600,
+      "widths": [
+        480,
+        768,
+        1200
+      ],
+      "artist_page_pos": 2,
+      "page": true,
+      "exhibition_title_he": "הקולפן",
+      "exhibition_slug": "the-peeler",
+      "exhibition_route": "opencalls/the-peeler"
     }
   ],
   "exhibition_statements": [

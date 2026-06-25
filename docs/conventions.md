@@ -228,6 +228,6 @@ function langClass(s){ return HEB_LETTERS.test(s||"") ? "is-he" : "is-en"; }
 **מובייל ≠ דסקטופ מצומצם.** המעצב מוסיף sections ייחודיים, מסדר אחרת, או משנה overlay. תמיד בדוק **שני frames** לפני CSS.
 
 **Mobile horizontal-scroll מ-titles גדולים** (לקח 2026-05-11):
-- `html{overflow-x:clip}` + `body{overflow-x:clip;max-width:100vw}` (`overflow-x:hidden` רק על body לא תמיד מספיק).
+- `html{overflow-x:hidden}` + `body{overflow-x:visible;max-width:100vw}`. אסור `overflow-x:hidden/clip` על `body` או על קונטיינר עם כותרות — זה עלול לחתוך אנכית Copperplate ולשבור sticky.
 - `font-size:clamp(min, vw-value, max)` במקום fixed-px ל-text ≥48px. ה-`vw-value` ≈ `figma_px / figma_viewport × 100`.
 - `white-space:nowrap` למילים שאסור שיתפצלו + `max-width:100%;overflow:hidden` על הקונטיינר.

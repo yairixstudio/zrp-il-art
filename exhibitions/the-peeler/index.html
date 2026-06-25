@@ -215,44 +215,40 @@ a.card.is-linked .pic img{transition:filter .25s}
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ExhibitionEvent","@id":"https://art.zrp.co.il/exhibitions/the-peeler/#event","url":"https://art.zrp.co.il/exhibitions/the-peeler/","name":"The Peeler","image":"https://art.zrp.co.il/images/exhibitions/the-peeler/hero.webp","organizer":{"@id":"https://art.zrp.co.il/#org"},"location":{"@id":"https://art.zrp.co.il/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Exhibitions","item":"https://art.zrp.co.il/exhibitions/"},{"@type":"ListItem","position":2,"name":"The Peeler","item":"https://art.zrp.co.il/exhibitions/the-peeler/"}]}]}</script>
 <!-- SEO:auto:end -->
 </head>
-<body class="is-loading-data page-exhibition">
+<body class="page-exhibition">
 
 <site-header></site-header>
 
 <main id="page">
-  <div class="loading">loading…</div>
-</main>
-
-<template id="tpl-page">
-<section class="ex-hero">
+<section class="ex-hero ex-hero--overlay-hide-en">
   <div class="row">
     <div class="text-col">
       <div class="text-stack">
         <div class="status-row">
-          <span class="badge heb-badge" data-bind="gallery_label_he"></span>
-          <span class="badge status-badge" data-bind="status_label_en"></span>
+          <span class="badge heb-badge" data-bind="gallery_label_he">גלריית כיכר המדינה</span>
+          <span class="badge status-badge" data-bind="status_label_en">current</span>
         </div>
-        <p class="letter-heading" data-bind="hero_letter_heading_en" hidden data-letter-heading></p>
+        <p class="letter-heading" data-bind="hero_letter_heading_en" data-letter-heading="">letter from the exhibition curator</p>
         <div class="descblock">
-          <div class="desc heb" data-bind-html="description_html"></div>
-          <div class="curator-footer" hidden data-curator-footer>
+          <div class="desc heb" data-bind-html="description_html"><p class="heading-en" style="font-size: 22px;">Welcome aboard.</p><p class="light">לא כל שכבה מבקשת לרדת. לפעמים היא נשארת איתנו שנים.<br>היא מתחילה כזיכרון, הופכת לפרשנות, אחר כך לאמונה, ובהמשך לזהות.<br>עד שקשה להבחין בין מה שקרה לבין הסיפור שנבנה סביבו.<br>שכבה היא סיפור שנבנה על אמונה, שיוצר זהות, שמשמש כהגנה, שהוא פרשנות שלנו,<br>ומישהו שם משחק תפקיד כדי שזה יתאים.</p><p class="light">הקולפן אינה תערוכה על קילוף. היא תערוכה על האמצעי.<br>על האפשרות לעצור מול סיפור מוכר, להחזיק אותו לרגע ביד,<br>ולשאול אם הוא עדיין הדבר היחיד שאפשר לראות.<br>אין כאן הבטחה לשינוי. אין הבטחה לריפוי. אין הבטחה לסגירת מעגל.</p><p class="light">אין פה מצפן. יש פה קולפן.</p><p class="light">עשרים ושניים אמנים ואמניות בחרו לקראת התערוכה מעורר רגש מתוך רשימה שנבנתה במיוחד עבור הפרויקט ויצרו עבור התערוכה עבודות חדשות מתוך מפגש עם זיכרונות אישיים, רגשות, שאלות וסיפורים שנשאו איתם.<br>לא מתוך ניסיון לספר את אותו הסיפור מחדש, אלא מתוך האפשרות להתבונן בו מהמקום שבו הם נמצאים היום.<br>כל אחד מהם יצא ממקום אחר.<br>כל אחד מהם חזר עם עולם שלם.<br>יחד הם יוצרים מרחב שאין בו תשובה אחת, מסלול אחד או דרך אחת להרגיש.</p><p class="light">לצד כל עבודה מוצג גם בושם שנבחר עבורה, ובקבוק שעוצב על ידי האמן עצמו.<br>הבושם אינו מסביר את העבודה.<br>הוא לא נותן לה פתרון. הוא פותח אליה כניסה נוספת.<br>דרך ריח. דרך זיכרון. דרך משהו שלא תמיד אפשר להסביר במילים.</p><p class="light">הקולפן אינה מבקשת ללמד דבר.<br>היא מחזיקה אפשרות.<br>להתעכב. להרגיש. להיזכר.</p><p class="light">ואולי לפתוח זוג עיניים פנימה.<br>יכול להיות שתוריד שכבה.<br>יכול להיות שתבנה עוד שלוש מעליה.<br>אבל עכשיו אתה יודע שהיא שם.</p></div>
+          <div class="curator-footer" data-curator-footer="">
             <div class="hero-divider" aria-hidden="true"></div>
-            <p class="curator-credit heb" data-curator-credit></p>
+            <p class="curator-credit heb" data-curator-credit=""><a href="../../curators/korin-avraham/">אוצרת התערוכה - קורין אברהם</a></p>
           </div>
         </div>
       </div>
     </div>
     <div class="img-col">
       <div class="img-frame is-hero-slide-0">
-        <image-gallery data-fit="cover" aria-label="exhibition gallery" data-bind-gallery></image-gallery>
+        <image-gallery data-fit="cover" aria-label="exhibition gallery"><img src="../../images/exhibitions/the-peeler/hero.webp" alt="הקולפן — תמונת מפתח" fetchpriority="high"></image-gallery>
         <div class="overlay">
           <div class="title-bar">
-            <span class="lbl" data-bind="label_en"></span>
+            <span class="lbl" data-bind="label_en">EXHIBITION</span>
             <span class="dot"></span>
-            <span class="lbl" data-bind="volume_en"></span>
+            <span class="lbl" data-bind="volume_en">VOLUME 2</span>
           </div>
-          <div class="title-he heb" data-bind="title_he"></div>
-          <div class="title-en" data-bind="title_en"></div>
+          <div class="title-he heb" data-bind="title_he">הקולפן</div>
+          <div class="title-en" data-bind="title_en">The Peeler</div>
         </div>
       </div>
     </div>
@@ -265,310 +261,127 @@ a.card.is-linked .pic img{transition:filter .25s}
       <div class="label">artists</div>
       <div class="rule"></div>
     </div>
-    <div class="strip" data-bind-artists></div>
+    <div class="strip" data-bind-artists=""><a class="card is-linked" href="../../artists/zohar-ron/" aria-label="לדף האומן zohar
+ron">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/zohar-ron.avif"><img src="../../images/artists/grid/zohar-ron.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">zohar
+ron</div>
+    </a><a class="card is-linked" href="../../artists/noemi-safir/" aria-label="לדף האומן noemi
+safir">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/noemi-safir.avif"><img src="../../images/artists/grid/noemi-safir.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">noemi
+safir</div>
+    </a><a class="card is-linked" href="../../artists/elsa-ars-brush/" aria-label="לדף האומן elsa
+ers brosh">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/elsa-ars-brush.avif"><img src="../../images/artists/grid/elsa-ars-brush.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">elsa
+ers brosh</div>
+    </a><a class="card is-linked" href="../../artists/anat-wegier/" aria-label="לדף האומן anat
+wegier">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/anat-wegier.avif"><img src="../../images/artists/grid/anat-wegier.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">anat
+wegier</div>
+    </a><a class="card is-linked" href="../../artists/yarden-amir/" aria-label="לדף האומן yarden
+amir">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/yarden-amir.avif"><img src="../../images/artists/grid/yarden-amir.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">yarden
+amir</div>
+    </a><a class="card is-linked" href="../../artists/nir-giorgio-levin/" aria-label="לדף האומן nir giorgio
+levin">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/nir-giorgio-levin.avif"><img src="../../images/artists/grid/nir-giorgio-levin.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">nir giorgio
+levin</div>
+    </a><a class="card is-linked" href="../../artists/jessica-tabarovsky/" aria-label="לדף האומן jessica
+tabarovsky">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/jessica-tabarovsky.avif"><img src="../../images/artists/grid/jessica-tabarovsky.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">jessica
+tabarovsky</div>
+    </a><a class="card is-linked" href="../../artists/chen-ziv/" aria-label="לדף האומן chen
+ziv">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/chen-ziv.avif"><img src="../../images/artists/grid/chen-ziv.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">chen
+ziv</div>
+    </a><a class="card is-linked" href="../../artists/baruch-torgeman/" aria-label="לדף האומן baruch
+torgeman">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/baruch-torgeman.avif"><img src="../../images/artists/grid/baruch-torgeman.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">baruch
+torgeman</div>
+    </a><a class="card is-linked" href="../../artists/gilad-kenan/" aria-label="לדף האומן gilad
+kenan">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/gilad-kenan.avif"><img src="../../images/artists/grid/gilad-kenan.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">gilad
+kenan</div>
+    </a><a class="card is-linked" href="../../artists/lahav-barak/" aria-label="לדף האומן lahav
+barak">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/lahav-barak.avif"><img src="../../images/artists/grid/lahav-barak.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">lahav
+barak</div>
+    </a><a class="card is-linked" href="../../artists/livay-levi/" aria-label="לדף האומן livay
+levi">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/livay-levi.avif"><img src="../../images/artists/grid/livay-levi.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">livay
+levi</div>
+    </a><a class="card is-linked" href="../../artists/natasha-zeriker/" aria-label="לדף האומן natasha
+zeriker">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/natasha-zeriker.avif"><img src="../../images/artists/grid/natasha-zeriker.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">natasha
+zeriker</div>
+    </a><a class="card is-linked" href="../../artists/talia-zoref/" aria-label="לדף האומן talia
+zoref">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/talia-zoref.avif"><img src="../../images/artists/grid/talia-zoref.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">talia
+zoref</div>
+    </a><a class="card is-linked" href="../../artists/aharon-bas/" aria-label="לדף האומן aharon
+bas">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/aharon-bas.avif"><img src="../../images/artists/grid/aharon-bas.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">aharon
+bas</div>
+    </a><a class="card is-linked" href="../../artists/bar-cohen/" aria-label="לדף האומן bar
+cohen">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/bar-cohen.avif"><img src="../../images/artists/grid/bar-cohen.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">bar
+cohen</div>
+    </a><a class="card is-linked" href="../../artists/amnon-lipkin/" aria-label="לדף האומן amnon
+lipkin">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/amnon-lipkin.avif"><img src="../../images/artists/grid/amnon-lipkin.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">amnon
+lipkin</div>
+    </a><a class="card is-linked" href="../../artists/alice-debellis/" aria-label="לדף האומן alice
+debellis">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/alice-debellis.avif"><img src="../../images/artists/grid/alice-debellis.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">alice
+debellis</div>
+    </a><a class="card is-linked" href="../../artists/maria-artamonova/" aria-label="לדף האומן maria
+artamonova">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/maria-artamonova.avif"><img src="../../images/artists/grid/maria-artamonova.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">maria
+artamonova</div>
+    </a><a class="card is-linked" href="../../artists/michael-konovalenko/" aria-label="לדף האומן michael
+konovalenko">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/artists/grid/michael-konovalenko.avif"><img src="../../images/artists/grid/michael-konovalenko.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 40%" data-pic-done="1"></picture></div>
+      <div class="name">michael
+konovalenko</div>
+    </a><div class="card">
+      <div class="pic"><picture><source type="image/avif" srcset="../../images/exhibitions/the-peeler/artists/hadas-tuval.avif"><img src="../../images/exhibitions/the-peeler/artists/hadas-tuval.webp" alt="" decoding="async" loading="lazy" style="object-position:50% 45%" data-pic-done="1"></picture></div>
+      <div class="name">hadas
+tuval</div>
+    </div></div>
   </div>
 </section>
 
-<section class="ex-curator" hidden data-ex-curator-root>
+<section class="ex-curator" data-ex-curator-root="">
   <div class="wrap">
     <div class="head">
-      <div class="label" data-curator-label></div>
+      <div class="label" data-curator-label="">the curator</div>
       <div class="rule"></div>
     </div>
-    <div class="strip" data-curator-strip></div>
+    <div class="strip" data-curator-strip=""><a class="card is-linked" href="../../curators/korin-avraham/" aria-label="korin avraham — curator page"><div class="pic"><picture><source type="image/avif" srcset="../../images/curators/korin-avraham/portrait.avif"><img src="../../images/curators/korin-avraham/portrait.webp" alt="קורין אברהם — אוצרת" width="2117" height="2809" decoding="async" loading="lazy" style="object-position: 50% 28%;" data-pic-done="1"></picture></div><div class="name">korin
+avraham</div></a></div>
   </div>
 </section>
 
 <site-footer></site-footer>
-</template>
-
-<!-- Embedded fallbacks for file:// usage. Keep in sync with /data/*.json (or run a local HTTP server and the fetch() above will be the source of truth). -->
-<script type="application/json" id="fallback-site">{"brand":{"name_en":"ZIELINSKI & ROZEN"},"footer":{"newsletter":{"title":"Stay Informed","placeholder":"Email Address","cta":"SUBSCRIBE"},"links_he":[{"label":"יצירת קשר","href":"/contact"},{"label":"הצהרת נגישות","href":"/accessibility"},{"label":"גלריית כיכר המדינה","href":"/galleries/medina"},{"label":"גלריית כיכר דיזינגוף","href":"/galleries/dizengoff"},{"label":"גלריית שוק הפשפשים","href":"/galleries/flea-market"}],"copyright":"© 2026 THE art GALLERY ZiELINSKI & ROZEN ALL RIGHTS RESERVED."}}</script>
-<script type="application/json" id="fallback-curators">{"curators": [{"id": "korin-avraham", "slug": "korin-avraham", "name_en_first": "korin", "name_en_last": "avraham", "instagram_handle": "yasalamfashionblog", "contact_email": "korinalove5@gmail.com", "badge_en": "the curator", "section_heading_en": "the curator's exhibitions", "credit_he": "אוצרת התערוכה - קורין אברהם", "bio_he": [["קורין אברהם, 45, תל-אביב יפו, היא יוצרת, אוצרת ויזמית תוכן הפועלת בצומת שבין אופנה, תרבות, אמנות ורגש.", "היא מייסדת פלטפורמת הלייף-סטייל והקריאייטיב \"{en}YA SALAM{/en}\", ונמנית עם יוצרות התוכן בישראל ובעולם שפועלות בשפה חזותית מבוססת נרטיב."], ["בשנים האחרונות פועלת אברהם כמשפיענית לייף סטייל בינלאומית וכמפיקה קריאטיבית, ומשלבת בין עשייה דיגיטלית לעשייה תרבותית.", "היא שימשה כשגרירת המדיה הרשמית הראשונה של עיריית תל-אביב-יפו, ויצרה שיתופי פעולה עם מותגי יוקרה בינלאומיים."], ["בהכשרתה היא עורכת דין ובהדרגה פנתה לעשייה יצירתית הנשענת על צילום.", "עבודתה מאופיינת בדיוק אסתטי וביכולת לבנות סיפור דרך דימוי שמקבל חיים בהפקות ופרויקטים שמתקיימים בין ערים ותרבויות שונות, תוך חיבור בין מקומי לגלובלי."], ["אברהם עוסקת ביצירה כדרך לפגוש את עצמה.", "העבודה שלה מתקיימת בתוך העולם גם כשהוא רועש, צפוף ורווי תפקידים.", "עשייתה מצביעה על ידע קיים - ידע שאינו נלמד, אלא נזכר."], ["היא אינה מחפשת תנאים של ניתוק או התבודדות, אלא תשומת לב שמתקיימת בתוך החיים עצמם.", "מכלול העבודות בתערוכה מהוות עבור אברהם סקלה של בדידות, לפעמים כמקום של נחמה והסחת דעת, לפעמים כעמידה חשופה, לפעמים כהתמודדות."], ["החיבור שלה אליהן נובע מהבחירה להישאר בתוך התנועה הזו, גם כשלא ברור מה מחכה בצומת הבא. זה אינו סיפור סגור, אלא תהליך חי שמבקש אומץ, הקשבה והסכמה, כאשר הבהירות נוצרת מתוך נוכחות מתמשכת, ולאו דווקא מתוך היעלמות מהעולם."]], "portrait": {"src": "images/curators/korin-avraham/portrait.webp", "width": 2117, "height": 2809, "alt_he": "קורין אברהם — אוצרת"}, "exhibition_slugs": ["loneliness", "how-many", "the-peeler"], "figma_desktop": "XhGH289YTRcW811wrufRJz::314:4", "figma_mobile": "XhGH289YTRcW811wrufRJz::314:97"}]}</script>
-<script type="application/json" id="fallback-exhibitions">{"exhibitions": [{"id": "the-peeler", "slug": "the-peeler", "hero_overlay_hide_en": true, "label_en": "EXHIBITION", "volume_en": "VOLUME 2", "title_he": "הקולפן", "title_en": "The Peeler", "subtitle_he": "הקולפן", "status": "current", "status_label_en": "current", "gallery_id": "medina", "gallery_label_he": "גלריית כיכר המדינה", "curator_slug": "korin-avraham", "hero_letter_heading_en": "letter from the exhibition curator", "hero_image": "images/exhibitions/the-peeler/hero.webp", "gallery_images": [{"src": "images/exhibitions/the-peeler/hero.webp", "alt": "הקולפן — תמונת מפתח"}], "description_he": [{"weight": "heading-en", "lines": ["Welcome aboard."]}, {"weight": "light", "lines": ["לא כל שכבה מבקשת לרדת. לפעמים היא נשארת איתנו שנים.", "היא מתחילה כזיכרון, הופכת לפרשנות, אחר כך לאמונה, ובהמשך לזהות.", "עד שקשה להבחין בין מה שקרה לבין הסיפור שנבנה סביבו.", "שכבה היא סיפור שנבנה על אמונה, שיוצר זהות, שמשמש כהגנה, שהוא פרשנות שלנו,", "ומישהו שם משחק תפקיד כדי שזה יתאים."]}, {"weight": "light", "lines": ["הקולפן אינה תערוכה על קילוף. היא תערוכה על האמצעי.", "על האפשרות לעצור מול סיפור מוכר, להחזיק אותו לרגע ביד,", "ולשאול אם הוא עדיין הדבר היחיד שאפשר לראות.", "אין כאן הבטחה לשינוי. אין הבטחה לריפוי. אין הבטחה לסגירת מעגל."]}, {"weight": "light", "lines": ["אין פה מצפן. יש פה קולפן."]}, {"weight": "light", "lines": ["עשרים ושניים אמנים ואמניות בחרו לקראת התערוכה מעורר רגש מתוך רשימה שנבנתה במיוחד עבור הפרויקט ויצרו עבור התערוכה עבודות חדשות מתוך מפגש עם זיכרונות אישיים, רגשות, שאלות וסיפורים שנשאו איתם.", "לא מתוך ניסיון לספר את אותו הסיפור מחדש, אלא מתוך האפשרות להתבונן בו מהמקום שבו הם נמצאים היום.", "כל אחד מהם יצא ממקום אחר.", "כל אחד מהם חזר עם עולם שלם.", "יחד הם יוצרים מרחב שאין בו תשובה אחת, מסלול אחד או דרך אחת להרגיש."]}, {"weight": "light", "lines": ["לצד כל עבודה מוצג גם בושם שנבחר עבורה, ובקבוק שעוצב על ידי האמן עצמו.", "הבושם אינו מסביר את העבודה.", "הוא לא נותן לה פתרון. הוא פותח אליה כניסה נוספת.", "דרך ריח. דרך זיכרון. דרך משהו שלא תמיד אפשר להסביר במילים."]}, {"weight": "light", "lines": ["הקולפן אינה מבקשת ללמד דבר.", "היא מחזיקה אפשרות.", "להתעכב. להרגיש. להיזכר."]}, {"weight": "light", "lines": ["ואולי לפתוח זוג עיניים פנימה.", "יכול להיות שתוריד שכבה.", "יכול להיות שתבנה עוד שלוש מעליה.", "אבל עכשיו אתה יודע שהיא שם."]}], "artists": [{"name_en": "zohar\nron", "thumb": "images/artists/grid/zohar-ron.webp", "slug": "zohar-ron", "focus": "50% 40%"}, {"name_en": "noemi\nsafir", "thumb": "images/artists/grid/noemi-safir.webp", "slug": "noemi-safir", "focus": "50% 40%"}, {"name_en": "elsa\ners brosh", "thumb": "images/artists/grid/elsa-ars-brush.webp", "slug": "elsa-ars-brush", "focus": "50% 40%"}, {"name_en": "anat\nwegier", "thumb": "images/artists/grid/anat-wegier.webp", "slug": "anat-wegier", "focus": "50% 40%"}, {"name_en": "yarden\namir", "thumb": "images/artists/grid/yarden-amir.webp", "slug": "yarden-amir", "focus": "50% 40%"}, {"name_en": "nir giorgio\nlevin", "thumb": "images/artists/grid/nir-giorgio-levin.webp", "slug": "nir-giorgio-levin", "focus": "50% 40%"}, {"name_en": "jessica\ntabarovsky", "thumb": "images/artists/grid/jessica-tabarovsky.webp", "slug": "jessica-tabarovsky", "focus": "50% 40%"}, {"name_en": "chen\nziv", "thumb": "images/artists/grid/chen-ziv.webp", "slug": "chen-ziv", "focus": "50% 40%"}, {"name_en": "baruch\ntorgeman", "thumb": "images/artists/grid/baruch-torgeman.webp", "slug": "baruch-torgeman", "focus": "50% 40%"}, {"name_en": "gilad\nkenan", "thumb": "images/artists/grid/gilad-kenan.webp", "slug": "gilad-kenan", "focus": "50% 40%"}, {"name_en": "lahav\nbarak", "thumb": "images/artists/grid/lahav-barak.webp", "slug": "lahav-barak", "focus": "50% 40%"}, {"name_en": "livay\nlevi", "thumb": "images/artists/grid/livay-levi.webp", "slug": "livay-levi", "focus": "50% 40%"}, {"name_en": "natasha\nzeriker", "thumb": "images/artists/grid/natasha-zeriker.webp", "slug": "natasha-zeriker", "focus": "50% 40%"}, {"name_en": "talia\nzoref", "thumb": "images/artists/grid/talia-zoref.webp", "slug": "talia-zoref", "focus": "50% 40%"}, {"name_en": "aharon\nbas", "thumb": "images/artists/grid/aharon-bas.webp", "slug": "aharon-bas", "focus": "50% 40%"}, {"name_en": "bar\ncohen", "thumb": "images/artists/grid/bar-cohen.webp", "slug": "bar-cohen", "focus": "50% 40%"}, {"name_en": "amnon\nlipkin", "thumb": "images/artists/grid/amnon-lipkin.webp", "slug": "amnon-lipkin", "focus": "50% 40%"}, {"name_en": "alice\ndebellis", "thumb": "images/artists/grid/alice-debellis.webp", "slug": "alice-debellis", "focus": "50% 40%"}, {"name_en": "maria\nartamonova", "thumb": "images/artists/grid/maria-artamonova.webp", "slug": "maria-artamonova", "focus": "50% 40%"}, {"name_en": "michael\nkonovalenko", "thumb": "images/artists/grid/michael-konovalenko.webp", "slug": "michael-konovalenko", "focus": "50% 40%"}, {"name_en": "hadas\ntuval", "thumb": "images/exhibitions/the-peeler/artists/hadas-tuval.webp", "focus": "50% 45%"}], "figma_node_desktop": "XhGH289YTRcW811wrufRJz::721:14300", "figma_node_mobile": "XhGH289YTRcW811wrufRJz::721:14513"}]}</script>
-
-<script>
-(async function(){
-  const params = new URLSearchParams(location.search);
-  const slug = document.documentElement.dataset.slug || params.get('id') || params.get('slug') || 'loneliness';
-
-  // Load data: prefer fetch (so JSON edits flow through live), fall back to
-  // embedded copies so the page also works when opened directly via file:// .
-  async function loadJson(path, embeddedId){
-    try{
-      const res = await fetch(path, {cache:'no-store'});
-      if(res.ok) return await res.json();
-    }catch(_){/* file:// or offline */}
-    const el = document.getElementById(embeddedId);
-    if(el) return JSON.parse(el.textContent);
-    throw new Error('cannot load ' + path);
-  }
-
-  let site, data;
-  try{
-    [site, data] = await Promise.all([
-      loadJson('../../data/site.json', 'fallback-site'),
-      loadJson('../../data/exhibitions.json', 'fallback-exhibitions')
-    ]);
-  }catch(e){
-    document.getElementById('page').innerHTML = '<div class="loading">failed to load — serve via http (e.g. <code>python3 -m http.server</code>) or refresh fallbacks.</div>';
-    document.body.classList.remove('is-loading-data');
-    return;
-  }
-  const ex = data.exhibitions.find(e => e.slug === slug || e.id === slug);
-  if(!ex){
-    document.getElementById('page').innerHTML = '<div class="loading">exhibition not found</div>';
-    document.body.classList.remove('is-loading-data');
-    return;
-  }
-
-  let curatorsDoc = { curators: [] };
-  if (ex.curator_slug) {
-    try{
-      curatorsDoc = await loadJson('../../data/curators.json', 'fallback-curators');
-    }catch(_){}
-  }
-
-  document.title = (ex.title_en || ex.subtitle_he || 'Exhibition') + ' — Zielinski & Rozen';
-
-  // Build description HTML from paragraphs
-  function descToHtml(paras){
-    if(!Array.isArray(paras)) return '';
-    return paras.map(p => {
-      const cls = p.weight || 'light';
-      const lines = (p.lines || []).map(l => l.replace(/&/g,'&amp;').replace(/</g,'&lt;'));
-      const joiner = cls === 'heading-en' ? ' ' : '<br>';
-      return `<p class="${cls}">${lines.join(joiner)}</p>`;
-    }).join('');
-  }
-
-  // Build context object for binding
-  const ctx = {
-    label_en: ex.label_en || 'EXHIBITION',
-    volume_en: ex.volume_en || '',
-    title_he: ex.title_he || ex.subtitle_he || '',
-    title_en: ex.title_en || '',
-    gallery_label_he: ex.gallery_label_he || '',
-    status_label_en: ex.status_label_en || ex.status || '',
-    hero_letter_heading_en: ex.hero_letter_heading_en || '',
-    hero_image: '../../' + ex.hero_image,
-    description_html: descToHtml(ex.description_he),
-    footer_newsletter_title: site.footer.newsletter.title,
-    footer_newsletter_placeholder: site.footer.newsletter.placeholder,
-    footer_newsletter_cta: site.footer.newsletter.cta,
-    footer_copyright: site.footer.copyright,
-    footer_links_meta: site.footer.links_he.slice(0,2),
-    footer_links_galleries: site.footer.links_he.slice(2)
-  };
-
-  // Resolve gallery images — fall back to hero alone if list missing/empty.
-  const galleryImages = (Array.isArray(ex.gallery_images) && ex.gallery_images.length)
-    ? ex.gallery_images
-    : [{ src: ex.hero_image, alt: ex.title_he || '' }];
-
-  // Render template
-  const tpl = document.getElementById('tpl-page').content.cloneNode(true);
-
-  tpl.querySelectorAll('[data-bind]').forEach(el => {
-    const k = el.getAttribute('data-bind');
-    if(ctx[k] !== undefined) el.textContent = ctx[k];
-  });
-  tpl.querySelectorAll('[data-bind-html]').forEach(el => {
-    const k = el.getAttribute('data-bind-html');
-    el.innerHTML = ctx[k] || '';
-  });
-
-  const letterEl = tpl.querySelector('[data-letter-heading]');
-  const curFoot = tpl.querySelector('[data-curator-footer]');
-  if (letterEl && ex.curator_slug && ex.hero_letter_heading_en) {
-    letterEl.removeAttribute('hidden');
-  }
-  if (curFoot && ex.curator_slug) {
-    const curHero = (curatorsDoc.curators || []).find(c => c.slug === ex.curator_slug);
-    if (curHero && curHero.credit_he) {
-      const creditEl = curFoot.querySelector('[data-curator-credit]');
-      if (creditEl) {
-        const creditLink = document.createElement('a');
-        creditLink.href = '../../curators/' + curHero.slug + '/';
-        creditLink.textContent = curHero.credit_he;
-        creditEl.appendChild(creditLink);
-      }
-      curFoot.removeAttribute('hidden');
-    }
-  }
-
-
-  tpl.querySelectorAll('[data-bind-attr]').forEach(el => {
-    const [k, attr] = el.getAttribute('data-bind-attr').split(':');
-    if(ctx[k] !== undefined) el.setAttribute(attr, ctx[k]);
-  });
-
-  // Inject gallery images as <img decoding="async"> children of <image-gallery>.
-  // The gallery component picks them up in its connectedCallback.
-  const galEl = tpl.querySelector('[data-bind-gallery]');
-  if(galEl){
-    galleryImages.forEach((g, i) => {
-      const img = document.createElement('img');
-      img.src = '../../' + g.src;
-      img.alt = g.alt || '';
-      if(i > 0) img.loading = 'lazy';
-      else img.fetchPriority = 'high';
-      galEl.appendChild(img);
-    });
-  }
-
-  // Artists strip — each card links to its artist page when slug is known
-  const strip = tpl.querySelector('[data-bind-artists]');
-  const _ARTIST_SLUGS = {"zohar ron":"zohar-ron", "eitan goldson":"eitan-goldson", "eitan goldson and henrika rotenberg":"eitan-goldson", "tanya shin":"tanya-shin", "nir giorgio levin":"nir-giorgio-levin", "elsa ers brosh":"elsa-ars-brush", "elsa ars brush":"elsa-ars-brush", "gal pollak":"gal-polk", "gal polk":"gal-polk", "zohar shtrit":"zohar-shtrit", "zohar shitrit":"zohar-shtrit", "hila loterstein":"hila-loterstein", "sami david":"sami-david", "samy david":"sami-david", "risa brooke oze":"risa-oz", "risa oz":"risa-oz", "adi duak":"adi-duak", "adi duek":"adi-duak", "alon manjoch":"alon", "noemi safir":"noemi-safir", "yarden amir":"yarden-amir", "anat wegier":"anat-wegier", "anat wrgier":"anat-wegier", "liel salman":"liel-salman", "liel salman noam":"liel-salman", "tal nehoray":"tal-nehoray", "tal nehorai":"tal-nehoray"};
-  // Face-centered focal points per artist — mirrors FOCAL_POINTS in artists/<slug>/index.html
-  const _ARTIST_FOCAL = {
-    'zohar-ron':'50% 42%',
-    'eitan-goldson':'50% 18%',
-    'tanya-shin':'50% 30%',
-    'nir-giorgio-levin':'50% 32%',
-    'elsa-ars-brush':'50% 38%',
-    'gal-polk':'50% 20%',
-    'zohar-shtrit':'50% 25%',
-    'hila-loterstein':'50% 28%',
-    'sami-david':'50% 25%',
-    'risa-oz':'50% 35%',
-    'zohar-ron-dan-ben-ari':'50% 35%',
-    'adi-duak':'center center',
-    'alon':'58% 40%',
-    'noemi-safir':'50% 18%',
-    'yarden-amir':'50% 38%',
-    'anat-wegier':'50% 32%',
-    'liel-salman':'50% 32%',
-    'tal-nehoray':'50% 32%',
-    'holy-kadosh':'50% 30%',
-    'costa-magarakis':'58% 35%',
-    'maya-nachum-levy':'50% 25%',
-    'la-raz-porta':'50% 50%'
-  };
-  (ex.artists || []).forEach(a => {
-    const nameDisplay = (a.name_en || '').replace(/\\n/g,'\n').replace(/\\L/g,'\n');
-    const lookup = (a.slug || _ARTIST_SLUGS[(a.name_en||'').toLowerCase().trim()] || null);
-    const hrefSlug = (a.artist_page_slug || lookup);
-    const linkable = !!hrefSlug;
-    const wrap = document.createElement(linkable ? 'a' : 'div');
-    wrap.className = 'card' + (linkable ? ' is-linked' : '');
-    if (linkable) {
-      wrap.href = '../../artists/' + hrefSlug + '/';
-      wrap.setAttribute('aria-label', 'לדף האומן ' + nameDisplay);
-    }
-    const focal = a.focus || (lookup && _ARTIST_FOCAL[lookup]) || (hrefSlug && _ARTIST_FOCAL[hrefSlug]) || 'center 25%';
-    wrap.innerHTML = `
-      <div class="pic"><img src="../../${a.thumb}" alt="" decoding="async" loading="lazy" style="object-position:${focal}"></div>
-      <div class="name">${nameDisplay}</div>
-    `;
-    strip.appendChild(wrap);
-  });
-
-  const curRoot = tpl.querySelector('[data-ex-curator-root]');
-  if (curRoot && ex.curator_slug) {
-    const cur = (curatorsDoc.curators || []).find(c => c.slug === ex.curator_slug);
-    if (cur) {
-      curRoot.removeAttribute('hidden');
-      const lbl = curRoot.querySelector('[data-curator-label]');
-      if (lbl) lbl.textContent = cur.badge_en || 'the curator';
-      const cStrip = curRoot.querySelector('[data-curator-strip]');
-      if (cStrip) {
-        const p = cur.portrait || {};
-        const nameDisplay = ((cur.name_en_first || '') + '\n' + (cur.name_en_last || '')).trim();
-        const link = document.createElement('a');
-        link.className = 'card is-linked';
-        link.href = '../../curators/' + cur.slug + '/';
-        link.setAttribute('aria-label', (cur.name_en_first + ' ' + cur.name_en_last) + ' — curator page');
-        const pic = document.createElement('div');
-        pic.className = 'pic';
-        const img = document.createElement('img');
-        img.src = '../../' + (p.src || '');
-        img.alt = p.alt_he || '';
-        img.width = +p.width || 2117;
-        img.height = +p.height || 2809;
-        img.decoding = 'async';
-        img.loading = 'lazy';
-        img.style.objectPosition = '50% 28%';
-        pic.appendChild(img);
-        const nm = document.createElement('div');
-        nm.className = 'name';
-        nm.textContent = nameDisplay;
-        link.appendChild(pic);
-        link.appendChild(nm);
-        cStrip.appendChild(link);
-      }
-    }
-  }
-
-  // Footer link rows
-  tpl.querySelectorAll('[data-bind-footer-row]').forEach(row => {
-    const k = row.getAttribute('data-bind-footer-row');
-    (ctx[k] || []).forEach(l => {
-      const a = document.createElement('a');
-      a.href = l.href || '#';
-      a.textContent = l.label;
-      row.appendChild(a);
-    });
-  });
-
-  const page = document.getElementById('page');
-  page.innerHTML = '';
-  page.appendChild(tpl);
-  document.body.classList.remove('is-loading-data');
-
-  const heroSec = page.querySelector('.ex-hero');
-  const imgFrame = heroSec && heroSec.querySelector('.img-frame');
-  if (ex.hero_overlay_en_only && heroSec) heroSec.classList.add('ex-hero--overlay-en-only');
-  if (ex.hero_overlay_hide_en && heroSec) heroSec.classList.add('ex-hero--overlay-hide-en');
-
-  function fitExHeadingEn(scope) {
-    const el = scope && scope.querySelector('.desc .heading-en');
-    if (!el) return;
-    const run = () => {
-      const maxPx = 22;
-      const minPx = 9;
-      let size = maxPx;
-      el.style.fontSize = size + 'px';
-      const limit = el.clientWidth;
-      if (limit < 1) return;
-      while (size > minPx && el.scrollWidth > limit) {
-        size -= 0.25;
-        el.style.fontSize = size + 'px';
-      }
-    };
-    run();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
-  }
-
-  if (heroSec) {
-    fitExHeadingEn(heroSec);
-    const descBlock = heroSec.querySelector('.descblock');
-    if (descBlock && typeof ResizeObserver !== 'undefined') {
-      new ResizeObserver(() => fitExHeadingEn(heroSec)).observe(descBlock);
-    }
-    window.addEventListener('resize', () => fitExHeadingEn(heroSec), { passive: true });
-  }
-
-  function syncHeroSlideOverlay() {
-    if (!imgFrame) return;
-    const gal = imgFrame.querySelector('image-gallery');
-    let idx = 0;
-    if (gal && typeof gal._idx === 'number') idx = gal._idx;
-    imgFrame.classList.toggle('is-hero-slide-0', idx === 0);
-  }
-
-  customElements.whenDefined('image-gallery').then(() => {
-    syncHeroSlideOverlay();
-    const gal = imgFrame && imgFrame.querySelector('image-gallery');
-    if (gal) {
-      gal.addEventListener('gallery:change', (e) => {
-        const i = e.detail && typeof e.detail.index === 'number' ? e.detail.index : 0;
-        imgFrame.classList.toggle('is-hero-slide-0', i === 0);
-      });
-    }
-  });
-})();
-</script>
+</main>
 
 <!-- Site chrome: shared header + footer (single source of truth) -->
 <script src="../../components/site-chrome.js?v=5" defer></script>

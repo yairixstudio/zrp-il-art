@@ -152,6 +152,14 @@ works v2 מובייל ישן (390 — legacy content): Implement this design fro
 תערוכה how-many מובייל: Implement this design from Figma.
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=119-642&m=dev
 
+### the-peeler — "הקולפן" (current, גלריית כיכר המדינה)
+
+תערוכה the-peeler דסקטופ: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=721-14300&m=dev
+
+תערוכה the-peeler מובייל: Implement this design from Figma.
+@https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=721-14513&m=dev
+
 סקשן אוצרת בתוך דף תערוכה (מתחת ל־artists) — דסקטופ:
 @https://www.figma.com/design/XhGH289YTRcW811wrufRJz/landing?node-id=301-2&m=dev
 

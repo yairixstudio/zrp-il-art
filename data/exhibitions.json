@@ -355,6 +355,227 @@
       ],
       "figma_node_desktop": "119:435",
       "figma_node_mobile": "119:642"
+    },
+    {
+      "id": "the-peeler",
+      "slug": "the-peeler",
+      "hero_overlay_hide_en": true,
+      "label_en": "EXHIBITION",
+      "volume_en": "VOLUME 2",
+      "title_he": "הקולפן",
+      "title_en": "The Peeler",
+      "subtitle_he": "הקולפן",
+      "status": "current",
+      "status_label_en": "current",
+      "gallery_id": "medina",
+      "gallery_label_he": "גלריית כיכר המדינה",
+      "curator_slug": "korin-avraham",
+      "hero_letter_heading_en": "letter from the exhibition curator",
+      "hero_image": "images/exhibitions/the-peeler/hero.webp",
+      "gallery_images": [
+        {
+          "src": "images/exhibitions/the-peeler/hero.webp",
+          "alt": "הקולפן — תמונת מפתח"
+        }
+      ],
+      "description_he": [
+        {
+          "weight": "heading-en",
+          "lines": [
+            "Welcome aboard."
+          ]
+        },
+        {
+          "weight": "light",
+          "lines": [
+            "לא כל שכבה מבקשת לרדת. לפעמים היא נשארת איתנו שנים.",
+            "היא מתחילה כזיכרון, הופכת לפרשנות, אחר כך לאמונה, ובהמשך לזהות.",
+            "עד שקשה להבחין בין מה שקרה לבין הסיפור שנבנה סביבו.",
+            "שכבה היא סיפור שנבנה על אמונה, שיוצר זהות, שמשמש כהגנה, שהוא פרשנות שלנו,",
+            "ומישהו שם משחק תפקיד כדי שזה יתאים."
+          ]
+        },
+        {
+          "weight": "light",
+          "lines": [
+            "הקולפן אינה תערוכה על קילוף. היא תערוכה על האמצעי.",
+            "על האפשרות לעצור מול סיפור מוכר, להחזיק אותו לרגע ביד,",
+            "ולשאול אם הוא עדיין הדבר היחיד שאפשר לראות.",
+            "אין כאן הבטחה לשינוי. אין הבטחה לריפוי. אין הבטחה לסגירת מעגל."
+          ]
+        },
+        {
+          "weight": "light",
+          "lines": [
+            "אין פה מצפן. יש פה קולפן."
+          ]
+        },
+        {
+          "weight": "light",
+          "lines": [
+            "עשרים ושניים אמנים ואמניות בחרו לקראת התערוכה מעורר רגש מתוך רשימה שנבנתה במיוחד עבור הפרויקט ויצרו עבור התערוכה עבודות חדשות מתוך מפגש עם זיכרונות אישיים, רגשות, שאלות וסיפורים שנשאו איתם.",
+            "לא מתוך ניסיון לספר את אותו הסיפור מחדש, אלא מתוך האפשרות להתבונן בו מהמקום שבו הם נמצאים היום.",
+            "כל אחד מהם יצא ממקום אחר.",
+            "כל אחד מהם חזר עם עולם שלם.",
+            "יחד הם יוצרים מרחב שאין בו תשובה אחת, מסלול אחד או דרך אחת להרגיש."
+          ]
+        },
+        {
+          "weight": "light",
+          "lines": [
+            "לצד כל עבודה מוצג גם בושם שנבחר עבורה, ובקבוק שעוצב על ידי האמן עצמו.",
+            "הבושם אינו מסביר את העבודה.",
+            "הוא לא נותן לה פתרון. הוא פותח אליה כניסה נוספת.",
+            "דרך ריח. דרך זיכרון. דרך משהו שלא תמיד אפשר להסביר במילים."
+          ]
+        },
+        {
+          "weight": "light",
+          "lines": [
+            "הקולפן אינה מבקשת ללמד דבר.",
+            "היא מחזיקה אפשרות.",
+            "להתעכב. להרגיש. להיזכר."
+          ]
+        },
+        {
+          "weight": "light",
+          "lines": [
+            "ואולי לפתוח זוג עיניים פנימה.",
+            "יכול להיות שתוריד שכבה.",
+            "יכול להיות שתבנה עוד שלוש מעליה.",
+            "אבל עכשיו אתה יודע שהיא שם."
+          ]
+        }
+      ],
+      "artists": [
+        {
+          "name_en": "zohar\nron",
+          "thumb": "images/artists/grid/zohar-ron.webp",
+          "slug": "zohar-ron",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "noemi\nsafir",
+          "thumb": "images/artists/grid/noemi-safir.webp",
+          "slug": "noemi-safir",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "elsa\ners brosh",
+          "thumb": "images/artists/grid/elsa-ars-brush.webp",
+          "slug": "elsa-ars-brush",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "anat\nwegier",
+          "thumb": "images/artists/grid/anat-wegier.webp",
+          "slug": "anat-wegier",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "yarden\namir",
+          "thumb": "images/artists/grid/yarden-amir.webp",
+          "slug": "yarden-amir",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "nir giorgio\nlevin",
+          "thumb": "images/artists/grid/nir-giorgio-levin.webp",
+          "slug": "nir-giorgio-levin",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "jessica\ntabarovsky",
+          "thumb": "images/artists/grid/jessica-tabarovsky.webp",
+          "slug": "jessica-tabarovsky",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "chen\nziv",
+          "thumb": "images/artists/grid/chen-ziv.webp",
+          "slug": "chen-ziv",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "baruch\ntorgeman",
+          "thumb": "images/artists/grid/baruch-torgeman.webp",
+          "slug": "baruch-torgeman",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "gilad\nkenan",
+          "thumb": "images/artists/grid/gilad-kenan.webp",
+          "slug": "gilad-kenan",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "lahav\nbarak",
+          "thumb": "images/artists/grid/lahav-barak.webp",
+          "slug": "lahav-barak",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "livay\nlevi",
+          "thumb": "images/artists/grid/livay-levi.webp",
+          "slug": "livay-levi",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "natasha\nzeriker",
+          "thumb": "images/artists/grid/natasha-zeriker.webp",
+          "slug": "natasha-zeriker",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "talia\nzoref",
+          "thumb": "images/artists/grid/talia-zoref.webp",
+          "slug": "talia-zoref",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "aharon\nbas",
+          "thumb": "images/artists/grid/aharon-bas.webp",
+          "slug": "aharon-bas",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "bar\ncohen",
+          "thumb": "images/artists/grid/bar-cohen.webp",
+          "slug": "bar-cohen",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "amnon\nlipkin",
+          "thumb": "images/artists/grid/amnon-lipkin.webp",
+          "slug": "amnon-lipkin",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "alice\ndebellis",
+          "thumb": "images/artists/grid/alice-debellis.webp",
+          "slug": "alice-debellis",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "maria\nartamonova",
+          "thumb": "images/artists/grid/maria-artamonova.webp",
+          "slug": "maria-artamonova",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "michael\nkonovalenko",
+          "thumb": "images/artists/grid/michael-konovalenko.webp",
+          "slug": "michael-konovalenko",
+          "focus": "50% 40%"
+        },
+        {
+          "name_en": "hadas\ntuval",
+          "thumb": "images/exhibitions/the-peeler/artists/hadas-tuval.webp",
+          "focus": "50% 45%"
+        }
+      ],
+      "figma_node_desktop": "XhGH289YTRcW811wrufRJz::721:14300",
+      "figma_node_mobile": "XhGH289YTRcW811wrufRJz::721:14513"
     }
   ],
   "archive_thumbnails": {
